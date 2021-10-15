@@ -1,0 +1,7 @@
+data/org.gnome.Raider.desktop.in
+data/org.gnome.Raider.appdata.xml.in
+data/org.gnome.Raider.gschema.xml
+src/raider-window.ui
+src/main.c
+src/raider-window.c
+
