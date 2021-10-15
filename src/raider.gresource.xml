@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/raider/ui">
+    <file>raider-window.ui</file>
+    <file>gears-menu.ui</file>
+    <file>raider-preferences.ui</file>
+  </gresource>
+</gresources>
