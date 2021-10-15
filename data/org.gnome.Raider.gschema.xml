@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="raider">
+    <schema id="org.gnome.Raider" path="/org/gnome/Raider/">
+	<key name="backend" type="s">
+      	    <default>'shred'</default>
+      	    <summary>Backend</summary>
+      	    <description>The backend used for Raider.</description>
+    	</key>
+    	<key name="number-of-passes" type="i">
+            <default>3</default>
+            <summary>Number of passes</summary>
+            <description>Number of passes that Raider will employ in shredding a file.</description>
+    	</key>
+    </schema>
+</schemalist>
