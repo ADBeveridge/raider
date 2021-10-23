@@ -41,7 +41,7 @@ void raider_window_open (RaiderWindow *win, GFile **files);
 void shred_file(GtkWidget *widget, gpointer data);
 void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y,
                             GtkSelectionData *seldata, guint info, guint time,
-							gpointer data);
+                            gpointer data);
 void open_file_dialog (GtkWidget *widget, gpointer data);
 
 #endif /* __EXAMPLEAPPWIN_H */
