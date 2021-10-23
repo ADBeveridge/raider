@@ -33,7 +33,7 @@ rule CUSTOM_COMMAND_DEP
  restat = 1
 
 rule REGENERATE_BUILD
- command = /usr/bin/meson --internal regenerate /home/pi/raider /home/pi/raider/builddir --backend ninja
+ command = /usr/bin/meson --internal regenerate /home/pi/Projects/Raider /home/pi/Projects/Raider/builddir --backend ninja
  description = Regenerating build files.
  generator = 1
 
@@ -64,42 +64,42 @@ build src/raider-resources.h: CUSTOM_COMMAND ../src/raider.gresource.xml | /usr/
 build src/raider.p/meson-generated_.._raider-resources.c.o: c_COMPILER src/raider-resources.c || src/raider-resources.h
  DEPFILE = src/raider.p/meson-generated_.._raider-resources.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/meson-generated_.._raider-resources.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/main.c.o: c_COMPILER ../src/main.c || src/raider-resources.h
  DEPFILE = src/raider.p/main.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/main.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider-window.c.o: c_COMPILER ../src/raider-window.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider-window.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider-window.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider.c.o: c_COMPILER ../src/raider.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider-add-file.c.o: c_COMPILER ../src/raider-add-file.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider-add-file.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider-add-file.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider-shred-file.c.o: c_COMPILER ../src/raider-shred-file.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider-shred-file.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider-shred-file.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider-preferences.c.o: c_COMPILER ../src/raider-preferences.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider-preferences.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider-preferences.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider.p/raider-shred-parser.c.o: c_COMPILER ../src/raider-shred-parser.c || src/raider-resources.h
  DEPFILE = src/raider.p/raider-shred-parser.c.o.d
  DEPFILE_UNQUOTED = src/raider.p/raider-shred-parser.c.o.d
- ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
+ ARGS = -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Projects/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread
 
 build src/raider: c_LINKER src/raider.p/meson-generated_.._raider-resources.c.o src/raider.p/main.c.o src/raider.p/raider-window.c.o src/raider.p/raider.c.o src/raider.p/raider-add-file.c.o src/raider.p/raider-shred-file.c.o src/raider.p/raider-preferences.c.o src/raider.p/raider-shred-parser.c.o | /usr/lib/arm-linux-gnueabihf/libgio-2.0.so /usr/lib/arm-linux-gnueabihf/libgobject-2.0.so /usr/lib/arm-linux-gnueabihf/libglib-2.0.so /usr/lib/arm-linux-gnueabihf/libgtk-3.so /usr/lib/arm-linux-gnueabihf/libgdk-3.so /usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so /usr/lib/arm-linux-gnueabihf/libpango-1.0.so /usr/lib/arm-linux-gnueabihf/libatk-1.0.so /usr/lib/arm-linux-gnueabihf/libcairo-gobject.so /usr/lib/arm-linux-gnueabihf/libcairo.so /usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so
  LINK_ARGS = -Wl,--as-needed -Wl,--no-undefined -Wl,--start-group /usr/lib/arm-linux-gnueabihf/libgio-2.0.so /usr/lib/arm-linux-gnueabihf/libgobject-2.0.so /usr/lib/arm-linux-gnueabihf/libglib-2.0.so /usr/lib/arm-linux-gnueabihf/libgtk-3.so /usr/lib/arm-linux-gnueabihf/libgdk-3.so /usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so /usr/lib/arm-linux-gnueabihf/libpango-1.0.so /usr/lib/arm-linux-gnueabihf/libatk-1.0.so /usr/lib/arm-linux-gnueabihf/libcairo-gobject.so /usr/lib/arm-linux-gnueabihf/libcairo.so /usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so -Wl,--end-group
@@ -107,21 +107,21 @@ build src/raider: c_LINKER src/raider.p/meson-generated_.._raider-resources.c.o 
 build raider-pot: phony meson-raider-pot
 
 build meson-raider-pot: CUSTOM_COMMAND 
- COMMAND = /usr/bin/meson --internal commandrunner /home/pi/raider /home/pi/raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext pot --pkgname=raider --extra-args=--flag=g_string_printf:2:c-format@@--flag=g_dngettext:2:pass-c-format@@--keyword=g_dngettext:2,3@@--keyword=NC_:1c,2@@--flag=g_log:3:c-format@@--flag=N_:1:pass-c-format@@--flag=g_fprintf:2:c-format@@--flag=g_print:1:c-format@@--flag=g_set_error:4:c-format@@--flag=g_string_append_printf:2:c-format@@--keyword=g_dpgettext2:2c,3@@--from-code=UTF-8@@--flag=g_printerr:1:c-format@@--flag=g_markup_printf_escaped:1:c-format@@--keyword=_@@--flag=g_printf:1:c-format@@--flag=C_:2:pass-c-format@@--keyword=N_@@--add-comments@@--flag=NC_:2:pass-c-format@@--keyword=C_:1c,2@@--flag=g_snprintf:3:c-format@@--flag=g_error_new:3:c-format@@--flag=g_strdup_printf:1:c-format@@--keyword=g_dcgettext:2@@--flag=g_sprintf:2:c-format
+ COMMAND = /usr/bin/meson --internal commandrunner /home/pi/Projects/Raider /home/pi/Projects/Raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext pot --pkgname=raider --extra-args=--add-comments@@--flag=N_:1:pass-c-format@@--flag=g_snprintf:3:c-format@@--keyword=g_dngettext:2,3@@--flag=g_strdup_printf:1:c-format@@--flag=g_log:3:c-format@@--flag=g_set_error:4:c-format@@--flag=g_fprintf:2:c-format@@--keyword=NC_:1c,2@@--flag=g_string_printf:2:c-format@@--keyword=g_dpgettext2:2c,3@@--flag=g_print:1:c-format@@--flag=g_markup_printf_escaped:1:c-format@@--flag=g_printerr:1:c-format@@--flag=C_:2:pass-c-format@@--flag=g_printf:1:c-format@@--flag=g_string_append_printf:2:c-format@@--keyword=C_:1c,2@@--from-code=UTF-8@@--keyword=N_@@--flag=NC_:2:pass-c-format@@--keyword=g_dcgettext:2@@--flag=g_sprintf:2:c-format@@--flag=g_error_new:3:c-format@@--flag=g_dngettext:2:pass-c-format@@--keyword=_
  description = Running$ external$ command$ raider-pot
  pool = console
 
 build raider-gmo: phony meson-raider-gmo
 
 build meson-raider-gmo: CUSTOM_COMMAND 
- COMMAND = /usr/bin/meson --internal commandrunner /home/pi/raider /home/pi/raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext gen_gmo
+ COMMAND = /usr/bin/meson --internal commandrunner /home/pi/Projects/Raider /home/pi/Projects/Raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext gen_gmo
  description = Running$ external$ command$ raider-gmo
  pool = console
 
 build raider-update-po: phony meson-raider-update-po
 
 build meson-raider-update-po: CUSTOM_COMMAND 
- COMMAND = /usr/bin/meson --internal commandrunner /home/pi/raider /home/pi/raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext update_po --pkgname=raider --extra-args=--flag=g_string_printf:2:c-format@@--flag=g_dngettext:2:pass-c-format@@--keyword=g_dngettext:2,3@@--keyword=NC_:1c,2@@--flag=g_log:3:c-format@@--flag=N_:1:pass-c-format@@--flag=g_fprintf:2:c-format@@--flag=g_print:1:c-format@@--flag=g_set_error:4:c-format@@--flag=g_string_append_printf:2:c-format@@--keyword=g_dpgettext2:2c,3@@--from-code=UTF-8@@--flag=g_printerr:1:c-format@@--flag=g_markup_printf_escaped:1:c-format@@--keyword=_@@--flag=g_printf:1:c-format@@--flag=C_:2:pass-c-format@@--keyword=N_@@--add-comments@@--flag=NC_:2:pass-c-format@@--keyword=C_:1c,2@@--flag=g_snprintf:3:c-format@@--flag=g_error_new:3:c-format@@--flag=g_strdup_printf:1:c-format@@--keyword=g_dcgettext:2@@--flag=g_sprintf:2:c-format
+ COMMAND = /usr/bin/meson --internal commandrunner /home/pi/Projects/Raider /home/pi/Projects/Raider/builddir po /usr/bin/meson /usr/bin/meson --internal gettext update_po --pkgname=raider --extra-args=--add-comments@@--flag=N_:1:pass-c-format@@--flag=g_snprintf:3:c-format@@--keyword=g_dngettext:2,3@@--flag=g_strdup_printf:1:c-format@@--flag=g_log:3:c-format@@--flag=g_set_error:4:c-format@@--flag=g_fprintf:2:c-format@@--keyword=NC_:1c,2@@--flag=g_string_printf:2:c-format@@--keyword=g_dpgettext2:2c,3@@--flag=g_print:1:c-format@@--flag=g_markup_printf_escaped:1:c-format@@--flag=g_printerr:1:c-format@@--flag=C_:2:pass-c-format@@--flag=g_printf:1:c-format@@--flag=g_string_append_printf:2:c-format@@--keyword=C_:1c,2@@--from-code=UTF-8@@--keyword=N_@@--flag=NC_:2:pass-c-format@@--keyword=g_dcgettext:2@@--flag=g_sprintf:2:c-format@@--flag=g_error_new:3:c-format@@--flag=g_dngettext:2:pass-c-format@@--keyword=_
  description = Running$ external$ command$ raider-update-po
  pool = console
 
@@ -160,19 +160,19 @@ build dist: phony meson-dist
 # Suffix
 
 build meson-TAGS: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/meson --internal tags etags /home/pi/raider
+ COMMAND = /usr/bin/meson --internal tags etags /home/pi/Projects/Raider
  pool = console
 
 build TAGS: phony meson-TAGS
 
 build meson-ctags: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/meson --internal tags ctags /home/pi/raider
+ COMMAND = /usr/bin/meson --internal tags ctags /home/pi/Projects/Raider
  pool = console
 
 build ctags: phony meson-ctags
 
 build meson-cscope: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/meson --internal tags cscope /home/pi/raider
+ COMMAND = /usr/bin/meson --internal tags cscope /home/pi/Projects/Raider
  pool = console
 
 build cscope: phony meson-cscope
@@ -188,7 +188,7 @@ build all: phony data/org.gnome.Raider.desktop data/org.gnome.Raider.appdata.xml
 build clean: phony meson-clean
 
 build meson-clean-ctlist: CUSTOM_COMMAND PHONY
- COMMAND = /usr/bin/meson --internal cleantrees /home/pi/raider/builddir/meson-private/cleantrees.dat
+ COMMAND = /usr/bin/meson --internal cleantrees /home/pi/Projects/Raider/builddir/meson-private/cleantrees.dat
  description = Cleaning$ custom$ target$ directories
 
 build clean-ctlist: phony meson-clean-ctlist
