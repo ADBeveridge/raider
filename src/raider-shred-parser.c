@@ -1,7 +1,7 @@
 #include "raider-shred-parser.h"
 
 /* ***************************************************************** */
-/*                   Shred output it like this:                      */
+/*                   Shred output is like this:                      */
 /*                                                                   */
 /*   shred: /home/pi/file-to-be-shredded.txt: pass 1/3 (random)...   */
 /* ***************************************************************** */
@@ -11,6 +11,7 @@ struct _fsm
     void (*state) (void *);
     gchar **tokens;
     gint incremented_number;
+    RaiderWindow *window;
 };
 
 void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_data)
@@ -42,6 +43,7 @@ gboolean process_shred_output (gpointer data)
 {
     /* Converting the stream to text. */
     GDataInputStream *stream = g_data_input_stream_new(data);
+
     g_data_input_stream_read_line_async(stream, G_PRIORITY_DEFAULT,
                                         NULL, analyze_progress,
                                         stream);

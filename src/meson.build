@@ -11,7 +11,8 @@ raider_sources = [
   'raider-preferences.c',
   'raider-preferences.h',
   'raider-shred-parser.c',
-  'raider-shred-parser.h'
+  'raider-shred-parser.h',
+  'raider-pass-data.h'
 ]
 
 raider_deps = [

@@ -1,4 +1,3 @@
-#include "raider.h"
 #include "raider-window.h"
 
 

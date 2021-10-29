@@ -1,5 +1,6 @@
 #include "raider-shred-file.h"
 
+
 /* This function which is call be g_thread_pool_push starts the shredding. */
 void thread_pool_function (gpointer data, gpointer user_data)
 {

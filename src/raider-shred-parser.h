@@ -1,4 +1,3 @@
-#include "raider.h"
 #include "raider-window.h"
 
 void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_data);
