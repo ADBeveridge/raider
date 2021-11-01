@@ -1,58 +1,77 @@
-Build started at 2021-10-29T16:18:11.279525
+Build started at 2021-10-31T17:44:36.339854
 Main binary: /usr/bin/python3
-Build Options: -Dbackend=ninja
+Build Options: -Dbuildtype=debug
 Python system: Linux
 The Meson build system
-Version: 0.56.1
-Source dir: /home/pi/Projects/Raider
-Build dir: /home/pi/Projects/Raider/builddir
+Version: 0.53.2
+Source dir: /home/ad/Projects/Raider
+Build dir: /home/ad/Projects/Raider/builddir
 Build type: native build
 Project name: raider
 Project version: 0.1.0
-C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
-C linker for the host machine: cc ld.bfd 2.31.1
-None of 'AR' are defined in the environment, not changing global flags.
-C compiler for the build machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
-C linker for the build machine: cc ld.bfd 2.31.1
-None of 'AR' are defined in the environment, not changing global flags.
-Build machine cpu family: arm
-Build machine cpu: armv7l
-Host machine cpu family: arm
-Host machine cpu: armv7l
-Target machine cpu family: arm
-Target machine cpu: armv7l
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.c -o /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe
+C compiler for the build machine: cc (gcc 9.3.0 "cc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0")
+C linker for the build machine: cc ld.bfd 2.34
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.c -o /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe
+C compiler for the host machine: cc (gcc 9.3.0 "cc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0")
+C linker for the host machine: cc ld.bfd 2.34
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
 Configuring raider-config.h using configuration
 Program desktop-file-validate found: YES (/usr/bin/desktop-file-validate)
 Adding test "Validate desktop file"
-Program appstream-util found: YES (/usr/bin/appstream-util)
-Adding test "Validate appstream file"
+Program appstream-util found: NO
 Program glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
 Adding test "Validate schema file"
-Dependency gio-2.0 found: YES 2.58.3 (cached)
-Dependency gtk+-3.0 found: YES 3.24.5 (cached)
-Pkg-config binary for MachineChoice.BUILD is not cached.
-None of 'PKG_CONFIG' are defined in the environment, not changing global flags.
+Pkg-config binary for MachineChoice.HOST is not cached.
 Pkg-config binary missing from cross or native file, or env var undefined.
-Trying a default Pkg-config fallback at pkg-config
-Found pkg-config: /usr/bin/pkg-config (0.29)
-Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+Trying a default pkg-config fallback at pkg-config
+Trying pkg-config binary pkg-config for machine MachineChoice.HOST at ['/usr/bin/pkg-config']
+Found pkg-config: /usr/bin/pkg-config (0.29.1)
+Determining dependency 'gio-2.0' with pkg-config executable '/usr/bin/pkg-config'
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
-2.58.3
+Called `/usr/bin/pkg-config --modversion gio-2.0` -> 0
+2.64.6
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
--I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+Called `/usr/bin/pkg-config --cflags gio-2.0` -> 0
+-pthread -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--L/usr/lib/arm-linux-gnueabihf -lglib-2.0
+Called `/usr/bin/pkg-config gio-2.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lgio-2.0 -lgobject-2.0 -lglib-2.0
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--lglib-2.0
-None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
-None of 'CC_LD' are defined in the environment, not changing global flags.
+Called `/usr/bin/pkg-config gio-2.0 --libs` -> 0
+-lgio-2.0 -lgobject-2.0 -lglib-2.0
 Running compile:
-Working directory:  /home/pi/Projects/Raider/builddir/meson-private/tmp84kqgvfk
-Command line:  cc /home/pi/Projects/Raider/builddir/meson-private/tmp84kqgvfk/testfile.c -o /home/pi/Projects/Raider/builddir/meson-private/tmp84kqgvfk/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmprwf2h5my
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmprwf2h5my/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmprwf2h5my/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -67,41 +86,59 @@ Compiler stderr:
  
 Program stdout:
 
-4
+8
 
 Program stderr:
 
 
 Running compile:
-Working directory:  /home/pi/Projects/Raider/builddir/meson-private/tmpuvtnnf21
-Command line:  cc /home/pi/Projects/Raider/builddir/meson-private/tmpuvtnnf21/testfile.c -o /home/pi/Projects/Raider/builddir/meson-private/tmpuvtnnf21/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpxbij8_nd
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpxbij8_nd/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpxbij8_nd/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
 Compiler stdout:
- install: /usr/lib/gcc/arm-linux-gnueabihf/8/
-programs: =/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/
-libraries: =/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/8/:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/8/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
+ install: /usr/lib/gcc/x86_64-linux-gnu/9/
+programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/
+libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/9/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/9/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
 
 Compiler stderr:
  
-Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
-Program build-aux/meson/postinstall.py found: YES (/usr/bin/python3 /home/pi/Projects/Raider/build-aux/meson/postinstall.py)
+Run-time dependency gio-2.0 found: YES 2.64.6
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency 'gtk+-3.0' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion gtk+-3.0` -> 0
+3.24.20
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --cflags gtk+-3.0` -> 0
+-pthread -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gtk-3.0 -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config gtk+-3.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config gtk+-3.0 --libs` -> 0
+-lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+Run-time dependency gtk+-3.0 found: YES 3.24.20
+Pkg-config binary for MachineChoice.BUILD is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default pkg-config fallback at pkg-config
+Trying pkg-config binary pkg-config for machine MachineChoice.BUILD at ['/usr/bin/pkg-config']
+Found pkg-config: /usr/bin/pkg-config (0.29.1)
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+2.64.6
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lglib-2.0
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-lglib-2.0
+Program build-aux/meson/postinstall.py found: YES (/usr/bin/python3 /home/ad/Projects/Raider/build-aux/meson/postinstall.py)
 Build targets in project: 8
 
-Found ninja-1.10.1 at /usr/bin/ninja
-Running compile:
-Working directory:  /home/pi/Projects/Raider/builddir/meson-private/tmpolci0zjq
-Command line:  cc /home/pi/Projects/Raider/builddir/meson-private/tmpolci0zjq/testfile.c -o /home/pi/Projects/Raider/builddir/meson-private/tmpolci0zjq/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
-
-Code:
- 
-Compiler stdout:
- install: /usr/lib/gcc/arm-linux-gnueabihf/8/
-programs: =/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/bin/
-libraries: =/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../../arm-linux-gnueabihf/lib/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/8/../../../:/lib/arm-linux-gnueabihf/8/:/lib/arm-linux-gnueabihf/:/lib/:/usr/lib/arm-linux-gnueabihf/8/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/
-
-Compiler stderr:
- 
-None of 'STRIP' are defined in the environment, not changing global flags.
-None of 'STRIP' are defined in the environment, not changing global flags.
+Found ninja-1.10.0 at /usr/bin/ninja
