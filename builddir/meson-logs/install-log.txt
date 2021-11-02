@@ -1,0 +1,10 @@
+# List of files installed by Meson
+# Does not contain files installed by custom scripts.
+/usr/local/share/applications/org.gnome.Raider.desktop
+/usr/local/share/appdata/org.gnome.Raider.appdata.xml
+/usr/local/bin/raider
+/usr/local/share/glib-2.0/schemas/org.gnome.Raider.gschema.xml
+/usr/local/share/glib-2.0/schemas
+/usr/local/share/glib-2.0
+/usr/local/share/appdata
+/usr/local/share/applications

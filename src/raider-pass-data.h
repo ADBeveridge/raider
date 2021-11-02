@@ -2,6 +2,7 @@
 
 struct _pass_data
 {
-    RaiderWindow *window
+    RaiderWindow *window;
     GInputStream *stream;
+    GDataInputStream *data_stream;
 };

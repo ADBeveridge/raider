@@ -23,8 +23,9 @@ struct _RaiderWindow
     GtkWidget *remove_file_check_button;
     GtkWidget *sample;
     GtkWidget *progress_overlay_revealer;
-    GtkWidget *progress_overlay_box;
+    GtkWidget *progress_overlay_scrolled_window;
     GtkWidget *tree_view_overlay_revealer;
+    GtkWidget *progress_overlay_box;
 
     GSettings *g_settings;
     GtkSettings *gtk_settings;

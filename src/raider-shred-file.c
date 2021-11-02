@@ -1,4 +1,5 @@
 #include "raider-shred-file.h"
+#include "raider-pass-data.h"
 
 
 /* This function which is call be g_thread_pool_push starts the shredding. */
@@ -25,10 +26,11 @@ void thread_pool_function (gpointer data, gpointer user_data)
         return;
     }
 
-    GInputStream *stream = g_subprocess_get_stderr_pipe(process);
-
     /* This parses the output. */
-    int timeout_id = g_timeout_add (500, process_shred_output, stream);
+    struct _pass_data *pass_data = g_slice_new(struct _pass_data);
+    pass_data->stream = g_subprocess_get_stderr_pipe(process);
+
+    int timeout_id = g_timeout_add (500, process_shred_output, pass_data);
 
     /* Block this threaded function till it returns. */
     g_subprocess_wait(process, NULL, &error);
@@ -75,6 +77,12 @@ void shred_file (GtkWidget *widget, gpointer data)
     {
         gchar *tmp = g_ptr_array_index (window->array_of_files, iter);
         g_thread_pool_push(pool, g_strdup(tmp), NULL);
+
+        GtkWidget *progress_bar = gtk_progress_bar_new();
+        g_ptr_array_add(window->array_of_progress_bars, progress_bar);
+        gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);
+        gtk_widget_show(progress_bar);
+        gtk_progress_bar_set_fraction(progress_bar, 0.5);
     }
 }
 

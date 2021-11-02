@@ -1,4 +1,5 @@
 #include "raider-shred-parser.h"
+#include "raider-pass-data.h"
 
 /* ***************************************************************** */
 /*                   Shred output is like this:                      */
@@ -16,7 +17,9 @@ struct _fsm
 
 void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    gchar *buf = g_data_input_stream_read_line_finish(user_data, res, NULL, NULL);
+    struct _pass_data *pass_data = user_data;
+
+    gchar *buf = g_data_input_stream_read_line_finish(pass_data->data_stream, res, NULL, NULL);
     if (buf == NULL)
     {
         return;
@@ -28,7 +31,7 @@ void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_
     functions can be self contained, and not hold duplicate code. */
 
     gchar **tokens =  g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0};
+    struct _fsm fsm = {start, tokens, 0, pass_data->window};
 
     /* Pretty clever, no? */
     while (fsm.state != NULL)
@@ -42,11 +45,12 @@ void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_
 gboolean process_shred_output (gpointer data)
 {
     /* Converting the stream to text. */
-    GDataInputStream *stream = g_data_input_stream_new(data);
+    struct _pass_data *pass_data = data;
+    pass_data->data_stream = g_data_input_stream_new(pass_data->stream);
 
-    g_data_input_stream_read_line_async(stream, G_PRIORITY_DEFAULT,
+    g_data_input_stream_read_line_async(pass_data->data_stream, G_PRIORITY_DEFAULT,
                                         NULL, analyze_progress,
-                                        stream);
+                                        data);
     return TRUE;
 }
 
