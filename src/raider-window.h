@@ -32,6 +32,7 @@ struct _RaiderWindow
     GtkListStore *list_store;
     GPtrArray *array_of_files;
     GPtrArray *array_of_progress_bars;
+    GPtrArray *array_of_progress_labels;
     gint loaded_file_count;
     gint how_many_done;
 };

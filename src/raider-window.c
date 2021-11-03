@@ -20,15 +20,21 @@ raider_window_init (RaiderWindow *win)
     win->how_many_done = 0;
     win->array_of_files = g_ptr_array_new();
     win->array_of_progress_bars = g_ptr_array_new();
+    win->array_of_progress_labels = g_ptr_array_new();
 
     /* Make the treeview a DND destination. */
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
     gtk_drag_dest_set (win->tree_view, GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
+<<<<<<< HEAD
     
     win->progress_overlay_box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add(GTK_CONTAINER(win->progress_overlay_scrolled_window), win->progress_overlay_box);
+=======
+>>>>>>> experimental
 
-    /* Settings. */
+    /* The box that contains all the progress bars. */
+    win->progress_overlay_box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add(GTK_CONTAINER(win->progress_overlay_scrolled_window), win->progress_overlay_box);
 }
 
 static void

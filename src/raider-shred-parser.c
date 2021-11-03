@@ -134,9 +134,14 @@ void parse_fraction (void *ptr_to_fsm)
     int current = g_strtod(fraction_chars[0], NULL);
     int number_of_passes = g_strtod(fraction_chars[1], NULL);
 
+<<<<<<< HEAD
     gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble) current / number_of_passes);
     g_printerr("%d %d", current, number_of_passes);
 
+=======
+   // GtkWidget *progress_bar = g_ptr_array_index(fsm->window->array_of_progress_bars, 0);
+    //gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR(progress_bar), (double) current/number_of_passes);
+>>>>>>> experimental
 
     g_free(fraction_chars);
 

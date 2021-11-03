@@ -81,6 +81,13 @@ void shred_file(GtkWidget *widget, gpointer data)
     {
         gchar *tmp = g_ptr_array_index(window->array_of_files, iter);
 
+        /* Create the progress text. */
+        GtkWidget *text = gtk_label_new(tmp);
+        g_ptr_array_add(window->array_of_progress_labels, text);
+        gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), text);
+        gtk_widget_show(text);
+
+        /* Create the progress bar. */
         GtkWidget *progress_bar = gtk_progress_bar_new();
         g_ptr_array_add(window->array_of_progress_bars, progress_bar);
         gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);

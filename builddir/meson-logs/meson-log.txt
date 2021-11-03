@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Build started at 2021-11-03T16:08:01.708001
+=======
+Build started at 2021-11-02T14:56:01.200516
+>>>>>>> experimental
 Main binary: /usr/bin/python3
 Build Options: -Dbuildtype=debug -Dbackend=ninja
 Python system: Linux
@@ -46,8 +50,13 @@ PKG_CONFIG_PATH:
 Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
 -lglib-2.0
 Running compile:
+<<<<<<< HEAD
 Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty
 Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+=======
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+>>>>>>> experimental
 
 Code:
  #include<stdio.h>
@@ -68,8 +77,13 @@ Program stderr:
 
 
 Running compile:
+<<<<<<< HEAD
 Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb
 Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+=======
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+>>>>>>> experimental
 
 Code:
  
@@ -85,8 +99,13 @@ Build targets in project: 8
 
 Found ninja-1.10.0 at /usr/bin/ninja
 Running compile:
+<<<<<<< HEAD
 Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac
 Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+=======
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+>>>>>>> experimental
 
 Code:
  
