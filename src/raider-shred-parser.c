@@ -12,7 +12,7 @@ struct _fsm
     void (*state) (void *);
     gchar **tokens;
     gint incremented_number;
-    RaiderWindow *window;
+    GtkWidget *progress_bar;
 };
 
 void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_data)
@@ -31,7 +31,7 @@ void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_
     functions can be self contained, and not hold duplicate code. */
 
     gchar **tokens =  g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, pass_data->window};
+    struct _fsm fsm = {start, tokens, 0, pass_data->progress_bar};
 
     /* Pretty clever, no? */
     while (fsm.state != NULL)
@@ -133,6 +133,10 @@ void parse_fraction (void *ptr_to_fsm)
     /* The big code. This is sent to the progress bar. */
     int current = g_strtod(fraction_chars[0], NULL);
     int number_of_passes = g_strtod(fraction_chars[1], NULL);
+
+    gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble) current / number_of_passes);
+    g_printerr("%d %d", current, number_of_passes);
+
 
     g_free(fraction_chars);
 
