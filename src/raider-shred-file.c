@@ -31,7 +31,7 @@ void thread_pool_function(gpointer data, gpointer user_data)
     pass_data->stream = g_subprocess_get_stderr_pipe(process);
 
     /* Pass along the _pass_data struct again. */
-    int timeout_id = g_timeout_add(500, process_shred_output, data);
+    int timeout_id = g_timeout_add(100, process_shred_output, data);
 
     /* Block this threaded function till it returns. */
     g_subprocess_wait(process, NULL, &error);
@@ -42,8 +42,15 @@ void thread_pool_function(gpointer data, gpointer user_data)
     {
         g_printerr("Could not stop timeout.\n");
     }
+
+    /* Notifify the user the it us done. */
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pass_data->progress_bar), 1.0);
+
+    gchar *new_text = g_strconcat("Finished shredding ", pass_data->filename, NULL);
+    gtk_label_set_text(GTK_LABEL(pass_data->progress_label), new_text);
+
     g_slice_free(struct _pass_data, pass_data);
+    g_free(new_text);
 }
 
 /*
@@ -92,10 +99,10 @@ void shred_file(GtkWidget *widget, gpointer data)
         g_ptr_array_add(window->array_of_progress_bars, progress_bar);
         gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);
         gtk_widget_show(progress_bar);
-        gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(progress_bar), 0.5);
 
         struct _pass_data *pass_data = g_slice_new(struct _pass_data);
         pass_data->progress_bar = progress_bar;
+        pass_data->progress_label = text;
         pass_data->filename = g_strdup(tmp);
 
          g_thread_pool_push(pool, pass_data, NULL);

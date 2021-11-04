@@ -9,17 +9,18 @@
 
 struct _fsm
 {
-    void (*state) (void *);
+    void (*state)(void *);
     gchar **tokens;
     gint incremented_number;
     GtkWidget *progress_bar;
+    gchar *filename;
 };
 
-void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_data)
+void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    struct _pass_data *pass_data = user_data;
+    //struct _pass_data *pass_data = user_data;
 
-    gchar *buf = g_data_input_stream_read_line_finish(pass_data->data_stream, res, NULL, NULL);
+    gchar *buf = g_data_input_stream_read_line_finish(user_data, res, NULL, NULL);
     if (buf == NULL)
     {
         return;
@@ -30,19 +31,19 @@ void analyze_progress (GObject *source_object, GAsyncResult *res, gpointer user_
     /* The reason why I use a fsm style is because it allows redirects, and
     functions can be self contained, and not hold duplicate code. */
 
-    gchar **tokens =  g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, pass_data->progress_bar};
+    gchar **tokens = g_strsplit(buf, " ", 0);
+    //struct _fsm fsm = {start, tokens, 0, pass_data->progress_bar, pass_data->filename};
 
     /* Pretty clever, no? */
-    while (fsm.state != NULL)
+    //while (fsm.state != NULL)
     {
-        fsm.state(&fsm);
+     //   fsm.state(&fsm);
     }
 
     g_free(tokens);
 }
 
-gboolean process_shred_output (gpointer data)
+gboolean process_shred_output(gpointer data)
 {
     /* Converting the stream to text. */
     struct _pass_data *pass_data = data;
@@ -54,16 +55,15 @@ gboolean process_shred_output (gpointer data)
     return TRUE;
 }
 
-
 /* Start the parsing. */
-void start (void *ptr_to_fsm)
+void start(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_sender_name;
 }
 
 /* Abort the while loop in analyze_progress. */
-void stop (void *ptr_to_fsm)
+void stop(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = NULL;
@@ -77,7 +77,7 @@ void stop (void *ptr_to_fsm)
 }
 
 /* This function checks if shred sent the output. */
-void parse_sender_name (void *ptr_to_fsm)
+void parse_sender_name(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_filename;
@@ -94,19 +94,42 @@ void parse_sender_name (void *ptr_to_fsm)
     fsm->incremented_number++;
 }
 
-void parse_filename (void *ptr_to_fsm)
+void parse_filename(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_pass;
 
-    /* TODO: Add checking for if this is the right file. */
+    if (g_strcmp0(fsm->filename, fsm->tokens[0]) != 0)
+    {
+        while (1)
+        {
+            if (fsm->tokens[0] == NULL)
+            {
+                fsm->state = stop;
+                break;
+            }
+            gchar *first_part = g_strdup(fsm->tokens[0]);
+
+            /* Look at the next token. */
+            fsm->tokens++;
+            fsm->incremented_number++;
+
+            gchar *whole = g_strconcat(first_part, " ", fsm->tokens[0], NULL);
+            if (g_strcmp0(whole, fsm->filename) == 0)
+            {
+                g_free(first_part);
+                g_free(whole);
+                break;
+            }
+        }
+    }
 
     /* Point to the next word. */
     fsm->tokens++;
     fsm->incremented_number++;
 }
 
-void parse_pass (void *ptr_to_fsm)
+void parse_pass(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_fraction;
@@ -123,7 +146,7 @@ void parse_pass (void *ptr_to_fsm)
     fsm->incremented_number++;
 }
 
-void parse_fraction (void *ptr_to_fsm)
+void parse_fraction(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = stop;
@@ -134,9 +157,8 @@ void parse_fraction (void *ptr_to_fsm)
     int current = g_strtod(fraction_chars[0], NULL);
     int number_of_passes = g_strtod(fraction_chars[1], NULL);
 
-    gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble) current / number_of_passes);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble)current / number_of_passes);
     g_printerr("%d %d", current, number_of_passes);
-
 
     g_free(fraction_chars);
 

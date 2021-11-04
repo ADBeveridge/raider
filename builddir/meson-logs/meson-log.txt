@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-Build started at 2021-11-03T16:08:01.708001
-=======
-Build started at 2021-11-02T14:56:01.200516
->>>>>>> experimental
+Build started at 2021-11-03T16:45:46.279228
 Main binary: /usr/bin/python3
-Build Options: -Dbuildtype=debug -Dbackend=ninja
+Build Options: 
 Python system: Linux
 The Meson build system
 Version: 0.53.2
@@ -13,8 +9,34 @@ Build dir: /home/ad/Projects/Raider/builddir
 Build type: native build
 Project name: raider
 Project version: 0.1.0
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.c -o /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe
 C compiler for the build machine: cc (gcc 9.3.0 "cc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0")
 C linker for the build machine: cc ld.bfd 2.34
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.c -o /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /home/ad/Projects/Raider/builddir/meson-private/sanitycheckc.exe
 C compiler for the host machine: cc (gcc 9.3.0 "cc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0")
 C linker for the host machine: cc ld.bfd 2.34
 Build machine cpu family: x86_64
@@ -29,34 +51,27 @@ Adding test "Validate desktop file"
 Program appstream-util found: NO
 Program glib-compile-schemas found: YES (/usr/bin/glib-compile-schemas)
 Adding test "Validate schema file"
-Dependency gio-2.0 found: YES 2.64.6 (cached)
-Dependency gtk+-3.0 found: YES 3.24.20 (cached)
-Pkg-config binary for MachineChoice.BUILD is not cached.
+Pkg-config binary for MachineChoice.HOST is not cached.
 Pkg-config binary missing from cross or native file, or env var undefined.
 Trying a default pkg-config fallback at pkg-config
-Trying pkg-config binary pkg-config for machine MachineChoice.BUILD at ['/usr/bin/pkg-config']
+Trying pkg-config binary pkg-config for machine MachineChoice.HOST at ['/usr/bin/pkg-config']
 Found pkg-config: /usr/bin/pkg-config (0.29.1)
-Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+Determining dependency 'gio-2.0' with pkg-config executable '/usr/bin/pkg-config'
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+Called `/usr/bin/pkg-config --modversion gio-2.0` -> 0
 2.64.6
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
--I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+Called `/usr/bin/pkg-config --cflags gio-2.0` -> 0
+-pthread -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--L/usr/lib/x86_64-linux-gnu -lglib-2.0
+Called `/usr/bin/pkg-config gio-2.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lgio-2.0 -lgobject-2.0 -lglib-2.0
 PKG_CONFIG_PATH: 
-Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
--lglib-2.0
+Called `/usr/bin/pkg-config gio-2.0 --libs` -> 0
+-lgio-2.0 -lgobject-2.0 -lglib-2.0
 Running compile:
-<<<<<<< HEAD
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpzgvotpty/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
-=======
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmp0silctru/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
->>>>>>> experimental
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpllrke987
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpllrke987/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpllrke987/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -77,13 +92,8 @@ Program stderr:
 
 
 Running compile:
-<<<<<<< HEAD
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmp506rhuwb/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
-=======
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpopcr2u_o/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
->>>>>>> experimental
+Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmp21bqm41i
+Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmp21bqm41i/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmp21bqm41i/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -94,25 +104,41 @@ libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../
 
 Compiler stderr:
  
+Run-time dependency gio-2.0 found: YES 2.64.6
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency 'gtk+-3.0' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion gtk+-3.0` -> 0
+3.24.20
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --cflags gtk+-3.0` -> 0
+-pthread -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -I/usr/include/gtk-3.0 -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/harfbuzz -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config gtk+-3.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config gtk+-3.0 --libs` -> 0
+-lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+Run-time dependency gtk+-3.0 found: YES 3.24.20
+Pkg-config binary for MachineChoice.BUILD is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default pkg-config fallback at pkg-config
+Trying pkg-config binary pkg-config for machine MachineChoice.BUILD at ['/usr/bin/pkg-config']
+Found pkg-config: /usr/bin/pkg-config (0.29.1)
+Determining dependency 'glib-2.0' with pkg-config executable '/usr/bin/pkg-config'
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --modversion glib-2.0` -> 0
+2.64.6
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config --cflags glib-2.0` -> 0
+-I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-L/usr/lib/x86_64-linux-gnu -lglib-2.0
+PKG_CONFIG_PATH: 
+Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
+-lglib-2.0
 Program build-aux/meson/postinstall.py found: YES (/usr/bin/python3 /home/ad/Projects/Raider/build-aux/meson/postinstall.py)
 Build targets in project: 8
 
 Found ninja-1.10.0 at /usr/bin/ninja
-Running compile:
-<<<<<<< HEAD
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpfxmvfmac/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
-=======
-Working directory:  /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0
-Command line:  cc /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0/testfile.c -o /home/ad/Projects/Raider/builddir/meson-private/tmpopjd2_j0/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
->>>>>>> experimental
-
-Code:
- 
-Compiler stdout:
- install: /usr/lib/gcc/x86_64-linux-gnu/9/
-programs: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/bin/
-libraries: =/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/9/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/9/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../x86_64-linux-gnu/lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
-
-Compiler stderr:
- 
