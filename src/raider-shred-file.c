@@ -6,7 +6,7 @@ void thread_pool_function(gpointer data, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(user_data);
     struct  _pass_data *pass_data = data;
-    
+
 
     GError *error = NULL;
 
@@ -29,6 +29,7 @@ void thread_pool_function(gpointer data, gpointer user_data)
 
     /* This parses the output. */
     pass_data->stream = g_subprocess_get_stderr_pipe(process);
+    pass_data->data_stream = g_data_input_stream_new(pass_data->stream);
 
     /* Pass along the _pass_data struct again. */
     int timeout_id = g_timeout_add(100, process_shred_output, data);
