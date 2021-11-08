@@ -22,7 +22,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
 
     gchar *buf = g_data_input_stream_read_line_finish(pass_data->data_stream, res, NULL, NULL);
 
-    /* If there is no data read in, or available, return immediately. */
+    /* If there is no data read in or available, return immediately. */
     if (buf == NULL)
     {
         return;
@@ -39,7 +39,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
     /* Pretty clever, no? */
     while (fsm.state != NULL)
     {
-       fsm.state(&fsm);
+        fsm.state(&fsm);
     }
 
     g_free(tokens);
@@ -98,9 +98,20 @@ void parse_filename(void *ptr_to_fsm)
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_pass;
 
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+    gchar **placeholder = g_strsplit(fsm->filename, " ", 0);
+
+    /* This is for if the filename has multiple spaces in it. */
+    int number = 0;
+    while (placeholder[number] != NULL)
+    {
+        /* Point to the next word. */
+        fsm->tokens++;
+        fsm->incremented_number++;
+
+        /* Update the number of spaces. */
+        number++;
+    }
+    g_free(placeholder);
 }
 
 void parse_pass(void *ptr_to_fsm)
@@ -127,10 +138,9 @@ void parse_fraction(void *ptr_to_fsm)
 
     gchar **fraction_chars = g_strsplit(fsm->tokens[0], "/", 0);
 
-    /* The big code. This is sent to the progress bar. */
+    /* THE BIG CODE OF SHREDDING PROGRESS. */
     int current = g_strtod(fraction_chars[0], NULL);
     int number_of_passes = g_strtod(fraction_chars[1], NULL);
-
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble)current / number_of_passes);
 
     g_free(fraction_chars);
