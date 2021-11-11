@@ -69,10 +69,6 @@ void shred_file(GtkWidget *widget, gpointer data)
         return;
     }
 
-    /* Now let's show the progress screen. */
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->progress_overlay_revealer), TRUE);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->tree_view_overlay_revealer), FALSE);
-
     /* Clear the subtitle. */
     gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
 
@@ -82,31 +78,30 @@ void shred_file(GtkWidget *widget, gpointer data)
      */
 
     GThreadPool *pool = g_thread_pool_new(thread_pool_function, data, 10, FALSE, NULL);
-    gtk_widget_show(window->progress_overlay_box);
 
     int iter;
     for (iter = 0; iter < window->loaded_file_count; iter++)
     {
-        gchar *tmp = g_ptr_array_index(window->array_of_files, iter);
+        //gchar *tmp = g_ptr_array_index(window->array_of_files, iter);
 
         /* Create the progress text. */
-        GtkWidget *text = gtk_label_new(tmp);
-        g_ptr_array_add(window->array_of_progress_labels, text);
-        gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), text);
-        gtk_widget_show(text);
+        //GtkWidget *text = gtk_label_new(tmp);
+        //g_ptr_array_add(window->array_of_progress_labels, text);
+        //gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), text);
+        //gtk_widget_show(text);
 
         /* Create the progress bar. */
-        GtkWidget *progress_bar = gtk_progress_bar_new();
-        g_ptr_array_add(window->array_of_progress_bars, progress_bar);
-        gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);
-        gtk_widget_show(progress_bar);
+        //GtkWidget *progress_bar = gtk_progress_bar_new();
+        //g_ptr_array_add(window->array_of_progress_bars, progress_bar);
+        //gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);
+        //gtk_widget_show(progress_bar);
 
         struct _pass_data *pass_data = g_slice_new(struct _pass_data);
-        pass_data->progress_bar = progress_bar;
-        pass_data->progress_label = text;
-        pass_data->filename = g_strdup(tmp);
+        //pass_data->progress_bar = progress_bar;
+        //pass_data->progress_label = text;
+        //pass_data->filename = g_strdup(tmp);
 
-         g_thread_pool_push(pool, pass_data, NULL);
+        g_thread_pool_push(pool, pass_data, NULL);
     }
 }
 

@@ -15,7 +15,7 @@ raider_window_init (RaiderWindow *win)
     gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (win->primary_menu), menu);
     g_object_unref (builder);
 
-    /* Custom variables initialization. */ 
+    /* Custom variables initialization. */
     win->loaded_file_count = 0;
     win->how_many_done = 0;
     win->array_of_files = g_ptr_array_new();
@@ -24,11 +24,7 @@ raider_window_init (RaiderWindow *win)
 
     /* Make the treeview a DND destination. */
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
-    gtk_drag_dest_set (win->tree_view, GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
-
-    /* The box that contains all the progress bars. */
-    win->progress_overlay_box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add(GTK_CONTAINER(win->progress_overlay_scrolled_window), win->progress_overlay_box);
+    gtk_drag_dest_set (win->list_box, GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
 }
 
 static void
@@ -48,14 +44,10 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, tree_view);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_store);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hide_shredding_check_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, number_of_passes_spin_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, remove_file_check_button);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, progress_overlay_revealer);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, tree_view_overlay_revealer);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, progress_overlay_scrolled_window);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), on_drag_data_received);
