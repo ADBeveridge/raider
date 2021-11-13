@@ -41,4 +41,4 @@ void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gin
                             gpointer data);
 void open_file_dialog (GtkWidget *widget, gpointer data);
 
-#endif /* __EXAMPLEAPPWIN_H */
+#endif /* __RAIDERWINDOW_H */

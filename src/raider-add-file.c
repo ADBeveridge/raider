@@ -44,27 +44,14 @@ void open_file_selected (gchar *filename_to_open, gpointer data)
         return;
     }
 
-    gchar *absolute_filename = g_path_get_basename (filename_to_open);
-    gchar *absolute_path = g_path_get_dirname (filename_to_open);
+    //gchar *absolute_filename = g_path_get_basename (filename_to_open);
+    //gchar *absolute_path = g_path_get_dirname (filename_to_open)
+    //gchar *strdup_filename = g_strdup (filename_to_open);
 
-    GtkWidget *list_box_row = gtk_list_box_row_new();
+    GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
+    gtk_container_add(GTK_CONTAINER (window->list_box), file_row);
 
-    GtkWidget *list_box_grid = gtk_grid_new();
-    gtk_container_add(GTK_CONTAINER(list_box_row), list_box_grid);
-
-    GtkWidget *filename_label = gtk_label_new(absolute_filename);
-    gtk_grid_attach(GTK_GRID(list_box_grid), filename_label, 0, 0, 1, 1);
-
-    GtkWidget *remove_from_list_button = gtk_button_new_from_icon_name("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
-    gtk_grid_attach(GTK_GRID(list_box_grid), remove_from_list_button, 1, 0, 1, 1);
-
-    gtk_list_box_insert(GTK_LIST_BOX(window->list_box), list_box_row, 0);
-
-    gtk_widget_show_all(list_box_box);
-
-    gchar *strdup_filename = g_strdup (filename_to_open);
-
-    g_ptr_array_add (window->array_of_files, strdup_filename);  //This value is freed when reiniting raider.
+    //g_ptr_array_add (window->array_of_files, strdup_filename);  //This value is freed when reiniting raider.
 
     window->loaded_file_count++;  // Update the count of files. */
     g_free (filename_to_open);

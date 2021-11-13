@@ -18,7 +18,7 @@
   </object>
   <object class="GtkAdjustment" id="number_of_passes_adjustment">
     <property name="lower">1</property>
-    <property name="upper">25.000000000223519</property>
+    <property name="upper">25</property>
     <property name="value">3</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
@@ -120,7 +120,6 @@
                     <property name="halign">start</property>
                     <property name="valign">center</property>
                     <property name="margin_left">12</property>
-                    <property name="active">True</property>
                     <property name="draw_indicator">True</property>
                   </object>
                   <packing>

@@ -1,4 +1,5 @@
 #include "raider-window.h"
+#include "raider-file-row.h"
 
 
 gboolean calculate_file_size (gchar *name, gpointer data, gchar result[]);

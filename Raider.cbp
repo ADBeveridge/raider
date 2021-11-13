@@ -53,6 +53,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/raider-add-file.h" />
+		<Unit filename="src/raider-file-row.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/raider-file-row.h" />
 		<Unit filename="src/raider-pass-data.h" />
 		<Unit filename="src/raider-preferences.c">
 			<Option compilerVar="CC" />
