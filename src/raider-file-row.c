@@ -1,4 +1,16 @@
+#include <gtk/gtk.h>
 #include "raider-file-row.h"
+
+struct _RaiderFileRow
+{
+    GtkListBoxRow parent;
+
+    GtkWidget *row_box;
+    GtkWidget *filename_label;
+    GtkWidget *remove_from_list_button;
+
+    gchar *filename;
+};
 
 G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
 
@@ -29,6 +41,11 @@ raider_file_row_init (RaiderFileRow *row)
 static void
 raider_file_row_dispose (GObject *obj)
 {
+    RaiderFileRow *row = RAIDER_FILE_ROW(obj);
+
+    g_free(row->filename);
+    row->filename = NULL;
+
     G_OBJECT_CLASS (raider_file_row_parent_class)->dispose (obj);
 }
 
@@ -45,6 +62,7 @@ RaiderFileRow *raider_file_row_new (const char *str)
     /* Make last-minute additions. */
     gtk_label_set_label(GTK_LABEL(file_row->filename_label), str);
     gtk_widget_show_all (GTK_WIDGET(file_row));
+    file_row->filename = g_strdup(str);
 
     return file_row;
 }

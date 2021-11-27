@@ -54,6 +54,11 @@ void thread_pool_function(gpointer data, gpointer user_data)
     g_free(new_text);
 }
 
+void launch (GtkWidget *widget, gpointer data)
+{
+    printf("Called once.\n");
+}
+
 /*
  * THE BIG FUNCTION
  *
@@ -96,12 +101,13 @@ void shred_file(GtkWidget *widget, gpointer data)
         //gtk_container_add(GTK_CONTAINER(window->progress_overlay_box), progress_bar);
         //gtk_widget_show(progress_bar);
 
-        struct _pass_data *pass_data = g_slice_new(struct _pass_data);
+        //struct _pass_data *pass_data = g_slice_new(struct _pass_data);
         //pass_data->progress_bar = progress_bar;
         //pass_data->progress_label = text;
         //pass_data->filename = g_strdup(tmp);
 
-        g_thread_pool_push(pool, pass_data, NULL);
+        //g_thread_pool_push(pool, pass_data, NULL);
+        gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
     }
 }
 
