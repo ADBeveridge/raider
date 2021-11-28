@@ -9,7 +9,9 @@ struct _RaiderFileRow
     GtkWidget *filename_label;
     GtkWidget *remove_from_list_button;
 
+    /* Data items. */
     gchar *filename;
+    GDataInputStream *data_stream;
 };
 
 G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
@@ -72,12 +74,12 @@ RaiderFileRow *raider_file_row_new (const char *str)
 /* This function which is call be g_thread_pool_push starts the shredding. */
 void shredding_thread(gpointer data, gpointer user_data)
 {
-    RaiderFileRow *file_row = user_data;
+    RaiderFileRow *file_row = RAIDER_FILE_ROW(user_data);
     GError *error = NULL;
 
 
     GSubprocess *process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-                                            "/usr/bin/shred", "--verbose", pass_data->filename,
+                                            "/usr/bin/shred", "--verbose", file_row->filename,
                                             "--iterations=3",
                                             "--remove=wipesync",
                                             "--zero",
@@ -90,8 +92,8 @@ void shredding_thread(gpointer data, gpointer user_data)
     }
 
     /* This parses the output. */
-    pass_data->stream = g_subprocess_get_stderr_pipe(process);
-    pass_data->data_stream = g_data_input_stream_new(pass_data->stream);
+    GInputStream *stream = g_subprocess_get_stderr_pipe(process);
+    file_row->data_stream = g_data_input_stream_new(stream);
 
     /* Pass along the _pass_data struct again. */
     int timeout_id = g_timeout_add(100, process_shred_output, data);
