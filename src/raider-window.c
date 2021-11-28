@@ -43,11 +43,7 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hide_shredding_check_button);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, number_of_passes_spin_button);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, remove_file_check_button);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), on_drag_data_received);
