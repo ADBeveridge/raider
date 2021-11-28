@@ -66,3 +66,52 @@ RaiderFileRow *raider_file_row_new (const char *str)
 
     return file_row;
 }
+
+/** Utility functions **/
+
+/* This function which is call be g_thread_pool_push starts the shredding. */
+void shredding_thread(gpointer data, gpointer user_data)
+{
+    RaiderFileRow *file_row = user_data;
+    GError *error = NULL;
+
+
+    GSubprocess *process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
+                                            "/usr/bin/shred", "--verbose", pass_data->filename,
+                                            "--iterations=3",
+                                            "--remove=wipesync",
+                                            "--zero",
+                                            NULL);
+    if (error != NULL)
+    {
+        g_error("Process launching failed: %s", error->message);
+        g_error_free(error);
+        return;
+    }
+
+    /* This parses the output. */
+    pass_data->stream = g_subprocess_get_stderr_pipe(process);
+    pass_data->data_stream = g_data_input_stream_new(pass_data->stream);
+
+    /* Pass along the _pass_data struct again. */
+    int timeout_id = g_timeout_add(100, process_shred_output, data);
+
+    /* Block this threaded function till it returns. */
+    g_subprocess_wait(process, NULL, &error);
+
+    /* When it is done, destroy the callback. We do not need it any longer. */
+    gboolean removed_timeout = g_source_remove(timeout_id);
+    if (removed_timeout == FALSE)
+    {
+        g_printerr("Could not stop timeout.\n");
+    }
+
+    /* Notifify the user the it us done. */
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pass_data->progress_bar), 1.0);
+
+    gchar *new_text = g_strconcat("Finished shredding ", pass_data->filename, NULL);
+    gtk_label_set_text(GTK_LABEL(pass_data->progress_label), new_text);
+
+    g_slice_free(struct _pass_data, pass_data);
+    g_free(new_text);
+}
