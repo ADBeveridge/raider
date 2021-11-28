@@ -30,7 +30,7 @@ raider_file_row_init (RaiderFileRow *row)
     gtk_box_pack_start(GTK_BOX(row->row_box), row->filename_label, TRUE, TRUE, 0);
     gtk_widget_set_halign(row->filename_label, GTK_ALIGN_START);
 
-    row->remove_from_list_button = gtk_button_new_from_icon_name("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
+    row->remove_from_list_button = gtk_button_new_from_icon_name("window-close", GTK_ICON_SIZE_BUTTON);
     gtk_box_pack_start(GTK_BOX(row->row_box), row->remove_from_list_button, TRUE, TRUE, 0);
     gtk_widget_set_halign(row->remove_from_list_button, GTK_ALIGN_END);
     g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), NULL);

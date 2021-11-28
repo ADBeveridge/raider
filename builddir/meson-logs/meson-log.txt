@@ -1,4 +1,4 @@
-Build started at 2021-11-26T13:43:13.632915
+Build started at 2021-11-27T20:16:11.661581
 Main binary: /usr/bin/python3
 Build Options: -Dbackend=ninja
 Python system: Linux
@@ -51,8 +51,8 @@ Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpgnnt9jo_
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpgnnt9jo_/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpgnnt9jo_/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmp0gtrbmo6
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmp0gtrbmo6/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmp0gtrbmo6/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -73,8 +73,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmplklm8uc2
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmplklm8uc2/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmplklm8uc2/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmp4nv2i_f2
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmp4nv2i_f2/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmp4nv2i_f2/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -91,8 +91,8 @@ Build targets in project: 8
 
 Found ninja-1.10.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmp5nyhrwef
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmp5nyhrwef/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmp5nyhrwef/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpuqo35q9u
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpuqo35q9u/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpuqo35q9u/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  

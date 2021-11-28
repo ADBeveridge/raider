@@ -84,6 +84,8 @@ void shred_file(GtkWidget *widget, gpointer data)
 
     GThreadPool *pool = g_thread_pool_new(thread_pool_function, data, 10, FALSE, NULL);
 
+    gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
+
     int iter;
     for (iter = 0; iter < window->loaded_file_count; iter++)
     {
@@ -107,7 +109,7 @@ void shred_file(GtkWidget *widget, gpointer data)
         //pass_data->filename = g_strdup(tmp);
 
         //g_thread_pool_push(pool, pass_data, NULL);
-        gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
+
     }
 }
 

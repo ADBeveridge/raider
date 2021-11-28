@@ -5,4 +5,7 @@
     <file>gears-menu.ui</file>
     <file>raider-preferences.ui</file>
   </gresource>
+  <gresource prefix="/org/gnome/raider/theme">
+    <file>Adwaita.css</file>
+  </gresource>
 </gresources>
