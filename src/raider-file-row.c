@@ -22,6 +22,20 @@ struct _RaiderFileRow
 
 G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
 
+/* Parsing data that carries around data. */
+struct _fsm
+{
+    void (*state)(void *);
+    gchar **tokens;
+    gint incremented_number;
+    GtkWidget *progress_bar;
+    gchar *filename;
+};
+
+void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
+gboolean process_shred_output(gpointer data);
+/*                                          */
+
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
 {
     GtkWidget *widget2 = gtk_widget_get_parent(widget);
@@ -152,7 +166,7 @@ gboolean process_shred_output(gpointer data)
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    RaiderFileRow *row = RAIDER_FILE_ROW(data);
+    RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
 
     gchar *buf = g_data_input_stream_read_line_finish(row->data_stream, res, NULL, NULL);
 
