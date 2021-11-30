@@ -21,13 +21,11 @@
         <child>
           <object class="GtkButton" id="shred_button">
             <property name="label" translatable="yes">Shred</property>
+            <property name="name">shred_button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="shred_file" object="RaiderWindow" swapped="no"/>
-            <style>
-              <class name="shred-button-destructive"/>
-            </style>
           </object>
           <packing>
             <property name="position">1</property>

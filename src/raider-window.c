@@ -25,6 +25,11 @@ raider_window_init (RaiderWindow *win)
     /* Make the treeview a DND destination. */
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
     gtk_drag_dest_set (win->list_box, GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
+
+    /* Make the shred button destructive. */
+    GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_data(provider, "#shred_button { background-color: #f4534d}", -1, NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), provider, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 static void
@@ -42,6 +47,7 @@ raider_window_class_init (RaiderWindowClass *class)
 
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
 

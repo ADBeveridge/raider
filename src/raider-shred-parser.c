@@ -48,7 +48,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
 gboolean process_shred_output(gpointer data)
 {
     /* Converting the stream to text. */
-    struct _pass_data *pass_data = data;
+
 
     g_data_input_stream_read_line_async(pass_data->data_stream, G_PRIORITY_DEFAULT, NULL, analyze_progress, data);
     return TRUE;
