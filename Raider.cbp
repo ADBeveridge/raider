@@ -67,10 +67,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/raider-shred-file.h" />
-		<Unit filename="src/raider-shred-parser.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/raider-shred-parser.h" />
 		<Unit filename="src/raider-window.c">
 			<Option compilerVar="CC" />
 		</Unit>

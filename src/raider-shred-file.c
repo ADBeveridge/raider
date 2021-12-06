@@ -1,11 +1,8 @@
 #include <gtk/gtk.h>
+#include "raider-window.h"
+#include <gtk/gtk.h>
 #include "raider-file-row.h"
 #include "raider-shred-file.h"
-
-void launch (GtkWidget *widget, gpointer data)
-{
-    g_thread_pool_push(data, widget, NULL);
-}
 
 /*
  * THE BIG FUNCTION
@@ -14,13 +11,12 @@ void launch (GtkWidget *widget, gpointer data)
  */
 void shred_file(GtkWidget *widget, gpointer data)
 {
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
     /* Clear the subtitle. */
+    RaiderWindow *window = RAIDER_WINDOW(data);
     gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
 
-    GThreadPool *pool = g_thread_pool_new(shredding_thread, data, 10, FALSE, NULL);
-    gtk_container_forall(GTK_CONTAINER(window->list_box), launch, pool);
+    /* Launch the shredding. */
+    gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
 }
 
 void increment_number_of_subprocesses_finished(GPid pid, gint status, gpointer data)

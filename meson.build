@@ -23,5 +23,6 @@ datadir = join_paths(prefix, get_option('datadir'))
 subdir('data')
 subdir('src')
 subdir('po')
+subdir('docs')
 
 meson.add_install_script('build-aux/meson/postinstall.py')

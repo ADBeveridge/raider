@@ -43,12 +43,6 @@
   },
   {
     "directory": "/home/pi/Documents/Raider/builddir",
-    "command": "cc -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Documents/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ src/raider.p/raider-shred-parser.c.o -MF src/raider.p/raider-shred-parser.c.o.d -o src/raider.p/raider-shred-parser.c.o -c ../src/raider-shred-parser.c",
-    "file": "../src/raider-shred-parser.c",
-    "output": "src/raider.p/raider-shred-parser.c.o"
-  },
-  {
-    "directory": "/home/pi/Documents/Raider/builddir",
     "command": "cc -Isrc/raider.p -Isrc -I../src -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/uuid -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -I/usr/include/gtk-3.0 -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/arm-linux-gnueabihf/dbus-1.0/include -I/usr/include/gio-unix-2.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/fribidi -I/usr/include/atk-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/gdk-pixbuf-2.0 -I/home/pi/Documents/Raider/builddir -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -g -pthread -MD -MQ src/raider.p/raider-file-row.c.o -MF src/raider.p/raider-file-row.c.o.d -o src/raider.p/raider-file-row.c.o -c ../src/raider-file-row.c",
     "file": "../src/raider-file-row.c",
     "output": "src/raider.p/raider-file-row.c.o"

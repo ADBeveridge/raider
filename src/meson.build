@@ -10,8 +10,6 @@ raider_sources = [
   'raider-shred-file.c',
   'raider-preferences.c',
   'raider-preferences.h',
-  'raider-shred-parser.c',
-  'raider-shred-parser.h',
   'raider-pass-data.h',
   'raider-file-row.c',
   'raider-file-row.h'

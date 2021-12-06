@@ -9,15 +9,24 @@ struct _RaiderFileRow
     GtkWidget *secondary_box;
     GtkWidget *filename_label;
     GtkWidget *remove_from_list_button;
+    GtkWidget *remove_from_list_button_image1;
+    GtkWidget *remove_from_list_button_image2;
 
     /* Progress bar widgets. */
     GtkWidget *revealer;
     GtkWidget *progress_bar;
 
+    /* Notification widget. */
+    GNotification *notification;
+
     /* Data items. */
     gchar *filename;
     gchar *basename;
+    gchar *notification_title;
     GDataInputStream *data_stream;
+    GSubprocess *process;
+    guint signal_id;
+    gint timout_id;
 };
 
 G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
@@ -34,13 +43,30 @@ struct _fsm
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
 gboolean process_shred_output(gpointer data);
-/*                                          */
+void parse_fraction(void *ptr_to_fsm);
+void parse_pass(void *ptr_to_fsm);
+void parse_filename(void *ptr_to_fsm);
+void parse_sender_name(void *ptr_to_fsm);
+void stop(void *ptr_to_fsm);
+void start(void *ptr_to_fsm);
+/* End of parsing data.                     */
+
+void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
+{
+    RaiderFileRow *row = RAIDER_FILE_ROW(data);
+
+    /* Stop the job. The user does not want the shredding to continue. */
+    g_subprocess_force_exit(row->process);
+
+    /* Right here the finish_shredding function will be invoked. */
+}
 
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
 {
-    GtkWidget *widget2 = gtk_widget_get_parent(widget);
-    GtkWidget *widget3 = gtk_widget_get_parent(widget2);
-    GtkWidget *widget4 = gtk_widget_get_parent(widget3);
+    GtkWidget *widget2 = gtk_widget_get_parent(widget); /* Get the secondary box. */
+    GtkWidget *widget3 = gtk_widget_get_parent(widget2); /* Get the main box. */
+    GtkWidget *widget4 = gtk_widget_get_parent(widget3); /* Get the file row. */
+
     gtk_widget_destroy(widget4);
 }
 
@@ -62,16 +88,27 @@ raider_file_row_init (RaiderFileRow *row)
     row->filename_label = gtk_label_new(NULL);
     gtk_box_pack_start(GTK_BOX(row->secondary_box), row->filename_label, TRUE, TRUE, 0);
     gtk_widget_set_halign(row->filename_label, GTK_ALIGN_START);
+    gtk_label_set_ellipsize(GTK_LABEL(row->filename_label), PANGO_ELLIPSIZE_END);
 
-    row->remove_from_list_button = gtk_button_new_from_icon_name("window-close", GTK_ICON_SIZE_BUTTON);
+     /* Create the icons. */
+    row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_BUTTON);
+    row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop", GTK_ICON_SIZE_BUTTON);
+
+    /* Create the button. */
+    row->remove_from_list_button = gtk_button_new();
+    gtk_widget_set_tooltip_text(row->remove_from_list_button, "Remove from list");
+    gtk_button_set_image(GTK_BUTTON(row->remove_from_list_button), row->remove_from_list_button_image1);
+
     gtk_box_pack_start(GTK_BOX(row->secondary_box), row->remove_from_list_button, TRUE, TRUE, 0);
     gtk_widget_set_halign(row->remove_from_list_button, GTK_ALIGN_END);
-    g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), NULL);
+    row->signal_id = g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), NULL);
 
-    /* Add widget to revealer. */
+    /* GtkRevealer stuff. */
     row->progress_bar = gtk_progress_bar_new();
     gtk_container_add(GTK_CONTAINER(row->revealer), row->progress_bar);
     gtk_revealer_set_reveal_child(GTK_REVEALER(row->revealer), FALSE);
+    gtk_revealer_set_transition_type(GTK_REVEALER(row->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+    gtk_revealer_set_transition_duration(GTK_REVEALER(row->revealer), 500);
 
     /* Last bit of work. */
     gtk_widget_show_all (GTK_WIDGET(row));
@@ -87,6 +124,9 @@ raider_file_row_dispose (GObject *obj)
 
     g_free(row->basename);
     row->basename = NULL;
+
+    g_free(row->notification_title);
+    row->notification_title = NULL;
 
     G_OBJECT_CLASS (raider_file_row_parent_class)->dispose (obj);
 }
@@ -106,24 +146,41 @@ RaiderFileRow *raider_file_row_new (const char *str)
 
     /* Set the label's properties. */
     gtk_label_set_label(GTK_LABEL(file_row->filename_label), file_row->basename);
-    gtk_widget_set_tooltip_text(file_row->filename_label, file_row->filename);
+    gtk_widget_set_tooltip_text(file_row->box, file_row->filename);
+
+    /* Notification stuff. */
+    file_row->notification_title = g_strconcat("Finished shredding %s", file_row->basename, NULL);
+    file_row->notification = g_notification_new(file_row->notification_title);
 
     return file_row;
 }
 
 /** Utility functions **/
 
-/* This function which is call be g_thread_pool_push starts the shredding. */
-void shredding_thread(gpointer data, gpointer user_data)
+void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    RaiderFileRow *file_row = RAIDER_FILE_ROW(data);
+    RaiderFileRow *file_row = RAIDER_FILE_ROW(user_data);
+
+    /* Remove the timeout. */
+    gboolean removed_timeout = g_source_remove(file_row->timout_id);
+    if (removed_timeout == FALSE)
+    {
+        g_printerr("Could not stop timeout.\n");
+    }
+
+    /* Remove the item. */
+    raider_file_row_delete(file_row->remove_from_list_button, NULL);
+}
+
+/* This function which is call be g_thread_pool_push starts the shredding. */
+void launch (GtkWidget *widget, gpointer data)
+{
+    RaiderFileRow *file_row = RAIDER_FILE_ROW(widget);
     GError *error = NULL;
 
-
-    GSubprocess *process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
+    file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
                                             "/usr/bin/shred", "--verbose", file_row->filename,
                                             "--iterations=3",
-                                            "--remove=wipesync",
                                             "--zero",
                                             NULL);
     if (error != NULL)
@@ -134,25 +191,25 @@ void shredding_thread(gpointer data, gpointer user_data)
     }
 
     /* This parses the output. */
-    GInputStream *stream = g_subprocess_get_stderr_pipe(process);
+    GInputStream *stream = g_subprocess_get_stderr_pipe(file_row->process);
     file_row->data_stream = g_data_input_stream_new(stream);
 
-    /* Pass along the _pass_data struct again. */
-    int timeout_id = g_timeout_add(100, process_shred_output, data);
+    /* Show the progress bar. */
+    gtk_revealer_set_reveal_child(GTK_REVEALER (file_row->revealer), TRUE);
 
-    /* Block this threaded function till it returns. */
-    g_subprocess_wait(process, NULL, &error);
+    /* Change the signal handler so the file row is not immediately deleted. */
+    g_signal_handler_disconnect(file_row->remove_from_list_button, file_row->signal_id);
+    g_signal_connect(file_row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_shredding_abort), file_row);
 
-    /* When it is done, destroy the callback. We do not need it any longer. */
-    gboolean removed_timeout = g_source_remove(timeout_id);
-    //if (removed_timeout == FALSE)
-    //{
-    //    g_printerr("Could not stop timeout.\n");
-    //}
+    /* Change the icon. */
+    gtk_button_set_image(GTK_BUTTON(file_row->remove_from_list_button), file_row->remove_from_list_button_image2);
 
-    /* Notify the user that it is done. */
-    //gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(file_row->progress_bar), 1.0);
-    raider_file_row_delete(data, NULL);
+    /* Check the output every 100 milliseconds. */
+    file_row->timout_id = g_timeout_add(100, process_shred_output, widget);
+
+    /* Call the callback when the process is finished. If the user aborts the
+    the job, this will be called in any event.*/
+    g_subprocess_wait_async(file_row->process, NULL, (GAsyncReadyCallback) finish_shredding, file_row);
 }
 
 gboolean process_shred_output(gpointer data)
@@ -176,22 +233,19 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
         return;
     }
 
-    /* Parse the line of text. */
-    printf("%s\n", buf);
-
     /* The reason why I use a fsm style is because it allows redirects, and
     functions can be self contained, and not hold duplicate code. */
 
-    /*gchar **tokens = g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, pass_data->progress_bar, pass_data->filename};*/
+    gchar **tokens = g_strsplit(buf, " ", 0);
+    struct _fsm fsm = {start, tokens, 0, row->progress_bar, row->filename};
 
     /* Pretty clever, no? */
-    /*while (fsm.state != NULL)
+    while (fsm.state != NULL)
     {
         fsm.state(&fsm);
     }
 
-    g_free(tokens);*/
+    g_free(tokens);
     g_free(buf);
 }
 
@@ -239,13 +293,27 @@ void parse_filename(void *ptr_to_fsm)
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_pass;
 
-    gchar **placeholder = g_strsplit(fsm->filename, " ", 0);
+    /* In this function, we divide the filename in the fsm struct.
+       We then loop that double dimensional array till we reach the
+       element that is null (the last one). Inside that loop we increment
+       the pointer to the outputted text. This is done because some
+       files have spaces in their filename. */
+
+    gchar **placeholder;
+    if (fsm->filename != NULL)
+    {
+        placeholder = g_strsplit(fsm->filename, " ", 0);
+    }
+    else
+    {
+        fsm->state = stop;
+    }
 
     /* This is for if the filename has multiple spaces in it. */
     int number = 0;
     while (placeholder[number] != NULL)
     {
-        /* Point to the next word. */
+        /* Point to the next word for how may spaces there are in the filename. */
         fsm->tokens++;
         fsm->incremented_number++;
 
@@ -260,13 +328,13 @@ void parse_pass(void *ptr_to_fsm)
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_fraction;
 
+    /* Generally this test case will execute if the shredding option is set to remove. */
     if (g_strcmp0("pass", fsm->tokens[0]) != 0)
     {
         fsm->state = stop;
         g_printerr("Could not find correct text (wanted 'pass', got '%s').", fsm->tokens[0]);
         return;
     }
-
     /* Point to the next word. */
     fsm->tokens++;
     fsm->incremented_number++;

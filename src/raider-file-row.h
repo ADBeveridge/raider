@@ -9,6 +9,6 @@
 G_DECLARE_FINAL_TYPE (RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, GtkListBoxRow)
 
 RaiderFileRow *raider_file_row_new (const char *str);
-void shredding_thread(gpointer data, gpointer user_data);
+void launch (GtkWidget *widget, gpointer data);
 
 #endif
