@@ -20,6 +20,7 @@ struct _RaiderFileRow
     GNotification *notification;
 
     /* Data items. */
+    GSettings *settings;
     gchar *filename;
     gchar *basename;
     gchar *notification_title;
@@ -73,6 +74,8 @@ void raider_file_row_delete (GtkWidget *widget, gpointer data)
 static void
 raider_file_row_init (RaiderFileRow *row)
 {
+    row->settings = g_settings_new("org.gnome.Raider");
+
     row->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add (GTK_CONTAINER (row), row->box);
 
@@ -178,10 +181,14 @@ void launch (GtkWidget *widget, gpointer data)
     RaiderFileRow *file_row = RAIDER_FILE_ROW(widget);
     GError *error = NULL;
 
+    gboolean remove_file = g_settings_get_boolean(file_row->settings, "remove-file");
+    gboolean hide_shredding = g_settings_get_boolean(file_row->settings, "hide-shredding");
+
     file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
                                             "/usr/bin/shred", "--verbose", file_row->filename,
                                             "--iterations=3",
-                                            "--zero",
+                                            remove_file ? "--remove=wipesync" : "--verbose",
+                                            hide_shredding ? "--zero" : "--verbose",
                                             NULL);
     if (error != NULL)
     {

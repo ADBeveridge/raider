@@ -1,9 +1,8 @@
 #ifndef __RAIDERWINDOW_H
 #define __RAIDERWINDOW_H
 
+#include <gtk/gtk.h>
 #include "raider.h"
-#include "raider-add-file.h"
-#include "raider-shred-file.h"
 
 #define RAIDER_WINDOW_TYPE (raider_window_get_type ())
 
@@ -22,23 +21,14 @@ struct _RaiderWindow
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
     GtkWidget *sample;
-
-    GSettings *g_settings;
-    GtkSettings *gtk_settings;
-    GPtrArray *array_of_files;
-    GPtrArray *array_of_progress_bars;
-    GPtrArray *array_of_progress_labels;
-    gint loaded_file_count;
-    gint how_many_done;
 };
 
 
 RaiderWindow *raider_window_new (Raider *app);
-void raider_window_open (RaiderWindow *win, GFile **files);
+
+void raider_window_open (gchar *filename_to_open, gpointer data);
 void shred_file(GtkWidget *widget, gpointer data);
-void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y,
-                            GtkSelectionData *seldata, guint info, guint time,
-                            gpointer data);
-void open_file_dialog (GtkWidget *widget, gpointer data);
+void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y, GtkSelectionData *seldata, guint info, guint time, gpointer data);
+void raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window);
 
 #endif /* __RAIDERWINDOW_H */

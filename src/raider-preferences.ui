@@ -39,33 +39,32 @@
             <property name="margin_end">12</property>
             <property name="margin_top">12</property>
             <property name="margin_bottom">12</property>
+            <property name="orientation">vertical</property>
             <property name="row_spacing">12</property>
             <property name="column_spacing">11</property>
             <child>
-              <object class="GtkLabel" id="backend_label">
+              <object class="GtkCheckButton" id="hide_shredding_check_button">
+                <property name="label" translatable="yes">Hide shredding</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label">_Backend:</property>
-                <property name="use_underline">True</property>
-                <property name="xalign">1</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="backend_combo_box">
+              <object class="GtkCheckButton" id="remove_file_check_button">
+                <property name="label" translatable="yes">Remove file after shredding</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="active">0</property>
-                <items>
-                  <item id="shred" translatable="yes">Shred</item>
-                  <item id="secure-delete" translatable="yes">SecureDelete</item>
-                </items>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>

@@ -1,4 +1,6 @@
+#include <gtk/gtk.h>
 #include "raider-window.h"
+#include "raider-file-row.h"
 
 G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
 
@@ -14,13 +16,6 @@ raider_window_init (RaiderWindow *win)
     menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
     gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (win->primary_menu), menu);
     g_object_unref (builder);
-
-    /* Custom variables initialization. */
-    win->loaded_file_count = 0;
-    win->how_many_done = 0;
-    win->array_of_files = g_ptr_array_new();
-    win->array_of_progress_bars = g_ptr_array_new();
-    win->array_of_progress_labels = g_ptr_array_new();
 
     /* Make the treeview a DND destination. */
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
@@ -53,14 +48,99 @@ raider_window_class_init (RaiderWindowClass *class)
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), on_drag_data_received);
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), open_file_dialog);
+    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
+}
+
+/*
+ * This is called when the user drops files into the list box.
+ */
+void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y,
+                            GtkSelectionData *seldata, guint info, guint time,
+                            gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    gchar **filenames = filenames = g_uri_list_extract_uris ( (const gchar *) gtk_selection_data_get_data (seldata) );
+
+    if (filenames == NULL)
+    {
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "Unable to complete Drag and Drop!");
+
+        gtk_drag_finish (context, FALSE, FALSE, time);
+        return;
+    }
+
+    int iter = 0;
+
+    while (filenames[iter] != NULL)
+    {
+        char *filename = g_filename_from_uri (filenames[iter], NULL, NULL);
+        raider_window_open(filename, data);
+
+        iter++;
+    }
+
+    gtk_drag_finish (context, TRUE, FALSE, time);
 }
 
 void
-raider_window_open (RaiderWindow *win, GFile **files)
+raider_window_open (gchar *filename_to_open, gpointer data)
 {
-    // Add files to a NEW window.
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    GFile *file = g_file_new_for_path (filename_to_open);
+    if (g_file_query_exists (file, NULL) == FALSE)
+    {
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "File does not exist!");
+        return;
+    }
+    g_object_unref(file);
+
+
+    GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
+    gtk_container_add(GTK_CONTAINER (window->list_box), file_row);
+
+    g_free (filename_to_open);
 }
+
+void
+raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window)
+{
+    GtkWidget *dialog = gtk_file_chooser_dialog_new ("Open File", GTK_WINDOW (window),
+                        GTK_FILE_CHOOSER_ACTION_OPEN, "Cancel", GTK_RESPONSE_CANCEL, "Open",
+                        GTK_RESPONSE_ACCEPT, NULL); /* Create dialog. */
+
+    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), TRUE); /* Alow to select many files at once. */
+
+    gint res = gtk_dialog_run (GTK_DIALOG (dialog) );
+    if (res == GTK_RESPONSE_ACCEPT)
+    {
+        GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
+
+        GSList *list = gtk_file_chooser_get_filenames (chooser);
+        g_slist_foreach (list, (GFunc) raider_window_open, window);
+        g_slist_free (list);
+    }
+
+    gtk_widget_destroy (dialog);
+}
+
+
+/*
+ * THE BIG FUNCTION
+ *
+ * This is called when the user clicks on the Shred button in the options pane.
+ */
+void shred_file(GtkWidget *widget, gpointer data)
+{
+    /* Clear the subtitle. */
+    RaiderWindow *window = RAIDER_WINDOW(data);
+    gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
+
+    /* Launch the shredding. */
+    gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
+}
+
 
 RaiderWindow *
 raider_window_new (Raider *app)

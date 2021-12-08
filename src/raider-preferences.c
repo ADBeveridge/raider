@@ -9,7 +9,8 @@ struct _RaiderPreferences
     GtkDialog parent;
 
     GSettings *settings;
-    GtkWidget *backend_combo_box;
+    GtkWidget *hide_shredding_check_button;
+    GtkWidget *remove_file_check_button;
 };
 
 G_DEFINE_TYPE (RaiderPreferences, raider_preferences, GTK_TYPE_DIALOG)
@@ -20,8 +21,12 @@ raider_preferences_init (RaiderPreferences *prefs)
     gtk_widget_init_template (GTK_WIDGET (prefs));
     prefs->settings = g_settings_new ("org.gnome.Raider");
 
-    g_settings_bind (prefs->settings, "backend",
-                     prefs->backend_combo_box, "active-id",
+    g_settings_bind (prefs->settings, "hide-shredding",
+                     prefs->hide_shredding_check_button, "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "remove-file",
+                     prefs->remove_file_check_button, "active",
                      G_SETTINGS_BIND_DEFAULT);
 }
 
@@ -39,9 +44,9 @@ raider_preferences_class_init (RaiderPreferencesClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = raider_preferences_dispose;
 
-    gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
-            "/org/gnome/raider/ui/raider-preferences.ui");
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, backend_combo_box);
+    gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class), "/org/gnome/raider/ui/raider-preferences.ui");
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, hide_shredding_check_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_file_check_button);
 }
 
 RaiderPreferences *

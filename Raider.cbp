@@ -52,7 +52,6 @@
 		<Unit filename="src/raider-add-file.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/raider-add-file.h" />
 		<Unit filename="src/raider-file-row.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -63,9 +62,6 @@
 		</Unit>
 		<Unit filename="src/raider-preferences.h" />
 		<Unit filename="src/raider-preferences.ui" />
-		<Unit filename="src/raider-shred-file.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/raider-shred-file.h" />
 		<Unit filename="src/raider-window.c">
 			<Option compilerVar="CC" />

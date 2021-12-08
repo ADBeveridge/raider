@@ -1,16 +1,11 @@
 raider_sources = [
   'main.c',
   'raider-window.c',
-  'raider.c',
-  'raider-add-file.c',
-  'raider.h',
   'raider-window.h',
-  'raider-add-file.h',
-  'raider-shred-file.h',
-  'raider-shred-file.c',
+  'raider.c',
+  'raider.h',
   'raider-preferences.c',
   'raider-preferences.h',
-  'raider-pass-data.h',
   'raider-file-row.c',
   'raider-file-row.h'
 ]

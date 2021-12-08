@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+ #include <gtk/gtk.h>
 #include "raider.h"
 #include "raider-window.h"
 #include "raider-preferences.h"
@@ -23,9 +24,6 @@
 #include <glib/gi18n.h>
 
 G_DEFINE_TYPE (Raider, raider, GTK_TYPE_APPLICATION);
-
-/* ANJUTA: Macro RAIDER_APPLICATION gets Raider - DO NOT REMOVE */
-
 
 static GActionEntry app_entries[] =
 {
@@ -60,7 +58,14 @@ raider_open (GApplication  *application,
              const gchar   *hint)
 {
     RaiderWindow *window = raider_window_new(RAIDER_APPLICATION(application));
-    raider_window_open(window, files);
+    gint i;
+
+	for (i = 0; i < n_files; i++)
+    {
+		gchar *path = g_file_get_path(files[i]);
+		raider_window_open(path, window);
+    }
+
     gtk_window_present (GTK_WINDOW(window));
 }
 
