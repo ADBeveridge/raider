@@ -11,6 +11,12 @@ struct _RaiderPreferences
     GSettings *settings;
     GtkWidget *hide_shredding_check_button;
     GtkWidget *remove_file_check_button;
+    GtkWidget *number_of_passes_spin_button;
+    GtkWidget *remove_method_combo_box;
+    GtkWidget *overwrite_data_file_chooser_button;
+    GtkWidget *override_permissions_check_button;
+    GtkWidget *do_not_round_to_next_block_check_button;
+    GtkWidget *number_of_bytes_to_shred_entry;
 };
 
 G_DEFINE_TYPE (RaiderPreferences, raider_preferences, GTK_TYPE_DIALOG)
@@ -27,6 +33,26 @@ raider_preferences_init (RaiderPreferences *prefs)
 
     g_settings_bind (prefs->settings, "remove-file",
                      prefs->remove_file_check_button, "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "number-of-passes",
+                     prefs->number_of_passes_spin_button, "value",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "remove-method",
+                     prefs->remove_method_combo_box, "active-id",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "override-permissions",
+                     prefs->override_permissions_check_button, "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "do-not-round-to-next-block",
+                     prefs->do_not_round_to_next_block_check_button, "active",
+                     G_SETTINGS_BIND_DEFAULT);
+
+    g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
+                     prefs->number_of_bytes_to_shred_entry, "text",
                      G_SETTINGS_BIND_DEFAULT);
 }
 
@@ -47,6 +73,12 @@ raider_preferences_class_init (RaiderPreferencesClass *class)
     gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class), "/org/gnome/raider/ui/raider-preferences.ui");
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, hide_shredding_check_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_file_check_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_passes_spin_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_method_combo_box);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, overwrite_data_file_chooser_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, override_permissions_check_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, do_not_round_to_next_block_check_button);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_bytes_to_shred_entry);
 }
 
 RaiderPreferences *

@@ -2,6 +2,13 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.22"/>
+  <object class="GtkAdjustment" id="number_of_passes_adjustment">
+    <property name="lower">1</property>
+    <property name="upper">25</property>
+    <property name="value">3</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
   <template class="RaiderPreferences" parent="GtkDialog">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -10,14 +17,31 @@
     <property name="modal">True</property>
     <property name="default_width">300</property>
     <property name="default_height">100</property>
+    <property name="icon_name">raider</property>
     <property name="type_hint">dialog</property>
-    <child>
-      <placeholder/>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="name">header_bar</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="show_close_button">True</property>
+        <child type="title">
+          <object class="GtkStackSwitcher">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="stack">window_stack</property>
+          </object>
+        </child>
+      </object>
     </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="window_contents">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_left">18</property>
+        <property name="margin_right">18</property>
+        <property name="margin_top">18</property>
+        <property name="margin_bottom">18</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="button_box">
             <property name="visible">True</property>
@@ -30,42 +54,229 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="preferences_grid">
+          <object class="GtkStack" id="window_stack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="margin_start">12</property>
-            <property name="margin_end">12</property>
-            <property name="margin_top">12</property>
-            <property name="margin_bottom">12</property>
-            <property name="orientation">vertical</property>
-            <property name="row_spacing">12</property>
-            <property name="column_spacing">11</property>
+            <property name="transition_type">slide-left-right</property>
             <child>
-              <object class="GtkCheckButton" id="hide_shredding_check_button">
-                <property name="label" translatable="yes">Hide shredding</property>
+              <object class="GtkBox" id="basic_box">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="draw_indicator">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <child>
+                      <object class="GtkLabel" id="number_of_passes_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">How many times to overwrite the file(s)</property>
+                        <property name="margin_right">12</property>
+                        <property name="label" translatable="yes">Number of passes:</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="number_of_passes_spin_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="tooltip_text" translatable="yes">How many times to overwrite the file(s)</property>
+                        <property name="adjustment">number_of_passes_adjustment</property>
+                        <property name="climb_rate">1</property>
+                        <property name="snap_to_ticks">True</property>
+                        <property name="value">3</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="remove_file_check_button">
+                        <property name="label" translatable="yes">Remove after shredding</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Remove the shredded file from the computer</property>
+                        <property name="halign">start</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="hide_shredding_check_button">
+                        <property name="label" translatable="yes">Hide shredding</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Hide shredding with a final overwrite of zeros</property>
+                        <property name="halign">start</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="name">page_one</property>
+                <property name="title" translatable="yes">Basic</property>
               </packing>
             </child>
             <child>
-              <object class="GtkCheckButton" id="remove_file_check_button">
-                <property name="label" translatable="yes">Remove file after shredding</property>
+              <object class="GtkBox" id="advanced_box">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="draw_indicator">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="row_homogeneous">True</property>
+                    <child>
+                      <object class="GtkCheckButton" id="override_permissions_check_button">
+                        <property name="label" translatable="yes">Override file permisions when shredding</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Override the file(s) permissions if you do not have them</property>
+                        <property name="halign">start</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">4</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="do_not_round_to_next_block_check_button">
+                        <property name="label" translatable="yes">Do not round file sizes to the next block</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">This option will shred the entirety of every block that the file(s) has any data on</property>
+                        <property name="halign">start</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="remove_method_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">How to remove the file(s) from the computer</property>
+                        <property name="halign">end</property>
+                        <property name="margin_right">12</property>
+                        <property name="label" translatable="yes">Remove method:</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="remove_method_combo_box">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">How to remove the file(s) from the computer</property>
+                        <property name="active_id">wipesync</property>
+                        <items>
+                          <item id="wipesync" translatable="yes">Wipesync</item>
+                          <item id="wipe" translatable="yes">Wipe</item>
+                          <item id="unlink" translatable="yes">Unlink</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="overwrite_data_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Get data from a file, and overwrite the to be shredded file(s) with the contents of it</property>
+                        <property name="halign">end</property>
+                        <property name="margin_right">12</property>
+                        <property name="label" translatable="yes">Get overwrite data from:</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFileChooserButton" id="overwrite_data_file_chooser_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">Get data from a file, and overwrite the to be shredded file(s) with the contents of it</property>
+                        <property name="title" translatable="yes"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="number_of_bytes_to_shred_label">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="tooltip_text" translatable="yes">How many bytes to shred of the file(s)</property>
+                        <property name="halign">end</property>
+                        <property name="margin_right">12</property>
+                        <property name="label" translatable="yes">Number of bytes to shred:</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="number_of_bytes_to_shred_entry">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="tooltip_text" translatable="yes">How many bytes to shred of the file(s)</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="name">page_two</property>
+                <property name="title" translatable="yes">Advanced</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>

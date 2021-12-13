@@ -93,7 +93,7 @@ raider_file_row_init (RaiderFileRow *row)
     gtk_widget_set_halign(row->filename_label, GTK_ALIGN_START);
     gtk_label_set_ellipsize(GTK_LABEL(row->filename_label), PANGO_ELLIPSIZE_END);
 
-     /* Create the icons. */
+    /* Create the icons. */
     row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_BUTTON);
     row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop", GTK_ICON_SIZE_BUTTON);
 
@@ -171,25 +171,31 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
         g_printerr("Could not stop timeout.\n");
     }
 
+    /* Send notification of completion. */
+    GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET(file_row));
+    if (!GTK_IS_WINDOW (toplevel)) return;
+    GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
+    g_application_send_notification(app, NULL, file_row->notification);
+
     /* Remove the item. */
     raider_file_row_delete(file_row->remove_from_list_button, NULL);
 }
 
 /* This function which is call be g_thread_pool_push starts the shredding. */
-void launch (GtkWidget *widget, gpointer data)
+void launch (gpointer data, gpointer user_data)
 {
-    RaiderFileRow *file_row = RAIDER_FILE_ROW(widget);
+    RaiderFileRow *file_row = RAIDER_FILE_ROW(data);
     GError *error = NULL;
 
     gboolean remove_file = g_settings_get_boolean(file_row->settings, "remove-file");
     gboolean hide_shredding = g_settings_get_boolean(file_row->settings, "hide-shredding");
 
     file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-                                            "/usr/bin/shred", "--verbose", file_row->filename,
-                                            "--iterations=3",
-                                            remove_file ? "--remove=wipesync" : "--verbose",
-                                            hide_shredding ? "--zero" : "--verbose",
-                                            NULL);
+                                         "/usr/bin/shred", "--verbose", file_row->filename,
+                                         "--iterations=3",
+                                         remove_file ? "--remove=wipesync" : "--verbose",
+                                         hide_shredding ? "--zero" : "--verbose",
+                                         NULL);
     if (error != NULL)
     {
         g_error("Process launching failed: %s", error->message);
@@ -212,7 +218,7 @@ void launch (GtkWidget *widget, gpointer data)
     gtk_button_set_image(GTK_BUTTON(file_row->remove_from_list_button), file_row->remove_from_list_button_image2);
 
     /* Check the output every 100 milliseconds. */
-    file_row->timout_id = g_timeout_add(100, process_shred_output, widget);
+    file_row->timout_id = g_timeout_add(100, process_shred_output, data);
 
     /* Call the callback when the process is finished. If the user aborts the
     the job, this will be called in any event.*/

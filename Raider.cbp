@@ -49,20 +49,15 @@
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/raider-add-file.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="src/raider-file-row.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/raider-file-row.h" />
-		<Unit filename="src/raider-pass-data.h" />
 		<Unit filename="src/raider-preferences.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/raider-preferences.h" />
 		<Unit filename="src/raider-preferences.ui" />
-		<Unit filename="src/raider-shred-file.h" />
 		<Unit filename="src/raider-window.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -8,22 +8,6 @@
 
 G_DECLARE_FINAL_TYPE (RaiderWindow, raider_window, RAIDER, WINDOW, GtkApplicationWindow)
 
-struct _RaiderWindow
-{
-    GtkApplicationWindow parent;
-
-    GtkWidget *header_bar;
-    GtkWidget *contents_box;
-    GtkWidget *shred_button;
-    GtkWidget *primary_menu;
-    GtkWidget *list_box;
-    GtkWidget *hide_shredding_check_button;
-    GtkWidget *number_of_passes_spin_button;
-    GtkWidget *remove_file_check_button;
-    GtkWidget *sample;
-};
-
-
 RaiderWindow *raider_window_new (Raider *app);
 
 void raider_window_open (gchar *filename_to_open, gpointer data);

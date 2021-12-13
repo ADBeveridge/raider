@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * raider.c
  * Copyright (C) 2021 Alan Beveridge <pi@raspberrypi>
@@ -149,14 +148,13 @@ help_activated (GSimpleAction *simple,
                 gpointer user_data)
 {
     GError *error = NULL;
-    RaiderWindow *current_window = RAIDER_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(user_data)));
+    GtkWindow *current_window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
 
-    gtk_show_uri_on_window (GTK_WINDOW (current_window), "help:raider", GDK_CURRENT_TIME, &error);
+    gtk_show_uri_on_window (current_window, "help:raider", GDK_CURRENT_TIME, &error);
 
     if (error)
     {
         g_printerr("%s", error->message);
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(current_window->header_bar), "Unable to launch help!");
     }
     else
     {

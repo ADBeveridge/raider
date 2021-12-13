@@ -2,6 +2,21 @@
 #include "raider-window.h"
 #include "raider-file-row.h"
 
+struct _RaiderWindow
+{
+    GtkApplicationWindow parent;
+
+    GtkWidget *header_bar;
+    GtkWidget *contents_box;
+    GtkWidget *shred_button;
+    GtkWidget *primary_menu;
+    GtkWidget *list_box;
+    GtkWidget *hide_shredding_check_button;
+    GtkWidget *number_of_passes_spin_button;
+    GtkWidget *remove_file_check_button;
+    GtkWidget *sample;
+};
+
 G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
 
 static void
@@ -138,7 +153,9 @@ void shred_file(GtkWidget *widget, gpointer data)
     gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
 
     /* Launch the shredding. */
-    gtk_container_forall(GTK_CONTAINER(window->list_box), launch, NULL);
+    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
+    g_list_foreach(list, launch, NULL);
+    g_list_free(list);
 }
 
 

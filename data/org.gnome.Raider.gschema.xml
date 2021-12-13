@@ -8,8 +8,39 @@
         </key>
         <key name="remove-file" type="b">
            <summary>Remove file</summary>
-            <description>Whether to remove the file after shredding it.</description>
+           <description>Whether to remove the file after shredding it.</description>
            <default>true</default>
+        </key>
+        <key name="number-of-passes" type="i">
+           <summary>Number of passes</summary>
+           <description>How many times the file will be overwritten with random data.</description>
+           <range min="1" max="25"/>
+           <default>3</default>
+        </key>
+        <key name="remove-method" type="s">
+           <summary>Remove method</summary>
+           <description>How the obfucticated file will be removed from the filesystem.</description>
+           <choices>
+              <choice value='unlink'/>
+              <choice value='wipe'/>
+              <choice value='wipesync'/>
+           </choices>
+           <default>'wipesync'</default>
+        </key>
+        <key name="override-permissions" type="b">
+           <summary>Override Permisions</summary>
+           <description>If you do not have the neccessary permissions, override them.</description>
+           <default>false</default>
+        </key>
+        <key name="do-not-round-to-next-block" type="b">
+           <summary>Do not round to next block</summary>
+           <description>Do not round the file to the next block. This is the default for non-regular files.</description>
+           <default>false</default>
+        </key>
+        <key name="number-of-bytes-to-shred" type="s">
+           <summary>Number of bytes to shred entry</summary>
+           <description>Shred the number of bytes you want, and leave the rest of the file untouched.</description>
+           <default>''</default>
         </key>
     </schema>
 </schemalist>
