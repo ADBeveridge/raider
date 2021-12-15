@@ -4,4 +4,3 @@ data/org.gnome.Raider.gschema.xml
 src/raider-window.ui
 src/main.c
 src/raider-window.c
-

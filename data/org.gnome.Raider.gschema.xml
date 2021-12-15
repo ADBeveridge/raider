@@ -42,5 +42,10 @@
            <description>Shred the number of bytes you want, and leave the rest of the file untouched.</description>
            <default>''</default>
         </key>
+        <key name="shred-executable" type="s">
+           <summary>Shred executable</summary>
+           <description>The path to the shred executable.</description>
+           <default>'/usr/bin/shred'</default>
+        </key>
     </schema>
 </schemalist>

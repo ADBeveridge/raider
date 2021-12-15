@@ -187,15 +187,52 @@ void launch (gpointer data, gpointer user_data)
     RaiderFileRow *file_row = RAIDER_FILE_ROW(data);
     GError *error = NULL;
 
+    /* One liner settings. */
     gboolean remove_file = g_settings_get_boolean(file_row->settings, "remove-file");
     gboolean hide_shredding = g_settings_get_boolean(file_row->settings, "hide-shredding");
+    gboolean override_permissions = g_settings_get_boolean(file_row->settings, "override-permissions");
+    gboolean do_not_round_to_next_block = g_settings_get_boolean(file_row->settings, "do-not-round-to-next-block");
+    gchar *shred_executable = g_settings_get_string(file_row->settings, "shred-executable");
+    gboolean do_number_of_bytes_to_shred_command = TRUE;
 
+    /* Get the number of passes. */
+    gchar *number_of_passes = g_strdup_printf("%d", g_settings_get_int(file_row->settings, "number-of-passes"));
+    gchar *number_of_passes_option = g_strconcat("--iterations=", number_of_passes, NULL);
+
+    /* Get the remove method. */
+    gchar *remove_method = g_settings_get_string(file_row->settings, "remove-method");
+    gchar *remove_method_command = g_strconcat("--remove=", remove_method, NULL);
+
+    /* If that user requests, shred part of a file. */
+    gchar *number_of_bytes_to_shred = g_settings_get_string(file_row->settings, "number-of-bytes-to-shred");
+    if (g_strcmp0(number_of_bytes_to_shred, "") == 0) do_number_of_bytes_to_shred_command = FALSE;
+    gchar *number_of_bytes_to_shred_command = g_strconcat("--size=", number_of_bytes_to_shred, NULL);
+
+    /* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
+    for the commands that are absent in this launch. There is no error as shred does not complain
+    about too many --verbose's */
     file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-                                         "/usr/bin/shred", "--verbose", file_row->filename,
-                                         "--iterations=3",
-                                         remove_file ? "--remove=wipesync" : "--verbose",
+                                         shred_executable, "--verbose", file_row->filename,
+                                         number_of_passes_option,
+                                         remove_file ? remove_method_command : "--verbose",
                                          hide_shredding ? "--zero" : "--verbose",
+                                         override_permissions ? "--force" : "--verbose",
+                                         do_not_round_to_next_block ? "--exact" : "--verbose",
+                                         do_number_of_bytes_to_shred_command ? number_of_bytes_to_shred_command : "--verbose",
                                          NULL);
+    /* Free allocated text. */
+    g_free(number_of_passes);
+    g_free(number_of_passes_option);
+    g_free(remove_method);
+    g_free(remove_method_command);
+    g_free(shred_executable);
+
+    number_of_passes = NULL;
+    number_of_passes_option = NULL;
+    remove_method = NULL;
+    remove_method_command = NULL;
+    shred_executable = NULL;
+
     if (error != NULL)
     {
         g_error("Process launching failed: %s", error->message);
@@ -246,6 +283,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
         return;
     }
 
+    printf("%s\n", buf);
     /* The reason why I use a fsm style is because it allows redirects, and
     functions can be self contained, and not hold duplicate code. */
 
