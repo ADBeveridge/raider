@@ -17,6 +17,8 @@ raider_deps = [
 
 gnome = import('gnome')
 
+subdir('theme')
+
 raider_sources += gnome.compile_resources('raider-resources',
   'raider.gresource.xml',
   c_name: 'raider'

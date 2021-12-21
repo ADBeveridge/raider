@@ -28,6 +28,7 @@ struct _RaiderFileRow
     GSubprocess *process;
     guint signal_id;
     gint timout_id;
+    gboolean aborted;
 };
 
 G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
@@ -57,9 +58,10 @@ void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
     /* Stop the job. The user does not want the shredding to continue. */
+    row->aborted = TRUE;
     g_subprocess_force_exit(row->process);
 
-    /* Right here the finish_shredding function will be invoked. */
+    /* Right here the finish_shredding() function will be invoked. */
 }
 
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
@@ -75,6 +77,7 @@ static void
 raider_file_row_init (RaiderFileRow *row)
 {
     row->settings = g_settings_new("org.gnome.Raider");
+    row->aborted = FALSE;
 
     row->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add (GTK_CONTAINER (row), row->box);
@@ -172,10 +175,13 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
     }
 
     /* Send notification of completion. */
-    GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET(file_row));
-    if (!GTK_IS_WINDOW (toplevel)) return;
-    GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
-    g_application_send_notification(app, NULL, file_row->notification);
+    if (file_row->aborted == FALSE)
+    {
+        GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET(file_row));
+        if (!GTK_IS_WINDOW (toplevel)) return;
+        GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
+        g_application_send_notification(app, NULL, file_row->notification);
+    }
 
     /* Remove the item. */
     raider_file_row_delete(file_row->remove_from_list_button, NULL);
@@ -283,7 +289,6 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
         return;
     }
 
-    printf("%s\n", buf);
     /* The reason why I use a fsm style is because it allows redirects, and
     functions can be self contained, and not hold duplicate code. */
 

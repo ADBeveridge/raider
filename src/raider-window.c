@@ -11,10 +11,12 @@ struct _RaiderWindow
     GtkWidget *shred_button;
     GtkWidget *primary_menu;
     GtkWidget *list_box;
+    GtkWidget *window_stack;
     GtkWidget *hide_shredding_check_button;
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
-    GtkWidget *sample;
+
+    GtkCssProvider *provider;
 };
 
 G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -37,16 +39,33 @@ raider_window_init (RaiderWindow *win)
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
 
-    /* Make the shred button visually destructive. */
-    GtkCssProvider *provider = gtk_css_provider_new();
-    gtk_css_provider_load_from_data(provider, "#shred_button { background-color: #f4534d}", -1, NULL);
-    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    raider_window_css_styling(win);
 }
 
 static void
 raider_window_dispose (GObject *object)
 {
     G_OBJECT_CLASS (raider_window_parent_class)->dispose (object);
+}
+
+void raider_window_css_styling (RaiderWindow *window)
+{
+    window->provider = gtk_css_provider_new ();
+    gtk_style_context_add_provider_for_screen (gdk_screen_get_default(), GTK_STYLE_PROVIDER (window->provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+    gchar *theme_name = NULL;
+    g_object_get (gtk_settings_get_default (), "gtk-theme-name", &theme_name, NULL);
+
+
+    gchar *theme_uri = g_strconcat ("resource:///org/gnome/raider/theme/", theme_name, ".css", NULL);
+    GFile *css_file = g_file_new_for_uri (theme_uri);
+
+    if (g_file_query_exists (css_file, NULL))
+    {
+        gtk_css_provider_load_from_file (window->provider, css_file, NULL);
+    }
+    else
+        gtk_css_provider_load_from_resource (window->provider, "/org/gnome/raider/theme/Adwaita.css");
 }
 
 static void
@@ -60,6 +79,7 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, window_stack);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
@@ -79,8 +99,7 @@ void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gin
 
     if (filenames == NULL)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "Unable to complete Drag and Drop!");
-
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "Unable to add files!");
         gtk_drag_finish (context, FALSE, FALSE, time);
         return;
     }
@@ -113,9 +132,27 @@ raider_window_open (gchar *filename_to_open, gpointer data)
 
 
     GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
+    g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
     gtk_container_add(GTK_CONTAINER (window->list_box), file_row);
 
+    gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_box_page");
+
     g_free (filename_to_open);
+}
+
+void
+raider_window_close (gpointer data, gpointer user_data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(user_data);
+
+    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
+    guint number = g_list_length(list);
+    g_list_free(list);
+
+    if (number == 0)
+    {
+        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
+    }
 }
 
 void
@@ -144,7 +181,8 @@ raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window)
 /*
  * THE BIG FUNCTION
  *
- * This is called when the user clicks on the Shred button in the options pane.
+ * This function does not use a queue because shred is not cpu intensive, just disk intensive, and
+   it is up to the disk to queue io requests.
  */
 void shred_file(GtkWidget *widget, gpointer data)
 {
@@ -154,7 +192,15 @@ void shred_file(GtkWidget *widget, gpointer data)
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
-    g_list_foreach(list, launch, NULL);
+    guint num = g_list_length(list);
+    if (num == 0)
+    {
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "No files added!");
+    }
+    else
+    {
+        g_list_foreach(list, launch, NULL);
+    }
     g_list_free(list);
 }
 

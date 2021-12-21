@@ -1,4 +1,4 @@
-Build started at 2021-12-13T20:16:15.337575
+Build started at 2021-12-18T13:21:08.186077
 Main binary: /usr/bin/python3
 Build Options: -Dbackend=ninja
 Python system: Linux
@@ -51,8 +51,8 @@ Called `/usr/bin/pkg-config glib-2.0 --libs` -> 0
 None of 'PKG_CONFIG_PATH' are defined in the environment, not changing global flags.
 None of 'CC_LD' are defined in the environment, not changing global flags.
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmp9eyf9gqh
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmp9eyf9gqh/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmp9eyf9gqh/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpszg0d20q
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpszg0d20q/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpszg0d20q/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 
 
 Code:
  #include<stdio.h>
@@ -73,8 +73,8 @@ Program stderr:
 
 
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpxefmnj1s
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpxefmnj1s/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpxefmnj1s/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpty9jhf6w
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpty9jhf6w/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpty9jhf6w/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
@@ -86,13 +86,14 @@ libraries: =/usr/lib/gcc/arm-linux-gnueabihf/8/:/usr/lib/gcc/arm-linux-gnueabihf
 Compiler stderr:
  
 Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
 Program build-aux/meson/postinstall.py found: YES (/usr/bin/python3 /home/pi/Documents/Raider/build-aux/meson/postinstall.py)
-Build targets in project: 8
+Build targets in project: 10
 
 Found ninja-1.10.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmp_09398qd
-Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmp_09398qd/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmp_09398qd/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+Working directory:  /home/pi/Documents/Raider/builddir/meson-private/tmpkhnwlgvw
+Command line:  cc /home/pi/Documents/Raider/builddir/meson-private/tmpkhnwlgvw/testfile.c -o /home/pi/Documents/Raider/builddir/meson-private/tmpkhnwlgvw/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
 
 Code:
  
