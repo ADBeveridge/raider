@@ -204,7 +204,6 @@ void shred_file(GtkWidget *widget, gpointer data)
     g_list_free(list);
 }
 
-
 RaiderWindow *
 raider_window_new (Raider *app)
 {

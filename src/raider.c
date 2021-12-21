@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- #include <gtk/gtk.h>
+#include <gtk/gtk.h>
 #include "raider.h"
 #include "raider-window.h"
 #include "raider-preferences.h"
@@ -42,7 +42,6 @@ raider_new_window (GApplication *app, GFile *file)
     gtk_window_present(GTK_WINDOW(window));
 }
 
-
 /* GApplication implementation */
 static void
 raider_activate (GApplication *application)
@@ -59,10 +58,10 @@ raider_open (GApplication  *application,
     RaiderWindow *window = raider_window_new(RAIDER_APPLICATION(application));
     gint i;
 
-	for (i = 0; i < n_files; i++)
+    for (i = 0; i < n_files; i++)
     {
-		gchar *path = g_file_get_path(files[i]);
-		raider_window_open(path, window);
+        gchar *path = g_file_get_path(files[i]);
+        raider_window_open(path, window);
     }
 
     gtk_window_present (GTK_WINDOW(window));
@@ -120,14 +119,16 @@ about_activated (GSimpleAction *simple,
                  gpointer       user_data)
 {
     const gchar *authors[] = {"Alan Beveridge", NULL};
+    const gchar *artwork[] = {"Creatype https://www.flaticon.com/authors/creatype", NULL};
 
     GtkWidget *dialog = gtk_about_dialog_new();
-    gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog), "Raider");
+    gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog), "File Shredder");
     gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (dialog), "0.1.0");
-    gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog), _ ("Raider securely deletes your files.") );
+    gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog), _ ("Securely delete your files") );
     gtk_about_dialog_set_license_type (GTK_ABOUT_DIALOG (dialog), GTK_LICENSE_GPL_3_0);
     gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
-    gtk_about_dialog_set_logo_icon_name (GTK_ABOUT_DIALOG (dialog), "raider");
+    gtk_about_dialog_set_artists(GTK_ABOUT_DIALOG(dialog), artwork);
+    gtk_about_dialog_set_logo_icon_name (GTK_ABOUT_DIALOG (dialog), "org.gnome.Raider");
 
     gtk_dialog_run (GTK_DIALOG (dialog) );
     gtk_widget_destroy (dialog);
