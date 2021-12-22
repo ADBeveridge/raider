@@ -1,0 +1,55 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-edit">
+
+  <info>
+    <title type="sort" its:translate="no">3</title>
+    <link type="guide" xref="index#managing-archives"/>
+    <link type="seealso" xref="archive-create"/>
+    <revision pkgversion="3.4" date="2011-12-08" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Change the content of your archive.</desc>
+  </info>
+
+  <title>Edit an archive</title>
+
+  <p>With <app>Archive Manager</app> you can edit an existing archive by adding
+  new files, removing unwanted ones or by renaming them. You can work with
+  folders in the same way as with files.</p>
+
+  <terms>
+    <item>
+      <title>Add files</title>
+      <p>Add files to an existing archive by following the instructions for
+      <link xref="archive-create">creating an archive</link>.</p>
+    </item>
+    <item>
+      <title>Remove files</title>
+      <p>Right-click on the file and choose <gui style="menuitem">Delete</gui>,
+      or press <key>Delete</key>.</p>
+    </item>
+    <item>
+    <title>Rename files</title>
+      <p>Right-click on the file and choose <gui style="menuitem">Rename…</gui> or press <key>F2</key>.
+      Enter the new file name into the dialog which has opened and confirm the
+      new name.</p>
+    </item>
+  </terms>
+
+</page>

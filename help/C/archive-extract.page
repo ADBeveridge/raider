@@ -1,0 +1,75 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-extract">
+
+  <info>
+    <title type="sort" its:translate="no">5</title>
+    <link type="guide" xref="index#managing-archives"/>
+    <link type="seealso" xref="archive-open"/>
+    <link type="seealso" xref="password-protection"/>
+    <link type="seealso" xref="archive-extract-advanced-options"/>
+    <revision pkgversion="3.4" date="2011-12-12" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="review"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Extract files or folders from your archive.</desc>
+  </info>
+
+  <title>Extract an archive</title>
+
+  <p>Extract files from an archive using <app>Archive Manager</app> by
+  following these steps:</p>
+
+  <steps>
+    <item>
+      <p><link xref="archive-open">Open</link> an archive.</p>
+    </item>
+    <item>
+      <p>Click <gui style="button">Extract</gui>.</p>
+    </item>
+    <item>
+      <p>Choose where you want the archive to be extracted to in the file
+      chooser. This will be the destination folder. See
+      <link xref="archive-extract-advanced-options">advanced options for
+      extracting archives</link> for more extraction options.</p>
+    </item>
+    <item>
+      <p>Click <gui>Extract</gui>.</p>
+    </item>
+    <item>
+      <p>If an archive is protected by a
+      <link xref="password-protection">password</link>, <app>Archive
+      Manager</app> will request it. Type in the password and click
+      <gui>OK</gui>.</p>
+    </item>
+    <item>
+      <p>The application will show you the progress bar in a new dialog.
+      If the extraction completes successfully, you will be asked whether you
+      want to:</p>
+      <list>
+        <item>
+          <p><gui>Show the files</gui> to view the destination folder with
+          <app>Files</app>.</p>
+        </item>
+        <item>
+          <p><gui>Close</gui> the dialog.</p>
+        </item>
+      </list>
+    </item>
+  </steps>
+
+</page>

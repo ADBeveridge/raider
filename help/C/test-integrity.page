@@ -1,0 +1,43 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="test-integrity">
+
+  <info>
+    <title type="sort" its:translate="no">3</title>
+    <link type="guide" xref="index#advanced-options"/>
+    <revision pkgversion="3.4" date="2011-12-12" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>Check the archive for errors.</desc>
+  </info>
+
+  <title>Test integrity</title>
+
+  <p><app>Archive Manager</app> allows you to check whether the compressed data
+  in an archive contains any errors. Do this by pressing the menu button in the
+  top-right corner of the window and select
+  <gui style="menuitem">Test Integrity</gui>.</p>
+
+
+  <p>The dialog with the <gui>Test Result</gui> will pop up, listing the files
+  tested, with the test summary at the bottom.</p>
+
+  <note style="advanced">
+    <p>The integrity test verifies that your data is not corrupt.</p>
+  </note>
+
+</page>

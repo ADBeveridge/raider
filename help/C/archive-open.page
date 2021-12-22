@@ -1,0 +1,39 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-open">
+
+  <info>
+    <title type="sort" its:translate="no">2</title>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2011-12-08" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Open an existing archive.</desc>
+  </info>
+
+  <title>Open an archive</title>
+
+  <p>You can open an existing archive with <app>Archive Manager</app> by
+  pressing the menu button in the top-right corner of the window and selecting
+  <gui style="menuitem">Open…</gui>. Alternatively, press
+  <keyseq><key>Ctrl</key><key>O</key></keyseq>.</p>
+
+  <p>You can also drag and drop an archive into an open <app>Archive
+  Manager</app> window.</p>
+
+</page>

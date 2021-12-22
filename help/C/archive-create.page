@@ -1,0 +1,72 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-create">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Add files or folders to a new archive.</desc>
+  </info>
+
+  <title>Create a new archive</title>
+
+  <p>Create a new archive with <app>Archive Manager</app> by following these
+  steps:</p>
+
+  <steps>
+    <item>
+      <p>Press the menu button in the top-right corner of the window and select
+      <gui style="menuitem">New Archive</gui>.</p>
+    </item>
+    <item>
+      <p>Name your new archive file and select the file format from the dropdown.</p>
+    </item>
+    <item>
+      <p>Choose the location where the archive file will be saved.</p>
+    </item>
+    <item>
+      <p>Click <gui>Create</gui> to continue.</p>
+      <note style="tip">
+	<p>By clicking <gui>Other Options</gui> you can set a password or
+	split your new archive into smaller, individual files by selecting the
+	relevant option and specifying the volume for each part in
+	<gui>MB</gui>. These options are only available if the chosen archive
+	file format supports them.</p>
+      </note>
+    </item>
+    <item>
+      <p>Add the desired files and folders to your archive by pressing
+      <gui>+</gui> in the header bar. Check the box next to the files and
+      folders that you want to add.</p>
+      <note style="tip">
+	<p>Not all archive file formats support folders — if the file format
+	that you are using does not, you will not be warned. If the file format
+	that you are using does not support folders, the files from the folders
+	will be added, but not the folder itself.</p>
+      </note>
+    </item>
+    <item>
+      <p>Once you finish adding files, the archive is ready; you do not need to
+      save it.</p>
+    </item>
+  </steps>
+
+</page>

@@ -1,0 +1,110 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="keyboard-shortcuts">
+
+<info>
+  <title type="sort" its:translate="no">4</title>
+  <link type="guide" xref="index#advanced-options"/>
+  <revision pkgversion="3.4" date="2011-12-15" status="review"/>
+  <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+  <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+  <credit type="author">
+    <name>Marta Bogdanowicz</name>
+    <email>majus85@gmail.com</email>
+  </credit>
+  <credit type="editor">
+    <name>Ekaterina Gerasimova</name>
+    <email>kittykat3756@gmail.com</email>
+  </credit>
+  <license>
+    <p>Creative Commons Share Alike 3.0</p>
+  </license>
+  <desc>The list of shortcuts in <app>Archive Manager</app>.</desc>
+</info>
+
+  <title>Keyboard shortcuts</title>
+
+  <p>Using keyboard shortcuts can help speed up work-flow. In the table below
+  is a list of shortcuts which can be used in <app>Archive Manager</app>.</p>
+
+  <table frame="all" shade="rows">
+    <tr>
+      <td><p>Create new archive</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Open an archive</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Extract an archive</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>E</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>View archive properties</p></td>
+      <td><p><keyseq><key>Alt</key><key>Return</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Close</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Cut</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>X</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Copy</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>C</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Paste</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>V</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Rename file or folder in an archive</p></td>
+      <td><p><key>F2</key></p></td>
+    </tr>
+    <tr>
+      <td><p>Select all</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>A</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Deselect all</p></td>
+      <td><p><keyseq><key>Shift</key><key>Ctrl</key><key>A</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Find</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>F</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Delete files or folders from an archive</p></td>
+      <td><p><key>Delete</key></p></td>
+    </tr>
+    <tr>
+      <td><p>Display the tree view of the folders in the side pane</p></td>
+      <td><p><key>F9</key></p></td>
+    </tr>
+    <tr>
+      <td><p>View the content of an archive as a list of files</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>1</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>View the content of an archive as a folder structure</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>2</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>Stop the operation</p></td>
+      <td><p><key>Esc</key></p></td>
+    </tr>
+    <tr>
+      <td><p>Refresh</p></td>
+      <td><p><keyseq><key>Ctrl</key><key>R</key></keyseq></p></td>
+    </tr>
+    <tr>
+      <td><p>View help</p></td>
+      <td><p><key>F1</key></p></td>
+    </tr>
+  </table>
+
+</page>

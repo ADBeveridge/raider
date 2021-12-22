@@ -1,0 +1,80 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-extract-advanced-options">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#advanced-options"/>
+    <revision pkgversion="3.4" date="2012-03-06" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Specify your preferences for archive extraction.</desc>
+  </info>
+
+  <title>Advanced options for archive extracting</title>
+
+  <p><app>Archive Manager</app> offers different options for
+  <link xref="archive-extract">extracting an archive</link>. You can see these
+  options in the <gui>Extract</gui> dialog. At the bottom of this dialog, you
+  can decide if you want to extract:</p>
+
+  <terms>
+    <item>
+      <title><gui>All files</gui></title>
+      <p>All the files and folders in the archive will be extracted.</p>
+    </item>
+    <item>
+      <title><gui>Selected files</gui></title>
+      <p><app>Archive Manager</app> extracts only the selected files.</p>
+      <note>
+        <p>You need to select the files that you wish to extract before
+        you click <gui style="button">Extract</gui>. Do this by clicking on
+        the file name. Use <key>Ctrl</key> and <key>Shift</key> keys, to select
+        more than one file.</p>
+      </note>
+    </item>
+    <item>
+      <title><gui>Files</gui></title>
+      <p>You can type in the names of the files that you want to extract.
+      Separate individual files using a semicolon (<key>;</key>).</p>
+      <note>
+        <p>The file name needs to be followed by a file extension. You can use
+        the asterisk (<key>*</key>) as a wild card. For example, to select all
+        <file>.txt</file> files, type <file>*.txt</file>.</p>
+      </note>
+    </item>
+  </terms>
+
+  <p>You can specify in the file chooser dialog whether you want to:</p>
+  <terms>
+    <item>
+      <title><gui>Keep directory structure</gui></title>
+      <p>Tick this option if you want to keep the directory structure as it
+      is in your archive.</p>
+    </item>
+    <item>
+      <title><gui>Do not overwrite newer files</gui></title>
+      <p>This option will not overwrite existing files with the same name,
+      which have a more recent modification date than those which are in the
+      archive.</p>
+    </item>
+  </terms>
+
+  <p>These <gui>Actions</gui> are listed at the bottom of the dialog.</p>
+
+</page>

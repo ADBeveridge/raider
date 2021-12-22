@@ -1,0 +1,86 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="archive-view">
+
+  <info>
+    <title type="sort" its:translate="no">4</title>
+    <link type="guide" xref="index#managing-archives"/>
+    <revision pkgversion="3.4" date="2011-12-12" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>View an existing archive and its content.</desc>
+  </info>
+
+  <title>View an archive</title>
+
+  <p>There are two ways to view an archive:</p>
+
+  <terms>
+    <item>
+      <title>View all files</title>
+      <p>Press the menu button in the top-right corner of the window and select
+      <gui style="menuitem">View All Files</gui>.
+      <app>Archive Manager</app> will list all files
+      inside the archive. You will see their names, sizes, types, dates of the
+      last modification and locations.</p>
+      <note style="tip">
+	<p>You may use the column headings mentioned above (name, size…) to
+	sort the files in your archive. Do this by clicking on them; you can
+	toggle to sort in reverse order.</p>
+      </note>
+    </item>
+    <item>
+      <title>View as a folder</title>
+      <p>This view displays the classic directory structure. To use this, press
+      the menu button in the top-right corner of the window and select
+      <gui style="menuitem">View as a Folder</gui>.</p>
+      <note style="tip">
+	<p>While viewing your archive in this way, you can press <key>F9</key>,
+	or press the menu button in the top-right corner of the window and
+	select <gui style="menu">Sidebar</gui>, to see a tree view of the
+	folders in the side pane. It allows you to navigate easily between
+	folders.</p>
+      </note>
+    </item>
+  </terms>
+
+  <section id="file-open">
+    <title>Open files in your archive</title>
+
+    <p>Open files which are in your archive by double-clicking on the file
+    name, or by right-clicking on the file name and selecting
+    <gui style="menuitem">Open</gui>. <app>Archive Manager</app> will open the
+    file with the default application for that file type.</p>
+
+    <note>
+      <p>Open the file with a different application by following these steps:</p>
+      <steps>
+        <item>
+          <p>Right click on the file.</p>
+        </item>
+        <item>
+          <p>Click <gui style="menuitem">Open With…</gui>.</p>
+        </item>
+        <item>
+          <p>Select the application that you want to use and click
+          <gui style="menuitem">Select</gui>.</p>
+        </item>
+      </steps>
+    </note>
+  </section>
+
+</page>

@@ -1,0 +1,49 @@
+<!--To be honest, I do not understand what it is for. I did it few times for
+some archive types and my results where quite different. Could somebody explain
+me this "Last Output" thing? Does anybody use it?
+
+Filed https://gitlab.gnome.org/GNOME/file-roller/issues/72 ; let's see.
+-->
+
+
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="last-output">
+
+  <info>
+    <link type="guide" xref="index#advanced-options"/>
+    <desc>View information about an archive or its last changes.</desc>
+    <credit>
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+  </info>
+
+  <title>Last output</title>
+
+  <p>Click <guiseq><gui style="menu">View</gui>
+  <gui style="menuitem">Last Output</gui></guiseq> to view information about an
+  archive and its content. The dialog <gui>Last Output</gui> will pop up and you
+  will see:</p>
+
+  <list>
+    <item><p>Status of your archive. This includes, for example, location of the
+    archive, number of entries, and list of all files and their size (in bytes).
+    </p>
+      <note>
+        <p>Such result you will receive only then, when you have just opened the
+        archive, and no other operations was done.</p>
+      </note>
+    </item>
+    <item><p>Status of the last changes.</p></item>
+      <note>
+        <p><app>File Roller</app> will show this information, only if the opened
+        archive was changed.</p>
+      </note>
+  </list>
+
+
+</page>

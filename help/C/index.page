@@ -1,0 +1,39 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide" style="task 2column"
+      id="index">
+
+  <info>
+    <title type="link" role="trail">File Shredder</title>
+    <title type="link">File Shredder Help</title>
+    <title type="text">File Shredder Help</title>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Shred your files securely.</desc>
+  </info>
+  
+  <title>
+    <media type="image" its:translate="no" width="48px" height="48px"
+    src="figures/org.gnome.Raider.svg" />
+    Archive Manager
+  </title>
+  
+  <section id="managing-archives" style="2column">
+    <title>Managing archives</title>
+  </section>
+
+  <section id="advanced-options" style="2column">
+    <title>Advanced options</title>
+  </section>
+
+  <section id="troubleshooting" style="2column">
+    <title>Troubleshooting</title>
+  </section>
+
+</page>

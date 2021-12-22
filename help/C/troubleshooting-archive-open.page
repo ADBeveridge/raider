@@ -1,0 +1,44 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="troubleshooting-archive-open">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#troubleshooting"/>
+    <link type="seealso" xref="archive-open"/>
+    <link type="seealso" xref="supported-formats"/>
+    <revision pkgversion="3.4" date="2012-01-03" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>
+    <desc>I cannot open an archive.</desc>
+  </info>
+
+  <title>Problem opening an archive</title>
+
+  <p>If you cannot open an existing archive with <app>Archive Manager</app>,
+  check the format of your file. Some types of archive may require additional
+  plugins; the installation process for these varies between different
+  distributions.</p>
+
+  <note>
+    <p>If <app>Archive Manager</app> cannot open a recently used archive, it
+    may be that the location of this archive file has changed. See the help
+    page about <link xref="archive-open">opening an archive</link> for further
+    information.</p>
+  </note>
+
+</page>

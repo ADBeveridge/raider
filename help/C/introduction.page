@@ -1,0 +1,52 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="introduction">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index"/>
+    <revision pkgversion="3.4" date="2012-01-18" status="review"/>
+    <revision pkgversion="3.6" date="2012-08-05" status="review"/>
+    <revision pkgversion="3.8" date="2013-03-25" status="candidate"/>
+    <revision pkgversion="3.12" date="2014-03-23" status="candidate"/>
+    <revision pkgversion="3.34" date="2020-02-09" status="candidate"/>
+
+    <credit type="author">
+      <name>Marta Bogdanowicz</name>
+      <email>majus85@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email>kittykat3756@gmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Introduction to the GNOME <app>Archive Manager</app>.</desc>
+  </info>
+
+  <title>Introduction</title>
+
+  <p><app>Archive Manager</app> is an application for managing archive files,
+  for example, <file>.zip</file> or <file>.tar</file> files; it is designed to
+  be easy to use. <app>Archive Manager</app> provides all the tools that are
+  necessary for creating, modifying and extracting archives.</p>
+
+  <note style="advanced">
+    <p>An archive consists of one or more files and folders, along with
+    metadata. It may be encrypted in part or as a whole. Archive files are
+    useful for storing data and transferring it between computers as they allow
+    you to collect multiple files into one.</p>
+  </note>
+
+  <p>With <app>Archive Manager</app> you can:</p>
+  <list>
+    <item><p>create a new archive</p></item>
+    <item><p>view the content of an existing archive</p></item>
+    <item><p>view a file contained in an archive</p></item>
+    <item><p>modify existing archives</p></item>
+    <item><p>extract files from an archive</p></item>
+  </list>
+
+</page>
