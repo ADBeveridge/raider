@@ -106,7 +106,7 @@ Raider *
 raider_new (void)
 {
     return g_object_new (raider_get_type (),
-                         "application-id", "org.gnome.raider",
+                         "application-id", "org.gnome.Raider",
                          "flags", G_APPLICATION_HANDLES_OPEN,
                          NULL);
 }
