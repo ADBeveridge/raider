@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="raider">
-    <schema id="com.github.ADBeveridge.Raider" path="/com/github/ADBeveridge/Raider/">
+    <schema id="com.github.ADBeveridge.raider" path="/com/github/ADBeveridge/Raider/">
 	<key name="hide-shredding" type="b">
            <summary>Hide shredding</summary>
             <description>Whether to hide shredding. This is done by overwriting the file(s) with zeros.</description>
