@@ -25,7 +25,7 @@ static void
 raider_preferences_init (RaiderPreferences *prefs)
 {
     gtk_widget_init_template (GTK_WIDGET (prefs));
-    prefs->settings = g_settings_new ("org.gnome.Raider");
+    prefs->settings = g_settings_new ("com.github.ADBeveridge.Raider");
 
     g_settings_bind (prefs->settings, "hide-shredding",
                      prefs->hide_shredding_check_button, "active",
@@ -70,7 +70,7 @@ raider_preferences_class_init (RaiderPreferencesClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = raider_preferences_dispose;
 
-    gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class), "/org/gnome/raider/ui/raider-preferences.ui");
+    gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class), "/com/github/ADBeveridge/raider/ui/raider-preferences.ui");
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, hide_shredding_check_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_file_check_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_passes_spin_button);
