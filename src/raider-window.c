@@ -29,7 +29,7 @@ raider_window_init (RaiderWindow *win)
 
     gtk_widget_init_template(GTK_WIDGET(win));
 
-    builder = gtk_builder_new_from_resource ("/org/gnome/raider/ui/gears-menu.ui");
+    builder = gtk_builder_new_from_resource ("/com/github/ADBeveridge/raider/ui/gears-menu.ui");
     menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
     gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (win->primary_menu), menu);
     g_object_unref (builder);
@@ -65,7 +65,7 @@ void raider_window_css_styling (RaiderWindow *window)
         gtk_css_provider_load_from_file (window->provider, css_file, NULL);
     }
     else
-        gtk_css_provider_load_from_resource (window->provider, "/org/gnome/raider/theme/Adwaita.css");
+        gtk_css_provider_load_from_resource (window->provider, "/com/github/ADBeveridge/raider/theme/Adwaita.css");
 }
 
 static void
@@ -73,7 +73,7 @@ raider_window_class_init (RaiderWindowClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = raider_window_dispose;
 
-    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/org/gnome/raider/ui/raider-window.ui");
+    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/com/github/ADBeveridge/raider/ui/raider-window.ui");
 
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
