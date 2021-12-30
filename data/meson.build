@@ -29,7 +29,7 @@ if appstream_util.found()
   )
 endif
 
-install_data('com.github.ADBeveridge.Raider.gschema.xml',
+install_data('com.github.ADBeveridge.raider.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 
