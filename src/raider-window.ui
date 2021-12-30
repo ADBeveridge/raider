@@ -11,7 +11,7 @@
     <property name="title" translatable="yes">Raider</property>
     <property name="default_width">720</property>
     <property name="default_height">366</property>
-    <property name="icon_name">org.gnome.Raider</property>
+    <property name="icon_name">com.github.ADBeveridge.Raider</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
         <property name="name">header_bar</property>
