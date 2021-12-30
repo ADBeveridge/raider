@@ -4,6 +4,10 @@
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<description>
-	Securely delete your files
+		<p>
+			Raider is a simple application that enables you to securely delete files that 
+			was built with GNOME in mind. It supports all the options that its backend has,
+			plus a realtime progress tracking.
+		</p>
 	</description>
 </component>
