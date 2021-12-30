@@ -25,7 +25,7 @@ static void
 raider_preferences_init (RaiderPreferences *prefs)
 {
     gtk_widget_init_template (GTK_WIDGET (prefs));
-    prefs->settings = g_settings_new ("com.github.ADBeveridge.Raider");
+    prefs->settings = g_settings_new ("com.github.ADBeveridge.raider");
 
     g_settings_bind (prefs->settings, "hide-shredding",
                      prefs->hide_shredding_check_button, "active",
