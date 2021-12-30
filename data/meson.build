@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'org.gnome.Raider.desktop.in',
-  output: 'org.gnome.Raider.desktop',
+  input: 'com.github.ADBeveridge.Raider.desktop.in',
+  output: 'com.github.ADBeveridge.Raider.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'org.gnome.Raider.appdata.xml.in',
-  output: 'org.gnome.Raider.appdata.xml',
+  input: 'com.github.ADBeveridge.Raider.appdata.xml.in',
+  output: 'com.github.ADBeveridge.Raider.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -29,7 +29,7 @@ if appstream_util.found()
   )
 endif
 
-install_data('org.gnome.Raider.gschema.xml',
+install_data('com.github.ADBeveridge.Raider.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 
