@@ -76,7 +76,7 @@ void raider_file_row_delete (GtkWidget *widget, gpointer data)
 static void
 raider_file_row_init (RaiderFileRow *row)
 {
-    row->settings = g_settings_new("org.gnome.Raider");
+    row->settings = g_settings_new("com.github.ADBeveridge.raider");
     row->aborted = FALSE;
 
     row->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
