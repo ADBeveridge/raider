@@ -16,7 +16,21 @@
 	<launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
 	<screenshots>
     		<screenshot type="default">
-      			<image>https://ome-moment-please</image>
+      			<image>https://github.com/ADBeveridge/raider/blob/main/data/raider-screenshot1.png</image>
+			<image>https://github.com/ADBeveridge/raider/blob/main/data/raider-screenshot2.png</image>
+			<image>https://github.com/ADBeveridge/raider/blob/main/data/raider-screenshot3.png</image>
+			<image>https://github.com/ADBeveridge/raider/blob/main/data/raider-screenshot4.png</image>
     		</screenshot>
   	</screenshots>
+	<releases>
+    		<release version="0.1.0" date="2021-12-30">
+    			<description>
+        			<p>The very first release of File Shredder. It supports progress tracking, and
+					boasts a GNOME compliant interface.</p>
+      			</description>
+    		</release>
+  	</releases>
+	<url type="homepage">https://github.com/ADBeveridge/raider</url>
+	<update_contact>adbeveridge@protonmail.com</update_contact>
+	<developer_name>Alan Beveridge</developer_name>
 </component>
