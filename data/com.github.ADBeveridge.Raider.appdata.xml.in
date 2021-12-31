@@ -14,4 +14,9 @@
 	</description>
 	<content_rating type="oars-1.1" />
 	<launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
+	<screenshots>
+    		<screenshot type="default">
+      			<image>https://ome-moment-please</image>
+    		</screenshot>
+  	</screenshots>
 </component>
