@@ -4,14 +4,12 @@
     "runtime-version" : "41",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
-    "rename-icon": "com.github.Raider",
-    "rename-appdata-file": "com.github.Raider.appdata.xml",
-    "rename-desktop-file": "com.github.Raider.desktop",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--filesystem=host"
     ],
     "cleanup" : [
         "/include",
@@ -32,8 +30,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ADBeveridge/raider/archive/refs/tags/v0.1.0-beta.tar.gz",
-                    "sha256" : "69bf70c4c256cfa0eb5431917ca112e5f4d8ccfa605703a755c2e2727d7c543c"
+                    "url" : "https://github.com/ADBeveridge/raider/archive/refs/tags/v0.1.0.tar.gz",
+                    "sha256" : "434d0d6f8789d85d9b84b4ff613b9a071b7b7793459e5035ab4ab79bd7a5a834"
                 }
             ]
         }
