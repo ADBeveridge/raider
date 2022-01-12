@@ -97,8 +97,8 @@ raider_file_row_init (RaiderFileRow *row)
     gtk_label_set_ellipsize(GTK_LABEL(row->filename_label), PANGO_ELLIPSIZE_END);
 
     /* Create the icons. */
-    row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_BUTTON);
-    row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop", GTK_ICON_SIZE_BUTTON);
+    row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
+    row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop-symbolic", GTK_ICON_SIZE_BUTTON);
 
     /* Create the button. */
     row->remove_from_list_button = gtk_button_new();
