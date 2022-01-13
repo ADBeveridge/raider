@@ -128,7 +128,7 @@ about_activated (GSimpleAction *simple,
     gtk_about_dialog_set_license_type (GTK_ABOUT_DIALOG (dialog), GTK_LICENSE_GPL_3_0);
     gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
     gtk_about_dialog_set_artists(GTK_ABOUT_DIALOG(dialog), artwork);
-    gtk_about_dialog_set_logo_icon_name (GTK_ABOUT_DIALOG (dialog), "org.gnome.Raider");
+    gtk_about_dialog_set_logo_icon_name (GTK_ABOUT_DIALOG (dialog), "com.github.ADBeveridge.Raider");
 
     gtk_dialog_run (GTK_DIALOG (dialog) );
     gtk_widget_destroy (dialog);
