@@ -1,4 +1,5 @@
 #include <gtk/gtk.h>
+#include <handy.h>
 #include "raider-window.h"
 #include "raider-file-row.h"
 
@@ -15,6 +16,8 @@ struct _RaiderWindow
     GtkWidget *hide_shredding_check_button;
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
+    GtkWidget *hint_page;
+    GtkWidget *status_page;
 
     GtkCssProvider *provider;
 };
@@ -40,6 +43,12 @@ raider_window_init (RaiderWindow *win)
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
 
     raider_window_css_styling(win);
+
+    win->status_page = hdy_status_page_new();
+    hdy_status_page_set_icon_name (win->status_page, "document-open-symbolic");
+    hdy_status_page_set_title(win->status_page, "Add files or drop here");
+    gtk_widget_show_all(win->status_page);
+    gtk_box_pack_start(GTK_BOX(win->hint_page), win->status_page, TRUE, TRUE, 0);
 }
 
 static void
@@ -81,6 +90,7 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, window_stack);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hint_page);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
