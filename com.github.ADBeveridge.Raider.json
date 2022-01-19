@@ -5,7 +5,6 @@
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
-        "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
@@ -23,35 +22,16 @@
         "*.a"
     ],
     "modules" : [
-    	{
-    		"name" : "libhandy",
-    		"buildsystem" : "meson",
-    		"config-opts" : [
-        		"-Dprofiling=false",
-        		"-Dintrospection=enabled",
-        		"-Dgtk_doc=false",
-        		"-Dtests=false",
-        		"-Dexamples=false",
-        		"-Dvapi=false",
-        		"-Dglade_catalog=disabled"
-    		],
-    		"sources" : [
-        		{
-            		"type" : "git",
-            		"url" : "https://gitlab.gnome.org/GNOME/libhandy",
-            		"tag" : "1.0.2"
-        		}
-    		]
-	},
         {
             "name" : "raider",
             "buildsystem" : "meson",
             "builddir" : true,
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/ADBeveridge/raider/archive/refs/tags/v0.1.0.tar.gz",
-                    "sha256" : "434d0d6f8789d85d9b84b4ff613b9a071b7b7793459e5035ab4ab79bd7a5a834"
+                    "type" : "git",
+                    "url" : "https://github.com/ADBeveridge/raider.git",
+                    "commit" : "1b78a1e15b5dc27414cf525564812a325b71c2c7",
+                    "branch" : "main"
                 }
             ]
         }
