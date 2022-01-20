@@ -41,6 +41,9 @@ struct _fsm
     gint incremented_number;
     GtkWidget *progress_bar;
     gchar *filename;
+
+    gdouble current;
+    gdouble number_of_passes;
 };
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
@@ -51,6 +54,8 @@ void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
+void parse_shred_data_type (void *ptr_to_fsm);
+void parse_sub_percentage (void *ptr_to_fsm);
 /* End of parsing data.                     */
 
 void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
@@ -233,6 +238,7 @@ void launch (gpointer data, gpointer user_data)
     g_free(remove_method_command);
     g_free(shred_executable);
 
+    /* Avoid dangling pointer references. */
     number_of_passes = NULL;
     number_of_passes_option = NULL;
     remove_method = NULL;
@@ -324,6 +330,8 @@ void stop(void *ptr_to_fsm)
     {
         fsm->tokens--;
     }
+
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble) (fsm->current / fsm->number_of_passes));
 }
 
 /* This function checks if shred sent the output. */
@@ -399,16 +407,61 @@ void parse_pass(void *ptr_to_fsm)
 void parse_fraction(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = stop;
+    fsm->state = parse_shred_data_type;
 
     gchar **fraction_chars = g_strsplit(fsm->tokens[0], "/", 0);
 
     /* THE BIG CODE OF SHREDDING PROGRESS. */
-    int current = g_strtod(fraction_chars[0], NULL);
-    int number_of_passes = g_strtod(fraction_chars[1], NULL);
-    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble)current / number_of_passes);
+    /* I subtract one because in the output, it represents which pass it is working on,
+     * whereas the progress bar indicates how much needs to be done. */
+    fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
+    fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
+    /* The progress update is done in the function stop. */
 
     g_free(fraction_chars);
+
+    /* Point to the next word. */
+    fsm->tokens++;
+    fsm->incremented_number++;
+}
+
+void parse_shred_data_type (void *ptr_to_fsm)
+{
+    struct _fsm *fsm = ptr_to_fsm;
+    fsm->state = stop;
+
+    gchar **last_bit = g_strsplit(fsm->tokens[0], "...", 0);
+
+    /* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
+
+    /* Check if this is such a big file that it gives more info. */
+    if (g_strcmp0 (last_bit[1], "") != 0)
+    {
+        /* In this case, last_bit[1] contains something like "24MiB/83MiB". */
+        /* We do not need it as the next token has the percentage of that pass is done. */
+        fsm->state = parse_sub_percentage;
+    }
+
+    g_free(last_bit);
+
+    /* Point to the next word. */
+    fsm->tokens++;
+    fsm->incremented_number++;
+}
+
+void parse_sub_percentage (void *ptr_to_fsm)
+{
+    struct _fsm *fsm = ptr_to_fsm;
+    fsm->state = stop;
+
+    /* Convert into whole number. The function ignores the % at the end of the digit. */
+    gdouble percentage = g_strtod (fsm->tokens[0], NULL);
+
+    /* Convert the percentage into a true decimal. */
+    percentage = (percentage * .01);
+
+    /* Update the current pass percentage because we have more info. */
+    fsm->current = fsm->current + percentage;
 
     /* Point to the next word. */
     fsm->tokens++;
