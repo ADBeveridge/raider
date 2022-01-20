@@ -42,11 +42,9 @@ raider_window_init (RaiderWindow *win)
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
 
-    raider_window_css_styling(win);
-
     win->status_page = hdy_status_page_new();
-    hdy_status_page_set_icon_name (win->status_page, "document-open-symbolic");
-    hdy_status_page_set_title(win->status_page, "Add files or drop here");
+    hdy_status_page_set_icon_name (HDY_STATUS_PAGE(win->status_page), "document-open-symbolic");
+    hdy_status_page_set_title(HDY_STATUS_PAGE(win->status_page), "Add files or drop here");
     gtk_widget_show_all(win->status_page);
     gtk_box_pack_start(GTK_BOX(win->hint_page), win->status_page, TRUE, TRUE, 0);
 }
@@ -55,26 +53,6 @@ static void
 raider_window_dispose (GObject *object)
 {
     G_OBJECT_CLASS (raider_window_parent_class)->dispose (object);
-}
-
-void raider_window_css_styling (RaiderWindow *window)
-{
-    window->provider = gtk_css_provider_new ();
-    gtk_style_context_add_provider_for_screen (gdk_screen_get_default(), GTK_STYLE_PROVIDER (window->provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-    gchar *theme_name = NULL;
-    g_object_get (gtk_settings_get_default (), "gtk-theme-name", &theme_name, NULL);
-
-
-    gchar *theme_uri = g_strconcat ("resource:///org/gnome/raider/theme/", theme_name, ".css", NULL);
-    GFile *css_file = g_file_new_for_uri (theme_uri);
-
-    if (g_file_query_exists (css_file, NULL))
-    {
-        gtk_css_provider_load_from_file (window->provider, css_file, NULL);
-    }
-    else
-        gtk_css_provider_load_from_resource (window->provider, "/com/github/ADBeveridge/raider/theme/Adwaita.css");
 }
 
 static void

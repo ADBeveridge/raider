@@ -119,7 +119,7 @@ about_activated (GSimpleAction *simple,
                  gpointer       user_data)
 {
     const gchar *authors[] = {"Alan Beveridge", NULL};
-    const gchar *artwork[] = {"Creatype https://www.flaticon.com/authors/creatype", NULL};
+    const gchar *artwork[] = {"noëlle", NULL};
 
     GtkWidget *dialog = gtk_about_dialog_new();
     gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog), "File Shredder");
