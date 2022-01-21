@@ -1,0 +1,30 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="load-file">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#shredding-file"/>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Add the files you want to shred.</desc>
+  </info>
+
+  <title>Load a file</title>
+
+  <p>You can open a file, or many, by pressing the button on the upper left
+  next to the red Shred button, that contains a plus sign. Select the files
+  you want to shred, and click OK.
+  </p>
+
+  <p>You can also drag and drop the files you want to shred all at once into an
+  open <app>File Shredder</app> window.</p>
+
+</page>

@@ -1,0 +1,34 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="shred-file">
+
+  <info>
+    <title type="sort" its:translate="no">2</title>
+    <link type="guide" xref="index#shredding-file"/>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+    <desc>Shredding the files.</desc>
+  </info>
+
+  <title>Shred the files</title>
+
+  <p>When you have loaded all the files that you wish to shred, press the red
+  <gui>Shred</gui> button at the upper left of the window, next to the add file
+  button. Then each file loaded will acquire a progress bar that will show how
+  much of the shredding has been finished.</p>
+
+
+  <p>When each file finishes shredding, it will disappear from the list, and
+  a desktop notification will say that the shredding has been finished.</p>
+
+  <note style="warning">
+    <p>Do NOT close the window until all files have finished shredding. When
+    the window goes back to its empty state, then all shredding is finished,
+    and you can close the window safely.</p>
+  </note>
+
+</page>

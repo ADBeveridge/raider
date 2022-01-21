@@ -1,0 +1,56 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="configuring-basic-options">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#configuring-options"/>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Fine-tune the basic options.</desc>
+  </info>
+
+  <title>Basic Options</title>
+  <p>To configure the shredding options, click on <gui>Preferences</gui> in
+  the upper right corner of the window, next to the three stacked bars. Or
+  click on the three stacked bars and select <gui>Preferences</gui>.</p>
+
+  <p>There are three options presented:</p>
+  <list>
+      <item>
+        <p>
+          The <cmd>Number of passes</cmd> option allows you to shred a file so
+          many times. The maximum is 25, because that is when all internal
+          shredding patterns have been used, and more shredding would not be
+          useful.
+        </p>
+      </item>
+      <item>
+        <p>
+          If you want to keep the file on your system, uncheck the <cmd>Remove
+          after shredding</cmd> option; it is enabled by default. The file will
+          contain garbage, and will not be able to be opened by a regular text
+          editor. It will not have its previous contents.
+        </p>
+      </item>
+      <item>
+        <p>
+          The <cmd>Hide shredding</cmd> option does one more pass when it has
+          finished shredding the file as many times as requested in the <cmd>
+          Number of passes</cmd> to conceal the fact that shredding has been
+          done on it. One of the hallmarks of a shredded file is that it
+          contains random data, but the <cmd>Hide shredding</cmd> option
+          overwrites it with zeros, making it look like an empty part of the
+          filesystem.
+        </p>
+      </item>
+    </list>
+</page>
+

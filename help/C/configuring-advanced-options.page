@@ -1,0 +1,44 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="configuring-advanced-options">
+
+  <info>
+    <title type="sort" its:translate="no">2</title>
+    <link type="guide" xref="index#configuring-options"/>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+
+    <desc>Fine-tune the advanced options.</desc>
+  </info>
+
+  <title>Advanced Options</title>
+  <p>To configure the shredding options, click on <gui>Preferences</gui> in
+  the upper right corner of the window, next to the three stacked bars. Or
+  click on the three stacked bars and select <gui>Preferences</gui>. Then
+  click on the <gui>Advanced</gui> tab in the top of the window.</p>
+
+  <p>There are five options presented:</p>
+  <list>
+      <item>
+        <p>The <cmd>Remove method</cmd> option controls how the file is removed
+        from the file system. File Shredder can rename the file in such a way
+        that it is very hard to detect that it existed. <cmd>Wipesync</cmd>
+        and <cmd>Wipe</cmd> both do this, but <cmd>Wipesync</cmd> makes sure
+        that each file change is synced to disk. File Shredder renames the
+        file to eight zeros, then seven, and so on. <cmd>Wipe</cmd> does not
+        make sure that the renaming is synced to disk.</p>
+        <note>
+    	  <p>Some filesystems automatically sync the renames, which makes
+    	  <cmd>Wipesync</cmd> useless, but some do not do this automatically,
+    	  so File Shredder can force it to do so with <cmd>Wipesync</cmd>.</p>
+  	</note>
+      </item>
+    </list>
+</page>
+
