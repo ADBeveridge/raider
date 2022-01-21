@@ -1,22 +1,15 @@
-gnome.yelp('file-roller',
+gnome.yelp('raider',
   sources : [
-    'archive-create.page',
-    'archive-edit.page',
-    'archive-extract.page',
-    'archive-extract-advanced-options.page',
-    'archive-open.page',
-    'archive-view.page',
     'index.page',
     'introduction.page',
     'legal.xml',
-    'keyboard-shortcuts.page',
-    'password-protection.page',
-    'supported-formats.page',
-    'test-integrity.page',
-    'troubleshooting-archive-open.page',
-    'troubleshooting-password.page'
+    'load-file.page',
+    'shred-file.page',
+    'troubleshooting-shredding.page',
+    'configuring-basic-options.page',
+    'configuring-advanced-options.page'
   ],
   media : [
-    'figures/org.gnome.ArchiveManager.svg'
+    'figures/com.github.ADBeveridge.Raider.svg'
   ]
 )
