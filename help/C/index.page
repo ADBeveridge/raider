@@ -14,22 +14,21 @@
     </credit>
 
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
-
-    <desc>Shred your files securely.</desc>
+    <desc>Shred your files securely</desc>
   </info>
   
   <title>
     <media type="image" its:translate="no" width="48px" height="48px"
-    src="figures/org.gnome.Raider.svg" />
-    Archive Manager
+    src="figures/com.github.ADBeveridge.Raider.svg" />
+    File Shredder
   </title>
   
-  <section id="managing-archives" style="2column">
-    <title>Managing archives</title>
+  <section id="shredding-file" style="2column">
+    <title>Shredding a File</title>
   </section>
 
-  <section id="advanced-options" style="2column">
-    <title>Advanced options</title>
+  <section id="configuring-options" style="2column">
+    <title>Configuring the Options</title>
   </section>
 
   <section id="troubleshooting" style="2column">

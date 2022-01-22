@@ -1,0 +1,29 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide"
+      id="troubleshooting-shredding">
+
+  <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#troubleshooting"/>
+
+    <credit type="author">
+      <name>Alan Beveridge</name>
+      <email>adbeveridge@protonmail.com</email>
+    </credit>
+    <desc>The file does not shred.</desc>
+  </info>
+
+  <title>Problem shredding a file</title>
+
+  <p>If the files do not shred, make sure to reload the folder in which the
+  file was in before shredding. Also make sure that the file is not a shortcut
+  to the file you want to shred.</p>
+
+  <note>
+    <p>If the problem still persists, please go to the
+    <link href="https://github.com/ADBeveridge/raider/issues">issues page</link>
+    and enter your specific problem.</p>
+  </note>
+
+</page>

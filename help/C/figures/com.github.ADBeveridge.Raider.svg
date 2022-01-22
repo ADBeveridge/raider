@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="128px" viewBox="0 0 128 128" width="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="a" gradientTransform="matrix(0.196428 0 0 0.342105 2.59726 273.740051)" gradientUnits="userSpaceOnUse" x1="88.595886" x2="536.595886" y1="-449.394012" y2="-449.394012">
+        <stop offset="0" stop-color="#77767b"/>
+        <stop offset="0.0500001" stop-color="#c0bfbc"/>
+        <stop offset="0.099807" stop-color="#9a9996"/>
+        <stop offset="0.900001" stop-color="#9a9996"/>
+        <stop offset="0.950001" stop-color="#c0bfbc"/>
+        <stop offset="1" stop-color="#77767b"/>
+    </linearGradient>
+    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="20.000366" x2="108.000366" y1="86" y2="86">
+        <stop offset="0" stop-color="#3d3846" stop-opacity="0.65098"/>
+        <stop offset="0.0357143" stop-color="#5e5c64"/>
+        <stop offset="0.0713653" stop-color="#241f31" stop-opacity="0.65098"/>
+        <stop offset="0.928571" stop-color="#241f31" stop-opacity="0.65098"/>
+        <stop offset="0.964286" stop-color="#77767b"/>
+        <stop offset="1" stop-color="#3d3846" stop-opacity="0.65098"/>
+    </linearGradient>
+    <filter id="c" height="100%" width="100%" x="0%" y="0%">
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+    </filter>
+    <mask id="d">
+        <g filter="url(#c)">
+            <rect fill-opacity="0.440553" height="128" width="128"/>
+        </g>
+    </mask>
+    <clipPath id="e">
+        <rect height="152" width="192"/>
+    </clipPath>
+    <path d="m 28 40 c -4.433594 0 -8 2.511719 -8 5.628906 v 10.371094 h 88 v -10.371094 c 0 -3.117187 -3.570312 -5.628906 -8 -5.628906 z m -1.148438 75.9375 c 0.375 0.035156 0.757813 0.0625 1.148438 0.0625 c -0.394531 0 -0.769531 -0.035156 -1.148438 -0.0625 z m 74.292969 0 c -0.378906 0.027344 -0.753906 0.0625 -1.144531 0.0625 c 0.386719 0 0.769531 -0.027344 1.144531 -0.0625 z m 0 0" fill="#c0bfbc"/>
+    <path d="m 108 23.960938 v 84.039062 c 0 4.433594 -3.570312 8 -8 8 h -72 c -4.433594 0 -8 -3.566406 -8 -8 v 4 c 0 4.433594 3.566406 8 8 8 h 72 c 4.433594 0 8 -3.566406 8 -8 v -88 c 0 -0.011719 -0.003906 -0.027344 -0.003906 -0.039062 z m 0 0" fill="url(#a)"/>
+    <path d="m 27.78125 46 h 72.4375 c 2.089844 0 3.78125 1.34375 3.78125 3 s -1.691406 3 -3.78125 3 h -72.4375 c -2.089844 0 -3.78125 -1.34375 -3.78125 -3 s 1.691406 -3 3.78125 -3 z m 0 0" fill="#3d3846"/>
+    <path d="m 27.78125 45 h 72.4375 c 2.089844 0 3.78125 1.34375 3.78125 3 s -1.691406 3 -3.78125 3 h -72.4375 c -2.089844 0 -3.78125 -1.34375 -3.78125 -3 s 1.691406 -3 3.78125 -3 z m 0 0" fill="#241f31"/>
+    <path d="m 20 56 h 88 v 53 c 0 2.460938 -3 7 -8 7 h -72 c -6 0 -8 -5 -8 -8 z m 0 0" fill="url(#b)"/>
+    <path d="m 40 12 c -5.03125 0 -7.667969 2.097656 -7.667969 6.144531 l -0.332031 33.855469 h 64 v -20 h -20 v -20 z m 0 0" fill="#f6f5f4"/>
+    <path d="m 76 12 l 20 20 h -20 z m 0 0" fill="#deddda"/>
+    <g clip-path="url(#e)" fill="#f6f5f4" mask="url(#d)" transform="matrix(1 0 0 1 -8 -16)">
+        <path d="m 40 72 h 6 v 32 h -6 z m 0 0"/>
+        <path d="m 51 72 h 6 v 24 h -6 z m 0 0"/>
+        <path d="m 74 72 h 6 v 46 h -6 z m 0 0"/>
+        <path d="m 86 72 h 6 v 32 h -6 z m 0 0"/>
+        <path d="m 62 72 h 6 v 24 h -6 z m 0 0"/>
+        <path d="m 98 72 h 6 v 46 h -6 z m 0 0"/>
+    </g>
+</svg>
