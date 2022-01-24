@@ -4,6 +4,9 @@
       id="introduction">
 
   <info>
+    <title type="sort" its:translate="no">1</title>
+    <link type="guide" xref="index#getting-started"/>
+
     <credit type="author">
       <name>Alan Beveridge</name>
       <email>adbeveridge@protonmail.com</email>
