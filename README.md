@@ -6,3 +6,4 @@ Raider is a simple shredding program built for the GNOME desktop. It uses a prog
 
 ## Useful links
 - Report issues: <https://github.com/ADBeveridge/raider/issues/>
+- 
