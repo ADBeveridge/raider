@@ -23,6 +23,10 @@
     File Shredder
   </title>
   
+  <section id="getting-started" style="2column">
+    <title>Getting Started</title>
+  </section>
+
   <section id="shredding-file" style="2column">
     <title>Shredding a File</title>
   </section>
