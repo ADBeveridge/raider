@@ -1,4 +1,5 @@
 #include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include "raider-file-row.h"
 
 struct _RaiderFileRow
@@ -107,7 +108,7 @@ raider_file_row_init (RaiderFileRow *row)
 
     /* Create the button. */
     row->remove_from_list_button = gtk_button_new();
-    gtk_widget_set_tooltip_text(row->remove_from_list_button, "Remove from list");
+    gtk_widget_set_tooltip_text(row->remove_from_list_button, _("Remove from list"));
     gtk_button_set_image(GTK_BUTTON(row->remove_from_list_button), row->remove_from_list_button_image1);
 
     gtk_box_pack_start(GTK_BOX(row->secondary_box), row->remove_from_list_button, TRUE, TRUE, 0);
@@ -160,7 +161,7 @@ RaiderFileRow *raider_file_row_new (const char *str)
     gtk_widget_set_tooltip_text(file_row->box, file_row->filename);
 
     /* Notification stuff. */
-    file_row->notification_title = g_strconcat("Finished shredding %s", file_row->basename, NULL);
+    file_row->notification_title = g_strconcat(_("Finished shredding "), file_row->basename, NULL);
     file_row->notification = g_notification_new(file_row->notification_title);
 
     return file_row;

@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 #include <handy.h>
+#include <glib/gi18n.h>
 #include "raider-window.h"
 #include "raider-file-row.h"
 
@@ -44,7 +45,7 @@ raider_window_init (RaiderWindow *win)
 
     win->status_page = hdy_status_page_new();
     hdy_status_page_set_icon_name (HDY_STATUS_PAGE(win->status_page), "document-open-symbolic");
-    hdy_status_page_set_title(HDY_STATUS_PAGE(win->status_page), "Add files or drop here");
+    hdy_status_page_set_title(HDY_STATUS_PAGE(win->status_page), _("Add files or drop here"));
     gtk_widget_show_all(win->status_page);
     gtk_box_pack_start(GTK_BOX(win->hint_page), win->status_page, TRUE, TRUE, 0);
 }
@@ -87,7 +88,7 @@ void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gin
 
     if (filenames == NULL)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "Unable to add files!");
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Unable to add files!"));
         gtk_drag_finish (context, FALSE, FALSE, time);
         return;
     }
@@ -113,7 +114,7 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     GFile *file = g_file_new_for_path (filename_to_open);
     if (g_file_query_exists (file, NULL) == FALSE)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "File does not exist!");
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("File does not exist!"));
         return;
     }
     g_object_unref(file);
@@ -146,8 +147,8 @@ raider_window_close (gpointer data, gpointer user_data)
 void
 raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window)
 {
-    GtkWidget *dialog = gtk_file_chooser_dialog_new ("Open File", GTK_WINDOW (window),
-                        GTK_FILE_CHOOSER_ACTION_OPEN, "Cancel", GTK_RESPONSE_CANCEL, "Open",
+    GtkWidget *dialog = gtk_file_chooser_dialog_new (_("Open File"), GTK_WINDOW (window),
+                        GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Open"),
                         GTK_RESPONSE_ACCEPT, NULL); /* Create dialog. */
 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), TRUE); /* Alow to select many files at once. */
@@ -183,7 +184,7 @@ void shred_file(GtkWidget *widget, gpointer data)
     guint num = g_list_length(list);
     if (num == 0)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), "No files added!");
+        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("No files added!"));
     }
     else
     {

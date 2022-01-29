@@ -8,7 +8,7 @@
   <!-- interface-authors Alan Beveridge -->
   <template class="RaiderWindow" parent="GtkApplicationWindow">
     <property name="can-focus">False</property>
-    <property name="title" translatable="yes">Raider</property>
+    <property name="title" translatable="yes">File Shredder</property>
     <property name="default-width">720</property>
     <property name="default-height">366</property>
     <property name="icon-name">com.github.ADBeveridge.Raider</property>
