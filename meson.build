@@ -5,6 +5,16 @@ project('raider', 'c',
 
 i18n = import('i18n')
 
+# Optional deps
+nautilus_version = '>=3.28.0'
+
+if get_option('nautilus-actions')
+  libnautilus_extension_dep = dependency('libnautilus-extension', version : nautilus_version, required : false)
+  build_nautilus_actions = libnautilus_extension_dep.found()
+else
+  build_nautilus_actions = false
+endif
+
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_VERSION', meson.project_version())
 config_h.set_quoted('GETTEXT_PACKAGE', 'raider')
@@ -25,5 +35,8 @@ subdir('src')
 subdir('po')
 subdir('docs')
 subdir('help')
+if build_nautilus_actions
+  subdir('nautilus')
+endif
 
 meson.add_install_script('build-aux/meson/postinstall.py')

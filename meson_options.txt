@@ -1,0 +1,5 @@
+option('nautilus-actions',
+  type : 'boolean', 
+  value : true, 
+  description : 'Build the nautilus context menu actions'
+)
