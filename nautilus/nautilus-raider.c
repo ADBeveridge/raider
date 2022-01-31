@@ -97,7 +97,18 @@ static void raider_extension_register_type (GTypeModule *module)
 static GList * raider_extension_get_file_items (NautilusMenuProvider *provider, GtkWidget *window, GList *files)
 {
         NautilusMenuItem *item;
+        GList *l;
         GList *ret;
+
+        for (l = files; l != NULL; l = l->next) {
+                NautilusFileInfo *file = NAUTILUS_FILE_INFO (l->data);
+                
+                /* Raider cannot shred folders. */
+                if (nautilus_file_info_get_file_type (file) == G_FILE_TYPE_DIRECTORY)
+                {
+                	return NULL;
+                }
+        }
 
         item = nautilus_menu_item_new ("RaiderExtension::shred", "Shred", "Shred the selected files", "com.github.ADBeveridge.Raider");
         g_signal_connect (item, "activate", G_CALLBACK (do_stuff_cb), provider);

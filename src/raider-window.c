@@ -117,6 +117,12 @@ raider_window_open (gchar *filename_to_open, gpointer data)
         gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("File does not exist!"));
         return;
     }
+    if (g_file_query_file_type (file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
+    {
+    	gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
+        return;
+    }
+    
     g_object_unref(file);
 
 

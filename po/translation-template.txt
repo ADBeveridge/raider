@@ -39,19 +39,23 @@ msgstr ""
 msgid "File does not exist!"
 msgstr ""
 
-#: src/raider-window.c:150
+#: src/raider-window.c:122
+msgid "Folders are not supported!"
+msgstr ""
+
+#: src/raider-window.c:156
 msgid "Open File"
 msgstr ""
 
-#: src/raider-window.c:151
+#: src/raider-window.c:157
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-window.c:151
+#: src/raider-window.c:157
 msgid "Open"
 msgstr ""
 
-#: src/raider-window.c:187
+#: src/raider-window.c:193
 msgid "No files added!"
 msgstr ""
 
