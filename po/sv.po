@@ -44,12 +44,12 @@ msgid ""
 "boasts a GNOME compliant interface."
 msgstr ""
 
-### DESKTOP FILE ###
+# DESKTOP FILE #
 #: data/com.github.ADBeveridge.Raider.desktop.in:9
 msgid "Shred your files securely"
 msgstr ""
 
-### GSETTINGS FILE ###
+# GSETTINGS FILE #
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
 msgid "Hide shredding"
 msgstr ""
