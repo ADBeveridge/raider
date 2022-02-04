@@ -59,7 +59,8 @@ msgstr "Inga filer har lagts till!"
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/raider-preferences.ui:75 src/raider-preferences.ui:88
+#: src/raider-preferences.ui:75 
+#: src/raider-preferences.ui:88
 msgid "How many times to overwrite the file(s)"
 msgstr "Hur många gånger skall filen/filerna skrivas över"
 
@@ -127,7 +128,8 @@ msgstr "Rensa"
 msgid "Unlink"
 msgstr "Avlänka"
 
-#: src/raider-preferences.ui:221 src/raider-preferences.ui:235
+#: src/raider-preferences.ui:221 
+#: src/raider-preferences.ui:235
 msgid ""
 "Get data from a file, and overwrite the to be shredded file(s) with the "
 "contents of it"
