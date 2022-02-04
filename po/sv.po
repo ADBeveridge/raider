@@ -16,7 +16,59 @@ msgstr ""
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language: sv\n"
 
-# ## RAIDER WINDOW UI
+
+# PROGRAM NAME #
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
+#: data/com.github.ADBeveridge.Raider.desktop.in:2
+#: src/raider-window.ui:11
+#: src/raider-window.ui:76
+msgid "File Shredder"
+msgstr ""
+
+# APPDATA FILE #
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
+msgid "Securely delete your files"
+msgstr ""
+
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:10
+msgid ""
+"File Shredder, also named Raider, is a simple application that enables you to "
+"securely delete files that was built with GNOME in mind. It supports all the options "
+"that its backend has, plus a realtime progress tracking."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+
+### DESKTOP FILE ###
+#: data/com.github.ADBeveridge.Raider.desktop.in:9
+msgid "Shred your files securely"
+msgstr ""
+
+### GSETTINGS FILE ###
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+msgid "Hide shredding"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid "Whether to hide shredding. This is done by overwriting the file(s) with zeros."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+msgid "Hide shredding"
+msgstr "Whether to remove the file after shredding it."
+
+# NOTE: I will finish the gsettings file.
+
+# RAIDER WINDOW UI #
 #: src/raider-window.ui:11 src/raider-window.ui:76
 msgid "File Shredder"
 msgstr "File Shredder"
@@ -25,7 +77,7 @@ msgstr "File Shredder"
 msgid "Shred"
 msgstr "Förstör"
 
-# ## RAIDER WINDOW.C
+# RAIDER WINDOW.C #
 #: src/raider-window.c:48
 msgid "Add files or drop here"
 msgstr "Lägg till filer eller släpp här"
@@ -54,7 +106,7 @@ msgstr "Öppen"
 msgid "No files added!"
 msgstr "Inga filer har lagts till!"
 
-# ## RAIDER PREFERENCES
+# RAIDER PREFERENCES #
 #: src/raider-preferences.ui:15
 msgid "Preferences"
 msgstr "Inställningar"
@@ -153,7 +205,7 @@ msgstr "Antal byte att förstöra:"
 msgid "Advanced"
 msgstr "Avancerat"
 
-# ## RAIDER FILE ROW.C
+# RAIDER FILE ROW.C #
 #: src/raider-file-row.c:111
 msgid "Remove from list"
 msgstr "Ta bort från listan"
@@ -162,7 +214,7 @@ msgstr "Ta bort från listan"
 msgid "Finished shredding "
 msgstr "Slutförde förstöring av "
 
-# ## GEARS MENU ###
+# GEARS MENU #
 #: src/gears-menu.ui:8
 msgid "New Window"
 msgstr "Nytt fönster"
@@ -179,7 +231,7 @@ msgstr "_Hjälp"
 msgid "_About"
 msgstr "_Om"
 
-# ## RAIDER.C ###
+# RAIDER.C #
 #: src/raider.c:127
 msgid "Securely delete your files"
 msgstr "Ta bort dina filer på ett säkert sätt"
