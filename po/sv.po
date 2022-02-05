@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
 "POT-Creation-Date: 2022-01-24 15:56+0000\n"
-"PO-Revision-Date: 2022-01-31 16:00+0100\n"
+"PO-Revision-Date: 2022-02-05 09:40+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,58 +16,50 @@ msgstr ""
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language: sv\n"
 
-
 # PROGRAM NAME #
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
 #: data/com.github.ADBeveridge.Raider.desktop.in:2
 #: src/raider-window.ui:11
 #: src/raider-window.ui:76
 msgid "File Shredder"
-msgstr ""
+msgstr "File Shredder"
 
 # APPDATA FILE #
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
 msgid "Securely delete your files"
-msgstr ""
-
+msgstr "Ta bort dina filer på ett säkert sätt"
 
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:10
-msgid ""
-"File Shredder, also named Raider, is a simple application that enables you to "
-"securely delete files that was built with GNOME in mind. It supports all the options "
-"that its backend has, plus a realtime progress tracking."
-msgstr ""
+msgid "File Shredder, also named Raider, is a simple application that enables you to securely delete files that was built with GNOME in mind. It supports all the options that its backend has, plus a realtime progress tracking."
+msgstr "File Shredder, även kallad Raider, är ett enkelt program som gör att du säkert kan ta bort filer och som skapats med GNOME i åtanke. Det stöder alla alternativ som dess bakgrundsgränssnitt har, plus förloppsspårning i realtid."
 
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
-msgid ""
-"The very first release of File Shredder. It supports progress tracking, and "
-"boasts a GNOME compliant interface."
-msgstr ""
+msgid "The very first release of File Shredder. It supports progress tracking, and boasts a GNOME compliant interface."
+msgstr "Den allra första utgåvan av File Shredder. Den stöder förloppsspårning och har ett GNOME-kompatibelt gränssnitt."
 
 # DESKTOP FILE #
 #: data/com.github.ADBeveridge.Raider.desktop.in:9
 msgid "Shred your files securely"
-msgstr ""
+msgstr "Ta bort dina filer på ett säkert sätt"
 
 # GSETTINGS FILE #
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
 msgid "Hide shredding"
-msgstr ""
+msgstr "Dölj dokumentförstöring"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:6
 msgid "Whether to hide shredding. This is done by overwriting the file(s) with zeros."
-msgstr ""
+msgstr "Om filförstöring skall döljas. Detta görs genom att skriva över filen med nollor."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:10
 msgid "Remove file"
-msgstr ""
+msgstr "Ta bort fil"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:11
 msgid "Hide shredding"
 msgstr "Whether to remove the file after shredding it."
 
 # NOTE: I will finish the gsettings file.
-
 # RAIDER WINDOW UI #
 #: src/raider-window.ui:11 src/raider-window.ui:76
 msgid "File Shredder"
@@ -111,7 +103,7 @@ msgstr "Inga filer har lagts till!"
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/raider-preferences.ui:75 
+#: src/raider-preferences.ui:75
 #: src/raider-preferences.ui:88
 msgid "How many times to overwrite the file(s)"
 msgstr "Hur många gånger skall filen/filerna skrivas över"
@@ -153,12 +145,8 @@ msgid "Do not round file sizes to the next block"
 msgstr "Avrunda inte filstorlekar till nästa block"
 
 #: src/raider-preferences.ui:176
-msgid ""
-"This option will shred the entirety of every block that the file(s) has any "
-"data on"
-msgstr ""
-"Detta alternativ förstör fullständigt varje block som filen/filerna har "
-"data på"
+msgid "This option will shred the entirety of every block that the file(s) has any data on"
+msgstr "Detta alternativ förstör fullständigt varje block som filen/filerna har data på"
 
 #: src/raider-preferences.ui:190 src/raider-preferences.ui:204
 msgid "How to remove the file(s) from the computer"
@@ -180,14 +168,10 @@ msgstr "Rensa"
 msgid "Unlink"
 msgstr "Avlänka"
 
-#: src/raider-preferences.ui:221 
+#: src/raider-preferences.ui:221
 #: src/raider-preferences.ui:235
-msgid ""
-"Get data from a file, and overwrite the to be shredded file(s) with the "
-"contents of it"
-msgstr ""
-"Hämta data från en fil och använd den till att skriva över de filer som "
-"skall förstöras"
+msgid "Get data from a file, and overwrite the to be shredded file(s) with the contents of it"
+msgstr "Hämta data från en fil och använd den till att skriva över de filer som skall förstöras"
 
 #: src/raider-preferences.ui:224
 msgid "Get overwrite data from:"
@@ -235,3 +219,4 @@ msgstr "_Om"
 #: src/raider.c:127
 msgid "Securely delete your files"
 msgstr "Ta bort dina filer på ett säkert sätt"
+
