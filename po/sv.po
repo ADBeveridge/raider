@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
 "POT-Creation-Date: 2022-01-24 15:56+0000\n"
-"PO-Revision-Date: 2022-02-05 09:40+0100\n"
+"PO-Revision-Date: 2022-02-05 10:01+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,14 +18,13 @@ msgstr ""
 
 # PROGRAM NAME #
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
-#: data/com.github.ADBeveridge.Raider.desktop.in:2
-#: src/raider-window.ui:11
+#: data/com.github.ADBeveridge.Raider.desktop.in:2 src/raider-window.ui:11
 #: src/raider-window.ui:76
 msgid "File Shredder"
 msgstr "File Shredder"
 
 # APPDATA FILE #
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7 src/raider.c:127
 msgid "Securely delete your files"
 msgstr "Ta bort dina filer på ett säkert sätt"
 
@@ -44,6 +43,8 @@ msgstr "Ta bort dina filer på ett säkert sätt"
 
 # GSETTINGS FILE #
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+#: src/raider-preferences.ui:117
 msgid "Hide shredding"
 msgstr "Dölj dokumentförstöring"
 
@@ -54,16 +55,6 @@ msgstr "Om filförstöring skall döljas. Detta görs genom att skriva över fil
 #: data/com.github.ADBeveridge.Raider.gschema.xml:10
 msgid "Remove file"
 msgstr "Ta bort fil"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:11
-msgid "Hide shredding"
-msgstr "Whether to remove the file after shredding it."
-
-# NOTE: I will finish the gsettings file.
-# RAIDER WINDOW UI #
-#: src/raider-window.ui:11 src/raider-window.ui:76
-msgid "File Shredder"
-msgstr "File Shredder"
 
 #: src/raider-window.ui:80
 msgid "Shred"
@@ -103,8 +94,7 @@ msgstr "Inga filer har lagts till!"
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/raider-preferences.ui:75
-#: src/raider-preferences.ui:88
+#: src/raider-preferences.ui:75 src/raider-preferences.ui:88
 msgid "How many times to overwrite the file(s)"
 msgstr "Hur många gånger skall filen/filerna skrivas över"
 
@@ -119,10 +109,6 @@ msgstr "Ta bort efter förstöring"
 #: src/raider-preferences.ui:105
 msgid "Remove the shredded file from the computer"
 msgstr "Ta bort den förstörda filen från datorn"
-
-#: src/raider-preferences.ui:117
-msgid "Hide shredding"
-msgstr "Dölj dokumentförstöring"
 
 #: src/raider-preferences.ui:121
 msgid "Hide shredding with a final overwrite of zeros"
@@ -168,8 +154,7 @@ msgstr "Rensa"
 msgid "Unlink"
 msgstr "Avlänka"
 
-#: src/raider-preferences.ui:221
-#: src/raider-preferences.ui:235
+#: src/raider-preferences.ui:221 src/raider-preferences.ui:235
 msgid "Get data from a file, and overwrite the to be shredded file(s) with the contents of it"
 msgstr "Hämta data från en fil och använd den till att skriva över de filer som skall förstöras"
 
@@ -214,9 +199,3 @@ msgstr "_Hjälp"
 #: src/gears-menu.ui:24
 msgid "_About"
 msgstr "_Om"
-
-# RAIDER.C #
-#: src/raider.c:127
-msgid "Securely delete your files"
-msgstr "Ta bort dina filer på ett säkert sätt"
-
