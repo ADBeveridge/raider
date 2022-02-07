@@ -2,6 +2,7 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
+  <requires lib="libhandy" version="1.5"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name Raider -->
   <!-- interface-description A tool for shredding files -->
@@ -30,7 +31,18 @@
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <placeholder/>
+                  <object class="HdyStatusPage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="vexpand">True</property>
+                    <property name="icon-name">document-open-symbolic</property>
+                    <property name="title" translatable="yes">Add files or drop here</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -70,7 +82,7 @@
       </object>
     </child>
     <child type="titlebar">
-      <object class="HdyHeaderBar" id="header_bar">
+      <object class="GtkHeaderBar" id="header_bar">
         <property name="name">header_bar</property>
         <property name="visible">True</property>
         <property name="can-focus">False</property>

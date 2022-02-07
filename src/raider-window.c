@@ -18,7 +18,6 @@ struct _RaiderWindow
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
     GtkWidget *hint_page;
-    GtkWidget *status_page;
 
     GtkCssProvider *provider;
 };
@@ -42,12 +41,6 @@ raider_window_init (RaiderWindow *win)
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
-
-    win->status_page = hdy_status_page_new();
-    hdy_status_page_set_icon_name (HDY_STATUS_PAGE(win->status_page), "document-open-symbolic");
-    hdy_status_page_set_title(HDY_STATUS_PAGE(win->status_page), _("Add files or drop here"));
-    gtk_widget_show_all(win->status_page);
-    gtk_box_pack_start(GTK_BOX(win->hint_page), win->status_page, TRUE, TRUE, 0);
 }
 
 static void

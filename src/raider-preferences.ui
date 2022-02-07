@@ -3,28 +3,114 @@
 <interface>
   <requires lib="gtk+" version="3.22"/>
   <requires lib="libhandy" version="0.0"/>
+  <object class="GtkAdjustment" id="number_of_passes_adjustment">
+    <property name="lower">1</property>
+    <property name="upper">100</property>
+    <property name="value">3</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
   <template class="RaiderPreferences" parent="HdyPreferencesWindow">
     <property name="can-focus">False</property>
     <property name="type">popup</property>
     <property name="modal">True</property>
     <property name="icon-name">com.github.ADBeveridge.Raider</property>
     <property name="type-hint">dialog</property>
+    <property name="search-enabled">False</property>
     <child>
       <object class="HdyPreferencesPage" id="preferences_page_one">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title" translatable="yes">Page 1</property>
+        <property name="title" translatable="yes">preferences_page</property>
         <child>
           <object class="HdyPreferencesGroup" id="basic_group">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="title" translatable="yes">&lt;b&gt;Basic&lt;/b&gt;</property>
-            <property name="use-markup">True</property>
+            <property name="title" translatable="yes">Basic</property>
             <child>
               <placeholder/>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="basic_options_box">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="HdyActionRow" id="remove_after_shredding_bar">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="title" translatable="yes">Remove after shredding</property>
+                    <property name="activatable-widget">remove_after_shredding_switch</property>
+                    <property name="subtitle" translatable="yes">Remove the shredded file from the filesystem</property>
+                    <child>
+                      <object class="GtkSwitch" id="remove_after_shredding_switch">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">center</property>
+                        <property name="active">True</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="HdyActionRow" id="hide_shredding_bar">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="title" translatable="yes">Hide Shredding</property>
+                    <property name="activatable-widget">hide_shredding_switch</property>
+                    <property name="subtitle" translatable="yes">Whether to hide the fact the the files habe been shredded</property>
+                    <child>
+                      <object class="GtkSwitch" id="hide_shredding_switch">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="HdyActionRow" id="number_of_passes_bar">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="title" translatable="yes">Number of passes</property>
+                    <property name="activatable-widget">number_of_passes_spin_button</property>
+                    <property name="subtitle" translatable="yes">How many times to shred the files over again</property>
+                    <child>
+                      <object class="GtkSpinButton" id="number_of_passes_spin_button">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">center</property>
+                        <property name="adjustment">number_of_passes_adjustment</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="HdyPreferencesGroup" id="advanced_group">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="title" translatable="yes">Advanced</property>
+            <child>
+              <object class="GtkBox" id="advanced_options_box">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
@@ -32,11 +118,20 @@
                   <object class="HdyActionRow">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="activatable">False</property>
-                    <property name="title" translatable="yes">Remove after shredding</property>
-                    <property name="subtitle" translatable="yes">Remove the shredded file from the filesystem</property>
+                    <property name="title" translatable="yes">Remove method</property>
+                    <property name="subtitle" translatable="yes">What method is used to remove the files from the filesystem</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkComboBoxText">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">center</property>
+                        <property name="active-id">wipesync</property>
+                        <items>
+                          <item id="wipesync" translatable="yes">Wipesync</item>
+                          <item id="wipe" translatable="yes">Wipe</item>
+                          <item id="unlink" translatable="yes">Unlink</item>
+                        </items>
+                      </object>
                     </child>
                   </object>
                   <packing>
@@ -52,17 +147,6 @@
                   <placeholder/>
                 </child>
               </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="HdyPreferencesGroup" id="advanced_group">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="title" translatable="yes">&lt;b&gt;Advanced&lt;/b&gt;</property>
-            <property name="use-markup">True</property>
-            <child>
-              <placeholder/>
             </child>
           </object>
         </child>
