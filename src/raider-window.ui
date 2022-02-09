@@ -8,6 +8,7 @@
   <!-- interface-description A tool for shredding files -->
   <!-- interface-authors Alan Beveridge -->
   <template class="RaiderWindow" parent="GtkApplicationWindow">
+    <property name="height-request">480</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">File Shredder</property>
     <property name="default-width">720</property>
@@ -22,7 +23,6 @@
           <object class="GtkStack" id="window_stack">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="vexpand">True</property>
             <property name="transition-type">crossfade</property>
             <property name="interpolate-size">True</property>
             <child>
@@ -31,15 +31,14 @@
                 <property name="can-focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="HdyStatusPage">
+                  <object class="HdyStatusPage" id="empty_state">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="vexpand">True</property>
                     <property name="icon-name">document-open-symbolic</property>
                     <property name="title" translatable="yes">Add files or drop here</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
@@ -74,7 +73,7 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>

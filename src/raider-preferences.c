@@ -7,6 +7,25 @@
 struct _RaiderPreferences
 {
     HdyPreferencesWindow parent;
+	GtkWidget *preferences_page_one;
+	GtkWidget *basic_group;
+	GtkWidget *remove_file_bar;
+	GtkWidget *remove_file_switch;
+	GtkWidget *hide_shredding_bar;
+	GtkWidget *hide_shredding_switch;
+	GtkWidget *number_of_passes_bar;
+	GtkWidget *number_of_passes_spin_button;
+	GtkWidget *advanced_group;
+	GtkWidget *remove_method_bar;
+	GtkWidget *remove_method_combo;
+	GtkWidget *overwrite_data_source_bar;
+	GtkWidget *overwrite_data_source_file_chooser;
+	GtkWidget *number_of_bytes_to_shred_bar;
+	GtkWidget *number_of_bytes_to_shred_entry;
+	GtkWidget *do_not_round_bar;
+	GtkWidget *do_not_round_switchoverride_permissions_bar;
+	GtkWidget *override_permissions_bar;
+	GtkWidget *override_permissions_switch;
 };
 
 G_DEFINE_TYPE (RaiderPreferences, raider_preferences, HDY_TYPE_PREFERENCES_WINDOW)
