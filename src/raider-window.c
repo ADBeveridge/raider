@@ -27,7 +27,7 @@ G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
 static void
 raider_window_init (RaiderWindow *win)
 {
-    GtkBuilder *builder;
+	GtkBuilder *builder;
     GMenuModel *menu;
 
     gtk_widget_init_template(GTK_WIDGET(win));

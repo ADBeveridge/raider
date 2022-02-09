@@ -81,6 +81,7 @@ raider_finalize (GObject *object)
 static void
 raider_startup (GApplication *app)
 {
+
     const char *quit_accels[] = { "<Ctrl>Q", NULL };
 
     G_APPLICATION_CLASS (raider_parent_class)->startup (app);
