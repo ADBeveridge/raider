@@ -1,0 +1,40 @@
+<!-- -*- mode: xml -*- -->
+<Project
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:gnome="http://api.gnome.org/doap-extensions#"
+  xmlns="http://usefulinc.com/ns/doap#"
+>
+  <name>File Shredder</name>
+  <shortdesc>Securely delete your files</shortdesc>
+  <description>File Shredder, also named Raider, is a simple application that enables 
+  	you to securely delete files that was built with GNOME in mind. It supports 
+  	all the options that its backend has, plus a realtime progress tracking.</description>
+
+  <homepage rdf:resource="https://github.com/ADBeveridge/raider" />
+  <bug-database rdf:resource="https://github.com/ADBeveridge/raider/issues"/>
+  <programming-language>C</programming-language>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Alan Beveridge</foaf:name>
+      <foaf:mbox rdf:resource="mailto:adbeveridge@protonmail.com" />
+      <foaf:account>
+        <foaf:OnlineAccount>
+            <foaf:accountServiceHomepage rdf:resource="https://github.com/" />
+            <foaf:accountName>ADBeveridge</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>
+      <foaf:account>
+        <foaf:OnlineAccount>
+          <foaf:accountServiceHomepage
+            rdf:resource="https://gitlab.gnome.org"
+          />
+          <foaf:accountName>ADBeveridge</foaf:accountName>
+        </foaf:OnlineAccount>
+      </foaf:account>
+    </foaf:Person>
+  </maintainer>
+</Project>
+

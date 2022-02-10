@@ -63,9 +63,9 @@ raider_preferences_init (RaiderPreferences *prefs)
                      prefs->do_not_round_switch, "active",
                      G_SETTINGS_BIND_DEFAULT);
 
-    /*g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
+    g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
                      prefs->number_of_bytes_to_shred_entry, "text",
-                     G_SETTINGS_BIND_DEFAULT);*/
+                     G_SETTINGS_BIND_DEFAULT);
 }
 
 static void
