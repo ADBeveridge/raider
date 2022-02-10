@@ -50,18 +50,22 @@ raider_preferences_init (RaiderPreferences *prefs)
 	g_settings_bind (prefs->settings, "number-of-passes",
                      prefs->number_of_passes_spin_button, "value",
                      G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (prefs->settings, "remove-method",
+
+    g_settings_bind (prefs->settings, "remove-method",
                      prefs->remove_method_combo, "active-id",
                      G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (prefs->settings, "hide-shredding",
-                     prefs->hide_shredding_switch, "active",
+
+    g_settings_bind (prefs->settings, "override-permissions",
+                     prefs->override_permissions_switch, "active",
                      G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (prefs->settings, "hide-shredding",
-                     prefs->hide_shredding_switch, "active",
+
+    g_settings_bind (prefs->settings, "do-not-round-to-next-block",
+                     prefs->do_not_round_switch, "active",
                      G_SETTINGS_BIND_DEFAULT);
-	g_settings_bind (prefs->settings, "hide-shredding",
-                     prefs->hide_shredding_switch, "active",
-                     G_SETTINGS_BIND_DEFAULT);
+
+    /*g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
+                     prefs->number_of_bytes_to_shred_entry, "text",
+                     G_SETTINGS_BIND_DEFAULT);*/
 }
 
 static void

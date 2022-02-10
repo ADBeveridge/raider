@@ -16,6 +16,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <gtk/gtk.h>
+#include <handy.h>
 #include "raider.h"
 #include "raider-window.h"
 #include "raider-preferences.h"
@@ -93,6 +94,7 @@ raider_startup (GApplication *app)
     gtk_application_set_accels_for_action (GTK_APPLICATION (app),
                                            "app.quit",
                                            quit_accels);
+	hdy_init();
 }
 static void
 raider_class_init (RaiderClass *klass)
