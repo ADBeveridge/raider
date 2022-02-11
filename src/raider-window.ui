@@ -7,7 +7,7 @@
   <!-- interface-name Raider -->
   <!-- interface-description A tool for shredding files -->
   <!-- interface-authors Alan Beveridge -->
-  <template class="RaiderWindow" parent="GtkApplicationWindow">
+  <template class="RaiderWindow" parent="HdyApplicationWindow">
     <property name="height-request">480</property>
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">File Shredder</property>
@@ -15,146 +15,169 @@
     <property name="default-height">366</property>
     <property name="icon-name">com.github.ADBeveridge.Raider</property>
     <child>
-      <object class="GtkBox" id="contents_box">
+      <object class="GtkBox" id="window_box">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkStack" id="window_stack">
+          <object class="HdyWindowHandle" id="header_move_box">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="transition-type">crossfade</property>
-            <property name="interpolate-size">True</property>
             <child>
-              <object class="GtkBox" id="hint_page">
+              <object class="GtkHeaderBar" id="header_bar">
+                <property name="name">header_bar</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
+                <property name="title" translatable="yes">File Shredder</property>
+                <property name="show-close-button">True</property>
                 <child>
-                  <object class="HdyStatusPage" id="empty_state">
+                  <object class="GtkButton" id="shred_button">
+                    <property name="label" translatable="yes">Shred</property>
+                    <property name="name">shred_button</property>
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="icon-name">document-open-symbolic</property>
-                    <property name="title" translatable="yes">Add files or drop here</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <signal name="clicked" handler="shred_file" object="RaiderWindow" swapped="no"/>
+                    <style>
+                      <class name="destructive-action"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkMenuButton" id="primary_menu">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="direction">none</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="add_file_button">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="tooltip-text" translatable="yes">Add files for shredding</property>
+                    <property name="always-show-image">True</property>
+                    <signal name="clicked" handler="raider_window_open_file_dialog" object="RaiderWindow" swapped="no"/>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">list-add-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="preferences_button">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="action-name">app.preferences</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="stock">gtk-preferences</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">hint_page</property>
-              </packing>
             </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="contents_box">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkBox" id="list_box_page">
+              <object class="GtkStack" id="window_stack">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
+                <property name="transition-type">crossfade</property>
+                <property name="interpolate-size">True</property>
                 <child>
-                  <object class="GtkListBox" id="list_box">
+                  <object class="GtkBox" id="hint_page">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="selection-mode">none</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="HdyStatusPage" id="empty_state">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">document-open-symbolic</property>
+                        <property name="title" translatable="yes">Add files or drop here</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
+                    <property name="name">hint_page</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="list_box_page">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkListBox" id="list_box">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="selection-mode">none</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">list_box_page</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="name">list_box_page</property>
-                <property name="position">1</property>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="header_bar">
-        <property name="name">header_bar</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="title" translatable="yes">File Shredder</property>
-        <property name="show-close-button">True</property>
-        <child>
-          <object class="GtkButton" id="shred_button">
-            <property name="label" translatable="yes">Shred</property>
-            <property name="name">shred_button</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <signal name="clicked" handler="shred_file" object="RaiderWindow" swapped="no"/>
-            <style>
-              <class name="destructive-action"/>
-            </style>
-          </object>
-          <packing>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="primary_menu">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="receives-default">False</property>
-            <property name="direction">none</property>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="add_file_button">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="receives-default">False</property>
-            <property name="tooltip-text" translatable="yes">Add files for shredding</property>
-            <property name="always-show-image">True</property>
-            <signal name="clicked" handler="raider_window_open_file_dialog" object="RaiderWindow" swapped="no"/>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="icon-name">list-add-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="preferences_button">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <property name="action-name">app.preferences</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="stock">gtk-preferences</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>

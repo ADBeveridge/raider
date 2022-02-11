@@ -6,7 +6,7 @@
 
 struct _RaiderWindow
 {
-    GtkApplicationWindow parent;
+    HdyApplicationWindow parent;
 
     GtkWidget *header_bar;
     GtkWidget *contents_box;
@@ -22,7 +22,7 @@ struct _RaiderWindow
     GtkCssProvider *provider;
 };
 
-G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
+G_DEFINE_TYPE (RaiderWindow, raider_window, HDY_TYPE_APPLICATION_WINDOW)
 
 static void
 raider_window_init (RaiderWindow *win)
