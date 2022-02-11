@@ -66,6 +66,10 @@ raider_preferences_init (RaiderPreferences *prefs)
     g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
                      prefs->number_of_bytes_to_shred_entry, "text",
                      G_SETTINGS_BIND_DEFAULT);
+
+	g_settings_bind (prefs->settings, "overwrite-data-file",
+                     prefs->overwrite_data_source_file_chooser, "text",
+                     G_SETTINGS_BIND_DEFAULT);
 }
 
 static void

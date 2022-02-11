@@ -47,5 +47,10 @@
            <description>The path to the shred executable.</description>
            <default>'/usr/bin/shred'</default>
         </key>
+        <key name="overwrite-data-file" type="s">
+           <summary>Overwrite data file</summary>
+           <description>Where to get data to overwrite the to-be-shredded files.</description>
+           <default>''</default>
+        </key>
     </schema>
 </schemalist>
