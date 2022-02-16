@@ -81,7 +81,7 @@ void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gin
 
     if (filenames == NULL)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Unable to add files!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Unable to add files!"));
         gtk_drag_finish (context, FALSE, FALSE, time);
         return;
     }
@@ -107,12 +107,12 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     GFile *file = g_file_new_for_path (filename_to_open);
     if (g_file_query_exists (file, NULL) == FALSE)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("File does not exist!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("File does not exist!"));
         return;
     }
     if (g_file_query_file_type (file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
     {
-    	gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
+    	hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
         return;
     }
     
@@ -176,14 +176,14 @@ void shred_file(GtkWidget *widget, gpointer data)
 {
     /* Clear the subtitle. */
     RaiderWindow *window = RAIDER_WINDOW(data);
-    gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
+    hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
     guint num = g_list_length(list);
     if (num == 0)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("No files added!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("No files added!"));
     }
     else
     {

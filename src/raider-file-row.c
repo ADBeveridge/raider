@@ -72,11 +72,8 @@ void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
 
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
 {
-    GtkWidget *widget2 = gtk_widget_get_parent(widget); /* Get the secondary box. */
-    GtkWidget *widget3 = gtk_widget_get_parent(widget2); /* Get the main box. */
-    GtkWidget *widget4 = gtk_widget_get_parent(widget3); /* Get the file row. */
-
-    gtk_widget_destroy(widget4);
+    GtkWidget *list_box = gtk_widget_get_parent(data); /* Get the secondary box. */
+    gtk_container_remove(GTK_CONTAINER(list_box), data);
 }
 
 static void
@@ -113,7 +110,7 @@ raider_file_row_init (RaiderFileRow *row)
 
     gtk_box_pack_start(GTK_BOX(row->secondary_box), row->remove_from_list_button, TRUE, TRUE, 0);
     gtk_widget_set_halign(row->remove_from_list_button, GTK_ALIGN_END);
-    row->signal_id = g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), NULL);
+    row->signal_id = g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
 
     /* GtkRevealer stuff. */
     row->progress_bar = gtk_progress_bar_new();
