@@ -1,10 +1,14 @@
 #include <gtk/gtk.h>
+#include <handy.h>
 #include <glib/gi18n.h>
 #include "raider-file-row.h"
 
 struct _RaiderFileRow
 {
-    GtkListBoxRow parent;
+    HdyActionRow parent;
+	GtkWidget *raider_file_row_button;
+
+
 
     GtkWidget *box;
     GtkWidget *secondary_box;
@@ -32,7 +36,7 @@ struct _RaiderFileRow
     gboolean aborted;
 };
 
-G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (RaiderFileRow, raider_file_row, HDY_TYPE_ACTION_ROW)
 
 /* Parsing data that carries around data. */
 struct _fsm
@@ -79,48 +83,10 @@ void raider_file_row_delete (GtkWidget *widget, gpointer data)
 static void
 raider_file_row_init (RaiderFileRow *row)
 {
+	gtk_widget_init_template (GTK_WIDGET (row));
+
     row->settings = g_settings_new("com.github.ADBeveridge.Raider");
     row->aborted = FALSE;
-
-    row->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (row), row->box);
-
-    /* Create and add the secondary box which contains the remove button and the filename. */
-    row->secondary_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_box_pack_start(GTK_BOX(row->box), row->secondary_box, TRUE, TRUE, 0);
-
-    /* Create the revealer container, which will hold the progress bar. */
-    row->revealer = gtk_revealer_new();
-    gtk_box_pack_start(GTK_BOX(row->box), row->revealer, TRUE, TRUE, 0);
-
-    /* Add widgets to the secondary box. */
-    row->filename_label = gtk_label_new(NULL);
-    gtk_box_pack_start(GTK_BOX(row->secondary_box), row->filename_label, TRUE, TRUE, 0);
-    gtk_widget_set_halign(row->filename_label, GTK_ALIGN_START);
-    gtk_label_set_ellipsize(GTK_LABEL(row->filename_label), PANGO_ELLIPSIZE_END);
-
-    /* Create the icons. */
-    row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
-    row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop-symbolic", GTK_ICON_SIZE_BUTTON);
-
-    /* Create the button. */
-    row->remove_from_list_button = gtk_button_new();
-    gtk_widget_set_tooltip_text(row->remove_from_list_button, _("Remove from list"));
-    gtk_button_set_image(GTK_BUTTON(row->remove_from_list_button), row->remove_from_list_button_image1);
-
-    gtk_box_pack_start(GTK_BOX(row->secondary_box), row->remove_from_list_button, TRUE, TRUE, 0);
-    gtk_widget_set_halign(row->remove_from_list_button, GTK_ALIGN_END);
-    row->signal_id = g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
-
-    /* GtkRevealer stuff. */
-    row->progress_bar = gtk_progress_bar_new();
-    gtk_container_add(GTK_CONTAINER(row->revealer), row->progress_bar);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(row->revealer), FALSE);
-    gtk_revealer_set_transition_type(GTK_REVEALER(row->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
-    gtk_revealer_set_transition_duration(GTK_REVEALER(row->revealer), 500);
-
-    /* Last bit of work. */
-    gtk_widget_show_all (GTK_WIDGET(row));
 }
 
 static void
@@ -144,6 +110,10 @@ static void
 raider_file_row_class_init (RaiderFileRowClass *klass)
 {
     G_OBJECT_CLASS (klass)->dispose = raider_file_row_dispose;
+
+    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/raider/ui/raider-file-row.ui");
+
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), RaiderFileRow, raider_file_row_button);
 }
 
 RaiderFileRow *raider_file_row_new (const char *str)
@@ -154,8 +124,8 @@ RaiderFileRow *raider_file_row_new (const char *str)
     file_row->basename = g_path_get_basename(str);
 
     /* Set the label's properties. */
-    gtk_label_set_label(GTK_LABEL(file_row->filename_label), file_row->basename);
-    gtk_widget_set_tooltip_text(file_row->box, file_row->filename);
+	g_object_set(file_row, "title", file_row->basename, NULL);
+	hdy_action_row_set_subtitle (HDY_ACTION_ROW(file_row), file_row->filename);
 
     /* Notification stuff. */
     file_row->notification_title = g_strconcat(_("Finished shredding "), file_row->basename, NULL);
