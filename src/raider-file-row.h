@@ -3,6 +3,7 @@
 
 #include <gtk/gtk.h>
 #include <handy.h>
+#include <dazzle.h>
 #include "raider.h"
 
 #define RAIDER_FILE_ROW_TYPE (raider_file_row_get_type ())

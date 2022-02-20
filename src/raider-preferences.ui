@@ -5,7 +5,7 @@
   <requires lib="libhandy" version="0.0"/>
   <object class="GtkAdjustment" id="number_of_passes_adjustment">
     <property name="lower">1</property>
-    <property name="upper">100</property>
+    <property name="upper">25</property>
     <property name="value">3</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
@@ -86,31 +86,16 @@
             <property name="can-focus">False</property>
             <property name="title" translatable="yes">Advanced</property>
             <child>
-              <object class="HdyActionRow" id="remove_method_bar">
+              <object class="HdyComboRow" id="remove_method_bar">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
+                <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Remove method</property>
-                <property name="activatable-widget">remove_method_combo</property>
-                <property name="subtitle" translatable="yes">What method is used to remove the files from the filesystem</property>
-                <child>
-                  <object class="GtkComboBoxText" id="remove_method_combo">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="valign">center</property>
-                    <property name="active">0</property>
-                    <property name="active-id">wipesync</property>
-                    <items>
-                      <item id="wipesync" translatable="yes">Wipesync</item>
-                      <item id="wipe" translatable="yes">Wipe</item>
-                      <item id="unlink" translatable="yes">Unlink</item>
-                    </items>
-                  </object>
-                </child>
+                <property name="subtitle" translatable="yes">How to remove the files from the fileystem</property>
+                <property name="use-subtitle">True</property>
               </object>
             </child>
             <child>
               <object class="HdyActionRow" id="overwrite_data_source_bar">
-                <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="title" translatable="yes">Overwrite data source</property>
                 <property name="activatable-widget">overwrite_data_source_file_chooser</property>
@@ -136,7 +121,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="valign">center</property>
-                    <property name="input-purpose">digits</property>
                   </object>
                 </child>
               </object>

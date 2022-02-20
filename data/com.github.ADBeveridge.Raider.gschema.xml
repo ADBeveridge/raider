@@ -17,15 +17,11 @@
            <range min="1" max="25"/>
            <default>3</default>
         </key>
-        <key name="remove-method" type="s">
+        <key name="remove-method" type="i">
            <summary>Remove method</summary>
            <description>How the obfucticated file will be removed from the filesystem.</description>
-           <choices>
-              <choice value='unlink'/>
-              <choice value='wipe'/>
-              <choice value='wipesync'/>
-           </choices>
-           <default>'wipesync'</default>
+          <range min="0" max="2"/>
+           <default>0</default>
         </key>
         <key name="override-permissions" type="b">
            <summary>Override Permisions</summary>

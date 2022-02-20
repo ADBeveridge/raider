@@ -1,7 +1,7 @@
 {
     "app-id" : "com.github.ADBeveridge.Raider",
-    "runtime" : "org.freedesktop.Platform",
-    "runtime-version" : "21.08",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "41",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
@@ -37,6 +37,8 @@
         }
     ],
     "build-options" : {
-        "env" : {        }
+        "env" : {
+            "GTK_THEME" : null
+        }
     }
 }
