@@ -17,7 +17,6 @@ struct _RaiderPreferences
 	GtkWidget *number_of_passes_spin_button;
 	GtkWidget *advanced_group;
 	GtkWidget *remove_method_bar;
-	GtkWidget *remove_method_combo;
 	GtkWidget *overwrite_data_source_bar;
 	GtkWidget *overwrite_data_source_file_chooser;
 	GtkWidget *number_of_bytes_to_shred_bar;
@@ -37,8 +36,23 @@ raider_preferences_init (RaiderPreferences *prefs)
 {
     gtk_widget_init_template (GTK_WIDGET (prefs));
 
-	prefs->settings = g_settings_new ("com.github.ADBeveridge.Raider");
+    GListStore *list_store = g_list_store_new (HDY_TYPE_VALUE_OBJECT);
 
+    HdyValueObject *obj = hdy_value_object_new_string ("Wipesync");
+    g_list_store_insert (list_store, 0, obj);
+    g_clear_object (&obj);
+
+    obj = hdy_value_object_new_string ("Wipe");
+    g_list_store_insert (list_store, 1, obj);
+    g_clear_object (&obj);
+
+    obj = hdy_value_object_new_string ("Unlink");
+    g_list_store_insert (list_store, 2, obj);
+    g_clear_object (&obj);
+
+    hdy_combo_row_bind_name_model (HDY_COMBO_ROW(prefs->remove_method_bar), G_LIST_MODEL (list_store), (HdyComboRowGetNameFunc) hdy_value_object_dup_string, NULL, NULL);
+
+	prefs->settings = g_settings_new ("com.github.ADBeveridge.Raider");
 	g_settings_bind (prefs->settings, "hide-shredding",
                      prefs->hide_shredding_switch, "active",
                      G_SETTINGS_BIND_DEFAULT);
@@ -52,7 +66,7 @@ raider_preferences_init (RaiderPreferences *prefs)
                      G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind (prefs->settings, "remove-method",
-                     prefs->remove_method_combo, "active-id",
+                     prefs->remove_method_bar, "selected-index",
                      G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind (prefs->settings, "override-permissions",
@@ -67,9 +81,10 @@ raider_preferences_init (RaiderPreferences *prefs)
                      prefs->number_of_bytes_to_shred_entry, "text",
                      G_SETTINGS_BIND_DEFAULT);
 
-	g_settings_bind (prefs->settings, "overwrite-data-file",
+    /* Until I can bind the current file in it, this will not show up. */
+	/*g_settings_bind (prefs->settings, "overwrite-data-file",
                      prefs->overwrite_data_source_file_chooser, "text",
-                     G_SETTINGS_BIND_DEFAULT);
+                     G_SETTINGS_BIND_DEFAULT);*/
 }
 
 static void
@@ -94,7 +109,6 @@ raider_preferences_class_init (RaiderPreferencesClass *class)
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_passes_spin_button);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, advanced_group);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_method_bar);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_method_combo);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, overwrite_data_source_bar);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, overwrite_data_source_file_chooser);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_bytes_to_shred_bar);

@@ -1,30 +1,29 @@
 #include <gtk/gtk.h>
+#include <handy.h>
+#include <dazzle.h>
 #include <glib/gi18n.h>
 #include "raider-file-row.h"
 
 struct _RaiderFileRow
 {
-    GtkListBoxRow parent;
+    HdyActionRow parent;
+	GtkWidget *button_box;
 
-    GtkWidget *box;
-    GtkWidget *secondary_box;
-    GtkWidget *filename_label;
     GtkWidget *remove_from_list_button;
-    GtkWidget *remove_from_list_button_image1;
-    GtkWidget *remove_from_list_button_image2;
+	GtkWidget *progress_button;
+	GtkWidget *progress_icon;
 
-    /* Progress bar widgets. */
-    GtkWidget *revealer;
-    GtkWidget *progress_bar;
+	GtkRevealer *revealer;
 
     /* Notification widget. */
     GNotification *notification;
+	gchar *notification_title;
+	gchar *notification_subtitle;
 
     /* Data items. */
     GSettings *settings;
     gchar *filename;
     gchar *basename;
-    gchar *notification_title;
     GDataInputStream *data_stream;
     GSubprocess *process;
     guint signal_id;
@@ -32,7 +31,7 @@ struct _RaiderFileRow
     gboolean aborted;
 };
 
-G_DEFINE_TYPE (RaiderFileRow, raider_file_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (RaiderFileRow, raider_file_row, HDY_TYPE_ACTION_ROW)
 
 /* Parsing data that carries around data. */
 struct _fsm
@@ -40,7 +39,7 @@ struct _fsm
     void (*state)(void *);
     gchar **tokens;
     gint incremented_number;
-    GtkWidget *progress_bar;
+    GtkWidget *progress_icon;
     gchar *filename;
 
     gdouble current;
@@ -62,78 +61,47 @@ void parse_sub_percentage (void *ptr_to_fsm);
 void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
-
-    /* Stop the job. The user does not want the shredding to continue. */
     row->aborted = TRUE;
     g_subprocess_force_exit(row->process);
-
-    /* Right here the finish_shredding() function will be invoked. */
 }
 
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
 {
-    GtkWidget *list_box = gtk_widget_get_parent(data); /* Get the secondary box. */
+	GtkWidget *list_box = gtk_widget_get_parent(data); /* Get the list box. */
     gtk_container_remove(GTK_CONTAINER(list_box), data);
 }
 
 static void
 raider_file_row_init (RaiderFileRow *row)
 {
+	gtk_widget_init_template (GTK_WIDGET (row));
+
     row->settings = g_settings_new("com.github.ADBeveridge.Raider");
     row->aborted = FALSE;
 
-    row->box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gtk_container_add (GTK_CONTAINER (row), row->box);
+    /* The remove button. */
+	row->remove_from_list_button = gtk_button_new_from_icon_name ("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
+	row->signal_id = g_signal_connect (G_OBJECT(row->remove_from_list_button), "clicked", G_CALLBACK(raider_file_row_delete), row);
+    gtk_box_pack_start (GTK_BOX(row->button_box), row->remove_from_list_button, TRUE, TRUE, 0);
+	gtk_widget_show (row->remove_from_list_button);
 
-    /* Create and add the secondary box which contains the remove button and the filename. */
-    row->secondary_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_box_pack_start(GTK_BOX(row->box), row->secondary_box, TRUE, TRUE, 0);
+    /* The progress button. */
+	row->progress_button = gtk_button_new();
+	gtk_widget_show(row->progress_button);
 
-    /* Create the revealer container, which will hold the progress bar. */
-    row->revealer = gtk_revealer_new();
-    gtk_box_pack_start(GTK_BOX(row->box), row->revealer, TRUE, TRUE, 0);
-
-    /* Add widgets to the secondary box. */
-    row->filename_label = gtk_label_new(NULL);
-    gtk_box_pack_start(GTK_BOX(row->secondary_box), row->filename_label, TRUE, TRUE, 0);
-    gtk_widget_set_halign(row->filename_label, GTK_ALIGN_START);
-    gtk_label_set_ellipsize(GTK_LABEL(row->filename_label), PANGO_ELLIPSIZE_END);
-
-    /* Create the icons. */
-    row->remove_from_list_button_image1 = gtk_image_new_from_icon_name("edit-delete-symbolic", GTK_ICON_SIZE_BUTTON);
-    row->remove_from_list_button_image2 = gtk_image_new_from_icon_name("process-stop-symbolic", GTK_ICON_SIZE_BUTTON);
-
-    /* Create the button. */
-    row->remove_from_list_button = gtk_button_new();
-    gtk_widget_set_tooltip_text(row->remove_from_list_button, _("Remove from list"));
-    gtk_button_set_image(GTK_BUTTON(row->remove_from_list_button), row->remove_from_list_button_image1);
-
-    gtk_box_pack_start(GTK_BOX(row->secondary_box), row->remove_from_list_button, TRUE, TRUE, 0);
-    gtk_widget_set_halign(row->remove_from_list_button, GTK_ALIGN_END);
-    row->signal_id = g_signal_connect(row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
-
-    /* GtkRevealer stuff. */
-    row->progress_bar = gtk_progress_bar_new();
-    gtk_container_add(GTK_CONTAINER(row->revealer), row->progress_bar);
-    gtk_revealer_set_reveal_child(GTK_REVEALER(row->revealer), FALSE);
-    gtk_revealer_set_transition_type(GTK_REVEALER(row->revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
-    gtk_revealer_set_transition_duration(GTK_REVEALER(row->revealer), 500);
-
-    /* Last bit of work. */
-    gtk_widget_show_all (GTK_WIDGET(row));
+	row->progress_icon = dzl_progress_icon_new();
+	gtk_button_set_image (GTK_BUTTON(row->progress_button), row->progress_icon);
+	gtk_widget_show(row->progress_icon);
 }
 
 static void
 raider_file_row_dispose (GObject *obj)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(obj);
-
     g_free(row->filename);
     row->filename = NULL;
-
     g_free(row->basename);
     row->basename = NULL;
-
     g_free(row->notification_title);
     row->notification_title = NULL;
 
@@ -144,6 +112,9 @@ static void
 raider_file_row_class_init (RaiderFileRowClass *klass)
 {
     G_OBJECT_CLASS (klass)->dispose = raider_file_row_dispose;
+
+    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/raider/ui/raider-file-row.ui");
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), RaiderFileRow, button_box);
 }
 
 RaiderFileRow *raider_file_row_new (const char *str)
@@ -153,9 +124,8 @@ RaiderFileRow *raider_file_row_new (const char *str)
     file_row->filename = g_strdup(str);
     file_row->basename = g_path_get_basename(str);
 
-    /* Set the label's properties. */
-    gtk_label_set_label(GTK_LABEL(file_row->filename_label), file_row->basename);
-    gtk_widget_set_tooltip_text(file_row->box, file_row->filename);
+	g_object_set(file_row, "title", file_row->basename, NULL);
+	hdy_action_row_set_subtitle (HDY_ACTION_ROW(file_row), file_row->filename);
 
     /* Notification stuff. */
     file_row->notification_title = g_strconcat(_("Finished shredding "), file_row->basename, NULL);
@@ -187,10 +157,9 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
     }
 
     /* Remove the item. */
-    raider_file_row_delete(file_row->remove_from_list_button, NULL);
+    raider_file_row_delete(NULL, file_row);
 }
 
-/* This function which is call be g_thread_pool_push starts the shredding. */
 void launch (gpointer data, gpointer user_data)
 {
     RaiderFileRow *file_row = RAIDER_FILE_ROW(data);
@@ -208,8 +177,26 @@ void launch (gpointer data, gpointer user_data)
     gchar *number_of_passes = g_strdup_printf("%d", g_settings_get_int(file_row->settings, "number-of-passes"));
     gchar *number_of_passes_option = g_strconcat("--iterations=", number_of_passes, NULL);
 
-    /* Get the remove method. */
-    gchar *remove_method = g_settings_get_string(file_row->settings, "remove-method");
+    /* Get the remove method. The correspondings for each number is defined here. */
+    gchar *remove_method;
+    switch (g_settings_get_int (file_row->settings, "remove-method"))
+        {
+        case 0:
+                {
+                    remove_method = g_strdup("wipesync");
+                    break;
+                }
+        case 1:
+                {
+                    remove_method = g_strdup("wipe");
+                    break;
+                }
+        case 2:
+                {
+                    remove_method = g_strdup("unlink");
+                    break;
+                }
+        }
     gchar *remove_method_command = g_strconcat("--remove=", remove_method, NULL);
 
     /* If that user requests, shred part of a file. */
@@ -219,7 +206,7 @@ void launch (gpointer data, gpointer user_data)
 
     /* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
     for the commands that are absent in this launch. There is no error as shred does not complain
-    about too many --verbose's */
+    about too many --verbose'es */
     file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
                                          shred_executable, "--verbose", file_row->filename,
                                          number_of_passes_option,
@@ -254,15 +241,9 @@ void launch (gpointer data, gpointer user_data)
     GInputStream *stream = g_subprocess_get_stderr_pipe(file_row->process);
     file_row->data_stream = g_data_input_stream_new(stream);
 
-    /* Show the progress bar. */
-    gtk_revealer_set_reveal_child(GTK_REVEALER (file_row->revealer), TRUE);
-
-    /* Change the signal handler so the file row is not immediately deleted. */
-    g_signal_handler_disconnect(file_row->remove_from_list_button, file_row->signal_id);
-    g_signal_connect(file_row->remove_from_list_button, "clicked", G_CALLBACK(raider_file_row_shredding_abort), file_row);
-
-    /* Change the icon. */
-    gtk_button_set_image(GTK_BUTTON(file_row->remove_from_list_button), file_row->remove_from_list_button_image2);
+    /* Change the button. */
+	gtk_widget_hide(file_row->remove_from_list_button);
+	gtk_box_pack_start(GTK_BOX(file_row->button_box), file_row->progress_button, TRUE, TRUE, 0);
 
     /* Check the output every 100 milliseconds. */
     file_row->timout_id = g_timeout_add(100, process_shred_output, data);
@@ -297,7 +278,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
     functions can be self contained, and not hold duplicate code. */
 
     gchar **tokens = g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, row->progress_bar, row->filename};
+    struct _fsm fsm = {start, tokens, 0, row->progress_icon, row->filename};
 
     /* Pretty clever, no? */
     while (fsm.state != NULL)
@@ -329,7 +310,7 @@ void stop(void *ptr_to_fsm)
         fsm->tokens--;
     }
 
-    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(fsm->progress_bar), (gdouble) (fsm->current / fsm->number_of_passes));
+    dzl_progress_icon_set_progress(DZL_PROGRESS_ICON(fsm->progress_icon), (gdouble) (fsm->current / fsm->number_of_passes));
 }
 
 /* This function checks if shred sent the output. */

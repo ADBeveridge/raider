@@ -1,0 +1,14 @@
+[default.environment]
+GTK_THEME=Adwaita
+
+[default]
+name=Default
+runtime=host
+toolchain=default
+config-opts=
+run-opts=
+prefix=/home/pi/.cache/gnome-builder/install/raider/host
+app-id=
+postbuild=
+prebuild=
+default=true
