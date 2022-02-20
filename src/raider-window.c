@@ -3,7 +3,7 @@
 #include <glib/gi18n.h>
 #include "raider-window.h"
 #include "raider-file-row.h"
- 
+
 struct _RaiderWindow
 {
     HdyApplicationWindow parent;
