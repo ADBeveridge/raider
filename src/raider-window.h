@@ -2,11 +2,12 @@
 #define __RAIDERWINDOW_H
 
 #include <gtk/gtk.h>
+#include <handy.h>
 #include "raider.h"
 
 #define RAIDER_WINDOW_TYPE (raider_window_get_type ())
 
-G_DECLARE_FINAL_TYPE (RaiderWindow, raider_window, RAIDER, WINDOW, GtkApplicationWindow)
+G_DECLARE_FINAL_TYPE (RaiderWindow, raider_window, RAIDER, WINDOW, HdyApplicationWindow)
 
 RaiderWindow *raider_window_new (Raider *app);
 

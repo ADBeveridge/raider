@@ -1,5 +1,7 @@
 {
     "app-id" : "com.github.ADBeveridge.Raider",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "41",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
@@ -36,7 +38,7 @@
     ],
     "build-options" : {
         "env" : {
-            "GTK_THEME" : "Adwaita"
+            "GTK_THEME" : null
         }
     }
 }

@@ -1,0 +1,201 @@
+#
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2022-01-24 15:56+0000\n"
+"PO-Revision-Date: 2022-02-05 10:01+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Language: sv\n"
+
+# PROGRAM NAME #
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
+#: data/com.github.ADBeveridge.Raider.desktop.in:2 src/raider-window.ui:11
+#: src/raider-window.ui:76
+msgid "File Shredder"
+msgstr "File Shredder"
+
+# APPDATA FILE #
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7 src/raider.c:127
+msgid "Securely delete your files"
+msgstr "Ta bort dina filer på ett säkert sätt"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:10
+msgid "File Shredder, also named Raider, is a simple application that enables you to securely delete files that was built with GNOME in mind. It supports all the options that its backend has, plus a realtime progress tracking."
+msgstr "File Shredder, även kallad Raider, är ett enkelt program som gör att du säkert kan ta bort filer och som skapats med GNOME i åtanke. Det stöder alla alternativ som dess bakgrundsgränssnitt har, plus förloppsspårning i realtid."
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+msgid "The very first release of File Shredder. It supports progress tracking, and boasts a GNOME compliant interface."
+msgstr "Den allra första utgåvan av File Shredder. Den stöder förloppsspårning och har ett GNOME-kompatibelt gränssnitt."
+
+# DESKTOP FILE #
+#: data/com.github.ADBeveridge.Raider.desktop.in:9
+msgid "Shred your files securely"
+msgstr "Ta bort dina filer på ett säkert sätt"
+
+# GSETTINGS FILE #
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+#: src/raider-preferences.ui:117
+msgid "Hide shredding"
+msgstr "Dölj dokumentförstöring"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid "Whether to hide shredding. This is done by overwriting the file(s) with zeros."
+msgstr "Om filförstöring skall döljas. Detta görs genom att skriva över filen med nollor."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr "Ta bort fil"
+
+#: src/raider-window.ui:80
+msgid "Shred"
+msgstr "Förstör"
+
+# RAIDER WINDOW.C #
+#: src/raider-window.c:48
+msgid "Add files or drop here"
+msgstr "Lägg till filer eller släpp här"
+
+#: src/raider-window.c:91
+msgid "Unable to add files!"
+msgstr "Kan inte lägga till filer!"
+
+#: src/raider-window.c:117
+msgid "File does not exist!"
+msgstr "Filen finns inte!"
+
+#: src/raider-window.c:150
+msgid "Open File"
+msgstr "Öppna fil"
+
+#: src/raider-window.c:151
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/raider-window.c:151
+msgid "Open"
+msgstr "Öppen"
+
+#: src/raider-window.c:187
+msgid "No files added!"
+msgstr "Inga filer har lagts till!"
+
+# RAIDER PREFERENCES #
+#: src/raider-preferences.ui:15
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: src/raider-preferences.ui:75 src/raider-preferences.ui:88
+msgid "How many times to overwrite the file(s)"
+msgstr "Hur många gånger skall filen/filerna skrivas över"
+
+#: src/raider-preferences.ui:77
+msgid "Number of passes:"
+msgstr "Antal pass:"
+
+#: src/raider-preferences.ui:101
+msgid "Remove after shredding"
+msgstr "Ta bort efter förstöring"
+
+#: src/raider-preferences.ui:105
+msgid "Remove the shredded file from the computer"
+msgstr "Ta bort den förstörda filen från datorn"
+
+#: src/raider-preferences.ui:121
+msgid "Hide shredding with a final overwrite of zeros"
+msgstr "Dölj förstöring med en slutlig överskrivning av nollor"
+
+#: src/raider-preferences.ui:141
+msgid "Basic"
+msgstr "Grundläggande"
+
+#: src/raider-preferences.ui:156
+msgid "Override file permisions when shredding"
+msgstr "Åsidosätt filbehörighet vid förstöring"
+
+#: src/raider-preferences.ui:160
+msgid "Override the file(s) permissions if you do not have them"
+msgstr "Åsidosätt filbehörigheter om du inte har dem"
+
+#: src/raider-preferences.ui:172
+msgid "Do not round file sizes to the next block"
+msgstr "Avrunda inte filstorlekar till nästa block"
+
+#: src/raider-preferences.ui:176
+msgid "This option will shred the entirety of every block that the file(s) has any data on"
+msgstr "Detta alternativ förstör fullständigt varje block som filen/filerna har data på"
+
+#: src/raider-preferences.ui:190 src/raider-preferences.ui:204
+msgid "How to remove the file(s) from the computer"
+msgstr "Hur ta bort filen/filerna från datorn"
+
+#: src/raider-preferences.ui:193
+msgid "Remove method:"
+msgstr "Borttagningsmetod:"
+
+#: src/raider-preferences.ui:207
+msgid "Wipesync"
+msgstr "Wipesync"
+
+#: src/raider-preferences.ui:208
+msgid "Wipe"
+msgstr "Rensa"
+
+#: src/raider-preferences.ui:209
+msgid "Unlink"
+msgstr "Avlänka"
+
+#: src/raider-preferences.ui:221 src/raider-preferences.ui:235
+msgid "Get data from a file, and overwrite the to be shredded file(s) with the contents of it"
+msgstr "Hämta data från en fil och använd den till att skriva över de filer som skall förstöras"
+
+#: src/raider-preferences.ui:224
+msgid "Get overwrite data from:"
+msgstr "Hämta överskrivningsdata från:"
+
+#: src/raider-preferences.ui:247 src/raider-preferences.ui:261
+msgid "How many bytes to shred of the file(s)"
+msgstr "Hur många byte som skall förstöras av filen/filerna"
+
+#: src/raider-preferences.ui:250
+msgid "Number of bytes to shred:"
+msgstr "Antal byte att förstöra:"
+
+#: src/raider-preferences.ui:278
+msgid "Advanced"
+msgstr "Avancerat"
+
+# RAIDER FILE ROW.C #
+#: src/raider-file-row.c:111
+msgid "Remove from list"
+msgstr "Ta bort från listan"
+
+#: src/raider-file-row.c:164
+msgid "Finished shredding "
+msgstr "Slutförde förstöring av "
+
+# GEARS MENU #
+#: src/gears-menu.ui:8
+msgid "New Window"
+msgstr "Nytt fönster"
+
+#: src/gears-menu.ui:14
+msgid "_Preferences"
+msgstr "_Inställningar"
+
+#: src/gears-menu.ui:20
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: src/gears-menu.ui:24
+msgid "_About"
+msgstr "_Om"

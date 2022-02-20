@@ -6,7 +6,7 @@
 
 struct _RaiderWindow
 {
-    GtkApplicationWindow parent;
+    HdyApplicationWindow parent;
 
     GtkWidget *header_bar;
     GtkWidget *contents_box;
@@ -18,23 +18,18 @@ struct _RaiderWindow
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
     GtkWidget *hint_page;
-    GtkWidget *status_page;
-
-    GtkCssProvider *provider;
+    GtkRevealer *shred_add_control_revealer;
 };
 
-G_DEFINE_TYPE (RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
+G_DEFINE_TYPE (RaiderWindow, raider_window, HDY_TYPE_APPLICATION_WINDOW)
 
 static void
 raider_window_init (RaiderWindow *win)
 {
-    GtkBuilder *builder;
-    GMenuModel *menu;
-
     gtk_widget_init_template(GTK_WIDGET(win));
 
-    builder = gtk_builder_new_from_resource ("/com/github/ADBeveridge/raider/ui/gears-menu.ui");
-    menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
+	GtkBuilder *builder = gtk_builder_new_from_resource ("/com/github/ADBeveridge/raider/ui/gears-menu.ui");
+    GMenuModel *menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
     gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (win->primary_menu), menu);
     g_object_unref (builder);
 
@@ -42,12 +37,6 @@ raider_window_init (RaiderWindow *win)
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
-
-    win->status_page = hdy_status_page_new();
-    hdy_status_page_set_icon_name (HDY_STATUS_PAGE(win->status_page), "document-open-symbolic");
-    hdy_status_page_set_title(HDY_STATUS_PAGE(win->status_page), _("Add files or drop here"));
-    gtk_widget_show_all(win->status_page);
-    gtk_box_pack_start(GTK_BOX(win->hint_page), win->status_page, TRUE, TRUE, 0);
 }
 
 static void
@@ -65,6 +54,7 @@ raider_window_class_init (RaiderWindowClass *class)
 
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_add_control_revealer);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, window_stack);
@@ -88,7 +78,7 @@ void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gin
 
     if (filenames == NULL)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Unable to add files!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Unable to add files!"));
         gtk_drag_finish (context, FALSE, FALSE, time);
         return;
     }
@@ -114,12 +104,12 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     GFile *file = g_file_new_for_path (filename_to_open);
     if (g_file_query_exists (file, NULL) == FALSE)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("File does not exist!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("File does not exist!"));
         return;
     }
     if (g_file_query_file_type (file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
     {
-    	gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
+    	hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
         return;
     }
     
@@ -131,6 +121,7 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     gtk_container_add(GTK_CONTAINER (window->list_box), file_row);
 
     gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_box_page");
+    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), TRUE);
 
     g_free (filename_to_open);
 }
@@ -147,6 +138,7 @@ raider_window_close (gpointer data, gpointer user_data)
     if (number == 0)
     {
         gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
+        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), FALSE);
     }
 }
 
@@ -183,14 +175,14 @@ void shred_file(GtkWidget *widget, gpointer data)
 {
     /* Clear the subtitle. */
     RaiderWindow *window = RAIDER_WINDOW(data);
-    gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), NULL);
+    hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
     guint num = g_list_length(list);
     if (num == 0)
     {
-        gtk_header_bar_set_subtitle(GTK_HEADER_BAR(window->header_bar), _("No files added!"));
+        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("No files added!"));
     }
     else
     {
