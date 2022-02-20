@@ -7,20 +7,15 @@
     <property name="visible">True</property>
     <property name="can-focus">True</property>
     <property name="title" translatable="yes">(filename)</property>
-    <property name="activatable-widget">raider_file_row_button</property>
     <property name="subtitle" translatable="yes">(full filename)</property>
     <child>
-      <object class="GtkButton" id="raider_file_row_button">
+      <object class="GtkBox" id="button_box">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="receives-default">False</property>
-        <signal name="activate" handler="raider_file_row_delete" object="RaiderFileRow" swapped="no"/>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
         <child>
-          <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="icon-name">edit-delete</property>
-          </object>
+          <placeholder/>
         </child>
       </object>
     </child>
