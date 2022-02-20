@@ -1,5 +1,7 @@
 {
     "app-id" : "com.github.ADBeveridge.Raider",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "41",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
@@ -21,6 +23,18 @@
     ],
     "modules" : [
         {
+            "name" : "libdazzle",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libdazzle.git",
+                    "commit" : "1baded912ba4257db1f843aacf27442695c35413"
+                }
+            ]
+        },
+        {
             "name" : "raider",
             "buildsystem" : "meson",
             "builddir" : true,
@@ -28,15 +42,10 @@
                 {
                     "type" : "git",
                     "url" : "https://github.com/ADBeveridge/raider.git",
-                    "commit" : "1b78a1e15b5dc27414cf525564812a325b71c2c7",
+                    "commit" : "5ef3e102f76de5a1067b4441bc5eb6170464eb38",
                     "branch" : "main"
                 }
             ]
         }
-    ],
-    "build-options" : {
-        "env" : {
-            "GTK_THEME" : "Adwaita"
-        }
-    }
+    ]
 }
