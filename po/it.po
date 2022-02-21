@@ -65,16 +65,13 @@ msgid "Preferences"
 msgstr "Preferenze"
 
 #: src/raider-preferences.ui:75
+#: src/raider-preferences.ui:88
 msgid "How many times to overwrite the file(s)"
 msgstr "Quante volte sovrascrivere i file"
 
 #: src/raider-preferences.ui:77
 msgid "Number of passes:"
 msgstr "Numero di passaggi:"
-
-#: src/raider-preferences.ui:88
-msgid "How many times to overwrite the file(s)"
-msgstr "Quante volte sovrascrivere i file"
 
 #: src/raider-preferences.ui:101
 msgid "Remove after shredding"

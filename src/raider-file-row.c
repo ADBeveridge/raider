@@ -13,8 +13,6 @@ struct _RaiderFileRow
 	GtkWidget *progress_button;
 	GtkWidget *progress_icon;
 
-	GtkRevealer *revealer;
-
     /* Notification widget. */
     GNotification *notification;
 	gchar *notification_title;
@@ -104,6 +102,8 @@ raider_file_row_dispose (GObject *obj)
     row->basename = NULL;
     g_free(row->notification_title);
     row->notification_title = NULL;
+    g_free(row->notification_subtitle);
+    row->notification_subtitle = NULL;
 
     G_OBJECT_CLASS (raider_file_row_parent_class)->dispose (obj);
 }
@@ -128,8 +128,11 @@ RaiderFileRow *raider_file_row_new (const char *str)
 	hdy_action_row_set_subtitle (HDY_ACTION_ROW(file_row), file_row->filename);
 
     /* Notification stuff. */
-    file_row->notification_title = g_strconcat(_("Finished shredding "), file_row->basename, NULL);
+    file_row->notification_title = g_strdup(_("Shredded"));
     file_row->notification = g_notification_new(file_row->notification_title);
+
+    file_row->notification_subtitle = g_strdup(file_row->basename);
+    g_notification_set_body(file_row->notification, file_row->notification_subtitle);
 
     return file_row;
 }
