@@ -203,9 +203,10 @@ void launch (gpointer data, gpointer user_data)
     gchar *remove_method_command = g_strconcat("--remove=", remove_method, NULL);
 
     /* If that user requests, shred part of a file. */
-    gchar *number_of_bytes_to_shred = g_settings_get_string(file_row->settings, "number-of-bytes-to-shred");
-    if (g_strcmp0(number_of_bytes_to_shred, "") == 0) do_number_of_bytes_to_shred_command = FALSE;
-    gchar *number_of_bytes_to_shred_command = g_strconcat("--size=", number_of_bytes_to_shred, NULL);
+    int number_of_bytes_to_shred = g_settings_get_int(file_row->settings, "number-of-bytes-to-shred");
+    if (number_of_bytes_to_shred == 0) do_number_of_bytes_to_shred_command = FALSE;
+    gchar *number_of_bytes_to_shred_converted = g_strdup_printf("%d", number_of_bytes_to_shred);
+    gchar *number_of_bytes_to_shred_command = g_strconcat("--size=", number_of_bytes_to_shred_converted, NULL);
 
     /* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
     for the commands that are absent in this launch. There is no error as shred does not complain
@@ -225,6 +226,8 @@ void launch (gpointer data, gpointer user_data)
     g_free(remove_method);
     g_free(remove_method_command);
     g_free(shred_executable);
+    g_free(number_of_bytes_to_shred_converted);
+    g_free(number_of_bytes_to_shred_command);
 
     /* Avoid dangling pointer references. */
     number_of_passes = NULL;
@@ -232,6 +235,8 @@ void launch (gpointer data, gpointer user_data)
     remove_method = NULL;
     remove_method_command = NULL;
     shred_executable = NULL;
+    number_of_bytes_to_shred_converted = NULL;
+    number_of_bytes_to_shred_command = NULL;
 
     if (error != NULL)
     {

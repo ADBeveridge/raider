@@ -20,7 +20,7 @@ struct _RaiderPreferences
 	GtkWidget *overwrite_data_source_bar;
 	GtkWidget *overwrite_data_source_file_chooser;
 	GtkWidget *number_of_bytes_to_shred_bar;
-	GtkWidget *number_of_bytes_to_shred_entry;
+	GtkWidget *number_of_bytes_to_shred_spin_button;
 	GtkWidget *do_not_round_bar;
 	GtkWidget *do_not_round_switch;
 	GtkWidget *override_permissions_bar;
@@ -83,7 +83,7 @@ raider_preferences_init (RaiderPreferences *prefs)
                      G_SETTINGS_BIND_DEFAULT);
 
     g_settings_bind (prefs->settings, "number-of-bytes-to-shred",
-                     prefs->number_of_bytes_to_shred_entry, "text",
+                     prefs->number_of_bytes_to_shred_spin_button, "value",
                      G_SETTINGS_BIND_DEFAULT);
 
     /* Until I can bind the current file in it, this will not show up, and this is hidden in the .ui file. */
@@ -117,7 +117,7 @@ raider_preferences_class_init (RaiderPreferencesClass *class)
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, overwrite_data_source_bar);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, overwrite_data_source_file_chooser);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_bytes_to_shred_bar);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_bytes_to_shred_entry);
+	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, number_of_bytes_to_shred_spin_button);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, do_not_round_bar);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, do_not_round_switch);
 	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, override_permissions_bar);

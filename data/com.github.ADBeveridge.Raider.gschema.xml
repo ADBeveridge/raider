@@ -20,7 +20,7 @@
         <key name="remove-method" type="i">
            <summary>Remove method</summary>
            <description>How the obfucticated file will be removed from the filesystem.</description>
-          <range min="0" max="2"/>
+           <range min="0" max="2"/>
            <default>0</default>
         </key>
         <key name="override-permissions" type="b">
@@ -33,10 +33,11 @@
            <description>Do not round the file to the next block. This is the default for non-regular files.</description>
            <default>false</default>
         </key>
-        <key name="number-of-bytes-to-shred" type="s">
+        <key name="number-of-bytes-to-shred" type="i">
            <summary>Number of bytes to shred entry</summary>
            <description>Shred the number of bytes you want, and leave the rest of the file untouched.</description>
-           <default>''</default>
+           <range min="0"/>
+           <default>0</default>
         </key>
         <key name="shred-executable" type="s">
            <summary>Shred executable</summary>
