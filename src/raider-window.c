@@ -115,10 +115,11 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     
     g_object_unref(file);
 
-
     GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
     g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
-    gtk_container_add(GTK_CONTAINER (window->list_box), file_row);
+
+    /* Insert it at the end of the list, but before the + row. */
+    gtk_container_add(GTK_CONTAINER(window->list_box), file_row);
 
     gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_box_page");
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), TRUE);

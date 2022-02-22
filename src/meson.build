@@ -7,7 +7,9 @@ raider_sources = [
   'raider-preferences.c',
   'raider-preferences.h',
   'raider-file-row.c',
-  'raider-file-row.h'
+  'raider-file-row.h',
+  'raider-progress-info-popover.c',
+  'raider-progress-info-popover.h'
 ]
 
 raider_deps = [
