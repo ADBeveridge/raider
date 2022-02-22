@@ -36,8 +36,11 @@ raider_preferences_init (RaiderPreferences *prefs)
 {
     gtk_widget_init_template (GTK_WIDGET (prefs));
 
-    GListStore *list_store = g_list_store_new (HDY_TYPE_VALUE_OBJECT);
+    /* Create the shred type popover. */
+    g_object_set(prefs->remove_method_bar, "use-subtitle", FALSE, NULL);
 
+
+    GListStore *list_store = g_list_store_new (HDY_TYPE_VALUE_OBJECT);
     HdyValueObject *obj = hdy_value_object_new_string ("Wipesync");
     g_list_store_insert (list_store, 0, obj);
     g_clear_object (&obj);
@@ -52,6 +55,8 @@ raider_preferences_init (RaiderPreferences *prefs)
 
     hdy_combo_row_bind_name_model (HDY_COMBO_ROW(prefs->remove_method_bar), G_LIST_MODEL (list_store), (HdyComboRowGetNameFunc) hdy_value_object_dup_string, NULL, NULL);
 
+
+    /* GSettings bindings. */
 	prefs->settings = g_settings_new ("com.github.ADBeveridge.Raider");
 	g_settings_bind (prefs->settings, "hide-shredding",
                      prefs->hide_shredding_switch, "active",
@@ -81,7 +86,7 @@ raider_preferences_init (RaiderPreferences *prefs)
                      prefs->number_of_bytes_to_shred_entry, "text",
                      G_SETTINGS_BIND_DEFAULT);
 
-    /* Until I can bind the current file in it, this will not show up. */
+    /* Until I can bind the current file in it, this will not show up, and this is hidden in the .ui file. */
 	/*g_settings_bind (prefs->settings, "overwrite-data-file",
                      prefs->overwrite_data_source_file_chooser, "text",
                      G_SETTINGS_BIND_DEFAULT);*/

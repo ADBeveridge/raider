@@ -91,7 +91,6 @@
                 <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Remove method</property>
                 <property name="subtitle" translatable="yes">How to remove the files from the fileystem</property>
-                <property name="use-subtitle">True</property>
               </object>
             </child>
             <child>
