@@ -60,7 +60,6 @@
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="margin-right">6</property>
-                        <signal name="clicked" handler="shred_file" object="RaiderWindow" swapped="no"/>
                         <style>
                           <class name="destructive-action"/>
                         </style>

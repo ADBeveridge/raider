@@ -7,6 +7,8 @@
 
 G_DECLARE_FINAL_TYPE (RaiderProgressInfoPopover, raider_progress_info_popover, RAIDER, PROGRESS_INFO_POPOVER, GtkPopover)
 
-RaiderProgressInfoPopover *raider_file_row_new (const char *str);
+RaiderProgressInfoPopover *raider_progress_info_popover_new (GtkWidget *relative);
+void raider_progress_info_popover_set_progress (RaiderProgressInfoPopover *popover, gdouble fraction);
+void raider_progress_info_popover_set_text (RaiderProgressInfoPopover *popover, gchar *text);
 
 #endif

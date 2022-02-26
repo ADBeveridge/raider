@@ -3,6 +3,7 @@
 #include <dazzle.h>
 #include <glib/gi18n.h>
 #include "raider-file-row.h"
+#include "raider-progress-info-popover.h"
 
 struct _RaiderFileRow
 {
@@ -12,6 +13,7 @@ struct _RaiderFileRow
     GtkWidget *remove_from_list_button;
 	GtkWidget *progress_button;
 	GtkWidget *progress_icon;
+    GtkWidget *popover;
 
     /* Notification widget. */
     GNotification *notification;
@@ -38,6 +40,7 @@ struct _fsm
     gchar **tokens;
     gint incremented_number;
     GtkWidget *progress_icon;
+    GtkWidget *popover;
     gchar *filename;
 
     gdouble current;
@@ -61,12 +64,19 @@ void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data)
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
     row->aborted = TRUE;
     g_subprocess_force_exit(row->process);
+
+    /* finish_shredding will be called here. */
 }
 
 void raider_file_row_delete (GtkWidget *widget, gpointer data)
 {
 	GtkWidget *list_box = gtk_widget_get_parent(data); /* Get the list box. */
     gtk_container_remove(GTK_CONTAINER(list_box), data);
+}
+
+void raider_popup_popover (GtkWidget *widget, gpointer data)
+{
+    gtk_popover_popup(GTK_POPOVER(data));
 }
 
 static void
@@ -87,9 +97,14 @@ raider_file_row_init (RaiderFileRow *row)
 	row->progress_button = gtk_button_new();
 	gtk_widget_show(row->progress_button);
 
+    /* Progress icon. */
 	row->progress_icon = dzl_progress_icon_new();
 	gtk_button_set_image (GTK_BUTTON(row->progress_button), row->progress_icon);
 	gtk_widget_show(row->progress_icon);
+
+    /* The popover. */
+    row->popover = GTK_WIDGET(raider_progress_info_popover_new(row->progress_button));
+    g_signal_connect (row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
 }
 
 static void
@@ -250,8 +265,8 @@ void launch (gpointer data, gpointer user_data)
     file_row->data_stream = g_data_input_stream_new(stream);
 
     /* Change the button. */
-	gtk_widget_hide(file_row->remove_from_list_button);
-	gtk_box_pack_start(GTK_BOX(file_row->button_box), file_row->progress_button, TRUE, TRUE, 0);
+    gtk_widget_hide(file_row->remove_from_list_button);
+	gtk_box_pack_start (GTK_BOX(file_row->button_box), file_row->progress_button, FALSE, FALSE, 0);
 
     /* Check the output every 100 milliseconds. */
     file_row->timout_id = g_timeout_add(100, process_shred_output, data);
@@ -286,7 +301,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
     functions can be self contained, and not hold duplicate code. */
 
     gchar **tokens = g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, row->progress_icon, row->filename};
+    struct _fsm fsm = {start, tokens, 0, row->progress_icon, row->popover, row->filename};
 
     /* Pretty clever, no? */
     while (fsm.state != NULL)
@@ -318,7 +333,9 @@ void stop(void *ptr_to_fsm)
         fsm->tokens--;
     }
 
-    dzl_progress_icon_set_progress(DZL_PROGRESS_ICON(fsm->progress_icon), (gdouble) (fsm->current / fsm->number_of_passes));
+    gdouble progress = (fsm->current / fsm->number_of_passes);
+    dzl_progress_icon_set_progress(DZL_PROGRESS_ICON(fsm->progress_icon), progress);
+    raider_progress_info_popover_set_progress (RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
 }
 
 /* This function checks if shred sent the output. */
@@ -400,12 +417,15 @@ void parse_fraction(void *ptr_to_fsm)
 
     /* THE BIG CODE OF SHREDDING PROGRESS. */
     /* I subtract one because in the output, it represents which pass it is working on,
-     * whereas the progress bar indicates how much needs to be done. */
+     * whereas the progress bar indicates how much more needs to be done. */
     fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
     fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
     /* The progress update is done in the function stop. */
 
     g_free(fraction_chars);
+
+    /* Set the text of the progress bar with a string that looks like '7/15". */
+    raider_progress_info_popover_set_text (RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), fsm->tokens[0]);
 
     /* Point to the next word. */
     fsm->tokens++;

@@ -12,5 +12,6 @@ G_DECLARE_FINAL_TYPE (RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, HdyActio
 
 RaiderFileRow *raider_file_row_new (const char *str);
 void launch (gpointer data, gpointer user_data);
+void raider_file_row_shredding_abort (GtkWidget *widget, gpointer data);
 
 #endif

@@ -19,6 +19,8 @@ struct _RaiderWindow
     GtkWidget *remove_file_check_button;
     GtkWidget *hint_page;
     GtkRevealer *shred_add_control_revealer;
+
+    guint signal_id;
 };
 
 G_DEFINE_TYPE (RaiderWindow, raider_window, HDY_TYPE_APPLICATION_WINDOW)
@@ -37,6 +39,8 @@ raider_window_init (RaiderWindow *win)
     static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
+
+    win->signal_id = g_signal_connect (win->shred_button, "clicked", G_CALLBACK(shred_file), win);
 }
 
 static void
@@ -61,7 +65,6 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hint_page);
 
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
 }
 
@@ -140,6 +143,13 @@ raider_window_close (gpointer data, gpointer user_data)
     {
         gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
         gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), FALSE);
+
+        /* Change the Shred button's function. */
+        g_object_set (window->shred_button, "label", "Shred", NULL);
+
+        /* Change the signal handler. */
+        g_signal_handler_disconnect (window->shred_button, window->signal_id);
+        window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (shred_file), window);
     }
 }
 
@@ -165,6 +175,21 @@ raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window)
     gtk_widget_destroy (dialog);
 }
 
+void raider_abort_shredding (GtkWidget *widget, gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
+    GList *l;
+    for (l = list; l != NULL; l = l->next)
+    {
+        raider_file_row_shredding_abort (NULL, l->data);
+    }
+    g_list_free(list);
+    g_list_free (l);
+
+    /* Since all files are gone, we can reset the shredding button. */
+}
 
 /*
  * THE BIG FUNCTION
@@ -177,6 +202,13 @@ void shred_file(GtkWidget *widget, gpointer data)
     /* Clear the subtitle. */
     RaiderWindow *window = RAIDER_WINDOW(data);
     hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
+
+    /* Change the Shred button's function. */
+    g_object_set (window->shred_button, "label", "Abort", NULL);
+
+    /* Change the signal handler. */
+    g_signal_handler_disconnect (window->shred_button, window->signal_id);
+    window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (raider_abort_shredding), window);
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));

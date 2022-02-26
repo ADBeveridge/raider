@@ -121,20 +121,34 @@ about_activated (GSimpleAction *simple,
                  GVariant      *parameter,
                  gpointer       user_data)
 {
-    const gchar *authors[] = {"Alan Beveridge", NULL};
-    const gchar *artwork[] = {"noëlle", NULL};
+    GtkApplication *app = GTK_APPLICATION (user_data);
+    GtkWindow *win = gtk_application_get_active_window(app);
 
-    GtkWidget *dialog = gtk_about_dialog_new();
-    gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (dialog), "File Shredder");
-    gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (dialog), "0.1.0");
-    gtk_about_dialog_set_comments (GTK_ABOUT_DIALOG (dialog), _("Securely delete your files"));
-    gtk_about_dialog_set_license_type (GTK_ABOUT_DIALOG (dialog), GTK_LICENSE_GPL_3_0);
-    gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
-    gtk_about_dialog_set_artists(GTK_ABOUT_DIALOG(dialog), artwork);
-    gtk_about_dialog_set_logo_icon_name (GTK_ABOUT_DIALOG (dialog), "com.github.ADBeveridge.Raider");
+    const gchar *artists[] =
+    {
+        "noëlle",
+        NULL
+    };
+    const gchar *authors[] =
+    {
+        "Alan Beveridge",
+        NULL
+    };
 
-    gtk_dialog_run (GTK_DIALOG (dialog) );
-    gtk_widget_destroy (dialog);
+    g_autofree gchar *program_name = g_strdup("File Shredder");
+
+    gtk_show_about_dialog (win,
+                           "transient-for", win,
+                           "modal", TRUE,
+                           "program-name", program_name,
+                           "version", _("0.1.0"),
+                           "comments", _("Securely delete your files"),
+                           "license-type", GTK_LICENSE_GPL_3_0,
+                           "artists", artists,
+                           "authors", authors,
+                           "translator-credits", _("translator-credits"),
+                           "logo-icon-name", "com.github.ADBeveridge.Raider",
+                           NULL);
 }
 
 void
