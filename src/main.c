@@ -31,13 +31,9 @@ main (int argc, char *argv[])
     Raider *app;
     int status;
 
-
-#ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
-#endif
-
 
     app = raider_new ();
     status = g_application_run (G_APPLICATION (app), argc, argv);
