@@ -47,7 +47,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRevealer" id="shred_add_control_revealer">
+                  <object class="GtkRevealer" id="shred_control_revealer">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="transition-type">slide-right</property>
@@ -71,19 +71,28 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="add_file_button">
+                  <object class="GtkRevealer" id="add_file_revealer">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="tooltip-text" translatable="yes">Add files for shredding</property>
-                    <property name="margin-right">6</property>
-                    <property name="always-show-image">True</property>
-                    <signal name="clicked" handler="raider_window_open_file_dialog" object="RaiderWindow" swapped="no"/>
+                    <property name="can-focus">False</property>
+                    <property name="transition-type">slide-right</property>
+                    <property name="transition-duration">350</property>
+                    <property name="reveal-child">True</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkButton" id="add_file_button">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">list-add-symbolic</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="tooltip-text" translatable="yes">Add files for shredding</property>
+                        <property name="margin-right">6</property>
+                        <property name="always-show-image">True</property>
+                        <signal name="clicked" handler="raider_window_open_file_dialog" object="RaiderWindow" swapped="no"/>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="icon-name">list-add-symbolic</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

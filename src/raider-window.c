@@ -18,7 +18,8 @@ struct _RaiderWindow
     GtkWidget *number_of_passes_spin_button;
     GtkWidget *remove_file_check_button;
     GtkWidget *hint_page;
-    GtkRevealer *shred_add_control_revealer;
+    GtkRevealer *shred_control_revealer;
+    GtkRevealer *add_file_revealer;
 
     guint signal_id;
 };
@@ -58,12 +59,13 @@ raider_window_class_init (RaiderWindowClass *class)
 
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_add_control_revealer);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_control_revealer);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, window_stack);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hint_page);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, add_file_revealer);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
 }
@@ -125,7 +127,7 @@ raider_window_open (gchar *filename_to_open, gpointer data)
     gtk_container_add(GTK_CONTAINER(window->list_box), file_row);
 
     gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_box_page");
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), TRUE);
+    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), TRUE);
 
     g_free (filename_to_open);
 }
@@ -142,7 +144,7 @@ raider_window_close (gpointer data, gpointer user_data)
     if (number == 0)
     {
         gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
-        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_add_control_revealer), FALSE);
+        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), FALSE);
 
         /* Change the Shred button's function. */
         g_object_set (window->shred_button, "label", "Shred", NULL);
@@ -150,6 +152,8 @@ raider_window_close (gpointer data, gpointer user_data)
         /* Change the signal handler. */
         g_signal_handler_disconnect (window->shred_button, window->signal_id);
         window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (shred_file), window);
+
+        gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), TRUE);
     }
 }
 
@@ -187,8 +191,6 @@ void raider_abort_shredding (GtkWidget *widget, gpointer data)
     }
     g_list_free(list);
     g_list_free (l);
-
-    /* Since all files are gone, we can reset the shredding button. */
 }
 
 /*
@@ -209,6 +211,9 @@ void shred_file(GtkWidget *widget, gpointer data)
     /* Change the signal handler. */
     g_signal_handler_disconnect (window->shred_button, window->signal_id);
     window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (raider_abort_shredding), window);
+
+    /* Hide the add button. */
+    gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), FALSE);
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
