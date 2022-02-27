@@ -1,0 +1,177 @@
+# Spanish translations for raider package.
+# Copyright (C) 2022 THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-26 21:38+0100\n"
+"PO-Revision-Date: 2022-02-26 21:38+0100\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: src/raider-window.ui:13 src/raider-window.ui:31
+msgid "File Shredder"
+msgstr "Trituradora de archivos"
+
+#: src/raider-window.ui:57
+msgid "Shred"
+msgstr "Triturar"
+
+#: src/raider-window.ui:78
+msgid "Add files for shredding"
+msgstr "Añadir archivos para destruir"
+
+#: src/raider-window.ui:124
+msgid "Add files or drop here"
+msgstr "Añadir archivos o soltar aquí"
+
+#: src/raider-window.c:84
+msgid "Unable to add files!"
+msgstr "¡No se pueden añadir archivos!"
+
+#: src/raider-window.c:110
+msgid "File does not exist!"
+msgstr "¡El archivo no existe!"
+
+#: src/raider-window.c:115
+msgid "Folders are not supported!"
+msgstr "¡Las carpetas no son compatibles!"
+
+#: src/raider-window.c:159
+msgid "Open File"
+msgstr "Abrir archivo"
+
+#: src/raider-window.c:160
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/raider-window.c:160
+msgid "Open"
+msgstr "Abrir"
+
+#: src/raider-window.c:218
+msgid "No files added!"
+msgstr "¡No se han añadido archivos!"
+
+#: src/raider-preferences.ui:29
+msgid "preferences_page"
+msgstr "preferences_page"
+
+#: src/raider-preferences.ui:34
+msgid "Basic"
+msgstr "Básicas"
+
+#: src/raider-preferences.ui:39
+msgid "Remove file"
+msgstr "Eliminar archivo"
+
+#: src/raider-preferences.ui:41
+msgid "Whether to remove the file after shredding"
+msgstr "Si se elimina el archivo después de triturarlo"
+
+#: src/raider-preferences.ui:56
+msgid "Hide Shredding"
+msgstr "Ocultar trituración"
+
+#: src/raider-preferences.ui:58
+msgid "Whether to hide the fact the the files have been shredded"
+msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
+
+#: src/raider-preferences.ui:72
+msgid "Number of passes"
+msgstr "Número de pasadas"
+
+#: src/raider-preferences.ui:74
+msgid "How many times to shred file over"
+msgstr "Cuántas veces hay que triturar el archivo"
+
+#: src/raider-preferences.ui:92
+msgid "Advanced"
+msgstr "Avanzadas"
+
+#: src/raider-preferences.ui:97
+msgid "Remove method"
+msgstr "Método de eliminación"
+
+#: src/raider-preferences.ui:98
+msgid "How to remove the files from the fileystem"
+msgstr "Cómo eliminar los archivos del sistema de archivos"
+
+#: src/raider-preferences.ui:104
+msgid "Overwrite data source"
+msgstr "Sobrescribir fuente de datos"
+
+#: src/raider-preferences.ui:106
+msgid "From what file to get the  data that the files will be overwritten with"
+msgstr ""
+"De qué archivo obtener los datos con los que se sobrescribirán los archivos"
+
+#: src/raider-preferences.ui:120
+msgid "Number of bytes to shred"
+msgstr "Número de bytes a triturar"
+
+#: src/raider-preferences.ui:121
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr ""
+"Qué parte del archivo se va a destruir. 0 para destruir todo el archivo"
+
+#: src/raider-preferences.ui:138
+msgid "Do not round file sizes"
+msgstr "No redondear el tamaño de los archivos"
+
+#: src/raider-preferences.ui:140
+msgid "Do not round file sizes to the next block"
+msgstr "No redondear el tamaño de los archivos al siguiente bloque"
+
+#: src/raider-preferences.ui:154
+msgid "Override file permissions"
+msgstr "Anular los permisos de los archivos"
+
+#: src/raider-preferences.ui:156
+msgid ""
+"Whether to override the file permissions in case of insufficient permissions"
+msgstr ""
+"Si se anulan los permisos de los archivos en caso de que los permisos sean "
+"insuficientes"
+
+#. Notification stuff.
+#: src/raider-file-row.c:146
+msgid "Shredded"
+msgstr "Triturado"
+
+#: src/gears-menu.ui:8
+msgid "New Window"
+msgstr "Ventana nueva"
+
+#: src/gears-menu.ui:14
+msgid "_Preferences"
+msgstr "_Preferencias"
+
+#: src/gears-menu.ui:18
+msgid "_Help"
+msgstr "A_yuda"
+
+#: src/gears-menu.ui:22
+msgid "_About File Shredder"
+msgstr "_Acerca de Trituradora de archivos"
+
+#: src/raider.c:144
+msgid "0.1.0"
+msgstr "0.1.0"
+
+#: src/raider.c:145
+msgid "Securely delete your files"
+msgstr "Eliminar sus archivos de forma segura"
+
+#: src/raider.c:149
+msgid "translator-credits"
+msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
