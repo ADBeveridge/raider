@@ -61,7 +61,7 @@ msgstr "Abrir"
 
 #: src/raider-window.c:215
 msgid "Abort"
-msgstr ""
+msgstr "Abortar"
 
 #: src/raider-window.c:230
 msgid "No files added!"
