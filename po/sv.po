@@ -1,189 +1,147 @@
-#
-# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2022.
+# Spanish translations for raider package.
+# Copyright (C) 2022 THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
-"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
-"POT-Creation-Date: 2022-01-24 15:56+0000\n"
-"PO-Revision-Date: 2022-02-05 10:01+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-26 21:38+0100\n"
+"PO-Revision-Date: 2022-02-28 13:08-0800\n"
+"Last-Translator: \n"
+"Language-Team: none\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
-"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
-"Language: sv\n"
+"X-Generator: Poedit 3.0.1\n"
 
-# PROGRAM NAME #
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
-#: data/com.github.ADBeveridge.Raider.desktop.in:2 src/raider-window.ui:11
-#: src/raider-window.ui:76
+#: src/raider-window.ui:13 src/raider-window.ui:31
 msgid "File Shredder"
-msgstr "File Shredder"
+msgstr "Pappers strimlare"
 
-# APPDATA FILE #
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7 src/raider.c:127
-msgid "Securely delete your files"
-msgstr "Ta bort dina filer på ett säkert sätt"
-
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:10
-msgid "File Shredder, also named Raider, is a simple application that enables you to securely delete files that was built with GNOME in mind. It supports all the options that its backend has, plus a realtime progress tracking."
-msgstr "File Shredder, även kallad Raider, är ett enkelt program som gör att du säkert kan ta bort filer och som skapats med GNOME i åtanke. Det stöder alla alternativ som dess bakgrundsgränssnitt har, plus förloppsspårning i realtid."
-
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
-msgid "The very first release of File Shredder. It supports progress tracking, and boasts a GNOME compliant interface."
-msgstr "Den allra första utgåvan av File Shredder. Den stöder förloppsspårning och har ett GNOME-kompatibelt gränssnitt."
-
-# DESKTOP FILE #
-#: data/com.github.ADBeveridge.Raider.desktop.in:9
-msgid "Shred your files securely"
-msgstr "Ta bort dina filer på ett säkert sätt"
-
-# GSETTINGS FILE #
-#: data/com.github.ADBeveridge.Raider.gschema.xml:5
-#: data/com.github.ADBeveridge.Raider.gschema.xml:11
-#: src/raider-preferences.ui:117
-msgid "Hide shredding"
-msgstr "Dölj dokumentförstöring"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:6
-msgid "Whether to hide shredding. This is done by overwriting the file(s) with zeros."
-msgstr "Om filförstöring skall döljas. Detta görs genom att skriva över filen med nollor."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:10
-msgid "Remove file"
-msgstr "Ta bort fil"
-
-#: src/raider-window.ui:80
+#: src/raider-window.ui:57 src/raider-window.c:154
 msgid "Shred"
-msgstr "Förstör"
+msgstr "Strimla"
 
-# RAIDER WINDOW.C #
-#: src/raider-window.c:48
+#: src/raider-window.ui:85
+msgid "Add files for shredding"
+msgstr "Lägg till filer för fragmentering"
+
+#: src/raider-window.ui:133
 msgid "Add files or drop here"
 msgstr "Lägg till filer eller släpp här"
 
-#: src/raider-window.c:91
+#: src/raider-window.c:90
 msgid "Unable to add files!"
-msgstr "Kan inte lägga till filer!"
+msgstr "Det går inte att lägga till filer!"
 
-#: src/raider-window.c:117
+#: src/raider-window.c:116
 msgid "File does not exist!"
-msgstr "Filen finns inte!"
+msgstr "Fil existerar inte!"
 
-#: src/raider-window.c:150
+#: src/raider-window.c:121
+msgid "Folders are not supported!"
+msgstr "Mappar stöds inte!"
+
+#: src/raider-window.c:169
 msgid "Open File"
 msgstr "Öppna fil"
 
-#: src/raider-window.c:151
+#: src/raider-window.c:170
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Annullera"
 
-#: src/raider-window.c:151
+#: src/raider-window.c:170
 msgid "Open"
-msgstr "Öppen"
+msgstr "Öppet"
 
-#: src/raider-window.c:187
+#: src/raider-window.c:215
+msgid "Abort"
+msgstr "Avbryta"
+
+#: src/raider-window.c:230
 msgid "No files added!"
 msgstr "Inga filer har lagts till!"
 
-# RAIDER PREFERENCES #
-#: src/raider-preferences.ui:15
-msgid "Preferences"
-msgstr "Inställningar"
-
-#: src/raider-preferences.ui:75 src/raider-preferences.ui:88
-msgid "How many times to overwrite the file(s)"
-msgstr "Hur många gånger skall filen/filerna skrivas över"
-
-#: src/raider-preferences.ui:77
-msgid "Number of passes:"
-msgstr "Antal pass:"
-
-#: src/raider-preferences.ui:101
-msgid "Remove after shredding"
-msgstr "Ta bort efter förstöring"
-
-#: src/raider-preferences.ui:105
-msgid "Remove the shredded file from the computer"
-msgstr "Ta bort den förstörda filen från datorn"
-
-#: src/raider-preferences.ui:121
-msgid "Hide shredding with a final overwrite of zeros"
-msgstr "Dölj förstöring med en slutlig överskrivning av nollor"
-
-#: src/raider-preferences.ui:141
+#: src/raider-preferences.ui:34
 msgid "Basic"
 msgstr "Grundläggande"
 
-#: src/raider-preferences.ui:156
-msgid "Override file permisions when shredding"
-msgstr "Åsidosätt filbehörighet vid förstöring"
+#: src/raider-preferences.ui:39
+msgid "Remove file"
+msgstr "Ta bort fil"
 
-#: src/raider-preferences.ui:160
-msgid "Override the file(s) permissions if you do not have them"
-msgstr "Åsidosätt filbehörigheter om du inte har dem"
+#: src/raider-preferences.ui:41
+msgid "Whether to remove the file after shredding"
+msgstr "Om filen ska tas bort efter fragmentering"
 
-#: src/raider-preferences.ui:172
+#: src/raider-preferences.ui:56
+msgid "Hide Shredding"
+msgstr "Göm strimling"
+
+#: src/raider-preferences.ui:58
+msgid "Whether to hide the fact the the files have been shredded"
+msgstr "Om man ska dölja det faktum att filerna har strimlats"
+
+#: src/raider-preferences.ui:72
+msgid "Number of passes"
+msgstr "Antal pass"
+
+#: src/raider-preferences.ui:74
+msgid "How many times to shred file over"
+msgstr "Hur många gånger ska filen strimlas över"
+
+#: src/raider-preferences.ui:92
+msgid "Advanced"
+msgstr "Avancerad"
+
+#: src/raider-preferences.ui:97
+msgid "Remove method"
+msgstr "Ta bort metoden"
+
+#: src/raider-preferences.ui:98
+msgid "How to remove the files from the fileystem"
+msgstr "Hur man tar bort filer från filsystemet"
+
+#: src/raider-preferences.ui:104
+msgid "Overwrite data source"
+msgstr "Skriv över datakälla"
+
+#: src/raider-preferences.ui:106
+msgid "From what file to get the data that the files will be overwritten with"
+msgstr "Från vilken fil för att hämta data som filerna kommer att skrivas över med"
+
+#: src/raider-preferences.ui:120
+msgid "Number of bytes to shred"
+msgstr "Antal byte att strimla"
+
+#: src/raider-preferences.ui:121
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr "Hur mycket av filen som ska strimlas. 0 för att strimla hela filen"
+
+#: src/raider-preferences.ui:138
+msgid "Do not round file sizes"
+msgstr "Avrunda inte filstorlekar"
+
+#: src/raider-preferences.ui:140
 msgid "Do not round file sizes to the next block"
 msgstr "Avrunda inte filstorlekar till nästa block"
 
-#: src/raider-preferences.ui:176
-msgid "This option will shred the entirety of every block that the file(s) has any data on"
-msgstr "Detta alternativ förstör fullständigt varje block som filen/filerna har data på"
+#: src/raider-preferences.ui:154
+msgid "Override file permissions"
+msgstr "Åsidosätt filbehörigheter"
 
-#: src/raider-preferences.ui:190 src/raider-preferences.ui:204
-msgid "How to remove the file(s) from the computer"
-msgstr "Hur ta bort filen/filerna från datorn"
+#: src/raider-preferences.ui:156
+msgid "Whether to override the file permissions in case of insufficient permissions"
+msgstr "Om filbehörigheterna ska åsidosättas i händelse av otillräckliga behörigheter"
 
-#: src/raider-preferences.ui:193
-msgid "Remove method:"
-msgstr "Borttagningsmetod:"
+#: src/raider-file-row.c:146
+msgid "Shredded"
+msgstr "Strimlad"
 
-#: src/raider-preferences.ui:207
-msgid "Wipesync"
-msgstr "Wipesync"
-
-#: src/raider-preferences.ui:208
-msgid "Wipe"
-msgstr "Rensa"
-
-#: src/raider-preferences.ui:209
-msgid "Unlink"
-msgstr "Avlänka"
-
-#: src/raider-preferences.ui:221 src/raider-preferences.ui:235
-msgid "Get data from a file, and overwrite the to be shredded file(s) with the contents of it"
-msgstr "Hämta data från en fil och använd den till att skriva över de filer som skall förstöras"
-
-#: src/raider-preferences.ui:224
-msgid "Get overwrite data from:"
-msgstr "Hämta överskrivningsdata från:"
-
-#: src/raider-preferences.ui:247 src/raider-preferences.ui:261
-msgid "How many bytes to shred of the file(s)"
-msgstr "Hur många byte som skall förstöras av filen/filerna"
-
-#: src/raider-preferences.ui:250
-msgid "Number of bytes to shred:"
-msgstr "Antal byte att förstöra:"
-
-#: src/raider-preferences.ui:278
-msgid "Advanced"
-msgstr "Avancerat"
-
-# RAIDER FILE ROW.C #
-#: src/raider-file-row.c:111
-msgid "Remove from list"
-msgstr "Ta bort från listan"
-
-#: src/raider-file-row.c:164
-msgid "Finished shredding "
-msgstr "Slutförde förstöring av "
-
-# GEARS MENU #
 #: src/gears-menu.ui:8
 msgid "New Window"
 msgstr "Nytt fönster"
@@ -192,10 +150,30 @@ msgstr "Nytt fönster"
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: src/gears-menu.ui:20
+#: src/gears-menu.ui:18
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/gears-menu.ui:24
-msgid "_About"
-msgstr "_Om"
+#: src/gears-menu.ui:22
+msgid "_About File Shredder"
+msgstr "_Om File Shredder"
+
+#: src/raider.c:144
+msgid "0.1.0"
+msgstr "0.1.0"
+
+#: src/raider.c:145
+msgid "Securely delete your files"
+msgstr "Ta bort dina filer säkert"
+
+#: src/raider.c:149
+msgid "translator-credits"
+msgstr ""
+"Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Alan Beveridge <adbeveridge@protonmail.com>"
+
+# You do not need to change this unless the shred output for pass is different in your language
+#. This corresponds with the output of 'shred' under spanish.
+#: src/raider-file-row.c:400
+msgid "pass"
+msgstr "pass"
