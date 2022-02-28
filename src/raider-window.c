@@ -220,7 +220,7 @@ void shred_file(GtkWidget *widget, gpointer data)
 
     /* Hide the add button and remove dnd. */
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), FALSE);
-    gtk_drag_dest_unset(window);
+    gtk_drag_dest_unset(GTK_WIDGET(window));
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
