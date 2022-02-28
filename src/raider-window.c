@@ -151,7 +151,7 @@ raider_window_close (gpointer data, gpointer user_data)
         gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), FALSE);
 
         /* Change the Shred button's function. */
-        g_object_set (window->shred_button, "label", "Shred", NULL);
+        g_object_set (window->shred_button, "label", _("Shred"), NULL);
 
         /* Change the signal handler. */
         g_signal_handler_disconnect (window->shred_button, window->signal_id);
@@ -212,7 +212,7 @@ void shred_file(GtkWidget *widget, gpointer data)
     hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
 
     /* Change the Shred button's function. */
-    g_object_set (window->shred_button, "label", "Abort", NULL);
+    g_object_set (window->shred_button, "label", _("Abort"), NULL);
 
     /* Change the signal handler. */
     g_signal_handler_disconnect (window->shred_button, window->signal_id);
