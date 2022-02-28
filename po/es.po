@@ -18,7 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: src/raider-window.ui:13 src/raider-window.ui:31
+#: src/raider-window.ui:13
+#: src/raider-window.ui:31
 msgid "File Shredder"
 msgstr "Trituradora de archivos"
 
@@ -67,10 +68,6 @@ msgstr "Abortar"
 msgid "No files added!"
 msgstr "¡No se han añadido archivos!"
 
-#: src/raider-preferences.ui:29
-msgid "preferences_page"
-msgstr "preferences_page"
-
 #: src/raider-preferences.ui:34
 msgid "Basic"
 msgstr "Básicas"
@@ -116,7 +113,7 @@ msgid "Overwrite data source"
 msgstr "Sobrescribir fuente de datos"
 
 #: src/raider-preferences.ui:106
-msgid "From what file to get the  data that the files will be overwritten with"
+msgid "From what file to get the data that the files will be overwritten with"
 msgstr ""
 "De qué archivo obtener los datos con los que se sobrescribirán los archivos"
 
@@ -148,7 +145,6 @@ msgstr ""
 "Si se anulan los permisos de los archivos en caso de que los permisos sean "
 "insuficientes"
 
-#. Notification stuff.
 #: src/raider-file-row.c:146
 msgid "Shredded"
 msgstr "Triturado"
@@ -180,3 +176,9 @@ msgstr "Eliminar sus archivos de forma segura"
 #: src/raider.c:149
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+
+#. This corresponds with the output of 'shred' under spanish.
+#: src/raider-file-row.c:400
+msgid "pass"
+msgstr "paso"
+

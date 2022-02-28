@@ -16,150 +16,128 @@ msgstr ""
 "X-Generator: Gtranslator 3.38.0\n"
 "Language-Team: Italian - Italy <albano_battistella@hotmail.com>\n"
 
-### RAIDER WINDOW UI
-#: src/raider-window.ui:11
-#: src/raider-window.ui:76
+#: src/raider-window.ui:13
+#: src/raider-window.ui:31
 msgid "File Shredder"
 msgstr "File Shredder"
 
-#: src/raider-window.ui:80
+#: src/raider-window.ui:57
+#: src/raider-window.c:154
 msgid "Shred"
 msgstr "Distruggi"
 
-### RAIDER WINDOW.C
-#: src/raider-window.c:48
+#: src/raider-window.ui:85
+msgid "Add files for shredding"
+msgstr ""
+
+#: src/raider-window.ui:133
 msgid "Add files or drop here"
 msgstr "Aggiungi file o trascina qui"
 
-#: src/raider-window.c:91
+#: src/raider-window.c:90
 msgid "Unable to add files!"
 msgstr "Impossibile aggiungere file!"
 
-#: src/raider-window.c:117
+#: src/raider-window.c:116
 msgid "File does not exist!"
 msgstr "Il file non esiste!"
 
-#: src/raider-window.c:122
+#: src/raider-window.c:121
 msgid "Folders are not supported!"
 msgstr "Le cartelle non sono supportate!"
 
-#: src/raider-window.c:156
+#: src/raider-window.c:169
 msgid "Open File"
 msgstr "Apri File"
 
-#: src/raider-window.c:157
+#: src/raider-window.c:170
 msgid "Cancel"
 msgstr "Cancella"
 
-#: src/raider-window.c:157
+#: src/raider-window.c:170
 msgid "Open"
 msgstr "Apri"
 
-#: src/raider-window.c:193
+#: src/raider-window.c:215
+msgid "Abort"
+msgstr ""
+
+#: src/raider-window.c:230
 msgid "No files added!"
 msgstr "Nessun file aggiunto!"
 
-### RAIDER PREFERENCES
-#: src/raider-preferences.ui:15
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: src/raider-preferences.ui:75
-#: src/raider-preferences.ui:88
-msgid "How many times to overwrite the file(s)"
-msgstr "Quante volte sovrascrivere i file"
-
-#: src/raider-preferences.ui:77
-msgid "Number of passes:"
-msgstr "Numero di passaggi:"
-
-#: src/raider-preferences.ui:101
-msgid "Remove after shredding"
-msgstr "Rimuovere dopo aver distrutto"
-
-#: src/raider-preferences.ui:105
-msgid "Remove the shredded file from the computer"
-msgstr "Rimuovere il file distrutto dal computer"
-
-#: src/raider-preferences.ui:117
-msgid "Hide shredding"
-msgstr "Nascondi distruzione"
-
-#: src/raider-preferences.ui:121
-msgid "Hide shredding with a final overwrite of zeros"
-msgstr "Nascondi la distruzione con una sovrascrittura finale di zeri"
-
-#: src/raider-preferences.ui:141
+#: src/raider-preferences.ui:34
 msgid "Basic"
 msgstr "Di base"
 
-#: src/raider-preferences.ui:156
-msgid "Override file permisions when shredding"
-msgstr "Sovrascrivi i permessi dei file durante la distruzione"
-
-#: src/raider-preferences.ui:160
-msgid "Override the file(s) permissions if you do not have them"
-msgstr "Sovrascrivi i permessi dei file se non li hai"
-
-#: src/raider-preferences.ui:172
-msgid "Do not round file sizes to the next block"
-msgstr "Non arrotondare le dimensioni dei file al blocco successivo"
-
-#: src/raider-preferences.ui:176
-msgid "This option will shred the entirety of every block that the file(s) has any data on"
-msgstr "Questa opzione distruggerà l'intero blocco su cui i file contengono dati"
- 
-#: src/raider-preferences.ui:190
-#: src/raider-preferences.ui:204
-msgid "How to remove the file(s) from the computer"
-msgstr "Come rimuovere i file dal computer"
- 
-#: src/raider-preferences.ui:193
-msgid "Remove method:"
-msgstr "Metodo di rimozione:"
-
-#: src/raider-preferences.ui:207
-msgid "Wipesync"
+#: src/raider-preferences.ui:39
+msgid "Remove file"
 msgstr ""
- 
-#: src/raider-preferences.ui:208
-msgid "Wipe"
-msgstr "Pulisci"
- 
-#: src/raider-preferences.ui:209
-msgid "Unlink"
-msgstr ""
- 
-#: src/raider-preferences.ui:221
-#: src/raider-preferences.ui:235
-msgid "Get data from a file, and overwrite the to be shredded file(s) with the contents of it"
-msgstr "Ottieni dati da un file e sovrascrivi i file da distruggere con il loro contenuto"
 
-#: src/raider-preferences.ui:224
-msgid "Get overwrite data from:"
-msgstr "Ottieni dati di sovrascrittura da:"
- 
-#: src/raider-preferences.ui:247
-#: src/raider-preferences.ui:261
-msgid "How many bytes to shred of the file(s)"
-msgstr "How many bytes to shred of the file(s)"
- 
-#: src/raider-preferences.ui:250
-msgid "Number of bytes to shred:"
-msgstr "Numero di byte da distruggere:"
- 
-#: src/raider-preferences.ui:278
+#: src/raider-preferences.ui:41
+msgid "Whether to remove the file after shredding"
+msgstr ""
+
+#: src/raider-preferences.ui:56
+msgid "Hide shredding"
+msgstr "Nascondi distruzione"
+
+#: src/raider-preferences.ui:58
+msgid "Whether to hide the fact the the files have been shredded"
+msgstr ""
+
+#: src/raider-preferences.ui:72
+msgid "Number of passes"
+msgstr "Numero di passaggi"
+
+#: src/raider-preferences.ui:74
+msgid "How many times to shred file over"
+msgstr ""
+
+#: src/raider-preferences.ui:92
 msgid "Advanced"
-msgstr "Avanzato" 
- 
-### RAIDER FILE ROW.C
-#: src/raider-file-row.c:111
-msgid "Remove from list"
-msgstr "Rimuovere dalla lista"
+msgstr "Avanzato"
 
-#: src/raider-file-row.c:164
-msgid "Finished shredding "
-msgstr "Distruzione finita"
+#: src/raider-preferences.ui:197
+msgid "Remove method"
+msgstr "Metodo di rimozione"
+
+#: src/raider-preferences.ui:98
+msgid "How to remove the files from the fileystem"
+msgstr ""
+
+#: src/raider-preferences.ui:104
+msgid "Overwrite data source"
+msgstr ""
+
+#: src/raider-preferences.ui:106
+msgid "From what file to get the data that the files will be overwritten with"
+msgstr ""
+
+#: src/raider-preferences.ui:120
+msgid "Number of bytes to shred"
+msgstr "Numero di byte da distruggere"
+
+#: src/raider-preferences.ui:121
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr ""
+
+#: src/raider-preferences.ui:140
+msgid "Do not round file sizes to the next block"
+msgstr ""
+
+#: src/raider-preferences.ui:154
+msgid "Override file permissions"
+msgstr ""
+
+#: src/raider-preferences.ui:156
+msgid ""
+"Whether to override the file permissions in case of insufficient permissions"
+msgstr ""
+
+#: src/raider-file-row.c:146
+msgid "Shredded"
+msgstr ""
 
 ### GEARS MENU ###
 #: src/gears-menu.ui:8
@@ -170,15 +148,28 @@ msgstr "Nuova Finestra"
 msgid "_Preferences"
 msgstr "_Preferenze"
 
-#: src/gears-menu.ui:20
+#: src/gears-menu.ui:18
 msgid "_Help"
 msgstr "_Aiuto"
 
-#: src/gears-menu.ui:24
-msgid "_About"
-msgstr "_Informazioni"
+#: src/gears-menu.ui:22
+msgid "_About File Shredder"
+msgstr "_Informazioni File Shredder"
 
-### RAIDER.C ###
-#: src/raider.c:127
+#: src/raider.c:144
+msgid "0.1.0"
+msgstr "0.1.0"
+
+#: src/raider.c:145
 msgid "Securely delete your files"
 msgstr "Elimina in modo sicuro i tuoi file"
+
+#: src/raider.c:149
+msgid "translator-credits"
+msgstr "Albano Battistella <albano_battistella@hotmail.com>"
+
+#. This corresponds with the output of 'shred' under italian.
+#: src/raider-file-row.c:400
+msgid "pass"
+msgstr "passo"
+

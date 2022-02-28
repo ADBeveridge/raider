@@ -42,7 +42,7 @@ struct _fsm
     GtkWidget *progress_icon;
     GtkWidget *popover;
     gchar *filename;
-
+    GSettings *settings;
     gdouble current;
     gdouble number_of_passes;
 };
@@ -301,7 +301,7 @@ void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_d
     functions can be self contained, and not hold duplicate code. */
 
     gchar **tokens = g_strsplit(buf, " ", 0);
-    struct _fsm fsm = {start, tokens, 0, row->progress_icon, row->popover, row->filename};
+    struct _fsm fsm = {start, tokens, 0, row->progress_icon, row->popover, row->filename, row->settings};
 
     /* Pretty clever, no? */
     while (fsm.state != NULL)
@@ -344,7 +344,12 @@ void parse_sender_name(void *ptr_to_fsm)
     struct _fsm *fsm = ptr_to_fsm;
     fsm->state = parse_filename;
 
-    if (g_strcmp0("/usr/bin/shred:", fsm->tokens[0]) != 0)
+    /* Get the path to 'shred' and compare. */
+    gchar *path_to_shred = g_strconcat (g_settings_get_string(fsm->settings, "shred-executable"),
+                                        ":", NULL);
+
+
+    if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0)
     {
         fsm->state = stop;
         g_printerr("No shred output found.");
@@ -397,10 +402,10 @@ void parse_pass(void *ptr_to_fsm)
     fsm->state = parse_fraction;
 
     /* Generally this test case will execute if the shredding option is set to remove. */
-    if (g_strcmp0("pass", fsm->tokens[0]) != 0)
+    if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0)
     {
         fsm->state = stop;
-        g_printerr("Could not find correct text (wanted 'pass', got '%s').", fsm->tokens[0]);
+        //g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
         return;
     }
     /* Point to the next word. */

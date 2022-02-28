@@ -26,7 +26,7 @@
       <object class="HdyPreferencesPage" id="preferences_page_one">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title" translatable="yes">preferences_page</property>
+        <property name="title" translatable="no">preferences_page</property>
         <child>
           <object class="HdyPreferencesGroup" id="basic_group">
             <property name="visible">True</property>
@@ -103,7 +103,7 @@
                 <property name="can-focus">True</property>
                 <property name="title" translatable="yes">Overwrite data source</property>
                 <property name="activatable-widget">overwrite_data_source_file_chooser</property>
-                <property name="subtitle" translatable="yes">From what file to get the  data that the files will be overwritten with</property>
+                <property name="subtitle" translatable="yes">From what file to get the data that the files will be overwritten with</property>
                 <child>
                   <object class="GtkFileChooserButton" id="overwrite_data_source_file_chooser">
                     <property name="visible">True</property>
