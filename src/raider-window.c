@@ -22,6 +22,7 @@ struct _RaiderWindow
     GtkRevealer *add_file_revealer;
 
     guint signal_id;
+    GtkTargetEntry target_entry;
 };
 
 G_DEFINE_TYPE (RaiderWindow, raider_window, HDY_TYPE_APPLICATION_WINDOW)
@@ -37,8 +38,11 @@ raider_window_init (RaiderWindow *win)
     g_object_unref (builder);
 
     /* Make the window a DND destination. */
-    static GtkTargetEntry targetentries[] = {{ "text/uri-list", 0, 0 }};
-    gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, targetentries, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
+    win->target_entry.target = "text/uri-list";
+    win->target_entry.flags = 0;
+    win->target_entry.info = 0;
+
+    gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, &win->target_entry, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
 
     win->signal_id = g_signal_connect (win->shred_button, "clicked", G_CALLBACK(shred_file), win);
@@ -153,7 +157,9 @@ raider_window_close (gpointer data, gpointer user_data)
         g_signal_handler_disconnect (window->shred_button, window->signal_id);
         window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (shred_file), window);
 
+        /* Enable the adding of files. */
         gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), TRUE);
+        gtk_drag_dest_set (GTK_WIDGET(window), GTK_DEST_DEFAULT_ALL, &window->target_entry, 1, GDK_ACTION_COPY);
     }
 }
 
@@ -212,8 +218,9 @@ void shred_file(GtkWidget *widget, gpointer data)
     g_signal_handler_disconnect (window->shred_button, window->signal_id);
     window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (raider_abort_shredding), window);
 
-    /* Hide the add button. */
+    /* Hide the add button and remove dnd. */
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), FALSE);
+    gtk_drag_dest_unset(window);
 
     /* Launch the shredding. */
     GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
