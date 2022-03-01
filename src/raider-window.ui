@@ -60,6 +60,7 @@
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                         <property name="margin-right">6</property>
+                        <signal name="clicked" handler="shred_file" object="RaiderWindow" swapped="no"/>
                         <style>
                           <class name="destructive-action"/>
                         </style>
@@ -68,6 +69,29 @@
                   </object>
                   <packing>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRevealer" id="abort_button_revealer">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="transition-type">slide-left</property>
+                    <child>
+                      <object class="GtkButton" id="abort_button">
+                        <property name="label" translatable="yes">Abort</property>
+                        <property name="name">abort_button</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <signal name="clicked" handler="raider_abort_shredding" object="RaiderWindow" swapped="no"/>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -97,7 +121,7 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
               </object>
