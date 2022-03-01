@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
 "POT-Creation-Date: 2022-01-24 15:56+0000\n"
-"PO-Revision-Date: 2022-02-20 11:01+0100\n"
+"PO-Revision-Date: 2022-03-01 11:01+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "Distruggi"
 
 #: src/raider-window.ui:85
 msgid "Add files for shredding"
-msgstr ""
+msgstr "Aggiungi file per la distruzione"
 
 #: src/raider-window.ui:133
 msgid "Add files or drop here"
@@ -60,7 +60,7 @@ msgstr "Apri"
 
 #: src/raider-window.c:215
 msgid "Abort"
-msgstr ""
+msgstr "Interrompi"
 
 #: src/raider-window.c:230
 msgid "No files added!"
@@ -72,11 +72,11 @@ msgstr "Di base"
 
 #: src/raider-preferences.ui:39
 msgid "Remove file"
-msgstr ""
+msgstr "Rimuovi file"
 
 #: src/raider-preferences.ui:41
 msgid "Whether to remove the file after shredding"
-msgstr ""
+msgstr "Se rimuovere il file dopo la distruzione"
 
 #: src/raider-preferences.ui:56
 msgid "Hide shredding"
@@ -84,7 +84,7 @@ msgstr "Nascondi distruzione"
 
 #: src/raider-preferences.ui:58
 msgid "Whether to hide the fact the the files have been shredded"
-msgstr ""
+msgstr "Se nascondere il fatto che i file sono stati distrutti"
 
 #: src/raider-preferences.ui:72
 msgid "Number of passes"
@@ -92,7 +92,7 @@ msgstr "Numero di passaggi"
 
 #: src/raider-preferences.ui:74
 msgid "How many times to shred file over"
-msgstr ""
+msgstr "Quante volte distruggere il file"
 
 #: src/raider-preferences.ui:92
 msgid "Advanced"
@@ -104,15 +104,15 @@ msgstr "Metodo di rimozione"
 
 #: src/raider-preferences.ui:98
 msgid "How to remove the files from the fileystem"
-msgstr ""
+msgstr "Come rimuovere i file dal file system"
 
 #: src/raider-preferences.ui:104
 msgid "Overwrite data source"
-msgstr ""
+msgstr "Sovrascrivi l'origine dei dati"
 
 #: src/raider-preferences.ui:106
 msgid "From what file to get the data that the files will be overwritten with"
-msgstr ""
+msgstr "Da quale file ottenere i dati con cui verranno sovrascritti i file"
 
 #: src/raider-preferences.ui:120
 msgid "Number of bytes to shred"
@@ -120,24 +120,25 @@ msgstr "Numero di byte da distruggere"
 
 #: src/raider-preferences.ui:121
 msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr ""
+msgstr "Quanto del file da distruggere. 0 per distruggere l'intero file"
 
 #: src/raider-preferences.ui:140
 msgid "Do not round file sizes to the next block"
-msgstr ""
+msgstr "Non arrotondare le dimensioni dei file al blocco successivo"
 
 #: src/raider-preferences.ui:154
 msgid "Override file permissions"
-msgstr ""
+msgstr "Sostituisci i permessi dei file"
 
 #: src/raider-preferences.ui:156
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
 msgstr ""
+"Se sovrascrivere i permessi dei file in caso di permessi insufficienti"
 
 #: src/raider-file-row.c:146
 msgid "Shredded"
-msgstr ""
+msgstr "Distrutto"
 
 ### GEARS MENU ###
 #: src/gears-menu.ui:8
