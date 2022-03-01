@@ -123,7 +123,7 @@ static void do_stuff_cb (NautilusMenuItem *item, gpointer user_data)
         GList *files;
         GList *l;
 
-	char *final_command = strdup("raider ");
+		char *final_command = strdup("raider ");
 	
         files = g_object_get_data ((GObject *) item, "raider_extension_files");
 
