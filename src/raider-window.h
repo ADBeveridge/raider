@@ -16,5 +16,6 @@ void shred_file(GtkWidget *widget, gpointer data);
 void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y, GtkSelectionData *seldata, guint info, guint time, gpointer data);
 void raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window);
 void raider_window_close (gpointer data, gpointer user_data);
+void raider_abort_shredding (GtkWidget *widget, gpointer data);
 
 #endif /* __RAIDERWINDOW_H */

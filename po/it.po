@@ -22,7 +22,6 @@ msgid "File Shredder"
 msgstr "File Shredder"
 
 #: src/raider-window.ui:57
-#: src/raider-window.c:154
 msgid "Shred"
 msgstr "Distruggi"
 
@@ -34,35 +33,31 @@ msgstr "Aggiungi file per la distruzione"
 msgid "Add files or drop here"
 msgstr "Aggiungi file o trascina qui"
 
-#: src/raider-window.c:90
+#: src/raider-window.c:91
 msgid "Unable to add files!"
 msgstr "Impossibile aggiungere file!"
 
-#: src/raider-window.c:116
+#: src/raider-window.c:117
 msgid "File does not exist!"
 msgstr "Il file non esiste!"
 
-#: src/raider-window.c:121
+#: src/raider-window.c:122
 msgid "Folders are not supported!"
 msgstr "Le cartelle non sono supportate!"
 
-#: src/raider-window.c:169
+#: src/raider-window.c:166
 msgid "Open File"
 msgstr "Apri File"
 
-#: src/raider-window.c:170
+#: src/raider-window.c:167
 msgid "Cancel"
 msgstr "Cancella"
 
-#: src/raider-window.c:170
+#: src/raider-window.c:167
 msgid "Open"
 msgstr "Apri"
 
-#: src/raider-window.c:215
-msgid "Abort"
-msgstr "Interrompi"
-
-#: src/raider-window.c:230
+#: src/raider-window.c:223
 msgid "No files added!"
 msgstr "Nessun file aggiunto!"
 

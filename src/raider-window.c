@@ -20,8 +20,8 @@ struct _RaiderWindow
     GtkWidget *hint_page;
     GtkRevealer *shred_control_revealer;
     GtkRevealer *add_file_revealer;
+    GtkRevealer *abort_button_revealer;
 
-    guint signal_id;
     GtkTargetEntry target_entry;
 };
 
@@ -44,8 +44,6 @@ raider_window_init (RaiderWindow *win)
 
     gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, &win->target_entry, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
     g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
-
-    win->signal_id = g_signal_connect (win->shred_button, "clicked", G_CALLBACK(shred_file), win);
 }
 
 static void
@@ -70,8 +68,11 @@ raider_window_class_init (RaiderWindowClass *class)
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hint_page);
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, add_file_revealer);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, abort_button_revealer);
 
     gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
+    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
+    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_abort_shredding);
 }
 
 /*
@@ -150,12 +151,8 @@ raider_window_close (gpointer data, gpointer user_data)
         gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
         gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), FALSE);
 
-        /* Change the Shred button's function. */
-        g_object_set (window->shred_button, "label", _("Shred"), NULL);
-
-        /* Change the signal handler. */
-        g_signal_handler_disconnect (window->shred_button, window->signal_id);
-        window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (shred_file), window);
+        gtk_revealer_set_reveal_child (window->shred_control_revealer, FALSE);
+        gtk_revealer_set_reveal_child (window->abort_button_revealer, FALSE);
 
         /* Enable the adding of files. */
         gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), TRUE);
@@ -211,13 +208,9 @@ void shred_file(GtkWidget *widget, gpointer data)
     RaiderWindow *window = RAIDER_WINDOW(data);
     hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
 
-    /* Change the Shred button's function. */
-    g_object_set (window->shred_button, "label", _("Abort"), NULL);
-
-    /* Change the signal handler. */
-    g_signal_handler_disconnect (window->shred_button, window->signal_id);
-    window->signal_id = g_signal_connect (window->shred_button, "clicked", G_CALLBACK (raider_abort_shredding), window);
-
+    gtk_revealer_set_reveal_child (window->shred_control_revealer, FALSE);
+    gtk_revealer_set_reveal_child (window->abort_button_revealer, TRUE);
+        
     /* Hide the add button and remove dnd. */
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), FALSE);
     gtk_drag_dest_unset(GTK_WIDGET(window));
