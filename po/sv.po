@@ -1,15 +1,15 @@
-# Spanish translations for raider package.
+# Swedish translations for raider package.
 # Copyright (C) 2022 THE raider'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the raider package.
-# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-26 21:38+0100\n"
-"PO-Revision-Date: 2022-02-28 13:08-0800\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2022-03-01 08:58+0100\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: src/raider-window.ui:13 src/raider-window.ui:31
 msgid "File Shredder"
-msgstr "Pappers strimlare"
+msgstr "Filförstörare"
 
 #: src/raider-window.ui:57 src/raider-window.c:154
 msgid "Shred"
-msgstr "Strimla"
+msgstr "Förstör"
 
 #: src/raider-window.ui:85
 msgid "Add files for shredding"
-msgstr "Lägg till filer för fragmentering"
+msgstr "Lägg till filer för makulering"
 
 #: src/raider-window.ui:133
 msgid "Add files or drop here"
@@ -36,11 +36,11 @@ msgstr "Lägg till filer eller släpp här"
 
 #: src/raider-window.c:90
 msgid "Unable to add files!"
-msgstr "Det går inte att lägga till filer!"
+msgstr "Kan inte lägga till filer!"
 
 #: src/raider-window.c:116
 msgid "File does not exist!"
-msgstr "Fil existerar inte!"
+msgstr "Filen finns inte!"
 
 #: src/raider-window.c:121
 msgid "Folders are not supported!"
@@ -52,15 +52,15 @@ msgstr "Öppna fil"
 
 #: src/raider-window.c:170
 msgid "Cancel"
-msgstr "Annullera"
+msgstr "Avbryt"
 
 #: src/raider-window.c:170
 msgid "Open"
-msgstr "Öppet"
+msgstr "Öppna"
 
 #: src/raider-window.c:215
 msgid "Abort"
-msgstr "Avbryta"
+msgstr "Avbryt"
 
 #: src/raider-window.c:230
 msgid "No files added!"
@@ -76,15 +76,15 @@ msgstr "Ta bort fil"
 
 #: src/raider-preferences.ui:41
 msgid "Whether to remove the file after shredding"
-msgstr "Om filen ska tas bort efter fragmentering"
+msgstr "Om filen skall tas bort efter makulering"
 
 #: src/raider-preferences.ui:56
 msgid "Hide Shredding"
-msgstr "Göm strimling"
+msgstr "Dölj makulering"
 
 #: src/raider-preferences.ui:58
 msgid "Whether to hide the fact the the files have been shredded"
-msgstr "Om man ska dölja det faktum att filerna har strimlats"
+msgstr "Om det faktum att filerna har förstörts skall döljas"
 
 #: src/raider-preferences.ui:72
 msgid "Number of passes"
@@ -92,35 +92,35 @@ msgstr "Antal pass"
 
 #: src/raider-preferences.ui:74
 msgid "How many times to shred file over"
-msgstr "Hur många gånger ska filen strimlas över"
+msgstr "Hur många gånger filen skall skrivas över"
 
 #: src/raider-preferences.ui:92
 msgid "Advanced"
-msgstr "Avancerad"
+msgstr "Avancerat"
 
 #: src/raider-preferences.ui:97
 msgid "Remove method"
-msgstr "Ta bort metoden"
+msgstr "Borttagningsmetod"
 
 #: src/raider-preferences.ui:98
 msgid "How to remove the files from the fileystem"
-msgstr "Hur man tar bort filer från filsystemet"
+msgstr "Hur filer tas bort från filsystemet"
 
 #: src/raider-preferences.ui:104
 msgid "Overwrite data source"
-msgstr "Skriv över datakälla"
+msgstr "Skriv över datakällan"
 
 #: src/raider-preferences.ui:106
 msgid "From what file to get the data that the files will be overwritten with"
-msgstr "Från vilken fil för att hämta data som filerna kommer att skrivas över med"
+msgstr "Från vilken fil hämtas den data som filerna skall skrivas över med"
 
 #: src/raider-preferences.ui:120
 msgid "Number of bytes to shred"
-msgstr "Antal byte att strimla"
+msgstr "Antal byte att förstöra"
 
 #: src/raider-preferences.ui:121
 msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr "Hur mycket av filen som ska strimlas. 0 för att strimla hela filen"
+msgstr "Hur mycket av filen som skall förstöras. 0 för att förstöra hela filen"
 
 #: src/raider-preferences.ui:138
 msgid "Do not round file sizes"
@@ -132,15 +132,15 @@ msgstr "Avrunda inte filstorlekar till nästa block"
 
 #: src/raider-preferences.ui:154
 msgid "Override file permissions"
-msgstr "Åsidosätt filbehörigheter"
+msgstr "Åsidosätt filrättigheter"
 
 #: src/raider-preferences.ui:156
 msgid "Whether to override the file permissions in case of insufficient permissions"
-msgstr "Om filbehörigheterna ska åsidosättas i händelse av otillräckliga behörigheter"
+msgstr "Om filrättigheterna skall åsidosättas i händelse av otillräckliga behörigheter"
 
 #: src/raider-file-row.c:146
 msgid "Shredded"
-msgstr "Strimlad"
+msgstr "Makulerad"
 
 #: src/gears-menu.ui:8
 msgid "New Window"
@@ -168,9 +168,7 @@ msgstr "Ta bort dina filer säkert"
 
 #: src/raider.c:149
 msgid "translator-credits"
-msgstr ""
-"Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
-"Alan Beveridge <adbeveridge@protonmail.com>"
+msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
 # You do not need to change this unless the shred output for pass is different in your language
 #. This corresponds with the output of 'shred' under spanish.
