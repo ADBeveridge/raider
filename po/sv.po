@@ -22,7 +22,7 @@ msgstr ""
 msgid "File Shredder"
 msgstr "Filförstörare"
 
-#: src/raider-window.ui:57 src/raider-window.c:154
+#: src/raider-window.ui:57
 msgid "Shred"
 msgstr "Förstör"
 
@@ -34,35 +34,31 @@ msgstr "Lägg till filer för makulering"
 msgid "Add files or drop here"
 msgstr "Lägg till filer eller släpp här"
 
-#: src/raider-window.c:90
+#: src/raider-window.c:91
 msgid "Unable to add files!"
 msgstr "Kan inte lägga till filer!"
 
-#: src/raider-window.c:116
+#: src/raider-window.c:117
 msgid "File does not exist!"
 msgstr "Filen finns inte!"
 
-#: src/raider-window.c:121
+#: src/raider-window.c:122
 msgid "Folders are not supported!"
 msgstr "Mappar stöds inte!"
 
-#: src/raider-window.c:169
+#: src/raider-window.c:166
 msgid "Open File"
 msgstr "Öppna fil"
 
-#: src/raider-window.c:170
+#: src/raider-window.c:167
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/raider-window.c:170
+#: src/raider-window.c:167
 msgid "Open"
 msgstr "Öppna"
 
-#: src/raider-window.c:215
-msgid "Abort"
-msgstr "Avbryt"
-
-#: src/raider-window.c:230
+#: src/raider-window.c:223
 msgid "No files added!"
 msgstr "Inga filer har lagts till!"
 
