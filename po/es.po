@@ -27,11 +27,15 @@ msgstr "Trituradora de archivos"
 msgid "Shred"
 msgstr "Triturar"
 
-#: src/raider-window.ui:85
+#:src/raider-window.ui:81
+msgid "Abort"
+msgstr "Abortar"
+
+#: src/raider-window.ui:109
 msgid "Add files for shredding"
 msgstr "Añadir archivos para destruir"
 
-#: src/raider-window.ui:133
+#: src/raider-window.ui:157
 msgid "Add files or drop here"
 msgstr "Añadir archivos o soltar aquí"
 

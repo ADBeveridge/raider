@@ -25,11 +25,15 @@ msgstr "File Shredder"
 msgid "Shred"
 msgstr "Distruggi"
 
-#: src/raider-window.ui:85
+#:src/raider-window.ui:81
+msgid "Abort"
+msgstr "Interrompi"
+
+#: src/raider-window.ui:109
 msgid "Add files for shredding"
 msgstr "Aggiungi file per la distruzione"
 
-#: src/raider-window.ui:133
+#: src/raider-window.ui:157
 msgid "Add files or drop here"
 msgstr "Aggiungi file o trascina qui"
 
