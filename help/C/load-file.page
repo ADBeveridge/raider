@@ -20,11 +20,16 @@
   <title>Load a file</title>
 
   <p>You can open a file, or many, by pressing the button on the upper left
-  next to the red Shred button, that contains a plus sign. Select the files
-  you want to shred, and click OK.
+  of the window that contains a plus sign. Select the files you want to shred,
+  and click OK.
   </p>
 
   <p>You can also drag and drop the files you want to shred all at once into an
   open <app>File Shredder</app> window.</p>
+
+   <note style="info">
+    <p>The shredding button is hidden while there are no files loaded, and
+    while the shredding is ongoing.</p>
+  </note>
 
 </page>
