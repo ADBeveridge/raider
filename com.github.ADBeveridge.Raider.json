@@ -1,14 +1,15 @@
 {
     "app-id" : "com.github.ADBeveridge.Raider",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "41",
+    "runtime-version" : "42",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
+        "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--socket=wayland",
-        "--filesystem=host"
+        "--device=dri",
+        "--socket=wayland"
     ],
     "cleanup" : [
         "/include",
@@ -23,27 +24,13 @@
     ],
     "modules" : [
         {
-            "name" : "libdazzle",
-            "buildsystem" : "meson",
-            "builddir" : true,
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libdazzle.git",
-                    "commit" : "1baded912ba4257db1f843aacf27442695c35413"
-                }
-            ]
-        },
-        {
             "name" : "raider",
-            "buildsystem" : "meson",
             "builddir" : true,
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/ADBeveridge/raider.git",
-                    "commit" : "09ee04fd87a94e1e6567cb059e433fd3a21b329f",
-                    "branch" : "main"
+                    "url" : "file:///home/ad/Projects/raider"
                 }
             ]
         }

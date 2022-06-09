@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/ADBeveridge/raider/ui">
+  <gresource prefix="/com/github/ADBeveridge/Raider">
     <file>raider-window.ui</file>
-    <file>gears-menu.ui</file>
-    <file>raider-preferences.ui</file>
     <file>raider-file-row.ui</file>
-    <file>raider-progress-info-popover.ui</file>
+    <file>gtk/help-overlay.ui</file>
   </gresource>
 </gresources>

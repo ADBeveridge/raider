@@ -1,28 +1,30 @@
 raider_sources = [
   'main.c',
   'raider-window.c',
-  'raider-window.h',
-  'raider.c',
-  'raider.h',
-  'raider-preferences.c',
-  'raider-preferences.h',
-  'raider-file-row.c',
-  'raider-file-row.h',
-  'raider-progress-info-popover.c',
-  'raider-progress-info-popover.h'
+  'raider-application.c',
+  'raider-file-row.c'
 ]
 
 raider_deps = [
-  dependency('gio-2.0', version: '>= 2.50'),
-  dependency('gtk+-3.0', version: '>= 3.22'),
-  dependency('libhandy-1', version: '>= 1.1.90'),
-  dependency('libdazzle-1.0', version: '>= 3.37.0')
+  dependency('gtk4'),
+  dependency('libadwaita-1', version: '>= 1.0'),
 ]
 
 gnome = import('gnome')
 
+# Generate UI files from blueprint files.
+blueprints = custom_target('blueprints',
+  input: files(
+    'raider-window.blp',
+    'raider-file-row.blp',
+  ),
+  output: '.',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+)
+
 raider_sources += gnome.compile_resources('raider-resources',
   'raider.gresource.xml',
+  dependencies: blueprints,
   c_name: 'raider'
 )
 

@@ -4,6 +4,5 @@ Exec=raider
 Icon=com.github.ADBeveridge.Raider
 Terminal=false
 Type=Application
-Categories=FileTools;Utility;GNOME;GTK;
+Categories=GTK;
 StartupNotify=true
-Comment=Shred your files securely

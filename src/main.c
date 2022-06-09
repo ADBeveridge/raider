@@ -1,43 +1,56 @@
-/*
- * main.c
- * Copyright (C) 2021 Alan Beveridge
+/* main.c
  *
- * raider is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
+ * Copyright 2022 Alan
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * raider is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include "raider-config.h"
-#include <gtk/gtk.h>
-#include "raider.h"
-#include "raider-window.h"
-
 
 #include <glib/gi18n.h>
 
+#include "raider-config.h"
+#include "raider-application.h"
 
 int
-main (int argc, char *argv[])
+main (int   argc,
+      char *argv[])
 {
-    Raider *app;
-    int status;
+	g_autoptr(RaiderApplication) app = NULL;
+	int ret;
 
-    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    textdomain (GETTEXT_PACKAGE);
+	/* Set up gettext translations */
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 
-    app = raider_new ();
-    status = g_application_run (G_APPLICATION (app), argc, argv);
-    g_object_unref (app);
+	/*
+	 * Create a new GtkApplication. The application manages our main loop,
+	 * application windows, integration with the window manager/compositor, and
+	 * desktop features such as file opening and single-instance applications.
+	 */
+	app = raider_application_new ("com.github.ADBeveridge.Raider", G_APPLICATION_FLAGS_NONE);
 
-    return status;
+	/*
+	 * Run the application. This function will block until the application
+	 * exits. Upon return, we have our exit code to return to the shell. (This
+	 * is the code you see when you do `echo $?` after running a command in a
+	 * terminal.
+	 *
+	 * Since GtkApplication inherits from GApplication, we use the parent class
+	 * method "run". But we need to cast, which is what the "G_APPLICATION()"
+	 * macro does.
+	 */
+	ret = g_application_run (G_APPLICATION (app), argc, argv);
+
+	return ret;
 }

@@ -1,0 +1,112 @@
+using Gtk 4.0;
+using Adw 1;
+
+template RaiderWindow : Gtk.ApplicationWindow {
+  default-width: 800;
+  default-height: 600;
+
+  titlebar: Adw.HeaderBar header_bar {
+      centering-policy: strict;
+
+      [start]
+      Gtk.Revealer shred_revealer {
+      	reveal-child: false;
+      	visible: false;
+      	transition-type: slide_left;
+      	Gtk.Button shred_button {
+      	  label: "Shred";
+      	  styles ["destructive-action"]
+      	}
+      }
+
+      [start]
+      Gtk.Revealer abort_revealer {
+      	reveal-child: false;
+      	visible: false;
+      	transition-type: slide_left;
+      	Gtk.Button abort_button {
+      	  label: "Shred";
+      	  styles ["destructive-action"]
+      	}
+      }
+
+      [start] // This contains removable drives.
+      Gtk.Revealer open_full_revealer {
+        reveal-child: false;
+        transition-type: slide_left;
+        Adw.SplitButton open_button_full {
+      	  icon-name: "list-add-symbolic";
+      	  menu-model: open_menu;
+        }
+      }
+
+      [start] // This is shown if there are no drives available.
+      Gtk.Revealer open_revealer {
+        reveal-child: true;
+        transition-type: slide_left;
+        Gtk.Button open_button {
+      	  icon-name: "list-add-symbolic";
+      	  action-name: "app.open";
+        }
+      }
+
+      [end]
+      Gtk.MenuButton {
+        icon-name: "open-menu-symbolic";
+        menu-model: primary_menu;
+      }
+  };
+
+  [content]
+  Gtk.Box contents_box {
+    Gtk.Stack window_stack {
+
+      Gtk.StackPage empty_page {
+        child: Adw.StatusPage empty_state {
+      	  title: _("Add files or drop here");
+      	  icon-name: "document-open-symbolic";
+      	  hexpand: true;
+        };
+      }
+
+      Gtk.StackPage list_box_page {
+      	child: Gtk.ScrolledWindow scrolled_window {
+      	  Gtk.ListBox list_box {
+      	  }
+        };
+      }
+
+    }
+  }
+
+}
+
+
+menu primary_menu {
+  section {
+    item {
+      label: _("New Window");
+      action: "app.new_window";
+    }
+  }
+  section {
+    item {
+      label: _("Preferences");
+      action: "app.preferences";
+    }
+    item {
+      label: _("Help");
+      action: "app.help";
+    }
+    item {
+      label: _("About File Shredder");
+      action: "app.about";
+    }
+  }
+}
+
+menu open_menu {
+  section {
+    label: "Devices";
+  }
+}

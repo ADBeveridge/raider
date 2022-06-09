@@ -1,19 +1,14 @@
-project('raider', 'c',        
-	version: '0.1.0',
-  	meson_version: '>= 0.40.0',
+project('raider', 'c',
+          version: '0.1.0',
+    meson_version: '>= 0.59.0',
+  default_options: ['werror=false',
+                     'c_std=gnu11',
+                   ],
 )
 
 i18n = import('i18n')
 
-# Optional deps
-nautilus_version = '>=3.28.0'
-
-if get_option('nautilus-actions')
-  libnautilus_extension_dep = dependency('libnautilus-extension', version : nautilus_version, required : false)
-  build_nautilus_actions = libnautilus_extension_dep.found()
-else
-  build_nautilus_actions = false
-endif
+gnome = import('gnome')
 
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_VERSION', meson.project_version())
@@ -24,19 +19,16 @@ configure_file(
   configuration: config_h,
 )
 add_project_arguments([
-  '-I' + meson.build_root(),
+  '-I' + meson.project_build_root(),
 ], language: 'c')
 
-prefix = get_option('prefix')
-datadir = join_paths(prefix, get_option('datadir'))
 
 subdir('data')
 subdir('src')
 subdir('po')
-subdir('docs')
-subdir('help')
-if build_nautilus_actions
-  subdir('nautilus')
-endif
 
-meson.add_install_script('build-aux/meson/postinstall.py')
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
+)

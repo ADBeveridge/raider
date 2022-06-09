@@ -7,7 +7,7 @@
   	<summary>Securely delete your files</summary>
 	<description>
 		<p>
-			File Shredder, also named Raider, is a simple application that enables you to securely delete files that 
+			File Shredder, also named Raider, is a simple application that enables you to securely delete files that
 			was built with GNOME in mind. It supports all the options that its backend has,
 			plus a realtime progress tracking.
 		</p>
@@ -33,3 +33,4 @@
 	<update_contact>adbeveridge@protonmail.com</update_contact>
 	<developer_name>Alan Beveridge</developer_name>
 </component>
+  

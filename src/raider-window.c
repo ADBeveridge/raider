@@ -1,240 +1,54 @@
-#include <gtk/gtk.h>
-#include <handy.h>
-#include <glib/gi18n.h>
+/* raider-window.c
+ *
+ * Copyright 2022 Alan
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "raider-config.h"
 #include "raider-window.h"
 #include "raider-file-row.h"
 
-struct _RaiderWindow
-{
-    HdyApplicationWindow parent;
+struct _RaiderWindow {
+  GtkApplicationWindow parent_instance;
 
-    GtkWidget *header_bar;
-    GtkWidget *contents_box;
-    GtkWidget *shred_button;
-    GtkWidget *primary_menu;
-    GtkWidget *list_box;
-    GtkWidget *window_stack;
-    GtkWidget *hide_shredding_check_button;
-    GtkWidget *number_of_passes_spin_button;
-    GtkWidget *remove_file_check_button;
-    GtkWidget *hint_page;
-    GtkRevealer *shred_control_revealer;
-    GtkRevealer *add_file_revealer;
-    GtkRevealer *abort_button_revealer;
+  AdwSplitButton* open_button_full;
+  GtkButton* open_button;
+  GtkButton* shred_button;
+  GtkButton* abort_button;
 
-    GtkTargetEntry target_entry;
+  GtkListBox* list_box;
 };
 
-G_DEFINE_TYPE (RaiderWindow, raider_window, HDY_TYPE_APPLICATION_WINDOW)
+G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
 
 static void
-raider_window_init (RaiderWindow *win)
+raider_window_class_init(RaiderWindowClass *klass)
 {
-    gtk_widget_init_template(GTK_WIDGET(win));
+  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-	GtkBuilder *builder = gtk_builder_new_from_resource ("/com/github/ADBeveridge/raider/ui/gears-menu.ui");
-    GMenuModel *menu = G_MENU_MODEL (gtk_builder_get_object (builder, "menu"));
-    gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (win->primary_menu), menu);
-    g_object_unref (builder);
-
-    /* Make the window a DND destination. */
-    win->target_entry.target = "text/uri-list";
-    win->target_entry.flags = 0;
-    win->target_entry.info = 0;
-
-    gtk_drag_dest_set (GTK_WIDGET(win), GTK_DEST_DEFAULT_ALL, &win->target_entry, 1, GDK_ACTION_COPY); /* Make it into a dnd destination. */
-    g_signal_connect (win, "drag_data_received", G_CALLBACK (on_drag_data_received), win);
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button_full);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_button);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_button);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, list_box);
 }
 
 static void
-raider_window_dispose (GObject *object)
+raider_window_init(RaiderWindow *self)
 {
-    G_OBJECT_CLASS (raider_window_parent_class)->dispose (object);
+  gtk_widget_init_template(GTK_WIDGET(self));
 }
-
-static void
-raider_window_class_init (RaiderWindowClass *class)
-{
-    G_OBJECT_CLASS (class)->dispose = raider_window_dispose;
-
-    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/com/github/ADBeveridge/raider/ui/raider-window.ui");
-
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, header_bar);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, primary_menu);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_control_revealer);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, shred_button);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, contents_box);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, window_stack);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, list_box);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, hint_page);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, add_file_revealer);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderWindow, abort_button_revealer);
-
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_window_open_file_dialog);
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), shred_file);
-    gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), raider_abort_shredding);
-}
-
-/*
- * This is called when the user drops files into the list box.
- */
-void on_drag_data_received (GtkWidget *wgt, GdkDragContext *context, gint x, gint y,
-                            GtkSelectionData *seldata, guint info, guint time,
-                            gpointer data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
-    gchar **filenames = filenames = g_uri_list_extract_uris ( (const gchar *) gtk_selection_data_get_data (seldata) );
-
-    if (filenames == NULL)
-    {
-        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Unable to add files!"));
-        gtk_drag_finish (context, FALSE, FALSE, time);
-        return;
-    }
-
-    int iter = 0;
-
-    while (filenames[iter] != NULL)
-    {
-        char *filename = g_filename_from_uri (filenames[iter], NULL, NULL);
-        raider_window_open(filename, data);
-
-        iter++;
-    }
-
-    gtk_drag_finish (context, TRUE, FALSE, time);
-}
-
-void
-raider_window_open (gchar *filename_to_open, gpointer data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
-    GFile *file = g_file_new_for_path (filename_to_open);
-    if (g_file_query_exists (file, NULL) == FALSE)
-    {
-        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("File does not exist!"));
-        return;
-    }
-    if (g_file_query_file_type (file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
-    {
-    	hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("Folders are not supported!"));
-        return;
-    }
-    
-    g_object_unref(file);
-
-    GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
-    g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
-
-    /* Insert it at the end of the list, but before the + row. */
-    gtk_container_add(GTK_CONTAINER(window->list_box), file_row);
-
-    gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_box_page");
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), TRUE);
-
-    g_free (filename_to_open);
-}
-
-void
-raider_window_close (gpointer data, gpointer user_data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(user_data);
-
-    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
-    guint number = g_list_length(list);
-    g_list_free(list);
-
-    if (number == 0)
-    {
-        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "hint_page");
-        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_control_revealer), FALSE);
-
-        gtk_revealer_set_reveal_child (window->shred_control_revealer, FALSE);
-        gtk_revealer_set_reveal_child (window->abort_button_revealer, FALSE);
-
-        /* Enable the adding of files. */
-        gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), TRUE);
-        gtk_drag_dest_set (GTK_WIDGET(window), GTK_DEST_DEFAULT_ALL, &window->target_entry, 1, GDK_ACTION_COPY);
-    }
-}
-
-void
-raider_window_open_file_dialog (GtkWidget *button, RaiderWindow *window)
-{
-    GtkWidget *dialog = gtk_file_chooser_dialog_new (_("Open File"), GTK_WINDOW (window),
-                        GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Open"),
-                        GTK_RESPONSE_ACCEPT, NULL); /* Create dialog. */
-
-    gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), TRUE); /* Alow to select many files at once. */
-
-    gint res = gtk_dialog_run (GTK_DIALOG (dialog) );
-    if (res == GTK_RESPONSE_ACCEPT)
-    {
-        GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
-
-        GSList *list = gtk_file_chooser_get_filenames (chooser);
-        g_slist_foreach (list, (GFunc) raider_window_open, window);
-        g_slist_free (list);
-    }
-
-    gtk_widget_destroy (dialog);
-}
-
-void raider_abort_shredding (GtkWidget *widget, gpointer data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
-    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
-    GList *l;
-    for (l = list; l != NULL; l = l->next)
-    {
-        raider_file_row_shredding_abort (NULL, l->data);
-    }
-    g_list_free(list);
-    g_list_free (l);
-}
-
-/*
- * THE BIG FUNCTION
- *
- * This function does not use a queue because shred is not cpu intensive, just disk intensive, and
-   it is up to the disk to queue io requests.
- */
-void shred_file(GtkWidget *widget, gpointer data)
-{
-    /* Clear the subtitle. */
-    RaiderWindow *window = RAIDER_WINDOW(data);
-    hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), NULL);
-
-    gtk_revealer_set_reveal_child (window->shred_control_revealer, FALSE);
-    gtk_revealer_set_reveal_child (window->abort_button_revealer, TRUE);
-        
-    /* Hide the add button and remove dnd. */
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->add_file_revealer), FALSE);
-    gtk_drag_dest_unset(GTK_WIDGET(window));
-
-    /* Launch the shredding. */
-    GList *list = gtk_container_get_children(GTK_CONTAINER(window->list_box));
-    guint num = g_list_length(list);
-    if (num == 0)
-    {
-        hdy_header_bar_set_subtitle(HDY_HEADER_BAR(window->header_bar), _("No files added!"));
-    }
-    else
-    {
-        g_list_foreach(list, launch, NULL);
-    }
-    g_list_free(list);
-}
-
-RaiderWindow *
-raider_window_new (Raider *app)
-{
-    return g_object_new (RAIDER_WINDOW_TYPE, "application", app, NULL);
-}
-
-/**********************************************************************************/
-
 
