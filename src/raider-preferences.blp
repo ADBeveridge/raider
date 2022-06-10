@@ -1,0 +1,20 @@
+using Gtk 4.0;
+using Adw 1;
+
+template RaiderPreferences : Adw.PreferencesWindow {
+  modal: true;
+
+  Adw.PreferencesPage basic_settings{
+        title: _('_Basic');
+        Adw.PreferencesGroup {
+            title: _('Editor');
+
+            Adw.ActionRow {
+                title: _('Editor _Font');
+                activatable: true;
+                activatable-widget: Gtk.Switch remove_file {
+                };
+            }
+        }
+    }
+}

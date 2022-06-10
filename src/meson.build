@@ -2,7 +2,8 @@ raider_sources = [
   'main.c',
   'raider-window.c',
   'raider-application.c',
-  'raider-file-row.c'
+  'raider-file-row.c',
+  'raider-preferences.c',
 ]
 
 raider_deps = [
@@ -17,6 +18,7 @@ blueprints = custom_target('blueprints',
   input: files(
     'raider-window.blp',
     'raider-file-row.blp',
+    'raider-preferences.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

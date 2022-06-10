@@ -18,6 +18,7 @@
 
 #include "raider-application.h"
 #include "raider-window.h"
+#include "raider-preferences.h"
 #include <glib/gi18n.h>
 
 struct _RaiderApplication {
@@ -32,50 +33,27 @@ RaiderApplication* raider_application_new(gchar * application_id,
   return g_object_new(RAIDER_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
 }
 
-/* Create a new window. */
-static void raider_new_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+/* Actions. */
+static void raider_new_window (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   RaiderApplication *self = RAIDER_APPLICATION(user_data);
-
   RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", self, NULL);
 
   gtk_window_present(GTK_WINDOW(window));
 }
 
-static void raider_application_finalize(GObject *object)
+static void raider_application_preferences (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-  RaiderApplication *self = (RaiderApplication *)object;
+  RaiderApplication *self = RAIDER_APPLICATION(user_data);
+  RaiderWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
 
-  G_OBJECT_CLASS(raider_application_parent_class)->finalize(object);
-}
-
-static void raider_application_activate(GApplication *app)
-{
-  GtkWindow *window;
-
-  g_assert(GTK_IS_APPLICATION(app));
-
-  /* Get the current window or create one if necessary. */
-  window = gtk_application_get_active_window(GTK_APPLICATION(app));
-  if (window == NULL)
-    window = g_object_new(RAIDER_TYPE_WINDOW, "application", app, NULL);
-
-  /* Ask the window manager/compositor to present the window. */
-  gtk_window_present(window);
+  RaiderPreferences* preferences = g_object_new(RAIDER_TYPE_PREFERENCES, NULL);
+  gtk_window_present(GTK_WINDOW(preferences));
 }
 
 static void raider_application_open_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   GtkWindow* window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
-}
-
-static void raider_application_class_init(RaiderApplicationClass *klass)
-{
-  GObjectClass *object_class = G_OBJECT_CLASS(klass);
-  GApplicationClass *app_class = G_APPLICATION_CLASS(klass);
-
-  object_class->finalize = raider_application_finalize;
-  app_class->activate = raider_application_activate;
 }
 
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -112,6 +90,37 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
 }
 
 
+static void raider_application_finalize(GObject *object)
+{
+  RaiderApplication *self = (RaiderApplication *)object;
+
+  G_OBJECT_CLASS(raider_application_parent_class)->finalize(object);
+}
+
+static void raider_application_activate(GApplication *app)
+{
+  GtkWindow *window;
+
+  g_assert(GTK_IS_APPLICATION(app));
+
+  /* Get the current window or create one if necessary. */
+  window = gtk_application_get_active_window(GTK_APPLICATION(app));
+  if (window == NULL)
+    window = g_object_new(RAIDER_TYPE_WINDOW, "application", app, NULL);
+
+  /* Ask the window manager/compositor to present the window. */
+  gtk_window_present(window);
+}
+
+static void raider_application_class_init(RaiderApplicationClass *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS(klass);
+  GApplicationClass *app_class = G_APPLICATION_CLASS(klass);
+
+  object_class->finalize = raider_application_finalize;
+  app_class->activate = raider_application_activate;
+}
+
 static void raider_application_init(RaiderApplication *self)
 {
   g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
@@ -129,6 +138,10 @@ static void raider_application_init(RaiderApplication *self)
   g_autoptr(GSimpleAction) open_action = g_simple_action_new("open", NULL);
   g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
   g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
+
+   g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
+  g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
+  g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
 
   gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]) { "<primary>q", NULL, });
 }

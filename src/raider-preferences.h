@@ -2,15 +2,11 @@
 #define __RAIDERPREFERENCES_H
 
 #include <gtk/gtk.h>
-#include <handy.h>
+#include <adwaita.h>
 #include "raider-window.h"
 
 
-#define RAIDER_PREFERENCES_TYPE (raider_preferences_get_type ())
-G_DECLARE_FINAL_TYPE (RaiderPreferences, raider_preferences, RAIDER, PREFERENCES, HdyPreferencesWindow)
-
-
-RaiderPreferences        *raider_preferences_new          (RaiderWindow *win);
-
+#define RAIDER_TYPE_PREFERENCES (raider_preferences_get_type ())
+G_DECLARE_FINAL_TYPE (RaiderPreferences, raider_preferences, RAIDER, PREFERENCES, AdwPreferencesWindow)
 
 #endif /* __RAIDERPREFERENCES_H */
