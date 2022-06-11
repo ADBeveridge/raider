@@ -34,7 +34,7 @@ RaiderApplication* raider_application_new(gchar * application_id,
 }
 
 /* Actions. */
-static void raider_new_window (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+static void raider_new_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   RaiderApplication *self = RAIDER_APPLICATION(user_data);
   RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", self, NULL);
@@ -42,24 +42,52 @@ static void raider_new_window (GSimpleAction *action, GVariant *parameter, gpoin
   gtk_window_present(GTK_WINDOW(window));
 }
 
-static void raider_application_preferences (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+static void raider_application_preferences(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-  RaiderApplication *self = RAIDER_APPLICATION(user_data);
-  RaiderWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
-
   RaiderPreferences* preferences = g_object_new(RAIDER_TYPE_PREFERENCES, NULL);
   gtk_window_present(GTK_WINDOW(preferences));
+}
+
+static void on_open_response (GtkDialog *dialog, int response)
+{
+  if (response == GTK_RESPONSE_ACCEPT)
+    {
+      GListModel* list = gtk_file_chooser_get_files(GTK_FILE_CHOOSER(dialog));
+
+      int num = g_list_model_get_n_items(list);
+      int i;
+      for (i = 0; i < num; i++)
+        {
+          gpointer obj = g_list_model_get_item(list, i);
+          g_autoptr(GFile) file = obj;
+
+          raider_window_open(g_file_get_path(file), gtk_window_get_transient_for(GTK_WINDOW(dialog)));
+        }
+    }
+
+    gtk_window_destroy (GTK_WINDOW (dialog));
 }
 
 static void raider_application_open_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   GtkWindow* window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
+
+  GtkDialog *dialog = GTK_DIALOG(gtk_file_chooser_dialog_new(_("Open File"), GTK_WINDOW(window),
+                                                  GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Open"),
+                                                  GTK_RESPONSE_ACCEPT, NULL)); /* Create dialog. */
+
+  gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE); /* Allow to select many files at once. */
+  gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
+
+  g_signal_connect_swapped (dialog, "response", G_CALLBACK (on_open_response), dialog);
+  gtk_widget_show(GTK_WIDGET(dialog));
 }
 
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   RaiderApplication *self = RAIDER_APPLICATION(user_data);
   GtkWindow *window = NULL;
+
   g_return_if_fail(RAIDER_IS_APPLICATION(self));
   window = gtk_application_get_active_window(GTK_APPLICATION(self));
 
@@ -75,6 +103,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
   };
 
   g_autofree gchar *program_name = g_strdup("File Shredder");
+
   gtk_show_about_dialog(window,
                         "transient-for", window,
                         "modal", TRUE,
@@ -89,11 +118,24 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
                         NULL);
 }
 
+static void raider_application_open(GApplication  *application, GFile **files, gint n_files, const gchar   *hint)
+{
+  RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", application, NULL);
+  gint i;
+
+  for (i = 0; i < n_files; i++)
+    {
+      gchar *path = g_file_get_path(files[i]);
+      raider_window_open(path, window);   // This adds an entry to the current window.
+    }
+
+  gtk_window_present(GTK_WINDOW(window));
+}
+
+
 
 static void raider_application_finalize(GObject *object)
 {
-  RaiderApplication *self = (RaiderApplication *)object;
-
   G_OBJECT_CLASS(raider_application_parent_class)->finalize(object);
 }
 
@@ -119,6 +161,7 @@ static void raider_application_class_init(RaiderApplicationClass *klass)
 
   object_class->finalize = raider_application_finalize;
   app_class->activate = raider_application_activate;
+  app_class->open = raider_application_open;
 }
 
 static void raider_application_init(RaiderApplication *self)
@@ -139,7 +182,7 @@ static void raider_application_init(RaiderApplication *self)
   g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
   g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
 
-   g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
+  g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
   g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
   g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
 

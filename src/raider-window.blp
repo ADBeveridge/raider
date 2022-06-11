@@ -62,6 +62,7 @@ template RaiderWindow : Gtk.ApplicationWindow {
     Gtk.Stack window_stack {
 
       Gtk.StackPage empty_page {
+      name: "empty_page";
         child: Adw.StatusPage empty_state {
       	  title: _("Add files or drop here");
       	  icon-name: "document-open-symbolic";
@@ -69,7 +70,8 @@ template RaiderWindow : Gtk.ApplicationWindow {
         };
       }
 
-      Gtk.StackPage list_box_page {
+      Gtk.StackPage list_page {
+      name: "list_page";
       	child: Gtk.ScrolledWindow scrolled_window {
       	  Gtk.ListBox list_box {
       	  }

@@ -1,6 +1,6 @@
 /* raider-window.c
  *
- * Copyright 2022 Alan
+ * Copyright 2022 Alan Beveridge
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,9 +24,13 @@ struct _RaiderWindow {
   GtkApplicationWindow parent_instance;
 
   AdwSplitButton* open_button_full;
+  GtkStack* window_stack;
   GtkButton* open_button;
+
   GtkButton* shred_button;
+  GtkRevealer* shred_revealer;
   GtkButton* abort_button;
+  GtkRevealer* abort_revealer;
 
   GtkListBox* list_box;
 };
@@ -44,6 +48,9 @@ raider_window_class_init(RaiderWindowClass *klass)
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, list_box);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, window_stack);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_revealer);
+    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_revealer);
 }
 
 static void
@@ -52,3 +59,29 @@ raider_window_init(RaiderWindow *self)
   gtk_widget_init_template(GTK_WIDGET(self));
 }
 
+void raider_window_open (gchar *filename_to_open, gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    GFile *file = g_file_new_for_path (filename_to_open);
+    if (g_file_query_exists (file, NULL) == FALSE)
+    {
+        return;
+    }
+    if (g_file_query_file_type (file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
+    {
+        return;
+    }
+    g_object_unref(file);
+
+    /*GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
+    g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
+    gtk_container_add(GTK_CONTAINER(window->list_box), file_row);
+     */
+
+    gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
+    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
+
+    g_free (filename_to_open);
+
+}
