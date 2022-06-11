@@ -55,4 +55,5 @@ raider.cbp
 raider.layout
 .vscode/
 
-/subprojects/blueprint-compiler
+/subprojects/blueprint-compiler/
+
