@@ -54,3 +54,5 @@ dkms.conf
 raider.cbp
 raider.layout
 .vscode/
+
+/subprojects/blueprint-compiler

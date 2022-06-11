@@ -25,8 +25,9 @@ struct _RaiderWindow {
 
   AdwSplitButton* open_button_full;
   GtkStack* window_stack;
-  GtkButton* open_button;
 
+  GtkButton* open_button;
+  GtkRevealer* open_revealer;
   GtkButton* shred_button;
   GtkRevealer* shred_revealer;
   GtkButton* abort_button;
@@ -44,6 +45,7 @@ raider_window_class_init(RaiderWindowClass *klass)
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_revealer);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button_full);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_button);
@@ -57,6 +59,23 @@ static void
 raider_window_init(RaiderWindow *self)
 {
   gtk_widget_init_template(GTK_WIDGET(self));
+}
+
+void raider_window_close (gpointer data, gpointer user_data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(user_data);
+    int number = 1;
+
+    if (number == 0)
+    {
+        gtk_stack_set_visible_child_name (window->window_stack, "empty_page");
+
+        gtk_revealer_set_reveal_child (window->shred_revealer, FALSE);
+        gtk_revealer_set_reveal_child (window->abort_revealer, FALSE);
+        gtk_revealer_set_reveal_child (window->open_revealer, TRUE);
+
+        //gtk_drag_dest_set (GTK_WIDGET(window), GTK_DEST_DEFAULT_ALL, &window->target_entry, 1, GDK_ACTION_COPY);
+    }
 }
 
 void raider_window_open (gchar *filename_to_open, gpointer data)
@@ -74,10 +93,10 @@ void raider_window_open (gchar *filename_to_open, gpointer data)
     }
     g_object_unref(file);
 
-    /*GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
+
+    GtkWidget *file_row = g_object_new(RAIDER_FILE_ROW_TYPE, NULL);
     g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
-    gtk_container_add(GTK_CONTAINER(window->list_box), file_row);
-     */
+    gtk_list_box_append(window->list_box, file_row);
 
     gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
