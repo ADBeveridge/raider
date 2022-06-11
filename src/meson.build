@@ -4,6 +4,7 @@ raider_sources = [
   'raider-application.c',
   'raider-file-row.c',
   'raider-preferences.c',
+  'raider-file-list.c'
 ]
 
 raider_deps = [
