@@ -33,7 +33,10 @@ struct _RaiderWindow {
   GtkButton* abort_button;
   GtkRevealer* abort_revealer;
 
+  AdwToastOverlay *toast_overlay;
+
   GtkListBox* list_box;
+  int file_count;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -51,22 +54,26 @@ raider_window_class_init(RaiderWindowClass *klass)
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, list_box);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, window_stack);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_revealer);
-    gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_revealer);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_revealer);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_revealer);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, toast_overlay);
 }
 
 static void
 raider_window_init(RaiderWindow *self)
 {
   gtk_widget_init_template(GTK_WIDGET(self));
+  self->file_count = 0;
 }
 
+/* This is called when the handler for the close button destroys the row. This handles the application state */
 void raider_window_close (gpointer data, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(user_data);
-    int number = 1;
 
-    if (number == 0)
+    window->file_count--;
+
+    if (window->file_count == 0)
     {
         gtk_stack_set_visible_child_name (window->window_stack, "empty_page");
 
@@ -103,4 +110,5 @@ void raider_window_open (gchar *filename_to_open, gpointer data)
 
     g_free (filename_to_open);
 
+    window->file_count++;
 }

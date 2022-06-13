@@ -1,5 +1,4 @@
-#ifndef __RAIDERFILEROW_H
-#define __RAIDERFILEROW_H
+#pragma once
 
 #include <gtk/gtk.h>
 
@@ -7,4 +6,3 @@
 
 G_DECLARE_FINAL_TYPE (RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
-#endif

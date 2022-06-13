@@ -50,6 +50,11 @@ template RaiderWindow : Gtk.ApplicationWindow {
         }
       }
 
+      [title]
+      Adw.WindowTitle title {
+      	title: "File Shredder";
+      }
+
       [end]
       Gtk.MenuButton {
         icon-name: "open-menu-symbolic";
@@ -58,26 +63,28 @@ template RaiderWindow : Gtk.ApplicationWindow {
   };
 
   [content]
-  Gtk.Box contents_box {
-    Gtk.Stack window_stack {
+  Adw.ToastOverlay toast_overlay {
+    Gtk.Box contents_box {
+      Gtk.Stack window_stack {
 
-      Gtk.StackPage empty_page {
-      name: "empty_page";
-        child: Adw.StatusPage empty_state {
-      	  title: _("Add files or drop here");
-      	  icon-name: "document-open-symbolic";
-      	  hexpand: true;
-        };
+        Gtk.StackPage empty_page {
+        name: "empty_page";
+          child: Adw.StatusPage empty_state {
+      	    title: _("Add files or drop here");
+      	    icon-name: "document-open-symbolic";
+      	    hexpand: true;
+          };
+        }
+
+        Gtk.StackPage list_page {
+        name: "list_page";
+      	  child: Gtk.ScrolledWindow scrolled_window {
+      	    Gtk.ListBox list_box {
+      	    }
+          };
+        }
+
       }
-
-      Gtk.StackPage list_page {
-      name: "list_page";
-      	child: Gtk.ScrolledWindow scrolled_window {
-      	  Gtk.ListBox list_box {
-      	  }
-        };
-      }
-
     }
   }
 

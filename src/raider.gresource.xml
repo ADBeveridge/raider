@@ -5,5 +5,6 @@
     <file>raider-file-row.ui</file>
     <file>raider-preferences.ui</file>
     <file>gtk/help-overlay.ui</file>
+    <file>raider-progress-icon.ui</file>
   </gresource>
 </gresources>
