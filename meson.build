@@ -1,6 +1,6 @@
 project('raider', 'c',
           version: '0.1.0',
-    meson_version: '>= 0.59.0',
+    meson_version: '>= 0.56.0',
 )
 
 i18n = import('i18n')
