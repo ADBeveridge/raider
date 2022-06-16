@@ -1,11 +1,26 @@
 using Gtk 4.0;
 using Adw 1;
 
-
 template RaiderFileRow : Adw.ActionRow {
   title: "Hello there";
   subtitle: "This is a subtitle";
-  activatable-widget: Gtk.Button progress_button {
-    child: .RaiderProgressIcon icon {};
-  };
+
+  [suffix]
+  Gtk.Box controls {
+    Gtk.Revealer remove_revealer {
+      reveal-child: true;
+      transition-type: crossfade;
+      Gtk.Button remove_button {
+      }
+    }
+    Gtk.Revealer progress_revealer {
+      reveal-child: false;
+      transition-type: crossfade;
+      Gtk.Button progress_button {
+      }
+    }
+  }
+  /* This is changed when the shred button is pressed. */
+  activatable-widget: remove_button;
 }
+

@@ -147,4 +147,6 @@ static void raider_progress_icon_init (RaiderProgressIcon *icon)
   gtk_widget_set_halign (GTK_WIDGET (icon), GTK_ALIGN_CENTER);
 
   gtk_drawing_area_set_draw_func (GTK_DRAWING_AREA (icon), raider_progress_icon_draw, NULL, NULL);
+
+  gtk_widget_show(icon);
 }
