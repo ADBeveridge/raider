@@ -1,6 +1,5 @@
-#define _USE_MATH_DEFINES
 #include <math.h>
-
+#include <gtk/gtk.h>
 #include "raider-progress-icon.h"
 
 struct _RaiderProgressIcon

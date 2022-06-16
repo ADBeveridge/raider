@@ -2,9 +2,9 @@ raider_sources = [
   'main.c',
   'raider-window.c',
   'raider-application.c',
+  'raider-progress-icon.c',
   'raider-file-row.c',
   'raider-preferences.c',
-  'raider-progress-icon.c'
 ]
 
 raider_deps = [
