@@ -23,6 +23,17 @@
         "*.a"
     ],
     "modules" : [
+    	{
+  	    "name": "blueprint-compiler",
+  	    "buildsystem": "meson",
+  	    "sources": [
+    		{
+      		    "type": "git",
+      		    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+      		    "branch": "main"
+    	        }
+            ]
+        },
         {
             "name" : "raider",
             "builddir" : true,

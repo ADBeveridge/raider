@@ -6,7 +6,7 @@
 
 struct _RaiderFileRow
 {
-    AdwActionRow parent;
+   AdwActionRow parent;
 
   GtkButton* progress_button;
   RaiderProgressIcon* icon;

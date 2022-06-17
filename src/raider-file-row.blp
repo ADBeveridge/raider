@@ -7,10 +7,13 @@ template RaiderFileRow : Adw.ActionRow {
 
   [suffix]
   Gtk.Box controls {
+    valign: center;
     Gtk.Revealer remove_revealer {
       reveal-child: true;
       transition-type: slide_left;
       Gtk.Button remove_button {
+        icon-name: "edit-delete-symbolic";
+        clicked => raider_file_row_delete();
       }
     }
     Gtk.Revealer progress_revealer {
