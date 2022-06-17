@@ -9,13 +9,13 @@ template RaiderFileRow : Adw.ActionRow {
   Gtk.Box controls {
     Gtk.Revealer remove_revealer {
       reveal-child: true;
-      transition-type: crossfade;
+      transition-type: slide_left;
       Gtk.Button remove_button {
       }
     }
     Gtk.Revealer progress_revealer {
       reveal-child: false;
-      transition-type: crossfade;
+      transition-type: slide_left;
       Gtk.Button progress_button {
       }
     }
