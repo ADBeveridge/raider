@@ -9,44 +9,37 @@ template RaiderWindow : Gtk.ApplicationWindow {
       centering-policy: strict;
 
       [start]
-      Gtk.Revealer shred_revealer {
-      	reveal-child: false;
-      	visible: false;
-      	transition-type: slide_left;
-      	Gtk.Button shred_button {
-      	  label: "Shred";
-      	  styles ["destructive-action"]
-      	}
-      }
-
-      [start]
-      Gtk.Revealer abort_revealer {
-      	reveal-child: false;
-      	visible: false;
-      	transition-type: slide_left;
-      	Gtk.Button abort_button {
-      	  label: "Shred";
-      	  styles ["destructive-action"]
-      	}
-      }
-
-      [start] // This contains removable drives.
-      Gtk.Revealer open_full_revealer {
-        reveal-child: false;
-        transition-type: slide_left;
-        Adw.SplitButton open_button_full {
-      	  icon-name: "list-add-symbolic";
-      	  menu-model: open_menu;
+      Gtk.Box controls {
+	spacing: 0;
+        Gtk.Revealer shred_revealer {
+      	  reveal-child: false;
+      	  transition-type: slide_left;
+      	  Gtk.Button shred_button {
+      	    label: "Shred";
+      	    styles ["destructive-action"]
+      	    margin-end: 6;
+      	  }
         }
-      }
 
-      [start] // This is shown if there are no drives available.
-      Gtk.Revealer open_revealer {
-        reveal-child: true;
-        transition-type: slide_left;
-        Gtk.Button open_button {
-      	  icon-name: "list-add-symbolic";
-      	  action-name: "app.open";
+        Gtk.Revealer abort_revealer {
+      	  reveal-child: false;
+      	  transition-type: slide_left;
+      	  Gtk.Button abort_button {
+      	    label: "Abort";
+      	    styles ["destructive-action"]
+      	    margin-end: 6;
+      	  }
+        }
+
+        Gtk.Revealer open_revealer {
+          reveal-child: true;
+          transition-type: slide_right;
+          Adw.SplitButton open_button {
+      	    icon-name: "list-add-symbolic";
+      	    menu-model: open_menu;
+      	    action-name: "app.open";
+      	    margin-end: 6;
+          }
         }
       }
 

@@ -4,6 +4,7 @@ using Adw 1;
 template RaiderFileRow : Adw.ActionRow {
   title: "Hello there";
   subtitle: "This is a subtitle";
+  selectable: false;
 
   [suffix]
   Gtk.Box controls {
@@ -13,7 +14,6 @@ template RaiderFileRow : Adw.ActionRow {
       transition-type: slide_left;
       Gtk.Button remove_button {
         icon-name: "edit-delete-symbolic";
-        clicked => raider_file_row_delete();
       }
     }
     Gtk.Revealer progress_revealer {
@@ -23,7 +23,5 @@ template RaiderFileRow : Adw.ActionRow {
       }
     }
   }
-  /* This is changed when the shred button is pressed. */
-  activatable-widget: remove_button;
 }
 

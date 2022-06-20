@@ -41,6 +41,25 @@ struct _RaiderWindow {
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
 
+/*
+ * THE BIG FUNCTION
+ *
+ * This function does not use a queue because shred is not cpu intensive, just disk intensive, and
+   it is up to the disk to queue io requests.
+ */
+void shred_file(GtkWidget *widget, gpointer data)
+{
+    /* Clear the subtitle. */
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+	/* Update the headerbar view. */
+    gtk_revealer_set_reveal_child (window->shred_revealer, FALSE); // Hide.
+    gtk_revealer_set_reveal_child (window->abort_revealer, TRUE); // Show.
+    gtk_revealer_set_reveal_child (window->open_revealer, FALSE); // Hide.
+
+    /* Launch the shredding. */
+}
+
 static void
 raider_window_class_init(RaiderWindowClass *klass)
 {
@@ -49,7 +68,6 @@ raider_window_class_init(RaiderWindowClass *klass)
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_revealer);
-  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, open_button_full);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, shred_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, abort_button);
   gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (widget_class), RaiderWindow, list_box);
@@ -63,7 +81,10 @@ static void
 raider_window_init(RaiderWindow *self)
 {
   gtk_widget_init_template(GTK_WIDGET(self));
+
   self->file_count = 0;
+
+  g_signal_connect(self->shred_button, "clicked", G_CALLBACK(shred_file), self);
 }
 
 /* This is called when the handler for the close button destroys the row. This handles the application state */
@@ -77,6 +98,7 @@ void raider_window_close (gpointer data, gpointer user_data)
     {
         gtk_stack_set_visible_child_name (window->window_stack, "empty_page");
 
+		/* Update the view. */
         gtk_revealer_set_reveal_child (window->shred_revealer, FALSE);
         gtk_revealer_set_reveal_child (window->abort_revealer, FALSE);
         gtk_revealer_set_reveal_child (window->open_revealer, TRUE);
@@ -101,7 +123,7 @@ void raider_window_open (gchar *filename_to_open, gpointer data)
     g_object_unref(file);
 
 
-    GtkWidget *file_row = g_object_new(RAIDER_FILE_ROW_TYPE, NULL);
+    GtkWidget *file_row = raider_file_row_new(filename_to_open);
     g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
     gtk_list_box_append(window->list_box, file_row);
 
@@ -112,3 +134,4 @@ void raider_window_open (gchar *filename_to_open, gpointer data)
 
     window->file_count++;
 }
+
