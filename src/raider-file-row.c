@@ -5,6 +5,7 @@
 #include "raider-file-row.h"
 #include "raider-progress-icon.h"
 
+
 struct _RaiderFileRow {
 	AdwActionRow parent;
 
@@ -114,3 +115,5 @@ RaiderFileRow *raider_file_row_new (const char *str)
 
     return file_row;
 }
+
+

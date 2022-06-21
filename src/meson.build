@@ -5,6 +5,7 @@ raider_sources = [
   'raider-progress-icon.c',
   'raider-file-row.c',
   'raider-preferences.c',
+  'raider-shred-backend.c',
 ]
 
 raider_deps = [
