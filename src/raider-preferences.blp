@@ -6,15 +6,61 @@ template RaiderPreferences : Adw.PreferencesWindow {
 
   Adw.PreferencesPage basic_settings{
         title: _('_Basic');
-        Adw.PreferencesGroup {
-            title: _('Editor');
+        Adw.PreferencesGroup basic_group {
+            title: _('Basic');
+
+            Adw.ActionRow remove_file_row {
+                title: _('Remove File');
+                subtitle: _('Whether to remove the file after shredding');
+                activatable-widget: remove_file_switch;
+
+                [suffix]
+                Gtk.Switch remove_file_switch {
+                  active: true;
+                  valign: center;
+                }
+            }
+            Adw.ActionRow hide_shredding_row {
+                title: _('Hide Shredding');
+                subtitle: _('Whether to hide the fact the the files have been shredded');
+                activatable-widget: hide_shredding_switch;
+
+                [suffix]
+                Gtk.Switch hide_shredding_switch {
+                  valign: center;
+                }
+            }
+            Adw.ActionRow nop_row {
+                title: _('Number of passes');
+                subtitle: _('How many times to shred file over');
+
+
+                [suffix]
+                Gtk.SpinButton nop_spin_btn {
+		  adjustment: nop_adj;
+		  valign: center;
+
+                }
+            }
+        }
+        Adw.PreferencesGroup advanced_group {
+            title: _('Advanced');
 
             Adw.ActionRow {
-                title: _('Editor _Font');
+                title: _('Remove Method');
                 activatable: true;
-                activatable-widget: Gtk.Switch remove_file {
-                };
             }
         }
     }
+}
+
+Gtk.Adjustment nop_adj {
+  upper: 999999999999999999999999999999999999999999999999999999999999999999;
+
+}
+
+Gtk.Adjustment nob_adj {
+  lower: 1;
+  upper: 25;
+  value: 3;
 }
