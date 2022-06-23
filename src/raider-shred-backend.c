@@ -42,6 +42,7 @@ void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
 void parse_shred_data_type (void *ptr_to_fsm);
 void parse_sub_percentage (void *ptr_to_fsm);
+void apply_progress(void* ptr_to_fsm);
 
 void analyze_progress(gchar* buffer, GtkWidget* progress_icon, GtkWidget* popover, gchar* filename, GSettings* settings)
 {
@@ -55,6 +56,15 @@ void analyze_progress(gchar* buffer, GtkWidget* progress_icon, GtkWidget* popove
 
 	g_free(tokens);
 	g_free(buffer);
+}
+
+void apply_progress(void* ptr_to_fsm)
+{
+	struct _fsm *fsm = ptr_to_fsm;
+
+	gdouble progress = (fsm->current / fsm->number_of_passes);
+	raider_progress_icon_set_progress(RAIDER_PROGRESS_ICON(fsm->progress_icon), progress);
+	//raider_progress_info_popover_set_progress(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
 }
 
 /* Start the parsing. */
@@ -76,9 +86,7 @@ void stop(void *ptr_to_fsm)
 		fsm->tokens--;
 	}
 
-	gdouble progress = (fsm->current / fsm->number_of_passes);
-	raider_progress_icon_set_progress(RAIDER_PROGRESS_ICON(fsm->progress_icon), progress);
-	//raider_progress_info_popover_set_progress(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
+	apply_progress(ptr_to_fsm);
 }
 
 /* This function checks if shred sent the output. */

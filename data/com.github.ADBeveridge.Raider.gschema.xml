@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="raider">
-	<schema id="com.github.ADBeveridge.Raider" path="/com/github/ADBeveridge/Raider/">
-	</schema>
+    <schema id="com.github.ADBeveridge.Raider" path="/com/github/ADBeveridge/raider/">
+	<key name="hide-shredding" type="b">
+           <summary>Hide shredding</summary>
+            <description>Whether to hide shredding. This is done by overwriting the file(s) with zeros.</description>
+           <default>false</default>
+        </key>
+        <key name="remove-file" type="b">
+           <summary>Remove file</summary>
+           <description>Whether to remove the file after shredding it.</description>
+           <default>true</default>
+        </key>
+        <key name="number-of-passes" type="i">
+           <summary>Number of passes</summary>
+           <description>How many times the file will be overwritten with random data.</description>
+           <range min="1" max="25"/>
+           <default>3</default>
+        </key>
+        <key name="remove-method" type="i">
+           <summary>Remove method</summary>
+           <description>How the obfucticated file will be removed from the filesystem.</description>
+           <range min="0" max="2"/>
+           <default>0</default>
+        </key>
+        <key name="override-permissions" type="b">
+           <summary>Override Permisions</summary>
+           <description>If you do not have the neccessary permissions, override them.</description>
+           <default>false</default>
+        </key>
+        <key name="do-not-round-to-next-block" type="b">
+           <summary>Do not round to next block</summary>
+           <description>Do not round the file to the next block. This is the default for non-regular files.</description>
+           <default>false</default>
+        </key>
+        <key name="number-of-bytes-to-shred" type="i">
+           <summary>Number of bytes to shred entry</summary>
+           <description>Shred the number of bytes you want, and leave the rest of the file untouched.</description>
+           <range min="0"/>
+           <default>0</default>
+        </key>
+        <key name="shred-executable" type="s">
+           <summary>Shred executable</summary>
+           <description>The path to the shred executable.</description>
+           <default>'/usr/bin/shred'</default>
+        </key>
+        <key name="overwrite-data-file" type="s">
+           <summary>Overwrite data file</summary>
+           <description>Where to get data to overwrite the to-be-shredded files.</description>
+           <default>''</default>
+        </key>
+    </schema>
 </schemalist>

@@ -58,6 +58,12 @@ void shred_file(GtkWidget *widget, gpointer data)
     gtk_revealer_set_reveal_child (window->open_revealer, FALSE); // Hide.
 
     /* Launch the shredding. */
+	int row;
+	for (row = 0; row < window->file_count; row++)
+	{
+		RaiderFileRow* file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index (window->list_box, row));
+		launch_shredding ((gpointer)file_row);
+	}
 }
 
 static void
@@ -107,6 +113,7 @@ void raider_window_close (gpointer data, gpointer user_data)
     }
 }
 
+/* This is used to open a single file at a time */
 void raider_window_open (gchar *filename_to_open, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
@@ -123,7 +130,7 @@ void raider_window_open (gchar *filename_to_open, gpointer data)
     g_object_unref(file);
 
 
-    GtkWidget *file_row = raider_file_row_new(filename_to_open);
+    GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(filename_to_open));
     g_signal_connect(file_row, "destroy", G_CALLBACK(raider_window_close), data);
     gtk_list_box_append(window->list_box, file_row);
 
