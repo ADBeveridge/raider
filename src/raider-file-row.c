@@ -6,6 +6,7 @@
 #include "raider-progress-icon.h"
 #include "raider-shred-backend.h"
 
+enum _state {DO_FINISH, WORKING, FINISHED};
 
 struct _RaiderFileRow {
 	AdwActionRow parent;
@@ -28,6 +29,7 @@ struct _RaiderFileRow {
     gchar *filename;
     gchar *basename;
     GDataInputStream *data_stream;
+    enum _state state;
     GSubprocess *process;
     guint signal_id;
     gint timout_id;
@@ -49,19 +51,24 @@ void raider_file_row_delete(GtkWidget* widget, gpointer data)
 /* This function is called every few seconds to read the output of shred. */
 void process_output_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    if (user_data)
+    RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
+
+    if (row->state != DO_FINISH)
     {
-    	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
 
     	gchar *buf = g_data_input_stream_read_line_finish(row->data_stream, res, NULL, NULL);
 
     	/* If there is no data read in or available, return immediately. */
-   		/* if (buf == NULL)
+   		if (buf == NULL)
     	{
         	return;
-    	}*/
+    	}
 
-    	//analyze_progress(buf, GTK_WIDGET(row->icon), NULL, row->filename, row->settings);
+    	analyze_progress(buf, GTK_WIDGET(row->icon), NULL, row->filename, row->settings);
+    }
+    else
+    {
+    	row->state = FINISHED;
     }
 }
 
@@ -70,7 +77,7 @@ gboolean process_output(gpointer data)
     /* Converting the stream to text. */
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
-    g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, NULL, process_output_finish, data);
+    g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, row->cancel_read, process_output_finish, data);
     return TRUE;
 }
 
@@ -79,6 +86,8 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
 {
     RaiderFileRow *file_row = RAIDER_FILE_ROW(user_data);
 
+	file_row->state = DO_FINISH;
+
     /* Remove the timeout. */
     gboolean removed_timeout = g_source_remove(file_row->timout_id);
     if (removed_timeout == FALSE)
@@ -86,7 +95,13 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
         g_printerr("Could not stop timeout.\n");
     }
 
-    /* Send notification of completion. */
+
+	/* The deleting of the row and the notification are done in the GDestroyNotify function (the timout) for bug reasons. */
+}
+
+void on_timeout_finished(gpointer user_data)
+{
+	RaiderFileRow *file_row = RAIDER_FILE_ROW(user_data);
     if (!file_row->aborted)
     {
         GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root (GTK_WIDGET(file_row)));
@@ -94,8 +109,6 @@ void finish_shredding (GObject *source_object, GAsyncResult *res, gpointer user_
         GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
         g_application_send_notification(app, NULL, file_row->notification);
     }
-
-    /* Remove the item. */
     raider_file_row_delete(NULL, user_data);
 }
 
@@ -182,6 +195,8 @@ void launch_shredding (gpointer data)
         return;
     }
 
+    file_row->state = WORKING;
+
     /* This parses the output. */
     GInputStream *stream = g_subprocess_get_stderr_pipe(file_row->process);
     file_row->data_stream = g_data_input_stream_new(stream);
@@ -190,8 +205,9 @@ void launch_shredding (gpointer data)
 	gtk_revealer_set_reveal_child (file_row->remove_revealer, FALSE);
 	gtk_revealer_set_reveal_child (file_row->progress_revealer, TRUE);
 
-    /* Check the output every 100 milliseconds. */
-    file_row->timout_id = g_timeout_add(100, process_output, data);
+    /* Check the output every 100 milliseconds. Also create a cancellable. */
+    file_row->cancel_read = g_cancellable_new();
+    file_row->timout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, process_output, data, on_timeout_finished);
 
     /* Call the callback when the process is finished. If the user aborts the
     the job, this will be called in any event.*/
@@ -246,7 +262,6 @@ raider_file_row_init(RaiderFileRow *row)
 
 	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
     row->aborted = FALSE;
-    row->finished = FALSE;
 }
 
 static void
