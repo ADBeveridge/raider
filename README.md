@@ -2,7 +2,7 @@
 
 # Raider
 
-A Simple shredding program built for the GNOME desktop
+A simple shredding program built for the GNOME desktop
 
 Raider, also known as File Shredder, is a simple shredding program built for 
 the GNOME desktop. It uses a  program from the GNU Core Utilities package 
