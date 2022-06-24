@@ -1,4 +1,4 @@
-<img align="left" style="vertical-align: middle" width="120" height="120" src="data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg ">
+<img align="left" style="vertical-align: middle" width="128" height="128" src="data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg ">
 
 # Raider
 
