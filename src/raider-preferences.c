@@ -7,7 +7,7 @@
 struct _RaiderPreferences {
   AdwPreferencesWindow parent;
 
-  GtkSwitch* remove_file;
+  GtkSwitch* remove_file_switch;
 };
 
 G_DEFINE_TYPE(RaiderPreferences, raider_preferences, ADW_TYPE_PREFERENCES_WINDOW)
@@ -15,7 +15,7 @@ G_DEFINE_TYPE(RaiderPreferences, raider_preferences, ADW_TYPE_PREFERENCES_WINDOW
 static void raider_preferences_class_init(RaiderPreferencesClass *class)
 {
   gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/com/github/ADBeveridge/Raider/raider-preferences.ui");
-  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_file);
+  gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (class), RaiderPreferences, remove_file_switch);
 }
 
 

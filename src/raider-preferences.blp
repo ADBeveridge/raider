@@ -34,8 +34,6 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 title: _('Number of passes');
                 subtitle: _('How many times to shred file over');
 
-
-                [suffix]
                 Gtk.SpinButton nop_spin_btn {
 		  adjustment: nop_adj;
 		  valign: center;
@@ -55,7 +53,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
 }
 
 Gtk.Adjustment nop_adj {
-  upper: 999999999999999999999999999999999999999999999999999999999999999999;
+  upper: 9999999999999999999999999999999999999999;
 
 }
 
