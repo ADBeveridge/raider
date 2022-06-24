@@ -34,31 +34,41 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 title: _('Number of passes');
                 subtitle: _('How many times to shred file over');
 
-                Gtk.SpinButton nop_spin_btn {
-		  adjustment: nop_adj;
-		  valign: center;
-
+		[suffix]
+		Gtk.Box {
+                  Gtk.SpinButton nop_spin_btn {
+		    adjustment: nop_adj;
+		    valign: center;
+                  }
                 }
             }
         }
         Adw.PreferencesGroup advanced_group {
             title: _('Advanced');
-
-            Adw.ActionRow {
-                title: _('Remove Method');
-                activatable: true;
-            }
+            /* Remove method in source code. */
         }
     }
 }
 
 Gtk.Adjustment nop_adj {
-  upper: 9999999999999999999999999999999999999999;
-
-}
-
-Gtk.Adjustment nob_adj {
   lower: 1;
   upper: 25;
   value: 3;
+  step-increment: 1;
+  page-increment: 3;
+}
+
+Gtk.Adjustment nob_adj {
+
+}
+
+Gtk.StringList remove_method_list{
+  strings [_("Wipesync"),
+   	   _("Wipe"),
+   	   _("Unlink")]
+
+}
+
+Gtk.ListItemFactory factory {
+
 }
