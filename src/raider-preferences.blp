@@ -46,6 +46,19 @@ template RaiderPreferences : Adw.PreferencesWindow {
         Adw.PreferencesGroup advanced_group {
             title: _('Advanced');
             /* Remove method in source code. */
+            Adw.ExpanderRow source_data {
+              title: _('Overwrite data source');
+              subtitle: _('From what file to get the data that the files will be overwritten with');
+
+	      [action]
+	      Gtk.CheckButton enable_custom_source_data {
+	        active: false;
+	      }
+	      Adw.PreferencesRow source_data_row {
+	        title: _(';
+	      }
+
+            }
         }
     }
 }

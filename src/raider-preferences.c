@@ -8,6 +8,7 @@
 struct _RaiderPreferences {
 	AdwPreferencesWindow parent;
 
+    AdwPreferencesGroup* advanced_group;
 	GtkSwitch* remove_file_switch;
     AdwComboRow* remove_method_row;
 };
@@ -18,6 +19,7 @@ static void raider_preferences_class_init(RaiderPreferencesClass *class)
 {
 	gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/com/github/ADBeveridge/Raider/raider-preferences.ui");
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, remove_file_switch);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, advanced_group);
 }
 
 
@@ -31,8 +33,10 @@ static void raider_preferences_init(RaiderPreferences *prefs)
     gtk_string_list_append(slist, "Unlink");
 
 
-    remove_method_row = adw_combo_row_new();
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(remove_method_row), "Remove Method");
-    adw_combo_row_set_model(ADW_COMBO_ROW(combo), G_LIST_MODEL(slist));
+    prefs->remove_method_row = adw_combo_row_new();
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(prefs->remove_method_row), "Remove Method");
+    adw_action_row_set_subtitle (ADW_ACTION_ROW(prefs->remove_method_row), "");
+    adw_combo_row_set_model(ADW_COMBO_ROW(prefs->remove_method_row), G_LIST_MODEL(slist));
+    adw_preferences_group_add (prefs->advanced_group, prefs->remove_method_row);
 }
 
