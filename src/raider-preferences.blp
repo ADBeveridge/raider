@@ -36,7 +36,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
 
 		[suffix]
 		Gtk.Box {
-                  Gtk.SpinButton nop_spin_btn {
+                  Gtk.SpinButton nop_spin_button {
 		    adjustment: nop_adj;
 		    valign: center;
                   }
@@ -45,8 +45,14 @@ template RaiderPreferences : Adw.PreferencesWindow {
         }
         Adw.PreferencesGroup advanced_group {
             title: _('Advanced');
-            /* Remove method in source code. */
-            Adw.ExpanderRow sd {
+            Adw.ComboRow remove_method_combo_row {
+            	title: "Remove Method";
+            	subtitle: _('How to remove the files from the fileystem');
+            	model: Gtk.StringList {
+            	  strings [_('Wipesync'), _('Wipe'), _('Unlink')]
+            	};
+            }
+            Adw.ExpanderRow sd_row {
                 title: _('Overwrite data source');
                 subtitle: _('From what file to get the data that the files will be overwritten with');
                 enable-expansion: bind enable_custom_sd.active;
@@ -65,6 +71,38 @@ template RaiderPreferences : Adw.PreferencesWindow {
 		    }
 		}
             }
+
+             Adw.ActionRow nob_row {
+                title: _('Number of bytes to shred');
+                subtitle: _('How much of the file to shred. 0 to shred the whole file');
+
+		[suffix]
+		Gtk.Box {
+                  Gtk.SpinButton nob_spin_button {
+		    adjustment: nob_adj;
+		    valign: center;
+                  }
+                }
+            }
+
+            Adw.ActionRow dnr_row {
+                title: _('Do not round file sizes');
+                subtitle: _('Do not round file sizes to the next block. Default for irregular files');
+
+                [suffix]
+                Gtk.Switch dnr_switch {
+                  valign: center;
+                }
+            }
+            Adw.ActionRow override_permissions_row {
+                title: _('Override file permissions');
+                subtitle: _('Whether to override the file permissions in case of insufficient permissions');
+
+                [suffix]
+                Gtk.Switch override_permissions_switch {
+                  valign: center;
+                }
+            }
         }
     }
 }
@@ -78,7 +116,11 @@ Gtk.Adjustment nop_adj {
 }
 
 Gtk.Adjustment nob_adj {
-
+  lower: 0;
+  upper: 999999999999999999999999999999999999999999999999999999999999999999;
+  value: 0;
+  step-increment: 1;
+  page-increment: 50;
 }
 
 Gtk.StringList remove_method_list{
