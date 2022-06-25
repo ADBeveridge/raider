@@ -46,18 +46,24 @@ template RaiderPreferences : Adw.PreferencesWindow {
         Adw.PreferencesGroup advanced_group {
             title: _('Advanced');
             /* Remove method in source code. */
-            Adw.ExpanderRow source_data {
-              title: _('Overwrite data source');
-              subtitle: _('From what file to get the data that the files will be overwritten with');
+            Adw.ExpanderRow sd {
+                title: _('Overwrite data source');
+                subtitle: _('From what file to get the data that the files will be overwritten with');
+                enable-expansion: bind enable_custom_sd.active;
 
-	      [action]
-	      Gtk.CheckButton enable_custom_source_data {
-	        active: false;
-	      }
-	      Adw.PreferencesRow source_data_row {
-	        title: _(';
-	      }
+	        [action]
+	        Gtk.CheckButton enable_custom_sd {
+	            active: false;
+	        }
+	        Adw.ActionRow {
+	            title: _('None Selected');
 
+		    [suffix]
+		    Gtk.Button sd_button {
+		        label: _('Select File');
+		        valign: center;
+		    }
+		}
             }
         }
     }
