@@ -11,8 +11,9 @@ all the options that `shred` supports.
 
 ## Download
 
-<a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+<a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## Useful links
 - Report issues: <https://github.com/ADBeveridge/raider/issues/>
+
 

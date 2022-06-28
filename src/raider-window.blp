@@ -109,6 +109,9 @@ menu primary_menu {
 
 Gtk.Popover menu_popover {
   Gtk.Box {
+    styles ["menu"]
+    orientation: vertical;
+
     Gtk.Revealer nal_revealer {
       visible: true;
       Gtk.Label none_available_label {
@@ -116,9 +119,17 @@ Gtk.Popover menu_popover {
         styles ["dim-label"]
       }
     }
+
     Gtk.Revealer dl_revealer {
-      Gtk.Box drive_list {
-        styles ["menu"]
+      Gtk.ScrolledWindow {
+        hscrollbar-policy: never;
+        max-content-height: 400;
+        propagate-natural-height: true;
+        Gtk.Viewport {
+          scroll-to-focus: true;
+          Gtk.ListBox drive_list_box {
+          }
+        }
       }
     }
   }
