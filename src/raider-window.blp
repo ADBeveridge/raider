@@ -36,9 +36,9 @@ template RaiderWindow : Gtk.ApplicationWindow {
           transition-type: slide_right;
           Adw.SplitButton open_button {
       	    icon-name: "list-add-symbolic";
-      	    menu-model: open_menu;
       	    action-name: "app.open";
       	    margin-end: 6;
+      	    popover: menu_popover;
           }
         }
       }
@@ -107,8 +107,19 @@ menu primary_menu {
   }
 }
 
-menu open_menu {
-  section {
-    label: "Devices";
+Gtk.Popover menu_popover {
+  Gtk.Box {
+    Gtk.Revealer nal_revealer {
+      visible: true;
+      Gtk.Label none_available_label {
+        label: _('No Drives Available');
+        styles ["dim-label"]
+      }
+    }
+    Gtk.Revealer dl_revealer {
+      Gtk.Box drive_list {
+        styles ["menu"]
+      }
+    }
   }
 }
