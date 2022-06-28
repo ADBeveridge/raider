@@ -33,22 +33,12 @@ struct _RaiderWindow {
 	GtkButton* abort_button;
 	GtkRevealer* abort_revealer;
 
-    GtkRevealer* nal_revealer;
-    GtkRevealer* dl_revealer;
-    GtkBox* drive_list_box;
-
-    GtkSelectionModel *selection_model;
-    GtkStringList* string_list;
-    GtkListView* list_view;
-
 	AdwToastOverlay *toast_overlay;
 
 	GtkListBox* list_box;
 	int file_count;
 
-    /* Device selector data items. */
-    GVolumeMonitor* monitor;
-    GList* mount_list;
+
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -78,15 +68,6 @@ void shred_file(GtkWidget *widget, gpointer data)
 	}
 }
 
-void on_mount_added(GtkWidget *widget, gpointer data)
-{
-    RaiderWindow* window = RAIDER_WINDOW(data);
-
-    gtk_revealer_set_reveal_child(window->dl_revealer, TRUE);
-    gtk_revealer_set_reveal_child(window->nal_revealer, FALSE);
-}
-
-
 static void
 raider_window_class_init(RaiderWindowClass *klass)
 {
@@ -102,9 +83,6 @@ raider_window_class_init(RaiderWindowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, toast_overlay);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, drive_list_box);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, dl_revealer);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, nal_revealer);
 }
 
 static void
@@ -112,25 +90,6 @@ raider_window_init(RaiderWindow *self)
 {
 	gtk_widget_init_template(GTK_WIDGET(self));
 
-    /* Create monitor of mounted drives. */
-    self->monitor = g_volume_monitor_get();
-    self->mount_list = g_volume_monitor_get_mounts (self->monitor);
-    g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_added), self);
-
-    /* Initial view. May be changed immediately. */
-    gtk_revealer_set_reveal_child(self->dl_revealer, FALSE);
-    gtk_revealer_set_reveal_child(self->nal_revealer, TRUE);
-
-    /* List drives on startup. */
-    GList *l;
-    for (l = self->mount_list; l != NULL; l = l->next)
-    {
-        gchar* name = g_mount_get_name(l->data);
-        g_free(name);
-
-        gtk_revealer_set_reveal_child(self->dl_revealer, TRUE);
-        gtk_revealer_set_reveal_child(self->nal_revealer, FALSE);
-    }
 
 	self->file_count = 0;
 
