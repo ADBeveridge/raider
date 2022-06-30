@@ -1,0 +1,11 @@
+using Gtk 4.0;
+using Adw 1;
+
+template RaiderProgressInfoPopover : Gtk.Popover {
+  Gtk.Box popover_box {
+    Gtk.ProgressBar progress_bar {
+      show-text: true;
+      hexpand: true;
+    }
+  }
+}

@@ -19,6 +19,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "raider-progress-icon.h"
+#include "raider-progress-info-popover.h"
 
 /* Parsing data that carries around data. */
 struct _fsm
@@ -64,7 +65,7 @@ void apply_progress(void* ptr_to_fsm)
 
 	gdouble progress = (fsm->current / fsm->number_of_passes);
 	raider_progress_icon_set_progress(RAIDER_PROGRESS_ICON(fsm->progress_icon), progress);
-	//raider_progress_info_popover_set_progress(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
+	raider_progress_info_popover_set_progress(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
 }
 
 /* Start the parsing. */

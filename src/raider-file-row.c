@@ -23,17 +23,21 @@
 #include "raider-file-row.h"
 #include "raider-progress-icon.h"
 #include "raider-shred-backend.h"
+#include "raider-progress-info-popover.h"
 
 struct _RaiderFileRow {
 	AdwActionRow parent;
 
 	/* Graphical controls. */
 	GtkButton* progress_button;
-	GtkRevealer* progress_revealer;
+    GtkButton* remove_button;
 
+	GtkRevealer* progress_revealer;
+    GtkRevealer* remove_revealer;
+
+    /* Progress widgets. */
 	RaiderProgressIcon* icon;
-	GtkButton* remove_button;
-	GtkRevealer* remove_revealer;
+    RaiderProgressInfoPopover* popover;
 
 	/* Notification widget. */
 	GNotification *notification;
@@ -80,7 +84,7 @@ void process_output_finish(GObject *source_object, GAsyncResult *res, gpointer u
 		return;
 	}
 
-	analyze_progress(buf, GTK_WIDGET(row->icon), NULL, g_file_get_path(row->file), row->settings);
+	analyze_progress(buf, GTK_WIDGET(row->icon), GTK_WIDGET(row->popover), g_file_get_path(row->file), row->settings);
 }
 
 gboolean process_output(gpointer data)
@@ -180,6 +184,7 @@ void launch_shredding(gpointer data)
 					     do_not_round_to_next_block ? "--exact" : "--verbose",
 					     do_number_of_bytes_to_shred_command ? number_of_bytes_to_shred_command : "--verbose",
 					     NULL);
+
 	/* Free allocated text. */
 	g_free(number_of_passes);
 	g_free(number_of_passes_option);
@@ -246,6 +251,8 @@ raider_file_row_dispose(GObject *obj)
 	RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
     g_object_unref(row->file);
+    gtk_widget_unparent(GTK_WIDGET(row->popover));
+
 	g_free(row->notification_title);
 	row->notification_title = NULL;
 	g_free(row->notification_subtitle);
@@ -261,8 +268,12 @@ raider_file_row_init(RaiderFileRow *row)
 
 	/* Create the progress icon for the file row. */
 	row->icon = g_object_new(RAIDER_TYPE_PROGRESS_ICON, NULL);
-	raider_progress_icon_set_progress(row->icon, 0.5);
+    row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
+    gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
 	gtk_button_set_child(row->progress_button, GTK_WIDGET(row->icon));
+    g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
+
+    /* Setup remove row. */
 	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
 
 	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
