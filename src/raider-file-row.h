@@ -6,5 +6,6 @@
 
 G_DECLARE_FINAL_TYPE (RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
-RaiderFileRow *raider_file_row_new (const char *str);
+RaiderFileRow *raider_file_row_new (GFile* file);
+gchar* raider_file_row_get_filename(RaiderFileRow* row);
 void launch_shredding(gpointer data);

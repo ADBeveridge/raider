@@ -24,8 +24,7 @@ struct _RaiderFileRow {
 
 	/* Data items. */
 	GSettings *settings;
-	gchar *filename;
-	gchar *basename;
+    GFile* file;
 	GDataInputStream *data_stream;
 	bool cont_parsing;
 	GSubprocess *process;
@@ -36,15 +35,19 @@ struct _RaiderFileRow {
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
+gchar* raider_file_row_get_filename(RaiderFileRow* row)
+{
+    return g_file_get_path(row->file);
+}
 
 /* This is called when the user clicks on the remove button. */
 void raider_file_row_delete(GtkWidget* widget, gpointer data)
 {
-	GtkListBox* list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
+	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
 
+    GtkListBox* list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
-
 
 /** Shredding functions */
 /* This function is called every few seconds to read the output of shred. */
@@ -59,7 +62,7 @@ void process_output_finish(GObject *source_object, GAsyncResult *res, gpointer u
 		return;
 	}
 
-	analyze_progress(buf, GTK_WIDGET(row->icon), NULL, row->filename, row->settings);
+	analyze_progress(buf, GTK_WIDGET(row->icon), NULL, g_file_get_path(row->file), row->settings);
 }
 
 gboolean process_output(gpointer data)
@@ -151,7 +154,7 @@ void launch_shredding(gpointer data)
 	   for the commands that are absent in this launch. There is no error as shred does not complain
 	   about too many --verbose'es */
 	file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-					     shred_executable, "--verbose", file_row->filename,
+					     shred_executable, "--verbose", g_file_get_path(file_row->file),
 					     number_of_passes_option,
 					     remove_file ? remove_method_command : "--verbose",
 					     hide_shredding ? "--zero" : "--verbose",
@@ -224,10 +227,7 @@ raider_file_row_dispose(GObject *obj)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
-	g_free(row->filename);
-	row->filename = NULL;
-	g_free(row->basename);
-	row->basename = NULL;
+    g_object_unref(row->file);
 	g_free(row->notification_title);
 	row->notification_title = NULL;
 	g_free(row->notification_subtitle);
@@ -263,18 +263,17 @@ raider_file_row_class_init(RaiderFileRowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
 }
 
-RaiderFileRow *raider_file_row_new(const char *str)
+RaiderFileRow *raider_file_row_new(GFile* file)
 {
 	RaiderFileRow *file_row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
 
-	file_row->filename = g_strdup(str);
-	file_row->basename = g_path_get_basename(str);
+	file_row->file = file;
 
-	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), file_row->basename);
-	adw_action_row_set_subtitle(ADW_ACTION_ROW(file_row), file_row->filename);
+	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), g_file_get_basename(file_row->file));
+	adw_action_row_set_subtitle(ADW_ACTION_ROW(file_row), g_file_get_path(file_row->file));
 
 	/* Notification stuff. */
-	file_row->notification_title = g_strconcat(_("Shredded "), file_row->basename, NULL);
+	file_row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(file_row->file), NULL);
 	file_row->notification = g_notification_new(file_row->notification_title);
 	file_row->notification_subtitle = NULL;
 

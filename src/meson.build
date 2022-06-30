@@ -7,6 +7,7 @@ raider_sources = [
   'raider-preferences.c',
   'raider-shred-backend.c',
   'raider-rd-popover.c',
+  'raider-progress-info-popover.c'
 ]
 
 raider_deps = [

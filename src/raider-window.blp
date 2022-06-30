@@ -58,7 +58,7 @@ template RaiderWindow : Gtk.ApplicationWindow {
   Adw.ToastOverlay toast_overlay {
     Gtk.Box contents_box {
       Gtk.Stack window_stack {
-
+	transition-type: crossfade;
         Gtk.StackPage empty_page {
         name: "empty_page";
           child: Adw.StatusPage empty_state {

@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>com.github.ADBeveridge.Raider</id>
-	<metadata_license>CC0-1.0</metadata_license>
-	<project_license>GPL-3.0-or-later</project_license>
-	<name>File Shredder</name>
-  	<summary>Securely delete your files</summary>
-	<description>
-		<p>
+  <id>com.github.ADBeveridge.Raider</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>File Shredder</name>
+  <summary>Securely delete your files</summary>
+  <description>
+    <p>
 			File Shredder, also named Raider, is a simple application that enables you to securely delete files that
 			was built with GNOME in mind. It supports all the options that its backend has,
 			plus a realtime progress tracking.
 		</p>
-	</description>
-	<content_rating type="oars-1.1" />
-	<launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
-	<screenshots>
-    		<screenshot type="default">
-      			<image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
-			<image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot2.png</image>
-			<image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot3.png</image>
-    		</screenshot>
-  	</screenshots>
-	<releases>
-    		<release version="0.1.0" date="2021-12-30">
-    			<description>
-        			<p>The very first release of File Shredder. It supports progress tracking, and
+  </description>
+  <content_rating type="oars-1.1"/>
+  <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
+      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot2.png</image>
+      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot3.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="0.1.0" date="2021-12-30">
+      <description>
+        <p>The very first release of File Shredder. It supports progress tracking, and
 					boasts a GNOME compliant interface.</p>
-      			</description>
-    		</release>
-  	</releases>
-	<url type="homepage">https://github.com/ADBeveridge/raider</url>
-	<update_contact>adbeveridge@protonmail.com</update_contact>
-	<developer_name>Alan Beveridge</developer_name>
+      </description>
+    </release>
+    <release version="0.1.0" date="2022-6-30">
+      <description>
+        <ul>
+          <li>Added checking so a file cannot be loaded twice</li>
+          <li>Written using GTK4 and Adwaita</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <url type="homepage">https://github.com/ADBeveridge/raider</url>
+  <update_contact>adbeveridge@protonmail.com</update_contact>
+  <developer_name>Alan Beveridge</developer_name>
 </component>
-  
+

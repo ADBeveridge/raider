@@ -56,10 +56,11 @@ static void on_open_response(GtkDialog *dialog, int response)
 		int i;
 		for (i = 0; i < num; i++) {
 			gpointer obj = g_list_model_get_item(list, i);
-			g_autoptr(GFile) file = obj;
+			GFile* file = obj;
 
-			raider_window_open(g_file_get_path(file), gtk_window_get_transient_for(GTK_WINDOW(dialog)));
+			raider_window_open(file, gtk_window_get_transient_for(GTK_WINDOW(dialog)));
 		}
+        g_object_unref(list);
 	}
 
 	gtk_window_destroy(GTK_WINDOW(dialog));
@@ -121,8 +122,7 @@ static void raider_application_open(GApplication  *application, GFile **files, g
 	gint i;
 
 	for (i = 0; i < n_files; i++) {
-		gchar *path = g_file_get_path(files[i]);
-		raider_window_open(path, window); // This adds an entry to the current window.
+		raider_window_open(files[i], window); // This adds an entry to the current window.
 	}
 
 	gtk_window_present(GTK_WINDOW(window));
@@ -162,7 +162,9 @@ static void raider_application_class_init(RaiderApplicationClass *klass)
 
 static void raider_application_init(RaiderApplication *self)
 {
-	g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
+	adw_init();
+
+    g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
 	g_signal_connect_swapped(quit_action, "activate", G_CALLBACK(g_application_quit), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
 
