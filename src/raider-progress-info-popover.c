@@ -1,3 +1,21 @@
+/* raider-progress-info-popover.c
+ *
+ * Copyright 2022 Alan Beveridge
+ *
+ * raider is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * raider is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <gtk/gtk.h>
 #include "raider-progress-info-popover.h"
 
@@ -26,16 +44,8 @@ void raider_progress_info_popover_set_text (RaiderProgressInfoPopover *popover, 
 }
 
 static void
-raider_progress_info_popover_dispose (GObject *obj)
-{
-    G_OBJECT_CLASS (raider_progress_info_popover_parent_class)->dispose (obj);
-}
-
-static void
 raider_progress_info_popover_class_init (RaiderProgressInfoPopoverClass *klass)
 {
-    G_OBJECT_CLASS (klass)->dispose = raider_progress_info_popover_dispose;
-
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/raider/ui/raider-progress-info-popover.ui");
     gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), RaiderProgressInfoPopover, progress_bar);
 }

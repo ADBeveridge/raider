@@ -1,3 +1,21 @@
+/* raider-progress-icon.c
+ *
+ * Copyright 2022 Alan Beveridge
+ *
+ * raider is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * raider is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <math.h>
 #include <gtk/gtk.h>
 #include "raider-progress-icon.h"
@@ -146,7 +164,7 @@ static void raider_progress_icon_init (RaiderProgressIcon *icon)
   gtk_widget_set_valign (GTK_WIDGET (icon), GTK_ALIGN_CENTER);
   gtk_widget_set_halign (GTK_WIDGET (icon), GTK_ALIGN_CENTER);
 
-  gtk_drawing_area_set_draw_func (GTK_DRAWING_AREA (icon), raider_progress_icon_draw, NULL, NULL);
+  gtk_drawing_area_set_draw_func (GTK_DRAWING_AREA (icon), (GtkDrawingAreaDrawFunc) raider_progress_icon_draw, NULL, NULL);
 
-  gtk_widget_show(icon);
+  gtk_widget_show(GTK_WIDGET(icon));
 }
