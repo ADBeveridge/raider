@@ -46,7 +46,6 @@ struct _RaiderWindow {
 
     /* Device selector data items. */
     GVolumeMonitor* monitor;
-    GList* mount_list;
     GMenu* mount_menu;
     GMenu* mount_main_menu;
 };
@@ -132,9 +131,34 @@ static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, d
 	return TRUE;
 }
 
-void on_mount_added(gpointer object, gpointer monitor, gpointer data)
+void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 {
-    //RaiderSplitButton* popover = RAIDER_SPLIT_BUTTON(data);
+    RaiderWindow* self = RAIDER_WINDOW(data);
+
+    g_menu_remove_all (self->mount_menu);
+
+    GList* mount_list = g_volume_monitor_get_mounts (self->monitor);
+    GList *l;
+    for (l = mount_list; l != NULL; l = l->next)
+    {
+        gchar* name = g_mount_get_name(l->data);
+
+        /* Retrieve device path, and put in variant. */
+        GFile *file = g_mount_get_root (l->data);
+        GUnixMountEntry *unix_mount =  g_unix_mount_at (g_file_get_path(file), NULL);
+        const gchar* path = g_unix_mount_get_device_path (unix_mount);
+        GVariant *var = g_variant_new_string (path);
+
+        GMenuItem* item = g_menu_item_new (name, "app.open-drive");
+        g_menu_item_set_action_and_target_value (item, "app.open-drive", var);
+        g_menu_append_item (self->mount_menu, item);
+
+        g_free(name);
+    }
+    if (g_list_length (mount_list) < 1)
+        adw_split_button_set_menu_model(self->open_button, NULL);
+    else
+        adw_split_button_set_menu_model(self->open_button, self->mount_main_menu);
 }
 
 static void
@@ -161,29 +185,15 @@ raider_window_init(RaiderWindow *self)
     /* Create monitor of mounted drives. */
     self->mount_main_menu = g_menu_new();
     self->mount_menu = g_menu_new();
-    g_menu_prepend_section (self->mount_main_menu, "Devices", self->mount_menu);
+    g_menu_prepend_section (self->mount_main_menu, "Devices", G_MENU_MODEL(self->mount_menu));
     adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 
     self->monitor = g_volume_monitor_get();
-    self->mount_list = g_volume_monitor_get_mounts (self->monitor);
-    g_signal_connect (self->monitor, "mount-added", G_CALLBACK(on_mount_added), self);
-    GList *l;
-    for (l = self->mount_list; l != NULL; l = l->next)
-    {
-        gchar* name = g_mount_get_name(l->data);
+    g_signal_connect (self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
+    g_signal_connect (self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
+    g_signal_connect (self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
 
-        /* Retrieve device path, and put in variant. */
-        GFile *file = g_mount_get_root (l->data);
-        GUnixMountEntry *unix_mount =  g_unix_mount_at (g_file_get_path(file), NULL);
-        const gchar* path = g_unix_mount_get_device_path (unix_mount);
-        GVariant *var = g_variant_new_string (path);
-
-        GMenuItem* item = g_menu_item_new (name, "app.open-drive");
-        g_menu_item_set_action_and_target_value (item, "app.open-drive", var);
-        g_menu_append_item (self->mount_menu, item);
-
-        g_free(name);
-    }
+    on_mount_changed(NULL, NULL, self);
 }
 
 /* This is called when the handler for the close button destroys the row. This handles the application state */
