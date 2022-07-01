@@ -122,7 +122,6 @@ static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, d
 		GFile* file = g_file_dup(l->data);
 		raider_window_open(file, data);
 	}
-
 	return TRUE;
 }
 
