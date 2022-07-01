@@ -158,7 +158,7 @@ void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
     if (g_list_length (mount_list) < 1)
         adw_split_button_set_menu_model(self->open_button, NULL);
     else
-        adw_split_button_set_menu_model(self->open_button, self->mount_main_menu);
+        adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 }
 
 static void

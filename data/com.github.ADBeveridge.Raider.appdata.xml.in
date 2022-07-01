@@ -32,6 +32,7 @@
       <description>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
+          <li>Handy list for thumb drives on open button</li>
           <li>Written using GTK4 and Adwaita</li>
         </ul>
       </description>
