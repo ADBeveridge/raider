@@ -5,6 +5,5 @@
     <file>raider-file-row.ui</file>
     <file>raider-preferences.ui</file>
     <file>raider-progress-info-popover.ui</file>
-    <file>raider-rd-popover.ui</file>
   </gresource>
 </gresources>

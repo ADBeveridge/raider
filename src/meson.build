@@ -6,13 +6,13 @@ raider_sources = [
   'raider-file-row.c',
   'raider-preferences.c',
   'raider-shred-backend.c',
-  'raider-rd-popover.c',
   'raider-progress-info-popover.c'
 ]
 
 raider_deps = [
   dependency('gtk4'),
   dependency('libadwaita-1', version: '>= 1.0'),
+  dependency('gio-unix-2.0')
 ]
 
 gnome = import('gnome')
@@ -23,7 +23,6 @@ blueprints = custom_target('blueprints',
     'raider-window.blp',
     'raider-file-row.blp',
     'raider-preferences.blp',
-    'raider-rd-popover.blp',
     'raider-progress-info-popover.blp',
   ),
   output: '.',

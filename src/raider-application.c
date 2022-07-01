@@ -81,6 +81,13 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 	gtk_widget_show(GTK_WIDGET(dialog));
 }
 
+static void raider_application_open_drive(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    GtkWindow* window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
+    GFile* file = g_file_new_for_path (g_variant_get_string(parameter, NULL));
+    raider_window_open(file, window);
+}
+
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	RaiderApplication *self = RAIDER_APPLICATION(user_data);
@@ -183,6 +190,10 @@ static void raider_application_init(RaiderApplication *self)
 	g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
 	g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
+
+    g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
+	g_signal_connect(open_drive_action, "activate", G_CALLBACK(raider_application_open_drive), self);
+	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_drive_action));
 
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]) { "<primary>q", NULL, });
 }
