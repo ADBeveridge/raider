@@ -24,6 +24,8 @@
 struct _RaiderWindow {
 	GtkApplicationWindow parent_instance;
 
+    GtkBox* contents_box;
+
 	AdwSplitButton* open_button_full;
 	GtkStack* window_stack;
 
@@ -33,10 +35,10 @@ struct _RaiderWindow {
 	GtkRevealer* shred_revealer;
 	GtkButton* abort_button;
 	GtkRevealer* abort_revealer;
-
 	AdwToastOverlay *toast_overlay;
-
 	GtkListBox* list_box;
+
+	GtkDropTarget *target;
 
 	GList* filenames;
 	int file_count;
@@ -84,6 +86,44 @@ raider_window_class_init(RaiderWindowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, toast_overlay);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
+}
+
+/* Make highlight. */
+static GdkDragAction on_enter(GtkDropTarget *target, double x, double y, gpointer data)
+{
+	RaiderWindow* window = RAIDER_WINDOW(data);
+    GtkStyleContext* context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
+
+	gtk_style_context_add_class(context, "drop_hover");
+
+	return GDK_ACTION_COPY;
+}
+
+/* Get rid of highlight. */
+static void on_leave(GtkDropTarget *target, gpointer data)
+{
+	RaiderWindow* window = RAIDER_WINDOW(data);
+    GtkStyleContext* context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
+
+	gtk_style_context_remove_class(context, "drop_hover");
+}
+
+static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, double y, gpointer data)
+{
+	/* GdkFileList is a boxed value so we use the boxed API. */
+	GdkFileList* file_list = g_value_get_boxed(value);
+
+	GSList* list = gdk_file_list_get_files(file_list);
+
+	/* Loop through the files and print their names. */
+	GSList *l;
+	for (l = list; l != NULL; l = l->next) {
+		GFile* file = g_file_dup(l->data);
+		raider_window_open(file, data);
+	}
+
+	return TRUE;
 }
 
 static void
@@ -96,7 +136,16 @@ raider_window_init(RaiderWindow *self)
 
 	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(shred_file), self);
 
-	/* Not implementing DND because GTK4 dnd sucks. */
+	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
+
+	GType drop_types[] = { GDK_TYPE_FILE_LIST };
+	gtk_drop_target_set_gtypes(self->target, drop_types, 1);
+
+	g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
+	g_signal_connect(self->target, "enter", G_CALLBACK(on_enter), self);
+	g_signal_connect(self->target, "leave", G_CALLBACK(on_leave), self);
+
+	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 }
 
 /* This is called when the handler for the close button destroys the row. This handles the application state */
