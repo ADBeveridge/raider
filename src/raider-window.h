@@ -25,6 +25,7 @@
 
 G_DECLARE_FINAL_TYPE (RaiderWindow, raider_window, RAIDER, WINDOW, GtkApplicationWindow)
 
-void raider_window_open (GFile* file, gpointer data);
+void raider_window_open(GFile* file, gpointer data, gchar* title);
 void raider_window_close (gpointer data, gpointer user_data);
+
 

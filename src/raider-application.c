@@ -16,10 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <gio/gunixmounts.h>
+#include <glib/gi18n.h>
 #include "raider-application.h"
 #include "raider-window.h"
 #include "raider-preferences.h"
-#include <glib/gi18n.h>
 
 struct _RaiderApplication {
 	GtkApplication parent_instance;
@@ -58,7 +59,7 @@ static void on_open_response(GtkDialog *dialog, int response)
 			gpointer obj = g_list_model_get_item(list, i);
 			GFile* file = obj;
 
-			raider_window_open(file, gtk_window_get_transient_for(GTK_WINDOW(dialog)));
+			raider_window_open(file, gtk_window_get_transient_for(GTK_WINDOW(dialog)), NULL);
 		}
         g_object_unref(list);
 	}
@@ -84,8 +85,14 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 static void raider_application_open_drive(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
     GtkWindow* window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
-    GFile* file = g_file_new_for_path (g_variant_get_string(parameter, NULL));
-    raider_window_open(file, window);
+
+    GUnixMountEntry *unix_mount =  g_unix_mount_at (g_variant_get_string(parameter, NULL), NULL);
+    const gchar* path = g_unix_mount_get_device_path (unix_mount);
+    GFile* file = g_file_new_for_path (path);
+
+    GFile* title = g_file_new_for_path (g_variant_get_string(parameter, NULL));
+
+    raider_window_open(file, window, g_file_get_basename(title));
 }
 
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -129,7 +136,7 @@ static void raider_application_open(GApplication  *application, GFile **files, g
 	gint i;
 
 	for (i = 0; i < n_files; i++) {
-		raider_window_open(files[i], window); // This adds an entry to the current window.
+		raider_window_open(files[i], window, NULL); // This adds an entry to the current window.
 	}
 
 	gtk_window_present(GTK_WINDOW(window));

@@ -47,7 +47,7 @@
         <key name="overwrite-data-file" type="s">
            <summary>Overwrite data file</summary>
            <description>Where to get data to overwrite the to-be-shredded files.</description>
-           <default>''</default>
+           <default>'None Selected'</default>
         </key>
     </schema>
 </schemalist>

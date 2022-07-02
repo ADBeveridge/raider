@@ -52,16 +52,16 @@ template RaiderPreferences : Adw.PreferencesWindow {
             	  strings [_('Wipesync'), _('Wipe'), _('Unlink')]
             	};
             }
-            Adw.ExpanderRow sd_row {
+            Adw.ExpanderRow {
                 title: _('Overwrite data source');
-                subtitle: _('From what file to get the data that the files will be overwritten with');
+                subtitle: _('Where to get the data to overwrite the files with. Disabled at every startup');
                 enable-expansion: bind enable_custom_sd.active;
 
 	        [action]
 	        Gtk.CheckButton enable_custom_sd {
 	            active: false;
 	        }
-	        Adw.ActionRow {
+	        Adw.ActionRow sd_row{
 	            title: _('None Selected');
 
 		    [suffix]

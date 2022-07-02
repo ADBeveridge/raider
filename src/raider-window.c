@@ -26,10 +26,7 @@ struct _RaiderWindow {
 	GtkApplicationWindow parent_instance;
 
     GtkBox* contents_box;
-
-	AdwSplitButton* open_button_full;
 	GtkStack* window_stack;
-
 	AdwSplitButton* open_button;
 	GtkRevealer* open_revealer;
 	GtkButton* shred_button;
@@ -126,7 +123,7 @@ static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, d
 	GSList *l;
 	for (l = list; l != NULL; l = l->next) {
 		GFile* file = g_file_dup(l->data);
-		raider_window_open(file, data);
+		raider_window_open(file, data, NULL);
 	}
 	return TRUE;
 }
@@ -145,9 +142,7 @@ void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 
         /* Retrieve device path, and put in variant. */
         GFile *file = g_mount_get_root (l->data);
-        GUnixMountEntry *unix_mount =  g_unix_mount_at (g_file_get_path(file), NULL);
-        const gchar* path = g_unix_mount_get_device_path (unix_mount);
-        GVariant *var = g_variant_new_string (path);
+        GVariant *var = g_variant_new_string (g_file_get_path(file));
 
         GMenuItem* item = g_menu_item_new (name, "app.open-drive");
         g_menu_item_set_action_and_target_value (item, "app.open-drive", var);
@@ -239,7 +234,7 @@ void raider_window_close(gpointer data, gpointer user_data)
 }
 
 /* This is used to open a single file at a time */
-void raider_window_open(GFile* file, gpointer data)
+void raider_window_open(GFile* file, gpointer data, gchar* title)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
@@ -274,6 +269,7 @@ void raider_window_open(GFile* file, gpointer data)
 	}
 
 	GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(file));
+    if (title) adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), title);
 	gtk_list_box_append(window->list_box, file_row);
 
 	gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
