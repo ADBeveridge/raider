@@ -23,6 +23,7 @@ add_project_arguments([
 subdir('data')
 subdir('src')
 subdir('po')
+subdir('help')
 
 gnome.post_install(
   glib_compile_schemas: true,
