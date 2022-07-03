@@ -25,19 +25,20 @@
 #include "raider-shred-backend.h"
 #include "raider-progress-info-popover.h"
 
-struct _RaiderFileRow {
+struct _RaiderFileRow
+{
 	AdwActionRow parent;
 
 	/* Graphical controls. */
-	GtkButton* progress_button;
-    GtkButton* remove_button;
+	GtkButton *progress_button;
+	GtkButton *remove_button;
 
-	GtkRevealer* progress_revealer;
-    GtkRevealer* remove_revealer;
+	GtkRevealer *progress_revealer;
+	GtkRevealer *remove_revealer;
 
-    /* Progress widgets. */
-	RaiderProgressIcon* icon;
-    RaiderProgressInfoPopover* popover;
+	/* Progress widgets. */
+	RaiderProgressIcon *icon;
+	RaiderProgressInfoPopover *popover;
 
 	/* Notification widget. */
 	GNotification *notification;
@@ -46,7 +47,7 @@ struct _RaiderFileRow {
 
 	/* Data items. */
 	GSettings *settings;
-    GFile* file;
+	GFile *file;
 	GDataInputStream *data_stream;
 	bool cont_parsing;
 	GSubprocess *process;
@@ -57,17 +58,17 @@ struct _RaiderFileRow {
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
-gchar* raider_file_row_get_filename(RaiderFileRow* row)
+gchar *raider_file_row_get_filename(RaiderFileRow *row)
 {
-    return g_file_get_path(row->file);
+	return g_file_get_path(row->file);
 }
 
 /* This is called when the user clicks on the remove button. */
-void raider_file_row_delete(GtkWidget* widget, gpointer data)
+void raider_file_row_delete(GtkWidget *widget, gpointer data)
 {
 	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
 
-    GtkListBox* list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
+	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
@@ -80,7 +81,8 @@ void process_output_finish(GObject *source_object, GAsyncResult *res, gpointer u
 	gchar *buf = g_data_input_stream_read_line_finish(row->data_stream, res, NULL, NULL);
 
 	/* If there is no data read in or available, return immediately. */
-	if (buf == NULL) {
+	if (buf == NULL)
+	{
 		return;
 	}
 
@@ -92,7 +94,8 @@ gboolean process_output(gpointer data)
 	/* Converting the stream to text. */
 	RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
-	if (row->cont_parsing) {
+	if (row->cont_parsing)
+	{
 		g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, NULL, process_output_finish, data);
 	}
 
@@ -106,14 +109,17 @@ void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_d
 
 	/* Remove the timeout. */
 	gboolean removed_timeout = g_source_remove(file_row->timout_id);
-	if (removed_timeout == FALSE) {
-		g_printerr("Could not stop timeout.\n");
+	if (removed_timeout == FALSE)
+	{
+		g_printerr(_("Could not stop timeout.\n"));
 	}
-    file_row->cont_parsing = FALSE;
+	file_row->cont_parsing = FALSE;
 
-	if (!file_row->aborted) {
+	if (!file_row->aborted)
+	{
 		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(file_row)));
-		if (!GTK_IS_WINDOW(toplevel)) return;
+		if (!GTK_IS_WINDOW(toplevel))
+			return;
 		GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
 		g_application_send_notification(app, NULL, file_row->notification);
 	}
@@ -146,7 +152,8 @@ void launch_shredding(gpointer data)
 	/* Get the remove method. The correspondings for each number is defined here. */
 	gchar *remove_method;
 
-	switch (g_settings_get_int(file_row->settings, "remove-method")) {
+	switch (g_settings_get_int(file_row->settings, "remove-method"))
+	{
 	case 0:
 	{
 		remove_method = g_strdup("wipesync");
@@ -168,22 +175,25 @@ void launch_shredding(gpointer data)
 	/* If that user requests, shred part of a file. */
 	int number_of_bytes_to_shred = g_settings_get_int(file_row->settings, "number-of-bytes-to-shred");
 
-	if (number_of_bytes_to_shred == 0) do_number_of_bytes_to_shred_command = FALSE;
+	if (number_of_bytes_to_shred == 0)
+		do_number_of_bytes_to_shred_command = FALSE;
 	gchar *number_of_bytes_to_shred_converted = g_strdup_printf("%d", number_of_bytes_to_shred);
 	gchar *number_of_bytes_to_shred_command = g_strconcat("--size=", number_of_bytes_to_shred_converted, NULL);
 
+	// printf("%s:%d:%d:%d:%d:%d\n", number_of_passes_option, remove_file, hide_shredding, override_permissions, do_not_round_to_next_block, do_number_of_bytes_to_shred_command);
+	//
 	/* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
 	   for the commands that are absent in this launch. There is no error as shred does not complain
 	   about too many --verbose'es */
 	file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-					     shred_executable, "--verbose", g_file_get_path(file_row->file),
-					     number_of_passes_option,
-					     remove_file ? remove_method_command : "--verbose",
-					     hide_shredding ? "--zero" : "--verbose",
-					     override_permissions ? "--force" : "--verbose",
-					     do_not_round_to_next_block ? "--exact" : "--verbose",
-					     do_number_of_bytes_to_shred_command ? number_of_bytes_to_shred_command : "--verbose",
-					     NULL);
+										 shred_executable, "--verbose", g_file_get_path(file_row->file),
+										 number_of_passes_option,
+										 remove_file ? remove_method_command : "--verbose",
+										 hide_shredding ? "--zero" : "--verbose",
+										 override_permissions ? "--force" : "--verbose",
+										 do_not_round_to_next_block ? "--exact" : "--verbose",
+										 do_number_of_bytes_to_shred_command ? number_of_bytes_to_shred_command : "--verbose",
+										 NULL);
 
 	/* Free allocated text. */
 	g_free(number_of_passes);
@@ -203,7 +213,8 @@ void launch_shredding(gpointer data)
 	number_of_bytes_to_shred_converted = NULL;
 	number_of_bytes_to_shred_command = NULL;
 
-	if (error != NULL) {
+	if (error != NULL)
+	{
 		g_error("Process launching failed: %s", error->message);
 		g_error_free(error);
 		return;
@@ -250,8 +261,8 @@ raider_file_row_dispose(GObject *obj)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
-    g_object_unref(row->file);
-    gtk_widget_unparent(GTK_WIDGET(row->popover));
+	g_object_unref(row->file);
+	gtk_widget_unparent(GTK_WIDGET(row->popover));
 
 	g_free(row->notification_title);
 	row->notification_title = NULL;
@@ -268,12 +279,12 @@ raider_file_row_init(RaiderFileRow *row)
 
 	/* Create the progress icon for the file row. */
 	row->icon = g_object_new(RAIDER_TYPE_PROGRESS_ICON, NULL);
-    row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
-    gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
+	row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
+	gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
 	gtk_button_set_child(row->progress_button, GTK_WIDGET(row->icon));
-    g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
+	g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
 
-    /* Setup remove row. */
+	/* Setup remove row. */
 	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
 
 	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
@@ -283,7 +294,7 @@ raider_file_row_init(RaiderFileRow *row)
 static void
 raider_file_row_class_init(RaiderFileRowClass *klass)
 {
-	G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose;  /* Override. */
+	G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
 
 	gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-file-row.ui");
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_button);
@@ -292,7 +303,7 @@ raider_file_row_class_init(RaiderFileRowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
 }
 
-RaiderFileRow *raider_file_row_new(GFile* file)
+RaiderFileRow *raider_file_row_new(GFile *file)
 {
 	RaiderFileRow *file_row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
 
@@ -308,4 +319,3 @@ RaiderFileRow *raider_file_row_new(GFile* file)
 
 	return file_row;
 }
-

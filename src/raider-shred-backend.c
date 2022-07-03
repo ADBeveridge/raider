@@ -24,15 +24,15 @@
 /* Parsing data that carries around data. */
 struct _fsm
 {
-    void (*state)(void *);
-    gchar **tokens;
-    gint incremented_number;
-    GtkWidget *progress_icon;
-    GtkWidget *popover;
-    gchar *filename;
-    GSettings *settings;
-    gdouble current;
-    gdouble number_of_passes;
+	void (*state)(void *);
+	gchar **tokens;
+	gint incremented_number;
+	GtkWidget *progress_icon;
+	GtkWidget *popover;
+	gchar *filename;
+	GSettings *settings;
+	gdouble current;
+	gdouble number_of_passes;
 };
 
 void parse_fraction(void *ptr_to_fsm);
@@ -41,17 +41,18 @@ void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
-void parse_shred_data_type (void *ptr_to_fsm);
-void parse_sub_percentage (void *ptr_to_fsm);
-void apply_progress(void* ptr_to_fsm);
+void parse_shred_data_type(void *ptr_to_fsm);
+void parse_sub_percentage(void *ptr_to_fsm);
+void apply_progress(void *ptr_to_fsm);
 
-void analyze_progress(gchar* buffer, GtkWidget* progress_icon, GtkWidget* popover, gchar* filename, GSettings* settings)
+void analyze_progress(gchar *buffer, GtkWidget *progress_icon, GtkWidget *popover, gchar *filename, GSettings *settings)
 {
 	gchar **tokens = g_strsplit(buffer, " ", 0);
-	struct _fsm fsm = { start, tokens, 0, progress_icon, popover, filename, settings };
+	struct _fsm fsm = {start, tokens, 0, progress_icon, popover, filename, settings};
 
 	/* Pretty clever, no? */
-	while (fsm.state != NULL) {
+	while (fsm.state != NULL)
+	{
 		fsm.state(&fsm);
 	}
 
@@ -59,7 +60,7 @@ void analyze_progress(gchar* buffer, GtkWidget* progress_icon, GtkWidget* popove
 	g_free(buffer);
 }
 
-void apply_progress(void* ptr_to_fsm)
+void apply_progress(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
 
@@ -83,7 +84,8 @@ void stop(void *ptr_to_fsm)
 
 	/* Reset the tokens array so it can be freed. */
 	int i;
-	for (i = 0; i < fsm->incremented_number; i++) {
+	for (i = 0; i < fsm->incremented_number; i++)
+	{
 		fsm->tokens--;
 	}
 
@@ -98,10 +100,10 @@ void parse_sender_name(void *ptr_to_fsm)
 
 	/* Get the path to 'shred' and compare. */
 	gchar *path_to_shred = g_strconcat(g_settings_get_string(fsm->settings, "shred-executable"),
-					   ":", NULL);
+									   ":", NULL);
 
-
-	if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0) {
+	if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0)
+	{
 		fsm->state = stop;
 		g_printerr("No shred output found.");
 		return;
@@ -124,15 +126,19 @@ void parse_filename(void *ptr_to_fsm)
 	   files have spaces in their filename. */
 
 	gchar **placeholder;
-	if (fsm->filename != NULL) {
+	if (fsm->filename != NULL)
+	{
 		placeholder = g_strsplit(fsm->filename, " ", 0);
-	}else {
+	}
+	else
+	{
 		fsm->state = stop;
 	}
 
 	/* This is for if the filename has multiple spaces in it. */
 	int number = 0;
-	while (placeholder[number] != NULL) {
+	while (placeholder[number] != NULL)
+	{
 		/* Point to the next word for how may spaces there are in the filename. */
 		fsm->tokens++;
 		fsm->incremented_number++;
@@ -149,9 +155,10 @@ void parse_pass(void *ptr_to_fsm)
 	fsm->state = parse_fraction;
 
 	/* Generally this test case will execute if the shredding option is set to remove. */
-	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0) {
+	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0)
+	{
 		fsm->state = stop;
-		//g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
+		// g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
 		return;
 	}
 	/* Point to the next word. */
@@ -176,7 +183,7 @@ void parse_fraction(void *ptr_to_fsm)
 	g_free(fraction_chars);
 
 	/* Set the text of the progress bar with a string that looks like '7/15". */
-	//raider_progress_info_popover_set_text(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), fsm->tokens[0]);
+	// raider_progress_info_popover_set_text(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), fsm->tokens[0]);
 
 	/* Point to the next word. */
 	fsm->tokens++;
@@ -193,7 +200,8 @@ void parse_shred_data_type(void *ptr_to_fsm)
 	/* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
 
 	/* Check if this is such a big file that it gives more info. */
-	if (g_strcmp0(last_bit[1], "") != 0) {
+	if (g_strcmp0(last_bit[1], "") != 0)
+	{
 		/* In this case, last_bit[1] contains something like "24MiB/83MiB". */
 		/* We do not need it as the next token has the percentage of that pass is done. */
 		fsm->state = parse_sub_percentage;

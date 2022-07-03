@@ -19,5 +19,4 @@
 #pragma once
 #include <gtk/gtk.h>
 
-void analyze_progress(gchar* buffer, GtkWidget* progress_icon, GtkWidget* popover, gchar* filename, GSettings* settings);
-
+void analyze_progress(gchar *buffer, GtkWidget *progress_icon, GtkWidget *popover, gchar *filename, GSettings *settings);
