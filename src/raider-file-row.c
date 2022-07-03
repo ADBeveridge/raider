@@ -105,23 +105,23 @@ gboolean process_output(gpointer data)
 /* This is called when the shred executable exits, even if it is aborted. */
 void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-	RaiderFileRow *file_row = RAIDER_FILE_ROW(user_data);
+	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
 
 	/* Remove the timeout. */
-	gboolean removed_timeout = g_source_remove(file_row->timout_id);
+	gboolean removed_timeout = g_source_remove(row->timout_id);
 	if (removed_timeout == FALSE)
 	{
 		g_printerr(_("Could not stop timeout.\n"));
 	}
-	file_row->cont_parsing = FALSE;
+	row->cont_parsing = FALSE;
 
-	if (!file_row->aborted)
+	if (!row->aborted)
 	{
-		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(file_row)));
+		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
 		if (!GTK_IS_WINDOW(toplevel))
 			return;
 		GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
-		g_application_send_notification(app, NULL, file_row->notification);
+		g_application_send_notification(app, NULL, row->notification);
 	}
 
 	raider_file_row_delete(NULL, user_data);
@@ -134,25 +134,25 @@ void on_timeout_finished(gpointer user_data)
 /* Invoked in raider-window.c. */
 void launch_shredding(gpointer data)
 {
-	RaiderFileRow *file_row = RAIDER_FILE_ROW(data);
+	RaiderFileRow *row = RAIDER_FILE_ROW(data);
 	GError *error = NULL;
 
 	/* One liner settings. */
-	gboolean remove_file = g_settings_get_boolean(file_row->settings, "remove-file");
-	gboolean hide_shredding = g_settings_get_boolean(file_row->settings, "hide-shredding");
-	gboolean override_permissions = g_settings_get_boolean(file_row->settings, "override-permissions");
-	gboolean do_not_round_to_next_block = g_settings_get_boolean(file_row->settings, "do-not-round-to-next-block");
-	gchar *shred_executable = g_settings_get_string(file_row->settings, "shred-executable");
-	gboolean do_number_of_bytes_to_shred_command = TRUE;
+	gboolean remove_file = g_settings_get_boolean(row->settings, "remove-file");
+	gboolean hide_shredding = g_settings_get_boolean(row->settings, "hide-shredding");
+	gboolean override_permissions = g_settings_get_boolean(row->settings, "override-permissions");
+	gboolean do_not_round_to_next_block = g_settings_get_boolean(row->settings, "do-not-round-to-next-block");
+	gchar *shred_executable = g_settings_get_string(row->settings, "shred-executable");
+	gboolean do_nob_command = TRUE;
 
 	/* Get the number of passes. */
-	gchar *number_of_passes = g_strdup_printf("%d", g_settings_get_int(file_row->settings, "number-of-passes"));
+	gchar *number_of_passes = g_strdup_printf("%d", g_settings_get_int(row->settings, "number-of-passes"));
 	gchar *number_of_passes_option = g_strconcat("--iterations=", number_of_passes, NULL);
 
 	/* Get the remove method. The correspondings for each number is defined here. */
 	gchar *remove_method;
 
-	switch (g_settings_get_int(file_row->settings, "remove-method"))
+	switch (g_settings_get_int(row->settings, "remove-method"))
 	{
 	case 0:
 	{
@@ -173,26 +173,24 @@ void launch_shredding(gpointer data)
 	gchar *remove_method_command = g_strconcat("--remove=", remove_method, NULL);
 
 	/* If that user requests, shred part of a file. */
-	int number_of_bytes_to_shred = g_settings_get_int(file_row->settings, "number-of-bytes-to-shred");
+	int nob = g_settings_get_int(row->settings, "number-of-bytes-to-shred");
 
-	if (number_of_bytes_to_shred == 0)
-		do_number_of_bytes_to_shred_command = FALSE;
-	gchar *number_of_bytes_to_shred_converted = g_strdup_printf("%d", number_of_bytes_to_shred);
-	gchar *number_of_bytes_to_shred_command = g_strconcat("--size=", number_of_bytes_to_shred_converted, NULL);
+	if (nob == 0)
+		do_nob_command = FALSE;
+	gchar *nob_tmp = g_strdup_printf("%d", nob);
+	gchar *nob_command = g_strconcat("--size=", nob_tmp, NULL);
 
-	// printf("%s:%d:%d:%d:%d:%d\n", number_of_passes_option, remove_file, hide_shredding, override_permissions, do_not_round_to_next_block, do_number_of_bytes_to_shred_command);
-	//
 	/* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
 	   for the commands that are absent in this launch. There is no error as shred does not complain
 	   about too many --verbose'es */
-	file_row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-										 shred_executable, "--verbose", g_file_get_path(file_row->file),
+	row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
+										 shred_executable, "--verbose", g_file_get_path(row->file),
 										 number_of_passes_option,
 										 remove_file ? remove_method_command : "--verbose",
 										 hide_shredding ? "--zero" : "--verbose",
 										 override_permissions ? "--force" : "--verbose",
 										 do_not_round_to_next_block ? "--exact" : "--verbose",
-										 do_number_of_bytes_to_shred_command ? number_of_bytes_to_shred_command : "--verbose",
+										 do_nob_command ? nob_command : "--verbose",
 										 NULL);
 
 	/* Free allocated text. */
@@ -201,8 +199,8 @@ void launch_shredding(gpointer data)
 	g_free(remove_method);
 	g_free(remove_method_command);
 	g_free(shred_executable);
-	g_free(number_of_bytes_to_shred_converted);
-	g_free(number_of_bytes_to_shred_command);
+	g_free(nob_tmp);
+	g_free(nob_command);
 
 	/* Avoid dangling pointer references. */
 	number_of_passes = NULL;
@@ -210,8 +208,8 @@ void launch_shredding(gpointer data)
 	remove_method = NULL;
 	remove_method_command = NULL;
 	shred_executable = NULL;
-	number_of_bytes_to_shred_converted = NULL;
-	number_of_bytes_to_shred_command = NULL;
+	nob_tmp = NULL;
+	nob_command = NULL;
 
 	if (error != NULL)
 	{
@@ -221,20 +219,20 @@ void launch_shredding(gpointer data)
 	}
 
 	/* This parses the output. */
-	GInputStream *stream = g_subprocess_get_stderr_pipe(file_row->process);
-	file_row->data_stream = g_data_input_stream_new(stream);
+	GInputStream *stream = g_subprocess_get_stderr_pipe(row->process);
+	row->data_stream = g_data_input_stream_new(stream);
 
 	/* Change the button. */
-	gtk_revealer_set_reveal_child(file_row->remove_revealer, FALSE);
-	gtk_revealer_set_reveal_child(file_row->progress_revealer, TRUE);
+	gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
+	gtk_revealer_set_reveal_child(row->progress_revealer, TRUE);
 
 	/* Check the output every 100 milliseconds. Also create a cancellable. */
-	file_row->cont_parsing = TRUE;
-	file_row->timout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, process_output, data, on_timeout_finished);
+	row->cont_parsing = TRUE;
+	row->timout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, process_output, data, on_timeout_finished);
 
 	/* Call the callback when the process is finished. If the user aborts the
 	   the job, this will be called in any event.*/
-	g_subprocess_wait_async(file_row->process, NULL, (GAsyncReadyCallback)finish_shredding, file_row);
+	g_subprocess_wait_async(row->process, NULL, (GAsyncReadyCallback)finish_shredding, row);
 }
 
 /** Widget related tasks. */
@@ -305,17 +303,17 @@ raider_file_row_class_init(RaiderFileRowClass *klass)
 
 RaiderFileRow *raider_file_row_new(GFile *file)
 {
-	RaiderFileRow *file_row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
+	RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
 
-	file_row->file = file;
+	row->file = file;
 
-	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), g_file_get_basename(file_row->file));
-	adw_action_row_set_subtitle(ADW_ACTION_ROW(file_row), g_file_get_path(file_row->file));
+	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
+	adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
 
 	/* Notification stuff. */
-	file_row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(file_row->file), NULL);
-	file_row->notification = g_notification_new(file_row->notification_title);
-	file_row->notification_subtitle = NULL;
+	row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
+	row->notification = g_notification_new(row->notification_title);
+	row->notification_subtitle = NULL;
 
-	return file_row;
+	return row;
 }
