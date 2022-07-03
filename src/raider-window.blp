@@ -15,7 +15,7 @@ template RaiderWindow : Gtk.ApplicationWindow {
       	  reveal-child: false;
       	  transition-type: slide_left;
       	  Gtk.Button shred_button {
-      	    label: "Shred";
+      	    label: _("Shred");
       	    styles ["destructive-action"]
       	    margin-end: 6;
       	  }
@@ -25,7 +25,7 @@ template RaiderWindow : Gtk.ApplicationWindow {
       	  reveal-child: false;
       	  transition-type: slide_left;
       	  Gtk.Button abort_button {
-      	    label: "Abort";
+      	    label: _("Abort");
       	    styles ["destructive-action"]
       	    margin-end: 6;
       	  }
@@ -44,7 +44,7 @@ template RaiderWindow : Gtk.ApplicationWindow {
 
       [title]
       Adw.WindowTitle title {
-      	title: "File Shredder";
+      	title: _("File Shredder");
       }
 
       [end]

@@ -4,7 +4,6 @@ project('raider', 'c',
 )
 
 i18n = import('i18n')
-
 gnome = import('gnome')
 
 config_h = configuration_data()

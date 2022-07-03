@@ -22,29 +22,30 @@
 #include "raider-window.h"
 #include "raider-file-row.h"
 
-struct _RaiderWindow {
+struct _RaiderWindow
+{
 	GtkApplicationWindow parent_instance;
 
-    GtkBox* contents_box;
-	GtkStack* window_stack;
-	AdwSplitButton* open_button;
-	GtkRevealer* open_revealer;
-	GtkButton* shred_button;
-	GtkRevealer* shred_revealer;
-	GtkButton* abort_button;
-	GtkRevealer* abort_revealer;
+	GtkBox *contents_box;
+	GtkStack *window_stack;
+	AdwSplitButton *open_button;
+	GtkRevealer *open_revealer;
+	GtkButton *shred_button;
+	GtkRevealer *shred_revealer;
+	GtkButton *abort_button;
+	GtkRevealer *abort_revealer;
 	AdwToastOverlay *toast_overlay;
-	GtkListBox* list_box;
+	GtkListBox *list_box;
 
 	GtkDropTarget *target;
 
-	GList* filenames;
+	GList *filenames;
 	int file_count;
 
-    /* Device selector data items. */
-    GVolumeMonitor* monitor;
-    GMenu* mount_menu;
-    GMenu* mount_main_menu;
+	/* Device selector data items. */
+	GVolumeMonitor *monitor;
+	GMenu *mount_menu;
+	GMenu *mount_main_menu;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -61,15 +62,16 @@ void shred_file(GtkWidget *widget, gpointer data)
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
 	/* Update the headerbar view. */
-	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);   // Hide.
-	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);    // Show.
-	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);    // Hide.
+	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE); // Hide.
+	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);  // Show.
+	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);  // Hide.
 
 	/* Launch the shredding. */
 	int row;
 
-	for (row = 0; row < window->file_count; row++) {
-		RaiderFileRow* file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+	for (row = 0; row < window->file_count; row++)
+	{
+		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
 		launch_shredding((gpointer)file_row);
 	}
 }
@@ -89,14 +91,14 @@ raider_window_class_init(RaiderWindowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, toast_overlay);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
 }
 
 /* Make highlight. */
 static GdkDragAction on_enter(GtkDropTarget *target, double x, double y, gpointer data)
 {
-	RaiderWindow* window = RAIDER_WINDOW(data);
-    GtkStyleContext* context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
+	RaiderWindow *window = RAIDER_WINDOW(data);
+	GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
 
 	gtk_style_context_add_class(context, "drop_hover");
 
@@ -106,23 +108,24 @@ static GdkDragAction on_enter(GtkDropTarget *target, double x, double y, gpointe
 /* Get rid of highlight. */
 static void on_leave(GtkDropTarget *target, gpointer data)
 {
-	RaiderWindow* window = RAIDER_WINDOW(data);
-    GtkStyleContext* context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
+	RaiderWindow *window = RAIDER_WINDOW(data);
+	GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
 
 	gtk_style_context_remove_class(context, "drop_hover");
 }
 
-static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, double y, gpointer data)
+static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
 {
 	/* GdkFileList is a boxed value so we use the boxed API. */
-	GdkFileList* file_list = g_value_get_boxed(value);
+	GdkFileList *file_list = g_value_get_boxed(value);
 
-	GSList* list = gdk_file_list_get_files(file_list);
+	GSList *list = gdk_file_list_get_files(file_list);
 
 	/* Loop through the files and print their names. */
 	GSList *l;
-	for (l = list; l != NULL; l = l->next) {
-		GFile* file = g_file_dup(l->data);
+	for (l = list; l != NULL; l = l->next)
+	{
+		GFile *file = g_file_dup(l->data);
 		raider_window_open(file, data, NULL);
 	}
 	return TRUE;
@@ -130,30 +133,31 @@ static gboolean on_drop(GtkDropTarget *target, const GValue  *value, double x, d
 
 void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 {
-    RaiderWindow* self = RAIDER_WINDOW(data);
+	RaiderWindow *self = RAIDER_WINDOW(data);
 
-    g_menu_remove_all (self->mount_menu);
+	g_menu_remove_all(self->mount_menu);
 
-    GList* mount_list = g_volume_monitor_get_mounts (self->monitor);
-    GList *l;
-    for (l = mount_list; l != NULL; l = l->next)
-    {
-        gchar* name = g_mount_get_name(l->data);
+	GList *mount_list = g_volume_monitor_get_mounts(self->monitor);
+	GList *l;
+	for (l = mount_list; l != NULL; l = l->next)
+	{
+		/* Retrieve device path, and put in variant. */
+		GFile *file = g_mount_get_root(l->data);
+		GVariant *var = g_variant_new_string(g_file_get_path(file));
 
-        /* Retrieve device path, and put in variant. */
-        GFile *file = g_mount_get_root (l->data);
-        GVariant *var = g_variant_new_string (g_file_get_path(file));
+		GFile *title = g_file_new_for_path(g_file_get_path(file));
+		gchar *name = g_file_get_basename(title);
 
-        GMenuItem* item = g_menu_item_new (name, "app.open-drive");
-        g_menu_item_set_action_and_target_value (item, "app.open-drive", var);
-        g_menu_append_item (self->mount_menu, item);
+		GMenuItem *item = g_menu_item_new(name, "app.open-drive");
+		g_menu_item_set_action_and_target_value(item, "app.open-drive", var);
+		g_menu_append_item(self->mount_menu, item);
 
-        g_free(name);
-    }
-    if (g_list_length (mount_list) < 1)
-        adw_split_button_set_menu_model(self->open_button, NULL);
-    else
-        adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
+		g_free(name);
+	}
+	if (g_list_length(mount_list) < 1)
+		adw_split_button_set_menu_model(self->open_button, NULL);
+	else
+		adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 }
 
 static void
@@ -168,7 +172,7 @@ raider_window_init(RaiderWindow *self)
 
 	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
 
-	GType drop_types[] = { GDK_TYPE_FILE_LIST };
+	GType drop_types[] = {GDK_TYPE_FILE_LIST};
 	gtk_drop_target_set_gtypes(self->target, drop_types, 1);
 
 	g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
@@ -177,18 +181,18 @@ raider_window_init(RaiderWindow *self)
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
-    /* Create monitor of mounted drives. */
-    self->mount_main_menu = g_menu_new();
-    self->mount_menu = g_menu_new();
-    g_menu_prepend_section (self->mount_main_menu, "Devices", G_MENU_MODEL(self->mount_menu));
-    adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
+	/* Create monitor of mounted drives. */
+	self->mount_main_menu = g_menu_new();
+	self->mount_menu = g_menu_new();
+	g_menu_prepend_section(self->mount_main_menu, _("Devices"), G_MENU_MODEL(self->mount_menu));
+	adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 
-    self->monitor = g_volume_monitor_get();
-    g_signal_connect (self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect (self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect (self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
+	self->monitor = g_volume_monitor_get();
+	g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
+	g_signal_connect(self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
+	g_signal_connect(self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
 
-    on_mount_changed(NULL, NULL, self);
+	on_mount_changed(NULL, NULL, self);
 }
 
 /* This is called when the handler for the close button destroys the row. This handles the application state */
@@ -196,34 +200,38 @@ void raider_window_close(gpointer data, gpointer user_data)
 {
 	RaiderWindow *window = RAIDER_WINDOW(user_data);
 
-	RaiderFileRow* row = RAIDER_FILE_ROW(data);
-	gchar* filename = raider_file_row_get_filename(row);
+	RaiderFileRow *row = RAIDER_FILE_ROW(data);
+	gchar *filename = raider_file_row_get_filename(row);
 
 	gboolean removed = FALSE;
 
 	/* Search to delete the entry. */
-	GList * item = window->filenames;
-	while (item != NULL) {
+	GList *item = window->filenames;
+	while (item != NULL)
+	{
 		GList *next = item->next;
 
 		/* Get the filename for this round. */
-		gchar* text = (gchar*)item->data;
+		gchar *text = (gchar *)item->data;
 
-		if (g_strcmp0(text, filename) == 0) {
+		if (g_strcmp0(text, filename) == 0)
+		{
 			window->filenames = g_list_remove(window->filenames, text);
 			removed = TRUE;
 		}
 		item = next;
 	}
 
-	if (removed == FALSE) {
-		g_error("Could not remove file from quick list.");
+	if (removed == FALSE)
+	{
+		g_error(_("Could not remove file from quick list."));
 	}
 
 	window->file_count--;
 	window->filenames = g_list_remove(window->filenames, raider_file_row_get_filename(row));
 
-	if (window->file_count == 0) {
+	if (window->file_count == 0)
+	{
 		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
 
 		/* Update the view. */
@@ -234,15 +242,17 @@ void raider_window_close(gpointer data, gpointer user_data)
 }
 
 /* This is used to open a single file at a time */
-void raider_window_open(GFile* file, gpointer data, gchar* title)
+void raider_window_open(GFile *file, gpointer data, gchar *title)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
-	if (g_file_query_exists(file, NULL) == FALSE) {
+	if (g_file_query_exists(file, NULL) == FALSE)
+	{
 		g_object_unref(file);
 		return;
 	}
-	if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY) {
+	if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
+	{
 		g_autofree char *msg = g_strdup(_("Directories are not supported!"));
 		adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
 		g_object_unref(file);
@@ -250,16 +260,18 @@ void raider_window_open(GFile* file, gpointer data, gchar* title)
 	}
 
 	/* Search to see if a file with that path is already loaded. */
-	GList* item = window->filenames;
-	gchar* filename = g_file_get_path(file);
+	GList *item = window->filenames;
+	gchar *filename = g_file_get_path(file);
 
-	while (item != NULL) {
+	while (item != NULL)
+	{
 		GList *next = item->next;
 
 		/* Get the filename for this round. */
-		gchar* text = (gchar*)item->data;
+		gchar *text = (gchar *)item->data;
 
-		if (g_strcmp0(text, filename) == 0) {
+		if (g_strcmp0(text, filename) == 0)
+		{
 			g_autofree char *msg = g_strdup_printf(_("“%s” is already loaded!"), g_file_get_basename(file));
 			adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
 			g_object_unref(file);
@@ -269,7 +281,8 @@ void raider_window_open(GFile* file, gpointer data, gchar* title)
 	}
 
 	GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(file));
-    if (title) adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), title);
+	if (title)
+		adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), title);
 	gtk_list_box_append(window->list_box, file_row);
 
 	gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
@@ -278,4 +291,3 @@ void raider_window_open(GFile* file, gpointer data, gchar* title)
 	window->file_count++;
 	window->filenames = g_list_append(window->filenames, g_file_get_path(file));
 }
-

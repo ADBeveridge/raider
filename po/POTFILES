@@ -1,7 +1,0 @@
-data/com.github.ADBeveridge.Raider.desktop.in
-data/com.github.ADBeveridge.Raider.appdata.xml.in
-data/com.github.ADBeveridge.Raider.gschema.xml
-src/raider-window.ui
-src/main.c
-src/raider-window.c
-
