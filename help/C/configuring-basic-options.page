@@ -25,14 +25,6 @@
   <list>
       <item>
         <p>
-          The <cmd>Number of passes</cmd> option allows you to shred a file so
-          many times. The maximum is 25, because that is when all internal
-          shredding patterns have been used, and more shredding would not be
-          useful.
-        </p>
-      </item>
-      <item>
-        <p>
           If you want to keep the file on your system, uncheck the <cmd>Remove
           after shredding</cmd> option; it is enabled by default. The file will
           contain garbage, and will not be able to be opened by a regular text
@@ -48,6 +40,14 @@
           contains random data, but the <cmd>Hide shredding</cmd> option
           overwrites it with zeros, making it look like an empty part of the
           file system.
+        </p>
+      </item>
+      <item>
+        <p>
+          The <cmd>Number of passes</cmd> option allows you to shred a file so
+          many times. The maximum is 25, because that is when all internal
+          shredding patterns have been used, and more shredding would not be
+          useful.
         </p>
       </item>
     </list>

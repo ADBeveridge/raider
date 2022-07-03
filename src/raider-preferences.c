@@ -20,7 +20,7 @@
 #include <gtk/gtk.h>
 #include <adwaita.h>
 #include <glib/gi18n.h>
-#include "raider.h"
+#include "raider-application.h"
 #include "raider-window.h"
 #include "raider-preferences.h"
 

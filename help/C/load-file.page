@@ -29,7 +29,7 @@
 
    <note style="info">
     <p>The shredding button is hidden while there are no files loaded, and
-    while the shredding is ongoing.</p>
+    during shredding.</p>
   </note>
 
 </page>
