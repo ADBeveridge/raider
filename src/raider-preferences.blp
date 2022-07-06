@@ -55,17 +55,17 @@ template RaiderPreferences : Adw.PreferencesWindow {
             Adw.ExpanderRow {
                 title: _('Overwrite data source');
                 subtitle: _('Where to get the data to overwrite the files with. Disabled at every startup');
-                enable-expansion: bind enable_custom_sd.active;
+                enable-expansion: bind enable_df_checkbutton.active;
 
 	        [action]
-	        Gtk.CheckButton enable_custom_sd {
+	        Gtk.CheckButton enable_df_checkbutton {
 	            active: false;
 	        }
-	        Adw.ActionRow sd_row{
+	        Adw.ActionRow df_row{
 	            title: _('None Selected');
 
 		    [suffix]
-		    Gtk.Button sd_button {
+		    Gtk.Button df_button {
 		        label: _('Select File');
 		        valign: center;
 		    }

@@ -21,214 +21,68 @@
 #include "raider-progress-icon.h"
 #include "raider-progress-info-popover.h"
 
-/* Parsing data that carries around data. */
-struct _fsm
-{
-	void (*state)(void *);
-	gchar **tokens;
-	gint incremented_number;
-	GtkWidget *progress_icon;
-	GtkWidget *popover;
-	gchar *filename;
-	GSettings *settings;
-	gdouble current;
-	gdouble number_of_passes;
+struct _RaiderShredBackend {
+	GObject parent;
+
+	GDataInputStream *data_stream;
 };
 
-void parse_fraction(void *ptr_to_fsm);
-void parse_pass(void *ptr_to_fsm);
-void parse_filename(void *ptr_to_fsm);
-void parse_sender_name(void *ptr_to_fsm);
-void stop(void *ptr_to_fsm);
-void start(void *ptr_to_fsm);
-void parse_shred_data_type(void *ptr_to_fsm);
-void parse_sub_percentage(void *ptr_to_fsm);
-void apply_progress(void *ptr_to_fsm);
+G_DEFINE_TYPE(RaiderShredBackend, raider_shred_backend, G_TYPE_OBJECT )
 
-void analyze_progress(gchar *buffer, GtkWidget *progress_icon, GtkWidget *popover, gchar *filename, GSettings *settings)
+enum {
+	PROP_0,
+	PROP_DATA_STREAM,
+	N_PROPS
+};
+
+static GParamSpec *properties[N_PROPS];
+
+
+static void raider_shred_backend_get_property(GObject *object, guint prop_id, GValue *value, GParamSpec *pspec)
 {
-	gchar **tokens = g_strsplit(buffer, " ", 0);
-	struct _fsm fsm = {start, tokens, 0, progress_icon, popover, filename, settings};
+	RaiderShredBackend *self = RAIDER_PROGRESS_ICON(object);
 
-	/* Pretty clever, no? */
-	while (fsm.state != NULL)
-	{
-		fsm.state(&fsm);
+	switch (prop_id) {
+	case PROP_DATA_STREAM:
+		g_value_set_double(value, self->data_stream));
+		break;
+
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
 	}
-
-	g_free(tokens);
-	g_free(buffer);
 }
 
-void apply_progress(void *ptr_to_fsm)
+static void raider_shred_backend_set_property(GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec)
 {
-	struct _fsm *fsm = ptr_to_fsm;
+	RaiderShredBackend *self = RAIDER_PROGRESS_ICON(object);
 
-	gdouble progress = (fsm->current / fsm->number_of_passes);
-	raider_progress_icon_set_progress(RAIDER_PROGRESS_ICON(fsm->progress_icon), progress);
-	raider_progress_info_popover_set_progress(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), progress);
-}
+	switch (prop_id) {
+	case PROP_DATA_STREAM:
+		self->data_stream = g_value_get_object(value);
+		break;
 
-/* Start the parsing. */
-void start(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_sender_name;
-}
-
-/* Abort the while loop in analyze_progress. */
-void stop(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = NULL;
-
-	/* Reset the tokens array so it can be freed. */
-	int i;
-	for (i = 0; i < fsm->incremented_number; i++)
-	{
-		fsm->tokens--;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
 	}
-
-	apply_progress(ptr_to_fsm);
 }
 
-/* This function checks if shred sent the output. */
-void parse_sender_name(void *ptr_to_fsm)
+static void raider_shred_backend_class_init(RaiderShredBackendClass *klass)
 {
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_filename;
+	GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	/* Get the path to 'shred' and compare. */
-	gchar *path_to_shred = g_strconcat(g_settings_get_string(fsm->settings, "shred-executable"),
-									   ":", NULL);
+	object_class->get_property = raider_shred_backend_get_property;
+	object_class->set_property = raider_shred_backend_set_property;
 
-	if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0)
-	{
-		fsm->state = stop;
-		g_printerr("No shred output found.");
-		return;
-	}
+	properties[PROP_PROGRESS] =
+		g_param_spec_double("data-stream",
+				    "Data Stream",
+				    "The input source for output from a cl program",
+				    G_TYPE_OBJECT,
+				    (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	g_object_class_install_properties(object_class, N_PROPS, properties);
 }
 
-void parse_filename(void *ptr_to_fsm)
+static void raider_shred_backend_init(RaiderShredBackend *icon)
 {
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_pass;
-
-	/* In this function, we divide the filename in the fsm struct.
-	   We then loop that double dimensional array till we reach the
-	   element that is null (the last one). Inside that loop we increment
-	   the pointer to the outputted text. This is done because some
-	   files have spaces in their filename. */
-
-	gchar **placeholder;
-	if (fsm->filename != NULL)
-	{
-		placeholder = g_strsplit(fsm->filename, " ", 0);
-	}
-	else
-	{
-		fsm->state = stop;
-	}
-
-	/* This is for if the filename has multiple spaces in it. */
-	int number = 0;
-	while (placeholder[number] != NULL)
-	{
-		/* Point to the next word for how may spaces there are in the filename. */
-		fsm->tokens++;
-		fsm->incremented_number++;
-
-		/* Update the number of spaces. */
-		number++;
-	}
-	g_free(placeholder);
-}
-
-void parse_pass(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_fraction;
-
-	/* Generally this test case will execute if the shredding option is set to remove. */
-	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0)
-	{
-		fsm->state = stop;
-		// g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
-		return;
-	}
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
-}
-
-void parse_fraction(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_shred_data_type;
-
-	gchar **fraction_chars = g_strsplit(fsm->tokens[0], "/", 0);
-
-	/* THE BIG CODE OF SHREDDING PROGRESS. */
-	/* I subtract one because in the output, it represents which pass it is working on,
-	 * whereas the progress bar indicates how much more needs to be done. */
-	fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
-	fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
-	/* The progress update is done in the function stop. */
-
-	g_free(fraction_chars);
-
-	/* Set the text of the progress bar with a string that looks like '7/15". */
-	// raider_progress_info_popover_set_text(RAIDER_PROGRESS_INFO_POPOVER(fsm->popover), fsm->tokens[0]);
-
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
-}
-
-void parse_shred_data_type(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = stop;
-
-	gchar **last_bit = g_strsplit(fsm->tokens[0], "...", 0);
-
-	/* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
-
-	/* Check if this is such a big file that it gives more info. */
-	if (g_strcmp0(last_bit[1], "") != 0)
-	{
-		/* In this case, last_bit[1] contains something like "24MiB/83MiB". */
-		/* We do not need it as the next token has the percentage of that pass is done. */
-		fsm->state = parse_sub_percentage;
-	}
-
-	g_free(last_bit);
-
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
-}
-
-void parse_sub_percentage(void *ptr_to_fsm)
-{
-	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = stop;
-
-	/* Convert into whole number. The function ignores the % at the end of the digit. */
-	gdouble percentage = g_strtod(fsm->tokens[0], NULL);
-
-	/* Convert the percentage into a true decimal. */
-	percentage = (percentage * .01);
-
-	/* Update the current pass percentage because we have more info. */
-	fsm->current = fsm->current + percentage;
-
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
 }

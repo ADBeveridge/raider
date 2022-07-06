@@ -18,5 +18,7 @@
 
 #pragma once
 #include <gtk/gtk.h>
+#define RAIDER_TYPE_PROGRESS_ICON (raider_progress_icon_get_type())
 
-void analyze_progress(gchar *buffer, GtkWidget *progress_icon, GtkWidget *popover, gchar *filename, GSettings *settings);
+G_DECLARE_FINAL_TYPE(RaiderShredBackend, raider_shred_backend, RAIDER, SHRED_BACKEND, GObject)
+

@@ -142,16 +142,16 @@ void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 	for (l = mount_list; l != NULL; l = l->next)
 	{
 		/* Retrieve device path, and put in variant. */
-		GFile *file = g_mount_get_root(l->data);
-		GVariant *var = g_variant_new_string(g_file_get_path(file));
+		GFile *file = g_mount_get_root(l->data); // Prints something like /home/ad/AD_BACKUPS.
 
-		GFile *title = g_file_new_for_path(g_file_get_path(file));
-		gchar *name = g_file_get_basename(title);
+		gchar *name = g_file_get_basename(file); // Get the "title" of the disk.
+		GVariant *var = g_variant_new_string(g_file_get_path(file)); // Store in a variant so the "action" in raider-application can know which drive we are working on.
 
 		GMenuItem *item = g_menu_item_new(name, "app.open-drive");
 		g_menu_item_set_action_and_target_value(item, "app.open-drive", var);
 		g_menu_append_item(self->mount_menu, item);
 
+		g_object_unref(file);
 		g_free(name);
 	}
 	if (g_list_length(mount_list) < 1)
@@ -262,7 +262,6 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 	/* Search to see if a file with that path is already loaded. */
 	GList *item = window->filenames;
 	gchar *filename = g_file_get_path(file);
-
 	while (item != NULL)
 	{
 		GList *next = item->next;
@@ -279,6 +278,7 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 		}
 		item = next;
 	}
+	g_list_free(item);
 
 	GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(file));
 	if (title)

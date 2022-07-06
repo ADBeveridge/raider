@@ -90,11 +90,15 @@ static void raider_application_open_drive(GSimpleAction *action, GVariant *param
 	GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
 
 	GUnixMountEntry *unix_mount = g_unix_mount_at(g_variant_get_string(parameter, NULL), NULL);
-	const gchar *path = g_unix_mount_get_device_path(unix_mount);
-	GFile *file = g_file_new_for_path(path);
-	GFile *title = g_file_new_for_path(g_variant_get_string(parameter, NULL));
+	const gchar *path = g_unix_mount_get_device_path(unix_mount); // This returns something like /dev/sdb1.
 
-	raider_window_open(file, window, g_file_get_basename(title));
+	GFile *title = g_file_new_for_path(g_variant_get_string(parameter, NULL));
+	gchar* name = g_file_get_basename(title);
+	g_object_unref(title);
+
+	raider_window_open(g_file_new_for_path(path), window, name);
+
+	g_free(name);
 }
 
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -156,12 +160,10 @@ static void raider_application_finalize(GObject *object)
 
 static void raider_application_activate(GApplication *app)
 {
-	GtkWindow *window;
-
 	g_assert(GTK_IS_APPLICATION(app));
 
 	/* Get the current window or create one if necessary. */
-	window = gtk_application_get_active_window(GTK_APPLICATION(app));
+	GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(app));
 	if (window == NULL)
 		window = g_object_new(RAIDER_TYPE_WINDOW, "application", app, NULL);
 
@@ -219,4 +221,8 @@ static void raider_application_init(RaiderApplication *self)
 																				 "<primary>o",
 																				 NULL,
 																			 });
+	/* Always disable data-file, as user may forget that he loaded it. */
+	GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");
+	g_settings_set_boolean(settings, "do-data-file", FALSE);
+	g_object_unref(settings);
 }

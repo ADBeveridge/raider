@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="raider">
     <schema id="com.github.ADBeveridge.Raider" path="/com/github/ADBeveridge/raider/">
-	<key name="hide-shredding" type="b">
+	      <key name="hide-shredding" type="b">
            <summary>Hide shredding</summary>
             <description>Whether to hide shredding. This is done by overwriting the file(s) with zeros.</description>
            <default>false</default>
@@ -44,7 +44,12 @@
            <description>The path to the shred executable.</description>
            <default>'/usr/bin/shred'</default>
         </key>
-        <key name="overwrite-data-file" type="s">
+        <key name="do-data-file" type="b">
+           <summary>Whether to allow the source data file to be enabled</summary>
+           <description>If unchecked, the source data file will not be loaded.</description>
+           <default>false</default>
+        </key>
+        <key name="data-file" type="s">
            <summary>Overwrite data file</summary>
            <description>Where to get data to overwrite the to-be-shredded files.</description>
            <default>'None Selected'</default>
