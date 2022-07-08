@@ -1,11 +1,18 @@
 using Gtk 4.0;
 using Adw 1;
 
-template RaiderWindow : Gtk.ApplicationWindow {
+template RaiderWindow : Adw.ApplicationWindow {
   default-width: 800;
   default-height: 600;
+  icon-name: "com.github.ADBeveridge.Raider";
+  title: "File Shredder";
 
-  titlebar: Adw.HeaderBar header_bar {
+  [content]
+  Gtk.Box {
+    orientation: vertical;
+    vexpand: true;
+
+    Adw.HeaderBar header_bar {
       centering-policy: strict;
 
       [start]
@@ -52,34 +59,32 @@ template RaiderWindow : Gtk.ApplicationWindow {
         icon-name: "open-menu-symbolic";
         menu-model: primary_menu;
       }
-  };
+    }
+    Adw.ToastOverlay toast_overlay {
+      Gtk.Box contents_box {
+        vexpand: true;
+        Gtk.Stack window_stack {
+	  transition-type: crossfade;
+          Gtk.StackPage empty_page {
+          name: "empty_page";
+            child: Adw.StatusPage empty_state {
+      	      title: _("Add files or drop here");
+      	      icon-name: "document-open-symbolic";
+      	      hexpand: true;
+            };
+          }
 
-  [content]
-  Adw.ToastOverlay toast_overlay {
-    Gtk.Box contents_box {
-      Gtk.Stack window_stack {
-	transition-type: crossfade;
-        Gtk.StackPage empty_page {
-        name: "empty_page";
-          child: Adw.StatusPage empty_state {
-      	    title: _("Add files or drop here");
-      	    icon-name: "document-open-symbolic";
-      	    hexpand: true;
-          };
+          Gtk.StackPage list_page {
+            name: "list_page";
+      	    child: Gtk.ScrolledWindow scrolled_window {
+      	      Gtk.ListBox list_box {
+              }
+            };
+          }
         }
-
-        Gtk.StackPage list_page {
-        name: "list_page";
-      	  child: Gtk.ScrolledWindow scrolled_window {
-      	    Gtk.ListBox list_box {
-      	    }
-          };
-        }
-
       }
     }
   }
-
 }
 
 

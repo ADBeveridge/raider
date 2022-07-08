@@ -24,7 +24,7 @@
 
 struct _RaiderWindow
 {
-	GtkApplicationWindow parent_instance;
+	AdwApplicationWindow parent_instance;
 
 	GtkBox *contents_box;
 	GtkStack *window_stack;
@@ -39,7 +39,7 @@ struct _RaiderWindow
 
 	GtkDropTarget *target;
 
-	GList *filenames;
+	GList *filenames; // A quick list of filenames loaded for this window. */
 	int file_count;
 
 	/* Device selector data items. */
@@ -48,33 +48,7 @@ struct _RaiderWindow
 	GMenu *mount_main_menu;
 };
 
-G_DEFINE_TYPE(RaiderWindow, raider_window, GTK_TYPE_APPLICATION_WINDOW)
-
-/*
- * THE BIG FUNCTION
- *
- * This function does not use a queue because shred is not cpu intensive, just disk intensive, and
-   it is up to the disk to queue io requests.
- */
-void shred_file(GtkWidget *widget, gpointer data)
-{
-	/* Clear the subtitle. */
-	RaiderWindow *window = RAIDER_WINDOW(data);
-
-	/* Update the headerbar view. */
-	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE); // Hide.
-	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);  // Show.
-	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);  // Hide.
-
-	/* Launch the shredding. */
-	int row;
-
-	for (row = 0; row < window->file_count; row++)
-	{
-		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-		launch_shredding((gpointer)file_row);
-	}
-}
+G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
 static void
 raider_window_class_init(RaiderWindowClass *klass)
@@ -114,6 +88,7 @@ static void on_leave(GtkDropTarget *target, gpointer data)
 	gtk_style_context_remove_class(context, "drop_hover");
 }
 
+/* Handle drop. */
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
 {
 	/* GdkFileList is a boxed value so we use the boxed API. */
@@ -131,6 +106,41 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
 	return TRUE;
 }
 
+/* This function does not use a queue because shred is not cpu intensive, just
+ * disk intensive, and it is up to the disk manager to queue I/O requests. */
+void shred_file(GtkWidget *widget, gpointer data)
+{
+	/* Clear the subtitle. */
+	RaiderWindow *window = RAIDER_WINDOW(data);
+
+	/* Update the headerbar view. */
+	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE); // Hide.
+	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);  // Show.
+	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);  // Hide.
+
+	/* Launch the shredding. */
+	int row;
+	for (row = 0; row < window->file_count; row++)
+	{
+		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+		raider_file_row_launch_shredding((gpointer)file_row);
+	}
+}
+
+void abort_shredding (GtkWidget *widget, gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    /* Launch the shredding. */
+	int row;
+	for (row = 0; row < window->file_count; row++)
+	{
+		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+		raider_file_row_shredding_abort((gpointer)file_row);
+	}
+}
+
+/* Updates the list of removable media in the popover in the AdwSplitButton. */
 void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 {
 	RaiderWindow *self = RAIDER_WINDOW(data);
@@ -144,7 +154,7 @@ void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 		/* Retrieve device path, and put in variant. */
 		GFile *file = g_mount_get_root(l->data); // Prints something like /home/ad/AD_BACKUPS.
 
-		gchar *name = g_file_get_basename(file); // Get the "title" of the disk.
+		gchar *name = g_file_get_basename(file); // Get the "title" of the disk, something like AD_BACKUPS.
 		GVariant *var = g_variant_new_string(g_file_get_path(file)); // Store in a variant so the "action" in raider-application can know which drive we are working on.
 
 		GMenuItem *item = g_menu_item_new(name, "app.open-drive");
@@ -169,6 +179,7 @@ raider_window_init(RaiderWindow *self)
 	self->filenames = NULL;
 
 	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(shred_file), self);
+	g_signal_connect(self->abort_button, "clicked", G_CALLBACK(abort_shredding), self);
 
 	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
 

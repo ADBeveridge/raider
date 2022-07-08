@@ -18,7 +18,8 @@
 
 #pragma once
 #include <gtk/gtk.h>
-#define RAIDER_TYPE_PROGRESS_ICON (raider_progress_icon_get_type())
+#define RAIDER_TYPE_SHRED_BACKEND (raider_shred_backend_get_type())
 
 G_DECLARE_FINAL_TYPE(RaiderShredBackend, raider_shred_backend, RAIDER, SHRED_BACKEND, GObject)
 
+gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend);

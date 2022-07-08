@@ -23,5 +23,8 @@
 G_DECLARE_FINAL_TYPE(RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
 RaiderFileRow *raider_file_row_new(GFile *file);
+
 gchar *raider_file_row_get_filename(RaiderFileRow *row);
-void launch_shredding(gpointer data);
+void raider_file_row_launch_shredding(gpointer data);
+void raider_file_row_shredding_abort(gpointer data);
+

@@ -24,6 +24,7 @@
 #include "raider-progress-icon.h"
 #include "raider-shred-backend.h"
 #include "raider-progress-info-popover.h"
+#include "raider-shred-backend.h"
 
 struct _RaiderFileRow {
 	AdwActionRow parent;
@@ -47,11 +48,10 @@ struct _RaiderFileRow {
 	/* Data items. */
 	GSettings *settings;
 	GFile *file;
-	GDataInputStream *data_stream;
+	RaiderShredBackend* backend;
 	bool cont_parsing;
 	GSubprocess *process;
 	guint signal_id;
-	gint timout_id;
 	gboolean aborted;
 };
 
@@ -69,34 +69,6 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
 
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
-}
-
-/** Shredding functions */
-/* This function is called every few seconds to read the output of shred. */
-void process_output_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
-	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-
-	gchar *buf = g_data_input_stream_read_line_finish(row->data_stream, res, NULL, NULL);
-
-	/* If there is no data read in or available, return immediately. */
-	if (buf == NULL) {
-		return;
-	}
-
-	analyze_progress(buf, GTK_WIDGET(row->icon), GTK_WIDGET(row->popover), g_file_get_path(row->file), row->settings);
-}
-
-gboolean process_output(gpointer data)
-{
-	/* Converting the stream to text. */
-	RaiderFileRow *row = RAIDER_FILE_ROW(data);
-
-	if (row->cont_parsing) {
-		g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, NULL, process_output_finish, data);
-	}
-
-	return row->cont_parsing;
 }
 
 /* This is called when the shred executable exits, even if it is aborted. */
@@ -119,10 +91,7 @@ void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_d
 		g_application_send_notification(app, NULL, row->notification);
 	}
 
-	/* No matter what, we always check if there is more output waiting. */
-	g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, NULL, process_output_finish, data);
-
-	// Deleted somewhere else. */
+	raider_file_row_delete(NULL, user_data);
 }
 
 void on_timeout_finished(gpointer user_data)
@@ -130,7 +99,7 @@ void on_timeout_finished(gpointer user_data)
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
-void launch_shredding(gpointer data)
+void raider_file_row_launch_shredding(gpointer data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(data);
 	GError *error = NULL;
@@ -214,15 +183,11 @@ void launch_shredding(gpointer data)
 
 	/* This parses the output. */
 	GInputStream *stream = g_subprocess_get_stderr_pipe(row->process);
-	row->data_stream = g_data_input_stream_new(stream);
+	row->backend = g_object_new(RAIDER_TYPE_SHRED_BACKEND, "data-stream", g_data_input_stream_new(stream), NULL);
 
 	/* Change the button. */
 	gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
 	gtk_revealer_set_reveal_child(row->progress_revealer, TRUE);
-
-	/* Check the output every 100 milliseconds. */
-	row->cont_parsing = TRUE;
-	row->timout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, process_output, data, on_timeout_finished);
 
 	/* Call the callback when the process is finished. If the user aborts the
 	   the job, this will be called in any event.*/
@@ -231,7 +196,7 @@ void launch_shredding(gpointer data)
 
 /** Widget related tasks. */
 /* This is called when the user clicks abort. */
-void raider_file_row_shredding_abort(GtkWidget *widget, gpointer data)
+void raider_file_row_shredding_abort(gpointer data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(data);
 

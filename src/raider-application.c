@@ -24,7 +24,7 @@
 
 struct _RaiderApplication
 {
-	GtkApplication parent_instance;
+	AdwApplication parent_instance;
 };
 
 G_DEFINE_TYPE(RaiderApplication, raider_application, ADW_TYPE_APPLICATION)
@@ -183,8 +183,6 @@ static void raider_application_class_init(RaiderApplicationClass *klass)
 
 static void raider_application_init(RaiderApplication *self)
 {
-	adw_init();
-
 	g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
 	g_signal_connect_swapped(quit_action, "activate", G_CALLBACK(g_application_quit), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
