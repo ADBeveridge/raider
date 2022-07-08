@@ -87,9 +87,9 @@ static void raider_shred_backend_class_init(RaiderShredBackendClass *klass)
 
 void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
+	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(user_data);
 
-	gchar *buf = g_data_input_stream_read_line_finish(row->data_stream, res, NULL, NULL);
+	gchar *buf = g_data_input_stream_read_line_finish(backend->data_stream, res, NULL, NULL);
 
 	/* If there is no data read in or available, return immediately. */
 	if (buf == NULL) {
@@ -97,19 +97,23 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 }
 
+void on_timeout_finished(gpointer user_data)
+{
+}
+
 /* Start the read of the output. */
 gboolean raider_shred_backend_process_output(gpointer data)
 {
 	/* Converting the stream to text. */
 	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(data);
-	g_data_input_stream_read_line_async(row->data_stream, G_PRIORITY_DEFAULT, NULL, raider_shred_backend_process_output_finish, data);
+	g_data_input_stream_read_line_async(backend->data_stream, G_PRIORITY_DEFAULT, NULL, raider_shred_backend_process_output_finish, data);
 	return TRUE;
 }
 
 static void raider_shred_backend_init(RaiderShredBackend *backend)
 {
 	/* Check the output every 1/10th of a second. */
-	backend->timout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, raider_shred_backend_process_output, data, on_timeout_finished);
+	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
 }
 
 gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend)
