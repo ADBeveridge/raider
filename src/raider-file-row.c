@@ -172,7 +172,10 @@ void raider_file_row_launch_shredding(gpointer data)
 
 	/* This parses the output. */
 	GInputStream *stream = g_subprocess_get_stderr_pipe(row->process);
-	row->backend = g_object_new(RAIDER_TYPE_SHRED_BACKEND, "data-stream", g_data_input_stream_new(stream), NULL);
+	row->backend = g_object_new(RAIDER_TYPE_SHRED_BACKEND,
+								"data-stream", g_data_input_stream_new(stream),
+								"settings", row->settings,
+								"filename", g_file_get_path(row->file), NULL);
 
 	/* Change the button. */
 	gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
