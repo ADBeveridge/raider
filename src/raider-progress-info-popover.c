@@ -28,9 +28,11 @@ struct _RaiderProgressInfoPopover
 G_DEFINE_TYPE(RaiderProgressInfoPopover, raider_progress_info_popover, GTK_TYPE_POPOVER)
 
 static void
-raider_progress_info_popover_init(RaiderProgressInfoPopover *row)
+raider_progress_info_popover_init(RaiderProgressInfoPopover* popover)
 {
-    gtk_widget_init_template(GTK_WIDGET(row));
+    gtk_widget_init_template(GTK_WIDGET(popover));
+
+    gtk_progress_bar_set_pulse_step (GTK_PROGRESS_BAR(popover->progress_bar), .02);
 }
 
 void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popover, gdouble fraction)
@@ -48,6 +50,12 @@ raider_progress_info_popover_class_init(RaiderProgressInfoPopoverClass *klass)
 {
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-progress-info-popover.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderProgressInfoPopover, progress_bar);
+}
+
+void raider_progress_info_popover_pulse(RaiderProgressInfoPopover* popover)
+{
+  gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), "Estimating...");
+  gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
 }
 
 RaiderProgressInfoPopover *raider_progress_info_popover_new(GtkWidget *relative)
