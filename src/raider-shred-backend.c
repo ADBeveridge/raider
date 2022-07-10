@@ -30,6 +30,8 @@ struct _fsm
     GSettings *settings;
     gdouble current;
     gdouble number_of_passes;
+
+	gdouble progress; // This is passed so it can be set.
 };
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
@@ -52,7 +54,9 @@ struct _RaiderShredBackend {
 	GSettings* settings;
 
 	GTimer* timer;
-	int timeout_id;
+	gint timeout_id;
+	gdouble progress;
+	gdouble rate;
 };
 
 G_DEFINE_TYPE(RaiderShredBackend, raider_shred_backend, G_TYPE_OBJECT )
@@ -169,10 +173,12 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 
 	gchar **tokens = g_strsplit(buf, " ", 0);
-	struct _fsm fsm = { start, tokens, 0, backend->filename, backend->settings };
+	struct _fsm fsm = { start, tokens, 0, backend->filename, backend->settings, backend->progress };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
+
+	backend->rate = g_timer_elapsed(backend->timer, NULL) / backend->progress; // Returns the number of milliseconds it takes to go up by one progress unit.
 
 	g_free(tokens);
 	g_free(buf);
@@ -194,6 +200,9 @@ gboolean raider_shred_backend_process_output(gpointer data)
 static void raider_shred_backend_init(RaiderShredBackend *backend)
 {
 	backend->settings = g_settings_new("com.github.ADBeveridge.Raider");
+	backend->progress = 0.0;
+
+	g_timer_start(backend->timer);
 
 	/* Check the output every 1/10th of a second. */
 	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 100, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
@@ -201,6 +210,9 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 
 gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend)
 {
+
+
+
 	return 0.5;
 }
 
@@ -223,7 +235,7 @@ void stop(void *ptr_to_fsm)
         fsm->tokens--;
     }
 
-    // gdouble progress = (fsm->current / fsm->number_of_passes);
+    fsm->progress = (fsm->current / fsm->number_of_passes);
 }
 
 /* This function checks if shred sent the output. */

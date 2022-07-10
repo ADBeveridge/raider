@@ -212,6 +212,7 @@ raider_file_row_dispose(GObject *obj)
 
 	g_object_unref(row->file);
 	g_object_unref(row->settings);
+	g_object_unref(row->backend);
 
 	gtk_widget_unparent(GTK_WIDGET(row->popover));
 
