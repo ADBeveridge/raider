@@ -26,4 +26,4 @@ G_DECLARE_FINAL_TYPE(RaiderProgressInfoPopover, raider_progress_info_popover, RA
 
 RaiderProgressInfoPopover *raider_progress_info_popover_new(GtkWidget *relative);
 void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popover, gdouble fraction);
-void raider_progress_info_popover_set_text(RaiderProgressInfoPopover *popover, gchar *text);
+void raider_progress_info_popover_pulse(RaiderProgressInfoPopover* popover);

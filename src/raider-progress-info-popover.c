@@ -38,11 +38,10 @@ raider_progress_info_popover_init(RaiderProgressInfoPopover* popover)
 void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popover, gdouble fraction)
 {
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
-}
 
-void raider_progress_info_popover_set_text(RaiderProgressInfoPopover *popover, gchar *text)
-{
-    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), text);
+    gchar *display = g_strdup_printf("%d%%", (int)fraction);
+    gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), display);
+    g_free(display);
 }
 
 static void

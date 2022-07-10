@@ -98,6 +98,10 @@ static void raider_file_row_update_progress(gpointer data)
 		raider_progress_info_popover_pulse(row->popover);
 		return;
 	}
+
+  gtk_button_set_child (row->progress_button, GTK_WIDGET(row->icon));
+  raider_progress_icon_set_progress (row->icon, progress);
+  raider_progress_info_popover_set_progress (row->popover, progress);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
