@@ -74,7 +74,7 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
 }
 
 /* This is called when the shred executable exits, even if it is aborted. */
-void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
+static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
 
@@ -86,6 +86,7 @@ void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_d
 		g_application_send_notification(app, NULL, row->notification);
 	}
 
+	g_object_unref(row->backend);
 	raider_file_row_delete(NULL, user_data);
 }
 
@@ -234,7 +235,6 @@ raider_file_row_dispose(GObject *obj)
 
 	g_object_unref(row->file);
 	g_object_unref(row->settings);
-	g_object_unref(row->backend);
 
 	gtk_widget_unparent(row->spinner);
 	gtk_widget_unparent(GTK_WIDGET(row->popover));

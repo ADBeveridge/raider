@@ -202,7 +202,7 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 	backend->settings = g_settings_new("com.github.ADBeveridge.Raider");
 	backend->progress = 0.0;
 
-  backend->timer = g_timer_new();
+  	backend->timer = g_timer_new();
 	g_timer_start(backend->timer);
 
 	/* Check the output every 1/10th of a second. */
@@ -211,7 +211,7 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 
 gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend)
 {
-	return -1;
+	return .5;
 }
 
 void start(void *ptr_to_fsm)
