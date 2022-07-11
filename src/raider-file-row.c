@@ -78,6 +78,12 @@ static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
 
+	/* Remove the timeout. */
+	gboolean removed_timeout = g_source_remove(row->timeout_id);
+	if (removed_timeout == FALSE) {
+		g_printerr("Could not stop timeout.\n");
+	}
+
 	if (!row->aborted) {
 		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
 		if (!GTK_IS_WINDOW(toplevel))
@@ -236,7 +242,6 @@ raider_file_row_dispose(GObject *obj)
 	g_object_unref(row->file);
 	g_object_unref(row->settings);
 
-	gtk_widget_unparent(row->spinner);
 	gtk_widget_unparent(GTK_WIDGET(row->popover));
 
 	g_free(row->notification_title);
