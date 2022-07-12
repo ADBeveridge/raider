@@ -37,9 +37,13 @@ struct _RaiderFileRow {
 	GtkRevealer *remove_revealer;
 
 	/* Progress widgets. */
-	RaiderProgressIcon *icon;
+	GtkBox* progress_widgets_box;
 	RaiderProgressInfoPopover *popover;
+
+	RaiderProgressIcon *icon;
+	GtkRevealer* icon_revealer;
 	GtkWidget* spinner;
+	GtkRevealer* spinner_revealer;
 
 	/* Notification widget. */
 	GNotification *notification;
@@ -73,6 +77,100 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
+gboolean raider_file_row_update_progress(gpointer data)
+{
+	RaiderFileRow* row = RAIDER_FILE_ROW(data);
+	gdouble progress = raider_shred_backend_get_progress(row->backend);
+
+	if (progress == -1) {
+		gtk_button_set_child(row->progress_button, GTK_WIDGET(row->spinner));
+		raider_progress_info_popover_pulse(row->popover);
+	}
+	else {
+		gtk_button_set_child(row->progress_button, GTK_WIDGET(row->icon));
+		raider_progress_icon_set_progress(row->icon, progress);
+		raider_progress_info_popover_set_progress(row->popover, progress);
+	}
+	return TRUE;
+}
+
+/* This is shown when the user clicks on the progress icon. The popover shows more information. */
+void raider_popup_popover(GtkWidget *widget, gpointer data)
+{
+	gtk_popover_popup(GTK_POPOVER(data));
+}
+
+static void
+raider_file_row_dispose(GObject *obj)
+{
+	RaiderFileRow *row = RAIDER_FILE_ROW(obj);
+
+	g_object_unref(row->file);
+	g_object_unref(row->settings);
+
+	gtk_widget_unparent(GTK_WIDGET(row->popover));
+
+	g_free(row->notification_title);
+	row->notification_title = NULL;
+	g_free(row->notification_subtitle);
+	row->notification_subtitle = NULL;
+
+	G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
+}
+
+static void
+raider_file_row_init(RaiderFileRow *row)
+{
+	gtk_widget_init_template(GTK_WIDGET(row));
+
+	row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
+	gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
+	g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
+
+	/* Setup remove row. */
+	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
+
+	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
+	row->aborted = FALSE;
+}
+
+static void
+raider_file_row_class_init(RaiderFileRowClass *klass)
+{
+	G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
+
+	/* Load the progress icon into the type system. */
+	g_type_ensure(RAIDER_TYPE_PROGRESS_ICON);
+
+	gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-file-row.ui");
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_button);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_button);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_revealer);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_widgets_box);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon_revealer);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, spinner_revealer);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, spinner);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon);
+}
+
+RaiderFileRow *raider_file_row_new(GFile *file)
+{
+	RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
+
+	row->file = file;
+
+	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
+	adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
+
+	/* Notification stuff. */
+	row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
+	row->notification = g_notification_new(row->notification_title);
+	row->notification_subtitle = NULL;
+
+	return row;
+}
+
 /* This is called when the shred executable exits, even if it is aborted. */
 static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
@@ -94,21 +192,6 @@ static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer
 
 	g_object_unref(row->backend);
 	raider_file_row_delete(NULL, user_data);
-}
-
-static void raider_file_row_update_progress(gpointer data)
-{
-	RaiderFileRow* row = RAIDER_FILE_ROW(data);
-	gdouble progress = raider_shred_backend_get_progress(row->backend);
-
-	if (progress == -1) {
-		raider_progress_info_popover_pulse(row->popover);
-		return;
-	}
-
-  gtk_button_set_child (row->progress_button, GTK_WIDGET(row->icon));
-  raider_progress_icon_set_progress (row->icon, progress);
-  raider_progress_info_popover_set_progress (row->popover, progress);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
@@ -215,7 +298,6 @@ void raider_file_row_launch_shredding(gpointer data)
 	g_subprocess_wait_async(row->process, NULL, (GAsyncReadyCallback)finish_shredding, row);
 }
 
-/** Widget related tasks. */
 /* This is called when the user clicks abort. */
 void raider_file_row_shredding_abort(gpointer data)
 {
@@ -228,76 +310,3 @@ void raider_file_row_shredding_abort(gpointer data)
 	   is done, finish_shredding is always called, regardless of the exit type. */
 }
 
-/* This is shown when the user clicks on the progress icon. The popover shows more information. */
-void raider_popup_popover(GtkWidget *widget, gpointer data)
-{
-	gtk_popover_popup(GTK_POPOVER(data));
-}
-
-static void
-raider_file_row_dispose(GObject *obj)
-{
-	RaiderFileRow *row = RAIDER_FILE_ROW(obj);
-
-	g_object_unref(row->file);
-	g_object_unref(row->settings);
-
-	gtk_widget_unparent(GTK_WIDGET(row->popover));
-
-	g_free(row->notification_title);
-	row->notification_title = NULL;
-	g_free(row->notification_subtitle);
-	row->notification_subtitle = NULL;
-
-	G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
-}
-
-static void
-raider_file_row_init(RaiderFileRow *row)
-{
-	gtk_widget_init_template(GTK_WIDGET(row));
-
-	/* Create the progress icon for the file row. */
-	row->icon = g_object_new(RAIDER_TYPE_PROGRESS_ICON, NULL);
-	row->spinner = gtk_spinner_new();
-	gtk_button_set_child(row->progress_button, GTK_WIDGET(row->spinner));
-
-	row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
-	gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
-	g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
-
-	/* Setup remove row. */
-	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
-
-	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
-	row->aborted = FALSE;
-}
-
-static void
-raider_file_row_class_init(RaiderFileRowClass *klass)
-{
-	G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
-
-	gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-file-row.ui");
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_button);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_button);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_revealer);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
-}
-
-RaiderFileRow *raider_file_row_new(GFile *file)
-{
-	RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
-
-	row->file = file;
-
-	adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
-	adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
-
-	/* Notification stuff. */
-	row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
-	row->notification = g_notification_new(row->notification_title);
-	row->notification_subtitle = NULL;
-
-	return row;
-}
