@@ -22,16 +22,15 @@ template RaiderFileRow : Adw.ActionRow {
       transition-type: slide_left;
       Gtk.Button progress_button {
         child: Gtk.Box progress_widgets_box {
-          Gtk.Revealer icon_revealer {
-            visible: false;
-            .RaiderProgressIcon {
-            }
-          }
-          Gtk.Revealer spinner_revealer {
+          orientation: horizontal;
+
+          Gtk.Spinner spinner {
             visible: true;
-            Gtk.Spinner spinner {
-            }
           }
+          .RaiderProgressIcon icon {
+            visible: false;
+          }
+
         };
       }
     }

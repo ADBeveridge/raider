@@ -114,9 +114,9 @@ void shred_file(GtkWidget *widget, gpointer data)
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
 	/* Update the headerbar view. */
-	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE); // Hide.
-	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);  // Show.
-	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);  // Hide.
+	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+	gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
+	gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
 
 	/* Launch the shredding. */
 	int row;
@@ -130,6 +130,11 @@ void shred_file(GtkWidget *widget, gpointer data)
 void abort_shredding (GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
+
+	/* Update the headerbar view. */
+	gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
+	gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+	gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
 
     /* Launch the shredding. */
 	int row;
@@ -252,6 +257,13 @@ void raider_window_close(gpointer data, gpointer user_data)
 	}
 }
 
+/* You are responsible for freeing text. */
+void raider_window_show_toast (RaiderWindow* window, gchar* text)
+{
+	g_autofree char *msg = g_strdup(text);
+	adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
+}
+
 /* This is used to open a single file at a time */
 void raider_window_open(GFile *file, gpointer data, gchar *title)
 {
@@ -264,8 +276,10 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 	}
 	if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
 	{
-		g_autofree char *msg = g_strdup(_("Directories are not supported!"));
-		adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
+		gchar* message = g_strdup(_("Directories are not supported!"));
+		raider_window_show_toast (window, message);
+		g_free(message);
+
 		g_object_unref(file);
 		return;
 	}
@@ -282,8 +296,10 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 
 		if (g_strcmp0(text, filename) == 0)
 		{
-			g_autofree char *msg = g_strdup_printf(_("“%s” is already loaded!"), g_file_get_basename(file));
-			adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
+			gchar* message = g_strdup_printf(_("“%s” is already loaded!"), g_file_get_basename(file));
+			raider_window_show_toast (window, message);
+			g_free(message);
+
 			g_object_unref(file);
 			return;
 		}

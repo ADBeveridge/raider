@@ -41,9 +41,7 @@ struct _RaiderFileRow {
 	RaiderProgressInfoPopover *popover;
 
 	RaiderProgressIcon *icon;
-	GtkRevealer* icon_revealer;
 	GtkWidget* spinner;
-	GtkRevealer* spinner_revealer;
 
 	/* Notification widget. */
 	GNotification *notification;
@@ -82,15 +80,18 @@ gboolean raider_file_row_update_progress(gpointer data)
 	RaiderFileRow* row = RAIDER_FILE_ROW(data);
 	gdouble progress = raider_shred_backend_get_progress(row->backend);
 
-	if (progress == -1) {
-		gtk_button_set_child(row->progress_button, GTK_WIDGET(row->spinner));
+	if (progress == 0.0) {
+		gtk_widget_set_visible(row->spinner, TRUE);
+		gtk_widget_set_visible(GTK_WIDGET(row->icon), FALSE);
 		raider_progress_info_popover_pulse(row->popover);
 	}
 	else {
-		gtk_button_set_child(row->progress_button, GTK_WIDGET(row->icon));
+		gtk_widget_set_visible(row->spinner, FALSE);
+		gtk_widget_set_visible(GTK_WIDGET(row->icon), TRUE);
 		raider_progress_icon_set_progress(row->icon, progress);
 		raider_progress_info_popover_set_progress(row->popover, progress);
 	}
+
 	return TRUE;
 }
 
@@ -123,7 +124,7 @@ raider_file_row_init(RaiderFileRow *row)
 {
 	gtk_widget_init_template(GTK_WIDGET(row));
 
-	row->popover = raider_progress_info_popover_new(GTK_WIDGET(row->progress_button));
+	row->popover = raider_progress_info_popover_new();
 	gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
 	g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
 
@@ -148,8 +149,6 @@ raider_file_row_class_init(RaiderFileRowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_widgets_box);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon_revealer);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, spinner_revealer);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, spinner);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon);
 }
@@ -186,12 +185,32 @@ static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer
 		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
 		if (!GTK_IS_WINDOW(toplevel))
 			return;
-		GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
-		g_application_send_notification(app, NULL, row->notification);
-	}
 
-	g_object_unref(row->backend);
-	raider_file_row_delete(NULL, user_data);
+		/* Decide whether to send it via adwaita or shell. */
+		gboolean active = gtk_window_is_active (GTK_WINDOW(toplevel));
+		if (!active) {
+			GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
+			g_application_send_notification(app, NULL, row->notification);
+		}
+		else {
+			gchar* message = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
+			raider_window_show_toast (RAIDER_WINDOW(toplevel), message);
+			g_free(message);
+		}
+
+
+		g_object_unref(row->backend);
+		raider_file_row_delete(NULL, user_data);
+	}
+	if (row->aborted == TRUE)
+	{
+		/* Reset the view. */
+		adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
+		gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
+		gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);
+		gtk_spinner_stop(GTK_SPINNER(row->spinner));
+		row->aborted = FALSE; // For next time.
+	}
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
@@ -290,6 +309,9 @@ void raider_file_row_launch_shredding(gpointer data)
 
 	/* Start the spinner. */
 	gtk_spinner_start(GTK_SPINNER(row->spinner));
+
+	/* Set the activatable widget. */
+	adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));
 
 	row->timeout_id = g_timeout_add(50, (GSourceFunc)raider_file_row_update_progress, data);
 

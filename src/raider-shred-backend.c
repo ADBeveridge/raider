@@ -31,7 +31,7 @@ struct _fsm
     gdouble current;
     gdouble number_of_passes;
 
-	gdouble progress; // This is passed so it can be set.
+	gdouble* progress; // This is passed so it can be set.
 };
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
@@ -173,12 +173,12 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 
 	gchar **tokens = g_strsplit(buf, " ", 0);
-	struct _fsm fsm = { start, tokens, 0, backend->filename, backend->settings, backend->progress };
+	struct _fsm fsm = { start, tokens, 0, backend->filename, backend->settings, 0, 0, &backend->progress };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
 
-	backend->rate = g_timer_elapsed(backend->timer, NULL) / backend->progress; // Returns the number of milliseconds it takes to go up by one progress unit.
+	backend->rate = backend->progress / g_timer_elapsed(backend->timer, NULL); // Returns the number of milliseconds it takes to go up by one progress unit.
 
 	g_free(tokens);
 	g_free(buf);
@@ -206,13 +206,17 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 	g_timer_start(backend->timer);
 
 	/* Check the output every 1/10th of a second. */
-	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 5000, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
+	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
 }
 
 gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend)
 {
-	return .5;
+	return backend->progress;
 }
+
+
+/** Parsing functions., **/
+
 
 void start(void *ptr_to_fsm)
 {
@@ -233,7 +237,7 @@ void stop(void *ptr_to_fsm)
         fsm->tokens--;
     }
 
-    fsm->progress = (fsm->current / fsm->number_of_passes);
+    *fsm->progress = (fsm->current / fsm->number_of_passes);
 }
 
 /* This function checks if shred sent the output. */
@@ -243,16 +247,20 @@ void parse_sender_name(void *ptr_to_fsm)
     fsm->state = parse_filename;
 
     /* Get the path to 'shred' and compare. */
-    gchar *path_to_shred = g_strconcat (g_settings_get_string(fsm->settings, "shred-executable"),
-                                        ":", NULL);
+    gchar *path_to_shred = g_strconcat (g_settings_get_string(fsm->settings,
+															  "shred-executable"),
+										":", NULL);
 
 
     if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0)
     {
         fsm->state = stop;
         g_printerr("No shred output found.");
+		g_free(path_to_shred);
         return;
     }
+
+	g_free(path_to_shred);
 
     /* Point to the next word. */
     fsm->tokens++;
@@ -280,10 +288,12 @@ void parse_filename(void *ptr_to_fsm)
         fsm->state = stop;
     }
 
-    /* This is for if the filename has multiple spaces in it. */
+    /* The actual comparison. This is for if the filename has multiple spaces in it. */
     int number = 0;
     while (placeholder[number] != NULL)
     {
+		// TODO: Actually check if the filename is the same as the one given. */
+
         /* Point to the next word for how may spaces there are in the filename. */
         fsm->tokens++;
         fsm->incremented_number++;
@@ -294,6 +304,7 @@ void parse_filename(void *ptr_to_fsm)
     g_free(placeholder);
 }
 
+/* Simply checks this token for 'pass'. */
 void parse_pass(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
@@ -311,6 +322,7 @@ void parse_pass(void *ptr_to_fsm)
     fsm->incremented_number++;
 }
 
+/* Parses the fraction that is right after the 'pass' word. */
 void parse_fraction(void *ptr_to_fsm)
 {
     struct _fsm *fsm = ptr_to_fsm;
@@ -322,7 +334,10 @@ void parse_fraction(void *ptr_to_fsm)
     /* I subtract one because in the output, it represents which pass it is working on,
      * whereas the progress bar indicates how much more needs to be done. */
     fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
+
+	/* Then grab the total number of passes to be done. */
     fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
+
     /* The progress update is done in the function stop. */
 
     g_free(fraction_chars);

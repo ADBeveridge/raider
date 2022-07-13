@@ -27,3 +27,5 @@ G_DECLARE_FINAL_TYPE(RaiderWindow, raider_window, RAIDER, WINDOW, AdwApplication
 
 void raider_window_open(GFile *file, gpointer data, gchar *title);
 void raider_window_close(gpointer data, gpointer user_data);
+void raider_window_show_toast (RaiderWindow* window, gchar* text);
+
