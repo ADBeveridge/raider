@@ -21,15 +21,14 @@
 #include "raider-shred-backend.h"
 
 /* Parsing data that carries around data. */
-struct _fsm
-{
-    void (*state)(void *);
-    gchar **tokens;
-    gint incremented_number;
-    gchar *filename;
-    GSettings *settings;
-    gdouble current;
-    gdouble number_of_passes;
+struct _fsm {
+	void (*state)(void *);
+	gchar **tokens;
+	gint incremented_number;
+	gchar *filename;
+	GSettings *settings;
+	gdouble current;
+	gdouble number_of_passes;
 
 	gdouble* progress; // This is passed so it can be set.
 };
@@ -42,8 +41,8 @@ void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
-void parse_shred_data_type (void *ptr_to_fsm);
-void parse_sub_percentage (void *ptr_to_fsm);
+void parse_shred_data_type(void *ptr_to_fsm);
+void parse_sub_percentage(void *ptr_to_fsm);
 /* End of parsing data.                     */
 
 struct _RaiderShredBackend {
@@ -54,12 +53,13 @@ struct _RaiderShredBackend {
 	GSettings* settings;
 
 	GTimer* timer;
+	GTimer* smooth_timer; // Used for smooth progress tracking. */
 	gint timeout_id;
 	gdouble progress;
 	gdouble rate;
 };
 
-G_DEFINE_TYPE(RaiderShredBackend, raider_shred_backend, G_TYPE_OBJECT )
+G_DEFINE_TYPE(RaiderShredBackend, raider_shred_backend, G_TYPE_OBJECT)
 
 enum {
 	PROP_0,
@@ -118,14 +118,18 @@ static void raider_shred_backend_set_property(GObject *object, guint prop_id, co
 
 static void raider_shred_backend_dispose(GObject *obj)
 {
-    RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(obj);
+	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(obj);
+
+	g_timer_destroy(backend->timer);
+	if (backend->smooth_timer != NULL) g_timer_destroy(backend->smooth_timer);
 
 	/* Remove the timeout. */
-    gboolean removed_timeout = g_source_remove(backend->timeout_id);
-    if (removed_timeout == FALSE)
-    {
-        g_printerr("Could not stop timeout.\n");
-    }
+	gboolean removed_timeout = g_source_remove(backend->timeout_id);
+	if (removed_timeout == FALSE) {
+		g_printerr("Could not stop timeout.\n");
+	}
+
+	G_OBJECT_CLASS(raider_shred_backend_parent_class)->dispose(obj);
 }
 
 static void raider_shred_backend_class_init(RaiderShredBackendClass *klass)
@@ -178,7 +182,7 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 		fsm.state(&fsm);
 	}
 
-	backend->rate = backend->progress / g_timer_elapsed(backend->timer, NULL); // Returns the number of milliseconds it takes to go up by one progress unit.
+	backend->rate = backend->progress / g_timer_elapsed(backend->timer, NULL); // Returns the progress accoplished in one millisecond.
 
 	g_free(tokens);
 	g_free(buf);
@@ -202,191 +206,190 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 	backend->settings = g_settings_new("com.github.ADBeveridge.Raider");
 	backend->progress = 0.0;
 
-  	backend->timer = g_timer_new();
+	backend->timer = g_timer_new();
 	g_timer_start(backend->timer);
+	backend->smooth_timer = NULL;
 
 	/* Check the output every 1/10th of a second. */
 	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
 }
 
-gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend)
+gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
 {
-	return backend->progress;
+	/* This executes on the very first call to the progress getter. */
+	if (backend->smooth_timer == NULL) {
+		backend->smooth_timer = g_timer_new();
+		g_timer_start(backend->smooth_timer);
+	}
+
+	gdouble progress = g_timer_elapsed(backend->smooth_timer, NULL) * backend->rate;
+
+	return progress;
 }
 
 
 /** Parsing functions., **/
-
-
 void start(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = parse_sender_name;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = parse_sender_name;
 }
 
 /* Abort the while loop in analyze_progress. */
 void stop(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = NULL;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = NULL;
 
-    /* Reset the tokens array so it can be freed. */
-    int i;
-    for (i = 0; i < fsm->incremented_number; i++)
-    {
-        fsm->tokens--;
-    }
+	/* Reset the tokens array so it can be freed. */
+	int i;
+	for (i = 0; i < fsm->incremented_number; i++) {
+		fsm->tokens--;
+	}
 
-    *fsm->progress = (fsm->current / fsm->number_of_passes);
+	*fsm->progress = (fsm->current / fsm->number_of_passes);
 }
 
 /* This function checks if shred sent the output. */
 void parse_sender_name(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = parse_filename;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = parse_filename;
 
-    /* Get the path to 'shred' and compare. */
-    gchar *path_to_shred = g_strconcat (g_settings_get_string(fsm->settings,
-															  "shred-executable"),
-										":", NULL);
+	/* Get the path to 'shred' and compare. */
+	gchar *path_to_shred = g_strconcat(g_settings_get_string(fsm->settings,
+								 "shred-executable"),
+					   ":", NULL);
 
 
-    if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0)
-    {
-        fsm->state = stop;
-        g_printerr("No shred output found.");
+	if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0) {
+		fsm->state = stop;
+		g_printerr("No shred output found.");
 		g_free(path_to_shred);
-        return;
-    }
+		return;
+	}
 
 	g_free(path_to_shred);
 
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+	/* Point to the next word. */
+	fsm->tokens++;
+	fsm->incremented_number++;
 }
 
 void parse_filename(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = parse_pass;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = parse_pass;
 
-    /* In this function, we divide the filename in the fsm struct.
-       We then loop that double dimensional array till we reach the
-       element that is null (the last one). Inside that loop we increment
-       the pointer to the outputted text. This is done because some
-       files have spaces in their filename. */
+	/* In this function, we divide the filename in the fsm struct.
+	   We then loop that double dimensional array till we reach the
+	   element that is null (the last one). Inside that loop we increment
+	   the pointer to the outputted text. This is done because some
+	   files have spaces in their filename. */
 
-    gchar **placeholder;
-    if (fsm->filename != NULL)
-    {
-        placeholder = g_strsplit(fsm->filename, " ", 0);
-    }
-    else
-    {
-        fsm->state = stop;
-    }
+	gchar **placeholder;
+	if (fsm->filename != NULL) {
+		placeholder = g_strsplit(fsm->filename, " ", 0);
+	}else {
+		fsm->state = stop;
+	}
 
-    /* The actual comparison. This is for if the filename has multiple spaces in it. */
-    int number = 0;
-    while (placeholder[number] != NULL)
-    {
+	/* The actual comparison. This is for if the filename has multiple spaces in it. */
+	int number = 0;
+	while (placeholder[number] != NULL) {
 		// TODO: Actually check if the filename is the same as the one given. */
 
-        /* Point to the next word for how may spaces there are in the filename. */
-        fsm->tokens++;
-        fsm->incremented_number++;
+		/* Point to the next word for how may spaces there are in the filename. */
+		fsm->tokens++;
+		fsm->incremented_number++;
 
-        /* Update the number of spaces. */
-        number++;
-    }
-    g_free(placeholder);
+		/* Update the number of spaces. */
+		number++;
+	}
+	g_free(placeholder);
 }
 
 /* Simply checks this token for 'pass'. */
 void parse_pass(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = parse_fraction;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = parse_fraction;
 
-    /* Generally this test case will execute if the shredding option is set to remove. */
-    if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0)
-    {
-        fsm->state = stop;
-        //g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
-        return;
-    }
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+	/* Generally this test case will execute if the shredding option is set to remove. */
+	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0) {
+		fsm->state = stop;
+		//g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
+		return;
+	}
+	/* Point to the next word. */
+	fsm->tokens++;
+	fsm->incremented_number++;
 }
 
 /* Parses the fraction that is right after the 'pass' word. */
 void parse_fraction(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = parse_shred_data_type;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = parse_shred_data_type;
 
-    gchar **fraction_chars = g_strsplit(fsm->tokens[0], "/", 0);
+	gchar **fraction_chars = g_strsplit(fsm->tokens[0], "/", 0);
 
-    /* THE BIG CODE OF SHREDDING PROGRESS. */
-    /* I subtract one because in the output, it represents which pass it is working on,
-     * whereas the progress bar indicates how much more needs to be done. */
-    fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
+	/* THE BIG CODE OF SHREDDING PROGRESS. */
+	/* I subtract one because in the output, it represents which pass it is working on,
+	 * whereas the progress bar indicates how much more needs to be done. */
+	fsm->current = g_strtod(fraction_chars[0], NULL) - 1;
 
 	/* Then grab the total number of passes to be done. */
-    fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
+	fsm->number_of_passes = g_strtod(fraction_chars[1], NULL);
 
-    /* The progress update is done in the function stop. */
+	/* The progress update is done in the function stop. */
 
-    g_free(fraction_chars);
+	g_free(fraction_chars);
 
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+	/* Point to the next word. */
+	fsm->tokens++;
+	fsm->incremented_number++;
 }
 
-void parse_shred_data_type (void *ptr_to_fsm)
+void parse_shred_data_type(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = stop;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = stop;
 
-    gchar **last_bit = g_strsplit(fsm->tokens[0], "...", 0);
+	gchar **last_bit = g_strsplit(fsm->tokens[0], "...", 0);
 
-    /* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
+	/* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
 
-    /* Check if this is such a big file that it gives more info. */
-    if (g_strcmp0 (last_bit[1], "") != 0)
-    {
-        /* In this case, last_bit[1] contains something like "24MiB/83MiB". */
-        /* We do not need it as the next token has the percentage of that pass is done. */
-        fsm->state = parse_sub_percentage;
-    }
+	/* Check if this is such a big file that it gives more info. */
+	if (g_strcmp0(last_bit[1], "") != 0) {
+		/* In this case, last_bit[1] contains something like "24MiB/83MiB". */
+		/* We do not need it as the next token has the percentage of that pass is done. */
+		fsm->state = parse_sub_percentage;
+	}
 
-    g_free(last_bit);
+	g_free(last_bit);
 
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+	/* Point to the next word. */
+	fsm->tokens++;
+	fsm->incremented_number++;
 }
 
-void parse_sub_percentage (void *ptr_to_fsm)
+void parse_sub_percentage(void *ptr_to_fsm)
 {
-    struct _fsm *fsm = ptr_to_fsm;
-    fsm->state = stop;
+	struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = stop;
 
-    /* Convert into whole number. The function ignores the % at the end of the digit. */
-    gdouble percentage = g_strtod (fsm->tokens[0], NULL);
+	/* Convert into whole number. The function ignores the % at the end of the digit. */
+	gdouble percentage = g_strtod(fsm->tokens[0], NULL);
 
-    /* Convert the percentage into a true decimal. */
-    percentage = (percentage * .01);
+	/* Convert the percentage into a true decimal. */
+	percentage = (percentage * .01);
 
-    /* Update the current pass percentage because we have more info. */
-    fsm->current = fsm->current + percentage;
+	/* Update the current pass percentage because we have more info. */
+	fsm->current = fsm->current + percentage;
 
-    /* Point to the next word. */
-    fsm->tokens++;
-    fsm->incremented_number++;
+	/* Point to the next word. */
+	fsm->tokens++;
+	fsm->incremented_number++;
 }
 
