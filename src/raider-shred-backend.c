@@ -36,9 +36,10 @@ struct _fsm {
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
 gboolean process_shred_output(gpointer data);
 void parse_fraction(void *ptr_to_fsm);
-void parse_pass(void *ptr_to_fsm);
+void parse_indicator_token(void *ptr_to_fsm);
 void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
+void parse_error (void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
 void parse_shred_data_type(void *ptr_to_fsm);
@@ -279,7 +280,7 @@ void parse_sender_name(void *ptr_to_fsm)
 void parse_filename(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = parse_pass;
+	fsm->state = parse_indicator_token;
 
 	/* In this function, we divide the filename in the fsm struct.
 	   We then loop that double dimensional array till we reach the
@@ -309,23 +310,52 @@ void parse_filename(void *ptr_to_fsm)
 	g_free(placeholder);
 }
 
-/* Simply checks this token for 'pass'. */
-void parse_pass(void *ptr_to_fsm)
+/* Simply checks this token. Usu. it is 'pass'. */
+void parse_indicator_token(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
 	fsm->state = parse_fraction;
 
+	/*if (g_strcmp0(_("failed"), fsm->tokens[0]) == 0) {
+		fsm->state = parse_error;
+		return;
+	}*/
+
 	/* Generally this test case will execute if the shredding option is set to remove. */
 	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0) {
 		fsm->state = stop;
-		//g_printerr("Got '%s' instead of pass", fsm->tokens[0]);
 		return;
 	}
 	/* Point to the next word. */
 	fsm->tokens++;
 	fsm->incremented_number++;
 }
+/*
+void parse_error (void *ptr_to_fsm)
+{
+    struct _fsm *fsm = ptr_to_fsm;
+	fsm->state = stop;
 
+	int number = 0;
+	for (number = 0; number < 3; number++) {
+		// TODO: Actually check the error message.
+
+		fsm->tokens++;
+		fsm->incremented_number++;
+	}
+
+	while(fsm->tokens[0][0] != '\n')
+	{
+	    printf("%s\n", fsm->tokens[0]);
+		// Point to the next word for how may spaces there are in the message.
+		fsm->tokens++;
+		fsm->incremented_number++;
+	}
+
+	fsm->tokens++;
+	fsm->incremented_number++;
+}
+*/
 /* Parses the fraction that is right after the 'pass' word. */
 void parse_fraction(void *ptr_to_fsm)
 {
@@ -359,6 +389,7 @@ void parse_shred_data_type(void *ptr_to_fsm)
 	gchar **last_bit = g_strsplit(fsm->tokens[0], "...", 0);
 
 	/* last_bit[0] contains the shred data type. If often contains (random) or (00000). */
+	/* We don't need to check it for now. */
 
 	/* Check if this is such a big file that it gives more info. */
 	if (g_strcmp0(last_bit[1], "") != 0) {
@@ -374,6 +405,7 @@ void parse_shred_data_type(void *ptr_to_fsm)
 	fsm->incremented_number++;
 }
 
+/* Called with enormous files. */
 void parse_sub_percentage(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;

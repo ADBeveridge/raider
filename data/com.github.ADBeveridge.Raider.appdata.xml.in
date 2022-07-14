@@ -28,13 +28,14 @@
 					boasts a GNOME compliant interface.</p>
       </description>
     </release>
-    <release version="0.1.0" date="2022-6-30">
+    <release version="1.0.0" date="2022-6-30">
       <description>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
           <li>Handy list for thumb drives on open button</li>
           <li>Smooth progress tracking</li>
           <li>Written using GTK4 and Adwaita</li>
+          <li>Desktop notifications are shown if the window is not focused</li>
         </ul>
       </description>
     </release>
