@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-17 14:22-0700\n"
+"POT-Creation-Date: 2022-07-17 16:14-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,69 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/raider-application.c:74 src/raider-preferences.c:87
-msgid "Open File"
-msgstr ""
-
-#: src/raider-application.c:75 src/raider-preferences.c:88
-msgid "Cancel"
-msgstr ""
-
-#: src/raider-application.c:75 src/raider-preferences.c:88
-msgid "Open"
-msgstr ""
-
+#: data/com.github.ADBeveridge.Raider.desktop.in:3
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
 #: src/raider-application.c:120 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
 msgstr ""
 
-#: src/raider-application.c:126
-msgid "1.0.0.alpha1"
-msgstr ""
-
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
 #: src/raider-application.c:127
 msgid "Securely delete your files"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:9
+msgid ""
+"File Shredder, also named Raider, is a simple application that enables you "
+"to securely delete files that was built with GNOME in mind. It supports all "
+"the options that its backend has, plus a realtime progress tracking."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:34
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:35
+msgid "Handy list for thumb drives on open button"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:45
+msgid "Alan Beveridge"
+msgstr ""
+
+#: src/raider-application.c:74
+msgid "Open File"
+msgstr ""
+
+#: src/raider-application.c:75
+msgid "Cancel"
+msgstr ""
+
+#: src/raider-application.c:75
+msgid "Open"
+msgstr ""
+
+#: src/raider-application.c:126
+msgid "1.0.0.alpha1"
 msgstr ""
 
 #: src/raider-application.c:131
