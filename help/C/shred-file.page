@@ -19,7 +19,8 @@
   <p>When you have loaded all the files that you wish to shred, press the red
   <gui>Shred</gui> button at the upper left of the window, next to the add file
   button. Then each file loaded will acquire a progress indicator that will show how
-  much of the shredding has been finished.</p>
+  much of the shredding has been finished. You can click on the progress
+  indicator to view more information regarding the shredding progress of that file.</p>
 
   <p>When shredding starts, the <gui>Shred</gui> is replaced with a
   <gui>Abort</gui> button.</p>
