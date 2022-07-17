@@ -42,7 +42,7 @@ void parse_fraction(void *ptr_to_fsm);
 void parse_indicator_token(void *ptr_to_fsm);
 void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
-void parse_error (void *ptr_to_fsm);
+void parse_error(void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
 void parse_shred_data_type(void *ptr_to_fsm);
@@ -56,7 +56,6 @@ struct _RaiderShredBackend {
 	gchar* filename;
 	GSettings* settings;
   	gchar* shred_state;
-
 	GTimer* timer;
 	GTimer* smooth_timer; // Used for smooth progress tracking.
 	gint timeout_id;
@@ -123,7 +122,7 @@ static void raider_shred_backend_set_property(GObject *object, guint prop_id, co
 	}
 }
 
-static void raider_shred_backend_dispose(GObject *obj)
+void raider_shred_backend_dispose(GObject *obj)
 {
 	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(obj);
 
@@ -200,9 +199,12 @@ gboolean raider_shred_backend_process_output(gpointer data)
 {
 	/* Converting the stream to text. */
 	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(data);
+
 	g_data_input_stream_read_line_async(backend->data_stream, G_PRIORITY_DEFAULT, NULL, raider_shred_backend_process_output_finish, data);
 	return TRUE;
 }
+
+
 
 static void raider_shred_backend_init(RaiderShredBackend *backend)
 {
@@ -264,7 +266,7 @@ void raider_shred_backend_get_return_result_thread (GTask* task, gpointer source
 
 }
 
-/* This funciion returns immediately, launching a g_task to read the output one final time. */
+/* This function returns immediately, launching a g_task to read the output one final time. */
 void raider_shred_backend_get_return_result(gpointer object, GAsyncReadyCallback callback, gpointer data)
 {
   	GTask* task = g_task_new (NULL, NULL, callback, object);
@@ -386,10 +388,9 @@ void parse_error (void *ptr_to_fsm)
 	int number = 0;
 	for (number = 0; number < 4; number++) {
 		// TODO: Actually check the error message.
-
-		fsm->tokens++;
-		fsm->incremented_number++;
-	}
+          fsm->tokens++;
+     	fsm->incremented_number++;
+     }
 
 	gchar* message = g_strdup(fsm->tokens[0]);
 	fsm->tokens++;
