@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-02-26 20:12+0100\n"
-"PO-Revision-Date: 2022-02-26 20:46+0100\n"
+"POT-Creation-Date: 2022-07-18 00:17+0200\n"
+"PO-Revision-Date: 2022-07-18 00:28+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -46,8 +46,8 @@ msgstr "Alan Beveridge"
 
 #. (itstool) path: info/desc
 #: ../help/C/index.page:17
-msgid "Shred your files securely"
-msgstr "Triture sus archivos de forma segura"
+msgid "Securely delete your files"
+msgstr "Elimine sus archivos de forma segura"
 
 #. (itstool) path: page/title
 #: ../help/C/index.page:20
@@ -141,13 +141,13 @@ msgstr "Cargar un archivo"
 #. (itstool) path: page/p
 #: ../help/C/load-file.page:22
 msgid ""
-"You can open a file, or many, by pressing the button on the upper left next "
-"to the red Shred button, that contains a plus sign. Select the files you "
-"want to shred, and click OK."
+"You can open a file, or many, by pressing the button on the upper left of "
+"the window that contains a plus sign. Select the files you want to shred, "
+"and click OK."
 msgstr ""
-"Puedes abrir un archivo, o muchos, pulsando el botón de la parte superior "
-"izquierda, junto al botón rojo de Triturar, que contiene un signo más. "
-"Seleccione los archivos que desee triturar y haga clic en Aceptar."
+"Puede abrir un archivo, o varios, pulsando el botón situado en la parte "
+"superior izquierda de la ventana que contiene un signo más. Seleccione los "
+"archivos que desee destruir y haga clic en Aceptar."
 
 #. (itstool) path: page/p
 #: ../help/C/load-file.page:27
@@ -157,6 +157,15 @@ msgid ""
 msgstr ""
 "También puede arrastrar y soltar los archivos que desee triturar de una sola "
 "vez en una ventana abierta de <app>Trituradora de archivos</app>."
+
+#. (itstool) path: note/p
+#: ../help/C/load-file.page:31
+msgid ""
+"The shredding button is hidden while there are no files loaded, and during "
+"shredding."
+msgstr ""
+"El botón de trituración está oculto mientras no hay archivos cargados, y "
+"durante la trituración."
 
 #. (itstool) path: info/desc
 #: ../help/C/shred-file.page:14
@@ -173,26 +182,38 @@ msgstr "Triturar los archivos"
 msgid ""
 "When you have loaded all the files that you wish to shred, press the red "
 "<gui>Shred</gui> button at the upper left of the window, next to the add "
-"file button. Then each file loaded will acquire a progress bar that will "
-"show how much of the shredding has been finished."
+"file button. Then each file loaded will acquire a progress indicator that "
+"will show how much of the shredding has been finished. You can click on the "
+"progress indicator to view more information regarding the shredding progress "
+"of that file."
 msgstr ""
 "Cuando haya cargado todos los archivos que desee triturar, pulse el botón "
 "rojo <gui>Triturar</gui> situado en la parte superior izquierda de la "
 "ventana, junto al botón de añadir archivo. A continuación, cada archivo "
-"cargado adquirirá una barra de progreso que mostrará el grado de "
-"finalización de la trituración."
+"cargado adquirirá un indicador de progreso que mostrará el grado de "
+"finalización de la trituración. Puede hacer clic en el indicador de progreso "
+"para ver más información sobre el progreso de la destrucción de ese archivo."
 
 #. (itstool) path: page/p
 #: ../help/C/shred-file.page:25
 msgid ""
+"When shredding starts, the <gui>Shred</gui> is replaced with a <gui>Abort</"
+"gui> button."
+msgstr ""
+"Cuando se inicia la trituración, el botón de <gui>Triturar</gui> se "
+"sustituye por un botón de <gui>Abortar</gui>."
+
+#. (itstool) path: page/p
+#: ../help/C/shred-file.page:28
+msgid ""
 "When each file finishes shredding, it will disappear from the list, and a "
-"desktop notification will say that the shredding has been finished."
+"notification will say that the shredding has been finished."
 msgstr ""
 "Cuando cada archivo termine de triturarse, desaparecerá de la lista, y una "
-"notificación en el escritorio dirá que la trituración ha terminado."
+"notificación dirá que la trituración ha terminado."
 
 #. (itstool) path: note/p
-#: ../help/C/shred-file.page:29
+#: ../help/C/shred-file.page:32
 msgid ""
 "Do NOT close the window until all files have finished shredding. When the "
 "window goes back to its empty state, then all shredding is finished, and you "
@@ -228,11 +249,11 @@ msgstr ""
 msgid ""
 "If the problem still persists, please go to the <link href=\"https://github."
 "com/ADBeveridge/raider/issues\">issues page</link> and enter your specific "
-"problem."
+"problem, as well as steps to reproduce the problem."
 msgstr ""
 "Si el problema persiste, diríjase a la página de <link href=\"https://github."
-"com/ADBeveridge/raider/issues\">incidencias</link> e introduzca su problema "
-"específico."
+"com/ADBeveridge/raider/issues\">problemas</link> e introduzca su problema "
+"específico, así como los pasos para reproducir el problema."
 
 #. (itstool) path: info/desc
 #: ../help/C/configuring-basic-options.page:17
@@ -247,33 +268,19 @@ msgstr "Opciones básicas"
 #. (itstool) path: page/p
 #: ../help/C/configuring-basic-options.page:21
 msgid ""
-"To configure the shredding options, click on <gui>Preferences</gui> in the "
-"upper right corner of the window, next to the three stacked bars. Or click "
-"on the three stacked bars and select <gui>Preferences</gui>."
+"To configure the shredding options, click on the three stacked bars and "
+"select <gui>Preferences</gui>."
 msgstr ""
-"Para configurar las opciones de trituración, haga clic en <gui>Preferencias"
-"</gui> en la esquina superior derecha de la ventana, junto a las tres barras"
-"apiladas. O haga clic en las tres barras apiladas y seleccione"
-"<gui>Preferencias</gui>."
+"Para configurar las opciones de trituración, haga clic en las tres barras "
+"apiladas y seleccione <gui>Preferencias</gui>."
 
 #. (itstool) path: page/p
-#: ../help/C/configuring-basic-options.page:25
-msgid "There are three options presented:"
-msgstr "Hay tres opciones presentadas:"
+#: ../help/C/configuring-basic-options.page:24
+msgid "There are three options presented under the <gui>Basic</gui> section:"
+msgstr "Hay tres opciones que se presentan en la sección <gui>Básico</gui>:"
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-basic-options.page:28
-msgid ""
-"The <cmd>Number of passes</cmd> option allows you to shred a file so many "
-"times. The maximum is 25, because that is when all internal shredding "
-"patterns have been used, and more shredding would not be useful."
-msgstr ""
-"La opción <cmd>Número de pasadas</cmd> permite triturar un archivo tantas "
-"veces. El máximo es 25, porque es cuando se han usado todos los patrones de "
-"trituración internos, y más trituración no sería útil."
-
-#. (itstool) path: item/p
-#: ../help/C/configuring-basic-options.page:36
+#: ../help/C/configuring-basic-options.page:27
 msgid ""
 "If you want to keep the file on your system, uncheck the <cmd>Remove after "
 "shredding</cmd> option; it is enabled by default. The file will contain "
@@ -286,7 +293,7 @@ msgstr ""
 "normal. No tendrá su contenido anterior."
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-basic-options.page:44
+#: ../help/C/configuring-basic-options.page:35
 msgid ""
 "The <cmd>Hide shredding</cmd> option does one more pass when it has finished "
 "shredding the file as many times as requested in the <cmd> Number of passes</"
@@ -302,6 +309,17 @@ msgstr ""
 "aleatorios, pero la opción <cmd>Ocultar trituración</cmd> los sobrescribe "
 "con ceros, haciendo que parezca una parte vacía del sistema de archivos."
 
+#. (itstool) path: item/p
+#: ../help/C/configuring-basic-options.page:46
+msgid ""
+"The <cmd>Number of passes</cmd> option allows you to shred a file so many "
+"times. The maximum is 25, because that is when all internal shredding "
+"patterns have been used, and more shredding would not be useful."
+msgstr ""
+"La opción <cmd>Número de pasadas</cmd> permite triturar un archivo tantas "
+"veces. El máximo es 25, porque es cuando se han usado todos los patrones de "
+"trituración internos, y más trituración no sería útil."
+
 #. (itstool) path: info/desc
 #: ../help/C/configuring-advanced-options.page:17
 msgid "Fine-tune the advanced options."
@@ -315,24 +333,21 @@ msgstr "Opciones avanzadas"
 #. (itstool) path: page/p
 #: ../help/C/configuring-advanced-options.page:21
 msgid ""
-"To configure the shredding options, click on <gui>Preferences</gui> in the "
-"upper right corner of the window, next to the three stacked bars. Or click "
-"on the three stacked bars and select <gui>Preferences</gui>. Then click on "
-"the <gui>Advanced</gui> tab in the top of the window."
+"To configure the shredding options, click on click on the three stacked bars "
+"and select <gui>Preferences</gui>. The advanced options are below the basic "
+"options."
 msgstr ""
-"Para configurar las opciones de trituración, haga clic en <gui>Preferencias</"
-"gui> en la esquina superior derecha de la ventana, junto a las tres barras "
-"apiladas. O haga clic en las tres barras apiladas y seleccione "
-"<gui>Preferencias</gui>. A continuación, haga clic en la pestaña de "
-"<gui>Avanzadas</gui> en la parte superior de la ventana."
+"Para configurar las opciones de trituración, haga clic en las tres barras "
+"apiladas y seleccione <gui>Preferencias</gui>. Las opciones avanzadas están "
+"debajo de las opciones básicas."
 
 #. (itstool) path: page/p
-#: ../help/C/configuring-advanced-options.page:26
+#: ../help/C/configuring-advanced-options.page:25
 msgid "There are five options presented:"
 msgstr "Hay cinco opciones presentadas:"
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-advanced-options.page:29
+#: ../help/C/configuring-advanced-options.page:28
 msgid ""
 "The <cmd>Remove method</cmd> option controls how the file is removed from "
 "the file system. File Shredder can rename the file in such a way that it is "
@@ -352,7 +367,7 @@ msgstr ""
 "no se asegura de que el cambio de nombre se sincronice con el disco."
 
 #. (itstool) path: note/p
-#: ../help/C/configuring-advanced-options.page:37
+#: ../help/C/configuring-advanced-options.page:36
 msgid ""
 "Some file systems automatically sync the renames, which makes <cmd>Wipesync</"
 "cmd> useless, but some do not do this automatically, so File Shredder can "
@@ -364,7 +379,7 @@ msgstr ""
 "con <cmd>Limpiar y sincronizar</cmd>."
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-advanced-options.page:43
+#: ../help/C/configuring-advanced-options.page:42
 msgid ""
 "If you want to overwrite a file with a specific pattern, place it in a file "
 "and on the <cmd>Get overwrite data from</cmd> option, select the file which "
@@ -375,37 +390,31 @@ msgstr ""
 "seleccione el archivo que creó."
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-advanced-options.page:48
+#: ../help/C/configuring-advanced-options.page:47
 msgid ""
-"To partially shred a file, enter the number of bytes that you want to shred. "
-"It will treat the number as an delimiter, shredding only that part of the "
-"file. You also can enter the number of bytes in kilobytes, megabytes, and "
-"gigabytes. Here are examples: <cmd>8 </cmd> for 8 bytes; <cmd>4K</cmd> for 4 "
-"kilobytes; <cmd>9M</cmd> for 9 megabytes; <cmd>5G</cmd> for 5 gigabytes."
+"To partially shred a file, put in the number of bytes that you want to be "
+"shredded in the number entry. If you put on 0 bytes, it will be ignored, and "
+"the whole file shredded."
 msgstr ""
-"Para triturar parcialmente un archivo, introduzca el número de bytes que "
-"desee triturar. Tratará el número como un delimitador, triturando sólo esa "
-"parte del archivo. También puede introducir el número de bytes en kilobytes, "
-"megabytes y gigabytes. Aquí hay ejemplos: <cmd>8 </cmd> para 8 bytes; "
-"<cmd>4K</cmd> para 4 kilobytes; <cmd>9M</cmd> para 9 megabytes; <cmd>5G</"
-"cmd> para 5 gigabytes."
+"Para triturar parcialmente un archivo, ponga el número de bytes que quiere "
+"que se trituren en la entrada de número. Si pone 0 bytes, se ignorará y se "
+"triturará todo el archivo."
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-advanced-options.page:56
+#: ../help/C/configuring-advanced-options.page:52
 msgid ""
 "If you do not want the file size to be rounded up to the next full block, "
-"check <cmd>Do not round file sizes to the next block</cmd>. It usually is "
-"not needed except in borderline cases because <app>File Shredder</app> "
-"automatically does this in the case of non-regular files."
+"check <cmd>Do not round file sizes</cmd>. It usually is not needed except in "
+"borderline cases because <app>File Shredder</app> automatically does this in "
+"the case of non-regular files."
 msgstr ""
 "Si no quiere que el tamaño del archivo se redondee al siguiente bloque "
-"completo, marque <cmd>No redondear el tamaño de los archivos al siguiente "
-"bloque</cmd>. Normalmente no es necesario, salvo en casos límite, porque "
-"<app>Trituradora de archivos</app> lo hace automáticamente en el caso de "
-"archivos no regulares."
+"completo, marque <cmd>No redondear el tamaño de los archivos</cmd>. "
+"Normalmente no es necesario salvo en casos límite porque <app>Trituradora de "
+"archivos</app> lo hace automáticamente en el caso de archivos no regulares."
 
 #. (itstool) path: item/p
-#: ../help/C/configuring-advanced-options.page:63
+#: ../help/C/configuring-advanced-options.page:58
 msgid ""
 "<cmd>Override file permissions when shredding</cmd> is used to change "
 "permissions to allow writing if necessary."
@@ -414,7 +423,7 @@ msgstr ""
 "para cambiar los permisos y permitir la escritura si es necesario."
 
 #. (itstool) path: note/p
-#: ../help/C/configuring-advanced-options.page:66
+#: ../help/C/configuring-advanced-options.page:61
 msgid ""
 "This option will not work on files that belong to the root user only, as a "
 "regular user cannot change a root user's file without their permission via "
@@ -424,3 +433,21 @@ msgstr ""
 "usuario root, ya que un usuario normal no puede modificar un archivo del "
 "usuario root sin su permiso mediante contraseña. Si quiere triturar un "
 "archivo de root, inicie sesión como root."
+
+#~ msgid "Shred your files securely"
+#~ msgstr "Triture sus archivos de forma segura"
+
+#~ msgid ""
+#~ "To partially shred a file, enter the number of bytes that you want to "
+#~ "shred. It will treat the number as an delimiter, shredding only that part "
+#~ "of the file. You also can enter the number of bytes in kilobytes, "
+#~ "megabytes, and gigabytes. Here are examples: <cmd>8 </cmd> for 8 bytes; "
+#~ "<cmd>4K</cmd> for 4 kilobytes; <cmd>9M</cmd> for 9 megabytes; <cmd>5G</"
+#~ "cmd> for 5 gigabytes."
+#~ msgstr ""
+#~ "Para triturar parcialmente un archivo, introduzca el número de bytes que "
+#~ "desee triturar. Tratará el número como un delimitador, triturando sólo "
+#~ "esa parte del archivo. También puede introducir el número de bytes en "
+#~ "kilobytes, megabytes y gigabytes. Aquí hay ejemplos: <cmd>8 </cmd> para 8 "
+#~ "bytes; <cmd>4K</cmd> para 4 kilobytes; <cmd>9M</cmd> para 9 megabytes; "
+#~ "<cmd>5G</cmd> para 5 gigabytes."
