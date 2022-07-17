@@ -5,13 +5,13 @@ template RaiderPreferences : Adw.PreferencesWindow {
   modal: true;
 
   Adw.PreferencesPage basic_settings{
-        title: _('_Basic');
+        title: _("_Basic");
         Adw.PreferencesGroup basic_group {
-            title: _('Basic');
+            title: _("Basic");
 
             Adw.ActionRow remove_file_row {
-                title: _('Remove File');
-                subtitle: _('Whether to remove the file after shredding');
+                title: _("Remove File");
+                subtitle: _("Whether to remove the file after shredding");
                 activatable-widget: remove_file_switch;
 
                 [suffix]
@@ -21,8 +21,8 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 }
             }
             Adw.ActionRow hide_shredding_row {
-                title: _('Hide Shredding');
-                subtitle: _('Whether to hide the fact the the files have been shredded');
+                title: _("Hide Shredding");
+                subtitle: _("Whether to hide the fact the the files have been shredded");
                 activatable-widget: hide_shredding_switch;
 
                 [suffix]
@@ -31,8 +31,8 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 }
             }
             Adw.ActionRow nop_row {
-                title: _('Number of passes');
-                subtitle: _('How many times to shred file over');
+                title: _("Number of passes");
+                subtitle: _("How many times to shred file over");
 
 		[suffix]
 		Gtk.Box {
@@ -44,17 +44,17 @@ template RaiderPreferences : Adw.PreferencesWindow {
             }
         }
         Adw.PreferencesGroup advanced_group {
-            title: _('Advanced');
+            title: _("Advanced");
             Adw.ComboRow remove_method_combo_row {
             	title: "Remove Method";
-            	subtitle: _('How to remove the files from the fileystem');
+            	subtitle: _("How to remove the files from the fileystem");
             	model: Gtk.StringList {
-            	  strings [_('Wipesync'), _('Wipe'), _('Unlink')]
+            	  strings [_("Wipesync"), _("Wipe"), _("Unlink")]
             	};
             }
             Adw.ExpanderRow {
-                title: _('Overwrite data source');
-                subtitle: _('Where to get the data to overwrite the files with. Disabled at every startup');
+                title: _("Overwrite data source");
+                subtitle: _("Where to get the data to overwrite the files with. Disabled at every startup");
                 enable-expansion: bind enable_df_checkbutton.active;
 
 	        [action]
@@ -62,19 +62,19 @@ template RaiderPreferences : Adw.PreferencesWindow {
 	            active: false;
 	        }
 	        Adw.ActionRow df_row{
-	            title: _('None Selected');
+	            title: _("None Selected");
 
 		    [suffix]
 		    Gtk.Button df_button {
-		        label: _('Select File');
+		        label: _("Select File");
 		        valign: center;
 		    }
 		}
             }
 
              Adw.ActionRow nob_row {
-                title: _('Number of bytes to shred');
-                subtitle: _('How much of the file to shred. 0 to shred the whole file');
+                title: _("Number of bytes to shred");
+                subtitle: _("How much of the file to shred. 0 to shred the whole file");
 
 		[suffix]
 		Gtk.Box {
@@ -86,8 +86,8 @@ template RaiderPreferences : Adw.PreferencesWindow {
             }
 
             Adw.ActionRow dnr_row {
-                title: _('Do not round file sizes');
-                subtitle: _('Do not round file sizes to the next block. Default for irregular files');
+                title: _("Do not round file sizes");
+                subtitle: _("Do not round file sizes to the next block. Default for irregular files");
 
                 [suffix]
                 Gtk.Switch dnr_switch {
@@ -95,8 +95,8 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 }
             }
             Adw.ActionRow override_permissions_row {
-                title: _('Override file permissions');
-                subtitle: _('Whether to override the file permissions in case of insufficient permissions');
+                title: _("Override file permissions");
+                subtitle: _("Whether to override the file permissions in case of insufficient permissions");
 
                 [suffix]
                 Gtk.Switch override_permissions_switch {
