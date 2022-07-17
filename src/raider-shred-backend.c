@@ -23,16 +23,16 @@
 /* Parsing data that carries around data. */
 struct _fsm {
 	// Set upon creation.
-  void (*state)(void *);
+	void (*state)(void *);
 	gchar **tokens;
-  gchar *filename;
-  GSettings *settings;
-  gdouble* progress; // This is passed so it can be set.
-  gchar *return_type; // NULL if okay.
+	gchar *filename;
+	GSettings *settings;
+	gdouble* progress; // This is passed so it can be set.
+	gchar *return_type; // NULL if okay.
 
-  // Internal variables.
+	// Internal variables.
 	gint incremented_number;
-  gdouble current;
+	gdouble current;
 	gdouble number_of_passes;
 };
 
@@ -42,7 +42,7 @@ void parse_fraction(void *ptr_to_fsm);
 void parse_indicator_token(void *ptr_to_fsm);
 void parse_filename(void *ptr_to_fsm);
 void parse_sender_name(void *ptr_to_fsm);
-void parse_error (void *ptr_to_fsm);
+void parse_error(void *ptr_to_fsm);
 void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
 void parse_shred_data_type(void *ptr_to_fsm);
@@ -55,7 +55,7 @@ struct _RaiderShredBackend {
 	GDataInputStream *data_stream;
 	gchar* filename;
 	GSettings* settings;
-  gchar* return_type; // NULL if okay.
+	gchar* return_type; // NULL if okay.
 
 	GTimer* timer;
 	GTimer* smooth_timer; // Used for smooth progress tracking. */
@@ -121,7 +121,7 @@ static void raider_shred_backend_set_property(GObject *object, guint prop_id, co
 	}
 }
 
-static void raider_shred_backend_dispose(GObject *obj)
+void raider_shred_backend_dispose(GObject *obj)
 {
 	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(obj);
 
@@ -182,7 +182,7 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 
 	gchar **tokens = g_strsplit(buf, " ", 0);
-	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, backend->return_type};
+	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, backend->return_type };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
@@ -202,15 +202,18 @@ gboolean raider_shred_backend_process_output(gpointer data)
 {
 	/* Converting the stream to text. */
 	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(data);
+
 	g_data_input_stream_read_line_async(backend->data_stream, G_PRIORITY_DEFAULT, NULL, raider_shred_backend_process_output_finish, data);
 	return TRUE;
 }
+
+
 
 static void raider_shred_backend_init(RaiderShredBackend *backend)
 {
 	backend->settings = g_settings_new("com.github.ADBeveridge.Raider");
 	backend->progress = 0.0;
-  backend->return_type = NULL;
+	backend->return_type = NULL;
 
 	backend->timer = g_timer_new();
 	g_timer_start(backend->timer);
@@ -233,16 +236,37 @@ gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
 	return progress;
 }
 
-void raider_shred_backend_get_return_result_thread (GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+/* The workhorse. */
+void raider_shred_backend_get_return_result_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-  printf("Reading\n");
+	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(source_object);
+
+	/* This blocks, but we are in a g_task, so the user does not see the block. */
+	gchar *buf = g_data_input_stream_read_line(backend->data_stream, NULL, NULL, NULL);
+
+	if (buf != NULL) {
+		gchar **tokens = g_strsplit(buf, " ", 0);
+		struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, backend->return_type };
+		while (fsm.state != NULL) {
+			fsm.state(&fsm);
+		}
+
+		g_free(tokens);
+		g_free(buf);
+	}
 }
 
+/* This function basically forces the parser to look at the output of shred. */
 void raider_shred_backend_get_return_result(RaiderShredBackend* backend, GAsyncReadyCallback callback)
 {
-  GTask* task = g_task_new (backend, NULL, callback, NULL);
-  g_task_run_in_thread (task, raider_shred_backend_get_return_result_thread);
-  g_object_unref (task);
+	GTask* task = g_task_new(backend, NULL, callback, NULL);
+	g_task_run_in_thread(task, raider_shred_backend_get_return_result_thread);
+	g_object_unref(task);
+}
+
+gchar* raider_shred_backend_get_return_string (RaiderShredBackend* backend)
+{
+	return backend->return_type;
 }
 
 /** Parsing functions., **/
@@ -333,9 +357,9 @@ void parse_indicator_token(void *ptr_to_fsm)
 	fsm->state = parse_fraction;
 
 	/*if (g_strcmp0(_("failed"), fsm->tokens[0]) == 0) {
-		fsm->state = parse_error;
-		return;
-	}*/
+	        fsm->state = parse_error;
+	        return;
+	   }*/
 
 	/* Generally this test case will execute if the shredding option is set to remove. */
 	if (g_strcmp0(_("pass"), fsm->tokens[0]) != 0) {
@@ -347,31 +371,31 @@ void parse_indicator_token(void *ptr_to_fsm)
 	fsm->incremented_number++;
 }
 /*
-void parse_error (void *ptr_to_fsm)
-{
+   void parse_error (void *ptr_to_fsm)
+   {
     struct _fsm *fsm = ptr_to_fsm;
-	fsm->state = stop;
+        fsm->state = stop;
 
-	int number = 0;
-	for (number = 0; number < 3; number++) {
-		// TODO: Actually check the error message.
+        int number = 0;
+        for (number = 0; number < 3; number++) {
+                // TODO: Actually check the error message.
 
-		fsm->tokens++;
-		fsm->incremented_number++;
-	}
+                fsm->tokens++;
+                fsm->incremented_number++;
+        }
 
-	while(fsm->tokens[0][0] != '\n')
-	{
-	    printf("%s\n", fsm->tokens[0]);
-		// Point to the next word for how may spaces there are in the message.
-		fsm->tokens++;
-		fsm->incremented_number++;
-	}
+        while(fsm->tokens[0][0] != '\n')
+        {
+            printf("%s\n", fsm->tokens[0]);
+                // Point to the next word for how may spaces there are in the message.
+                fsm->tokens++;
+                fsm->incremented_number++;
+        }
 
-	fsm->tokens++;
-	fsm->incremented_number++;
-}
-*/
+        fsm->tokens++;
+        fsm->incremented_number++;
+   }
+ */
 /* Parses the fraction that is right after the 'pass' word. */
 void parse_fraction(void *ptr_to_fsm)
 {
