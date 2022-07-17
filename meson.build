@@ -1,5 +1,5 @@
 project('raider', 'c',
-          version: '0.2.0.alpha1',
+          version: '1.0.0.alpha1',
     meson_version: '>= 0.56.0',
 )
 

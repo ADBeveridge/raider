@@ -123,7 +123,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
 			      "transient-for", window,
 			      "modal", TRUE,
 			      "program-name", program_name,
-			      "version", _("0.2.0.alpha1"),
+			      "version", _("1.0.0.alpha1"),
 			      "comments", _("Securely delete your files"),
 			      "license-type", GTK_LICENSE_GPL_3_0,
 			      "artists", artists,
