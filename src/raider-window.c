@@ -129,14 +129,14 @@ void shred_file(GtkWidget *widget, gpointer data)
 
 void abort_shredding (GtkWidget *widget, gpointer data)
 {
-    RaiderWindow *window = RAIDER_WINDOW(data);
+    	RaiderWindow *window = RAIDER_WINDOW(data);
 
 	/* Update the headerbar view. */
 	gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
 	gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
 	gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
 
-    /* Launch the shredding. */
+    	/* Launch the shredding. */
 	int row;
 	for (row = 0; row < window->file_count; row++)
 	{
