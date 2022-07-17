@@ -23,5 +23,7 @@
 G_DECLARE_FINAL_TYPE(RaiderShredBackend, raider_shred_backend, RAIDER, SHRED_BACKEND, GObject)
 
 gdouble raider_shred_backend_get_progress (RaiderShredBackend* backend);
-void raider_shred_backend_get_return_result(RaiderShredBackend* backend, GAsyncReadyCallback callback);
+void raider_shred_backend_get_return_result(gpointer object, GAsyncReadyCallback callback, gpointer data);
+gchar* raider_shred_backend_get_return_result_string (RaiderShredBackend* backend);
+
 

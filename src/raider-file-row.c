@@ -172,15 +172,14 @@ RaiderFileRow *raider_file_row_new(GFile *file)
 
 void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
-  printf("Finished sreading\n");
-}
+	RaiderFileRow* row = RAIDER_FILE_ROW(user_data);
+	gchar* message = raider_shred_backend_get_return_result_string (row->backend);
 
-/* This is called when the shred executable exits, even if it is aborted. */
-static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
-	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-
-  raider_shred_backend_get_return_result(row->backend, on_complete_finish);
+	if (g_strcmp0 (message, "good") != 0)
+	{
+		row->aborted = TRUE;
+		adw_action_row_set_subtitle (ADW_ACTION_ROW (row), message);
+	}
 
 	/* Make sure that the user can use the window after the row is destroyed. */
 	gtk_widget_hide(GTK_WIDGET(row->popover));
@@ -223,6 +222,13 @@ static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer
 		gtk_spinner_stop(GTK_SPINNER(row->spinner));
 		row->aborted = FALSE; // For next time.
 	}
+}
+
+/* This is called when the shred executable exits, even if it is aborted. */
+static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
+  	raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
