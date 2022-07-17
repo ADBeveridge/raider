@@ -22,15 +22,18 @@
 
 /* Parsing data that carries around data. */
 struct _fsm {
-	void (*state)(void *);
+	// Set upon creation.
+  void (*state)(void *);
 	gchar **tokens;
-	gint incremented_number;
-	gchar *filename;
-	GSettings *settings;
-	gdouble current;
-	gdouble number_of_passes;
+  gchar *filename;
+  GSettings *settings;
+  gdouble* progress; // This is passed so it can be set.
+  gchar *return_type; // NULL if okay.
 
-	gdouble* progress; // This is passed so it can be set.
+  // Internal variables.
+	gint incremented_number;
+  gdouble current;
+	gdouble number_of_passes;
 };
 
 void analyze_progress(GObject *source_object, GAsyncResult *res, gpointer user_data);
@@ -52,6 +55,7 @@ struct _RaiderShredBackend {
 	GDataInputStream *data_stream;
 	gchar* filename;
 	GSettings* settings;
+  gchar* return_type; // NULL if okay.
 
 	GTimer* timer;
 	GTimer* smooth_timer; // Used for smooth progress tracking. */
@@ -178,7 +182,7 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 
 	gchar **tokens = g_strsplit(buf, " ", 0);
-	struct _fsm fsm = { start, tokens, 0, backend->filename, backend->settings, 0, 0, &backend->progress };
+	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, backend->return_type};
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
@@ -206,6 +210,7 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 {
 	backend->settings = g_settings_new("com.github.ADBeveridge.Raider");
 	backend->progress = 0.0;
+  backend->return_type = NULL;
 
 	backend->timer = g_timer_new();
 	g_timer_start(backend->timer);
@@ -228,6 +233,17 @@ gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
 	return progress;
 }
 
+void raider_shred_backend_get_return_result_thread (GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+{
+  printf("Reading\n");
+}
+
+void raider_shred_backend_get_return_result(RaiderShredBackend* backend, GAsyncReadyCallback callback)
+{
+  GTask* task = g_task_new (backend, NULL, callback, NULL);
+  g_task_run_in_thread (task, raider_shred_backend_get_return_result_thread);
+  g_object_unref (task);
+}
 
 /** Parsing functions., **/
 void start(void *ptr_to_fsm)

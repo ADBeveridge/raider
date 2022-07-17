@@ -170,10 +170,17 @@ RaiderFileRow *raider_file_row_new(GFile *file)
 	return row;
 }
 
+void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user_data)
+{
+  printf("Finished sreading\n");
+}
+
 /* This is called when the shred executable exits, even if it is aborted. */
 static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
+
+  raider_shred_backend_get_return_result(row->backend, on_complete_finish);
 
 	/* Make sure that the user can use the window after the row is destroyed. */
 	gtk_widget_hide(GTK_WIDGET(row->popover));
