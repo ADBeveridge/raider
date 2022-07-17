@@ -23,16 +23,16 @@
 /* Parsing data that carries around data. */
 struct _fsm {
 	// Set upon creation.
-  	void (*state)(void *);
+	void (*state)(void *);
 	gchar **tokens;
-  	gchar *filename;
-  	GSettings *settings;
-  	gdouble* progress; // This is passed so it can be set.
-  	gchar **shred_state; // NULL if okay.
+	gchar *filename;
+	GSettings *settings;
+	gdouble* progress; // This is passed so it can be set.
+	gchar **shred_state; // NULL if okay.
 
-  	// Internal variables.
+	// Internal variables.
 	gint incremented_number;
-  	gdouble current;
+	gdouble current;
 	gdouble number_of_passes;
 };
 
@@ -55,7 +55,7 @@ struct _RaiderShredBackend {
 	GDataInputStream *data_stream;
 	gchar* filename;
 	GSettings* settings;
-  	gchar* shred_state;
+	gchar* shred_state;
 	GTimer* timer;
 	GTimer* smooth_timer; // Used for smooth progress tracking.
 	gint timeout_id;
@@ -183,7 +183,7 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	}
 
 	gchar **tokens = g_strsplit(buf, " ", 0);
-	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, &backend->shred_state};
+	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, &backend->shred_state };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
@@ -217,7 +217,7 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 	backend->smooth_timer = NULL;
 
 	/* Check the output every 1/10th of a second. */
-	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, (gpointer) backend, NULL);
+	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, (gpointer)backend, NULL);
 }
 
 gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
@@ -232,20 +232,19 @@ gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
 	return progress;
 }
 
-gchar* raider_shred_backend_get_return_result_string (RaiderShredBackend* backend)
+gchar* raider_shred_backend_get_return_result_string(RaiderShredBackend* backend)
 {
 	return backend->shred_state;
 }
 
-void raider_shred_backend_get_return_result_thread (GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+void raider_shred_backend_get_return_result_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND (task_data);
+	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(task_data);
 	gchar* last = NULL;
 	gchar* current = g_data_input_stream_read_line(backend->data_stream, NULL, NULL, NULL);
 
 	// Loop through all the
-	while(current != NULL)
-	{
+	while (current != NULL) {
 		if (last != NULL) g_free(last); // Free it.
 		last = current;
 		current = g_data_input_stream_read_line(backend->data_stream, NULL, NULL, NULL);
@@ -258,21 +257,20 @@ void raider_shred_backend_get_return_result_thread (GTask* task, gpointer source
 
 	// Otherwise, we need to grab the return message.
 	gchar **tokens = g_strsplit(last, " ", 0);
-	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, &backend->shred_state};
+	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, &backend->shred_state };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
 	g_free(last);
-
 }
 
 /* This function returns immediately, launching a g_task to read the output one final time. */
 void raider_shred_backend_get_return_result(gpointer object, GAsyncReadyCallback callback, gpointer data)
 {
-  	GTask* task = g_task_new (NULL, NULL, callback, object);
-	g_task_set_task_data (task, data, NULL);
-  	g_task_run_in_thread (task, raider_shred_backend_get_return_result_thread);
-  	g_object_unref (task);
+	GTask* task = g_task_new(NULL, NULL, callback, object);
+	g_task_set_task_data(task, data, NULL);
+	g_task_run_in_thread(task, raider_shred_backend_get_return_result_thread);
+	g_object_unref(task);
 }
 
 /* Parsing functions., */
@@ -364,13 +362,11 @@ void parse_indicator_token(void *ptr_to_fsm)
 
 	if (g_strcmp0(_("failed"), fsm->tokens[0]) == 0) {
 		fsm->state = parse_error;
-	}
-	else if (g_strcmp0(_("removed"), fsm->tokens[0]) == 0) {
+	}else if (g_strcmp0(_("removed"), fsm->tokens[0]) == 0) {
 		fsm->state = stop; // No more tokens.
 		*fsm->shred_state = g_strdup("good");
 		return;
-	}
-	else if (g_strcmp0(_("pass"), fsm->tokens[0]) == 0) {
+	}else if (g_strcmp0(_("pass"), fsm->tokens[0]) == 0) {
 		fsm->state = parse_fraction;
 	}
 
@@ -379,7 +375,7 @@ void parse_indicator_token(void *ptr_to_fsm)
 	fsm->incremented_number++;
 }
 
-void parse_error (void *ptr_to_fsm)
+void parse_error(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
 	fsm->state = stop;
@@ -388,17 +384,16 @@ void parse_error (void *ptr_to_fsm)
 	int number = 0;
 	for (number = 0; number < 4; number++) {
 		// TODO: Actually check the error message.
-          fsm->tokens++;
-     	fsm->incremented_number++;
-     }
+		fsm->tokens++;
+		fsm->incremented_number++;
+	}
 
 	gchar* message = g_strdup(fsm->tokens[0]);
 	fsm->tokens++;
 	fsm->incremented_number++;
 
-	while(fsm->tokens[0] != NULL)
-	{
-	    	gchar* tmp = g_strconcat(message, " ", fsm->tokens[0], NULL);
+	while (fsm->tokens[0] != NULL) {
+		gchar* tmp = g_strconcat(message, " ", fsm->tokens[0], NULL);
 		g_free(message);
 		message = tmp;
 

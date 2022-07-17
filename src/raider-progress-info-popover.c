@@ -17,6 +17,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include "raider-progress-info-popover.h"
 
 struct _RaiderProgressInfoPopover
@@ -58,7 +59,7 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
 /* This is used when the spinner is shown instead of the progress icon. */
 void raider_progress_info_popover_pulse(RaiderProgressInfoPopover* popover)
 {
-  gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), "Estimating...");
+  gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating..."));
   gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
 }
 

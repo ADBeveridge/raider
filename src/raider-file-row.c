@@ -84,8 +84,7 @@ gboolean raider_file_row_update_progress(gpointer data)
 		gtk_widget_set_visible(row->spinner, TRUE);
 		gtk_widget_set_visible(GTK_WIDGET(row->icon), FALSE);
 		raider_progress_info_popover_pulse(row->popover);
-	}
-	else {
+	}else  {
 		gtk_widget_set_visible(row->spinner, FALSE);
 		gtk_widget_set_visible(GTK_WIDGET(row->icon), TRUE);
 		raider_progress_icon_set_progress(row->icon, progress);
@@ -173,12 +172,11 @@ RaiderFileRow *raider_file_row_new(GFile *file)
 void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
 	RaiderFileRow* row = RAIDER_FILE_ROW(user_data);
-	gchar* message = raider_shred_backend_get_return_result_string (row->backend);
+	gchar* message = raider_shred_backend_get_return_result_string(row->backend);
 
-	if (g_strcmp0 (message, "good") != 0)
-	{
+	if (g_strcmp0(message, "good") != 0) {
 		row->aborted = TRUE;
-		adw_action_row_set_subtitle (ADW_ACTION_ROW (row), message);
+		adw_action_row_set_subtitle(ADW_ACTION_ROW(row), message);
 	}
 
 	/* Make sure that the user can use the window after the row is destroyed. */
@@ -199,22 +197,20 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 			return;
 
 		/* Decide whether to send it via adwaita or shell. */
-		gboolean active = gtk_window_is_active (GTK_WINDOW(toplevel));
+		gboolean active = gtk_window_is_active(GTK_WINDOW(toplevel));
 		if (!active) {
 			GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
 			g_application_send_notification(app, NULL, row->notification);
-		}
-		else {
+		}else  {
 			gchar* message = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
-			raider_window_show_toast (RAIDER_WINDOW(toplevel), message);
+			raider_window_show_toast(RAIDER_WINDOW(toplevel), message);
 			g_free(message);
 		}
 
 
 		raider_file_row_delete(NULL, user_data);
 	}
-	if (row->aborted == TRUE)
-	{
+	if (row->aborted == TRUE) {
 		/* Reset the view. */
 		adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
 		gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
@@ -228,7 +224,7 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-  	raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
+	raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
