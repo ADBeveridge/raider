@@ -169,7 +169,7 @@ static void raider_shred_backend_class_init(RaiderShredBackendClass *klass)
 	g_object_class_install_properties(object_class, N_PROPS, properties);
 }
 
-
+/* The regular way of reading the output of shred. */
 void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
 	RaiderShredBackend *backend = RAIDER_SHRED_BACKEND(user_data);
@@ -193,10 +193,6 @@ void raider_shred_backend_process_output_finish(GObject *source_object, GAsyncRe
 	g_free(buf);
 }
 
-void on_timeout_finished(gpointer user_data)
-{
-}
-
 /* Start the read of the output. */
 gboolean raider_shred_backend_process_output(gpointer data)
 {
@@ -217,7 +213,7 @@ static void raider_shred_backend_init(RaiderShredBackend *backend)
 	backend->smooth_timer = NULL;
 
 	/* Check the output every 1/10th of a second. */
-	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, (gpointer)backend, on_timeout_finished);
+	backend->timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT, 500, raider_shred_backend_process_output, NULL, NULL);
 }
 
 gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
