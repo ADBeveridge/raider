@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-26 21:38+0100\n"
-"PO-Revision-Date: 2022-02-26 21:38+0100\n"
+"POT-Creation-Date: 2022-07-17 14:22-0700\n"
+"PO-Revision-Date: 2022-07-18 00:36+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -16,168 +16,221 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: src/raider-window.ui:13
-#: src/raider-window.ui:31
-msgid "File Shredder"
-msgstr "Trituradora de archivos"
-
-#: src/raider-window.ui:57
-msgid "Shred"
-msgstr "Triturar"
-
-#:src/raider-window.ui:81
-msgid "Abort"
-msgstr "Abortar"
-
-#: src/raider-window.ui:109
-msgid "Add files for shredding"
-msgstr "Añadir archivos para destruir"
-
-#: src/raider-window.ui:157
-msgid "Add files or drop here"
-msgstr "Añadir archivos o soltar aquí"
-
-#: src/raider-window.c:91
-msgid "Unable to add files!"
-msgstr "¡No se pueden añadir archivos!"
-
-#: src/raider-window.c:117
-msgid "File does not exist!"
-msgstr "¡El archivo no existe!"
-
-#: src/raider-window.c:122
-msgid "Folders are not supported!"
-msgstr "¡Las carpetas no son compatibles!"
-
-#: src/raider-window.c:166
+#: src/raider-application.c:74 src/raider-preferences.c:87
 msgid "Open File"
 msgstr "Abrir archivo"
 
-#: src/raider-window.c:167
+#: src/raider-application.c:75 src/raider-preferences.c:88
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/raider-window.c:167
+#: src/raider-application.c:75 src/raider-preferences.c:88
 msgid "Open"
 msgstr "Abrir"
 
-#: src/raider-window.c:223
-msgid "No files added!"
-msgstr "¡No se han añadido archivos!"
+#: src/raider-application.c:120 src/raider-window.blp:8
+#: src/raider-window.blp:54
+msgid "File Shredder"
+msgstr "Trituradora de archivos"
 
-#: src/raider-preferences.ui:34
+#: src/raider-application.c:126
+msgid "1.0.0.alpha1"
+msgstr "1.0.0.alpha1"
+
+#: src/raider-application.c:127
+msgid "Securely delete your files"
+msgstr "Eliminar sus archivos de forma segura"
+
+#: src/raider-application.c:131
+msgid "translator-credits"
+msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+
+#. Notification stuff.
+#: src/raider-file-row.c:165 src/raider-file-row.c:205
+msgid "Shredded "
+msgstr "Triturado "
+
+#: src/raider-preferences.blp:8
+msgid "_Basic"
+msgstr "_Básicas"
+
+#: src/raider-preferences.blp:10
 msgid "Basic"
 msgstr "Básicas"
 
-#: src/raider-preferences.ui:39
-msgid "Remove file"
+#: src/raider-preferences.blp:13
+msgid "Remove File"
 msgstr "Eliminar archivo"
 
-#: src/raider-preferences.ui:41
+#: src/raider-preferences.blp:14
 msgid "Whether to remove the file after shredding"
 msgstr "Si se elimina el archivo después de triturarlo"
 
-#: src/raider-preferences.ui:56
+#: src/raider-preferences.blp:24
 msgid "Hide Shredding"
 msgstr "Ocultar trituración"
 
-#: src/raider-preferences.ui:58
+#: src/raider-preferences.blp:25
 msgid "Whether to hide the fact the the files have been shredded"
 msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
 
-#: src/raider-preferences.ui:72
+#: src/raider-preferences.blp:34
 msgid "Number of passes"
 msgstr "Número de pasadas"
 
-#: src/raider-preferences.ui:74
+#: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
 msgstr "Cuántas veces hay que triturar el archivo"
 
-#: src/raider-preferences.ui:92
+#: src/raider-preferences.blp:47
 msgid "Advanced"
 msgstr "Avanzadas"
 
-#: src/raider-preferences.ui:97
-msgid "Remove method"
-msgstr "Método de eliminación"
-
-#: src/raider-preferences.ui:98
+#: src/raider-preferences.blp:50
 msgid "How to remove the files from the fileystem"
 msgstr "Cómo eliminar los archivos del sistema de archivos"
 
-#: src/raider-preferences.ui:104
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:127
+msgid "Wipesync"
+msgstr "Wipesync"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
+msgid "Wipe"
+msgstr "Limpiar"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
+msgid "Unlink"
+msgstr "Desvincular"
+
+#: src/raider-preferences.blp:56
 msgid "Overwrite data source"
 msgstr "Sobrescribir fuente de datos"
 
-#: src/raider-preferences.ui:106
-msgid "From what file to get the data that the files will be overwritten with"
+#: src/raider-preferences.blp:57
+msgid ""
+"Where to get the data to overwrite the files with. Disabled at every startup"
 msgstr ""
-"De qué archivo obtener los datos con los que se sobrescribirán los archivos"
+"De dónde sacar los datos para sobrescribir los archivos. Desactivado en "
+"cada inicio"
 
-#: src/raider-preferences.ui:120
+#: src/raider-preferences.blp:65
+msgid "None Selected"
+msgstr "Ninguno seleccionada"
+
+#: src/raider-preferences.blp:69
+msgid "Select File"
+msgstr "Seleccionar archivo"
+
+#: src/raider-preferences.blp:76
 msgid "Number of bytes to shred"
 msgstr "Número de bytes a triturar"
 
-#: src/raider-preferences.ui:121
+#: src/raider-preferences.blp:77
 msgid "How much of the file to shred. 0 to shred the whole file"
 msgstr ""
 "Qué parte del archivo se va a destruir. 0 para destruir todo el archivo"
 
-#: src/raider-preferences.ui:138
+#: src/raider-preferences.blp:89
 msgid "Do not round file sizes"
 msgstr "No redondear el tamaño de los archivos"
 
-#: src/raider-preferences.ui:140
-msgid "Do not round file sizes to the next block"
-msgstr "No redondear el tamaño de los archivos al siguiente bloque"
+#: src/raider-preferences.blp:90
+msgid "Do not round file sizes to the next block. Default for irregular files"
+msgstr ""
+"No redondear el tamaño de los archivos al siguiente bloque. Predeterminado "
+"para archivos irregulares"
 
-#: src/raider-preferences.ui:154
+#: src/raider-preferences.blp:98
 msgid "Override file permissions"
 msgstr "Anular los permisos de los archivos"
 
-#: src/raider-preferences.ui:156
+#: src/raider-preferences.blp:99
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
 msgstr ""
 "Si se anulan los permisos de los archivos en caso de que los permisos sean "
 "insuficientes"
 
-#: src/raider-file-row.c:146
-msgid "Shredded"
-msgstr "Triturado"
+#: src/raider-progress-info-popover.c:62
+msgid "Estimating..."
+msgstr "Estimando..."
 
-#: src/gears-menu.ui:8
-msgid "New Window"
-msgstr "Ventana nueva"
+#: src/raider-shred-backend.c:363
+msgid "failed"
+msgstr "falló"
 
-#: src/gears-menu.ui:14
-msgid "_Preferences"
-msgstr "_Preferencias"
+#: src/raider-shred-backend.c:365
+msgid "removed"
+msgstr "eliminado"
 
-#: src/gears-menu.ui:18
-msgid "_Help"
-msgstr "A_yuda"
-
-#: src/gears-menu.ui:22
-msgid "_About File Shredder"
-msgstr "_Acerca de Trituradora de archivos"
-
-#: src/raider.c:144
-msgid "0.1.0"
-msgstr "0.1.0"
-
-#: src/raider.c:145
-msgid "Securely delete your files"
-msgstr "Eliminar sus archivos de forma segura"
-
-#: src/raider.c:149
-msgid "translator-credits"
-msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
-
-#. This corresponds with the output of 'shred' under spanish.
-#: src/raider-file-row.c:400
+#: src/raider-shred-backend.c:369
 msgid "pass"
 msgstr "paso"
 
+#: src/raider-window.blp:25
+msgid "Shred"
+msgstr "Triturar"
+
+#: src/raider-window.blp:35
+msgid "Abort"
+msgstr "Abortar"
+
+#: src/raider-window.blp:71
+msgid "Add files or drop here"
+msgstr "Añadir archivos o soltar aquí"
+
+#: src/raider-window.blp:94
+msgid "New Window"
+msgstr "Ventana nueva"
+
+#: src/raider-window.blp:100
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/raider-window.blp:104
+msgid "Help"
+msgstr "Ayuda"
+
+#: src/raider-window.blp:108
+msgid "About File Shredder"
+msgstr "Acerca de Trituradora de archivos"
+
+#: src/raider-window.c:203
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: src/raider-window.c:243
+msgid "Could not remove file from quick list."
+msgstr "No se ha podido eliminar el archivo de la lista rápida."
+
+#: src/raider-window.c:279
+msgid "Directories are not supported!"
+msgstr "¡No se admiten directorios!"
+
+#: src/raider-window.c:299
+#, c-format
+msgid "“%s” is already loaded!"
+msgstr "¡\"%s\" ya está cargado!"
+
+#~ msgid "Add files for shredding"
+#~ msgstr "Añadir archivos para destruir"
+
+#~ msgid "Unable to add files!"
+#~ msgstr "¡No se pueden añadir archivos!"
+
+#~ msgid "File does not exist!"
+#~ msgstr "¡El archivo no existe!"
+
+#~ msgid "No files added!"
+#~ msgstr "¡No se han añadido archivos!"
+
+#~ msgid ""
+#~ "From what file to get the data that the files will be overwritten with"
+#~ msgstr ""
+#~ "De qué archivo obtener los datos con los que se sobrescribirán los "
+#~ "archivos"
+
+#~ msgid "0.1.0"
+#~ msgstr "0.1.0"
