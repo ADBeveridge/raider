@@ -219,7 +219,7 @@ msgstr "Измельчите файль"
 #. (itstool) path: page/p
 #: shred-file.page:19
 msgid "When you have loaded all the files that you wish to shred, press the red <gui>Shred</gui> button at the upper left of the window, next to the add file button. Then each file loaded will acquire a progress indicator that will show how much of the shredding has been finished. You can click on the progress indicator to view more information regarding the shredding progress of that file."
-msgstr "Когда вы загрузили все файлы, которые вы хотите измельчить, нажмите красную кнопку <gui>Измельчить</gui> в левом верхнем углу окна, рядом с кнопкой Добавить. Затем каждый загруженный файл приобретет индикатор прогресса, который покажет, сколько из уничтожения было завершено.Вы можете нажать на индикатор прогресса, чтобы просмотреть дополнительную информацию о ходе измельчения этого файла."
+msgstr "Когда вы загрузили все файлы, которые вы хотите измельчить, нажмите красную кнопку <gui>Измельчить</gui> в левом верхнем углу окна, рядом с кнопкой Добавить. Затем каждый загруженный файл приобретет индикатор прогресса, который покажет, сколько из уничтожения было завершено. Вы можете нажать на индикатор прогресса, чтобы просмотреть дополнительную информацию о ходе измельчения этого файла."
 
 #. (itstool) path: page/p
 #: shred-file.page:25
