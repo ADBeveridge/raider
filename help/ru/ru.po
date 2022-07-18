@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2022-07-18 04:27+0300\n"
-"PO-Revision-Date: 2022-07-18 05:30+0300\n"
-"Last-Translator: David Lapshin \n"
+"PO-Revision-Date: 2022-07-18 06:00+0300\n"
+"Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgstr "Измельчение файлов."
 #. (itstool) path: page/title
 #: shred-file.page:17
 msgid "Shred the files"
-msgstr "Измельчите файль"
+msgstr "Измельчите файлы"
 
 #. (itstool) path: page/p
 #: shred-file.page:19
