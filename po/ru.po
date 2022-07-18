@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-17 14:22-0700\n"
-"PO-Revision-Date: 2022-07-18 03:41+0300\n"
+"PO-Revision-Date: 2022-07-18 05:31+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -33,7 +33,7 @@ msgstr "Открыть"
 #: src/raider-application.c:120 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
-msgstr "Шредер файлов"
+msgstr "Файловый шредер"
 
 #: src/raider-application.c:126
 msgid "1.0.0.alpha1"
@@ -130,7 +130,7 @@ msgstr "Какую часть файла нужно измельчать. 0 чт
 
 #: src/raider-preferences.blp:89
 msgid "Do not round file sizes"
-msgstr "Не округлить размеры файлов"
+msgstr "Не округлять размеры файлов"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
@@ -170,7 +170,7 @@ msgstr "Прервать"
 
 #: src/raider-window.blp:71
 msgid "Add files or drop here"
-msgstr "Добавьте файлы или бросьте их сюда"
+msgstr "Добавьте файлы или перетащите их сюда"
 
 #: src/raider-window.blp:94
 msgid "New Window"
@@ -186,7 +186,7 @@ msgstr "Справка"
 
 #: src/raider-window.blp:108
 msgid "About File Shredder"
-msgstr "О Шредере файлов"
+msgstr "О Файловом шредере"
 
 #: src/raider-window.c:203
 msgid "Devices"
