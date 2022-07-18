@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-17 14:22-0700\n"
-"PO-Revision-Date: 2022-07-18 02:45+0300\n"
+"PO-Revision-Date: 2022-07-18 03:41+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -37,7 +37,7 @@ msgstr "Шредер файлов"
 
 #: src/raider-application.c:126
 msgid "1.0.0.alpha1"
-msgstr "1.0.0.альфа1"
+msgstr "1.0.0.alpha1"
 
 #: src/raider-application.c:127
 msgid "Securely delete your files"
@@ -170,7 +170,7 @@ msgstr "Прервать"
 
 #: src/raider-window.blp:71
 msgid "Add files or drop here"
-msgstr "Добавьте файлы или бросьте сюда"
+msgstr "Добавьте файлы или бросьте их сюда"
 
 #: src/raider-window.blp:94
 msgid "New Window"
