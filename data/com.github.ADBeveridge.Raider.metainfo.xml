@@ -29,8 +29,10 @@
 					boasts a GNOME compliant interface.</p>
       </description>
     </release>
-    <release version="1.0.0" date="2022-6-30">
+    <release version="2.0.0.alpha1" date="2022-6-30">
       <description>
+      <p>A significant rewite of File Shredder with the added capability to shred thumb drives.
+      Among other changes are:</p>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
           <li>Handy list for thumb drives on open button</li>
