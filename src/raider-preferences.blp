@@ -46,7 +46,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
         Adw.PreferencesGroup advanced_group {
             title: _("Advanced");
             Adw.ComboRow remove_method_combo_row {
-            	title: "Remove Method";
+            	title: _("Remove Method");
             	subtitle: _("How to remove the files from the fileystem");
             	model: Gtk.StringList {
             	  strings [_("Wipesync"), _("Wipe"), _("Unlink")]
