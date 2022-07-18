@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-17 16:14-0700\n"
-"PO-Revision-Date: 2022-07-18 17:44+0300\n"
+"POT-Creation-Date: 2022-07-18 08:18-0700\n"
+"PO-Revision-Date: 2022-07-18 19:46+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop.in:3
 #: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
@@ -42,7 +42,7 @@ msgstr ""
 "GNOME. Он поддерживает все настройки, которые есть у его бэкэнда, плюс "
 "отслеживание прогресса в реальном времени."
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:29
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -50,27 +50,27 @@ msgstr ""
 "Самый первый выпуск Файлового шредера. Он поддерживает отслеживание "
 "прогресса и может похвастаться интерфейсом, соответствующим GNOME."
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:34
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
 msgid "Added checking so a file cannot be loaded twice"
 msgstr "Добавлена проверка, поэтому файл не может быть загружен дважды"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:35
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
 msgid "Handy list for thumb drives on open button"
 msgstr "Удобный список для флешок на кнопке \"открыть\""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
 msgid "Smooth progress tracking"
 msgstr "Плавное отслеживание прогресса"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:39
 msgid "Written using GTK4 and Adwaita"
 msgstr "Написан используя GTK4 и Adwaita"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:40
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr "Уведомления отображаются на рабочем столе, если окно не в фокусе"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:45
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:47
 msgid "Alan Beveridge"
 msgstr "Алан Беверидж"
 
@@ -135,6 +135,10 @@ msgstr "Сколько раз измельчать файл"
 msgid "Advanced"
 msgstr "Продвинутое"
 
+#: src/raider-preferences.blp:49
+msgid "Remove Method"
+msgstr "Метод удаления"
+
 #: src/raider-preferences.blp:50
 msgid "How to remove the files from the fileystem"
 msgstr "Как удалять файлы из файловой системы"
@@ -183,7 +187,9 @@ msgstr "Не округлять размеры файлов"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr "Не округлять размеры файлов до следующего блока. По умолчанию для нерегулярных файлов"
+msgstr ""
+"Не округлять размеры файлов до следующего блока. По умолчанию для "
+"нерегулярных файлов"
 
 #: src/raider-preferences.blp:98
 msgid "Override file permissions"
@@ -192,8 +198,7 @@ msgstr "Переопределить права доступа файла"
 #: src/raider-preferences.blp:99
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
-msgstr ""
-"Переопределить права доступа файла в случае недостаточных разрешений"
+msgstr "Переопределить права доступа файла в случае недостаточных разрешений"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Estimating..."
