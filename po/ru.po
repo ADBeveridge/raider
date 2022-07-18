@@ -7,41 +7,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-17 14:22-0700\n"
-"PO-Revision-Date: 2022-07-18 05:31+0300\n"
+"POT-Creation-Date: 2022-07-17 16:14-0700\n"
+"PO-Revision-Date: 2022-07-18 17:44+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.1\n"
 
-#: src/raider-application.c:74 src/raider-preferences.c:87
-msgid "Open File"
-msgstr "Открыть файл"
-
-#: src/raider-application.c:75 src/raider-preferences.c:88
-msgid "Cancel"
-msgstr "Отмена"
-
-#: src/raider-application.c:75 src/raider-preferences.c:88
-msgid "Open"
-msgstr "Открыть"
-
+#: data/com.github.ADBeveridge.Raider.desktop.in:3
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
 #: src/raider-application.c:120 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
 msgstr "Файловый шредер"
 
-#: src/raider-application.c:126
-msgid "1.0.0.alpha1"
-msgstr "1.0.0.alpha1"
-
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
 #: src/raider-application.c:127
 msgid "Securely delete your files"
 msgstr "Надежно удаляйте свои файлы"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:9
+msgid ""
+"File Shredder, also named Raider, is a simple application that enables you "
+"to securely delete files that was built with GNOME in mind. It supports all "
+"the options that its backend has, plus a realtime progress tracking."
+msgstr ""
+"Файловый шредер, также названный Raider, является простым приложением, "
+"которое позволяет надежно удалять файлы, которые было построено с учетом "
+"GNOME. Он поддерживает все настройки, которые есть у его бэкэнда, плюс "
+"отслеживание прогресса в реальном времени."
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+"Самый первый выпуск Файлового шредера. Он поддерживает отслеживание "
+"прогресса и может похвастаться интерфейсом, соответствующим GNOME."
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:34
+msgid "Added checking so a file cannot be loaded twice"
+msgstr "Добавлена проверка, поэтому файл не может быть загружен дважды"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:35
+msgid "Handy list for thumb drives on open button"
+msgstr "Удобный список для флешок на кнопке \"открыть\""
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+msgid "Smooth progress tracking"
+msgstr "Плавное отслеживание прогресса"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
+msgid "Written using GTK4 and Adwaita"
+msgstr "Написан используя GTK4 и Adwaita"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr "Уведомления отображаются на рабочем столе, если окно не в фокусе"
+
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:45
+msgid "Alan Beveridge"
+msgstr "Алан Беверидж"
+
+#: src/raider-application.c:74
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: src/raider-application.c:75
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/raider-application.c:75
+msgid "Open"
+msgstr "Открыть"
+
+#: src/raider-application.c:126
+msgid "1.0.0.alpha1"
+msgstr "1.0.0.alpha1"
 
 #: src/raider-application.c:131
 msgid "translator-credits"
@@ -109,7 +156,8 @@ msgid "Overwrite data source"
 msgstr "Перезаписывать источник данных"
 
 #: src/raider-preferences.blp:57
-msgid "Where to get the data to overwrite the files with. Disabled at every startup"
+msgid ""
+"Where to get the data to overwrite the files with. Disabled at every startup"
 msgstr "Где получать данные для перезаписи файлов. Отключ при каждом запуске"
 
 #: src/raider-preferences.blp:65
@@ -134,14 +182,17 @@ msgstr "Не округлять размеры файлов"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr "Не округлять размеры файлов до следующего блока. По умолчанию для нерегулярных файлов"
+msgstr ""
+"Не округлять размеры файлов до следующего блока. По умолчанию для "
+"нерегулярных файлов"
 
 #: src/raider-preferences.blp:98
 msgid "Override file permissions"
 msgstr "Переопределить права доступа файла"
 
 #: src/raider-preferences.blp:99
-msgid "Whether to override the file permissions in case of insufficient permissions"
+msgid ""
+"Whether to override the file permissions in case of insufficient permissions"
 msgstr "Переопределить права доступа файла в случае недостаточных разрешений"
 
 #: src/raider-progress-info-popover.c:62
