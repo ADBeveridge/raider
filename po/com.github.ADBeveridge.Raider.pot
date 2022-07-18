@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-17 16:14-0700\n"
+"POT-Creation-Date: 2022-07-18 08:18-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,33 +36,33 @@ msgid ""
 "the options that its backend has, plus a realtime progress tracking."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:27
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:29
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:34
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:35
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
 msgid "Handy list for thumb drives on open button"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
 msgid "Smooth progress tracking"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:39
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:40
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:45
+#: data/com.github.ADBeveridge.Raider.appdata.xml.in:47
 msgid "Alan Beveridge"
 msgstr ""
 
@@ -125,6 +125,10 @@ msgstr ""
 
 #: src/raider-preferences.blp:47
 msgid "Advanced"
+msgstr ""
+
+#: src/raider-preferences.blp:49
+msgid "Remove Method"
 msgstr ""
 
 #: src/raider-preferences.blp:50
