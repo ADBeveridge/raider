@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 12:11-0700\n"
+"POT-Creation-Date: 2022-07-18 14:52-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,27 +43,33 @@ msgid ""
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:35
-msgid "Added checking so a file cannot be loaded twice"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:36
-msgid "Handy list for thumb drives on open button"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:34
+msgid ""
+"A significant rewite of File Shredder with the added capability to shred "
+"thumb drives. Among other changes are:"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:37
-msgid "Smooth progress tracking"
+msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:38
-msgid "Written using GTK4 and Adwaita"
+msgid "Handy list for thumb drives on open button"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:39
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:40
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:41
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
 msgid "Alan Beveridge"
 msgstr ""
 
