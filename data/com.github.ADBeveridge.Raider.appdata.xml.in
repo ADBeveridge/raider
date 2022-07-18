@@ -7,10 +7,10 @@
   <summary>Securely delete your files</summary>
   <description>
     <p>
-			File Shredder, also named Raider, is a simple application that enables you to securely delete files that
-			was built with GNOME in mind. It supports all the options that its backend has,
-			plus a realtime progress tracking.
-		</p>
+      File Shredder, also named Raider, is a simple application that enables you to securely delete files that
+      was built with GNOME in mind. It supports all the options that its backend has,
+      plus a realtime progress tracking.
+    </p>
   </description>
   <content_rating type="oars-1.1"/>
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
@@ -19,6 +19,8 @@
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot2.png</image>
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot3.png</image>
+      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot4.png</image>
+      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot5.png</image>
     </screenshot>
   </screenshots>
   <releases>
