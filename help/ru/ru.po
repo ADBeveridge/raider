@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2022-07-18 04:27+0300\n"
 "PO-Revision-Date: 2022-07-18 05:30+0300\n"
-"Last-Translator: \n"
+"Last-Translator: David Lapshin \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "Продвинутые настройки"
 #. (itstool) path: page/p
 #: configuring-advanced-options.page:21
 msgid "To configure the shredding options, click on click on the three stacked bars and select <gui>Preferences</gui>. The advanced options are below the basic options."
-msgstr "Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и выберите <gui> Параметры </gui>. Расширенные параметры ниже базовых параметров."
+msgstr "Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и выберите <gui>Параметры</gui>. Расширенные параметры ниже базовых параметров."
 
 #. (itstool) path: page/p
 #: configuring-advanced-options.page:25
@@ -174,7 +174,7 @@ msgstr "Введение"
 #. (itstool) path: page/p
 #: introduction.page:20
 msgid "<app>File Shredder</app> is a tool for shredding the files that you do not want to be recovered. It works on any file type possible, and supports many options as to how the shredding is done. Every file that is added to the list shreds at the same time, so it greatly reduces the time needed. It shows the current progress of every file loaded, so you know how far along each is."
-msgstr "<app>Файловый шредер</app> - это инструмент для измельчения файлов, которые вы не хотите восстанавливать.Он работает с любым возможным типом файла и поддерживает многие варианты того, как выполняется измельчение. Каждый файл, который добавляется в список одновременно, сильно уменьшает необходимое время. Он показывает текущий прогресс каждого загруженного файла, поэтому вы знаете, как далеко каждый."
+msgstr "<app>Файловый шредер</app> - это инструмент для измельчения файлов, которые вы не хотите восстанавливать. Он работает с любым возможным типом файла и поддерживает многие варианты того, как выполняется измельчение. Каждый файл, который добавляется в список одновременно, сильно уменьшает необходимое время. Он показывает текущий прогресс каждого загруженного файла, поэтому вы знаете, как далеко каждый."
 
 #. (itstool) path: note/p
 #: introduction.page:26
