@@ -1,5 +1,5 @@
-data/com.github.ADBeveridge.Raider.desktop.in
-data/com.github.ADBeveridge.Raider.appdata.xml.in
+data/com.github.ADBeveridge.Raider.desktop
+data/com.github.ADBeveridge.Raider.metainfo.xml
 src/raider-application.c
 src/raider-file-row.blp
 src/raider-file-row.c

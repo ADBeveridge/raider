@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 08:18-0700\n"
+"POT-Creation-Date: 2022-07-18 12:11-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,52 +17,53 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop.in:3
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
+#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
 #: src/raider-application.c:120 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 #: src/raider-application.c:127
 msgid "Securely delete your files"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
-"File Shredder, also named Raider, is a simple application that enables you "
-"to securely delete files that was built with GNOME in mind. It supports all "
-"the options that its backend has, plus a realtime progress tracking."
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered. File Shredder has a comprehensive set "
+"of preferences, a handy list of thumb drives, and progress tracking for each "
+"file."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:29
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:35
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:36
 msgid "Handy list for thumb drives on open button"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
 msgid "Smooth progress tracking"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:39
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:38
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:40
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:39
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:47
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Alan Beveridge"
 msgstr ""
 
