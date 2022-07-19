@@ -33,7 +33,7 @@ struct _RaiderWindow
 
 	GtkBox *contents_box;
 	GtkStack *window_stack;
-	AdwSplitButton *open_button;
+	GtkButton *open_button;
 	GtkRevealer *open_revealer;
 	GtkButton *shred_button;
 	GtkRevealer *shred_revealer;
@@ -55,8 +55,7 @@ struct _RaiderWindow
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
-static void
-raider_window_class_init(RaiderWindowClass *klass)
+static void raider_window_class_init(RaiderWindowClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
@@ -134,7 +133,7 @@ void shred_file(GtkWidget *widget, gpointer data)
 
 void abort_shredding (GtkWidget *widget, gpointer data)
 {
-    	RaiderWindow *window = RAIDER_WINDOW(data);
+    RaiderWindow *window = RAIDER_WINDOW(data);
 
 	/* Update the headerbar view. */
 	gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
@@ -148,36 +147,6 @@ void abort_shredding (GtkWidget *widget, gpointer data)
 		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
 		raider_file_row_shredding_abort((gpointer)file_row);
 	}
-}
-
-/* Updates the list of removable media in the popover in the AdwSplitButton. */
-void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
-{
-	RaiderWindow *self = RAIDER_WINDOW(data);
-
-	g_menu_remove_all(self->mount_menu);
-
-	GList *mount_list = g_volume_monitor_get_mounts(self->monitor);
-	GList *l;
-	for (l = mount_list; l != NULL; l = l->next)
-	{
-		/* Retrieve device path, and put in variant. */
-		GFile *file = g_mount_get_root(l->data); // Prints something like /home/ad/AD_BACKUPS.
-
-		gchar *name = g_file_get_basename(file); // Get the "title" of the disk, something like AD_BACKUPS.
-		GVariant *var = g_variant_new_string(g_file_get_path(file)); // Store in a variant so the "action" in raider-application can know which drive we are working on.
-
-		GMenuItem *item = g_menu_item_new(name, "app.open-drive");
-		g_menu_item_set_action_and_target_value(item, "app.open-drive", var);
-		g_menu_append_item(self->mount_menu, item);
-
-		g_object_unref(file);
-		g_free(name);
-	}
-	if (g_list_length(mount_list) < 1)
-		adw_split_button_set_menu_model(self->open_button, NULL);
-	else
-		adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 }
 
 static void raider_window_init(RaiderWindow *self)
@@ -200,19 +169,6 @@ static void raider_window_init(RaiderWindow *self)
 	g_signal_connect(self->target, "leave", G_CALLBACK(on_leave), self);
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
-
-	/* Create monitor of mounted drives. */
-	self->mount_main_menu = g_menu_new();
-	self->mount_menu = g_menu_new();
-	g_menu_prepend_section(self->mount_main_menu, _("Devices"), G_MENU_MODEL(self->mount_menu));
-	adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
-
-	self->monitor = g_volume_monitor_get();
-	g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
-	g_signal_connect(self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
-	g_signal_connect(self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
-
-	on_mount_changed(NULL, NULL, self);
 }
 
 /* This is called when the handler for the close button destroys the row. This handles the application state */

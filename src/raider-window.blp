@@ -41,8 +41,8 @@ template RaiderWindow : Adw.ApplicationWindow {
         Gtk.Revealer open_revealer {
           reveal-child: true;
           transition-type: slide_right;
-          Adw.SplitButton open_button {
-      	    icon-name: "list-add-symbolic";
+          Gtk.Button open_button {
+      	    label: _("Add");
       	    action-name: "app.open";
       	    margin-end: 6;
           }

@@ -8,8 +8,7 @@
   <description>
     <p>File Shredder is a simple application used for securely deleting your files
     that you do not want to be recovered. File Shredder has a comprehensive set
-    of preferences, a handy list of thumb drives, and progress tracking for each
-    file.</p>
+    of preferences and progress tracking for each file.</p>
   </description>
   <content_rating type="oars-1.1"/>
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
@@ -31,11 +30,9 @@
     </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
       <description>
-      <p>A significant rewite of File Shredder with the added capability to shred thumb drives.
-      Among other changes are:</p>
+      <p>A significant rewite of File Shredder, with many changes:</p>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
-          <li>Handy list for thumb drives on open button</li>
           <li>Smooth progress tracking</li>
           <li>Written using GTK4 and Adwaita</li>
           <li>Desktop notifications are shown if the window is not focused</li>

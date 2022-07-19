@@ -28,8 +28,7 @@ struct _RaiderApplication {
 
 G_DEFINE_TYPE(RaiderApplication, raider_application, ADW_TYPE_APPLICATION)
 
-RaiderApplication *raider_application_new(gchar * application_id,
-					  GApplicationFlags flags)
+RaiderApplication *raider_application_new(gchar * application_id, GApplicationFlags flags)
 {
 	return g_object_new(RAIDER_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
 }
@@ -71,8 +70,8 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 {
 	GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
 
-	GtkDialog *dialog = GTK_DIALOG(gtk_file_chooser_dialog_new(_("Open File"), GTK_WINDOW(window),
-								   GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Open"),
+	GtkDialog *dialog = GTK_DIALOG(gtk_file_chooser_dialog_new(_("Add Files"), GTK_WINDOW(window),
+								   GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Add"),
 								   GTK_RESPONSE_ACCEPT, NULL));                                                         /* Create dialog. */
 
 	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE); /* Allow to select many files at once. */
@@ -80,22 +79,6 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 
 	g_signal_connect_swapped(dialog, "response", G_CALLBACK(on_open_response), dialog);
 	gtk_widget_show(GTK_WIDGET(dialog));
-}
-
-static void raider_application_open_drive(GSimpleAction *action, GVariant *parameter, gpointer user_data)
-{
-	GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
-
-	GUnixMountEntry *unix_mount = g_unix_mount_at(g_variant_get_string(parameter, NULL), NULL);
-	const gchar *path = g_unix_mount_get_device_path(unix_mount); // This returns something like /dev/sdb1.
-
-	GFile *title = g_file_new_for_path(g_variant_get_string(parameter, NULL));
-	gchar* name = g_file_get_basename(title);
-	g_object_unref(title);
-
-	raider_window_open(g_file_new_for_path(path), window, name);
-
-	g_free(name);
 }
 
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -200,10 +183,6 @@ static void raider_application_init(RaiderApplication *self)
 	g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
 	g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
-
-	g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
-	g_signal_connect(open_drive_action, "activate", G_CALLBACK(raider_application_open_drive), self);
-	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_drive_action));
 
 	g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
 	g_signal_connect_swapped(help_action, "activate", G_CALLBACK(show_help), self);
