@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 14:54-0700\n"
+"POT-Creation-Date: 2022-07-19 15:18-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,33 +36,33 @@ msgid ""
 "of preferences and progress tracking for each file."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:27
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:33
-msgid "A significant rewite of File Shredder, with many changes:"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:35
-msgid "Added checking so a file cannot be loaded twice"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:34
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:36
-msgid "Smooth progress tracking"
+msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:37
-msgid "Written using GTK4 and Adwaita"
+msgid "Smooth progress tracking"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:38
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:39
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Alan Beveridge"
 msgstr ""
 
