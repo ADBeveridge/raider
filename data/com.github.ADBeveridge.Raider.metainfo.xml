@@ -30,7 +30,7 @@
     </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
       <description>
-      <p>A significant rewite of File Shredder, with many changes:</p>
+      <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
           <li>Smooth progress tracking</li>
