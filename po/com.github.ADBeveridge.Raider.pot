@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 16:55-0700\n"
+"POT-Creation-Date: 2022-07-19 14:54-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,13 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:120 src/raider-window.blp:8
+#: src/raider-application.c:103 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-#: src/raider-application.c:127
+#: src/raider-application.c:110
 msgid "Securely delete your files"
 msgstr ""
 
@@ -33,63 +33,56 @@ msgstr ""
 msgid ""
 "File Shredder is a simple application used for securely deleting your files "
 "that you do not want to be recovered. File Shredder has a comprehensive set "
-"of preferences, a handy list of thumb drives, and progress tracking for each "
-"file."
+"of preferences and progress tracking for each file."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:27
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:34
-msgid ""
-"A significant rewite of File Shredder with the added capability to shred "
-"thumb drives. Among other changes are:"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:33
+msgid "A significant rewite of File Shredder, with many changes:"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:35
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:38
-msgid "Handy list for thumb drives on open button"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:39
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:36
 msgid "Smooth progress tracking"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:40
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:41
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:38
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
 msgid "Alan Beveridge"
 msgstr ""
 
-#: src/raider-application.c:74
-msgid "Open File"
+#: src/raider-application.c:73
+msgid "Add Files"
 msgstr ""
 
-#: src/raider-application.c:75
+#: src/raider-application.c:74
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-application.c:75
-msgid "Open"
+#: src/raider-application.c:74 src/raider-window.blp:45
+msgid "Add"
 msgstr ""
 
-#: src/raider-application.c:126
+#: src/raider-application.c:109
 msgid "1.0.0.alpha1"
 msgstr ""
 
-#: src/raider-application.c:131
+#: src/raider-application.c:114
 msgid "translator-credits"
 msgstr ""
 
@@ -241,18 +234,19 @@ msgid "About File Shredder"
 msgstr ""
 
 #: src/raider-window.c:203
-msgid "Devices"
-msgstr ""
-
-#: src/raider-window.c:243
 msgid "Could not remove file from quick list."
 msgstr ""
 
-#: src/raider-window.c:279
-msgid "Directories are not supported!"
+#: src/raider-window.c:241
+msgid "Directories are not supported"
 msgstr ""
 
-#: src/raider-window.c:299
+#: src/raider-window.c:260
 #, c-format
-msgid "“%s” is already loaded!"
+msgid "“%s” is already loaded"
+msgstr ""
+
+#: src/raider-window.c:273
+#, c-format
+msgid "Cannot write to “%s”"
 msgstr ""
