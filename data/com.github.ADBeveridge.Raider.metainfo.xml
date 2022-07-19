@@ -23,12 +23,6 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.1.0" date="2021-12-30">
-      <description>
-        <p>The very first release of File Shredder. It supports progress tracking, and
-					boasts a GNOME compliant interface.</p>
-      </description>
-    </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
       <description>
       <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
@@ -38,6 +32,12 @@
           <li>Written using GTK4 and Adwaita</li>
           <li>Desktop notifications are shown if the window is not focused</li>
         </ul>
+      </description>
+    </release>
+    <release version="0.1.0" date="2021-12-30">
+      <description>
+        <p>The very first release of File Shredder. It supports progress tracking, and
+					boasts a GNOME compliant interface.</p>
       </description>
     </release>
   </releases>
