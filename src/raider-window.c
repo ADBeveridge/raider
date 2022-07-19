@@ -18,6 +18,11 @@
 
 #include <glib/gi18n.h>
 #include <gio/gunixmounts.h>
+#include <glib.h>
+#include <glib/gstdio.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "raider-config.h"
 #include "raider-window.h"
 #include "raider-file-row.h"
@@ -175,8 +180,7 @@ void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 		adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
 }
 
-static void
-raider_window_init(RaiderWindow *self)
+static void raider_window_init(RaiderWindow *self)
 {
 	gtk_widget_init_template(GTK_WIDGET(self));
 
@@ -269,21 +273,22 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
+	// Test if it exists.
 	if (g_file_query_exists(file, NULL) == FALSE)
 	{
 		g_object_unref(file);
 		return;
 	}
+	// Test if it a directory
 	if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
 	{
-		gchar* message = g_strdup(_("Directories are not supported!"));
+		gchar* message = g_strdup(_("Directories are not supported"));
 		raider_window_show_toast (window, message);
 		g_free(message);
 
 		g_object_unref(file);
 		return;
 	}
-
 	/* Search to see if a file with that path is already loaded. */
 	GList *item = window->filenames;
 	gchar *filename = g_file_get_path(file);
@@ -296,7 +301,7 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 
 		if (g_strcmp0(text, filename) == 0)
 		{
-			gchar* message = g_strdup_printf(_("“%s” is already loaded!"), g_file_get_basename(file));
+			gchar* message = g_strdup_printf(_("“%s” is already loaded"), g_file_get_basename(file));
 			raider_window_show_toast (window, message);
 			g_free(message);
 
@@ -306,6 +311,18 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 		item = next;
 	}
 	g_list_free(item);
+	/* Test if we can write. */
+	if (g_access(g_file_get_path (file), W_OK) != 0)
+	{
+		gchar* message = g_strdup_printf(_("Cannot write to “%s”"), g_file_get_basename(file));
+		raider_window_show_toast (window, message);
+		g_free(message);
+
+		g_object_unref(file);
+		return;
+	}
+
+	/* We are OK then. */
 
 	GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(file));
 	if (title)
