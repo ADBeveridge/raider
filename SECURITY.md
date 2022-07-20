@@ -1,9 +1,10 @@
 # Security Policy
 
 ## Supported Versions
-| Version | Supported          |
-| ------- | ------------------ |
-| 0.1.0   | :x:                |
+| Version         | Supported          |
+| -------         | ------------------ |
+| 0.1.0           | :heavy_check_mark: |
+| 1.0.0.alpha1    | :heavy_check_mark: |
 
 ## Reporting a Vulnerability
 
