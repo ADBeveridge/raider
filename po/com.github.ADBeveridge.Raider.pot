@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 15:18-0700\n"
+"POT-Creation-Date: 2022-07-21 14:33-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,34 +36,120 @@ msgid ""
 "of preferences and progress tracking for each file."
 msgstr ""
 
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:26
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:28
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:29
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:30
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:31
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:34
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:36
-msgid "Added checking so a file cannot be loaded twice"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
-msgid "Smooth progress tracking"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:38
-msgid "Written using GTK4 and Adwaita"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:39
-msgid "Desktop notifications are shown if the window is not focused"
-msgstr ""
-
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Alan Beveridge"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+msgid "Hide shredding"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid ""
+"Whether to hide shredding. This is done by overwriting the file(s) with "
+"zeros."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+msgid "Whether to remove the file after shredding it."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:15
+#: src/raider-preferences.blp:34
+msgid "Number of passes"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:16
+msgid "How many times the file will be overwritten with random data."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:21
+msgid "Remove method"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:22
+msgid "How the obfucticated file will be removed from the filesystem."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:27
+msgid "Override Permisions"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:28
+msgid "If you do not have the neccessary permissions, override them."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:32
+msgid "Do not round to next block"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:33
+msgid ""
+"Do not round the file to the next block. This is the default for non-regular "
+"files."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:37
+msgid "Number of bytes to shred entry"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:38
+msgid ""
+"Shred the number of bytes you want, and leave the rest of the file untouched."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:43
+msgid "Shred executable"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:44
+msgid "The path to the shred executable."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:48
+msgid "Whether to allow the source data file to be enabled"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:49
+msgid "If unchecked, the source data file will not be loaded."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:53
+msgid "Overwrite data file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:54
+msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr ""
 
 #: src/raider-application.c:73
@@ -113,10 +199,6 @@ msgstr ""
 
 #: src/raider-preferences.blp:25
 msgid "Whether to hide the fact the the files have been shredded"
-msgstr ""
-
-#: src/raider-preferences.blp:34
-msgid "Number of passes"
 msgstr ""
 
 #: src/raider-preferences.blp:35
