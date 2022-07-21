@@ -52,9 +52,7 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:34
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
-"Значительная перепиць Файлового шредера, с некоторыми изменениями UI, "
-"изменения:"
+msgstr "Файловый шредер был значительно переписан, с некоторыми изменениями UI, изменения:"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:36
 msgid "Added checking so a file cannot be loaded twice"
@@ -189,9 +187,7 @@ msgstr "Не округлять размеры файлов"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr ""
-"Не округлять размеры файлов до следующего блока. По умолчанию для "
-"нерегулярных файлов"
+msgstr "Не округлять размеры файлов до следующего блока. По умолчанию для нерегулярных файлов"
 
 #: src/raider-preferences.blp:98
 msgid "Override file permissions"
@@ -200,7 +196,8 @@ msgstr "Переопределить права доступа файла"
 #: src/raider-preferences.blp:99
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
-msgstr "Переопределить права доступа файла в случае недостаточных разрешений"
+msgstr ""
+"Переопределить права доступа файла в случае недостаточных разрешений"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Estimating..."
@@ -263,26 +260,3 @@ msgstr "“%s” уже загружен"
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Не удалось записать в “%s”"
-
-#~ msgid ""
-#~ "File Shredder, also named Raider, is a simple application that enables "
-#~ "you to securely delete files that was built with GNOME in mind. It "
-#~ "supports all the options that its backend has, plus a realtime progress "
-#~ "tracking."
-#~ msgstr ""
-#~ "Файловый шредер, также названный Raider, является простым приложением, "
-#~ "которое позволяет надежно удалять файлы, которые было построено с учетом "
-#~ "GNOME. Он поддерживает все настройки, которые есть у его бэкэнда, плюс "
-#~ "отслеживание прогресса в реальном времени."
-
-#~ msgid "Handy list for thumb drives on open button"
-#~ msgstr "Удобный список для флешок на кнопке \"открыть\""
-
-#~ msgid "Open File"
-#~ msgstr "Открыть файл"
-
-#~ msgid "Open"
-#~ msgstr "Открыть"
-
-#~ msgid "Devices"
-#~ msgstr "Устройства"
