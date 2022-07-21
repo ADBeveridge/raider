@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 08:18-0700\n"
-"PO-Revision-Date: 2022-07-18 19:46+0300\n"
+"POT-Creation-Date: 2022-07-19 15:18-0700\n"
+"PO-Revision-Date: 2022-07-21 21:52+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -19,30 +19,30 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop.in:3
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:6
-#: src/raider-application.c:120 src/raider-window.blp:8
+#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:103 src/raider-window.blp:8
 #: src/raider-window.blp:54
 msgid "File Shredder"
 msgstr "Файловый шредер"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:7
-#: src/raider-application.c:127
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+#: src/raider-application.c:110
 msgid "Securely delete your files"
 msgstr "Надежно удаляйте свои файлы"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
-"File Shredder, also named Raider, is a simple application that enables you "
-"to securely delete files that was built with GNOME in mind. It supports all "
-"the options that its backend has, plus a realtime progress tracking."
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered. File Shredder has a comprehensive set "
+"of preferences and progress tracking for each file."
 msgstr ""
-"Файловый шредер, также названный Raider, является простым приложением, "
-"которое позволяет надежно удалять файлы, которые было построено с учетом "
-"GNOME. Он поддерживает все настройки, которые есть у его бэкэнда, плюс "
-"отслеживание прогресса в реальном времени."
+"Файловый шредер - это простое приложение, используемое для безопасного "
+"удаления ваших файлов, которые вы не хотите чтобы были восстановлены. "
+"Файловый шредер имеет комплексный набор параметров, а также отслеживание "
+"прогресса для каждого файла."
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:29
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -50,47 +50,47 @@ msgstr ""
 "Самый первый выпуск Файлового шредера. Он поддерживает отслеживание "
 "прогресса и может похвастаться интерфейсом, соответствующим GNOME."
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:36
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:34
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr "Файловый шредер был значительно переписан, с некоторыми изменениями UI, изменения:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:36
 msgid "Added checking so a file cannot be loaded twice"
 msgstr "Добавлена проверка, поэтому файл не может быть загружен дважды"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:37
-msgid "Handy list for thumb drives on open button"
-msgstr "Удобный список для флешок на кнопке \"открыть\""
-
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:38
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
 msgid "Smooth progress tracking"
 msgstr "Плавное отслеживание прогресса"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:39
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:38
 msgid "Written using GTK4 and Adwaita"
 msgstr "Написан используя GTK4 и Adwaita"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:40
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:39
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr "Уведомления отображаются на рабочем столе, если окно не в фокусе"
 
-#: data/com.github.ADBeveridge.Raider.appdata.xml.in:47
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Alan Beveridge"
 msgstr "Алан Беверидж"
 
-#: src/raider-application.c:74
-msgid "Open File"
-msgstr "Открыть файл"
+#: src/raider-application.c:73
+msgid "Add Files"
+msgstr "Добавить файлы"
 
-#: src/raider-application.c:75
+#: src/raider-application.c:74
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/raider-application.c:75
-msgid "Open"
-msgstr "Открыть"
+#: src/raider-application.c:74 src/raider-window.blp:45
+msgid "Add"
+msgstr "Добавить"
 
-#: src/raider-application.c:126
+#: src/raider-application.c:109
 msgid "1.0.0.alpha1"
 msgstr "1.0.0.alpha1"
 
-#: src/raider-application.c:131
+#: src/raider-application.c:114
 msgid "translator-credits"
 msgstr "Давид Лапшин <ddaudix@gmail.com>"
 
@@ -244,18 +244,19 @@ msgid "About File Shredder"
 msgstr "О Файловом шредере"
 
 #: src/raider-window.c:203
-msgid "Devices"
-msgstr "Устройства"
-
-#: src/raider-window.c:243
 msgid "Could not remove file from quick list."
 msgstr "Не удалось удалить файл из быстрого списка."
 
-#: src/raider-window.c:279
-msgid "Directories are not supported!"
-msgstr "Директории не поддерживаются!"
+#: src/raider-window.c:241
+msgid "Directories are not supported"
+msgstr "Директории не поддерживаются"
 
-#: src/raider-window.c:299
+#: src/raider-window.c:260
 #, c-format
-msgid "“%s” is already loaded!"
-msgstr "“%s” уже загружен!"
+msgid "“%s” is already loaded"
+msgstr "“%s” уже загружен"
+
+#: src/raider-window.c:273
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Не удалось записать в “%s”"
