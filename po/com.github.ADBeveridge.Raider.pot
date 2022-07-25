@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-23 12:34-0700\n"
+"POT-Creation-Date: 2022-07-25 12:55-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:8
-#: src/raider-window.blp:54
+#: src/raider-application.c:103 src/raider-window.blp:9
+#: src/raider-window.blp:55
 msgid "File Shredder"
 msgstr ""
 
@@ -36,34 +36,34 @@ msgid ""
 "of preferences and progress tracking for each file."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:26
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
+msgid "Alan Beveridge"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:29
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Smooth progress tracking"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:30
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:31
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-msgid "Alan Beveridge"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-application.c:74 src/raider-window.blp:45
+#: src/raider-application.c:74 src/raider-window.blp:46
 msgid "Add"
 msgstr ""
 
@@ -287,31 +287,31 @@ msgstr ""
 msgid "pass"
 msgstr ""
 
-#: src/raider-window.blp:25
+#: src/raider-window.blp:26
 msgid "Shred"
 msgstr ""
 
-#: src/raider-window.blp:35
+#: src/raider-window.blp:36
 msgid "Abort"
 msgstr ""
 
-#: src/raider-window.blp:71
+#: src/raider-window.blp:72
 msgid "Add files or drop here"
 msgstr ""
 
-#: src/raider-window.blp:94
+#: src/raider-window.blp:95
 msgid "New Window"
 msgstr ""
 
-#: src/raider-window.blp:100
+#: src/raider-window.blp:101
 msgid "Preferences"
 msgstr ""
 
-#: src/raider-window.blp:104
+#: src/raider-window.blp:105
 msgid "Help"
 msgstr ""
 
-#: src/raider-window.blp:108
+#: src/raider-window.blp:109
 msgid "About File Shredder"
 msgstr ""
 
