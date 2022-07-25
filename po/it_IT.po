@@ -128,7 +128,7 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
 msgid "Number of bytes to shred entry"
-msgstr ""Numero di byte da distruggere"
+msgstr "Numero di byte da distruggere"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:38
 msgid ""

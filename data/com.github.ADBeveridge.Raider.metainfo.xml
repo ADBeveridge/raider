@@ -10,6 +10,17 @@
     that you do not want to be recovered. File Shredder has a comprehensive set
     of preferences and progress tracking for each file.</p>
   </description>
+    <kudos>
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <content_rating type="oars-1.1"/>
+  <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
+  <url type="homepage">https://github.com/ADBeveridge/raider</url>
+  <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
+  <update_contact>adbeveridge@protonmail.com</update_contact>
+  <developer_name>Alan Beveridge</developer_name>
+  <translation type="gettext">raider</translation>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
@@ -39,16 +50,5 @@
       </description>
     </release>
   </releases>
-  <kudos>
-    <kudo>ModernToolkit</kudo>
-    <kudo>HiDpiIcon</kudo>
-  </kudos>
-  <content_rating type="oars-1.1"/>
-  <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
-  <url type="homepage">https://github.com/ADBeveridge/raider</url>
-  <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
-  <update_contact>adbeveridge@protonmail.com</update_contact>
-  <developer_name>Alan Beveridge</developer_name>
-  <translation type="gettext">raider</translation>
 </component>
 
