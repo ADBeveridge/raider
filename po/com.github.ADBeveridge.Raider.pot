@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 12:55-0700\n"
+"POT-Creation-Date: 2022-07-27 15:54-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:9
-#: src/raider-window.blp:55
+#: src/raider-application.c:103 src/raider-window.blp:10
+#: src/raider-window.blp:33
 msgid "File Shredder"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgstr ""
 msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr ""
 
-#: src/raider-application.c:73
+#: src/raider-application.c:73 src/raider-window.blp:26
 msgid "Add Files"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-application.c:74 src/raider-window.blp:46
+#: src/raider-application.c:74 src/raider-window.blp:25
 msgid "Add"
 msgstr ""
 
@@ -287,31 +287,31 @@ msgstr ""
 msgid "pass"
 msgstr ""
 
-#: src/raider-window.blp:26
-msgid "Shred"
-msgstr ""
-
-#: src/raider-window.blp:36
-msgid "Abort"
-msgstr ""
-
-#: src/raider-window.blp:72
+#: src/raider-window.blp:51
 msgid "Add files or drop here"
 msgstr ""
 
-#: src/raider-window.blp:95
+#: src/raider-window.blp:82
+msgid "Shred All"
+msgstr ""
+
+#: src/raider-window.blp:94
+msgid "Abort All"
+msgstr ""
+
+#: src/raider-window.blp:110
 msgid "New Window"
 msgstr ""
 
-#: src/raider-window.blp:101
+#: src/raider-window.blp:116
 msgid "Preferences"
 msgstr ""
 
-#: src/raider-window.blp:105
+#: src/raider-window.blp:120
 msgid "Help"
 msgstr ""
 
-#: src/raider-window.blp:109
+#: src/raider-window.blp:124
 msgid "About File Shredder"
 msgstr ""
 
