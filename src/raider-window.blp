@@ -5,6 +5,7 @@ template RaiderWindow : Adw.ApplicationWindow {
   default-width: 800;
   default-height: 600;
   width-request: 360;
+  height-request: 200;
   icon-name: "com.github.ADBeveridge.Raider";
   title: _("File Shredder");
 
@@ -17,36 +18,13 @@ template RaiderWindow : Adw.ApplicationWindow {
       centering-policy: strict;
 
       [start]
-      Gtk.Box controls {
-	spacing: 0;
-        Gtk.Revealer shred_revealer {
-      	  reveal-child: false;
-      	  transition-type: slide_left;
-      	  Gtk.Button shred_button {
-      	    label: _("Shred");
-      	    styles ["destructive-action"]
-      	    margin-end: 6;
-      	  }
-        }
-
-        Gtk.Revealer abort_revealer {
-      	  reveal-child: false;
-      	  transition-type: slide_left;
-      	  Gtk.Button abort_button {
-      	    label: _("Abort");
-      	    styles ["destructive-action"]
-      	    margin-end: 6;
-      	  }
-        }
-
-        Gtk.Revealer open_revealer {
-          reveal-child: true;
-          transition-type: slide_right;
-          Gtk.Button open_button {
-      	    label: _("Add");
-      	    action-name: "app.open";
-      	    margin-end: 6;
-          }
+      Gtk.Revealer open_revealer {
+        reveal-child: true;
+        transition-type: slide_right;
+        Gtk.Button open_button {
+      	  label: _("Add");
+      	  tooltip-text: _("Add Files");
+      	  action-name: "app.open";
         }
       }
 
@@ -61,6 +39,7 @@ template RaiderWindow : Adw.ApplicationWindow {
         menu-model: primary_menu;
       }
     }
+    [content]
     Adw.ToastOverlay toast_overlay {
       Gtk.Box contents_box {
         vexpand: true;
@@ -77,9 +56,45 @@ template RaiderWindow : Adw.ApplicationWindow {
 
           Gtk.StackPage list_page {
             name: "list_page";
-      	    child: Gtk.ScrolledWindow scrolled_window {
-      	      Gtk.ListBox list_box {
-              }
+      	    child: Gtk.Overlay overlay{
+
+      	      child: Gtk.ScrolledWindow scrolled_window {
+      	        Adw.Clamp {
+      	        maximum-size: 700;
+      	          Gtk.ListBox list_box {
+      	            valign: start;
+      	            margin-end: 12;
+      	            margin-start: 12;
+      	            margin-top: 12;
+      	            margin-bottom: 12;
+      	            styles ["boxed-list"]
+                  }
+                }
+              };
+              [overlay]
+              Gtk.Revealer shred_revealer {
+  		reveal-child: false;
+  		transition-type: slide_up;
+  		valign: end;
+  		halign: center;
+  		margin-bottom: 20;
+  		Gtk.Button shred_button {
+    		  label: _("Shred All");
+    		  styles ["destructive-action", "pill"]
+  		}
+	      }
+	      [overlay]
+	      Gtk.Revealer abort_revealer {
+  		reveal-child: false;
+  		transition-type: slide_up;
+  		valign: end;
+  		halign: center;
+  		margin-bottom: 20;
+  		Gtk.Button abort_button {
+    		  label: _("Abort All");
+    		  styles ["destructive-action", "pill"]
+  		}
+	      }
             };
           }
         }
