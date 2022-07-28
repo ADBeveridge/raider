@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-21 14:33-0700\n"
-"PO-Revision-Date: 2022-07-22 20:47+0300\n"
+"POT-Creation-Date: 2022-07-27 15:54-0700\n"
+"PO-Revision-Date: 2022-07-28 23:13+0300\n"
 "Last-Translator: David Lapshin\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:8
-#: src/raider-window.blp:54
+#: src/raider-application.c:103 src/raider-window.blp:10
+#: src/raider-window.blp:33
 msgid "File Shredder"
 msgstr "Файловый шредер"
 
@@ -42,39 +42,39 @@ msgstr ""
 "Файловый шредер имеет комплексный набор параметров, а также отслеживание "
 "прогресса для каждого файла."
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:26
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
+msgid "Alan Beveridge"
+msgstr "Алан Беверидж"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 "Файловый шредер был значительно переписан, с некоторыми изменениями UI, "
 "изменения:"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:28
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Added checking so a file cannot be loaded twice"
 msgstr "Добавлена проверка, поэтому файл не может быть загружен дважды"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:29
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Smooth progress tracking"
 msgstr "Плавное отслеживание прогресса"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:30
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
 msgid "Written using GTK4 and Adwaita"
 msgstr "Написан используя GTK4 и Adwaita"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:31
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr "Уведомления отображаются на рабочем столе, если окно не в фокусе"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:37
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
 "Самый первый выпуск Файлового шредера. Он поддерживает отслеживание "
 "прогресса и может похвастаться интерфейсом, соответствующим GNOME."
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-msgid "Alan Beveridge"
-msgstr "Алан Беверидж"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
 msgid "Hide shredding"
@@ -109,7 +109,6 @@ msgid "Remove method"
 msgstr "Метод удаления"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:22
-#, fuzzy
 msgid "How the obfucticated file will be removed from the filesystem."
 msgstr "Как требуемый файлы будет удален из файловой системы."
 
@@ -126,15 +125,12 @@ msgid "Do not round to next block"
 msgstr "Не округлять до следуюещего блока"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:33
-#, fuzzy
-#| msgid ""
-#| "Do not round file sizes to the next block. Default for irregular files"
 msgid ""
 "Do not round the file to the next block. This is the default for non-regular "
 "files."
 msgstr ""
 "Не округлять размеры файлов до следующего блока. По умолчанию для "
-"нерегулярных файлов"
+"нерегулярных файлов."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
 msgid "Number of bytes to shred entry"
@@ -156,25 +152,22 @@ msgid "The path to the shred executable."
 msgstr "Путь до исполняемого файла измельчения"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:48
-#, fuzzy
 msgid "Whether to allow the source data file to be enabled"
 msgstr "Разрешить ли исходным данным файла быть включенным"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:49
-#, fuzzy
 msgid "If unchecked, the source data file will not be loaded."
-msgstr "Если выключен, исходной файл данных не будет загружен."
+msgstr "Если выключено, исходной файл данных не будет загружен."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:53
 msgid "Overwrite data file"
 msgstr "Перезаписывать файл данных"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:54
-#, fuzzy
 msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr "Где получить данные, чтобы перезаписать файлы-на-измельчения."
 
-#: src/raider-application.c:73
+#: src/raider-application.c:73 src/raider-window.blp:26
 msgid "Add Files"
 msgstr "Добавить файлы"
 
@@ -182,7 +175,7 @@ msgstr "Добавить файлы"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/raider-application.c:74 src/raider-window.blp:45
+#: src/raider-application.c:74 src/raider-window.blp:25
 msgid "Add"
 msgstr "Добавить"
 
@@ -283,7 +276,8 @@ msgstr "Не округлять размеры файлов"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr "Не округлять размеры файлов до следующего блока. По умолчанию для "
+msgstr ""
+"Не округлять размеры файлов до следующего блока. По умолчанию для "
 "нерегулярных файлов"
 
 #: src/raider-preferences.blp:98
@@ -311,31 +305,31 @@ msgstr "удален"
 msgid "pass"
 msgstr "проход"
 
-#: src/raider-window.blp:25
-msgid "Shred"
-msgstr "Измельчить"
-
-#: src/raider-window.blp:35
-msgid "Abort"
-msgstr "Прервать"
-
-#: src/raider-window.blp:71
+#: src/raider-window.blp:51
 msgid "Add files or drop here"
 msgstr "Добавьте файлы или перетащите их сюда"
 
+#: src/raider-window.blp:82
+msgid "Shred All"
+msgstr "Измельчить все"
+
 #: src/raider-window.blp:94
+msgid "Abort All"
+msgstr "Прервать все"
+
+#: src/raider-window.blp:110
 msgid "New Window"
 msgstr "Новое окно"
 
-#: src/raider-window.blp:100
+#: src/raider-window.blp:116
 msgid "Preferences"
 msgstr "Параметры"
 
-#: src/raider-window.blp:104
+#: src/raider-window.blp:120
 msgid "Help"
 msgstr "Справка"
 
-#: src/raider-window.blp:108
+#: src/raider-window.blp:124
 msgid "About File Shredder"
 msgstr "О Файловом шредере"
 
