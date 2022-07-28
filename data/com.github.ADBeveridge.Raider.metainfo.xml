@@ -44,6 +44,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.0.0" date="2022-7-28">
+      <description>
+      <p>Minor fixes, including:</p>
+        <ul>
+          <li>Moved the Shred button to the bottom of the window</li>
+          <li>Support for mobile devices added</li>
+          <li>Rethemed the file rows to standard look</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
       <description>
       <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
@@ -58,7 +68,7 @@
     <release version="0.1.0" date="2021-12-30">
       <description>
         <p>The very first release of File Shredder. It supports progress tracking, and
-	boasts a GNOME compliant interface.</p>
+	      boasts a GNOME compliant interface.</p>
       </description>
     </release>
   </releases>
