@@ -240,6 +240,8 @@ gchar* raider_shred_backend_get_return_result_string(RaiderShredBackend* backend
 void raider_shred_backend_get_return_result_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
 	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(task_data);
+
+	/* Loop through them all. */
 	gchar* last = NULL;
 	gchar* current = g_data_input_stream_read_line(backend->data_stream, NULL, NULL, NULL);
 
@@ -278,6 +280,10 @@ void start(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
 	fsm->state = parse_sender_name;
+
+	/* Perhaps we will stop before this data is collected, so this is initialized. */
+	fsm->current = 1;
+	fsm->number_of_passes = 1;
 }
 
 /* Abort the while loop in analyze_progress. */
