@@ -3,31 +3,32 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-29 18:46+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-07-30 09:34+0200\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
 #: src/raider-application.c:103 src/raider-window.blp:10
 #: src/raider-window.blp:33
 msgid "File Shredder"
-msgstr ""
+msgstr "Broyeur de fichiers"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 #: src/raider-application.c:110
 msgid "Securely delete your files"
-msgstr ""
+msgstr "Supprimez vos fichiers de manière sécurisée"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
@@ -35,316 +36,339 @@ msgid ""
 "that you do not want to be recovered. File Shredder has a comprehensive set "
 "of preferences and progress tracking for each file."
 msgstr ""
+"Broyeur de fichiers est une application simple utilisée pour supprimer de "
+"manière sécurisée des fichiers que vous ne souhaitez pas récupérer. Broyeur "
+"de fichiers dispose d’un ensemble complet de paramètres et d’un suivi de la "
+"progression pour chaque fichier."
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:22
 msgid "Alan Beveridge"
-msgstr ""
+msgstr "Alan Beveridge"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:49
 msgid "Minor fixes, including:"
-msgstr ""
+msgstr "Corrections mineures, incluant :"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Moved the Shred button to the bottom of the window"
-msgstr ""
+msgstr "Le bouton Broyer a été déplacé en bas de la fenêtre"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Support for mobile devices added"
-msgstr ""
+msgstr "Ajout du support des appareils mobiles"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:53
 msgid "Rethemed the file rows to standard look"
-msgstr ""
+msgstr "Les rangées de dossiers ont été remodelées pour un look standard"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
+msgstr "Réécriture significative de Broyeur de fichiers,"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:61
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
+"Ajout d’une vérification pour qu’un fichier ne puisse pas être chargé deux "
+"fois"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:62
 msgid "Smooth progress tracking"
-msgstr ""
+msgstr "Suivi fluide de la progression"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:63
 msgid "Written using GTK4 and Adwaita"
-msgstr ""
+msgstr "Écrit avec GTK4 et Adwaita"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:64
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
+"Les notifications de bureau sont affichées si la fenêtre n’est pas centrée"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
+"Première version de Broyeur de fichiers. Elle comprend un suivi de la "
+"progression, et peut se vanter d’une interface correspondant aux lignes "
+"directrices de GNOME."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
 msgid "Hide shredding"
-msgstr ""
+msgstr "Cacher le broyage"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:6
 msgid ""
 "Whether to hide shredding. This is done by overwriting the file(s) with "
 "zeros."
 msgstr ""
+"Masque le broyage des fichiers. Cela est fait en écrasant le(s) fichier(s) "
+"avec des zéros."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:10
 msgid "Remove file"
-msgstr ""
+msgstr "Supprimer le fichier"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:11
 msgid "Whether to remove the file after shredding it."
-msgstr ""
+msgstr "Supprime le fichier après son broyage."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:15
 #: src/raider-preferences.blp:34
 msgid "Number of passes"
-msgstr ""
+msgstr "Nombre de passages"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:16
 msgid "How many times the file will be overwritten with random data."
-msgstr ""
+msgstr "Nombre de fois où le fichier sera écrasé avec des données aléatoires."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:21
 msgid "Remove method"
-msgstr ""
+msgstr "Méthode de suppression"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:22
 msgid "How the obfucticated file will be removed from the filesystem."
-msgstr ""
+msgstr "Comment le fichier obfuctifié sera supprimé du système de fichiers."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:27
 msgid "Override Permisions"
-msgstr ""
+msgstr "Écraser les permissions"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:28
 msgid "If you do not have the neccessary permissions, override them."
-msgstr ""
+msgstr "Si vous n’avez pas les permissions nécessaires, écrasez-les."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:32
 msgid "Do not round to next block"
-msgstr ""
+msgstr "Ne pas arrondir à l’unité supérieure"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:33
 msgid ""
 "Do not round the file to the next block. This is the default for non-regular "
 "files."
 msgstr ""
+"N’arrondit pas les tailles des fichiers à l’unité supérieure. Par défaut "
+"pour les fichiers irréguliers"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
 msgid "Number of bytes to shred entry"
-msgstr ""
+msgstr "Nombre d’octets à broyer"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:38
 msgid ""
 "Shred the number of bytes you want, and leave the rest of the file untouched."
 msgstr ""
+"Broyez le nombre d’octets que vous souhaitez, et laissez le reste du fichier "
+"intouché."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:43
 msgid "Shred executable"
-msgstr ""
+msgstr "Exécutable de broyage"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:44
 msgid "The path to the shred executable."
-msgstr ""
+msgstr "Le chemin d'accès à l'exécutable de broyage."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:48
 msgid "Whether to allow the source data file to be enabled"
-msgstr ""
+msgstr "Si l’activation du fichier de données source doit être autorisée"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:49
 msgid "If unchecked, the source data file will not be loaded."
 msgstr ""
+"Si cette option n’est pas cochée, le fichier de données source ne sera pas "
+"chargé."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:53
 msgid "Overwrite data file"
-msgstr ""
+msgstr "Remplacer le fichier de données"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:54
 msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr ""
+msgstr "Où obtenir les données utilisées pour écraser les fichiers à broyer."
 
 #: src/raider-application.c:73 src/raider-window.blp:26
 msgid "Add Files"
-msgstr ""
+msgstr "Ajouter des fichiers"
 
 #: src/raider-application.c:74
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/raider-application.c:74 src/raider-window.blp:25
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: src/raider-application.c:109
 msgid "1.1.0"
-msgstr ""
+msgstr "1.1.0"
 
 #: src/raider-application.c:114
 msgid "translator-credits"
-msgstr ""
+msgstr "Irénée Thirion"
 
 #. Notification stuff.
 #: src/raider-file-row.c:165 src/raider-file-row.c:205
 msgid "Shredded "
-msgstr ""
+msgstr "Broyé(s)"
 
 #: src/raider-preferences.blp:8
 msgid "_Basic"
-msgstr ""
+msgstr "Paramètres _basiques"
 
 #: src/raider-preferences.blp:10
 msgid "Basic"
-msgstr ""
+msgstr "Paramètres basiques"
 
 #: src/raider-preferences.blp:13
 msgid "Remove File"
-msgstr ""
+msgstr "Supprimer le fichier"
 
 #: src/raider-preferences.blp:14
 msgid "Whether to remove the file after shredding"
-msgstr ""
+msgstr "Supprime le fichier après le broyage"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
-msgstr ""
+msgstr "Masquer le broyage"
 
 #: src/raider-preferences.blp:25
 msgid "Whether to hide the fact the the files have been shredded"
-msgstr ""
+msgstr "Masque le fait que les fichiers ont été broyés"
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
-msgstr ""
+msgstr "Nombre de fois où le fichier doit être broyé"
 
 #: src/raider-preferences.blp:47
 msgid "Advanced"
-msgstr ""
+msgstr "Paramètres avancés"
 
 #: src/raider-preferences.blp:49
 msgid "Remove Method"
-msgstr ""
+msgstr "Méthode de suppression"
 
 #: src/raider-preferences.blp:50
 msgid "How to remove the files from the fileystem"
-msgstr ""
+msgstr "Comment supprimer les fichiers du système de fichiers"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:127
 msgid "Wipesync"
-msgstr ""
+msgstr "Wipesync"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipe"
-msgstr ""
+msgstr "Wipe"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:129
 msgid "Unlink"
-msgstr ""
+msgstr "Unlink"
 
 #: src/raider-preferences.blp:56
 msgid "Overwrite data source"
-msgstr ""
+msgstr "Écraser la source de données"
 
 #: src/raider-preferences.blp:57
 msgid ""
 "Where to get the data to overwrite the files with. Disabled at every startup"
 msgstr ""
+"Où obtenir les données utilisées pour écraser les fichiers. Désactivé à "
+"chaque démarrage"
 
 #: src/raider-preferences.blp:65
 msgid "None Selected"
-msgstr ""
+msgstr "Aucun sélectionné"
 
 #: src/raider-preferences.blp:69
 msgid "Select File"
-msgstr ""
+msgstr "Sélectionner un fichier"
 
 #: src/raider-preferences.blp:76
 msgid "Number of bytes to shred"
-msgstr ""
+msgstr "Nombre d’octets à broyer"
 
 #: src/raider-preferences.blp:77
 msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr ""
+msgstr "Partie du fichier à broyer. 0 pour broyer tout le fichier"
 
 #: src/raider-preferences.blp:89
 msgid "Do not round file sizes"
-msgstr ""
+msgstr "Ne pas arrondir les tailles des fichiers"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
 msgstr ""
+"N’arrondit pas les tailles des fichiers à l’unité supérieure. Par défaut "
+"pour les fichiers irréguliers"
 
 #: src/raider-preferences.blp:98
 msgid "Override file permissions"
-msgstr ""
+msgstr "Écraser les autorisations de fichiers"
 
 #: src/raider-preferences.blp:99
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
 msgstr ""
+"Écrase les permissions de fichiers dans le cas de permissions insuffisantes"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Estimating..."
-msgstr ""
+msgstr "Estimation…"
 
 #: src/raider-shred-backend.c:363
 msgid "failed"
-msgstr ""
+msgstr "échec"
 
 #: src/raider-shred-backend.c:365
 msgid "removed"
-msgstr ""
+msgstr "supprimé"
 
 #: src/raider-shred-backend.c:369
 msgid "pass"
-msgstr ""
+msgstr "passer"
 
 #: src/raider-window.blp:51
 msgid "Add files or drop here"
-msgstr ""
+msgstr "Ajoutez ou déposez des fichiers ici"
 
 #: src/raider-window.blp:82
 msgid "Shred All"
-msgstr ""
+msgstr "Broyer tout"
 
 #: src/raider-window.blp:94
 msgid "Abort All"
-msgstr ""
+msgstr "Abroger tout"
 
 #: src/raider-window.blp:110
 msgid "New Window"
-msgstr ""
+msgstr "Nouvelle fenêtre"
 
 #: src/raider-window.blp:116
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 #: src/raider-window.blp:120
 msgid "Help"
-msgstr ""
+msgstr "Aide"
 
 #: src/raider-window.blp:124
 msgid "About File Shredder"
-msgstr ""
+msgstr "À propos de Broyeur de fichiers"
 
 #: src/raider-window.c:203
 msgid "Could not remove file from quick list."
-msgstr ""
+msgstr "Impossible de retirer le fichier de la liste rapide."
 
 #: src/raider-window.c:241
 msgid "Directories are not supported"
-msgstr ""
+msgstr "Les répertoires ne sont pas supportés"
 
 #: src/raider-window.c:260
 #, c-format
 msgid "“%s” is already loaded"
-msgstr ""
+msgstr "« %s » est déjà chargé"
 
 #: src/raider-window.c:273
 #, c-format
 msgid "Cannot write to “%s”"
-msgstr ""
+msgstr "Impossible d’écrire dans « %s »"
