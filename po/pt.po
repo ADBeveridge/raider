@@ -1,18 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# inkhorn <net.ezrkf@simplelogin.com>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-31 16:44-0700\n"
+"POT-Creation-Date: 2022-07-31 10:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: inkhorn\n"
+"Language-Team: \n"
+"Language: pt_br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,12 +22,12 @@ msgstr ""
 #: src/raider-application.c:103 src/raider-window.blp:10
 #: src/raider-window.blp:33
 msgid "File Shredder"
-msgstr ""
+msgstr "File Shredder"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 #: src/raider-application.c:110
 msgid "Securely delete your files"
-msgstr ""
+msgstr "Apague seus archivos de forma segura"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
@@ -35,320 +35,327 @@ msgid ""
 "that you do not want to be recovered. File Shredder has a comprehensive set "
 "of preferences and progress tracking for each file."
 msgstr ""
+"File Shredder é um programa utilizado para apagar seus arquivos de forma segura, "
+"que impossibilita a recuperação deles. File Shredder tem um amplo conjunto "
+"de preferências com acompanhamento do progresso para cada arquivo."
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:22
 msgid "Alan Beveridge"
-msgstr ""
+msgstr "Alan Beveridge"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:49
 msgid "Minor fixes, including:"
-msgstr ""
+msgstr "Pequenos consertos, alguns deles:"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Moved the Shred button to the bottom of the window"
-msgstr ""
+msgstr "Movido o botão Triturar à parte inferior da janela"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Support for mobile devices added"
-msgstr ""
+msgstr "Adicionado suporte para dispositivos móveis"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:53
 msgid "Rethemed the file rows to standard look"
-msgstr ""
+msgstr "Reintegração das linhas de arquivo ao estilo padrão  "
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
+msgstr "Modificação significativa de código do File Shredder, com algumas alterações da IU"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:61
 msgid "Added checking so a file cannot be loaded twice"
-msgstr ""
+msgstr "Adicionada a verificação para que nenhum arquivo possa ser carregado duas vezes"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:62
 msgid "Smooth progress tracking"
-msgstr ""
+msgstr "Acompanhamento do progresso consistente"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:63
 msgid "Written using GTK4 and Adwaita"
-msgstr ""
+msgstr "Feito usando GTK4 e Adwaita"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:64
 msgid "Desktop notifications are shown if the window is not focused"
-msgstr ""
+msgstr "As notificações na área de trabalho são mostradas quando a janela não estiver focada"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
+"O primeiro lançamento do File Shredder. Com suporte ao acompanhamento do progresso e "
+"uma interface compatível com o GNOME."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
 msgid "Hide shredding"
-msgstr ""
+msgstr "Mascarar trituração"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:6
 msgid ""
 "Whether to hide shredding. This is done by overwriting the file(s) with "
 "zeros."
 msgstr ""
+"Se mascarar a trituração. Isto é feito substituindo o(s) arquivo(s) com "
+"zeros."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:10
 msgid "Remove file"
-msgstr ""
+msgstr "Remover arquivo"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:11
 msgid "Whether to remove the file after shredding it."
-msgstr ""
+msgstr "Se o arquivo deve ser removido após a trituração"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:15
 #: src/raider-preferences.blp:34
 msgid "Number of passes"
-msgstr ""
+msgstr "Quantas vezes"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:16
 msgid "How many times the file will be overwritten with random data."
-msgstr ""
+msgstr "Quantas vezes o arquivo será substituído com dados aleatórios"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:21
 msgid "Remove method"
-msgstr ""
+msgstr "Método de remoção"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:22
 msgid "How the obfucticated file will be removed from the filesystem."
-msgstr ""
+msgstr "Como o arquivo ofuscado será removido do sistema de arquivos."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:27
 msgid "Override Permisions"
-msgstr ""
+msgstr "Ignorar permissões"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:28
 msgid "If you do not have the neccessary permissions, override them."
-msgstr ""
+msgstr "Se você não tiver permissões suficientes, invalide-as."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:32
 msgid "Do not round to next block"
-msgstr ""
+msgstr "Não passar para o próximo bloco"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:33
 msgid ""
 "Do not round the file to the next block. This is the default for non-regular "
 "files."
 msgstr ""
+"Não arredondar o arquivo ao próximo bloco. Este é o padrão para os arquivos "
+"não-regulares."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
 msgid "Number of bytes to shred entry"
-msgstr ""
+msgstr "Número de bytes para trituração"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:38
 msgid ""
 "Shred the number of bytes you want, and leave the rest of the file untouched."
 msgstr ""
+"Triturar o número de bytes que você quiser e deixar o resto do arquivo inalterado."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:43
 msgid "Shred executable"
-msgstr ""
+msgstr "Triturar executável"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:44
 msgid "The path to the shred executable."
-msgstr ""
+msgstr "O caminho para o executável triturado."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:48
 msgid "Whether to allow the source data file to be enabled"
-msgstr ""
+msgstr "Se permitir que o arquivo de dados de origem seja ativado"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:49
 msgid "If unchecked, the source data file will not be loaded."
-msgstr ""
+msgstr "Se não for selecionado, o arquivo de dados de origem não será carregado."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:53
 msgid "Overwrite data file"
-msgstr ""
+msgstr "Substituir arquivo de dados"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:54
 msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr ""
+msgstr "De onde obter dados para substituir os arquivos que sejam triturados."
 
 #: src/raider-application.c:73 src/raider-window.blp:26
 msgid "Add Files"
-msgstr ""
+msgstr "Adicionar arquivos"
 
 #: src/raider-application.c:74
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/raider-application.c:74 src/raider-window.blp:25
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: src/raider-application.c:109
 msgid "1.1.0"
-msgstr ""
+msgstr "1.1.0"
 
 #: src/raider-application.c:114
 msgid "translator-credits"
-msgstr ""
+msgstr "inkhorn"
 
 #. Notification stuff.
 #: src/raider-file-row.c:165 src/raider-file-row.c:205
 msgid "Shredded "
-msgstr ""
+msgstr "Triturado"
 
 #: src/raider-preferences.blp:8
 msgid "_Basic"
-msgstr ""
+msgstr "_Básico"
 
 #: src/raider-preferences.blp:10
 msgid "Basic"
-msgstr ""
+msgstr "Básico"
 
 #: src/raider-preferences.blp:13
 msgid "Remove File"
-msgstr ""
+msgstr "Remover arquivo"
 
 #: src/raider-preferences.blp:14
 msgid "Whether to remove the file after shredding"
-msgstr ""
+msgstr "Se o arquivo deve ser removido após a trituração"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
-msgstr ""
+msgstr "Mascarar trituração"
 
 #: src/raider-preferences.blp:25
 msgid "Whether to hide the fact the the files have been shredded"
-msgstr ""
+msgstr "Se mascarar o fato de que os arquivos foram triturados"
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
-msgstr ""
+msgstr "Quantas vezes triturar o arquivo"
 
 #: src/raider-preferences.blp:47
 msgid "Advanced"
-msgstr ""
+msgstr "Avançado"
 
 #: src/raider-preferences.blp:49
 msgid "Remove Method"
-msgstr ""
+msgstr "Método de remoção"
 
 #: src/raider-preferences.blp:50
 msgid "How to remove the files from the fileystem"
-msgstr ""
+msgstr "Como remover arquivos do sistema de arquivos"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:127
 msgid "Wipesync"
-msgstr ""
+msgstr "Wipesync"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipe"
-msgstr ""
+msgstr "Limpar"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:129
 msgid "Unlink"
-msgstr ""
+msgstr "Desvincular"
 
 #: src/raider-preferences.blp:56
 msgid "Overwrite data source"
-msgstr ""
+msgstr "Substituir a origem de dados"
 
 #: src/raider-preferences.blp:57
 msgid ""
 "Where to get the data to overwrite the files with. Disabled at every startup"
 msgstr ""
+"De onde obter dados para substituição de arquivos. Desativado em cada inicialização"
 
 #: src/raider-preferences.blp:65
 msgid "None Selected"
-msgstr ""
+msgstr "Nenhum selecionado"
 
 #: src/raider-preferences.blp:69
 msgid "Select File"
-msgstr ""
+msgstr "Selecione arquivo"
 
 #: src/raider-preferences.blp:76
 msgid "Number of bytes to shred"
-msgstr ""
+msgstr "Número de bytes para trituração"
 
 #: src/raider-preferences.blp:77
 msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr ""
+msgstr "Até que ponto o arquivo deve ser triturado. 0 para triturar o arquivo inteiro"
 
 #: src/raider-preferences.blp:89
 msgid "Do not round file sizes"
-msgstr ""
+msgstr "Não arredondar tamanhos de arquivos"
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr ""
+msgstr "Não arredondar os tamanhos dos arquivos para o próximo bloco. Padrão para arquivos irregulares"
 
 #: src/raider-preferences.blp:98
 msgid "Override file permissions"
-msgstr ""
+msgstr "Invalidar as permissões de arquivos"
 
 #: src/raider-preferences.blp:99
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
-msgstr ""
+msgstr "Se deveria substituir as permissões dos arquivos quando não tiver permissões suficientes"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Estimating..."
-msgstr ""
+msgstr "Calculando..."
 
-#: src/raider-shred-backend.c:370
+#: src/raider-shred-backend.c:363
 msgid "failed"
-msgstr ""
+msgstr "falhou"
 
-#: src/raider-shred-backend.c:372
-msgid "removing"
-msgstr ""
-
-#: src/raider-shred-backend.c:375
+#: src/raider-shred-backend.c:365
 msgid "removed"
-msgstr ""
+msgstr "removido"
 
-#: src/raider-shred-backend.c:379
+#: src/raider-shred-backend.c:369
 msgid "pass"
-msgstr ""
+msgstr "passe"
 
 #: src/raider-window.blp:51
 msgid "Add files or drop here"
-msgstr ""
+msgstr "Adicione arquivos ou solte aqui"
 
 #: src/raider-window.blp:82
 msgid "Shred All"
-msgstr ""
+msgstr "Triturar tudo"
 
 #: src/raider-window.blp:94
 msgid "Abort All"
-msgstr ""
+msgstr "Abortar tudo"
 
 #: src/raider-window.blp:110
 msgid "New Window"
-msgstr ""
+msgstr "Nova janela"
 
 #: src/raider-window.blp:116
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 #: src/raider-window.blp:120
 msgid "Help"
-msgstr ""
+msgstr "Ajuda"
 
 #: src/raider-window.blp:124
 msgid "About File Shredder"
-msgstr ""
+msgstr "Sobre o File Shredder"
 
 #: src/raider-window.c:203
 msgid "Could not remove file from quick list."
-msgstr ""
+msgstr "Não foi possível remover o arquivo da lista rápida."
 
 #: src/raider-window.c:241
 msgid "Directories are not supported"
-msgstr ""
+msgstr "Pastas não são suportadas"
 
 #: src/raider-window.c:260
 #, c-format
 msgid "“%s” is already loaded"
-msgstr ""
+msgstr "“%s” já está carregado"
 
 #: src/raider-window.c:273
 #, c-format
 msgid "Cannot write to “%s”"
-msgstr ""
+msgstr "Não foi possível escrever em “%s”"
