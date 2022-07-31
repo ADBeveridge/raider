@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-29 18:46+0200\n"
-"PO-Revision-Date: 2022-07-30 09:34+0200\n"
-"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+"POT-Creation-Date: 2022-07-31 16:44-0700\n"
+"PO-Revision-Date: 2022-07-31 16:52-0700\n"
+"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -315,15 +315,21 @@ msgstr ""
 msgid "Estimating..."
 msgstr "Estimation…"
 
-#: src/raider-shred-backend.c:363
+#: src/raider-shred-backend.c:370
 msgid "failed"
 msgstr "échec"
 
-#: src/raider-shred-backend.c:365
+#: src/raider-shred-backend.c:372
+#, fuzzy
+#| msgid "removed"
+msgid "removing"
+msgstr "supprimé"
+
+#: src/raider-shred-backend.c:375
 msgid "removed"
 msgstr "supprimé"
 
-#: src/raider-shred-backend.c:369
+#: src/raider-shred-backend.c:379
 msgid "pass"
 msgstr "passer"
 

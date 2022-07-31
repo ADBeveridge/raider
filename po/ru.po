@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 15:54-0700\n"
-"PO-Revision-Date: 2022-07-28 23:13+0300\n"
-"Last-Translator: David Lapshin\n"
+"POT-Creation-Date: 2022-07-31 16:44-0700\n"
+"PO-Revision-Date: 2022-07-31 16:54-0700\n"
+"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -47,28 +47,44 @@ msgid "Alan Beveridge"
 msgstr "Алан Беверидж"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:49
+msgid "Minor fixes, including:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+msgid "Moved the Shred button to the bottom of the window"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
+msgid "Support for mobile devices added"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
+msgid "Rethemed the file rows to standard look"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 "Файловый шредер был значительно переписан, с некоторыми изменениями UI, "
 "изменения:"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
 msgid "Added checking so a file cannot be loaded twice"
 msgstr "Добавлена проверка, поэтому файл не может быть загружен дважды"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
 msgid "Smooth progress tracking"
 msgstr "Плавное отслеживание прогресса"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
 msgid "Written using GTK4 and Adwaita"
 msgstr "Написан используя GTK4 и Adwaita"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr "Уведомления отображаются на рабочем столе, если окно не в фокусе"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -180,8 +196,8 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/raider-application.c:109
-msgid "1.0.0.alpha1"
-msgstr "1.0.0.alpha1"
+msgid "1.1.0"
+msgstr ""
 
 #: src/raider-application.c:114
 msgid "translator-credits"
@@ -293,15 +309,21 @@ msgstr "Переопределить права доступа файла в с�
 msgid "Estimating..."
 msgstr "Оценка..."
 
-#: src/raider-shred-backend.c:363
+#: src/raider-shred-backend.c:370
 msgid "failed"
 msgstr "не удалось"
 
-#: src/raider-shred-backend.c:365
+#: src/raider-shred-backend.c:372
+#, fuzzy
+#| msgid "removed"
+msgid "removing"
+msgstr "удален"
+
+#: src/raider-shred-backend.c:375
 msgid "removed"
 msgstr "удален"
 
-#: src/raider-shred-backend.c:369
+#: src/raider-shred-backend.c:379
 msgid "pass"
 msgstr "проход"
 
@@ -350,3 +372,6 @@ msgstr "“%s” уже загружен"
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Не удалось записать в “%s”"
+
+#~ msgid "1.0.0.alpha1"
+#~ msgstr "1.0.0.alpha1"
