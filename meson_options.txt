@@ -1,5 +1,0 @@
-option('nautilus-actions',
-  type : 'boolean', 
-  value : false, 
-  description : 'Build the nautilus context menu actions'
-)

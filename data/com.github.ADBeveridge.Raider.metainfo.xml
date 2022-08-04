@@ -52,6 +52,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.1" date="2022-8-03">
+      <description>
+      <p>Bug fixes and translation updates</p>
+        <ul>
+          <li>Added the French translation</li>
+          <li>Added the Portuguese translation</li>
+          <li>Updated the Russian translation</li>
+          <li>Fixed progress retrival bug</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2022-7-28">
       <description>
       <p>Minor fixes, including:</p>
