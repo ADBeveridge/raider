@@ -1,3 +1,4 @@
+
 {
     "app-id" : "com.github.ADBeveridge.Raider",
     "runtime" : "org.gnome.Platform",
@@ -8,7 +9,8 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
-        "--filesystem=host"
+        "--filesystem=host",
+        "--device=dri"
     ],
     "cleanup" : [
         "/include",
@@ -35,7 +37,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/ad/Projects/raider"
+                    "url" : "https://github.com/ADBeveridge/raider",
+                    "branch" : "main"
                 }
             ]
         }
