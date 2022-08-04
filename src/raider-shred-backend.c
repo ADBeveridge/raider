@@ -367,16 +367,23 @@ void parse_indicator_token(void *ptr_to_fsm)
 	struct _fsm *fsm = ptr_to_fsm;
 	printf("%s\n", fsm->tokens[0]);
 
+	/* Translators: make sure this correspond with the output of shred on your system. */
 	if (g_strcmp0(_("failed"), fsm->tokens[0]) == 0) {
 		fsm->state = parse_error;
-	}else if (g_strcmp0(_("removing"), fsm->tokens[0]) == 0) {
+	}
+	/* Translators: make sure this correspond with the output of shred on your system. */
+	else if (g_strcmp0(_("removing"), fsm->tokens[0]) == 0) {
 		fsm->state = stop;
 		return;
-	}else if (g_strcmp0(_("removed"), fsm->tokens[0]) == 0) {
+	}
+	/* Translators: make sure this correspond with the output of shred on your system. */
+	else if (g_strcmp0(_("removed"), fsm->tokens[0]) == 0) {
 		fsm->state = stop; // No more tokens.
 		*fsm->shred_state = g_strdup("good");
 		return;
-	}else if (g_strcmp0(_("pass"), fsm->tokens[0]) == 0) {
+	}
+	/* Translators: make sure this correspond with the output of shred on your system. */
+	else if (g_strcmp0(_("pass"), fsm->tokens[0]) == 0) {
 		fsm->state = parse_fraction;
 	}
 
