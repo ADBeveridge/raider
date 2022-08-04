@@ -60,6 +60,7 @@
           <li>Added the Portuguese translation</li>
           <li>Updated the Russian translation</li>
           <li>Fixed progress retrieval bug</li>
+          <li>Fixed display problems</li>
         </ul>
       </description>
     </release>
