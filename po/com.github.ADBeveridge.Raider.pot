@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 19:51-0700\n"
+"POT-Creation-Date: 2022-08-04 19:07-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,42 +41,66 @@ msgid "Alan Beveridge"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:57
-msgid "Minor fixes, including:"
+msgid "Bug fixes and translation updates"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "Moved the Shred button to the bottom of the window"
+msgid "Added the French translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:60
-msgid "Support for mobile devices added"
+msgid "Added the Portuguese translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Rethemed the file rows to standard look"
+msgid "Updated the Russian translation"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
+msgid "Fixed progress retrieval bug"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+msgid "Fixed display problems"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Added checking so a file cannot be loaded twice"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
-msgid "Smooth progress tracking"
+msgid "Minor fixes, including:"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-msgid "Written using GTK4 and Adwaita"
+msgid "Moved the Shred button to the bottom of the window"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:72
+msgid "Support for mobile devices added"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
+msgid "Rethemed the file rows to standard look"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -181,7 +205,7 @@ msgid "Add"
 msgstr ""
 
 #: src/raider-application.c:109
-msgid "1.1.0"
+msgid "1.1.1"
 msgstr ""
 
 #: src/raider-application.c:114
@@ -292,22 +316,22 @@ msgid "Estimating..."
 msgstr ""
 
 #. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:371
+#: src/raider-shred-backend.c:387
 msgid "failed"
 msgstr ""
 
 #. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:375
+#: src/raider-shred-backend.c:391
 msgid "removing"
 msgstr ""
 
 #. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:380
+#: src/raider-shred-backend.c:396
 msgid "removed"
 msgstr ""
 
 #. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:386
+#: src/raider-shred-backend.c:402
 msgid "pass"
 msgstr ""
 
