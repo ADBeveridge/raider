@@ -47,6 +47,7 @@ void stop(void *ptr_to_fsm);
 void start(void *ptr_to_fsm);
 void parse_shred_data_type(void *ptr_to_fsm);
 void parse_sub_percentage(void *ptr_to_fsm);
+void next_word(void *ptr_to_fsm);
 /* End of parsing data.                     */
 
 struct _RaiderShredBackend {
@@ -232,11 +233,13 @@ gdouble raider_shred_backend_get_progress(RaiderShredBackend* backend)
 	return progress;
 }
 
+/* When that thread is done, then this can be called. Returns NULL if not set. */
 gchar* raider_shred_backend_get_return_result_string(RaiderShredBackend* backend)
 {
 	return backend->shred_state;
 }
 
+/* This is run asynchronously. */
 void raider_shred_backend_get_return_result_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
 	RaiderShredBackend* backend = RAIDER_SHRED_BACKEND(task_data);
@@ -257,13 +260,15 @@ void raider_shred_backend_get_return_result_thread(GTask* task, gpointer source_
 		return; // The callback specified by the get_return_result function is called here.
 	}
 
-	// Otherwise, we need to grab the return message.
+	// Otherwise, we need to grab the return message. fsm set the shred_state variable.
 	gchar **tokens = g_strsplit(last, " ", 0);
 	struct _fsm fsm = { start, tokens, backend->filename, backend->settings, &backend->progress, &backend->shred_state };
 	while (fsm.state != NULL) {
 		fsm.state(&fsm);
 	}
 	g_free(last);
+
+	// The callback specified by the get_return_result function is called here.
 }
 
 /* This function returns immediately, launching a g_task to read the output one final time. */
@@ -286,6 +291,23 @@ void start(void *ptr_to_fsm)
 	fsm->number_of_passes = 1;
 }
 
+/* A wrapper to go to the next token. */
+void next_word(void *ptr_to_fsm)
+{
+	struct _fsm *fsm = ptr_to_fsm;
+
+	if (fsm->tokens[1] != NULL)
+	{
+		fsm->tokens++;
+		fsm->incremented_number++;
+	}
+	else
+	{
+		fsm->state = stop;
+		return;
+	}
+}
+
 /* Abort the while loop in analyze_progress. */
 void stop(void *ptr_to_fsm)
 {
@@ -297,6 +319,7 @@ void stop(void *ptr_to_fsm)
 	for (i = 0; i < fsm->incremented_number; i++) {
 		fsm->tokens--;
 	}
+	/* Freed in the callee. */
 
 	*fsm->progress = (fsm->current / fsm->number_of_passes);
 }
@@ -308,9 +331,8 @@ void parse_sender_name(void *ptr_to_fsm)
 	fsm->state = parse_filename;
 
 	/* Get the path to 'shred' and compare. */
-	gchar *path_to_shred = g_strconcat(g_settings_get_string(fsm->settings,
-								 "shred-executable"),
-					   ":", NULL);
+	gchar *path_to_shred = g_strconcat(g_settings_get_string(fsm->settings, "shred-executable"),
+									   ":", NULL);
 
 
 	if (g_strcmp0(path_to_shred, fsm->tokens[0]) != 0) {
@@ -322,9 +344,7 @@ void parse_sender_name(void *ptr_to_fsm)
 
 	g_free(path_to_shred);
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
 void parse_filename(void *ptr_to_fsm)
@@ -349,11 +369,8 @@ void parse_filename(void *ptr_to_fsm)
 	/* The actual comparison. This is for if the filename has multiple spaces in it. */
 	int number = 0;
 	while (placeholder[number] != NULL) {
-		// TODO: Actually check if the filename is the same as the one given. */
-
-		/* Point to the next word for how may spaces there are in the filename. */
-		fsm->tokens++;
-		fsm->incremented_number++;
+		/* We don't check the filename because shred concats a colon at the end. */
+		next_word (ptr_to_fsm);
 
 		/* Update the number of spaces. */
 		number++;
@@ -365,7 +382,6 @@ void parse_filename(void *ptr_to_fsm)
 void parse_indicator_token(void *ptr_to_fsm)
 {
 	struct _fsm *fsm = ptr_to_fsm;
-	printf("%s\n", fsm->tokens[0]);
 
 	/* Translators: make sure this correspond with the output of shred on your system. */
 	if (g_strcmp0(_("failed"), fsm->tokens[0]) == 0) {
@@ -387,9 +403,7 @@ void parse_indicator_token(void *ptr_to_fsm)
 		fsm->state = parse_fraction;
 	}
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
 void parse_error(void *ptr_to_fsm)
@@ -421,8 +435,7 @@ void parse_error(void *ptr_to_fsm)
 
 	*fsm->shred_state = message;
 
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
 /* Parses the fraction that is right after the 'pass' word. */
@@ -446,9 +459,7 @@ void parse_fraction(void *ptr_to_fsm)
 	// Pretty safe to say.
 	*fsm->shred_state = g_strdup("good");
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
 void parse_shred_data_type(void *ptr_to_fsm)
@@ -470,9 +481,7 @@ void parse_shred_data_type(void *ptr_to_fsm)
 
 	g_free(last_bit);
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
 /* Called with enormous files. */
@@ -490,8 +499,6 @@ void parse_sub_percentage(void *ptr_to_fsm)
 	/* Update the current pass percentage because we have more info. */
 	fsm->current = fsm->current + percentage;
 
-	/* Point to the next word. */
-	fsm->tokens++;
-	fsm->incremented_number++;
+	next_word (ptr_to_fsm);
 }
 
