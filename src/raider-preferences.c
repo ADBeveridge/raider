@@ -35,7 +35,7 @@ struct _RaiderPreferences {
 	AdwComboRow *remove_method_combo_row;
 	GtkButton *df_button;
 	AdwActionRow *df_row;
-	GtkCheckButton* enable_df_checkbutton;
+	GtkCheckButton* enable_df_switch;
 
 	GSettings *settings;
 };
@@ -65,7 +65,7 @@ static void raider_preferences_class_init(RaiderPreferencesClass *class)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, remove_method_combo_row);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, df_button);
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, df_row);
-	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, enable_df_checkbutton);
+	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RaiderPreferences, enable_df_switch);
 }
 
 static void on_open_response(GtkDialog *dialog, int response, gpointer user_data)
@@ -134,8 +134,9 @@ static void raider_preferences_init(RaiderPreferences *prefs)
 			G_SETTINGS_BIND_DEFAULT);
 
 	g_settings_bind(prefs->settings, "do-data-file",
-			prefs->enable_df_checkbutton, "active",
+			prefs->enable_df_switch, "active",
 			G_SETTINGS_BIND_DEFAULT);
 
 	g_signal_connect(prefs->df_button, "clicked", G_CALLBACK(raider_preferences_open), prefs);
 }
+

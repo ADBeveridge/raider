@@ -11,7 +11,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
 
             Adw.ActionRow remove_file_row {
                 title: _("Remove File");
-                subtitle: _("Whether to remove the file after shredding");
+                subtitle: _("Whether to remove the file after obfuscating its contents");
                 activatable-widget: remove_file_switch;
 
                 [suffix]
@@ -22,7 +22,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
             }
             Adw.ActionRow hide_shredding_row {
                 title: _("Hide Shredding");
-                subtitle: _("Whether to hide the fact the the files have been shredded");
+                subtitle: _("Do a final overwrite with zeros instead of random data. Random data is a clue that the file has been shredded");
                 activatable-widget: hide_shredding_switch;
 
                 [suffix]
@@ -55,11 +55,12 @@ template RaiderPreferences : Adw.PreferencesWindow {
             Adw.ExpanderRow {
                 title: _("Overwrite data source");
                 subtitle: _("Where to get the data to overwrite the files with. Disabled at every startup");
-                enable-expansion: bind enable_df_checkbutton.active;
+                enable-expansion: bind enable_df_switch.active;
 
 	        [action]
-	        Gtk.CheckButton enable_df_checkbutton {
+	        Gtk.Switch enable_df_switch {
 	            active: false;
+	            valign: center;
 	        }
 	        Adw.ActionRow df_row{
 	            title: _("None Selected");

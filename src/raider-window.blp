@@ -22,9 +22,12 @@ template RaiderWindow : Adw.ApplicationWindow {
         reveal-child: true;
         transition-type: slide_right;
         Gtk.Button open_button {
-      	  label: _("Add");
-      	  tooltip-text: _("Add Files");
-      	  action-name: "app.open";
+          action-name: "app.open";
+      	  Adw.ButtonContent {
+            label: _("Add");
+      	    icon-name: "document-open-symbolic";
+      	    tooltip-text: _("Add Files");
+          }
         }
       }
 
@@ -49,7 +52,12 @@ template RaiderWindow : Adw.ApplicationWindow {
           name: "empty_page";
             child: Adw.StatusPage empty_state {
       	      title: _("Add files or drop here");
-      	      icon-name: "document-open-symbolic";
+      	      icon-name: "com.github.ADBeveridge.Raider";
+      	      child: Gtk.Label {
+      	        label: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered");
+      	        wrap: true;
+      	        justify: center;
+      	      };
       	      hexpand: true;
             };
           }
@@ -78,9 +86,16 @@ template RaiderWindow : Adw.ApplicationWindow {
   		valign: end;
   		halign: center;
   		margin-bottom: 20;
-  		Gtk.Button shred_button {
-    		  label: _("Shred All");
-    		  styles ["destructive-action", "pill"]
+
+  		Gtk.Box {
+  		  margin-end: 5;
+  		  margin-top: 5;
+  		  margin-start: 5;
+  		  margin-bottom: 5;
+  		  Gtk.Button shred_button {
+    		    label: _("Shred All");
+    		    styles ["destructive-action", "pill"]
+  		  }
   		}
 	      }
 	      [overlay]
@@ -90,9 +105,16 @@ template RaiderWindow : Adw.ApplicationWindow {
   		valign: end;
   		halign: center;
   		margin-bottom: 20;
-  		Gtk.Button abort_button {
-    		  label: _("Abort All");
-    		  styles ["destructive-action", "pill"]
+
+  		Gtk.Box {
+  		  margin-end: 5;
+  		  margin-top: 5;
+  		  margin-start: 5;
+  		  margin-bottom: 5;
+  		  Gtk.Button abort_button {
+    		    label: _("Abort All");
+    		    styles ["destructive-action", "pill"]
+  		  }
   		}
 	      }
             };
