@@ -52,6 +52,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.0" date="2022-8-06">
+      <description>
+      <p>User interface fixes</p>
+        <ul>
+          <li>Fixed cropping of keyboard focus ring on shred button</li>
+          <li>Updated preferences to be more concise and explanatory</li>
+          <li>Add icon to open button in headerbar</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.1" date="2022-8-03">
       <description>
       <p>Bug fixes and translation updates</p>
