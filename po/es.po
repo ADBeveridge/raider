@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-31 16:44-0700\n"
-"PO-Revision-Date: 2022-07-31 16:51-0700\n"
+"POT-Creation-Date: 2022-08-06 14:35-0700\n"
+"PO-Revision-Date: 2022-08-06 14:36-0700\n"
 "Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
 #: src/raider-application.c:103 src/raider-window.blp:10
-#: src/raider-window.blp:33
+#: src/raider-window.blp:36
 msgid "File Shredder"
 msgstr "Trituradora de archivos"
 
@@ -41,43 +41,67 @@ msgstr ""
 msgid "Alan Beveridge"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
-msgid "Minor fixes, including:"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-msgid "Moved the Shred button to the bottom of the window"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
-msgid "Support for mobile devices added"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:53
-msgid "Rethemed the file rows to standard look"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Bug fixes and translation updates"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgid "Added the French translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+msgid "Added the Portuguese translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Added checking so a file cannot be loaded twice"
+msgid "Updated the Russian translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:62
-msgid "Smooth progress tracking"
+msgid "Fixed progress retrieval bug"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+msgid "Fixed display problems"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+msgid "Minor fixes, including:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
+msgid "Moved the Shred button to the bottom of the window"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
+msgid "Support for mobile devices added"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
+msgid "Rethemed the file rows to standard look"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -204,7 +228,7 @@ msgstr ""
 "De dónde sacar los datos para sobrescribir los archivos. Desactivado en cada "
 "inicio"
 
-#: src/raider-application.c:73 src/raider-window.blp:26
+#: src/raider-application.c:73 src/raider-window.blp:29
 msgid "Add Files"
 msgstr ""
 
@@ -212,14 +236,14 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/raider-application.c:74 src/raider-window.blp:25
+#: src/raider-application.c:74 src/raider-window.blp:27
 msgid "Add"
 msgstr ""
 
 #: src/raider-application.c:109
 #, fuzzy
 #| msgid "0.1.0"
-msgid "1.1.0"
+msgid "1.1.1"
 msgstr "0.1.0"
 
 #: src/raider-application.c:114
@@ -244,7 +268,9 @@ msgid "Remove File"
 msgstr "Eliminar archivo"
 
 #: src/raider-preferences.blp:14
-msgid "Whether to remove the file after shredding"
+#, fuzzy
+#| msgid "Whether to remove the file after shredding"
+msgid "Whether to remove the file after obfuscating its contents"
 msgstr "Si se elimina el archivo después de triturarlo"
 
 #: src/raider-preferences.blp:24
@@ -252,8 +278,10 @@ msgid "Hide Shredding"
 msgstr "Ocultar trituración"
 
 #: src/raider-preferences.blp:25
-msgid "Whether to hide the fact the the files have been shredded"
-msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
+msgid ""
+"Do a final overwrite with zeros instead of random data. Random data is a "
+"clue that the file has been shredded"
+msgstr ""
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
@@ -273,15 +301,15 @@ msgstr "Eliminar archivo"
 msgid "How to remove the files from the fileystem"
 msgstr "Cómo eliminar los archivos del sistema de archivos"
 
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:127
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipesync"
 msgstr "Wipesync"
 
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
 msgid "Wipe"
 msgstr "Limpiar"
 
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
 msgid "Unlink"
 msgstr "Desvincular"
 
@@ -296,38 +324,38 @@ msgstr ""
 "De dónde sacar los datos para sobrescribir los archivos. Desactivado en cada "
 "inicio"
 
-#: src/raider-preferences.blp:65
+#: src/raider-preferences.blp:66
 msgid "None Selected"
 msgstr "Ninguno seleccionada"
 
-#: src/raider-preferences.blp:69
+#: src/raider-preferences.blp:70
 msgid "Select File"
 msgstr "Seleccionar archivo"
 
-#: src/raider-preferences.blp:76
+#: src/raider-preferences.blp:77
 msgid "Number of bytes to shred"
 msgstr "Número de bytes a triturar"
 
-#: src/raider-preferences.blp:77
+#: src/raider-preferences.blp:78
 msgid "How much of the file to shred. 0 to shred the whole file"
 msgstr ""
 "Qué parte del archivo se va a destruir. 0 para destruir todo el archivo"
 
-#: src/raider-preferences.blp:89
+#: src/raider-preferences.blp:90
 msgid "Do not round file sizes"
 msgstr "No redondear el tamaño de los archivos"
 
-#: src/raider-preferences.blp:90
+#: src/raider-preferences.blp:91
 msgid "Do not round file sizes to the next block. Default for irregular files"
 msgstr ""
 "No redondear el tamaño de los archivos al siguiente bloque. Predeterminado "
 "para archivos irregulares"
 
-#: src/raider-preferences.blp:98
+#: src/raider-preferences.blp:99
 msgid "Override file permissions"
 msgstr "Anular los permisos de los archivos"
 
-#: src/raider-preferences.blp:99
+#: src/raider-preferences.blp:100
 msgid ""
 "Whether to override the file permissions in case of insufficient permissions"
 msgstr ""
@@ -338,53 +366,63 @@ msgstr ""
 msgid "Estimating..."
 msgstr "Estimando..."
 
-#: src/raider-shred-backend.c:370
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:387
 msgid "failed"
 msgstr "falló"
 
-#: src/raider-shred-backend.c:372
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:391
 #, fuzzy
 #| msgid "removed"
 msgid "removing"
 msgstr "eliminado"
 
-#: src/raider-shred-backend.c:375
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:396
 msgid "removed"
 msgstr "eliminado"
 
-#: src/raider-shred-backend.c:379
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:402
 msgid "pass"
 msgstr "paso"
 
-#: src/raider-window.blp:51
+#: src/raider-window.blp:54
 msgid "Add files or drop here"
 msgstr "Añadir archivos o soltar aquí"
 
-#: src/raider-window.blp:82
+#: src/raider-window.blp:57
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered"
+msgstr ""
+
+#: src/raider-window.blp:96
 #, fuzzy
 #| msgid "Shred"
 msgid "Shred All"
 msgstr "Triturar"
 
-#: src/raider-window.blp:94
+#: src/raider-window.blp:115
 #, fuzzy
 #| msgid "Abort"
 msgid "Abort All"
 msgstr "Abortar"
 
-#: src/raider-window.blp:110
+#: src/raider-window.blp:132
 msgid "New Window"
 msgstr "Ventana nueva"
 
-#: src/raider-window.blp:116
+#: src/raider-window.blp:138
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/raider-window.blp:120
+#: src/raider-window.blp:142
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/raider-window.blp:124
+#: src/raider-window.blp:146
 msgid "About File Shredder"
 msgstr "Acerca de Trituradora de archivos"
 
@@ -408,6 +446,12 @@ msgstr "¡\"%s\" ya está cargado!"
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr ""
+
+#~ msgid "Whether to remove the file after shredding"
+#~ msgstr "Si se elimina el archivo después de triturarlo"
+
+#~ msgid "Whether to hide the fact the the files have been shredded"
+#~ msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
 
 #~ msgid "Open File"
 #~ msgstr "Abrir archivo"

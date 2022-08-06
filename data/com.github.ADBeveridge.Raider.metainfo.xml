@@ -34,12 +34,12 @@
     <value key="Purism::form_factor">mobile</value>
   </custom>
     <languages>
-    <lang percentage="48">es</lang>
-      <lang percentage="51">sv</lang>
-      <lang percentage="86">IT_it</lang>
-      <lang percentage="92">ru</lang>
-      <lang percentage="98">pt</lang>
-      <lang percentage="98">fr</lang>
+    <lang percentage="41">es</lang>
+      <lang percentage="45">sv</lang>
+      <lang percentage="76">IT_it</lang>
+      <lang percentage="82">ru</lang>
+      <lang percentage="87">pt</lang>
+      <lang percentage="87">fr</lang>
   </languages>
   <screenshots>
     <screenshot type="default">
