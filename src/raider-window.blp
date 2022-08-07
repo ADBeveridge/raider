@@ -53,11 +53,7 @@ template RaiderWindow : Adw.ApplicationWindow {
             child: Adw.StatusPage empty_state {
       	      title: _("Add files or drop here");
       	      icon-name: "com.github.ADBeveridge.Raider";
-      	      child: Gtk.Label {
-      	        label: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered");
-      	        wrap: true;
-      	        justify: center;
-      	      };
+      	      description: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered");
       	      hexpand: true;
             };
           }
