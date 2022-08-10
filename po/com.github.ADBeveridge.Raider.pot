@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 10:51-0700\n"
+"POT-Creation-Date: 2022-08-10 08:59-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,30 +360,31 @@ msgstr ""
 #: src/raider-window.blp:56
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
-"contents cannot be recovered"
+"contents cannot be recovered. Learn more about <a href=\"https://en."
+"wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
 msgstr ""
 
-#: src/raider-window.blp:92
+#: src/raider-window.blp:93
 msgid "Shred All"
 msgstr ""
 
-#: src/raider-window.blp:111
+#: src/raider-window.blp:112
 msgid "Abort All"
 msgstr ""
 
-#: src/raider-window.blp:128
+#: src/raider-window.blp:129
 msgid "New Window"
 msgstr ""
 
-#: src/raider-window.blp:134
+#: src/raider-window.blp:135
 msgid "Preferences"
 msgstr ""
 
-#: src/raider-window.blp:138
+#: src/raider-window.blp:139
 msgid "Help"
 msgstr ""
 
-#: src/raider-window.blp:142
+#: src/raider-window.blp:143
 msgid "About File Shredder"
 msgstr ""
 
