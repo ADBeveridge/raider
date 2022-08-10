@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-10 09:04-0700\n"
-"PO-Revision-Date: 2022-08-10 23:25+0300\n"
+"PO-Revision-Date: 2022-08-10 23:28+0300\n"
 "Last-Translator: David Lapshin <ddaudix@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -439,15 +439,3 @@ msgstr "“%s” уже загружен"
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Не удалось записать в “%s”"
-
-#~ msgid "1.1.1"
-#~ msgstr "1.1.1"
-
-#~ msgid "Whether to remove the file after shredding"
-#~ msgstr "Удалять файл после измельчения"
-
-#~ msgid "Whether to hide the fact the the files have been shredded"
-#~ msgstr "Скрывать факт того, что файлы были измельчены"
-
-#~ msgid "1.0.0.alpha1"
-#~ msgstr "1.0.0.alpha1"
