@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-10 08:59-0700\n"
+"POT-Creation-Date: 2022-08-10 09:04-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,82 +41,91 @@ msgid "Alan Beveridge"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
 msgid "User interface fixes"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "Fixed cropping of keyboard focus ring on shred button"
+msgid "Added explantory message and changed initial view's icon"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:60
-msgid "Updated preferences to be more concise and explanatory"
+msgid "Added icon to add button in headerbar"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Add icon to open button in headerbar"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
-msgid "Bug fixes and translation updates"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Fixed cropping of keyboard focus ring on shred button"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Added the French translation"
+msgid "Updated preferences to be more concise and explanatory"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
-msgid "Added the Portuguese translation"
+msgid "Add icon to open button in headerbar"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-msgid "Updated the Russian translation"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+msgid "Bug fixes and translation updates"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
-msgid "Fixed progress retrieval bug"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
-msgid "Fixed display problems"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Added the French translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:79
-msgid "Minor fixes, including:"
+msgid "Added the Portuguese translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+msgid "Updated the Russian translation"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:81
-msgid "Moved the Shred button to the bottom of the window"
+msgid "Fixed progress retrieval bug"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:82
-msgid "Support for mobile devices added"
+msgid "Fixed display problems"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
-msgid "Rethemed the file rows to standard look"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Minor fixes, including:"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
+msgid "Moved the Shred button to the bottom of the window"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:91
-msgid "Added checking so a file cannot be loaded twice"
+msgid "Support for mobile devices added"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:92
-msgid "Smooth progress tracking"
+msgid "Rethemed the file rows to standard look"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:93
-msgid "Written using GTK4 and Adwaita"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
-msgid "Desktop notifications are shown if the window is not focused"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:100
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -221,7 +230,7 @@ msgid "Add"
 msgstr ""
 
 #: src/raider-application.c:109
-msgid "1.2.0"
+msgid "1.2.1"
 msgstr ""
 
 #: src/raider-application.c:114
