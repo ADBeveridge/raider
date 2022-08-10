@@ -52,6 +52,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.1" date="2022-8-10">
+      <description>
+      <p>User interface fixes</p>
+        <ul>
+          <li>Added explantory message and changed initial view's icon</li>
+          <li>Added icon to add button in headerbar</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.0" date="2022-8-06">
       <description>
       <p>User interface fixes</p>
