@@ -27,7 +27,7 @@ msgstr "File Shredder"
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 #: src/raider-application.c:110
 msgid "Securely delete your files"
-msgstr "Apague seus archivos de forma segura"
+msgstr "Apague seus arquivos de forma segura"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
