@@ -56,7 +56,7 @@
       <description>
         <p>User interface fixes</p>
         <ul>
-          <li>Added explantory message and changed initial view's icon</li>
+          <li>Added explanatory message and changed initial view's icon</li>
           <li>Added icon to add button in headerbar</li>
         </ul>
       </description>
