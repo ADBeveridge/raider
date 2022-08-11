@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-06 14:35-0700\n"
-"PO-Revision-Date: 2022-08-06 14:36-0700\n"
-"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
+"POT-Creation-Date: 2022-08-10 21:54+0200\n"
+"PO-Revision-Date: 2022-08-10 22:08+0200\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
@@ -36,80 +36,119 @@ msgid ""
 "that you do not want to be recovered. File Shredder has a comprehensive set "
 "of preferences and progress tracking for each file."
 msgstr ""
+"Trituradora de archivos es una sencilla aplicación que sirve para eliminar "
+"de forma segura los archivos que no desea recuperar. Trituradora de archivos "
+"cuenta con un amplio conjunto de preferencias y seguimiento del progreso de "
+"cada archivo."
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:22
 msgid "Alan Beveridge"
-msgstr ""
+msgstr "Alan Beveridge"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:57
-msgid "Bug fixes and translation updates"
-msgstr ""
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "User interface fixes"
+msgstr "Correcciones en la interfaz de usuario"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "Added the French translation"
+msgid "Added explantory message and changed initial view's icon"
 msgstr ""
+"Se ha añadido un mensaje explicativo y se ha cambiado el icono de la vista "
+"inicial"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:60
-msgid "Added the Portuguese translation"
+msgid "Added icon to add button in headerbar"
 msgstr ""
+"Se ha añadido un icono para añadir un botón en la barra de encabezamiento"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Updated the Russian translation"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Fixed cropping of keyboard focus ring on shred button"
 msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
-msgid "Fixed progress retrieval bug"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
-msgid "Fixed display problems"
-msgstr ""
+"Corregido el recorte del anillo de enfoque del teclado en el botón de "
+"trituración"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Minor fixes, including:"
+msgid "Updated preferences to be more concise and explanatory"
 msgstr ""
+"Actualización de las preferencias para que sean más concisas y explicativas"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-msgid "Moved the Shred button to the bottom of the window"
-msgstr ""
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+msgid "Add icon to open button in headerbar"
+msgstr "Añadir un icono para abrir el botón en la barra de cabecera"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
-msgid "Support for mobile devices added"
-msgstr ""
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+msgid "Bug fixes and translation updates"
+msgstr "Corrección de errores y actualización de las traducciones"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
-msgid "Rethemed the file rows to standard look"
-msgstr ""
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Added the French translation"
+msgstr "Añadida la traducción al francés"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:79
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
+msgid "Added the Portuguese translation"
+msgstr "Añadida la traducción al portugués"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+msgid "Updated the Russian translation"
+msgstr "Actualizada la traducción al ruso"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:81
-msgid "Added checking so a file cannot be loaded twice"
-msgstr ""
+msgid "Fixed progress retrieval bug"
+msgstr "Se ha corregido un error en la recuperación del progreso"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:82
-msgid "Smooth progress tracking"
-msgstr ""
+msgid "Fixed display problems"
+msgstr "Se han solucionado los problemas de visualización"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
-msgid "Written using GTK4 and Adwaita"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
-msgid "Desktop notifications are shown if the window is not focused"
-msgstr ""
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Minor fixes, including:"
+msgstr "Correcciones menores, incluyendo:"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:90
+msgid "Moved the Shred button to the bottom of the window"
+msgstr "Se ha movido el botón de trituración a la parte inferior de la ventana"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
+msgid "Support for mobile devices added"
+msgstr "Se ha añadido soporte para dispositivos móviles"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+msgid "Rethemed the file rows to standard look"
+msgstr "Reajuste de las filas de archivos a la apariencia estándar"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+"Una reescritura significativa de Trituradora de archivos, con algunos "
+"cambios en la interfaz de usuario:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:100
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+"Se ha añadido una comprobación para que un archivo no se cargue dos veces"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+msgid "Smooth progress tracking"
+msgstr "Seguimiento fluido del progreso"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+msgid "Written using GTK4 and Adwaita"
+msgstr "Escrito con GTK4 y Adwaita"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+"Las notificaciones del escritorio se muestran si la ventana no está enfocada"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
 msgstr ""
+"La primera versión de Trituradora de archivos. Soporta el seguimiento del "
+"progreso, y cuenta con una interfaz compatible con GNOME."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:5
-#, fuzzy
-#| msgid "Hide Shredding"
 msgid "Hide shredding"
 msgstr "Ocultar trituración"
 
@@ -118,18 +157,16 @@ msgid ""
 "Whether to hide shredding. This is done by overwriting the file(s) with "
 "zeros."
 msgstr ""
+"Si se quiere ocultar la trituración. Esto se hace sobrescribiendo los "
+"archivos con ceros."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:10
-#, fuzzy
-#| msgid "Remove File"
 msgid "Remove file"
 msgstr "Eliminar archivo"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:11
-#, fuzzy
-#| msgid "Whether to remove the file after shredding"
 msgid "Whether to remove the file after shredding it."
-msgstr "Si se elimina el archivo después de triturarlo"
+msgstr "Si se elimina el archivo después de triturarlo."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:15
 #: src/raider-preferences.blp:34
@@ -137,100 +174,74 @@ msgid "Number of passes"
 msgstr "Número de pasadas"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:16
-#, fuzzy
-#| msgid ""
-#| "From what file to get the data that the files will be overwritten with"
 msgid "How many times the file will be overwritten with random data."
-msgstr ""
-"De qué archivo obtener los datos con los que se sobrescribirán los archivos"
+msgstr "Cuántas veces se sobrescribirá el archivo con datos aleatorios."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:21
-#, fuzzy
-#| msgid "Remove File"
 msgid "Remove method"
-msgstr "Eliminar archivo"
+msgstr "Método de eliminación"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:22
-#, fuzzy
-#| msgid "How to remove the files from the fileystem"
 msgid "How the obfucticated file will be removed from the filesystem."
-msgstr "Cómo eliminar los archivos del sistema de archivos"
+msgstr "Cómo se eliminará el archivo ofuscado del sistema de archivos."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:27
-#, fuzzy
-#| msgid "Override file permissions"
 msgid "Override Permisions"
-msgstr "Anular los permisos de los archivos"
+msgstr "Anular permisos"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:28
 msgid "If you do not have the neccessary permissions, override them."
-msgstr ""
+msgstr "Si no tiene los permisos necesarios, anúlelos."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:32
-#, fuzzy
-#| msgid "Do not round file sizes"
 msgid "Do not round to next block"
-msgstr "No redondear el tamaño de los archivos"
+msgstr "No redondear al siguiente bloque"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:33
-#, fuzzy
-#| msgid ""
-#| "Do not round file sizes to the next block. Default for irregular files"
 msgid ""
 "Do not round the file to the next block. This is the default for non-regular "
 "files."
 msgstr ""
-"No redondear el tamaño de los archivos al siguiente bloque. Predeterminado "
-"para archivos irregulares"
+"No redondear el archivo al siguiente bloque. Este es el valor predeterminado "
+"para los archivos no regulares."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
-#, fuzzy
-#| msgid "Number of bytes to shred"
 msgid "Number of bytes to shred entry"
-msgstr "Número de bytes a triturar"
+msgstr "Número de bytes para triturar la entrada"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:38
 msgid ""
 "Shred the number of bytes you want, and leave the rest of the file untouched."
 msgstr ""
+"Tritura el número de bytes que desee, y deja el resto del archivo intacto."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:43
 msgid "Shred executable"
-msgstr ""
+msgstr "Triturar ejecutable"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:44
 msgid "The path to the shred executable."
-msgstr ""
+msgstr "La ruta al ejecutable triturado."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:48
-#, fuzzy
-#| msgid "Whether to hide the fact the the files have been shredded"
 msgid "Whether to allow the source data file to be enabled"
-msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
+msgstr "Si se permite activar el archivo de datos de origen"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:49
 msgid "If unchecked, the source data file will not be loaded."
-msgstr ""
+msgstr "Si no está marcada, no se cargará el archivo de datos de origen."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:53
-#, fuzzy
-#| msgid "Overwrite data source"
 msgid "Overwrite data file"
-msgstr "Sobrescribir fuente de datos"
+msgstr "Sobrescribir el archivo de datos"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:54
-#, fuzzy
-#| msgid ""
-#| "Where to get the data to overwrite the files with. Disabled at every "
-#| "startup"
 msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr ""
-"De dónde sacar los datos para sobrescribir los archivos. Desactivado en cada "
-"inicio"
+msgstr "Dónde obtener los datos para sobrescribir los archivos a destruir."
 
 #: src/raider-application.c:73 src/raider-window.blp:29
 msgid "Add Files"
-msgstr ""
+msgstr "Añadir archivos"
 
 #: src/raider-application.c:74
 msgid "Cancel"
@@ -238,13 +249,11 @@ msgstr "Cancelar"
 
 #: src/raider-application.c:74 src/raider-window.blp:27
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: src/raider-application.c:109
-#, fuzzy
-#| msgid "0.1.0"
-msgid "1.1.1"
-msgstr "0.1.0"
+msgid "1.2.1"
+msgstr "1.2.1"
 
 #: src/raider-application.c:114
 msgid "translator-credits"
@@ -268,10 +277,8 @@ msgid "Remove File"
 msgstr "Eliminar archivo"
 
 #: src/raider-preferences.blp:14
-#, fuzzy
-#| msgid "Whether to remove the file after shredding"
 msgid "Whether to remove the file after obfuscating its contents"
-msgstr "Si se elimina el archivo después de triturarlo"
+msgstr "Si se elimina el archivo después de ofuscar su contenido"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
@@ -282,6 +289,8 @@ msgid ""
 "Do a final overwrite with zeros instead of random data. Random data is a "
 "clue that the file has been shredded"
 msgstr ""
+"Realiza una sobreescritura final con ceros en lugar de datos aleatorios. Los "
+"datos aleatorios son una pista de que el archivo ha sido destruido"
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
@@ -292,10 +301,8 @@ msgid "Advanced"
 msgstr "Avanzadas"
 
 #: src/raider-preferences.blp:49
-#, fuzzy
-#| msgid "Remove File"
 msgid "Remove Method"
-msgstr "Eliminar archivo"
+msgstr "Método de eliminación"
 
 #: src/raider-preferences.blp:50
 msgid "How to remove the files from the fileystem"
@@ -373,10 +380,8 @@ msgstr "falló"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:391
-#, fuzzy
-#| msgid "removed"
 msgid "removing"
-msgstr "eliminado"
+msgstr "eliminando"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:396
@@ -392,37 +397,38 @@ msgstr "paso"
 msgid "Add files or drop here"
 msgstr "Añadir archivos o soltar aquí"
 
-#: src/raider-window.blp:57
+#: src/raider-window.blp:56
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
-"contents cannot be recovered"
+"contents cannot be recovered. Learn more about <a href=\"https://en."
+"wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
 msgstr ""
+"La trituración es la ofuscación de un archivo con datos aleatorios para que "
+"no se pueda recuperar el contenido anterior. Más información sobre <a href="
+"\"https://en.wikipedia.org/wiki/Shred_(Unix)\">el backend de Trituradora de "
+"archivos</a>."
 
-#: src/raider-window.blp:96
-#, fuzzy
-#| msgid "Shred"
+#: src/raider-window.blp:93
 msgid "Shred All"
-msgstr "Triturar"
+msgstr "Triturar todo"
 
-#: src/raider-window.blp:115
-#, fuzzy
-#| msgid "Abort"
+#: src/raider-window.blp:112
 msgid "Abort All"
-msgstr "Abortar"
+msgstr "Abortar todo"
 
-#: src/raider-window.blp:132
+#: src/raider-window.blp:129
 msgid "New Window"
 msgstr "Ventana nueva"
 
-#: src/raider-window.blp:138
+#: src/raider-window.blp:135
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/raider-window.blp:142
+#: src/raider-window.blp:139
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/raider-window.blp:146
+#: src/raider-window.blp:143
 msgid "About File Shredder"
 msgstr "Acerca de Trituradora de archivos"
 
@@ -431,48 +437,15 @@ msgid "Could not remove file from quick list."
 msgstr "No se ha podido eliminar el archivo de la lista rápida."
 
 #: src/raider-window.c:241
-#, fuzzy
-#| msgid "Directories are not supported!"
 msgid "Directories are not supported"
-msgstr "¡No se admiten directorios!"
+msgstr "No se admiten directorios"
 
 #: src/raider-window.c:260
-#, fuzzy, c-format
-#| msgid "“%s” is already loaded!"
+#, c-format
 msgid "“%s” is already loaded"
-msgstr "¡\"%s\" ya está cargado!"
+msgstr "\"%s\" ya está cargado"
 
 #: src/raider-window.c:273
 #, c-format
 msgid "Cannot write to “%s”"
-msgstr ""
-
-#~ msgid "Whether to remove the file after shredding"
-#~ msgstr "Si se elimina el archivo después de triturarlo"
-
-#~ msgid "Whether to hide the fact the the files have been shredded"
-#~ msgstr "Si se oculta el hecho de que los archivos han sido destruidos"
-
-#~ msgid "Open File"
-#~ msgstr "Abrir archivo"
-
-#~ msgid "Open"
-#~ msgstr "Abrir"
-
-#~ msgid "1.0.0.alpha1"
-#~ msgstr "1.0.0.alpha1"
-
-#~ msgid "Devices"
-#~ msgstr "Dispositivos"
-
-#~ msgid "Add files for shredding"
-#~ msgstr "Añadir archivos para destruir"
-
-#~ msgid "Unable to add files!"
-#~ msgstr "¡No se pueden añadir archivos!"
-
-#~ msgid "File does not exist!"
-#~ msgstr "¡El archivo no existe!"
-
-#~ msgid "No files added!"
-#~ msgstr "¡No se han añadido archivos!"
+msgstr "No se puede escribir en “%s”"
