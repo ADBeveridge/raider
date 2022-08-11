@@ -46,27 +46,27 @@ msgstr "Alan Beveridge"
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:57
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:66
 msgid "User interface fixes"
-msgstr ""
+msgstr "Correções na interface do usuário"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "Added explantory message and changed initial view's icon"
-msgstr ""
+msgid "Added explanatory message and changed initial view's icon"
+msgstr "Adicionada mensagem explanatória e alteração no ícone do perfil inicial"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:60
 msgid "Added icon to add button in headerbar"
-msgstr ""
+msgstr "Adicionado ícone ao botão de adição na barra superior"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:68
 msgid "Fixed cropping of keyboard focus ring on shred button"
-msgstr ""
+msgstr "Consertado método de colar do anel de foco do teclado no botão de trituração"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
 msgid "Updated preferences to be more concise and explanatory"
-msgstr ""
+msgstr "Atualizadas as preferências para serem mais concisas e explicativas"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid "Add icon to open button in headerbar"
-msgstr ""
+msgstr "Adicionado ícone para botão de abrir na barra superior"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:76
 msgid "Bug fixes and translation updates"
@@ -249,7 +249,7 @@ msgstr "Adicionar"
 
 #: src/raider-application.c:109
 msgid "1.2.1"
-msgstr ""
+msgstr "1.2.1"
 
 #: src/raider-application.c:114
 msgid "translator-credits"
@@ -405,7 +405,8 @@ msgid ""
 "wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
 msgstr ""
 "A trituração faz ofuscação de um arquivo com dados aleatórios para que o "
-"conteúdo anterior não possa ser recuperado"
+"conteúdo anterior não possa ser recuperado. Saiba mais sobre o <a href=\"https://en."
+"wikipedia.org/wiki/Shred_(Unix)\">backend do File Shredder</a>."
 
 #: src/raider-window.blp:93
 msgid "Shred All"

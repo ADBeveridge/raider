@@ -10,7 +10,7 @@
     that you do not want to be recovered. File Shredder has a comprehensive set
     of preferences and progress tracking for each file.</p>
   </description>
-    <kudos>
+  <kudos>
     <kudo>ModernToolkit</kudo>
     <kudo>HiDpiIcon</kudo>
   </kudos>
@@ -33,13 +33,13 @@
     <value key="Purism::form_factor">workstation</value>
     <value key="Purism::form_factor">mobile</value>
   </custom>
-    <languages>
-    <lang percentage="41">es</lang>
-      <lang percentage="45">sv</lang>
-      <lang percentage="76">IT_it</lang>
-      <lang percentage="82">ru</lang>
-      <lang percentage="87">pt</lang>
-      <lang percentage="87">fr</lang>
+  <languages>
+    <lang percentage="42">sv</lang>
+    <lang percentage="71">IT_it</lang>
+    <lang percentage="81">fr</lang>
+    <lang percentage="97">pt</lang>
+    <lang percentage="100">ru</lang>
+    <lang percentage="100">es</lang>
   </languages>
   <screenshots>
     <screenshot type="default">
@@ -54,7 +54,7 @@
   <releases>
     <release version="1.2.1" date="2022-8-10">
       <description>
-      <p>User interface fixes</p>
+        <p>User interface fixes</p>
         <ul>
           <li>Added explantory message and changed initial view's icon</li>
           <li>Added icon to add button in headerbar</li>
@@ -63,7 +63,7 @@
     </release>
     <release version="1.2.0" date="2022-8-06">
       <description>
-      <p>User interface fixes</p>
+        <p>User interface fixes</p>
         <ul>
           <li>Fixed cropping of keyboard focus ring on shred button</li>
           <li>Updated preferences to be more concise and explanatory</li>
@@ -73,7 +73,7 @@
     </release>
     <release version="1.1.1" date="2022-8-03">
       <description>
-      <p>Bug fixes and translation updates</p>
+        <p>Bug fixes and translation updates</p>
         <ul>
           <li>Added the French translation</li>
           <li>Added the Portuguese translation</li>
@@ -85,7 +85,7 @@
     </release>
     <release version="1.1.0" date="2022-7-28">
       <description>
-      <p>Minor fixes, including:</p>
+        <p>Minor fixes, including:</p>
         <ul>
           <li>Moved the Shred button to the bottom of the window</li>
           <li>Support for mobile devices added</li>
@@ -95,7 +95,7 @@
     </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
       <description>
-      <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
+        <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
         <ul>
           <li>Added checking so a file cannot be loaded twice</li>
           <li>Smooth progress tracking</li>
