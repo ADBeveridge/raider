@@ -128,7 +128,7 @@ static void raider_application_open(GApplication *application, GFile **files, gi
 	gint i;
 
 	for (i = 0; i < n_files; i++) {
-		raider_window_open(files[i], window, NULL); // This adds an entry to the current window.
+		raider_window_open(g_file_dup(files[i]), window, NULL); // This adds an entry to the current window.
 	}
 
 	gtk_window_present(GTK_WINDOW(window));
