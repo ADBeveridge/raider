@@ -9,4 +9,6 @@ Raider, also known as File Shredder, is a simple shredding program built for the
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## Useful links
+- GNOME Circle: <https://apps.gnome.org/app/com.github.ADBeveridge.Raider/>
+- Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
 - Report issues: <https://github.com/ADBeveridge/raider/issues/>
