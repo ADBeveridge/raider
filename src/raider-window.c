@@ -228,7 +228,7 @@ void raider_window_show_toast (RaiderWindow* window, gchar* text)
 void raider_window_open(GFile *file, gpointer data, gchar *title)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
-printf("Before\n");
+	
 	// Test if it exists.
 	if (g_file_query_exists(file, NULL) == FALSE)
 	{
