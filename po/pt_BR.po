@@ -1,0 +1,447 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-10 09:04-0700\n"
+"PO-Revision-Date: 2022-08-16 10:51-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:103 src/raider-window.blp:10
+#: src/raider-window.blp:36
+msgid "File Shredder"
+msgstr "Fragmentadora de Arquivos"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+#: src/raider-application.c:110
+msgid "Securely delete your files"
+msgstr "Delete seus arquivos com segurança"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered. File Shredder has a comprehensive set "
+"of preferences and progress tracking for each file."
+msgstr ""
+"A Fragmentadora de Arquivos é uma aplicação simples usada para deletar com "
+"segurança os arquivos que você não deseja que sejam recuperados. A "
+"Fragmentadora de Arquivos possui um conjunto claro de preferências e "
+"acompanhamento de progresso para cada arquivo."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "User interface fixes"
+msgstr "Correções da interface de usuário"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
+msgid "Added explantory message and changed initial view's icon"
+msgstr "Mensagem explicatória adicionada e ícone de visão inicial alterado"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+msgid "Added icon to add button in headerbar"
+msgstr "Ícone para adicionar um botão à barra de cabeçalho adicionado"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Fixed cropping of keyboard focus ring on shred button"
+msgstr "Consertado o corte do anel de foco do teclado no botão fragmentar"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+msgid "Updated preferences to be more concise and explanatory"
+msgstr "Preferências atualizadas para ser mais concisas e explicativas"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+msgid "Add icon to open button in headerbar"
+msgstr "Adicionado um ícone para o botão abrir na barra de cabeçalho"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+msgid "Bug fixes and translation updates"
+msgstr "Correções de bugs e atualizações de traduções"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Added the French translation"
+msgstr "Tradução para o Francês adicionada"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "Added the Portuguese translation"
+msgstr "Tradução para o Português adicionada"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+msgid "Updated the Russian translation"
+msgstr "Tradução para o Russo atualizada"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
+msgid "Fixed progress retrieval bug"
+msgstr "Bug de resgate de andamento corrigido"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+msgid "Fixed display problems"
+msgstr "Problemas de exibição corrigidos"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Minor fixes, including:"
+msgstr "Correções menores, incluindo:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
+msgid "Moved the Shred button to the bottom of the window"
+msgstr "Botão Fragmentar movido para o fundo da janela"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
+msgid "Support for mobile devices added"
+msgstr "Adicionado o suporte a dispositivos móveis"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+msgid "Rethemed the file rows to standard look"
+msgstr "Reestilização das linhas de arquivo para um visual padrão"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+"Uma reescrita significativa da Fragmentadora de Arquivos, com algumas "
+"mudanças na interface de usuário:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:100
+msgid "Added checking so a file cannot be loaded twice"
+msgstr "Checagem para que um arquivo não seja adicionado duas vezes adicionada"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+msgid "Smooth progress tracking"
+msgstr "Acompanhamento de andamento suave"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+msgid "Written using GTK4 and Adwaita"
+msgstr "Escrito utilizando GTK4 e Adwaita"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+"Notificações de área de trabalho são mostradas se a janela não estiver em "
+"foco"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+"O primeiro lançamento da Fragmentadora de Arquivos. Ela suporta "
+"acompanhamento do andamento e ostenta uma interface que compactua com o "
+"GNOME."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+msgid "Hide shredding"
+msgstr "Ocultar fragmentação"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid ""
+"Whether to hide shredding. This is done by overwriting the file(s) with "
+"zeros."
+msgstr ""
+"Se deve ocultar a fragmentação. Isto é feito sobrescrevendo o(s) arquivo(s) "
+"com zeros."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr "Remover arquivo"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+msgid "Whether to remove the file after shredding it."
+msgstr "Se deve remover o arquivo após fragmentá-lo."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:15
+#: src/raider-preferences.blp:34
+msgid "Number of passes"
+msgstr "Número de passagens"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:16
+msgid "How many times the file will be overwritten with random data."
+msgstr "Quantas vezes o arquivo será sobrescrito com dados aleatórios."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:21
+msgid "Remove method"
+msgstr "Método de remoção"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:22
+msgid "How the obfucticated file will be removed from the filesystem."
+msgstr "Como o arquivo obfuscado será removido do sistema de arquivos."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:27
+msgid "Override Permisions"
+msgstr "Sobrepor Permissões"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:28
+msgid "If you do not have the neccessary permissions, override them."
+msgstr "Se você não possuir as permissões necessárias, sobrepô-las."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:32
+msgid "Do not round to next block"
+msgstr "Não arredondar ao próximo bloco"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:33
+msgid ""
+"Do not round the file to the next block. This is the default for non-regular "
+"files."
+msgstr ""
+"Não arredondar o arquivo ao próximo bloco. Este é o padrão para arquivos "
+"irregulares. "
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:37
+msgid "Number of bytes to shred entry"
+msgstr "Entrada do número de bytes a fragmentar"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:38
+msgid ""
+"Shred the number of bytes you want, and leave the rest of the file untouched."
+msgstr ""
+"Fragmentar o número de bytes que você desejar e deixar o restante do arquivo "
+"como está."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:43
+msgid "Shred executable"
+msgstr "Executável shred"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:44
+msgid "The path to the shred executable."
+msgstr "O caminho para o executável shred."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:48
+msgid "Whether to allow the source data file to be enabled"
+msgstr "Se deve permitir que o arquivo de fonte de dados seja habilitado"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:49
+msgid "If unchecked, the source data file will not be loaded."
+msgstr "Se desmarcado, o arquivo de fonte de dados não será carregado."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:53
+msgid "Overwrite data file"
+msgstr "Arquivo de dados para sobrescrita"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:54
+msgid "Where to get data to overwrite the to-be-shredded files."
+msgstr ""
+"De onde obter os dados para sobrescrever os arquivos a ser fragmentados."
+
+#: src/raider-application.c:73 src/raider-window.blp:29
+msgid "Add Files"
+msgstr "Adicionar Arquivos"
+
+#: src/raider-application.c:74
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/raider-application.c:74 src/raider-window.blp:27
+msgid "Add"
+msgstr "Adicionar"
+
+#: src/raider-application.c:109
+msgid "1.2.1"
+msgstr "1.2.1"
+
+#: src/raider-application.c:114
+msgid "translator-credits"
+msgstr "translator-credits"
+
+#. Notification stuff.
+#: src/raider-file-row.c:165 src/raider-file-row.c:205
+msgid "Shredded "
+msgstr "Fragmentado "
+
+#: src/raider-preferences.blp:8
+msgid "_Basic"
+msgstr "_Básico"
+
+#: src/raider-preferences.blp:10
+msgid "Basic"
+msgstr "Básico"
+
+#: src/raider-preferences.blp:13
+msgid "Remove File"
+msgstr "Remover Arquivo"
+
+#: src/raider-preferences.blp:14
+msgid "Whether to remove the file after obfuscating its contents"
+msgstr "Se deve remover o arquivo após ofuscar seus conteúdos"
+
+#: src/raider-preferences.blp:24
+msgid "Hide Shredding"
+msgstr "Esconder Fragmentação"
+
+#: src/raider-preferences.blp:25
+msgid ""
+"Do a final overwrite with zeros instead of random data. Random data is a "
+"clue that the file has been shredded"
+msgstr ""
+"Fazer uma sobrescrita final com zeros ao invés de dados aleatórios. Dados "
+"aleatórios sugerem que um arquivo foi fragmentado"
+
+#: src/raider-preferences.blp:35
+msgid "How many times to shred file over"
+msgstr "Quantas vezes fragmentar o arquivo"
+
+#: src/raider-preferences.blp:47
+msgid "Advanced"
+msgstr "Avançado"
+
+#: src/raider-preferences.blp:49
+msgid "Remove Method"
+msgstr "Método de Remoção"
+
+#: src/raider-preferences.blp:50
+msgid "How to remove the files from the fileystem"
+msgstr "Como remover arquivos do sistema de arquivos"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
+msgid "Wipesync"
+msgstr "Wipesync"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
+msgid "Wipe"
+msgstr "Limpar"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
+msgid "Unlink"
+msgstr "Desconectar"
+
+#: src/raider-preferences.blp:56
+msgid "Overwrite data source"
+msgstr "Fonte de dados para sobrescrita"
+
+#: src/raider-preferences.blp:57
+msgid ""
+"Where to get the data to overwrite the files with. Disabled at every startup"
+msgstr ""
+"Onde obter os dados usados para sobrescrever os arquivos. Desabilitado a "
+"cada inicialização"
+
+#: src/raider-preferences.blp:66
+msgid "None Selected"
+msgstr "Nenhum Selecionado"
+
+#: src/raider-preferences.blp:70
+msgid "Select File"
+msgstr "Selecionar Arquivo"
+
+#: src/raider-preferences.blp:77
+msgid "Number of bytes to shred"
+msgstr "Número de bytes a fragmentar"
+
+#: src/raider-preferences.blp:78
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr "Quanto fragmentar do tamanho do arquivo. 0 fragmenta todo o arquivo"
+
+#: src/raider-preferences.blp:90
+msgid "Do not round file sizes"
+msgstr "Não arredondar tamanhos de arquivos"
+
+#: src/raider-preferences.blp:91
+msgid "Do not round file sizes to the next block. Default for irregular files"
+msgstr ""
+"Não arredondar tamanhos de arquivos para o próximo bloco. Padrão para "
+"arquivos irregulares"
+
+#: src/raider-preferences.blp:99
+msgid "Override file permissions"
+msgstr "Sobrepor permissões de arquivos"
+
+#: src/raider-preferences.blp:100
+msgid ""
+"Whether to override the file permissions in case of insufficient permissions"
+msgstr ""
+"Se as permissões de arquivos devem ser sobrepostas em caso de permissões "
+"insuficientes"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Estimating..."
+msgstr "Calculando..."
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:387
+msgid "failed"
+msgstr "falhou"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:391
+msgid "removing"
+msgstr "removendo"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:396
+msgid "removed"
+msgstr "removido"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:402
+msgid "pass"
+msgstr "passagem"
+
+#: src/raider-window.blp:54
+msgid "Add files or drop here"
+msgstr "Adicione arquivos ou solte-os aqui"
+
+#: src/raider-window.blp:56
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered. Learn more about <a href=\"https://en."
+"wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
+msgstr ""
+"A fragmentação é o obfuscamento de um arquivo com dados aleatórios para que "
+"os conteúdos anteriores não possam ser recuperados. Saiba mais sobre o <a "
+"href=\"https://en.wikipedia.org/wiki/Shred_(Unix)\">backend da Fragmentadora "
+"de Arquivos</a>."
+
+#: src/raider-window.blp:93
+msgid "Shred All"
+msgstr "Fragmentar Tudo"
+
+#: src/raider-window.blp:112
+msgid "Abort All"
+msgstr "Abortar Tudo"
+
+#: src/raider-window.blp:129
+msgid "New Window"
+msgstr "Nova Janela"
+
+#: src/raider-window.blp:135
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/raider-window.blp:139
+msgid "Help"
+msgstr "Ajuda"
+
+#: src/raider-window.blp:143
+msgid "About File Shredder"
+msgstr "Sobre a Fragmentadora de Arquivos"
+
+#: src/raider-window.c:203
+msgid "Could not remove file from quick list."
+msgstr "O arquivo não pôde ser removido da lista rápida."
+
+#: src/raider-window.c:241
+msgid "Directories are not supported"
+msgstr "Diretórios não são suportados"
+
+#: src/raider-window.c:260
+#, c-format
+msgid "“%s” is already loaded"
+msgstr "\"%s\" já está carregado"
+
+#: src/raider-window.c:273
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Não foi possível escrever em \"%s\""
