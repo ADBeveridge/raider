@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-10 09:04-0700\n"
-"PO-Revision-Date: 2022-08-18 18:19+0200\n"
-"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2022-08-18 18:22+0200\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
@@ -37,7 +37,7 @@ msgid ""
 "that you do not want to be recovered. File Shredder has a comprehensive set "
 "of preferences and progress tracking for each file."
 msgstr ""
-"Broyeur de fichiers est une application simple utilisée pour supprimer de "
+"Broyeur de fichiers est une application simple, utilisée pour supprimer de "
 "manière sécurisée des fichiers que vous ne souhaitez pas récupérer. Broyeur "
 "de fichiers dispose d’un ensemble complet de paramètres et d’un suivi de la "
 "progression pour chaque fichier."
@@ -116,7 +116,9 @@ msgstr "Les rangées de dossiers ont été remodelées pour un look standard"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:98
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr "Réécriture significative de Broyeur de fichiers,"
+msgstr ""
+"Réécriture significative de Broyeur de fichiers, avec quelques changements "
+"d’interface :"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:100
 msgid "Added checking so a file cannot be loaded twice"
@@ -201,7 +203,7 @@ msgid ""
 "files."
 msgstr ""
 "N’arrondit pas les tailles des fichiers à l’unité supérieure. Par défaut "
-"pour les fichiers irréguliers"
+"pour les fichiers irréguliers."
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:37
 msgid "Number of bytes to shred entry"
@@ -263,7 +265,7 @@ msgstr "Irénée Thirion"
 #. Notification stuff.
 #: src/raider-file-row.c:165 src/raider-file-row.c:205
 msgid "Shredded "
-msgstr "Broyé(s)"
+msgstr "Broyé(s) "
 
 #: src/raider-preferences.blp:8
 msgid "_Basic"
@@ -279,7 +281,7 @@ msgstr "Supprimer le fichier"
 
 #: src/raider-preferences.blp:14
 msgid "Whether to remove the file after obfuscating its contents"
-msgstr "S’il faut supprimer le fichier après avoir brouillé son contenu."
+msgstr "S’il faut supprimer le fichier après avoir brouillé son contenu"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
@@ -291,7 +293,7 @@ msgid ""
 "clue that the file has been shredded"
 msgstr ""
 "Effectuer un écrasement final avec des zéros au lieu de données aléatoires. "
-"Les données aléatoires sont un indice que le fichier a été broyé."
+"Les données aléatoires sont un indice que le fichier a été broyé"
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
