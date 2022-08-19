@@ -201,7 +201,7 @@ void raider_window_close(gpointer data, gpointer user_data, gint result)
 		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
 
 		if (result == 1) {
-			gchar* message = g_strdup(_("Finished shredding"));
+			gchar* message = g_strdup(_("Finished shredding files"));
 
 			GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
 			if (!GTK_IS_WINDOW(toplevel))
