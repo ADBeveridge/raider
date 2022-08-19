@@ -33,14 +33,6 @@
     <value key="Purism::form_factor">workstation</value>
     <value key="Purism::form_factor">mobile</value>
   </custom>
-  <languages>
-    <lang percentage="42">sv</lang>
-    <lang percentage="71">IT_it</lang>
-    <lang percentage="81">fr</lang>
-    <lang percentage="97">pt</lang>
-    <lang percentage="100">ru</lang>
-    <lang percentage="100">es</lang>
-  </languages>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
@@ -52,6 +44,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.2" date="2022-8-19">
+      <description>
+        <p>Bug fixes and translation updates</p>
+        <ul>
+          <li>Added Chinese, Turkish, Occitan and Brazilian Portuguese translations</li>
+          <li>Fixed in-app notification crash</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2022-8-10">
       <description>
         <p>User interface fixes</p>

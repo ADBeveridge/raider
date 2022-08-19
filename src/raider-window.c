@@ -192,10 +192,9 @@ void raider_window_close(gpointer data, gpointer user_data, gint result)
 		item = next;
 	}
 	if (removed == FALSE)
-		g_error(_("Could not remove file from quick list. Please report this."));
-
+		g_error(_("Could not remove filename from quick list. Please report this."));
 	window->file_count--;
-	window->filenames = g_list_remove(window->filenames, raider_file_row_get_filename(row));
+
 
 	if (window->file_count == 0) {
 		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
@@ -203,18 +202,12 @@ void raider_window_close(gpointer data, gpointer user_data, gint result)
 		if (result == 1) {
 			gchar* message = g_strdup(_("Finished shredding files"));
 
-			GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
-			if (!GTK_IS_WINDOW(toplevel))
-				return;
-
-			gboolean active = gtk_window_is_active(GTK_WINDOW(toplevel));
+			gboolean active = gtk_window_is_active(GTK_WINDOW(window));
 			if (!active) {
-				GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
 				GNotification *notification = g_notification_new(message);
-				g_application_send_notification(app, NULL, notification);
-			}else {
-				raider_window_show_toast(RAIDER_WINDOW(toplevel), message);
-			}
+				g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
+			}else
+				raider_window_show_toast(window, message);
 			g_free(message);
 		}
 
@@ -297,3 +290,4 @@ void raider_window_open(GFile *file, gpointer data, gchar *title)
 	window->file_count++;
 	window->filenames = g_list_append(window->filenames, g_file_get_path(file));
 }
+
