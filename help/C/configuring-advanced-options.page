@@ -40,13 +40,13 @@
       </item>
       <item>
         <p>If you want to overwrite a file with a specific pattern, place it
-        in a file and on the <cmd>Get overwrite data from</cmd> option, select
-        the file which you created.</p>
+        in a file and enable the <cmd>Get overwrite data source</cmd> option and
+        select the file which you created.</p>
       </item>
       <item>
         <p>To partially shred a file, put in the number of bytes that you
-        want to be shredded in the number entry. If you put on 0 bytes, it will
-        be ignored, and the whole file shredded.</p>
+        want to be shredded in the <cmd>Number of bytes to shred</cmd> entry. If
+        the number is 0 bytes, it will be ignored, and the whole file shredded.</p>
       </item>
       <item>
         <p>If you do not want the file size to be rounded up to the next full

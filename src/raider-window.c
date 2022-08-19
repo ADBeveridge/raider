@@ -164,8 +164,6 @@ static void raider_window_init(RaiderWindow *self)
 	g_signal_connect(self->target, "leave", G_CALLBACK(on_leave), self);
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
-
-	raider_window_show_toast(self, "Close this toast manually and the window will crash.");
 }
 
 /* This handles the application and window state. */

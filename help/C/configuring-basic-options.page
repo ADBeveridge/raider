@@ -38,7 +38,7 @@
           Number of passes</cmd> to conceal the fact that shredding has been
           done on it. One of the hallmarks of a shredded file is that it
           contains random data, but the <cmd>Hide shredding</cmd> option
-          overwrites it with zeros, making it look like an empty part of the
+          overwrites the file with zeros, making it look like an empty part of the
           file system.
         </p>
       </item>
