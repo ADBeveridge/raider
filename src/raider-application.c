@@ -119,8 +119,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
 
 static void show_help(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-	GtkWindow *current_window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
-	gtk_show_uri(current_window, "help:raider", GDK_CURRENT_TIME);
+	gtk_show_uri(NULL, "help:raider", GDK_CURRENT_TIME);
 }
 
 static void raider_application_open(GApplication *application, GFile **files, gint n_files, const gchar *hint)
