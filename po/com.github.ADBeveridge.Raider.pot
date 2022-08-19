@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-16 10:55-0300\n"
+"POT-Creation-Date: 2022-08-19 13:59-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,12 +238,12 @@ msgid "translator-credits"
 msgstr ""
 
 #. Notification stuff.
-#: src/raider-file-row.c:165 src/raider-file-row.c:205
+#: src/raider-file-row.c:169
 msgid "Shredded "
 msgstr ""
 
 #: src/raider-preferences.blp:8
-msgid "_Basic"
+msgid "Shredder"
 msgstr ""
 
 #: src/raider-preferences.blp:10
@@ -281,7 +281,9 @@ msgid "Remove Method"
 msgstr ""
 
 #: src/raider-preferences.blp:50
-msgid "How to remove the files from the fileystem"
+msgid ""
+"How to remove the obfuscated files from the fileystem. See help for "
+"information"
 msgstr ""
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
@@ -369,48 +371,51 @@ msgstr ""
 #: src/raider-window.blp:56
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
-"contents cannot be recovered. Learn more about <a href=\"https://en."
-"wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
+"contents cannot be recovered."
 msgstr ""
 
-#: src/raider-window.blp:93
+#: src/raider-window.blp:92
 msgid "Shred All"
 msgstr ""
 
-#: src/raider-window.blp:112
+#: src/raider-window.blp:111
 msgid "Abort All"
 msgstr ""
 
-#: src/raider-window.blp:129
+#: src/raider-window.blp:128
 msgid "New Window"
 msgstr ""
 
-#: src/raider-window.blp:135
+#: src/raider-window.blp:134
 msgid "Preferences"
 msgstr ""
 
-#: src/raider-window.blp:139
+#: src/raider-window.blp:138
 msgid "Help"
 msgstr ""
 
-#: src/raider-window.blp:143
+#: src/raider-window.blp:142
 msgid "About File Shredder"
 msgstr ""
 
-#: src/raider-window.c:203
-msgid "Could not remove file from quick list."
+#: src/raider-window.c:195
+msgid "Could not remove file from quick list. Please report this."
 msgstr ""
 
-#: src/raider-window.c:241
+#: src/raider-window.c:204
+msgid "Finished shredding"
+msgstr ""
+
+#: src/raider-window.c:247
 msgid "Directories are not supported"
 msgstr ""
 
-#: src/raider-window.c:260
+#: src/raider-window.c:266
 #, c-format
 msgid "“%s” is already loaded"
 msgstr ""
 
-#: src/raider-window.c:273
+#: src/raider-window.c:279
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr ""
