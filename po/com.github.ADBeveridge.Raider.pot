@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 13:59-0700\n"
+"POT-Creation-Date: 2022-08-19 14:06-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,7 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:10
-#: src/raider-window.blp:36
+#: src/raider-application.c:103 src/raider-window.blp:35
 msgid "File Shredder"
 msgstr ""
 
@@ -217,7 +216,7 @@ msgstr ""
 msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr ""
 
-#: src/raider-application.c:73 src/raider-window.blp:29
+#: src/raider-application.c:73 src/raider-window.blp:28
 msgid "Add Files"
 msgstr ""
 
@@ -225,7 +224,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-application.c:74 src/raider-window.blp:27
+#: src/raider-application.c:74 src/raider-window.blp:26
 msgid "Add"
 msgstr ""
 
@@ -364,37 +363,37 @@ msgstr ""
 msgid "pass"
 msgstr ""
 
-#: src/raider-window.blp:54
+#: src/raider-window.blp:53
 msgid "Add files or drop here"
 msgstr ""
 
-#: src/raider-window.blp:56
+#: src/raider-window.blp:55
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
 
-#: src/raider-window.blp:92
+#: src/raider-window.blp:91
 msgid "Shred All"
 msgstr ""
 
-#: src/raider-window.blp:111
+#: src/raider-window.blp:110
 msgid "Abort All"
 msgstr ""
 
-#: src/raider-window.blp:128
+#: src/raider-window.blp:127
 msgid "New Window"
 msgstr ""
 
-#: src/raider-window.blp:134
+#: src/raider-window.blp:133
 msgid "Preferences"
 msgstr ""
 
-#: src/raider-window.blp:138
+#: src/raider-window.blp:137
 msgid "Help"
 msgstr ""
 
-#: src/raider-window.blp:142
+#: src/raider-window.blp:141
 msgid "About File Shredder"
 msgstr ""
 
@@ -403,7 +402,7 @@ msgid "Could not remove file from quick list. Please report this."
 msgstr ""
 
 #: src/raider-window.c:204
-msgid "Finished shredding"
+msgid "Finished shredding files"
 msgstr ""
 
 #: src/raider-window.c:247
