@@ -66,11 +66,15 @@ gchar *raider_file_row_get_filename(RaiderFileRow * row)
 	return g_file_get_path(row->file);
 }
 
-/* This is called when the user clicks on the remove button. */
 void raider_file_row_delete(GtkWidget *widget, gpointer data)
 {
-	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
-
+	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 0);
+	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
+	gtk_list_box_remove(list_box, GTK_WIDGET(data));
+}
+void raider_file_row_delete_info(GtkWidget *widget, gpointer data)
+{
+	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 1);
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
@@ -84,7 +88,7 @@ gboolean raider_file_row_update_progress(gpointer data)
 		gtk_widget_set_visible(row->spinner, TRUE);
 		gtk_widget_set_visible(GTK_WIDGET(row->icon), FALSE);
 		raider_progress_info_popover_pulse(row->popover);
-	}else  {
+	}else {
 		gtk_widget_set_visible(row->spinner, FALSE);
 		gtk_widget_set_visible(GTK_WIDGET(row->icon), TRUE);
 		raider_progress_icon_set_progress(row->icon, progress);
@@ -174,6 +178,7 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 	RaiderFileRow* row = RAIDER_FILE_ROW(user_data);
 	gchar* message = raider_shred_backend_get_return_result_string(row->backend);
 
+	/* If the message does not contain 'good' */
 	if (g_strcmp0(message, "good") != 0) {
 		row->aborted = TRUE;
 		adw_action_row_set_subtitle(ADW_ACTION_ROW(row), message);
@@ -181,37 +186,17 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 
 	/* Make sure that the user can use the window after the row is destroyed. */
 	gtk_widget_hide(GTK_WIDGET(row->popover));
+	g_object_unref(row->backend);
 
 	/* Remove the timeout. */
 	gboolean removed_timeout = g_source_remove(row->timeout_id);
-	if (removed_timeout == FALSE) {
+	if (removed_timeout == FALSE)
 		g_printerr("Could not stop timeout.\n");
-	}
 
-	/* Delete the progress manager. */
-	g_object_unref(row->backend);
-
-	if (!row->aborted) {
-		GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
-		if (!GTK_IS_WINDOW(toplevel))
-			return;
-
-		/* Decide whether to send it via adwaita or shell. */
-		gboolean active = gtk_window_is_active(GTK_WINDOW(toplevel));
-		if (!active) {
-			GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
-			g_application_send_notification(app, NULL, row->notification);
-		}else  {
-			gchar* message = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
-			raider_window_show_toast(RAIDER_WINDOW(toplevel), message);
-			g_free(message);
-		}
-
-
-		raider_file_row_delete(NULL, user_data);
-	}
-	if (row->aborted == TRUE) {
-		/* Reset the view. */
+	if (row->aborted == FALSE)
+		raider_file_row_delete_info(NULL, user_data);
+	else {
+		/* Reset the view of the file row. */
 		adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
 		gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
 		gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);

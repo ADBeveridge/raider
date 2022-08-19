@@ -201,3 +201,4 @@ static void raider_application_init(RaiderApplication *self)
 	g_settings_set_boolean(settings, "do-data-file", FALSE);
 	g_object_unref(settings);
 }
+

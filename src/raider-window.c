@@ -46,11 +46,6 @@ struct _RaiderWindow
 
 	GList *filenames; // A quick list of filenames loaded for this window. */
 	int file_count;
-
-	/* Device selector data items. */
-	GVolumeMonitor *monitor;
-	GMenu *mount_menu;
-	GMenu *mount_main_menu;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -169,10 +164,12 @@ static void raider_window_init(RaiderWindow *self)
 	g_signal_connect(self->target, "leave", G_CALLBACK(on_leave), self);
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
+
+	raider_window_show_toast(self, "Close this toast manually and the window will crash.");
 }
 
-/* This is called when the handler for the close button destroys the row. This handles the application state */
-void raider_window_close(gpointer data, gpointer user_data)
+/* This handles the application and window state. */
+void raider_window_close(gpointer data, gpointer user_data, gint result)
 {
 	RaiderWindow *window = RAIDER_WINDOW(user_data);
 
@@ -189,7 +186,6 @@ void raider_window_close(gpointer data, gpointer user_data)
 
 		/* Get the filename for this round. */
 		gchar *text = (gchar *)item->data;
-
 		if (g_strcmp0(text, filename) == 0)
 		{
 			window->filenames = g_list_remove(window->filenames, text);
@@ -197,18 +193,32 @@ void raider_window_close(gpointer data, gpointer user_data)
 		}
 		item = next;
 	}
-
 	if (removed == FALSE)
-	{
-		g_error(_("Could not remove file from quick list."));
-	}
+		g_error(_("Could not remove file from quick list. Please report this."));
 
 	window->file_count--;
 	window->filenames = g_list_remove(window->filenames, raider_file_row_get_filename(row));
 
-	if (window->file_count == 0)
-	{
+	if (window->file_count == 0) {
 		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+
+		if (result == 1) {
+			gchar* message = g_strdup(_("Finished shredding"));
+
+			GtkWidget *toplevel = GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(row)));
+			if (!GTK_IS_WINDOW(toplevel))
+				return;
+
+			gboolean active = gtk_window_is_active(GTK_WINDOW(toplevel));
+			if (!active) {
+				GApplication *app = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(toplevel)));
+				GNotification *notification = g_notification_new(message);
+				g_application_send_notification(app, NULL, notification);
+			}else {
+				raider_window_show_toast(RAIDER_WINDOW(toplevel), message);
+			}
+			g_free(message);
+		}
 
 		/* Update the view. */
 		gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
@@ -217,11 +227,9 @@ void raider_window_close(gpointer data, gpointer user_data)
 	}
 }
 
-/* You are responsible for freeing text. */
 void raider_window_show_toast (RaiderWindow* window, gchar* text)
 {
-	g_autofree char *msg = g_strdup(text);
-	adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(msg));
+	adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
 }
 
 /* This is used to open a single file at a time */
