@@ -326,6 +326,7 @@ void raider_file_row_shredding_abort(gpointer data)
 
 	row->aborted = TRUE;
 	g_subprocess_force_exit(row->process);
+	g_subprocess_wait(row->process, NULL, NULL);
 
 	/* finish_shredding will be called here because when the subprocess
 	   is done, finish_shredding is always called, regardless of the exit type. */

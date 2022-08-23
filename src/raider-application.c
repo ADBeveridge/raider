@@ -52,15 +52,16 @@ static void on_open_response(GtkDialog *dialog, int response)
 	if (response == GTK_RESPONSE_ACCEPT) {
 		GListModel *list = gtk_file_chooser_get_files(GTK_FILE_CHOOSER(dialog));
 
+		GList *file_list = NULL;
+
 		int num = g_list_model_get_n_items(list);
 		int i;
 		for (i = 0; i < num; i++) {
-			gpointer obj = g_list_model_get_item(list, i);
-			GFile *file = obj;
-
-			raider_window_open(file, gtk_window_get_transient_for(GTK_WINDOW(dialog)), NULL);
+			file_list = g_list_append(file_list, g_list_model_get_item(list, i));
 		}
 		g_object_unref(list);
+
+		raider_window_open_files(RAIDER_WINDOW(gtk_window_get_transient_for(GTK_WINDOW(dialog))), file_list);
 	}
 
 	gtk_window_destroy(GTK_WINDOW(dialog));
@@ -127,9 +128,13 @@ static void raider_application_open(GApplication *application, GFile **files, gi
 	RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", application, NULL);
 	gint i;
 
+	/* Convert array of files into a GList. */
+	GList *file_list = NULL;
 	for (i = 0; i < n_files; i++) {
-		raider_window_open(g_file_dup(files[i]), window, NULL); // This adds an entry to the current window.
+		file_list = g_list_append(file_list, g_file_dup(files[i]));
 	}
+
+	raider_window_open_files(window, file_list);
 
 	gtk_window_present(GTK_WINDOW(window));
 }

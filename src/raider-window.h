@@ -25,7 +25,8 @@
 
 G_DECLARE_FINAL_TYPE(RaiderWindow, raider_window, RAIDER, WINDOW, AdwApplicationWindow)
 
-void raider_window_open(GFile *file, gpointer data, gchar *title);
+gboolean raider_window_open(GFile *file, gpointer data, gchar *title);
 void raider_window_close(gpointer data, gpointer user_data, gint result);
 void raider_window_show_toast (RaiderWindow* window, gchar* text);
+void raider_window_open_files(RaiderWindow *window, GList *file_list);
 

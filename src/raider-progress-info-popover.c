@@ -48,7 +48,9 @@ RaiderProgressInfoPopover *raider_progress_info_popover_new()
 /* This sets both the progress bar progress and its text. */
 void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popover, gdouble fraction)
 {
-    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
+    if (fraction > 1.0)
+		fraction = 1.0;
+	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
 
 	double percentage = fraction * 100; // Move the decimal.
     gchar *display = g_strdup_printf("%d%%", (int)percentage);
