@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-07-18 04:27+0300\n"
-"PO-Revision-Date: 2022-07-18 06:00+0300\n"
-"Last-Translator: David Lapshin\n"
+"POT-Creation-Date: 2022-08-30 16:20+0300\n"
+"PO-Revision-Date: 2022-08-30 16:31+0300\n"
+"Last-Translator: David Lapshin <ddaudix@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -35,8 +35,13 @@ msgstr "Продвинутые настройки"
 
 #. (itstool) path: page/p
 #: configuring-advanced-options.page:21
-msgid "To configure the shredding options, click on click on the three stacked bars and select <gui>Preferences</gui>. The advanced options are below the basic options."
-msgstr "Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и выберите <gui>Параметры</gui>. Расширенные параметры ниже базовых параметров."
+msgid ""
+"To configure the shredding options, click on click on the three stacked bars "
+"and select <gui>Preferences</gui>. The advanced options are below the basic "
+"options."
+msgstr ""
+"Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и "
+"выберите <gui>Параметры</gui>. Расширенные параметры ниже базовых параметров."
 
 #. (itstool) path: page/p
 #: configuring-advanced-options.page:25
@@ -45,38 +50,92 @@ msgstr "Представлено пять настроек:"
 
 #. (itstool) path: item/p
 #: configuring-advanced-options.page:28
-msgid "The <cmd>Remove method</cmd> option controls how the file is removed from the file system. File Shredder can rename the file in such a way that it is very hard to detect that it existed. <cmd>Wipesync</cmd> and <cmd>Wipe</cmd> both do this, but <cmd>Wipesync</cmd> makes sure that each file change is synced to disk. File Shredder renames the file to eight zeros, then seven, and so on. <cmd>Wipe</cmd> does not make sure that the renaming is synced to disk."
-msgstr "Опция <cmd>Метод удаления</cmd> управляет тем, как файл удаляется из файловой системы. Файловый шредер может переименовать файл таким образом, что очень трудно обнаружить, что он существовал. <cmd>Wipesync</cmd> и <cmd>Wipe</cmd> оба делают это, но <cmd>Wipesync</cmd> гарантируют, что каждое изменение файла синхронизируется с диском. Файловый шредер переименовает файл в восемь нулей, затем семь, и так далее. <cmd>Wipe</cmd> не удостоверяется, что переименование синхронизируется до диска."
+msgid ""
+"The <cmd>Remove method</cmd> option controls how the file is removed from "
+"the file system. File Shredder can rename the file in such a way that it is "
+"very hard to detect that it existed. <cmd>Wipesync</cmd> and <cmd>Wipe</cmd> "
+"both do this, but <cmd>Wipesync</cmd> makes sure that each file change is "
+"synced to disk. File Shredder renames the file to eight zeros, then seven, "
+"and so on. <cmd>Wipe</cmd> does not make sure that the renaming is synced to "
+"disk."
+msgstr ""
+"Опция <cmd>Метод удаления</cmd> управляет тем, как файл удаляется из "
+"файловой системы. Файловый шредер может переименовать файл таким образом, "
+"что очень трудно обнаружить, что он существовал. <cmd>Wipesync</cmd> и "
+"<cmd>Wipe</cmd> оба делают это, но <cmd>Wipesync</cmd> гарантируют, что "
+"каждое изменение файла синхронизируется с диском. Файловый шредер "
+"переименовает файл в восемь нулей, затем семь, и так далее. <cmd>Wipe</cmd> "
+"не удостоверяется, что переименование синхронизируется до диска."
 
 #. (itstool) path: note/p
 #: configuring-advanced-options.page:36
-msgid "Some file systems automatically sync the renames, which makes <cmd>Wipesync</cmd> useless, but some do not do this automatically, so File Shredder can force it to do so with <cmd>Wipesync</cmd>."
-msgstr "Некоторые файловые системы автоматически синхронизируют переименования, что делает <cmd>Wipesync</cmd> бесполезным, но некоторые не делают этого автоматически, поэтому Файловый шредер может заставить его сделать это с помощью <cmd>Wipesync</cmd>."
+msgid ""
+"Some file systems automatically sync the renames, which makes <cmd>Wipesync</"
+"cmd> useless, but some do not do this automatically, so File Shredder can "
+"force it to do so with <cmd>Wipesync</cmd>."
+msgstr ""
+"Некоторые файловые системы автоматически синхронизируют переименования, что "
+"делает <cmd>Wipesync</cmd> бесполезным, но некоторые не делают этого "
+"автоматически, поэтому Файловый шредер может заставить его сделать это с "
+"помощью <cmd>Wipesync</cmd>."
 
 #. (itstool) path: item/p
 #: configuring-advanced-options.page:42
-msgid "If you want to overwrite a file with a specific pattern, place it in a file and on the <cmd>Get overwrite data from</cmd> option, select the file which you created."
-msgstr "Если вы хотите перезаписать файл с помощью определенного шаблона, поместите его в файл и в опцию <cmd>Получать данные для перезаписи из</cmd>, выберите созданный вами файл."
+msgid ""
+"If you want to overwrite a file with a specific pattern, place it in a file "
+"and enable the <cmd>Get overwrite data source</cmd> option and select the "
+"file which you created."
+msgstr ""
+"Если вы хотите перезаписать файл с помощью определенного шаблона, поместите "
+"его в файл и включите <cmd> чтобы получать данные для перезаписи из </cmd>, "
+"выберите созданный вами файл."
 
 #. (itstool) path: item/p
 #: configuring-advanced-options.page:47
-msgid "To partially shred a file, put in the number of bytes that you want to be shredded in the number entry. If you put on 0 bytes, it will be ignored, and the whole file shredded."
-msgstr "Чтобы частично измельчить файл, поместите количество байтов, которые вы хотите измельчить в записи номера. Если вы установите значение на 0 байтов, это будет проигнорировано, и весь файл измелчен."
+msgid ""
+"To partially shred a file, put in the number of bytes that you want to be "
+"shredded in the <cmd>Number of bytes to shred</cmd> entry. If the number is "
+"0 bytes, it will be ignored, and the whole file shredded."
+msgstr ""
+"Чтобы частично измельчить файл, поместите количество байтов, которые вы "
+"хотите измельчить в <cmd>Количество байтов для измельчения</cmd>. Если "
+"установлено значение 0 байтов, это будет проигнорировано, и весь файл "
+"измелчен."
 
 #. (itstool) path: item/p
 #: configuring-advanced-options.page:52
-msgid "If you do not want the file size to be rounded up to the next full block, check <cmd>Do not round file sizes</cmd>. It usually is not needed except in borderline cases because <app>File Shredder</app> automatically does this in the case of non-regular files."
-msgstr "Если вы не хотите, чтобы размер файла был окружен до следующего полного блока, проверьте <cmd>Не округлять размеры файлов</cmd>. Обычно это не требуется, кроме как в пограничных случаях, потому что <app>Файловый шредер</app> автоматически делает это в случае нерегулярных файлов."
+msgid ""
+"If you do not want the file size to be rounded up to the next full block, "
+"check <cmd>Do not round file sizes</cmd>. It usually is not needed except in "
+"borderline cases because <app>File Shredder</app> automatically does this in "
+"the case of non-regular files."
+msgstr ""
+"Если вы не хотите, чтобы размер файла был окружен до следующего полного "
+"блока, проверьте <cmd>Не округлять размеры файлов</cmd>. Обычно это не "
+"требуется, кроме как в пограничных случаях, потому что <app>Файловый шредер</"
+"app> автоматически делает это в случае нерегулярных файлов."
 
 #. (itstool) path: item/p
 #: configuring-advanced-options.page:58
-msgid "<cmd>Override file permissions when shredding</cmd> is used to change permissions to allow writing if necessary."
-msgstr "<cmd>Переопределить права доступа файла, когда измельчается</cmd> используется для изменения разрешений для разрешения записи, если это необходимо."
+msgid ""
+"<cmd>Override file permissions when shredding</cmd> is used to change "
+"permissions to allow writing if necessary."
+msgstr ""
+"<cmd>Переопределить права доступа файла, когда измельчается</cmd> "
+"используется для изменения разрешений для разрешения записи, если это "
+"необходимо."
 
 #. (itstool) path: note/p
 #: configuring-advanced-options.page:61
-msgid "This option will not work on files that belong to the root user only, as a regular user cannot change a root user's file without their permission via password. If you want to shred a root file, log in as root."
-msgstr "Эта опция не будет работать в файлах, которые принадлежат только пользователю root, поскольку обычный пользователь не может изменить файл пользователя root без его разрешения через пароль. Если вы хотите измельчить корневой файл, войдите в систему как root."
+msgid ""
+"This option will not work on files that belong to the root user only, as a "
+"regular user cannot change a root user's file without their permission via "
+"password. If you want to shred a root file, log in as root."
+msgstr ""
+"Эта опция не будет работать в файлах, которые принадлежат только "
+"пользователю root, поскольку обычный пользователь не может изменить файл "
+"пользователя root без его разрешения через пароль. Если вы хотите измельчить "
+"корневой файл, войдите в систему как root."
 
 #. (itstool) path: info/desc
 #: configuring-basic-options.page:17
@@ -90,8 +149,12 @@ msgstr "Базовые настройки"
 
 #. (itstool) path: page/p
 #: configuring-basic-options.page:21
-msgid "To configure the shredding options, click on the three stacked bars and select <gui>Preferences</gui>."
-msgstr "Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и выберите <gui>Параметры</gui>."
+msgid ""
+"To configure the shredding options, click on the three stacked bars and "
+"select <gui>Preferences</gui>."
+msgstr ""
+"Чтобы настроить параметры измельчения, нажмите на три сложенных столбца и "
+"выберите <gui>Параметры</gui>."
 
 #. (itstool) path: page/p
 #: configuring-basic-options.page:24
@@ -100,24 +163,51 @@ msgstr "В разделе <gui>Базовое</gui> представлено т�
 
 #. (itstool) path: item/p
 #: configuring-basic-options.page:27
-msgid "If you want to keep the file on your system, uncheck the <cmd>Remove after shredding</cmd> option; it is enabled by default. The file will contain garbage, and will not be able to be opened by a regular text editor. It will not have its previous contents."
-msgstr "Если вы хотите сохранить файл в своей системе, снимите опцию <cmd>Удалять файл после измельчения</cmd>; Он включен по умолчанию. Файл будет содержать мусор и его не сможет открыть обычный текстовый редактор.У него не будет своего предыдущего содержимого."
+msgid ""
+"If you want to keep the file on your system, uncheck the <cmd>Remove after "
+"shredding</cmd> option; it is enabled by default. The file will contain "
+"garbage, and will not be able to be opened by a regular text editor. It will "
+"not have its previous contents."
+msgstr ""
+"Если вы хотите сохранить файл в своей системе, снимите опцию <cmd>Удалять "
+"файл после измельчения</cmd>; Он включен по умолчанию. Файл будет содержать "
+"мусор и его не сможет открыть обычный текстовый редактор.У него не будет "
+"своего предыдущего содержимого."
 
 #. (itstool) path: item/p
 #: configuring-basic-options.page:35
-msgid "The <cmd>Hide shredding</cmd> option does one more pass when it has finished shredding the file as many times as requested in the <cmd> Number of passes</cmd> to conceal the fact that shredding has been done on it. One of the hallmarks of a shredded file is that it contains random data, but the <cmd>Hide shredding</cmd> option overwrites it with zeros, making it look like an empty part of the file system."
-msgstr "Опция <cmd>Скрыть измельчение</cmd> выполняет еще один проход, когда он закончил измельчение файла столько раз, как и запрошено в <md>Количество проходов</cmd>, чтобы скрыть тот факт, что измельчение было сделано на нем, из отличительных признаков измельченного файла является то, что он содержит случайные данные, но опция <cmd>Скрыть измельчение</cmd> перезаписывает их нулями, что выглядит как пустая часть файловой системы."
+msgid ""
+"The <cmd>Hide shredding</cmd> option does one more pass when it has finished "
+"shredding the file as many times as requested in the <cmd> Number of passes</"
+"cmd> to conceal the fact that shredding has been done on it. One of the "
+"hallmarks of a shredded file is that it contains random data, but the "
+"<cmd>Hide shredding</cmd> option overwrites the file with zeros, making it "
+"look like an empty part of the file system."
+msgstr ""
+"Опция <cmd>Скрыть измельчение</cmd> выполняет еще один проход, когда он "
+"закончил измельчение файла столько раз, как и запрошено в <cmd>Количество "
+"проходов</cmd>, чтобы скрыть тот факт, что измельчение было сделано на нем, "
+"из отличительных признаков измельченного файла является то, что он содержит "
+"случайные данные, но опция <cmd>Скрыть измельчение</cmd> перезаписывает их "
+"нулями, что выглядит как пустая часть файловой системы."
 
 #. (itstool) path: item/p
 #: configuring-basic-options.page:46
-msgid "The <cmd>Number of passes</cmd> option allows you to shred a file so many times. The maximum is 25, because that is when all internal shredding patterns have been used, and more shredding would not be useful."
-msgstr "Параметр <cmd>Количество проходов</cmd> позволяет вам измельчать файл заданным количеством раз. Максимум составляет 25, потому что именно тогда были использованы все модели внутреннего измельчения, и большее измельчение не было бы полезным."
+msgid ""
+"The <cmd>Number of passes</cmd> option allows you to shred a file so many "
+"times. The maximum is 25, because that is when all internal shredding "
+"patterns have been used, and more shredding would not be useful."
+msgstr ""
+"Параметр <cmd>Количество проходов</cmd> позволяет вам измельчать файл "
+"заданным количеством раз. Максимум составляет 25, потому что именно тогда "
+"были использованы все модели внутреннего измельчения, и большее измельчение "
+"не было бы полезным."
 
 #. (itstool) path: info/title
 #: index.page:7
 msgctxt "link:trail"
 msgid "File Shredder"
-msgstr "Файловый шредер"
+msgstr "Измельчитель файлов"
 
 #. (itstool) path: info/title
 #: index.page:8
@@ -173,13 +263,35 @@ msgstr "Введение"
 
 #. (itstool) path: page/p
 #: introduction.page:20
-msgid "<app>File Shredder</app> is a tool for shredding the files that you do not want to be recovered. It works on any file type possible, and supports many options as to how the shredding is done. Every file that is added to the list shreds at the same time, so it greatly reduces the time needed. It shows the current progress of every file loaded, so you know how far along each is."
-msgstr "<app>Файловый шредер</app> - это инструмент для измельчения файлов, которые вы не хотите восстанавливать. Он работает с любым возможным типом файла и поддерживает многие варианты того, как выполняется измельчение. Каждый файл, который добавляется в список одновременно, сильно уменьшает необходимое время. Он показывает текущий прогресс каждого загруженного файла, поэтому вы знаете, как далеко каждый."
+msgid ""
+"<app>File Shredder</app> is a tool for shredding the files that you do not "
+"want to be recovered. It works on any file type possible, and supports many "
+"options as to how the shredding is done. Every file that is added to the "
+"list shreds at the same time, so it greatly reduces the time needed. It "
+"shows the current progress of every file loaded, so you know how far along "
+"each is."
+msgstr ""
+"<app>Файловый шредер</app> - это инструмент для измельчения файлов, которые "
+"вы не хотите восстанавливать. Он работает с любым возможным типом файла и "
+"поддерживает многие варианты того, как выполняется измельчение. Каждый файл, "
+"который добавляется в список одновременно, сильно уменьшает необходимое "
+"время. Он показывает текущий прогресс каждого загруженного файла, поэтому вы "
+"знаете, как далеко каждый."
 
 #. (itstool) path: note/p
 #: introduction.page:26
-msgid "Shredding is the obfuscation of a file, so that the previous contents are not recoverable. Optionally the file is deleted, but the obfuscation is needed because all files that are deleted can be recovered, and to keep the contents of the file secret, they have to be overwritten with random data before the file itself is deleted."
-msgstr "Измельчение - это запутывание файла, так что предыдущее содержимое не подлежит восстановлению. При желании файл удаляется, но запутывание необходимо, поскольку все удаленные файлы могут быть восстановлены, и для того, чтобы сохранить содержимое секрета файла, их необходимо перезаписать случайными данными до того, как сам файл будет удален."
+msgid ""
+"Shredding is the obfuscation of a file, so that the previous contents are "
+"not recoverable. Optionally the file is deleted, but the obfuscation is "
+"needed because all files that are deleted can be recovered, and to keep the "
+"contents of the file secret, they have to be overwritten with random data "
+"before the file itself is deleted."
+msgstr ""
+"Измельчение - это запутывание файла, так что предыдущее содержимое не "
+"подлежит восстановлению. При желании файл удаляется, но запутывание "
+"необходимо, поскольку все удаленные файлы могут быть восстановлены, и для "
+"того, чтобы сохранить содержимое секрета файла, их необходимо перезаписать "
+"случайными данными до того, как сам файл будет удален."
 
 #. (itstool) path: info/desc
 #: load-file.page:17
@@ -193,18 +305,32 @@ msgstr "Загрузить файл"
 
 #. (itstool) path: page/p
 #: load-file.page:22
-msgid "You can open a file, or many, by pressing the button on the upper left of the window that contains a plus sign. Select the files you want to shred, and click OK."
-msgstr "Вы можете открыть файл или несколько, нажав кнопку в верхней левой части окна, которая содержит знак плюс. Выберите файлы, которые вы хотите измельчить, и нажмите OK."
+msgid ""
+"You can open a file, or many, by pressing the button on the upper left of "
+"the window that contains a plus sign. Select the files you want to shred, "
+"and click OK."
+msgstr ""
+"Вы можете открыть файл или несколько, нажав кнопку в верхней левой части "
+"окна, которая содержит знак плюс. Выберите файлы, которые вы хотите "
+"измельчить, и нажмите OK."
 
 #. (itstool) path: page/p
 #: load-file.page:27
-msgid "You can also drag and drop the files you want to shred all at once into an open <app>File Shredder</app> window."
-msgstr "Вы также можете перетащить файлы, которые вы хотите измельчить одновременно в открытое окно<app>Файлового шредера</app>."
+msgid ""
+"You can also drag and drop the files you want to shred all at once into an "
+"open <app>File Shredder</app> window."
+msgstr ""
+"Вы также можете перетащить файлы, которые вы хотите измельчить одновременно "
+"в открытое окно<app>Файлового шредера</app>."
 
 #. (itstool) path: note/p
 #: load-file.page:31
-msgid "The shredding button is hidden while there are no files loaded, and during shredding."
-msgstr "Кнопка измельчения скрыта когда нет загруженных файлов а также во время измельчения."
+msgid ""
+"The shredding button is hidden while there are no files loaded, and during "
+"shredding."
+msgstr ""
+"Кнопка измельчения скрыта когда нет загруженных файлов а также во время "
+"измельчения."
 
 #. (itstool) path: info/desc
 #: shred-file.page:14
@@ -218,23 +344,49 @@ msgstr "Измельчите файлы"
 
 #. (itstool) path: page/p
 #: shred-file.page:19
-msgid "When you have loaded all the files that you wish to shred, press the red <gui>Shred</gui> button at the upper left of the window, next to the add file button. Then each file loaded will acquire a progress indicator that will show how much of the shredding has been finished. You can click on the progress indicator to view more information regarding the shredding progress of that file."
-msgstr "Когда вы загрузили все файлы, которые вы хотите измельчить, нажмите красную кнопку <gui>Измельчить</gui> в левом верхнем углу окна, рядом с кнопкой Добавить. Затем каждый загруженный файл приобретет индикатор прогресса, который покажет, сколько из уничтожения было завершено. Вы можете нажать на индикатор прогресса, чтобы просмотреть дополнительную информацию о ходе измельчения этого файла."
+msgid ""
+"When you have loaded all the files that you wish to shred, press the red "
+"<gui>Shred</gui> button at the upper left of the window, next to the add "
+"file button. Then each file loaded will acquire a progress indicator that "
+"will show how much of the shredding has been finished. You can click on the "
+"progress indicator to view more information regarding the shredding progress "
+"of that file."
+msgstr ""
+"Когда вы загрузили все файлы, которые вы хотите измельчить, нажмите красную "
+"кнопку <gui>Измельчить</gui> в левом верхнем углу окна, рядом с кнопкой "
+"Добавить. Затем каждый загруженный файл приобретет индикатор прогресса, "
+"который покажет, сколько из уничтожения было завершено. Вы можете нажать на "
+"индикатор прогресса, чтобы просмотреть дополнительную информацию о ходе "
+"измельчения этого файла."
 
 #. (itstool) path: page/p
 #: shred-file.page:25
-msgid "When shredding starts, the <gui>Shred</gui> is replaced with a <gui>Abort</gui> button."
-msgstr "Когда начинается измельчение, <gui>Измельчить</gui> заменяется на кнопку <gui>Прервать</gui>."
+msgid ""
+"When shredding starts, the <gui>Shred</gui> is replaced with a <gui>Abort</"
+"gui> button."
+msgstr ""
+"Когда начинается измельчение, <gui>Измельчить</gui> заменяется на кнопку "
+"<gui>Прервать</gui>."
 
 #. (itstool) path: page/p
 #: shred-file.page:28
-msgid "When each file finishes shredding, it will disappear from the list, and a notification will say that the shredding has been finished."
-msgstr "Когда каждый файл заканчивает измельчение, он исчезнет из списка, и уведомление скажет, что измельчение было закончено."
+msgid ""
+"When each file finishes shredding, it will disappear from the list, and a "
+"notification will say that the shredding has been finished."
+msgstr ""
+"Когда каждый файл заканчивает измельчение, он исчезнет из списка, и "
+"уведомление скажет, что измельчение было закончено."
 
 #. (itstool) path: note/p
 #: shred-file.page:32
-msgid "Do NOT close the window until all files have finished shredding. When the window goes back to its empty state, then all shredding is finished, and you can close the window safely."
-msgstr "НЕ закрывайте окно, пока все файлы не закончили измельчение. Когда окно возвращается в свое пустое состояние, тогда все измельчение закончено, и вы можете безопасно закрыть окно."
+msgid ""
+"Do NOT close the window until all files have finished shredding. When the "
+"window goes back to its empty state, then all shredding is finished, and you "
+"can close the window safely."
+msgstr ""
+"НЕ закрывайте окно, пока все файлы не закончили измельчение. Когда окно "
+"возвращается в свое пустое состояние, тогда все измельчение закончено, и вы "
+"можете безопасно закрыть окно."
 
 #. (itstool) path: info/desc
 #: troubleshooting-shredding.page:14
@@ -248,13 +400,25 @@ msgstr "Проблема с измельчением файла"
 
 #. (itstool) path: page/p
 #: troubleshooting-shredding.page:19
-msgid "If the files do not shred, make sure to reload the folder in which the file was in before shredding. Also make sure that the file is not a shortcut to the file you want to shred."
-msgstr "Если файлы не измельчены, обязательно перезагрузите папку, в которой файл находился перед измельчением. Также убедитесь, что файл не является ярлыком для файла, который вы хотите измельчить."
+msgid ""
+"If the files do not shred, make sure to reload the folder in which the file "
+"was in before shredding. Also make sure that the file is not a shortcut to "
+"the file you want to shred."
+msgstr ""
+"Если файлы не измельчены, обязательно перезагрузите папку, в которой файл "
+"находился перед измельчением. Также убедитесь, что файл не является ярлыком "
+"для файла, который вы хотите измельчить."
 
 #. (itstool) path: note/p
 #: troubleshooting-shredding.page:24
-msgid "If the problem still persists, please go to the <link href=\"https://github.com/ADBeveridge/raider/issues\">issues page</link> and enter your specific problem, as well as steps to reproduce the problem."
-msgstr "Если проблема остается, пожалуйста, перейдите на <link href=\"https://github.com/ADBeveridge/raider/issues\">страницу непаладок</link> и введите свою конкретную проблему, а также шаги для воспроизведения проблемы."
+msgid ""
+"If the problem still persists, please go to the <link href=\"https://github."
+"com/ADBeveridge/raider/issues\">issues page</link> and enter your specific "
+"problem, as well as steps to reproduce the problem."
+msgstr ""
+"Если проблема остается, пожалуйста, перейдите на <link href=\"https://github."
+"com/ADBeveridge/raider/issues\">страницу непаладок</link> и введите свою "
+"конкретную проблему, а также шаги для воспроизведения проблемы."
 
 #. (itstool) path: p/link
 #: legal.xml:5
