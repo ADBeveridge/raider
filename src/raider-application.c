@@ -193,14 +193,10 @@ static void raider_application_init(RaiderApplication *self)
 	g_signal_connect_swapped(help_action, "activate", G_CALLBACK(show_help), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(help_action));
 
-	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){
-		"<primary>q",
-		NULL,
-	});
-	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){
-		"<primary>o",
-		NULL,
-	});
+	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
+	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
+	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
+
 	/* Always disable data-file, as user may forget that he loaded it. */
 	GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");
 	g_settings_set_boolean(settings, "do-data-file", FALSE);
