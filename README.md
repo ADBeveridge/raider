@@ -10,7 +10,7 @@ Raider, also known as File Shredder, is a simple shredding program built for the
 
 ## Useful links
 - GNOME Circle: <https://apps.gnome.org/app/com.github.ADBeveridge.Raider/>
-- Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
-- Report issues: <https://github.com/ADBeveridge/raider/issues/>
 - Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
 - Fedora COPR: <https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/>
+- Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
+- Report issues: <https://github.com/ADBeveridge/raider/issues/>
