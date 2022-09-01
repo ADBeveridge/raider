@@ -284,7 +284,8 @@ void raider_window_close(gpointer data, gpointer user_data, gint result)
 }
 
 /******************************************************************************/
-
+/**  Asychronously launch shred on all files.                             *****/
+/******************************************************************************/
 void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
 	RaiderWindow *window = RAIDER_WINDOW(user_data);
@@ -328,6 +329,8 @@ void shred_file(GtkWidget *widget, gpointer data)
 }
 
 /******************************************************************************/
+/**  Asychronously abort shred on all files.                              *****/
+/******************************************************************************/
 
 void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
@@ -340,7 +343,7 @@ void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res
 
 	/* Revert the text and view of the abort button. */
 	gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
-	gtk_button_set_label(window->abort_button, _("Shred All"));
+	gtk_button_set_label(window->abort_button, _("Abort All"));
 }
 
 /* This is run asynchronously. */
