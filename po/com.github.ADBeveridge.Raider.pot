@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 14:47-0700\n"
+"POT-Creation-Date: 2022-09-01 09:13-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,12 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:104 src/raider-window.blp:35
+#: src/raider-application.c:105 src/raider-window.blp:35
 msgid "File Shredder"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-#: src/raider-application.c:111
+#: src/raider-application.c:112
 msgid "Securely delete your files"
 msgstr ""
 
@@ -39,101 +39,101 @@ msgstr ""
 msgid "Alan Beveridge"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
 msgid "Bug fixes and translation updates"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:56
 msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
 msgid "Fixed in-app notification crash"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
 msgid "User interface fixes"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
 msgid "Added explanatory message and changed initial view's icon"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
 msgid "Added icon to add button in headerbar"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:74
 msgid "Fixed cropping of keyboard focus ring on shred button"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:75
 msgid "Updated preferences to be more concise and explanatory"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
 msgid "Add icon to open button in headerbar"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
 msgid "Added the French translation"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
 msgid "Added the Portuguese translation"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:86
 msgid "Updated the Russian translation"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
 msgid "Fixed progress retrieval bug"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
 msgid "Fixed display problems"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
 msgid "Minor fixes, including:"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
 msgid "Moved the Shred button to the bottom of the window"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
 msgid "Support for mobile devices added"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
 msgid "Rethemed the file rows to standard look"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:100
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
 msgid "Added checking so a file cannot be loaded twice"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
 msgid "Smooth progress tracking"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
 msgid "Written using GTK4 and Adwaita"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:115
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -225,23 +225,23 @@ msgstr ""
 msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr ""
 
-#: src/raider-application.c:73 src/raider-window.blp:28
+#: src/raider-application.c:74 src/raider-window.blp:28
 msgid "Add Files"
 msgstr ""
 
-#: src/raider-application.c:74
+#: src/raider-application.c:75
 msgid "Cancel"
 msgstr ""
 
-#: src/raider-application.c:74 src/raider-window.blp:26
+#: src/raider-application.c:75 src/raider-window.blp:26
 msgid "Add"
 msgstr ""
 
-#: src/raider-application.c:110
+#: src/raider-application.c:111
 msgid "1.2.2"
 msgstr ""
 
-#: src/raider-application.c:115
+#: src/raider-application.c:116
 msgid "translator-credits"
 msgstr ""
 
@@ -349,6 +349,10 @@ msgid ""
 msgstr ""
 
 #: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr ""
+
+#: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
 msgstr ""
 
@@ -382,11 +386,11 @@ msgid ""
 "contents cannot be recovered."
 msgstr ""
 
-#: src/raider-window.blp:91
+#: src/raider-window.blp:91 src/raider-window.c:298
 msgid "Shred All"
 msgstr ""
 
-#: src/raider-window.blp:110
+#: src/raider-window.blp:110 src/raider-window.c:346
 msgid "Abort All"
 msgstr ""
 
@@ -406,24 +410,36 @@ msgstr ""
 msgid "About File Shredder"
 msgstr ""
 
-#: src/raider-window.c:195
-msgid "Could not remove filename from quick list. Please report this."
-msgstr ""
-
-#: src/raider-window.c:203
-msgid "Finished shredding files"
-msgstr ""
-
-#: src/raider-window.c:240
+#: src/raider-window.c:127
 msgid "Directories are not supported"
 msgstr ""
 
-#: src/raider-window.c:259
+#: src/raider-window.c:146
 #, c-format
 msgid "“%s” is already loaded"
 msgstr ""
 
-#: src/raider-window.c:272
+#: src/raider-window.c:159
 #, c-format
 msgid "Cannot write to “%s”"
+msgstr ""
+
+#: src/raider-window.c:169
+msgid "System cannot load more files"
+msgstr ""
+
+#: src/raider-window.c:260
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+
+#: src/raider-window.c:268
+msgid "Finished shredding files"
+msgstr ""
+
+#: src/raider-window.c:323
+msgid "Starting Shredding…"
+msgstr ""
+
+#: src/raider-window.c:370
+msgid "Aborting…"
 msgstr ""
