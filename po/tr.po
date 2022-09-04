@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 14:47-0700\n"
-"PO-Revision-Date: 2022-08-20 02:55+0300\n"
+"POT-Creation-Date: 2022-09-01 09:13-0700\n"
+"PO-Revision-Date: 2022-09-04 19:14+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -21,12 +21,12 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:104 src/raider-window.blp:35
+#: src/raider-application.c:105 src/raider-window.blp:35
 msgid "File Shredder"
 msgstr "Dosya Parçalayıcı"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-#: src/raider-application.c:111
+#: src/raider-application.c:112
 msgid "Securely delete your files"
 msgstr "Dosyalarınızı güvenli silin"
 
@@ -45,103 +45,103 @@ msgstr ""
 msgid "Alan Beveridge"
 msgstr "Alan Beveridge"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
 msgid "Bug fixes and translation updates"
 msgstr "Hata düzeltmeler ve çeviri güncellemeleri"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:56
 msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
 msgstr "Çince, Türkçe, Oksitanca ve Brezilya Portekizcesi çevirileri eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
 msgid "Fixed in-app notification crash"
 msgstr "Uygulama içi bildirim çökmesi düzeltildi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
 msgid "User interface fixes"
 msgstr "Kullanıcı arayüzü düzeltmeleri"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
 msgid "Added explanatory message and changed initial view's icon"
 msgstr "Açıklayıcı mesaj eklendi ve ilk görünümün simgesi değiştirildi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
 msgid "Added icon to add button in headerbar"
 msgstr "Başlık çubuğuna düğme eklemek için simge eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:74
 msgid "Fixed cropping of keyboard focus ring on shred button"
 msgstr "Parçalama düğmesindeki klavye odak halkasının kırpılması düzeltildi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:75
 msgid "Updated preferences to be more concise and explanatory"
 msgstr "Terihler, daha özlü ve açıklayıcı olacak şekilde güncellendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
 msgid "Add icon to open button in headerbar"
 msgstr "Başlık çubuğunda aç düğmesi için simge eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
 msgid "Added the French translation"
 msgstr "Fransızca çeviri eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
 msgid "Added the Portuguese translation"
 msgstr "Portekizcesi çevirisi eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:86
 msgid "Updated the Russian translation"
 msgstr "Rusça çeviri güncellendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
 msgid "Fixed progress retrieval bug"
 msgstr "İlerleme geri alma hatası düzeltildi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
 msgid "Fixed display problems"
 msgstr "Görünüm sorunları düzeltildi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
 msgid "Minor fixes, including:"
 msgstr "Aşağıdakiler dahil küçük düzeltmeler:"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:90
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
 msgid "Moved the Shred button to the bottom of the window"
 msgstr "Parçala düğmesi pencerenin altına taşındı"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
 msgid "Support for mobile devices added"
 msgstr "Mobil aygıt desteği eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
 msgid "Rethemed the file rows to standard look"
 msgstr "Dosya satırlarını standart görünüme kavuşturuldu"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 "Birkaç kullanıcı arayüzü değişikliğiyle birlikte Dosya Parçalayıcı yeniden "
 "yazıldı:"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:100
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
 msgid "Added checking so a file cannot be loaded twice"
 msgstr "Bir dosyanın iki defa yüklenememesi için denetim eklendi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
 msgid "Smooth progress tracking"
 msgstr "Sorunsuz ilerleme takibi"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
 msgid "Written using GTK4 and Adwaita"
 msgstr "GTK4 ve Adwaita kullanılarak yazıldı"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
 msgid "Desktop notifications are shown if the window is not focused"
 msgstr "Pencere odaklanmamışsa masaüstü bildirimleri gösterilir"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:115
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
 "boasts a GNOME compliant interface."
@@ -242,23 +242,23 @@ msgstr "Üzerine yazma veri dosyası"
 msgid "Where to get data to overwrite the to-be-shredded files."
 msgstr "Parçalanacak dosyaların üzerine yazılacak verilerin nereden alınacağı."
 
-#: src/raider-application.c:73 src/raider-window.blp:28
+#: src/raider-application.c:74 src/raider-window.blp:28
 msgid "Add Files"
 msgstr "Dosya Ekle"
 
-#: src/raider-application.c:74
+#: src/raider-application.c:75
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/raider-application.c:74 src/raider-window.blp:26
+#: src/raider-application.c:75 src/raider-window.blp:26
 msgid "Add"
 msgstr "Ekle"
 
-#: src/raider-application.c:110
+#: src/raider-application.c:111
 msgid "1.2.2"
 msgstr "1.2.2"
 
-#: src/raider-application.c:115
+#: src/raider-application.c:116
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
@@ -381,6 +381,10 @@ msgid ""
 msgstr "Yetersiz izin durumunda dosya izinlerinin çiğnenme durumu"
 
 #: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Bitiriliyor…"
+
+#: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
 msgstr "Tahmin ediliyor..."
 
@@ -416,11 +420,11 @@ msgstr ""
 "Parçalama, bir dosyanın rastgele verilerle karıştırılmasıdır, böylece önceki "
 "içerikler kurtarılamaz."
 
-#: src/raider-window.blp:91
+#: src/raider-window.blp:91 src/raider-window.c:298
 msgid "Shred All"
 msgstr "Tümünü Parçala"
 
-#: src/raider-window.blp:110
+#: src/raider-window.blp:110 src/raider-window.c:346
 msgid "Abort All"
 msgstr "Tümünden Vazgeç"
 
@@ -440,24 +444,36 @@ msgstr "Yardım"
 msgid "About File Shredder"
 msgstr "Dosya Parçalayıcı Hakkında"
 
-#: src/raider-window.c:195
-msgid "Could not remove filename from quick list. Please report this."
-msgstr "Dosya adı hızlı listeden kaldırılamadı. Lütfen bunu raporlayın."
-
-#: src/raider-window.c:203
-msgid "Finished shredding files"
-msgstr "Dosya parçalama tamamlandı"
-
-#: src/raider-window.c:240
+#: src/raider-window.c:127
 msgid "Directories are not supported"
 msgstr "Dizinler desteklenmiyor"
 
-#: src/raider-window.c:259
+#: src/raider-window.c:146
 #, c-format
 msgid "“%s” is already loaded"
 msgstr "“%s” zaten yüklü"
 
-#: src/raider-window.c:272
+#: src/raider-window.c:159
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "“%s” dosyasına yazılamıyor"
+
+#: src/raider-window.c:169
+msgid "System cannot load more files"
+msgstr "Sistem daha fazla dosya yükleyemez"
+
+#: src/raider-window.c:260
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Dosya adı hızlı listeden kaldırılamadı. Lütfen bunu raporlayın."
+
+#: src/raider-window.c:268
+msgid "Finished shredding files"
+msgstr "Dosya parçalama tamamlandı"
+
+#: src/raider-window.c:323
+msgid "Starting Shredding…"
+msgstr "Parçalama Başlatılıyor…"
+
+#: src/raider-window.c:370
+msgid "Aborting…"
+msgstr "Vazgeçiliyor…"
