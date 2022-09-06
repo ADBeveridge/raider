@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=File Shredder
+Comment=Securely delete your files
 Exec=raider
 Icon=com.github.ADBeveridge.Raider
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GTK;Utility;FileTools;Security;
 StartupNotify=true
 X-GNOME-UsesNotifications=true
 # Translators: Do NOT translate or transliterate this text (these are enum types)!
