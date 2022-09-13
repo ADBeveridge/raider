@@ -65,14 +65,15 @@ gchar *raider_file_row_get_filename(RaiderFileRow * row)
 {
 	return g_file_get_path(row->file);
 }
-
-void raider_file_row_delete(GtkWidget *widget, gpointer data)
+/* This version is called when the user has aborted the operation, like clicking the abort button or close button. */
+void raider_file_row_delete_on_abort(GtkWidget *widget, gpointer data)
 {
 	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 0);
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
-void raider_file_row_delete_info(GtkWidget *widget, gpointer data)
+/* This version of delete tells the raider_window_close function to show a toast that shredding is done. */
+void raider_file_row_delete_on_finish(GtkWidget *widget, gpointer data)
 {
 	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 1);
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
@@ -132,10 +133,11 @@ raider_file_row_init(RaiderFileRow *row)
 	g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
 
 	/* Setup remove row. */
-	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete), row);
+	g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete_on_abort), row);
 
 	row->settings = g_settings_new("com.github.ADBeveridge.Raider");
 	row->aborted = FALSE;
+	row->process = NULL;
 }
 
 static void
@@ -184,18 +186,19 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 		adw_action_row_set_subtitle(ADW_ACTION_ROW(row), message);
 	}
 
-	/* Make sure that the user can use the window after the row is destroyed. */
+	/* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
 	gtk_widget_hide(GTK_WIDGET(row->popover));
 	g_object_unref(row->backend);
+	g_object_unref(row->process);
 
 	/* Remove the timeout. */
 	gboolean removed_timeout = g_source_remove(row->timeout_id);
 	if (removed_timeout == FALSE)
-		g_printerr("Could not stop timeout.\n");
+		g_warning("Could not stop timeout.\n");
 
 	if (row->aborted == FALSE)
-		raider_file_row_delete_info(NULL, user_data);
-	else {
+		raider_file_row_delete_on_finish(NULL, user_data);
+	else { // If is was aborted.
 		/* Reset the view of the file row. */
 		adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
 		gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
@@ -290,8 +293,10 @@ void raider_file_row_launch_shredding(gpointer data)
 	g_free(nob_command);
 
 	if (error != NULL) {
-		g_error("Process launching failed: %s", error->message);
+		g_critical("Process launching failed: %s", error->message);
 		g_error_free(error);
+		g_object_unref(row->process);
+		adw_action_row_set_subtitle(ADW_ACTION_ROW(row), _("Failed to start shredding"));
 		return;
 	}
 
