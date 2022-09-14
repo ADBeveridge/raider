@@ -196,6 +196,7 @@ static void raider_application_init(RaiderApplication *self)
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
+	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new_window", (const char *[]){"<Ctrl>n",NULL,});
 
 	/* Always disable data-file, as user may forget that he loaded it. */
 	GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");

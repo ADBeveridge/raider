@@ -19,9 +19,8 @@
 
   <title>Load a file</title>
 
-  <p>You can open a file, or many, by pressing the button on the upper left
-  of the window that contains a plus sign. Select the files you want to shred,
-  and click OK.
+  <p>You can open a file, or many, by pressing the <gui>Add</gui> button on the upper left
+  of the window. Select the files you want to shred, and click OK.
   </p>
 
   <p>You can also drag and drop the files you want to shred all at once into an

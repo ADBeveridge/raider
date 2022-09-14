@@ -17,16 +17,19 @@
   <title>Shred the files</title>
 
   <p>When you have loaded all the files that you wish to shred, press the red
-  <gui>Shred</gui> button at the upper left of the window, next to the add file
-  button. Then each file loaded will acquire a progress indicator that will show how
-  much of the shredding has been finished. You can click on the progress
-  indicator to view more information regarding the shredding progress of that file.</p>
+  <gui>Shred</gui> button at the bottom of the window. Then each file loaded
+  will acquire a progress indicator that will show how much of the shredding
+  has been finished. You can click on the progress indicator to view more
+  information regarding the shredding progress of that file.</p>
 
   <p>When shredding starts, the <gui>Shred</gui> is replaced with a
-  <gui>Abort</gui> button.</p>
+  <gui>Abort</gui> button. Press this if you started shredding on a file that
+  you do not want to be shredded. The files opened will still be loaded after
+  <gui>Abort</gui> is pressed, but they will no longer be in shredding.</p>
 
-  <p>When each file finishes shredding, it will disappear from the list, and
-  a notification will say that the shredding has been finished.</p>
+  <p>When all shredding finishes, a notification will say that the shredding has
+  been finished. It will be an in-app notification if the window is focused
+  but be a desktop notification otherwise.</p>
 
   <note style="warning">
     <p>Do NOT close the window until all files have finished shredding. When
