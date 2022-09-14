@@ -4,17 +4,9 @@
       id="configuring-basic-options">
 
   <info>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
     <title type="sort" its:translate="no">1</title>
     <link type="guide" xref="index#configuring-options"/>
-
-    <credit type="author">
-      <name>Alan Beveridge</name>
-      <email>adbeveridge@protonmail.com</email>
-    </credit>
-
-    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
-
-    <desc>Fine-tune the basic options.</desc>
   </info>
 
   <title>Basic Options</title>

@@ -5,7 +5,6 @@ gnome.yelp('raider',
     'legal.xml',
     'load-file.page',
     'shred-file.page',
-    'troubleshooting-shredding.page',
     'configuring-basic-options.page',
     'configuring-advanced-options.page'
   ],
