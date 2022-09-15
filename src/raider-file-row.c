@@ -68,14 +68,14 @@ gchar *raider_file_row_get_filename(RaiderFileRow * row)
 /* This version is called when the user has aborted the operation, like clicking the abort button or close button. */
 void raider_file_row_delete_on_abort(GtkWidget *widget, gpointer data)
 {
-	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 0);
+	raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 0);
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
-/* This version of delete tells the raider_window_close function to show a toast that shredding is done. */
+/* This version of delete tells the raider_window_close_file function to show a toast that shredding is done. */
 void raider_file_row_delete_on_finish(GtkWidget *widget, gpointer data)
 {
-	raider_window_close(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 1);
+	raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 1);
 	GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
 	gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }

@@ -75,6 +75,7 @@ void raider_window_show_toast (RaiderWindow* window, gchar* text)
 }
 
 /********** File opening section. **********/
+
 void raider_window_open_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
 }
@@ -214,7 +215,7 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
 }
 
 /* This handles the application and window state. */
-void raider_window_close(gpointer data, gpointer user_data, gint result)
+void raider_window_close_file(gpointer data, gpointer user_data, gint result)
 {
 	RaiderWindow *window = RAIDER_WINDOW(user_data);
 
