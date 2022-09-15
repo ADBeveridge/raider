@@ -49,6 +49,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.3.0" date="2022-9-20">
+      <description>
+        <p>Updates to help and application</p>
+        <ul>
+          <li>Added keyboard shortcuts to common actions</li>
+          <li>Fixed memory leaks</li>
+          <li>Fixed crash when backend failed to start</li>
+          <li>Removed typo in Shred All button</li>
+          <li>Updated Turkish translation</li>
+          <li>Add more categories to desktop file</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.2" date="2022-8-19">
       <description>
         <p>Bug fixes and translation updates</p>
