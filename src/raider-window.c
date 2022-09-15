@@ -74,6 +74,78 @@ void raider_window_show_toast (RaiderWindow* window, gchar* text)
 	adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
 }
 
+/* Handle drop. */
+static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
+{
+	/* GdkFileList is a boxed value so we use the boxed API. */
+	GdkFileList *flist = g_value_get_boxed(value);
+
+	/* Convert GSList to GList. */
+	GSList *list = gdk_file_list_get_files(flist);
+	GSList *l;
+	GList *file_list = NULL;
+	for (l = list; l != NULL; l = l->next)
+	{
+		file_list = g_list_append(file_list, g_file_dup(l->data));
+	}
+
+	raider_window_open_files (data, file_list);
+
+	return TRUE;
+}
+
+/* This handles the application and window state. */
+void raider_window_close_file(gpointer data, gpointer user_data, gint result)
+{
+	RaiderWindow *window = RAIDER_WINDOW(user_data);
+
+	RaiderFileRow *row = RAIDER_FILE_ROW(data);
+	gchar *filename = raider_file_row_get_filename(row);
+
+	gboolean removed = FALSE;
+
+	/* Search to delete the entry. */
+	GList *item = window->filenames;
+	while (item != NULL)
+	{
+		GList *next = item->next;
+
+		/* Get the filename for this round. */
+		gchar *text = (gchar *)item->data;
+		if (g_strcmp0(text, filename) == 0)
+		{
+			window->filenames = g_list_remove(window->filenames, text);
+			removed = TRUE;
+		}
+		item = next;
+	}
+	if (removed == FALSE)
+		g_error(_("Could not remove filename from quick list. Please report this."));
+	window->file_count--;
+
+
+	if (window->file_count == 0) {
+		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+
+		if (result == 1) {
+			gchar* message = g_strdup(_("Finished shredding files"));
+
+			gboolean active = gtk_window_is_active(GTK_WINDOW(window));
+			if (!active) {
+				GNotification *notification = g_notification_new(message);
+				g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
+			}else
+				raider_window_show_toast(window, message);
+			g_free(message);
+		}
+
+		/* Update the view. */
+		gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+		gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+		gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+	}
+}
+
 /********** File opening section. **********/
 
 void raider_window_open_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
@@ -193,82 +265,8 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 }
 
 /********** End of file opening section. **********/
+/******** Asychronously launch shred on all files. *********/
 
-/* Handle drop. */
-static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
-{
-	/* GdkFileList is a boxed value so we use the boxed API. */
-	GdkFileList *flist = g_value_get_boxed(value);
-
-	/* Convert GSList to GList. */
-	GSList *list = gdk_file_list_get_files(flist);
-	GSList *l;
-	GList *file_list = NULL;
-	for (l = list; l != NULL; l = l->next)
-	{
-		file_list = g_list_append(file_list, g_file_dup(l->data));
-	}
-
-	raider_window_open_files (data, file_list);
-
-	return TRUE;
-}
-
-/* This handles the application and window state. */
-void raider_window_close_file(gpointer data, gpointer user_data, gint result)
-{
-	RaiderWindow *window = RAIDER_WINDOW(user_data);
-
-	RaiderFileRow *row = RAIDER_FILE_ROW(data);
-	gchar *filename = raider_file_row_get_filename(row);
-
-	gboolean removed = FALSE;
-
-	/* Search to delete the entry. */
-	GList *item = window->filenames;
-	while (item != NULL)
-	{
-		GList *next = item->next;
-
-		/* Get the filename for this round. */
-		gchar *text = (gchar *)item->data;
-		if (g_strcmp0(text, filename) == 0)
-		{
-			window->filenames = g_list_remove(window->filenames, text);
-			removed = TRUE;
-		}
-		item = next;
-	}
-	if (removed == FALSE)
-		g_error(_("Could not remove filename from quick list. Please report this."));
-	window->file_count--;
-
-
-	if (window->file_count == 0) {
-		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
-
-		if (result == 1) {
-			gchar* message = g_strdup(_("Finished shredding files"));
-
-			gboolean active = gtk_window_is_active(GTK_WINDOW(window));
-			if (!active) {
-				GNotification *notification = g_notification_new(message);
-				g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
-			}else
-				raider_window_show_toast(window, message);
-			g_free(message);
-		}
-
-		/* Update the view. */
-		gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
-		gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
-		gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
-	}
-}
-
-/******************************************************************************/
-/**  Asychronously launch shred on all files.                             *****/
-/******************************************************************************/
 void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
 	RaiderWindow *window = RAIDER_WINDOW(user_data);
@@ -297,7 +295,8 @@ void raider_window_shred_files_thread(GTask* task, gpointer source_object, gpoin
 	// raider_window_shred_file_finish() is called here.
 }
 
-void shred_file(GtkWidget *widget, gpointer data)
+/* Start the asynchronous shredding function. */
+void raider_window_shred_files(GtkWidget *widget, gpointer data)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
@@ -311,9 +310,8 @@ void shred_file(GtkWidget *widget, gpointer data)
 	g_object_unref(task);
 }
 
-/******************************************************************************/
-/**  Asychronously abort shred on all files.                              *****/
-/******************************************************************************/
+/******** End of asychronously launch shred on all files section. *********/
+/******** Asychronously abort shred on all files.  *********/
 
 void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
@@ -365,7 +363,7 @@ static void raider_window_init(RaiderWindow *self)
 	self->file_count = 0;
 	self->filenames = NULL;
 
-	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(shred_file), self);
+	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_shred_files), self);
 	g_signal_connect(self->abort_button, "clicked", G_CALLBACK(abort_shredding), self);
 
 	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
@@ -378,3 +376,4 @@ static void raider_window_init(RaiderWindow *self)
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 }
 
+/******** End of asychronously abort shred on all files section.  *********/
