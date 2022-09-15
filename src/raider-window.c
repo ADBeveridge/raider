@@ -296,7 +296,7 @@ void raider_window_shred_files_thread(GTask* task, gpointer source_object, gpoin
 }
 
 /* Start the asynchronous shredding function. */
-void raider_window_shred_files(GtkWidget *widget, gpointer data)
+void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
@@ -343,7 +343,7 @@ void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpoin
 	// raider_window_abort_file_finish() is called here.
 }
 
-void abort_shredding (GtkWidget *widget, gpointer data)
+void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
@@ -365,8 +365,8 @@ static void raider_window_init(RaiderWindow *self)
 	self->file_count = 0;
 	self->filenames = NULL;
 
-	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_shred_files), self);
-	g_signal_connect(self->abort_button, "clicked", G_CALLBACK(abort_shredding), self);
+	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
+	g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
 
 	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
 
