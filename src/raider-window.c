@@ -74,12 +74,12 @@ void raider_window_show_toast (RaiderWindow* window, gchar* text)
 	adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
 }
 
+/********** File opening section. **********/
 void raider_window_open_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
-
 }
 
-/* This is run asynchronously. */
+/* Asynchonous runner for raider_window_open_file. */
 void raider_window_open_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
 	RaiderWindow* window = RAIDER_WINDOW(source_object);
@@ -95,7 +95,7 @@ void raider_window_open_files_thread(GTask* task, gpointer source_object, gpoint
 	// raider_window_open_file_finish() is called here.
 }
 
-/* Runner for raider_window_open_file. */
+/* Start asynchronous loading of files. */
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
 	GTask* task = g_task_new(window, NULL, raider_window_open_files_finish, window);
@@ -104,6 +104,7 @@ void raider_window_open_files(RaiderWindow *window, GList *file_list)
 	g_object_unref(task);
 }
 
+/* Systems have a limit on how many files can be open to a single process. */
 rlim_t get_open_files_limit() {
     struct rlimit limit;
     getrlimit(RLIMIT_NOFILE, &limit);
@@ -190,25 +191,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 	return TRUE;
 }
 
-/* Make highlight. */
-static GdkDragAction on_enter(GtkDropTarget *target, double x, double y, gpointer data)
-{
-	RaiderWindow *window = RAIDER_WINDOW(data);
-	GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
-
-	gtk_style_context_add_class(context, "drop_hover");
-
-	return GDK_ACTION_COPY;
-}
-
-/* Get rid of highlight. */
-static void on_leave(GtkDropTarget *target, gpointer data)
-{
-	RaiderWindow *window = RAIDER_WINDOW(data);
-	GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window->contents_box));
-
-	gtk_style_context_remove_class(context, "drop_hover");
-}
+/********** End of file opening section. **********/
 
 /* Handle drop. */
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
@@ -391,8 +374,6 @@ static void raider_window_init(RaiderWindow *self)
 	gtk_drop_target_set_gtypes(self->target, drop_types, 1);
 
 	g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
-	g_signal_connect(self->target, "enter", G_CALLBACK(on_enter), self);
-	g_signal_connect(self->target, "leave", G_CALLBACK(on_leave), self);
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 }
