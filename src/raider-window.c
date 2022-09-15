@@ -213,7 +213,6 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
 	return TRUE;
 }
 
-
 /* This handles the application and window state. */
 void raider_window_close(gpointer data, gpointer user_data, gint result)
 {
