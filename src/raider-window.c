@@ -356,6 +356,8 @@ void abort_shredding (GtkWidget *widget, gpointer data)
 	g_object_unref(task);
 }
 
+/******** End of asychronously abort shred on all files section.  *********/
+
 static void raider_window_init(RaiderWindow *self)
 {
 	gtk_widget_init_template(GTK_WIDGET(self));
@@ -375,5 +377,3 @@ static void raider_window_init(RaiderWindow *self)
 
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 }
-
-/******** End of asychronously abort shred on all files section.  *********/
