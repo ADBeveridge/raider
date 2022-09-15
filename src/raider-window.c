@@ -88,14 +88,14 @@ void raider_window_open_files_thread(GTask* task, gpointer source_object, gpoint
 	GList *l;
 	for (l = file_list; l != NULL; l = l->next)
   	{
-		gboolean cont = raider_window_open(l->data, window, NULL); // This adds an entry to the current window.
+		gboolean cont = raider_window_open_file(l->data, window, NULL); // This adds an entry to the current window.
 		if (cont == FALSE)
 			break;
 	}
 	// raider_window_open_file_finish() is called here.
 }
 
-/* Runner for raider_window_open. */
+/* Runner for raider_window_open_file. */
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
 	GTask* task = g_task_new(window, NULL, raider_window_open_files_finish, window);
@@ -111,7 +111,7 @@ rlim_t get_open_files_limit() {
 }
 
 /* This is used to open a single file at a time. Returns false if no more files can be loaded, true otherwise. */
-gboolean raider_window_open(GFile *file, gpointer data, gchar *title)
+gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 {
 	RaiderWindow *window = RAIDER_WINDOW(data);
 
