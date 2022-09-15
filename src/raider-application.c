@@ -52,8 +52,8 @@ static void on_open_response(GtkDialog *dialog, int response)
 	if (response == GTK_RESPONSE_ACCEPT) {
 		GListModel *list = gtk_file_chooser_get_files(GTK_FILE_CHOOSER(dialog));
 
+		/* Convert g_list_model to g_list. */
 		GList *file_list = NULL;
-
 		int num = g_list_model_get_n_items(list);
 		int i;
 		for (i = 0; i < num; i++) {
@@ -73,9 +73,9 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 
 	GtkDialog *dialog = GTK_DIALOG(gtk_file_chooser_dialog_new(_("Add Files"), GTK_WINDOW(window),
 								   GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Add"),
-								   GTK_RESPONSE_ACCEPT, NULL));                                                         /* Create dialog. */
+								   GTK_RESPONSE_ACCEPT, NULL));
 
-	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE); /* Allow to select many files at once. */
+	gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
 
 	g_signal_connect_swapped(dialog, "response", G_CALLBACK(on_open_response), dialog);
@@ -153,7 +153,6 @@ static void raider_application_activate(GApplication *app)
 	if (window == NULL)
 		window = g_object_new(RAIDER_TYPE_WINDOW, "application", app, NULL);
 
-	/* Ask the window manager/compositor to present the window. */
 	gtk_window_present(window);
 }
 
@@ -197,6 +196,7 @@ static void raider_application_init(RaiderApplication *self)
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new_window", (const char *[]){"<Ctrl>n",NULL,});
+	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.preferences", (const char *[]){"<Ctrl>comma",NULL,});
 
 	/* Always disable data-file, as user may forget that he loaded it. */
 	GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");
