@@ -92,30 +92,37 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
 
 	const gchar *artists[] =
 	{
-		"noëlle",
-		"David Lapshin",
+		"noëlle https://github.com/jannuary",
+		"David Lapshin https://github.com/daudix-UFO",
 		NULL
 	};
-	const gchar *authors[] =
+	const gchar *developers[] =
 	{
-		"Alan Beveridge",
+		"Alan Beveridge https://github.com/ADBeveridge",
+		NULL
+	};
+    const gchar *designers[] =
+	{
+		"Tobias Bernard https://gitlab.gnome.org/bertob",
 		NULL
 	};
 
 	g_autofree gchar *program_name = g_strdup(_("File Shredder"));
 
-	gtk_show_about_dialog(window,
-			      "transient-for", window,
-			      "modal", TRUE,
-			      "program-name", program_name,
-			      "version", _("1.2.2"),
-			      "comments", _("Securely delete your files"),
-			      "license-type", GTK_LICENSE_GPL_3_0,
-			      "artists", artists,
-			      "authors", authors,
-			      "translator-credits", _("translator-credits"),
-			      "logo-icon-name", "com.github.ADBeveridge.Raider",
-			      NULL);
+    adw_show_about_window (window,
+                         "transient-for", window,
+                         "application-name", program_name,
+                         "application-icon", "com.github.ADBeveridge.Raider",
+                         "version", "1.3.0",
+                         "copyright", "© 2022 Alan Beveridge",
+                         "issue-url", "https://github.com/ADBeveridge/raider/issues/new",
+                         "license-type", GTK_LICENSE_GPL_3_0,
+                         "developer-name", "Alan Beveridge",
+                         "developers", developers,
+                         "artists", artists,
+                         "designers", designers,
+                         "translator-credits", _("translator-credits"),
+                         NULL);
 }
 
 static void show_help(GSimpleAction *action, GVariant *parameter, gpointer user_data)
