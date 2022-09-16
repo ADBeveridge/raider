@@ -47,9 +47,12 @@ struct _RaiderWindow
 
 	GList *filenames; // A quick list of filenames loaded for this window. */
 	int file_count;
+	gboolean status; // Shredding or not.
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
+
+void raider_window_abort_shredding (GtkWidget *widget, gpointer data);
 
 static void raider_window_class_init(RaiderWindowClass *klass)
 {
@@ -68,6 +71,32 @@ static void raider_window_class_init(RaiderWindowClass *klass)
 	gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
 }
 
+static void raider_window_exit_response (GtkDialog* dialog, gchar* response, RaiderWindow *self)
+{
+    if (g_strcmp0(response, "exit") == 0)
+    {
+        raider_window_abort_shredding(NULL, GTK_WIDGET(self));
+    }
+}
+
+gboolean raider_window_exit (RaiderWindow* win, gpointer data)
+{
+    if (win->status)
+    {
+        GtkWidget *dialog = adw_message_dialog_new (GTK_WINDOW(win), _("Stop Shredding?"), NULL);
+        adw_message_dialog_set_body (ADW_MESSAGE_DIALOG (dialog), _("Are you sure that you want to exit?"));
+        g_signal_connect (dialog, "response", G_CALLBACK (raider_window_exit_response), win);
+
+        adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog), "cancel",  _("_Cancel"), "exit", _("_Exit"), NULL);
+        adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (dialog), "exit", ADW_RESPONSE_DESTRUCTIVE);
+        adw_message_dialog_set_default_response (ADW_MESSAGE_DIALOG (dialog), "cancel");
+        adw_message_dialog_set_close_response (ADW_MESSAGE_DIALOG (dialog), "cancel");
+
+        gtk_window_present (GTK_WINDOW (dialog));
+    }
+
+    return win->status;
+}
 
 void raider_window_show_toast (RaiderWindow* window, gchar* text)
 {
@@ -126,6 +155,7 @@ void raider_window_close_file(gpointer data, gpointer user_data, gint result)
 
 	if (window->file_count == 0) {
 		gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+		window->status = FALSE;
 
 		if (result == 1) {
 			gchar* message = g_strdup(_("Finished shredding files"));
@@ -269,7 +299,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 
 void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
-	RaiderWindow *window = RAIDER_WINDOW(user_data);
+	RaiderWindow *window = RAIDER_WINDOW(source_object);
 
 	/* Update the view. */
 	gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
@@ -282,7 +312,7 @@ void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res
 /* This is run asynchronously. */
 void raider_window_shred_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-	RaiderWindow* window = RAIDER_WINDOW(task_data);
+	RaiderWindow* window = RAIDER_WINDOW(source_object);
 
 	/* Launch the shredding. */
 	int row;
@@ -304,23 +334,32 @@ void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 	gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), FALSE);
 	gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
 
-	GTask* task = g_task_new(NULL, NULL, raider_window_shred_files_finish, window);
-	g_task_set_task_data(task, window, NULL);
+	window->status = TRUE;
+
+	GTask* task = g_task_new(window, NULL, raider_window_shred_files_finish, window);
 	g_task_run_in_thread(task, raider_window_shred_files_thread);
 	g_object_unref(task);
 }
 
 /******** End of asychronously launch shred on all files section. *********/
-/******** Asychronously abort shred on all files.  *********/
+/******** Asychronously abort shredding on all files.  *********/
 
 void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
-	RaiderWindow *window = RAIDER_WINDOW(user_data);
+	RaiderWindow *window = RAIDER_WINDOW(source_object);
+
+	if (g_strcmp0((gchar*)user_data, "exit") == 0)
+    {
+        gtk_window_destroy(GTK_WINDOW(window));
+        printf("Here\n");
+    }
 
 	/* Update the headerbar view. */
 	gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
 	gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
 	gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+
+	window->status = FALSE;
 
 	/* Revert the text and view of the abort button. */
 	gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
@@ -330,7 +369,7 @@ void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res
 /* This is run asynchronously. */
 void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-	RaiderWindow* window = RAIDER_WINDOW(task_data);
+	RaiderWindow* window = RAIDER_WINDOW(source_object);
 
 	/* Abort the shredding. */
 	int row;
@@ -350,13 +389,21 @@ void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
 	gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
 	gtk_button_set_label(window->abort_button, _("Aborting…"));
 
-	GTask* task = g_task_new(NULL, NULL, raider_window_abort_files_finish, window);
-	g_task_set_task_data(task, window, NULL);
+    gchar *datai;
+    if (widget == NULL)
+        datai = g_strdup("exit");
+    else
+    {
+        datai = g_strdup("cont");
+    }
+
+	GTask* task = g_task_new(window, NULL, raider_window_abort_files_finish, datai);
+
 	g_task_run_in_thread(task, raider_window_abort_files_thread);
 	g_object_unref(task);
 }
 
-/******** End of asychronously abort shred on all files section.  *********/
+/******** End of asychronously abort shredding on all files section.  *********/
 
 static void raider_window_init(RaiderWindow *self)
 {
@@ -364,16 +411,16 @@ static void raider_window_init(RaiderWindow *self)
 
 	self->file_count = 0;
 	self->filenames = NULL;
+	self->status = FALSE;
 
 	g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
 	g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
+    g_signal_connect(self, "close-request", G_CALLBACK(raider_window_exit), NULL);
 
+	/* Setup drag and drop. */
 	self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
-
 	GType drop_types[] = {GDK_TYPE_FILE_LIST};
 	gtk_drop_target_set_gtypes(self->target, drop_types, 1);
-
 	g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
-
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 }

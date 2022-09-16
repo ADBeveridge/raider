@@ -82,6 +82,27 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
 	gtk_widget_show(GTK_WIDGET(dialog));
 }
 
+static void raider_application_try_exit (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+	GList* list = gtk_application_get_windows(GTK_APPLICATION(user_data));
+	gboolean do_exit = TRUE;
+	GList *l;
+	for (l = list; l != NULL; l = l->next)
+  	{
+    	if (raider_window_exit(RAIDER_WINDOW(l->data), NULL) == TRUE)
+		{
+			/* If this executes, shredding is ongoing. */
+            do_exit = FALSE;
+		}
+  	}
+	g_list_free(list);
+
+	if (do_exit)
+	{
+		g_application_quit(G_APPLICATION(user_data));
+	}
+}
+
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	RaiderApplication *self = RAIDER_APPLICATION(user_data);
@@ -176,7 +197,7 @@ static void raider_application_class_init(RaiderApplicationClass *klass)
 static void raider_application_init(RaiderApplication *self)
 {
 	g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
-	g_signal_connect_swapped(quit_action, "activate", G_CALLBACK(g_application_quit), self);
+	g_signal_connect(quit_action, "activate", G_CALLBACK(raider_application_try_exit), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
 
 	g_autoptr(GSimpleAction) about_action = g_simple_action_new("about", NULL);
