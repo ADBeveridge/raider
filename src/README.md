@@ -1,4 +1,7 @@
 # Raider Source Code Notes
+
+Note: Some code is commented with the message `NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES`. This code shows a handy list of thumb drives that are plugged into the computer. But to shred them, Raider needs administrator access to the device files that correspond with those thumb drives. And that is not possible in flatpak because it is sandboxed. Therefore they are commented out.
+
 ## Application
  - Files supplied on the commandline are opened in `raider_application_open`. It converts the double array of files into a `GList` and sends that `GList` to a newly created window.
  - When the `GAction` to exit is activated, it calls `raider_application_try_exit` which queries each open window to exit. If any window returns `TRUE` then shredding is ongoing, and cannot exit.

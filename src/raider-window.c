@@ -34,6 +34,8 @@ struct _RaiderWindow
 
 	GtkBox *contents_box;
 	GtkStack *window_stack;
+    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+    /*AdwSplitButton *open_button;*/
 	GtkButton *open_button;
 	GtkRevealer *open_revealer;
 	GtkButton *shred_button;
@@ -48,6 +50,11 @@ struct _RaiderWindow
 	GList *filenames; // A quick list of filenames loaded for this window. */
 	int file_count;
 	gboolean status; // Shredding or not.
+
+    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+    GMenu* mount_main_menu;
+    GMenu* mount_menu;
+    GVolumeMonitor* monitor;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -402,6 +409,37 @@ void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
 
 /******** End of asychronously abort shredding on all files section.  *********/
 
+/* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+/* Updates the list of removable media in the popover in the AdwSplitButton. */
+/*void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
+{
+	RaiderWindow *self = RAIDER_WINDOW(data);
+
+	g_menu_remove_all(self->mount_menu);
+
+	GList *mount_list = g_volume_monitor_get_mounts(self->monitor);
+	GList *l;
+	for (l = mount_list; l != NULL; l = l->next)
+	{
+		// Retrieve device path, and put in variant.
+		GFile *file = g_mount_get_root(l->data); // Gets something like /home/ad/AD_BACKUPS.
+
+		gchar *name = g_file_get_basename(file); // Get the "title" of the disk, something like AD_BACKUPS.
+		GVariant *var = g_variant_new_string(g_file_get_path(file)); // Store in a variant so the "action" in raider-application can know which drive we are working on.
+
+		GMenuItem *item = g_menu_item_new(name, "app.open-drive");
+		g_menu_item_set_action_and_target_value(item, "app.open-drive", var);
+		g_menu_append_item(self->mount_menu, item);
+
+		g_object_unref(file);
+		g_free(name);
+	}
+	if (g_list_length(mount_list) < 1)
+		adw_split_button_set_menu_model(self->open_button, NULL);
+	else
+		adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
+}*/
+
 static void raider_window_init(RaiderWindow *self)
 {
 	gtk_widget_init_template(GTK_WIDGET(self));
@@ -420,4 +458,18 @@ static void raider_window_init(RaiderWindow *self)
 	gtk_drop_target_set_gtypes(self->target, drop_types, 1);
 	g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
 	gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
+
+    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+    /* Create monitor of mounted drives. */
+	/*self->mount_main_menu = g_menu_new();
+	self->mount_menu = g_menu_new();
+	g_menu_prepend_section(self->mount_main_menu, _("Devices"), G_MENU_MODEL(self->mount_menu));
+	adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
+
+	self->monitor = g_volume_monitor_get();
+	g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
+	g_signal_connect(self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
+	g_signal_connect(self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
+
+	on_mount_changed(NULL, NULL, self);*/
 }

@@ -103,6 +103,24 @@ static void raider_application_try_exit (GSimpleAction *action, GVariant *parame
 	}
 }
 
+/* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+/*static void raider_application_open_drive(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+	GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
+
+	GUnixMountEntry *unix_mount = g_unix_mount_at(g_variant_get_string(parameter, NULL), NULL);
+	const gchar *path = g_unix_mount_get_device_path(unix_mount); // This returns something like /dev/sdb1.
+
+	GFile *title = g_file_new_for_path(g_variant_get_string(parameter, NULL));
+	gchar* name = g_file_get_basename(title);
+	g_object_unref(title);
+
+	raider_window_open(g_file_new_for_path(path), window, name);
+
+	g_free(name);
+}
+*/
+
 static void raider_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	RaiderApplication *self = RAIDER_APPLICATION(user_data);
@@ -219,6 +237,11 @@ static void raider_application_init(RaiderApplication *self)
 	g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
 	g_signal_connect_swapped(help_action, "activate", G_CALLBACK(show_help), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(help_action));
+
+    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+    /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
+	g_signal_connect(open_drive_action, "activate", G_CALLBACK(raider_application_open_drive), self);
+	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_drive_action));*/
 
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
 	gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});

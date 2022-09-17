@@ -20,6 +20,11 @@ template RaiderWindow : Adw.ApplicationWindow {
       Gtk.Revealer open_revealer {
         reveal-child: true;
         transition-type: slide_right;
+        /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+        /*Adw.SplitButton open_button {
+          icon-name: "list-add-symbolic";
+          action-name: "app.open";
+        };*/
         Gtk.Button open_button {
           action-name: "app.open";
       	  Adw.ButtonContent {
