@@ -56,6 +56,7 @@
           <li>Added keyboard shortcuts to common actions</li>
           <li>Fixed memory leaks</li>
           <li>Fixed crash when backend failed to start</li>
+          <li>Fixed application crash when closing window during shredding</li>
           <li>Removed typo in Shred All button</li>
           <li>Updated Turkish translation</li>
           <li>Add more categories to desktop file</li>

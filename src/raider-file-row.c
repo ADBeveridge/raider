@@ -61,6 +61,9 @@ struct _RaiderFileRow {
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
+/* This has to be global. */
+GCancellable* wait_cancel;
+
 gchar *raider_file_row_get_filename(RaiderFileRow * row)
 {
 	return g_file_get_path(row->file);
@@ -191,11 +194,6 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 	g_object_unref(row->backend);
 	g_object_unref(row->process);
 
-	/* Remove the timeout. */
-	gboolean removed_timeout = g_source_remove(row->timeout_id);
-	if (removed_timeout == FALSE)
-		g_warning("Could not stop timeout.\n");
-
 	if (row->aborted == FALSE)
 		raider_file_row_delete_on_finish(NULL, user_data);
 	else { // If is was aborted.
@@ -211,8 +209,17 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
 /* This is called when the shred executable exits, even if it is aborted. */
 static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-	RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-	raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
+	if (g_cancellable_is_cancelled (wait_cancel))
+        return;
+
+    RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
+
+	/* Remove the timeout. */
+	gboolean removed_timeout = g_source_remove(row->timeout_id);
+	if (removed_timeout == FALSE)
+		g_warning("Could not stop timeout.\n");
+
+    if (!row->aborted)raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
@@ -317,11 +324,12 @@ void raider_file_row_launch_shredding(gpointer data)
 	/* Set the activatable widget. */
 	adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));
 
-	row->timeout_id = g_timeout_add(50, (GSourceFunc)raider_file_row_update_progress, data);
+	row->timeout_id = g_timeout_add(50, (GSourceFunc)raider_file_row_update_progress, data)    ;
 
 	/* Call the callback when the process is finished. If the user aborts the
 	   the job, this will be called in any event.*/
-	g_subprocess_wait_async(row->process, NULL, (GAsyncReadyCallback)finish_shredding, row);
+    wait_cancel = g_cancellable_new();
+	g_subprocess_wait_async(row->process, wait_cancel, (GAsyncReadyCallback)finish_shredding, row);
 }
 
 /* This is called when the user clicks abort. */
@@ -329,11 +337,9 @@ void raider_file_row_shredding_abort(gpointer data)
 {
 	RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
+    g_cancellable_cancel(wait_cancel);
+
 	row->aborted = TRUE;
 	g_subprocess_force_exit(row->process);
 	g_subprocess_wait(row->process, NULL, NULL);
-
-	/* finish_shredding will be called here because when the subprocess
-	   is done, finish_shredding is always called, regardless of the exit type. */
 }
-
