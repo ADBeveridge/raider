@@ -178,6 +178,7 @@ RaiderFileRow *raider_file_row_new(GFile *file)
 	return row;
 }
 
+/* Not always called. */
 void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
 	RaiderFileRow* row = RAIDER_FILE_ROW(user_data);
