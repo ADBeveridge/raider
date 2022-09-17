@@ -348,8 +348,6 @@ void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res
 {
 	RaiderWindow *window = RAIDER_WINDOW(source_object);
 
-    printf("In finish\n");
-
 	if (g_strcmp0((gchar*)user_data, "exit") == 0)
     {
         gtk_window_destroy(GTK_WINDOW(window));
@@ -372,8 +370,6 @@ void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpoin
 {
 	RaiderWindow* window = RAIDER_WINDOW(source_object);
 
-    printf("In finish thread\n");
-
 	/* Abort the shredding. */
 	int row;
 	for (row = 0; row < window->file_count; row++)
@@ -381,9 +377,6 @@ void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpoin
 		RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
 		raider_file_row_shredding_abort((gpointer)file_row);
 	}
-
-
-
 	// raider_window_abort_file_finish() is called here.
 }
 
@@ -403,7 +396,6 @@ void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
     }
 
 	GTask* task = g_task_new(window, NULL, raider_window_abort_files_finish, datai);
-
 	g_task_run_in_thread(task, raider_window_abort_files_thread);
 	g_object_unref(task);
 }

@@ -339,6 +339,11 @@ void raider_file_row_shredding_abort(gpointer data)
 
     g_cancellable_cancel(wait_cancel);
 
+    /* Normally this is done in finish_shredding but it will not be called. */
+	gboolean removed_timeout = g_source_remove(row->timeout_id);
+	if (removed_timeout == FALSE)
+		g_warning("Could not stop timeout.\n");
+
 	row->aborted = TRUE;
 	g_subprocess_force_exit(row->process);
 	g_subprocess_wait(row->process, NULL, NULL);
