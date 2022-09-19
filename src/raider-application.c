@@ -164,7 +164,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
                          NULL);
 }
 
-static void show_help(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+static void raider_application_show_help(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(user_data)), "help:raider", GDK_CURRENT_TIME);
 }
@@ -235,7 +235,7 @@ static void raider_application_init(RaiderApplication *self)
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
 
 	g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
-	g_signal_connect (help_action, "activate", G_CALLBACK(show_help), self);
+	g_signal_connect (help_action, "activate", G_CALLBACK(raider_application_show_help), self);
 	g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(help_action));
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
