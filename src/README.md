@@ -13,6 +13,7 @@ Note: Some code is commented with the message `NOT USED BECAUSE FLATPAK REMOVES 
 ## Window
  - `RaiderWindow` handles drag-and-drop. It converts the list of files dragged in and converts it to `GList` and sends it to its file loader.
  - `raider_window_open_files` is the file loader. It takes a `GList` of `GFile`s from the callee. It runs its internal worker function `raider_window_open_files_thread` asynchronously, which in turn calls a function that opens a single `GFile`. That function runs tests on that file, and if it passes, a `RaiderFileRow` is created and added to the window.
+ - Whenever a `RaiderFileRow` destroys itself, it calls `raider_window_close_file`, which updates the user interface if necessary.
 
 ## File Row
  -
