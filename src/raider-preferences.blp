@@ -97,7 +97,7 @@ template RaiderPreferences : Adw.PreferencesWindow {
             }
             Adw.ActionRow override_permissions_row {
                 title: _("Override file permissions");
-                subtitle: _("Whether to override the file permissions in case of insufficient permissions");
+                subtitle: _("Whether to override the file permissions of read-only user files");
 
                 [suffix]
                 Gtk.Switch override_permissions_switch {
