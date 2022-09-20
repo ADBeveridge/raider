@@ -10,9 +10,9 @@
   </info>
 
   <title>Advanced Options</title>
-  <p>To configure the shredding options, click on click on the three stacked
-  bars and select <gui>Preferences</gui>. The advanced options are on the tab
-  next to the <gui>Basic</gui> tab.</p>
+  <p>To configure the shredding options, open the application menu and select
+  <gui>Preferences</gui>. The <gui>Advanced</gui> tab is next to the <gui>Basic
+  </gui> tab.</p>
 
   <p>There are five options presented:</p>
   <list>
