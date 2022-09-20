@@ -154,7 +154,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
                          "application-icon", "com.github.ADBeveridge.Raider",
                          "version", "1.3.0",
                          "copyright", "© 2022 Alan Beveridge",
-                         "issue-url", "https://github.com/ADBeveridge/raider/issues/new",
+                         "issue-url", "https://github.com/ADBeveridge/raider/issues/",
                          "license-type", GTK_LICENSE_GPL_3_0,
                          "developer-name", "Alan Beveridge",
                          "developers", developers,
