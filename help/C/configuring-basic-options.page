@@ -11,7 +11,8 @@
 
   <title>Basic Options</title>
   <p>To configure the shredding options, click on the three stacked bars and
-  select <gui>Preferences</gui>.</p>
+  select <gui>Preferences</gui>. The <gui>Basic</gui> tab is the default tab
+  shown.</p>
 
   <p>There are three options presented under the <gui>Basic</gui> section:</p>
   <list>
