@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 14:23-0700\n"
-"PO-Revision-Date: 2022-08-19 14:23-0700\n"
+"PO-Revision-Date: 2022-09-25 12:53+0100\n"
 "Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -45,76 +45,76 @@ msgstr "Alan Beveridge"
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:49
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:77
 msgid "Bug fixes and translation updates"
-msgstr ""
+msgstr "Correzioni di bug e aggiornamenti di traduzione"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:51
 msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
-msgstr ""
+msgstr "Aggiunte traduzioni in cinese, turco, occitano e portoghese brasiliano"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Fixed in-app notification crash"
-msgstr ""
+msgstr "Risolto crash di notifica in-app"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:58
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:67
 msgid "User interface fixes"
-msgstr ""
+msgstr "Correzioni dell'interfaccia utente"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:60
 msgid "Added explanatory message and changed initial view's icon"
-msgstr ""
+msgstr "Aggiunto messaggio esplicativo e modificata l'icona della vista iniziale"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:61
 msgid "Added icon to add button in headerbar"
-msgstr ""
+msgstr "Aggiunta l'icona per aggiungere il pulsante nella barra dell'intestazione"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
 msgid "Fixed cropping of keyboard focus ring on shred button"
-msgstr ""
+msgstr "Risolto il problema con il ritaglio dell'anello di messa a fuoco della tastiera sul pulsante di distruzione"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid "Updated preferences to be more concise and explanatory"
-msgstr ""
+msgstr "Preferenze aggiornate per essere più concise ed esplicative"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:71
 msgid "Add icon to open button in headerbar"
-msgstr ""
+msgstr "Aggiunta l'icona per aprire il pulsante nella barra dell'intestazione"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:79
 msgid "Added the French translation"
-msgstr ""
+msgstr "Aggiunta la traduzione francese"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:80
 msgid "Added the Portuguese translation"
-msgstr ""
+msgstr "Aggiunta la traduzione in portoghese"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:81
 msgid "Updated the Russian translation"
-msgstr ""
+msgstr "Aggiornata la traduzione russa"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:82
 msgid "Fixed progress retrieval bug"
-msgstr ""
+msgstr "Risolto bug di recupero dell'avanzamento"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:83
 msgid "Fixed display problems"
-msgstr ""
+msgstr "Risolti problemi di visualizzazione"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:89
 msgid "Minor fixes, including:"
-msgstr ""
+msgstr "Correzioni minori, tra cui:"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:91
 msgid "Moved the Shred button to the bottom of the window"
-msgstr ""
+msgstr "Spostato il pulsante Distruggi nella parte inferiore della finestra"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:92
 msgid "Support for mobile devices added"
-msgstr ""
+msgstr "Aggiunto supporto per dispositivi mobili"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:93
 msgid "Rethemed the file rows to standard look"
-msgstr ""
+msgstr "Riformulate le righe del file con un aspetto standard"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:99
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
@@ -252,7 +252,7 @@ msgstr "Aggiungi"
 
 #: src/raider-application.c:109
 msgid "1.2.2"
-msgstr ""
+msgstr "1.2.2"
 
 #: src/raider-application.c:114
 msgid "translator-credits"
@@ -264,10 +264,9 @@ msgid "Shredded "
 msgstr "Distrutto "
 
 #: src/raider-preferences.blp:8
-#, fuzzy
 #| msgid "Shredded "
 msgid "Shredder"
-msgstr "Distrutto "
+msgstr "Shredder"
 
 #: src/raider-preferences.blp:10
 msgid "Basic"
@@ -278,10 +277,8 @@ msgid "Remove File"
 msgstr "Rimuovi file"
 
 #: src/raider-preferences.blp:14
-#, fuzzy
-#| msgid "Whether to remove the file after shredding it."
 msgid "Whether to remove the file after obfuscating its contents"
-msgstr "Se rimuovere il file dopo averlo distrutto."
+msgstr "Se rimuovere il file dopo aver offuscato il suo contenuto"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
@@ -292,6 +289,8 @@ msgid ""
 "Do a final overwrite with zeros instead of random data. Random data is a "
 "clue that the file has been shredded"
 msgstr ""
+"Esegui una sovrascrittura finale con zeri invece di dati casuali. I dati casuali sono un "
+"indizio che il file è stato distrutto"
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over"
@@ -306,12 +305,12 @@ msgid "Remove Method"
 msgstr "Metodo di rimozione"
 
 #: src/raider-preferences.blp:50
-#, fuzzy
-#| msgid "How to remove the files from the fileystem"
 msgid ""
 "How to remove the obfuscated files from the fileystem. See help for "
 "information"
-msgstr "Come rimuovere i file dal file system"
+msgstr ""
+"Come rimuovere i file offuscati dal filesystem. Vedere la guida per "
+"informazione"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipesync"
@@ -381,10 +380,8 @@ msgstr "fallito"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:391
-#, fuzzy
-#| msgid "removed"
 msgid "removing"
-msgstr "rimosso"
+msgstr "rimozione"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:396
@@ -405,18 +402,16 @@ msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
+"La distruzione è l'offuscamento di un file con dati casuali quindi i precedenti "
+"contenuti non possono essere recuperati."
 
 #: src/raider-window.blp:91
-#, fuzzy
-#| msgid "Shred"
 msgid "Shred All"
-msgstr "Distruggi"
+msgstr "Distruggi tutto"
 
 #: src/raider-window.blp:110
-#, fuzzy
-#| msgid "Abort"
 msgid "Abort All"
-msgstr "Interrompi"
+msgstr "Annulla tutto"
 
 #: src/raider-window.blp:127
 msgid "New Window"
@@ -435,16 +430,12 @@ msgid "About File Shredder"
 msgstr "Informazioni su File Shredder"
 
 #: src/raider-window.c:195
-#, fuzzy
-#| msgid "Could not remove file from quick list."
 msgid "Could not remove filename from quick list. Please report this."
-msgstr "Impossibile rimuovere il file dall'elenco rapido."
+msgstr "Impossibile rimuovere il nome del file dall'elenco rapido. Si prega di segnalarlo."
 
 #: src/raider-window.c:203
-#, fuzzy
-#| msgid "Hide shredding"
 msgid "Finished shredding files"
-msgstr "Nascondi la distruzione"
+msgstr "Terminata distruzione dei file"
 
 #: src/raider-window.c:240
 msgid "Directories are not supported"
