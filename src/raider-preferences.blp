@@ -34,11 +34,11 @@ template RaiderPreferences : Adw.PreferencesWindow {
                 title: _("Number of passes");
                 subtitle: _("How many times to shred file over. The more the better");
 
-		[suffix]
-		Gtk.Box {
+    [suffix]
+    Gtk.Box {
                   Gtk.SpinButton nop_spin_button {
-		    adjustment: nop_adj;
-		    valign: center;
+        adjustment: nop_adj;
+        valign: center;
                   }
                 }
             }
@@ -46,42 +46,42 @@ template RaiderPreferences : Adw.PreferencesWindow {
         Adw.PreferencesGroup advanced_group {
             title: _("Advanced");
             Adw.ComboRow remove_method_combo_row {
-            	title: _("Remove Method");
-            	subtitle: _("How to remove the obfuscated files from the fileystem. See help for information");
-            	model: Gtk.StringList {
-            	  strings [_("Wipesync"), _("Wipe"), _("Unlink")]
-            	};
+              title: _("Remove Method");
+              subtitle: _("How to remove the obfuscated files from the fileystem. See help for information");
+              model: Gtk.StringList {
+                strings [_("Wipesync"), _("Wipe"), _("Unlink")]
+              };
             }
             Adw.ExpanderRow {
                 title: _("Overwrite data source");
                 subtitle: _("Where to get the data to overwrite the files with. Disabled at every startup");
                 enable-expansion: bind enable_df_switch.active;
 
-	        [action]
-	        Gtk.Switch enable_df_switch {
-	            active: false;
-	            valign: center;
-	        }
-	        Adw.ActionRow df_row{
-	            title: _("None Selected");
+          [action]
+          Gtk.Switch enable_df_switch {
+              active: false;
+              valign: center;
+          }
+          Adw.ActionRow df_row{
+              title: _("None Selected");
 
-		    [suffix]
-		    Gtk.Button df_button {
-		        label: _("Select File");
-		        valign: center;
-		    }
-		}
+        [suffix]
+        Gtk.Button df_button {
+            label: _("Select File");
+            valign: center;
+        }
+    }
             }
 
              Adw.ActionRow nob_row {
                 title: _("Number of bytes to shred");
                 subtitle: _("How much of the file to shred. 0 to shred the whole file");
 
-		[suffix]
-		Gtk.Box {
+    [suffix]
+    Gtk.Box {
                   Gtk.SpinButton nob_spin_button {
-		    adjustment: nob_adj;
-		    valign: center;
+        adjustment: nob_adj;
+        valign: center;
                   }
                 }
             }
@@ -126,8 +126,8 @@ Gtk.Adjustment nob_adj {
 
 Gtk.StringList remove_method_list{
   strings [_("Wipesync"),
-   	   _("Wipe"),
-   	   _("Unlink")]
+        _("Wipe"),
+        _("Unlink")]
 
 }
 

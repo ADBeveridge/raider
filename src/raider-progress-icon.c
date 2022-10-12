@@ -21,145 +21,145 @@
 #include "raider-progress-icon.h"
 
 struct _RaiderProgressIcon {
-	GtkDrawingArea parent_instance;
-	gdouble progress;
+    GtkDrawingArea parent_instance;
+    gdouble progress;
 };
 
 G_DEFINE_TYPE(RaiderProgressIcon, raider_progress_icon, GTK_TYPE_DRAWING_AREA)
 
 enum {
-	PROP_0,
-	PROP_PROGRESS,
-	N_PROPS
+    PROP_0,
+    PROP_PROGRESS,
+    N_PROPS
 };
 
 static GParamSpec *properties[N_PROPS];
 
 static gboolean raider_progress_icon_draw(GtkDrawingArea *area, cairo_t *cr, int width, int height, gpointer data)
 {
-	RaiderProgressIcon *self = (RaiderProgressIcon *)area;
-	GtkStyleContext *style_context;
-	GtkAllocation alloc;
-	GdkRGBA rgba;
-	gdouble alpha;
+    RaiderProgressIcon *self = (RaiderProgressIcon *)area;
+    GtkStyleContext *style_context;
+    GtkAllocation alloc;
+    GdkRGBA rgba;
+    gdouble alpha;
 
-	g_assert(RAIDER_IS_PROGRESS_ICON(self));
-	g_assert(cr != NULL);
+    g_assert(RAIDER_IS_PROGRESS_ICON(self));
+    g_assert(cr != NULL);
 
-	gtk_widget_get_allocation(GTK_WIDGET(area), &alloc);
+    gtk_widget_get_allocation(GTK_WIDGET(area), &alloc);
 
-	style_context = gtk_widget_get_style_context(GTK_WIDGET(area));
-	gtk_style_context_get_color(style_context, &rgba);
+    style_context = gtk_widget_get_style_context(GTK_WIDGET(area));
+    gtk_style_context_get_color(style_context, &rgba);
 
-	alpha = rgba.alpha;
-	rgba.alpha = 0.15;
-	gdk_cairo_set_source_rgba(cr, &rgba);
+    alpha = rgba.alpha;
+    rgba.alpha = 0.15;
+    gdk_cairo_set_source_rgba(cr, &rgba);
 
-	cairo_arc(cr,
-		  alloc.width / 2,
-		  alloc.height / 2,
-		  alloc.width / 2,
-		  0.0,
-		  2 * M_PI);
-	cairo_fill(cr);
+    cairo_arc(cr,
+          alloc.width / 2,
+          alloc.height / 2,
+          alloc.width / 2,
+          0.0,
+          2 * M_PI);
+    cairo_fill(cr);
 
-	if (self->progress > 0.0) {
-		rgba.alpha = alpha;
-		gdk_cairo_set_source_rgba(cr, &rgba);
+    if (self->progress > 0.0) {
+        rgba.alpha = alpha;
+        gdk_cairo_set_source_rgba(cr, &rgba);
 
-		cairo_arc(cr,
-			  alloc.width / 2,
-			  alloc.height / 2,
-			  alloc.width / 2,
-			  (-.5 * M_PI),
-			  (2 * self->progress * M_PI) - (.5 * M_PI));
+        cairo_arc(cr,
+              alloc.width / 2,
+              alloc.height / 2,
+              alloc.width / 2,
+              (-.5 * M_PI),
+              (2 * self->progress * M_PI) - (.5 * M_PI));
 
-		if (self->progress != 1.0) {
-			cairo_line_to(cr, alloc.width / 2, alloc.height / 2);
-			cairo_line_to(cr, alloc.width / 2, 0);
-		}
+        if (self->progress != 1.0) {
+            cairo_line_to(cr, alloc.width / 2, alloc.height / 2);
+            cairo_line_to(cr, alloc.width / 2, 0);
+        }
 
-		cairo_fill(cr);
-	}
+        cairo_fill(cr);
+    }
 
-	return GDK_EVENT_PROPAGATE;
+    return GDK_EVENT_PROPAGATE;
 }
 
 static void raider_progress_icon_get_property(GObject *object, guint prop_id, GValue *value, GParamSpec *pspec)
 {
-	RaiderProgressIcon *self = RAIDER_PROGRESS_ICON(object);
+    RaiderProgressIcon *self = RAIDER_PROGRESS_ICON(object);
 
-	switch (prop_id) {
-	case PROP_PROGRESS:
-		g_value_set_double(value, raider_progress_icon_get_progress(self));
-		break;
+    switch (prop_id) {
+    case PROP_PROGRESS:
+        g_value_set_double(value, raider_progress_icon_get_progress(self));
+        break;
 
-	default:
-		G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-	}
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+    }
 }
 
 static void raider_progress_icon_set_property(GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec)
 {
-	RaiderProgressIcon *self = RAIDER_PROGRESS_ICON(object);
+    RaiderProgressIcon *self = RAIDER_PROGRESS_ICON(object);
 
-	switch (prop_id) {
-	case PROP_PROGRESS:
-		raider_progress_icon_set_progress(self, g_value_get_double(value));
-		break;
+    switch (prop_id) {
+    case PROP_PROGRESS:
+        raider_progress_icon_set_progress(self, g_value_get_double(value));
+        break;
 
-	default:
-		G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-	}
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+    }
 }
 
 gdouble raider_progress_icon_get_progress(RaiderProgressIcon *self)
 {
-	g_return_val_if_fail(RAIDER_IS_PROGRESS_ICON(self), 0.0);
+    g_return_val_if_fail(RAIDER_IS_PROGRESS_ICON(self), 0.0);
 
-	return self->progress;
+    return self->progress;
 }
 
 void raider_progress_icon_set_progress(RaiderProgressIcon *self, gdouble progress)
 {
-	g_return_if_fail(RAIDER_IS_PROGRESS_ICON(self));
+    g_return_if_fail(RAIDER_IS_PROGRESS_ICON(self));
 
-	progress = CLAMP(progress, 0.0, 1.0);
+    progress = CLAMP(progress, 0.0, 1.0);
 
-	if (self->progress != progress) {
-		self->progress = progress;
-		g_object_notify_by_pspec(G_OBJECT(self), properties[PROP_PROGRESS]);
-		gtk_widget_queue_draw(GTK_WIDGET(self));
-	}
+    if (self->progress != progress) {
+        self->progress = progress;
+        g_object_notify_by_pspec(G_OBJECT(self), properties[PROP_PROGRESS]);
+        gtk_widget_queue_draw(GTK_WIDGET(self));
+    }
 }
 
 static void raider_progress_icon_class_init(RaiderProgressIconClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS(klass);
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-	object_class->get_property = raider_progress_icon_get_property;
-	object_class->set_property = raider_progress_icon_set_property;
+    object_class->get_property = raider_progress_icon_get_property;
+    object_class->set_property = raider_progress_icon_set_property;
 
-	properties[PROP_PROGRESS] =
-		g_param_spec_double("progress",
-				    "Progress",
-				    "Progress",
-				    0.0,
-				    1.0,
-				    0.0,
-				    (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+    properties[PROP_PROGRESS] =
+        g_param_spec_double("progress",
+                    "Progress",
+                    "Progress",
+                    0.0,
+                    1.0,
+                    0.0,
+                    (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
-	g_object_class_install_properties(object_class, N_PROPS, properties);
+    g_object_class_install_properties(object_class, N_PROPS, properties);
 }
 
 static void raider_progress_icon_init(RaiderProgressIcon *icon)
 {
-	g_object_set(icon, "width-request", 16, "height-request", 16, NULL);
-	gtk_widget_set_valign(GTK_WIDGET(icon), GTK_ALIGN_CENTER);
-	gtk_widget_set_halign(GTK_WIDGET(icon), GTK_ALIGN_CENTER);
+    g_object_set(icon, "width-request", 16, "height-request", 16, NULL);
+    gtk_widget_set_valign(GTK_WIDGET(icon), GTK_ALIGN_CENTER);
+    gtk_widget_set_halign(GTK_WIDGET(icon), GTK_ALIGN_CENTER);
 
-	gtk_drawing_area_set_draw_func(GTK_DRAWING_AREA(icon), (GtkDrawingAreaDrawFunc)raider_progress_icon_draw, NULL, NULL);
+    gtk_drawing_area_set_draw_func(GTK_DRAWING_AREA(icon), (GtkDrawingAreaDrawFunc)raider_progress_icon_draw, NULL, NULL);
 
-	gtk_widget_show(GTK_WIDGET(icon));
+    gtk_widget_show(GTK_WIDGET(icon));
 }
 

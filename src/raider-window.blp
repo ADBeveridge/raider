@@ -27,17 +27,17 @@ template RaiderWindow : Adw.ApplicationWindow {
         };*/
         Gtk.Button open_button {
           action-name: "app.open";
-      	  Adw.ButtonContent {
+          Adw.ButtonContent {
             label: _("Add");
-      	    icon-name: "document-open-symbolic";
-      	    tooltip-text: _("Add Files");
+            icon-name: "document-open-symbolic";
+            tooltip-text: _("Add Files");
           }
         }
       }
 
       [title]
       Adw.WindowTitle title {
-      	title: _("File Shredder");
+        title: _("File Shredder");
       }
 
       [end]
@@ -52,72 +52,72 @@ template RaiderWindow : Adw.ApplicationWindow {
       Gtk.Box contents_box {
         vexpand: true;
         Gtk.Stack window_stack {
-	  transition-type: crossfade;
+    transition-type: crossfade;
           Gtk.StackPage empty_page {
           name: "empty_page";
             child: Adw.StatusPage empty_state {
-      	      title: _("Add files or drop here");
-      	      icon-name: "com.github.ADBeveridge.Raider";
-      	      description: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered.");
-      	      hexpand: true;
+              title: _("Add files or drop here");
+              icon-name: "com.github.ADBeveridge.Raider";
+              description: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered.");
+              hexpand: true;
             };
           }
 
           Gtk.StackPage list_page {
             name: "list_page";
-      	    child: Gtk.Overlay overlay{
+            child: Gtk.Overlay overlay{
 
-      	      child: Gtk.ScrolledWindow scrolled_window {
-      	        Adw.Clamp {
-      	        maximum-size: 700;
-      	          Gtk.ListBox list_box {
-      	            valign: start;
-      	            margin-end: 12;
-      	            margin-start: 12;
-      	            margin-top: 12;
-      	            margin-bottom: 12;
-      	            styles ["boxed-list"]
+              child: Gtk.ScrolledWindow scrolled_window {
+                Adw.Clamp {
+                maximum-size: 700;
+                  Gtk.ListBox list_box {
+                    valign: start;
+                    margin-end: 12;
+                    margin-start: 12;
+                    margin-top: 12;
+                    margin-bottom: 12;
+                    styles ["boxed-list"]
                   }
                 }
               };
               [overlay]
               Gtk.Revealer shred_revealer {
-  		reveal-child: false;
-  		transition-type: slide_up;
-  		valign: end;
-  		halign: center;
-  		margin-bottom: 20;
+      reveal-child: false;
+      transition-type: slide_up;
+      valign: end;
+      halign: center;
+      margin-bottom: 20;
 
-  		Gtk.Box {
-  		  margin-end: 5;
-  		  margin-top: 5;
-  		  margin-start: 5;
-  		  margin-bottom: 5;
-  		  Gtk.Button shred_button {
-    		    label: _("Shred All");
-    		    styles ["destructive-action", "pill"]
-  		  }
-  		}
-	      }
-	      [overlay]
-	      Gtk.Revealer abort_revealer {
-  		reveal-child: false;
-  		transition-type: slide_up;
-  		valign: end;
-  		halign: center;
-  		margin-bottom: 20;
+      Gtk.Box {
+        margin-end: 5;
+        margin-top: 5;
+        margin-start: 5;
+        margin-bottom: 5;
+        Gtk.Button shred_button {
+            label: _("Shred All");
+            styles ["destructive-action", "pill"]
+        }
+      }
+        }
+        [overlay]
+        Gtk.Revealer abort_revealer {
+      reveal-child: false;
+      transition-type: slide_up;
+      valign: end;
+      halign: center;
+      margin-bottom: 20;
 
-  		Gtk.Box {
-  		  margin-end: 5;
-  		  margin-top: 5;
-  		  margin-start: 5;
-  		  margin-bottom: 5;
-  		  Gtk.Button abort_button {
-    		    label: _("Abort All");
-    		    styles ["destructive-action", "pill"]
-  		  }
-  		}
-	      }
+      Gtk.Box {
+        margin-end: 5;
+        margin-top: 5;
+        margin-start: 5;
+        margin-bottom: 5;
+        Gtk.Button abort_button {
+            label: _("Abort All");
+            styles ["destructive-action", "pill"]
+        }
+      }
+        }
             };
           }
         }

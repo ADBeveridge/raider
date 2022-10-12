@@ -48,20 +48,20 @@ RaiderProgressInfoPopover *raider_progress_info_popover_new()
 /* This sets both the progress bar progress and its text. */
 void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popover, gdouble fraction)
 {
-	double percentage = fraction * 100; // Move the decimal.
+    double percentage = fraction * 100; // Move the decimal.
 
-	if (percentage < 100)
-	{
-    	gchar *display = g_strdup_printf("%d%%", (int)percentage);
-		gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), display);
-		gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
-		g_free(display);
-	}
-	else
-	{
-		gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up..."));
-		gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
-	}
+    if (percentage < 100)
+    {
+        gchar *display = g_strdup_printf("%d%%", (int)percentage);
+        gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), display);
+        gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
+        g_free(display);
+    }
+    else
+    {
+        gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up..."));
+        gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
+    }
 }
 
 /* This is used when the spinner is shown instead of the progress icon. */
