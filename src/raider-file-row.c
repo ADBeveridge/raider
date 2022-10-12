@@ -178,7 +178,7 @@ RaiderFileRow *raider_file_row_new(GFile *file)
     return row;
 }
 
-/* Not always called. */
+/* Not always called. Called by finish_shredding. */
 void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(user_data);
@@ -200,9 +200,10 @@ void on_complete_finish(GObject* source_object, GAsyncResult* res, gpointer user
         raider_file_row_delete_on_finish(NULL, user_data);
 }
 
-/* This is called when the shred executable exits, even if it is aborted. */
+/* This is ALWAYS ALWAYS called when the shred executable exits. */
 static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
+    /* BUT BUT it may return immediately if shredding has been aborted. */
     if (g_cancellable_is_cancelled (wait_cancel))
         return;
 
@@ -213,6 +214,7 @@ static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer
     if (removed_timeout == FALSE)
         g_warning("Could not stop timeout.\n");
 
+    /* Test case not really needed. */
     if (!row->aborted)raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
 }
 
