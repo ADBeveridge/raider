@@ -51,9 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-raider.cbp
-raider.layout
+# Other project related files.
 .vscode/
 .flatpak/
-
 /subprojects/blueprint-compiler/
