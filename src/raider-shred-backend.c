@@ -414,7 +414,7 @@ void parse_error(void *ptr_to_fsm)
     // Go past the "to open for writing" words.
     int number = 0;
     for (number = 0; number < 4; number++) {
-        // TODO: Actually check the error message.
+        // TODO: Actually make sure that words are the error message.
         fsm->tokens++;
         fsm->incremented_number++;
     }
