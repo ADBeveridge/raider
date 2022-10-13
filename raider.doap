@@ -21,7 +21,6 @@
   <maintainer>
     <foaf:Person>
       <foaf:name>Alan Beveridge</foaf:name>
-      <foaf:mbox rdf:resource="mailto:adbeveridge@protonmail.com" />
       <foaf:account>
         <foaf:OnlineAccount>
             <foaf:accountServiceHomepage rdf:resource="https://github.com/" />
@@ -31,8 +30,7 @@
       <foaf:account>
         <foaf:OnlineAccount>
           <foaf:accountServiceHomepage
-            rdf:resource="https://gitlab.gnome.org"
-          />
+            rdf:resource="https://gitlab.gnome.org"/>
           <foaf:accountName>ADBeveridge</foaf:accountName>
         </foaf:OnlineAccount>
       </foaf:account>
