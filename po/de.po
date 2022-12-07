@@ -1,0 +1,448 @@
+# German trnaslation for the raider's package
+# Copyright (C) YEAR THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# gregorni <mail.gregorni@proton.me>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: raider\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-06 08:14-0700\n"
+"PO-Revision-Date: 2022-12-07 15:43+0200\n"
+"Last-Translator: gregorni <mail.gregorni@proton.me>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:105 src/raider-window.blp:35
+msgid "File Shredder"
+msgstr "Aktenvernichter"
+
+#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+#: src/raider-application.c:112
+msgid "Securely delete your files"
+msgstr "Dateien sicher löschen"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered. File Shredder has a comprehensive set "
+"of preferences and progress tracking for each file."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:54
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+msgid "Bug fixes and translation updates"
+msgstr "Fehlerbehebungen und aktualisierte Übersetzungen"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:56
+msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr "Chinesische, Türkische, Okzitanische und Brasilianisch-Portugiesische Übersetzung hinzugefügt."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Fixed in-app notification crash"
+msgstr "In-App Benachrichtigungs-Crash behoben"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:72
+msgid "User interface fixes"
+msgstr "Korrekturen in der Nutzeroberfläche"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
+msgid "Added explanatory message and changed initial view's icon"
+msgstr "Erklärung hinzugefügt und ursprüngliches Symbol geändert"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "Added icon to add button in headerbar"
+msgstr "Symbol zum Hinzufügen-Knopf in der Kopfleiste hinzugefügt"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:74
+msgid "Fixed cropping of keyboard focus ring on shred button"
+msgstr "Abschneiden des Tastatur-Fokusrings auf dem Vernichten-Knopf korrigiert"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:75
+msgid "Updated preferences to be more concise and explanatory"
+msgstr "Einstellungen aktualisiert, um genauer und verständlicher zu sein"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+msgid "Add icon to open button in headerbar"
+msgstr "Symbol zum Öffnen-Knopf in der Kopfleiste hinzugefügt"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:84
+msgid "Added the French translation"
+msgstr "Französische Übersetzung hinzugefügt"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
+msgid "Added the Portuguese translation"
+msgstr "Portugiesische Übersetzung hinzugefügt"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:86
+msgid "Updated the Russian translation"
+msgstr "Russische Übersetzung aktualisiert"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
+msgid "Fixed progress retrieval bug"
+msgstr "Fehler beim Abruf des Fortschritts korrigiert"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Fixed display problems"
+msgstr "Anzeige-Probleme korrigiert"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
+msgid "Minor fixes, including:"
+msgstr "Kleinere Korrekturen, unter anderem:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
+msgid "Moved the Shred button to the bottom of the window"
+msgstr "Vernichten-Knopf ans untere Ende des Fensters verschoben"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
+msgid "Support for mobile devices added"
+msgstr "Unterstützung für Mobilgeräte hinzugefügt"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "Rethemed the file rows to standard look"
+msgstr "Dateiliste mit dem Standarddesign neuentworfen"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr "Wesentliche Überarbeitung vom Aktenvernichter, mit ein paar Änderungen "
+"an der Benutzeroberfläche:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
+msgid "Added checking so a file cannot be loaded twice"
+msgstr "Kontrolle hinzugefügt, sodass eine Datei nicht zweimal geladen werden kann"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
+msgid "Smooth progress tracking"
+msgstr "Gleichmäßige Verfolgung des Fortschritts"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
+msgid "Written using GTK4 and Adwaita"
+msgstr "Mit GTK4 und Adwaita geschrieben"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr "Desktop-Benachrichtigungen werden angezeigt, wenn das Fenster nicht fokussiert ist"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:115
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+msgid "Hide shredding"
+msgstr "Anonymes Vernichten"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid ""
+"Whether to hide shredding. This is done by overwriting the file(s) with "
+"zeros."
+msgstr ""
+"Vernichtung verstecken, indem Dateien mit Nullen überschrieben werden."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr "Datei löschen"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+msgid "Whether to remove the file after shredding it."
+msgstr "Eine Datei nach der Vernichtung löschen"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:15
+#: src/raider-preferences.blp:34
+msgid "Number of passes"
+msgstr "Runden"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:16
+msgid "How many times the file will be overwritten with random data."
+msgstr "Wie oft die Datei mit Zufallsdaten überschrieben werden soll."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:21
+msgid "Remove method"
+msgstr "Vernichtungsmethode"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:22
+msgid "How the obfucticated file will be removed from the filesystem."
+msgstr "Wie die verschleierte Datei vom Dateisystem entfernt werden soll."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:27
+msgid "Override Permisions"
+msgstr "Berechtigungen ignorieren"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:28
+msgid "If you do not have the neccessary permissions, override them."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:32
+msgid "Do not round to next block"
+msgstr "Dateigröße nitch zum nächsten Block runden"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:33
+msgid ""
+"Do not round the file to the next block. This is the default for non-regular "
+"files."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:37
+msgid "Number of bytes to shred entry"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:38
+msgid ""
+"Shred the number of bytes you want, and leave the rest of the file untouched."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:43
+msgid "Shred executable"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:44
+msgid "The path to the shred executable."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:48
+msgid "Whether to allow the source data file to be enabled"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:49
+msgid "If unchecked, the source data file will not be loaded."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:53
+msgid "Overwrite data file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:54
+msgid "Where to get data to overwrite the to-be-shredded files."
+msgstr ""
+
+#: src/raider-application.c:74 src/raider-window.blp:28
+msgid "Add Files"
+msgstr ""
+
+#: src/raider-application.c:75
+msgid "Cancel"
+msgstr ""
+
+#: src/raider-application.c:75 src/raider-window.blp:26
+msgid "Add"
+msgstr ""
+
+#: src/raider-application.c:111
+msgid "1.2.2"
+msgstr ""
+
+#: src/raider-application.c:116
+msgid "translator-credits"
+msgstr ""
+
+#. Notification stuff.
+#: src/raider-file-row.c:169
+msgid "Shredded "
+msgstr ""
+
+#: src/raider-preferences.blp:8
+msgid "Shredder"
+msgstr ""
+
+#: src/raider-preferences.blp:10
+msgid "Basic"
+msgstr ""
+
+#: src/raider-preferences.blp:13
+msgid "Remove File"
+msgstr ""
+
+#: src/raider-preferences.blp:14
+msgid "Whether to remove the file after obfuscating its contents"
+msgstr ""
+
+#: src/raider-preferences.blp:24
+msgid "Hide Shredding"
+msgstr ""
+
+#: src/raider-preferences.blp:25
+msgid ""
+"Do a final overwrite with zeros instead of random data. Random data is a "
+"clue that the file has been shredded"
+msgstr ""
+
+#: src/raider-preferences.blp:35
+msgid "How many times to shred file over"
+msgstr ""
+
+#: src/raider-preferences.blp:47
+msgid "Advanced"
+msgstr ""
+
+#: src/raider-preferences.blp:49
+msgid "Remove Method"
+msgstr ""
+
+#: src/raider-preferences.blp:50
+msgid ""
+"How to remove the obfuscated files from the fileystem. See help for "
+"information"
+msgstr ""
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
+msgid "Wipesync"
+msgstr ""
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
+msgid "Wipe"
+msgstr ""
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
+msgid "Unlink"
+msgstr ""
+
+#: src/raider-preferences.blp:56
+msgid "Overwrite data source"
+msgstr ""
+
+#: src/raider-preferences.blp:57
+msgid ""
+"Where to get the data to overwrite the files with. Disabled at every startup"
+msgstr ""
+
+#: src/raider-preferences.blp:66
+msgid "None Selected"
+msgstr ""
+
+#: src/raider-preferences.blp:70
+msgid "Select File"
+msgstr ""
+
+#: src/raider-preferences.blp:77
+msgid "Number of bytes to shred"
+msgstr ""
+
+#: src/raider-preferences.blp:78
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr ""
+
+#: src/raider-preferences.blp:90
+msgid "Do not round file sizes"
+msgstr ""
+
+#: src/raider-preferences.blp:91
+msgid "Do not round file sizes to the next block. Default for irregular files"
+msgstr ""
+
+#: src/raider-preferences.blp:99
+msgid "Override file permissions"
+msgstr ""
+
+#: src/raider-preferences.blp:100
+msgid ""
+"Whether to override the file permissions in case of insufficient permissions"
+msgstr ""
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Beende..."
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Berechne..."
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:387
+msgid "failed"
+msgstr ""
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:391
+msgid "removing"
+msgstr ""
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:396
+msgid "removed"
+msgstr ""
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:402
+msgid "pass"
+msgstr ""
+
+#: src/raider-window.blp:53
+msgid "Add files or drop here"
+msgstr "Dateien hinzufügen oder hier ablegen"
+
+#: src/raider-window.blp:55
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+
+#: src/raider-window.blp:91 src/raider-window.c:298
+msgid "Shred All"
+msgstr "Alle vernichten"
+
+#: src/raider-window.blp:110 src/raider-window.c:346
+msgid "Abort All"
+msgstr "Alle abbrechen"
+
+#: src/raider-window.blp:127
+msgid "New Window"
+msgstr "Neues Fenster"
+
+#: src/raider-window.blp:133
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/raider-window.blp:137
+msgid "Help"
+msgstr "Hilfe"
+
+#: src/raider-window.blp:141
+msgid "About File Shredder"
+msgstr "Über Aktenvernichter"
+
+#: src/raider-window.c:127
+msgid "Directories are not supported"
+msgstr "Verzeichnisse werden nicht unterstützt"
+
+#: src/raider-window.c:146
+#, c-format
+msgid "“%s” is already loaded"
+msgstr "“%s” ist bereits geladen"
+
+#: src/raider-window.c:159
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Kann nicht zu “%s” schreiben"
+
+#: src/raider-window.c:169
+msgid "System cannot load more files"
+msgstr "Das System kann keine Dateien mehr laden"
+
+#: src/raider-window.c:260
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+
+#: src/raider-window.c:268
+msgid "Finished shredding files"
+msgstr "Vernichten beendet"
+
+#: src/raider-window.c:323
+msgid "Starting Shredding…"
+msgstr "Vernichten wird gestartet"
+
+#: src/raider-window.c:370
+msgid "Aborting…"
+msgstr "Vorgang wird abgebrochen…"
