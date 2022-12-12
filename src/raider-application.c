@@ -103,6 +103,12 @@ static void raider_application_try_exit (GSimpleAction *action, GVariant *parame
     }
 }
 
+static void raider_application_close (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
+    gtk_window_close(window);
+}
+
 /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
 /*static void raider_application_open_drive(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
@@ -218,6 +224,10 @@ static void raider_application_init(RaiderApplication *self)
     g_signal_connect(quit_action, "activate", G_CALLBACK(raider_application_try_exit), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
 
+    g_autoptr(GSimpleAction) close_action = g_simple_action_new("close", NULL);
+    g_signal_connect(close_action, "activate", G_CALLBACK(raider_application_close), self);
+    g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(close_action));
+
     g_autoptr(GSimpleAction) about_action = g_simple_action_new("about", NULL);
     g_signal_connect(about_action, "activate", G_CALLBACK(raider_application_show_about), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(about_action));
@@ -245,6 +255,7 @@ static void raider_application_init(RaiderApplication *self)
 
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.close", (const char *[]){"<Ctrl>w",NULL,});
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new_window", (const char *[]){"<Ctrl>n",NULL,});
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.preferences", (const char *[]){"<Ctrl>comma",NULL,});

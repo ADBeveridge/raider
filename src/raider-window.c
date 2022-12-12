@@ -52,9 +52,9 @@ struct _RaiderWindow
     gboolean status; // Shredding or not.
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    GMenu* mount_main_menu;
-    GMenu* mount_menu;
-    GVolumeMonitor* monitor;
+    //GMenu* mount_main_menu;
+    //GMenu* mount_menu;
+    //GVolumeMonitor* monitor;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)

@@ -42,6 +42,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="action-name">app.close</property>
+                <property name="title" translatable="yes" context="shortcut window">Close Window</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="action-name">app.quit</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
               </object>
