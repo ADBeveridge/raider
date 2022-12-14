@@ -50,7 +50,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="2.0.0" date="2022-10-13">
+    <release version="2.0.0" date="2023-01-01">
       <description>
         <p>Switch shredding program from shred to secure-delete</p>
       </description>
@@ -64,12 +64,12 @@
       <description>
         <p>Updates to help and application</p>
         <ul>
-          <li>Added keyboard shortcuts to common actions</li>
-          <li>Fixed memory leaks</li>
-          <li>Fixed crash when backend failed to start</li>
-          <li>Fixed application crash when closing window during shredding</li>
-          <li>Removed typo in Shred All button</li>
-          <li>Updated Turkish translation</li>
+          <li>Add keyboard shortcuts to common actions</li>
+          <li>Fix memory leaks</li>
+          <li>Fix crash when backend failed to start</li>
+          <li>Fix application crash when closing window during shredding</li>
+          <li>Remove typo in Shred All button</li>
+          <li>Update Turkish translation</li>
           <li>Add more categories to desktop file</li>
         </ul>
       </description>
@@ -78,8 +78,8 @@
       <description>
         <p>Bug fixes and translation updates</p>
         <ul>
-          <li>Added Chinese, Turkish, Occitan and Brazilian Portuguese translations</li>
-          <li>Fixed in-app notification crash</li>
+          <li>Add Chinese, Turkish, Occitan and Brazilian Portuguese translations</li>
+          <li>Fix in-app notification crash</li>
         </ul>
       </description>
     </release>
@@ -87,8 +87,8 @@
       <description>
         <p>User interface fixes</p>
         <ul>
-          <li>Added explanatory message and changed initial view's icon</li>
-          <li>Added icon to add button in headerbar</li>
+          <li>Add explanatory message and changed initial view's icon</li>
+          <li>Add icon to add button in headerbar</li>
         </ul>
       </description>
     </release>
@@ -96,8 +96,8 @@
       <description>
         <p>User interface fixes</p>
         <ul>
-          <li>Fixed cropping of keyboard focus ring on shred button</li>
-          <li>Updated preferences to be more concise and explanatory</li>
+          <li>Fix cropping of keyboard focus ring on shred button</li>
+          <li>Update preferences to be more concise and explanatory</li>
           <li>Add icon to open button in headerbar</li>
         </ul>
       </description>
@@ -106,11 +106,11 @@
       <description>
         <p>Bug fixes and translation updates</p>
         <ul>
-          <li>Added the French translation</li>
-          <li>Added the Portuguese translation</li>
-          <li>Updated the Russian translation</li>
-          <li>Fixed progress retrieval bug</li>
-          <li>Fixed display problems</li>
+          <li>Add the French translation</li>
+          <li>Add the Portuguese translation</li>
+          <li>Update the Russian translation</li>
+          <li>Fix progress retrieval bug</li>
+          <li>Fix display problems</li>
         </ul>
       </description>
     </release>
@@ -118,9 +118,9 @@
       <description>
         <p>Minor fixes, including:</p>
         <ul>
-          <li>Moved the Shred button to the bottom of the window</li>
+          <li>Move the Shred button to the bottom of the window</li>
           <li>Support for mobile devices added</li>
-          <li>Rethemed the file rows to standard look</li>
+          <li>Re-theme the file rows to standard look</li>
         </ul>
       </description>
     </release>
@@ -128,17 +128,17 @@
       <description>
         <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
         <ul>
-          <li>Added checking so a file cannot be loaded twice</li>
+          <li>Add checking so a file cannot be loaded twice</li>
           <li>Smooth progress tracking</li>
-          <li>Written using GTK4 and Adwaita</li>
-          <li>Desktop notifications are shown if the window is not focused</li>
+          <li>Write using GTK4 and Adwaita</li>
+          <li>Show desktop notifications if the window is not focused</li>
         </ul>
       </description>
     </release>
     <release version="0.1.0" date="2021-12-30">
       <description>
         <p>The very first release of File Shredder. It supports progress tracking, and
-	      boasts a GNOME compliant interface.</p>
+	      has a GNOME compliant interface.</p>
       </description>
     </release>
   </releases>
