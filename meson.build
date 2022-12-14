@@ -1,11 +1,9 @@
-project('raider', 'c',
-          version: '1.3.1',
-    meson_version: '>= 0.61.0',
-)
+project('raider', 'c', version: '2.0.0')
 
 i18n = import('i18n')
 gnome = import('gnome')
 
+# Get all dependencies for Raider. Secure Delete should fallback, unless this is being packaged.
 raider_deps = [
   dependency('gtk4'),
   dependency('libadwaita-1', version: '>= 1.0'),

@@ -9,9 +9,7 @@ raider_sources = [
   'raider-progress-info-popover.c'
 ]
 
-gnome = import('gnome')
-
-# Generate UI files from blueprint files.
+# Generate UX files from blueprint files.
 blueprints = custom_target('blueprints',
   input: files(
     'raider-window.blp',
