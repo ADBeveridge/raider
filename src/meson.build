@@ -9,12 +9,6 @@ raider_sources = [
   'raider-progress-info-popover.c'
 ]
 
-raider_deps = [
-  dependency('gtk4'),
-  dependency('libadwaita-1', version: '>= 1.0'),
-  dependency('gio-unix-2.0')
-]
-
 gnome = import('gnome')
 
 # Generate UI files from blueprint files.
