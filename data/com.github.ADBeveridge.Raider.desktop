@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=File Shredder
+Name[hr]=Uništavač datoteka
 Comment=Securely delete your files
+Comment[hr]=Izbriši datoteke na siguran način
 Exec=raider
 Icon=com.github.ADBeveridge.Raider
 Terminal=false
