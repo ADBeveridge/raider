@@ -1,0 +1,551 @@
+# German translation for the raider's package
+# Copyright (C) YEAR THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# gregorni <mail.gregorni@proton.me>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-06 12:21+0300\n"
+"PO-Revision-Date: 2022-12-14 16:04+0100\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:149 src/raider-window.blp:40
+msgid "File Shredder"
+msgstr "Uništavač datoteka"
+
+#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+msgid "Securely delete your files"
+msgstr "Izbriši datoteke sigurno"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered. File Shredder has a comprehensive set "
+"of preferences and progress tracking for each file."
+msgstr ""
+"„Uništavač datoteka” je jednostavna aplikacija koja se koristi za sigurno "
+"trajno brisanje datoteka. „Uništavač datoteka” ima opsežan skup postavki i "
+"praćenje napretka za svaku datoteku."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:21
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
+msgid "Fix UI bug when shredding aborted"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Updates to help and application"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
+msgid "Added keyboard shortcuts to common actions"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+msgid "Fixed memory leaks"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
+msgid "Fixed crash when backend failed to start"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
+msgid "Fixed application crash when closing window during shredding"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
+msgid "Removed typo in Shred All button"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
+msgid "Updated Turkish translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
+msgid "Add more categories to desktop file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:99
+msgid "Bug fixes and translation updates"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
+msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:74
+msgid "Fixed in-app notification crash"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
+msgid "User interface fixes"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
+msgid "Added explanatory message and changed initial view's icon"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
+msgid "Added icon to add button in headerbar"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
+msgid "Fixed cropping of keyboard focus ring on shred button"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+msgid "Updated preferences to be more concise and explanatory"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:93
+msgid "Add icon to open button in headerbar"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
+msgid "Added the French translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+msgid "Added the Portuguese translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
+msgid "Updated the Russian translation"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
+msgid "Fixed progress retrieval bug"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:105
+msgid "Fixed display problems"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:111
+msgid "Minor fixes, including:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:113
+msgid "Moved the Shred button to the bottom of the window"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:114
+msgid "Support for mobile devices added"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:115
+msgid "Rethemed the file rows to standard look"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:121
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:123
+msgid "Added checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:124
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:125
+msgid "Written using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:126
+msgid "Desktop notifications are shown if the window is not focused"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:132
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"boasts a GNOME compliant interface."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:5
+msgid "Hide shredding"
+msgstr "Sakrij uništavanje"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:6
+msgid ""
+"Whether to hide shredding. This is done by overwriting the file(s) with "
+"zeros."
+msgstr ""
+"Da li sakriti unoštavanje. To se postiže prepisivanjem datoteka nulama."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:10
+msgid "Remove file"
+msgstr "Ukloni datoteku"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:11
+msgid "Whether to remove the file after shredding it."
+msgstr "Da li ukloniti datoteku nakon uništavanja."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:15
+#: src/raider-preferences.blp:34
+msgid "Number of passes"
+msgstr "Broj prolaza"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:16
+msgid "How many times the file will be overwritten with random data."
+msgstr "Broj prepisivanja datoteke nasumičnim podacima."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:21
+msgid "Remove method"
+msgstr "Metoda uklanjanja"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:22
+msgid "How the obfucticated file will be removed from the filesystem."
+msgstr "Kako će se prepisana datoteka ukloniti iz datotečnog sustava."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:27
+msgid "Override Permisions"
+msgstr "Zaobiđi dozvole"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:28
+msgid "If you do not have the neccessary permissions, override them."
+msgstr "Ako nemaš potrebne dozvole, zaobiđi ih."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:32
+msgid "Do not round to next block"
+msgstr "Nemoj zaokruživati na sljedeći blok"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:33
+msgid ""
+"Do not round the file to the next block. This is the default for non-regular "
+"files."
+msgstr ""
+"Nemoj zaokruživati datoteku na sljedeći blok. Standardno za ne regularne "
+"datoteke."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:37
+msgid "Number of bytes to shred entry"
+msgstr "Broj bajtova za uništavanje unosa"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:38
+msgid ""
+"Shred the number of bytes you want, and leave the rest of the file untouched."
+msgstr "Uništi željeni broj bajtova, a ostatak datoteke ostavi netaknutim."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:43
+msgid "Shred executable"
+msgstr "Program za uništavanje"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:44
+msgid "The path to the shred executable."
+msgstr "Staza do programa za uništavanje."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:48
+msgid "Whether to allow the source data file to be enabled"
+msgstr "Da li dozvoliti aktiviranje datoteke izvornih podataka"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:49
+msgid "If unchecked, the source data file will not be loaded."
+msgstr "Ako nije označeno datoteka izvornih podataka se neće učitati."
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:53
+msgid "Overwrite data file"
+msgstr "Prepiši datoteku podataka"
+
+#: data/com.github.ADBeveridge.Raider.gschema.xml:54
+msgid "Where to get data to overwrite the to-be-shredded files."
+msgstr "Gdje dobiti podatke za prepisivanje datoteka koje će se uništiti."
+
+#: src/raider-application.c:74 src/raider-window.blp:33
+msgid "Add Files"
+msgstr "Dodaj datoteke"
+
+#: src/raider-application.c:75
+msgid "Cancel"
+msgstr "Odustani"
+
+#: src/raider-application.c:75 src/raider-window.blp:31
+msgid "Add"
+msgstr "Dodaj"
+
+#: src/raider-application.c:163
+msgid "translator-credits"
+msgstr "Milo Ivir <mail@milotype.de>"
+
+#. Notification stuff.
+#: src/raider-file-row.c:174
+msgid "Shredded "
+msgstr "Uništeno "
+
+#: src/raider-file-row.c:302
+msgid "Failed to start shredding"
+msgstr "Nauspjelo pokretanje uništavanja"
+
+#: src/raider-preferences.blp:8
+msgid "Shredder"
+msgstr "Uništavač"
+
+#: src/raider-preferences.blp:10
+msgid "Basic"
+msgstr "Osnovni"
+
+#: src/raider-preferences.blp:13
+msgid "Remove File"
+msgstr "Ukloni datoteku"
+
+#: src/raider-preferences.blp:14
+msgid "Whether to remove the file after obfuscating its contents"
+msgstr "Da li ukloniti datoteku nakon prepisivanja njezinog sadržaja"
+
+#: src/raider-preferences.blp:24
+msgid "Hide Shredding"
+msgstr "Sakrij uništavanje"
+
+#: src/raider-preferences.blp:25
+msgid ""
+"Do a final overwrite with zeros instead of random data. Random data is a "
+"clue that the file has been shredded"
+msgstr ""
+"Prepiši nulama umjesto nasumičnim podacima. Nasumični podaci su znak su da "
+"je datoteka uništena"
+
+#: src/raider-preferences.blp:35
+msgid "How many times to shred file over. The more the better"
+msgstr "Koliko često uništiti datoteku. Što više to bolje"
+
+#: src/raider-preferences.blp:47
+msgid "Advanced"
+msgstr "Napredno"
+
+#: src/raider-preferences.blp:49
+msgid "Remove Method"
+msgstr "Metoda uklanjanja"
+
+#: src/raider-preferences.blp:50
+msgid ""
+"How to remove the obfuscated files from the fileystem. See help for "
+"information"
+msgstr "Kako ukloniti prepisane datoteke iz datotečnog sustava. Pogledaj pomoć"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
+msgid "Wipesync"
+msgstr "Izbriši sinkronizaciju"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
+msgid "Wipe"
+msgstr "Izbriši"
+
+#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
+msgid "Unlink"
+msgstr "Odspoji"
+
+#: src/raider-preferences.blp:56
+msgid "Overwrite data source"
+msgstr "Prepiši izvor podataka"
+
+#: src/raider-preferences.blp:57
+msgid ""
+"Where to get the data to overwrite the files with. Disabled at every startup"
+msgstr ""
+"Gdje nabaviti podatke za prepisivanje datoteka. Deaktivirano pri svakom "
+"pokretanju"
+
+#: src/raider-preferences.blp:66
+msgid "None Selected"
+msgstr "Ništa nije odabrano"
+
+#: src/raider-preferences.blp:70
+msgid "Select File"
+msgstr "Odaberi datoteku"
+
+#: src/raider-preferences.blp:77
+msgid "Number of bytes to shred"
+msgstr "Broj bajtova za uništavanje"
+
+#: src/raider-preferences.blp:78
+msgid "How much of the file to shred. 0 to shred the whole file"
+msgstr "Koliki dio datoteke uništiti. 0 za uništavanje cijele datoteke"
+
+#: src/raider-preferences.blp:90
+msgid "Do not round file sizes"
+msgstr "Nemoj zaokruživati veličinu datoteke"
+
+#: src/raider-preferences.blp:91
+msgid "Do not round file sizes to the next block. Default for irregular files"
+msgstr ""
+"Nemoj zaokruživati veličinu datoteke na sljedeći blok. Standardno za ne "
+"regularne datoteke"
+
+#: src/raider-preferences.blp:99
+msgid "Override file permissions"
+msgstr "Prepiši dozvole datoteka"
+
+#: src/raider-preferences.blp:100
+msgid "Whether to override the file permissions of read-only user files"
+msgstr "Da li zaobići dozvole za datoteke koje su samo-za-čitanje"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Završavanje …"
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Procjenjivanje …"
+
+#: src/raider-shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Opće"
+
+#: src/raider-shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Help"
+msgstr "Pomoć"
+
+#: src/raider-shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Add Files"
+msgstr "Dodaj datoteke"
+
+#: src/raider-shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Novi prozor"
+
+#: src/raider-shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Preferences"
+msgstr "Postavke"
+
+#: src/raider-shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Keyboard Shortcuts"
+msgstr "Tipkovni prečaci"
+
+#: src/raider-shortcuts.ui:46
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Zatvori"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:387
+msgid "failed"
+msgstr "neuspjelo"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:391
+msgid "removing"
+msgstr "uklanja se"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:396
+msgid "removed"
+msgstr "uklonjeno"
+
+#. Translators: make sure this correspond with the output of shred on your system.
+#: src/raider-shred-backend.c:402
+msgid "pass"
+msgstr "prolaz"
+
+#: src/raider-window.blp:59
+msgid "Add files or drop here"
+msgstr "Dodaj datoteke ili ih ispusti ovdje"
+
+#: src/raider-window.blp:61
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Uništavanje je prepisivanje datoteke nasumičnim podacima tako da se "
+"prethodni sadržaj ne može obnoviti."
+
+#: src/raider-window.blp:97 src/raider-window.c:316
+msgid "Shred All"
+msgstr "Uništi sve"
+
+#: src/raider-window.blp:116 src/raider-window.c:372
+msgid "Abort All"
+msgstr "Prekini sve"
+
+#: src/raider-window.blp:133
+msgid "New Window"
+msgstr "Novi prozor"
+
+#: src/raider-window.blp:139
+msgid "Preferences"
+msgstr "Postavke"
+
+#: src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Tipkovni prečaci"
+
+#: src/raider-window.blp:147
+msgid "Help"
+msgstr "Pomoć"
+
+#: src/raider-window.blp:151
+msgid "About File Shredder"
+msgstr "O aplikaciji „Uništavač datoteka”"
+
+#: src/raider-window.c:93
+msgid "Stop Shredding?"
+msgstr "Prekinuti uništavanje?"
+
+#: src/raider-window.c:94
+msgid "Are you sure that you want to exit?"
+msgstr "Stvarno želiš zatvoriti aplikaciju?"
+
+#: src/raider-window.c:97
+msgid "_Cancel"
+msgstr "_Odustani"
+
+#: src/raider-window.c:97
+msgid "_Exit"
+msgstr "_Zatvori"
+
+#: src/raider-window.c:159
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Nije moguće ukloniti ime datoteke s brzog popisa. Prijavi ovo."
+
+#: src/raider-window.c:168
+msgid "Finished shredding files"
+msgstr "Uništavanje datoteka je gotovo"
+
+#: src/raider-window.c:238
+msgid "Directories are not supported"
+msgstr "Mape se ne podržavaju"
+
+#: src/raider-window.c:257
+#, c-format
+msgid "“%s” is already loaded"
+msgstr "„%s” ja već učitana"
+
+#: src/raider-window.c:270
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Nije moguće pisati u „%s”"
+
+#: src/raider-window.c:280
+msgid "System cannot load more files"
+msgstr "Sustav ne može učitati daljne datoteke"
+
+#: src/raider-window.c:342
+msgid "Starting Shredding…"
+msgstr "Pokretanje uništavanja …"
+
+#: src/raider-window.c:395
+msgid "Aborting…"
+msgstr "Prekidanje …"
