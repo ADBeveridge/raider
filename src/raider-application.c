@@ -22,7 +22,8 @@
 #include "raider-window.h"
 #include "raider-preferences.h"
 
-struct _RaiderApplication {
+struct _RaiderApplication
+{
     AdwApplication parent_instance;
 };
 
@@ -37,7 +38,6 @@ RaiderApplication *raider_application_new(gchar * application_id, GApplicationFl
 static void raider_new_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
     RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", GTK_APPLICATION(user_data), NULL);
-
     gtk_window_present(GTK_WINDOW(window));
 }
 
@@ -178,16 +178,15 @@ static void raider_application_show_help(GSimpleAction *action, GVariant *parame
 static void raider_application_open(GApplication *application, GFile **files, gint n_files, const gchar *hint)
 {
     RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", application, NULL);
-    gint i;
 
     /* Convert array of files into a GList. */
     GList *file_list = NULL;
+    int i;
     for (i = 0; i < n_files; i++) {
         file_list = g_list_append(file_list, g_file_dup(files[i]));
     }
 
     raider_window_open_files(window, file_list);
-
     gtk_window_present(GTK_WINDOW(window));
 }
 
@@ -223,42 +222,41 @@ static void raider_application_init(RaiderApplication *self)
     g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
     g_signal_connect(quit_action, "activate", G_CALLBACK(raider_application_try_exit), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
 
     g_autoptr(GSimpleAction) close_action = g_simple_action_new("close", NULL);
     g_signal_connect(close_action, "activate", G_CALLBACK(raider_application_close), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(close_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.close", (const char *[]){"<Ctrl>w",NULL,});
 
     g_autoptr(GSimpleAction) about_action = g_simple_action_new("about", NULL);
     g_signal_connect(about_action, "activate", G_CALLBACK(raider_application_show_about), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(about_action));
 
-    g_autoptr(GSimpleAction) new_window_action = g_simple_action_new("new_window", NULL);
+    g_autoptr(GSimpleAction) new_window_action = g_simple_action_new("new-window", NULL);
     g_signal_connect(new_window_action, "activate", G_CALLBACK(raider_new_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(new_window_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new-window", (const char *[]){"<Ctrl>n",NULL,});
 
     g_autoptr(GSimpleAction) open_action = g_simple_action_new("open", NULL);
     g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
 
     g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
     g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.preferences", (const char *[]){"<Ctrl>comma",NULL,});
 
     g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
     g_signal_connect (help_action, "activate", G_CALLBACK(raider_application_show_help), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(help_action));
+    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
     /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
     g_signal_connect(open_drive_action, "activate", G_CALLBACK(raider_application_open_drive), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_drive_action));*/
-
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.quit", (const char *[]){"<Ctrl>q",NULL,});
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.close", (const char *[]){"<Ctrl>w",NULL,});
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new_window", (const char *[]){"<Ctrl>n",NULL,});
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.preferences", (const char *[]){"<Ctrl>comma",NULL,});
 
     /* Always disable data-file, as user may forget that he loaded it. */
     GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");
