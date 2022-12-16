@@ -28,10 +28,10 @@ struct _RaiderProgressInfoPopover
 
 G_DEFINE_TYPE(RaiderProgressInfoPopover, raider_progress_info_popover, GTK_TYPE_POPOVER)
 
-static void raider_progress_info_popover_init(RaiderProgressInfoPopover* popover)
+static void raider_progress_info_popover_init(RaiderProgressInfoPopover *popover)
 {
     gtk_widget_init_template(GTK_WIDGET(popover));
-    gtk_progress_bar_set_pulse_step (GTK_PROGRESS_BAR(popover->progress_bar), .02);
+    gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(popover->progress_bar), .02);
 }
 
 static void raider_progress_info_popover_class_init(RaiderProgressInfoPopoverClass *klass)
@@ -53,21 +53,20 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
     if (percentage < 100)
     {
         gchar *display = g_strdup_printf("%d%%", (int)percentage);
-        gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), display);
+        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), display);
         gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
         g_free(display);
     }
     else
     {
-        gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up..."));
-        gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
+        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up..."));
+        gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
     }
 }
 
 /* This is used when the spinner is shown instead of the progress icon. */
-void raider_progress_info_popover_pulse(RaiderProgressInfoPopover* popover)
+void raider_progress_info_popover_pulse(RaiderProgressInfoPopover *popover)
 {
-  gtk_progress_bar_set_text (GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating..."));
-  gtk_progress_bar_pulse (GTK_PROGRESS_BAR(popover->progress_bar));
+    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating..."));
+    gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
 }
-

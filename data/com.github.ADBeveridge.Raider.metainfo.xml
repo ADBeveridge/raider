@@ -9,9 +9,6 @@
     <p>File Shredder is a simple application used for securely deleting your files
     that you do not want to be recovered. File Shredder has a comprehensive set
     of preferences and progress tracking for each file.</p>
-    <p xml:lang="hr">Uništavač datoteka je jednostavna aplikacija za sigurno i trajno
-    brisanje tvojih datoteka. Uništavač datoteka ima opsežan skup postavki i praćenje
-    napretka za svaku datoteku.</p>
   </description>
   <kudos>
     <kudo>ModernToolkit</kudo>
@@ -20,7 +17,7 @@
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
   <url type="homepage">https://github.com/ADBeveridge/raider</url>
   <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
-  <update_contact>adbeveridge@protonmail.com</update_contact>
+  <update_contact>neilb7439@gmail.com</update_contact>
   <developer_name>Alan Beveridge</developer_name>
   <requires>
     <display_length compare="ge">small</display_length>

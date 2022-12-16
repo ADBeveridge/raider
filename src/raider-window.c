@@ -52,14 +52,14 @@ struct _RaiderWindow
     gboolean status; // Shredding or not.
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    //GMenu* mount_main_menu;
-    //GMenu* mount_menu;
-    //GVolumeMonitor* monitor;
+    // GMenu* mount_main_menu;
+    // GMenu* mount_menu;
+    // GVolumeMonitor* monitor;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
-void raider_window_abort_shredding (GtkWidget *widget, gpointer data);
+void raider_window_abort_shredding(GtkWidget *widget, gpointer data);
 
 static void raider_window_class_init(RaiderWindowClass *klass)
 {
@@ -78,7 +78,7 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
 }
 
-static void raider_window_exit_response (GtkDialog* dialog, gchar* response, RaiderWindow *self)
+static void raider_window_exit_response(GtkDialog *dialog, gchar *response, RaiderWindow *self)
 {
     if (g_strcmp0(response, "exit") == 0)
     {
@@ -86,26 +86,26 @@ static void raider_window_exit_response (GtkDialog* dialog, gchar* response, Rai
     }
 }
 
-gboolean raider_window_exit (RaiderWindow* win, gpointer data)
+gboolean raider_window_exit(RaiderWindow *win, gpointer data)
 {
     if (win->status)
     {
-        GtkWidget *dialog = adw_message_dialog_new (GTK_WINDOW(win), _("Stop Shredding?"), NULL);
-        adw_message_dialog_set_body (ADW_MESSAGE_DIALOG (dialog), _("Are you sure that you want to exit?"));
-        g_signal_connect (dialog, "response", G_CALLBACK (raider_window_exit_response), win);
+        GtkWidget *dialog = adw_message_dialog_new(GTK_WINDOW(win), _("Stop Shredding?"), NULL);
+        adw_message_dialog_set_body(ADW_MESSAGE_DIALOG(dialog), _("Are you sure that you want to exit?"));
+        g_signal_connect(dialog, "response", G_CALLBACK(raider_window_exit_response), win);
 
-        adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog), "cancel",  _("_Cancel"), "exit", _("_Exit"), NULL);
-        adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (dialog), "exit", ADW_RESPONSE_DESTRUCTIVE);
-        adw_message_dialog_set_default_response (ADW_MESSAGE_DIALOG (dialog), "cancel");
-        adw_message_dialog_set_close_response (ADW_MESSAGE_DIALOG (dialog), "cancel");
+        adw_message_dialog_add_responses(ADW_MESSAGE_DIALOG(dialog), "cancel", _("_Cancel"), "exit", _("_Exit"), NULL);
+        adw_message_dialog_set_response_appearance(ADW_MESSAGE_DIALOG(dialog), "exit", ADW_RESPONSE_DESTRUCTIVE);
+        adw_message_dialog_set_default_response(ADW_MESSAGE_DIALOG(dialog), "cancel");
+        adw_message_dialog_set_close_response(ADW_MESSAGE_DIALOG(dialog), "cancel");
 
-        gtk_window_present (GTK_WINDOW (dialog));
+        gtk_window_present(GTK_WINDOW(dialog));
     }
 
     return win->status;
 }
 
-void raider_window_show_toast (RaiderWindow* window, gchar* text)
+void raider_window_show_toast(RaiderWindow *window, gchar *text)
 {
     adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
 }
@@ -125,7 +125,7 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
         file_list = g_list_append(file_list, g_file_dup(l->data));
     }
 
-    raider_window_open_files (data, file_list);
+    raider_window_open_files(data, file_list);
 
     return TRUE;
 }
@@ -159,19 +159,22 @@ void raider_window_close_file(gpointer data, gpointer user_data, gint result)
         g_error(_("Could not remove filename from quick list. Please report this."));
     window->file_count--;
 
-
-    if (window->file_count == 0) {
+    if (window->file_count == 0)
+    {
         gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
         window->status = FALSE;
 
-        if (result == 1) {
-            gchar* message = g_strdup(_("Finished shredding files"));
+        if (result == 1)
+        {
+            gchar *message = g_strdup(_("Finished shredding files"));
 
             gboolean active = gtk_window_is_active(GTK_WINDOW(window));
-            if (!active) {
+            if (!active)
+            {
                 GNotification *notification = g_notification_new(message);
                 g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
-            }else
+            }
+            else
                 raider_window_show_toast(window, message);
             g_free(message);
         }
@@ -185,19 +188,19 @@ void raider_window_close_file(gpointer data, gpointer user_data, gint result)
 
 /********** File opening section. **********/
 
-void raider_window_open_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
+void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
 }
 
 /* Asynchonous runner for raider_window_open_file. */
-void raider_window_open_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+void raider_window_open_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    RaiderWindow* window = RAIDER_WINDOW(source_object);
+    RaiderWindow *window = RAIDER_WINDOW(source_object);
 
     GList *file_list = task_data;
     GList *l;
     for (l = file_list; l != NULL; l = l->next)
-      {
+    {
         gboolean cont = raider_window_open_file(l->data, window, NULL); // This adds an entry to the current window.
         if (cont == FALSE)
             break;
@@ -208,14 +211,15 @@ void raider_window_open_files_thread(GTask* task, gpointer source_object, gpoint
 /* Start asynchronous loading of files. */
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
-    GTask* task = g_task_new(window, NULL, raider_window_open_files_finish, window);
+    GTask *task = g_task_new(window, NULL, raider_window_open_files_finish, window);
     g_task_set_task_data(task, file_list, NULL);
     g_task_run_in_thread(task, raider_window_open_files_thread);
     g_object_unref(task);
 }
 
 /* Systems have a limit on how many files can be open to a single process. */
-rlim_t get_open_files_limit() {
+rlim_t get_open_files_limit()
+{
     struct rlimit limit;
     getrlimit(RLIMIT_NOFILE, &limit);
     return limit.rlim_cur;
@@ -235,8 +239,8 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
     // Test if it a directory
     if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
     {
-        gchar* message = g_strdup(_("Directories are not supported"));
-        raider_window_show_toast (window, message);
+        gchar *message = g_strdup(_("Directories are not supported"));
+        raider_window_show_toast(window, message);
         g_free(message);
 
         g_object_unref(file);
@@ -254,8 +258,8 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 
         if (g_strcmp0(text, filename) == 0)
         {
-            gchar* message = g_strdup_printf(_("“%s” is already loaded"), g_file_get_basename(file));
-            raider_window_show_toast (window, message);
+            gchar *message = g_strdup_printf(_("“%s” is already loaded"), g_file_get_basename(file));
+            raider_window_show_toast(window, message);
             g_free(message);
 
             g_object_unref(file);
@@ -265,20 +269,20 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
     }
     g_list_free(item);
     /* Test if we can write. */
-    if (g_access(g_file_get_path (file), W_OK) != 0)
+    if (g_access(g_file_get_path(file), W_OK) != 0)
     {
-        gchar* message = g_strdup_printf(_("Cannot write to “%s”"), g_file_get_basename(file));
-        raider_window_show_toast (window, message);
+        gchar *message = g_strdup_printf(_("Cannot write to “%s”"), g_file_get_basename(file));
+        raider_window_show_toast(window, message);
         g_free(message);
 
         g_object_unref(file);
         return TRUE;
     }
     /* The reason why i divide files limit by two is because the file count will be double when the processes are launched. */
-    if (window->file_count >= (get_open_files_limit () / 2))
+    if (window->file_count >= (get_open_files_limit() / 2))
     {
-        gchar* message = g_strdup(_("System cannot load more files"));
-        raider_window_show_toast (window, message);
+        gchar *message = g_strdup(_("System cannot load more files"));
+        raider_window_show_toast(window, message);
         g_free(message);
 
         g_object_unref(file);
@@ -304,7 +308,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 /********** End of file opening section. **********/
 /******** Asychronously launch shred on all files. *********/
 
-void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
+void raider_window_shred_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
 
@@ -317,9 +321,9 @@ void raider_window_shred_files_finish (GObject* source_object, GAsyncResult* res
 }
 
 /* This is run asynchronously. */
-void raider_window_shred_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+void raider_window_shred_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    RaiderWindow* window = RAIDER_WINDOW(source_object);
+    RaiderWindow *window = RAIDER_WINDOW(source_object);
 
     /* Launch the shredding. */
     int row;
@@ -343,7 +347,7 @@ void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 
     window->status = TRUE;
 
-    GTask* task = g_task_new(window, NULL, raider_window_shred_files_finish, window);
+    GTask *task = g_task_new(window, NULL, raider_window_shred_files_finish, window);
     g_task_run_in_thread(task, raider_window_shred_files_thread);
     g_object_unref(task);
 }
@@ -351,11 +355,11 @@ void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 /******** End of asychronously launch shred on all files section. *********/
 /******** Asychronously abort shredding on all files.  *********/
 
-void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res, gpointer user_data)
+void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
 
-    if (g_strcmp0((gchar*)user_data, "exit") == 0)
+    if (g_strcmp0((gchar *)user_data, "exit") == 0)
     {
         gtk_window_destroy(GTK_WINDOW(window));
     }
@@ -373,9 +377,9 @@ void raider_window_abort_files_finish (GObject* source_object, GAsyncResult* res
 }
 
 /* This is run asynchronously. */
-void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+void raider_window_abort_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    RaiderWindow* window = RAIDER_WINDOW(source_object);
+    RaiderWindow *window = RAIDER_WINDOW(source_object);
 
     /* Abort the shredding. */
     int row;
@@ -387,7 +391,7 @@ void raider_window_abort_files_thread(GTask* task, gpointer source_object, gpoin
     // raider_window_abort_file_finish() is called here.
 }
 
-void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
+void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
@@ -402,7 +406,7 @@ void raider_window_abort_shredding (GtkWidget *widget, gpointer data)
         datai = g_strdup("cont");
     }
 
-    GTask* task = g_task_new(window, NULL, raider_window_abort_files_finish, datai);
+    GTask *task = g_task_new(window, NULL, raider_window_abort_files_finish, datai);
     g_task_run_in_thread(task, raider_window_abort_files_thread);
     g_object_unref(task);
 }
