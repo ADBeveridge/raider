@@ -5,7 +5,7 @@ Raider is a simple shredding program built for the GNOME desktop. Also known as 
 ## Download
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
-## Useful links
+## Useful Links
 *   GNOME Circle: <https://apps.gnome.org/app/com.github.ADBeveridge.Raider/>
 *   Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
 *   Fedora COPR: <https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/>
