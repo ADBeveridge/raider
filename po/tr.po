@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-06 12:21+0300\n"
-"PO-Revision-Date: 2022-12-06 12:21+0300\n"
+"PO-Revision-Date: 2023-01-27 15:01+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -205,10 +205,11 @@ msgstr "Dosya sil"
 msgid "Whether to remove the file after shredding it."
 msgstr "Dosyanın parçalandıktan sonra kaldırılma durumu."
 
+# Menü ile uyumlu olsun
 #: data/com.github.ADBeveridge.Raider.gschema.xml:15
 #: src/raider-preferences.blp:34
 msgid "Number of passes"
-msgstr "Geçiş sayısı"
+msgstr "Geçiş Sayısı"
 
 #: data/com.github.ADBeveridge.Raider.gschema.xml:16
 msgid "How many times the file will be overwritten with random data."
@@ -270,6 +271,7 @@ msgstr "Kaynak veri dosyasının etkinleştirilmesine izin verilme durumu"
 msgid "If unchecked, the source data file will not be loaded."
 msgstr "İşaretli değilse, kaynak veri dosyası yüklenmez."
 
+# Menüyle uyumlu olsun.
 #: data/com.github.ADBeveridge.Raider.gschema.xml:53
 msgid "Overwrite data file"
 msgstr "Üzerine yazma veri dosyası"
@@ -369,10 +371,10 @@ msgstr "Wipe"
 msgid "Unlink"
 msgstr "Unlink"
 
-# Üzerine yazma işleminde kullanılacak verilerin kaynağı
+# Üzerine yazma işleminde kullanılacak verilerin kaynağı. Konumu gereği başlık düzeni tercih edildi.
 #: src/raider-preferences.blp:56
 msgid "Overwrite data source"
-msgstr "Üzerine yazma veri kaynağı"
+msgstr "Üzerine Yazma Veri Kaynağı"
 
 #: src/raider-preferences.blp:57
 msgid ""
@@ -389,9 +391,10 @@ msgstr "Hiçbir Şey Seçilmedi"
 msgid "Select File"
 msgstr "Dosya Seç"
 
+# Menüyle uyumlu olsun.
 #: src/raider-preferences.blp:77
 msgid "Number of bytes to shred"
-msgstr "Parçalanacak bayt sayısı"
+msgstr "Parçalanacak Bayt Sayısı"
 
 #: src/raider-preferences.blp:78
 msgid "How much of the file to shred. 0 to shred the whole file"
@@ -399,7 +402,7 @@ msgstr "Dosyanın ne kadarının parçalanacağı. 0 tüm dosyayı parçala deme
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes"
-msgstr "Dosya boyutlarını yuvarlama"
+msgstr "Dosya Boyutlarını Yuvarlama"
 
 #: src/raider-preferences.blp:91
 msgid "Do not round file sizes to the next block. Default for irregular files"
@@ -409,7 +412,7 @@ msgstr ""
 
 #: src/raider-preferences.blp:99
 msgid "Override file permissions"
-msgstr "Dosya izinlerini çiğne"
+msgstr "Dosya İzinlerini Çiğne"
 
 #: src/raider-preferences.blp:100
 msgid "Whether to override the file permissions of read-only user files"
