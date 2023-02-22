@@ -3,30 +3,31 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 14:25-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2023-02-25 14:10-0800\n"
+"PO-Revision-Date: 2023-02-25 14:15-0800\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
 #: src/raider-application.c:155 src/raider-window.blp:40
 msgid "File Shredder"
-msgstr ""
+msgstr "File Shredder"
 
 #: data/com.github.ADBeveridge.Raider.desktop:5
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 msgid "Securely delete your files"
-msgstr ""
+msgstr "Verwijder uw bestanden op een veilige manier"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
@@ -34,76 +35,83 @@ msgid ""
 "that you do not want to be recovered. File Shredder has a comprehensive set "
 "of preferences and progress tracking for each file."
 msgstr ""
+"File Shredder is een simpele app gemaakt voor het veilig en onherstelbaar "
+"verwijderen van uw bestanden. File Shredder heeft een uitgebreide set aan "
+"voorkeuren en voortgangsrapportage voor elk bestand."
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:21
 msgid "Alan Beveridge"
-msgstr ""
+msgstr "Alan Beveridge"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:52
 msgid "Switch shredding program from shred to secure-delete"
-msgstr ""
+msgstr "Versnipperprogramma gewisseld van shred naar secure-delete"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:57
 msgid "Fix UI bug when shredding aborted"
-msgstr ""
+msgstr "Interfacefout opgelost wanneer versnipperen werd afgebroken"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:62
 msgid "Updates to help and application"
-msgstr ""
+msgstr "Bijwerkingen aan hulp en de app"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:64
 msgid "Add keyboard shortcuts to common actions"
-msgstr ""
+msgstr "Sneltoetsen aan standaardacties toegevoegd"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:65
 msgid "Fix memory leaks"
-msgstr ""
+msgstr "Geheugenlekken opgelost"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:66
 msgid "Fix crash when backend failed to start"
-msgstr ""
+msgstr "Crash opgelost bij het niet kunnen starten van de back-end"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:67
 msgid "Fix application crash when closing window during shredding"
 msgstr ""
+"App-crash opgelost wanneer het venster werd gesloten tijdens het versnipperen"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:68
 msgid "Remove typo in Shred All button"
-msgstr ""
+msgstr "Typfout verwijderd in de knop Allen versnipperen"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:69
 msgid "Update Turkish translation"
-msgstr ""
+msgstr "Turkse vertaling bijgewerkt"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:70
 msgid "Add more categories to desktop file"
-msgstr ""
+msgstr "Meer categorieën toegevoegd aan het desktop-bestand"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:76
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:104
 msgid "Bug fixes and translation updates"
-msgstr ""
+msgstr "Foutoplossingen en vertalings-updates"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:78
 msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
 msgstr ""
+"Chinese, Turkse, Occitaanse en Braziliaans-Portugese vertalingen toegevoegd"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:79
 msgid "Fix in-app notification crash"
-msgstr ""
+msgstr "Crash met meldingen binnen de app opgelost"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:85
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:94
 msgid "User interface fixes"
-msgstr ""
+msgstr "Foutoplossingen in de gebruikersinterface"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:87
 msgid "Add explanatory message and changed initial view's icon"
 msgstr ""
+"Verduidelijkend bericht toegevoegd en pictogram van initiële weergave "
+"aangepast"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:88
 msgid "Add icon to add button in headerbar"
-msgstr ""
+msgstr "Pictogram toegevoegd aan de knop Toevoegen in de titelbalk"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:96
 msgid "Fix cropping of keyboard focus ring on shred button"
@@ -268,250 +276,286 @@ msgstr ""
 #: src/raider-application.c:74 src/raider-shortcuts.blp:15
 #: src/raider-window.blp:33
 msgid "Add Files"
-msgstr ""
+msgstr "Bestanden toevoegen"
 
 #: src/raider-application.c:75
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: src/raider-application.c:75 src/raider-window.blp:31
 msgid "Add"
-msgstr ""
+msgstr "Toevoegen"
 
 #: src/raider-application.c:169
 msgid "translator-credits"
-msgstr ""
+msgstr "Philip Goto <philip.goto@gmail.com>"
 
 #. Notification stuff.
 #: src/raider-file-row.c:178
 msgid "Shredded "
-msgstr ""
+msgstr "Versnipperd "
 
 #: src/raider-file-row.c:310
 msgid "Failed to start shredding"
-msgstr ""
+msgstr "Versnipperen mislukt"
 
 #: src/raider-preferences.blp:8
 msgid "Shredder"
-msgstr ""
+msgstr "Versnipperaar"
 
 #: src/raider-preferences.blp:10
 msgid "Basic"
-msgstr ""
+msgstr "Basis"
 
 #: src/raider-preferences.blp:13
 msgid "Remove File"
-msgstr ""
+msgstr "Bestand verwijderen"
 
 #: src/raider-preferences.blp:14
 msgid "Whether to remove the file after obfuscating its contents"
-msgstr ""
+msgstr "Of het bestand moet worden verwijderd na de inhoud ervan is verdoezeld"
 
 #: src/raider-preferences.blp:24
 msgid "Hide Shredding"
-msgstr ""
+msgstr "Verbergend versnipperen"
 
 #: src/raider-preferences.blp:25
 msgid ""
 "Do a final overwrite with zeros instead of random data. Random data is a "
 "clue that the file has been shredded"
 msgstr ""
+"Doe een laatste overschrijving met nullen in plaats van willekeurige "
+"gegevens. Willekeurige gegevens zijn een aanwijzing dat het bestand "
+"versnipperd is."
 
 #: src/raider-preferences.blp:35
 msgid "How many times to shred file over. The more the better"
-msgstr ""
+msgstr "Hoe vaak het bestand moet worden versnipperd. Hoe meer, hoe beter."
 
 #: src/raider-preferences.blp:47
 msgid "Advanced"
-msgstr ""
+msgstr "Geavanceerd"
 
 #: src/raider-preferences.blp:49
 msgid "Remove Method"
-msgstr ""
+msgstr "Verwijderingsmethode"
 
 #: src/raider-preferences.blp:50
 msgid ""
 "How to remove the obfuscated files from the fileystem. See help for "
 "information"
 msgstr ""
+"Hoe de verdoezelde bestanden van het bestandssysteem moeten worden "
+"verwijderd. Zie hulp voor informatie."
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipesync"
-msgstr ""
+msgstr "Wis-sync"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:129
 msgid "Wipe"
-msgstr ""
+msgstr "Wissen"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:130
 msgid "Unlink"
-msgstr ""
+msgstr "Ontkoppelen"
 
 #: src/raider-preferences.blp:56
 msgid "Overwrite data source"
-msgstr ""
+msgstr "Gegevensbron overschrijven"
 
 #: src/raider-preferences.blp:57
 msgid ""
 "Where to get the data to overwrite the files with. Disabled at every startup"
 msgstr ""
+"Waar de gegevens voor het overschrijven van de bestanden vandaan moeten "
+"komen. Uitgeschakeld bij elke start."
 
 #: src/raider-preferences.blp:66
 msgid "None Selected"
-msgstr ""
+msgstr "Geen geselecteerd"
 
 #: src/raider-preferences.blp:70
 msgid "Select File"
-msgstr ""
+msgstr "Bestand selecteren"
 
 #: src/raider-preferences.blp:77
 msgid "Number of bytes to shred"
-msgstr ""
+msgstr "Aantal bytes om te versnipperen"
 
 #: src/raider-preferences.blp:78
 msgid "How much of the file to shred. 0 to shred the whole file"
 msgstr ""
+"Hoeveel van het bestand moet worden versnipperd. 0 om het hele bestand te "
+"versnipperen."
 
 #: src/raider-preferences.blp:90
 msgid "Do not round file sizes"
-msgstr ""
+msgstr "Bestandsgroottes niet afronden"
 
 #: src/raider-preferences.blp:91
 msgid "Do not round file sizes to the next block. Default for irregular files"
 msgstr ""
+"Rond bestandsgroottes niet af naar het volgende blok. Standaard voor "
+"onregelmatige bestanden."
 
 #: src/raider-preferences.blp:99
 msgid "Override file permissions"
-msgstr ""
+msgstr "Bestandsrechten overschrijven"
 
 #: src/raider-preferences.blp:100
 msgid "Whether to override the file permissions of read-only user files"
 msgstr ""
+"Of de bestandsrechten van alleen-lezen-gebruikersbestanden overschreven "
+"moeten worden"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Finishing up..."
-msgstr ""
+msgstr "Afronden..."
 
 #: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
-msgstr ""
+msgstr "Schatten…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: src/raider-shortcuts.blp:11 src/raider-window.blp:147
 msgid "Help"
-msgstr ""
+msgstr "Hulp"
 
 #: src/raider-shortcuts.blp:19 src/raider-window.blp:133
 msgid "New Window"
-msgstr ""
+msgstr "Nieuw venster"
 
 #: src/raider-shortcuts.blp:23 src/raider-window.blp:139
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: src/raider-shortcuts.blp:27 src/raider-window.blp:143
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Sneltoetsen"
 
 #: src/raider-shortcuts.blp:31
 msgid "CLose Window"
-msgstr ""
+msgstr "Venster sluiten"
 
 #: src/raider-shortcuts.blp:35
 msgid "Quit"
-msgstr ""
+msgstr "Sluiten"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:404
 msgid "failed"
-msgstr ""
+msgstr "mislukt"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:409
 msgid "removing"
-msgstr ""
+msgstr "verwijderen"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:415
 msgid "removed"
-msgstr ""
+msgstr "verwijderd"
 
 #. Translators: make sure this correspond with the output of shred on your system.
 #: src/raider-shred-backend.c:422
 msgid "pass"
-msgstr ""
+msgstr "geslaagd"
 
 #: src/raider-window.blp:59
 msgid "Add files or drop here"
-msgstr ""
+msgstr "Voeg bestanden toe of sleep ze hierheen"
 
 #: src/raider-window.blp:61
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
+"Versnipperen is het verdoezelen van een bestand met willekeurige gegevens "
+"zodat de vorige inhoud niet meer kan worden hersteld."
 
 #: src/raider-window.blp:97 src/raider-window.c:320
 msgid "Shred All"
-msgstr ""
+msgstr "Allen versnipperen"
 
 #: src/raider-window.blp:116 src/raider-window.c:376
 msgid "Abort All"
-msgstr ""
+msgstr "Allen afbreken"
 
 #: src/raider-window.blp:151
 msgid "About File Shredder"
-msgstr ""
+msgstr "Over File Shredder"
 
 #: src/raider-window.c:93
 msgid "Stop Shredding?"
-msgstr ""
+msgstr "Stoppen met versnipperen?"
 
 #: src/raider-window.c:94
 msgid "Are you sure that you want to exit?"
-msgstr ""
+msgstr "Weet u zeker dat u de app wilt sluiten?"
 
 #: src/raider-window.c:97
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annuleren"
 
 #: src/raider-window.c:97
 msgid "_Exit"
-msgstr ""
+msgstr "_Sluiten"
 
 #: src/raider-window.c:159
 msgid "Could not remove filename from quick list. Please report this."
 msgstr ""
+"Kon bestandsnaam niet van de snelle lijst verwijderen. Meld dit bij ons."
 
 #: src/raider-window.c:169
 msgid "Finished shredding files"
-msgstr ""
+msgstr "Bestanden versnipperen voltooid"
 
 #: src/raider-window.c:242
 msgid "Directories are not supported"
-msgstr ""
+msgstr "Mappen worden niet ondersteund"
 
 #: src/raider-window.c:261
 #, c-format
 msgid "“%s” is already loaded"
-msgstr ""
+msgstr "‘%s’ is al geladen"
 
 #: src/raider-window.c:274
 #, c-format
 msgid "Cannot write to “%s”"
-msgstr ""
+msgstr "Kan niet schrijven naar ‘%s’"
 
 #: src/raider-window.c:284
 msgid "System cannot load more files"
-msgstr ""
+msgstr "Systeem kan niet meer bestanden laden"
 
 #: src/raider-window.c:346
 msgid "Starting Shredding…"
-msgstr ""
+msgstr "Beginnen met versnipperen…"
 
 #: src/raider-window.c:399
 msgid "Aborting…"
-msgstr ""
+msgstr "Afbreken…"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "Hulp"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Add Files"
+#~ msgstr "Bestanden toevoegen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "New Window"
+#~ msgstr "Nieuw venster"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Preferences"
+#~ msgstr "Voorkeuren"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard Shortcuts"
+#~ msgstr "Sneltoetsen"

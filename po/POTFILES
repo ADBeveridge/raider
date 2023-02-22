@@ -6,7 +6,7 @@ src/raider-file-row.blp
 src/raider-file-row.c
 src/raider-preferences.blp
 src/raider-progress-info-popover.c
-src/raider-shortcuts.ui
+src/raider-shortcuts.blp
 src/raider-shred-backend.c
 src/raider-window.blp
 src/raider-window.c
