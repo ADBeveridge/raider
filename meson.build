@@ -7,8 +7,7 @@ gnome = import('gnome')
 raider_deps = [
   dependency('gtk4'),
   dependency('libadwaita-1', version: '>= 1.0'),
-  dependency('gio-unix-2.0'),
-  dependency('libsecure-delete', fallback : ['secure-delete', 'secure_delete_dependencies'])
+  dependency('gio-unix-2.0')
 ]
 
 # Create config.h file entirely in Meson.
