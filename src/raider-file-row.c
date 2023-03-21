@@ -57,52 +57,34 @@ struct _RaiderFileRow
     GSubprocess *process;
     guint timeout_id;
     guint signal_id;
-    gboolean aborted;
+
+    gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
 };
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
-
-/* This has to be global. */
-GCancellable *wait_cancel;
 
 gchar *raider_file_row_get_filename(RaiderFileRow *row)
 {
     return g_file_get_path(row->file);
 }
-/* This version is called when the user has aborted the operation, like clicking the abort button or close button. */
-void raider_file_row_delete_on_abort(GtkWidget *widget, gpointer data)
-{
-    raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 0);
-    GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
-    gtk_list_box_remove(list_box, GTK_WIDGET(data));
-}
 /* This version of delete tells the raider_window_close_file function to show a toast that shredding is done. */
-void raider_file_row_delete_on_finish(GtkWidget *widget, gpointer data)
+void raider_file_row_delete(GtkWidget *widget, gpointer data)
 {
-    raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))), 1);
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    if (row->aborted == TRUE)
+    {
+        // One file being aborted is enough not to show the notification.
+        gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
+        raider_window_set_show_notification(window, FALSE);
+    }
+
+    raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
     GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
     gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
 gboolean raider_file_row_update_progress(gpointer data)
 {
-    RaiderFileRow *row = RAIDER_FILE_ROW(data);
-    gdouble progress = raider_shred_backend_get_progress(row->backend);
-
-    if (progress == 0.0)
-    {
-        gtk_widget_set_visible(row->spinner, TRUE);
-        gtk_widget_set_visible(GTK_WIDGET(row->icon), FALSE);
-        raider_progress_info_popover_pulse(row->popover);
-    }
-    else
-    {
-        gtk_widget_set_visible(row->spinner, FALSE);
-        gtk_widget_set_visible(GTK_WIDGET(row->icon), TRUE);
-        raider_progress_icon_set_progress(row->icon, progress);
-        raider_progress_info_popover_set_progress(row->popover, progress);
-    }
-
     return TRUE;
 }
 
@@ -112,8 +94,14 @@ void raider_popup_popover(GtkWidget *widget, gpointer data)
     gtk_popover_popup(GTK_POPOVER(data));
 }
 
-static void
-raider_file_row_dispose(GObject *obj)
+static void raider_file_row_close (GtkWidget* window, gpointer data)
+{
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    row->aborted = TRUE;
+    raider_file_row_delete(NULL, data);
+}
+
+static void raider_file_row_dispose(GObject *obj)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
@@ -130,8 +118,7 @@ raider_file_row_dispose(GObject *obj)
     G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
 }
 
-static void
-raider_file_row_init(RaiderFileRow *row)
+static void raider_file_row_init(RaiderFileRow *row)
 {
     gtk_widget_init_template(GTK_WIDGET(row));
 
@@ -140,15 +127,13 @@ raider_file_row_init(RaiderFileRow *row)
     g_signal_connect(row->progress_button, "clicked", G_CALLBACK(raider_popup_popover), row->popover);
 
     /* Setup remove row. */
-    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_delete_on_abort), row);
+    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
 
     row->settings = g_settings_new("com.github.ADBeveridge.Raider");
-    row->aborted = FALSE;
-    row->process = NULL;
+    row->aborted = FALSE; // We have not been aborted.
 }
 
-static void
-raider_file_row_class_init(RaiderFileRowClass *klass)
+static void raider_file_row_class_init(RaiderFileRowClass *klass)
 {
     G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
 
@@ -182,141 +167,32 @@ RaiderFileRow *raider_file_row_new(GFile *file)
     return row;
 }
 
-/* Not always called. Called by finish_shredding. */
-void on_complete_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
+static void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-    gchar *message = raider_shred_backend_get_return_result_string(row->backend);
-
-    /* If the message does not contain 'good' */
-    if (g_strcmp0(message, "good") != 0)
-    {
-        row->aborted = TRUE;
-        adw_action_row_set_subtitle(ADW_ACTION_ROW(row), message);
-    }
+    RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
     /* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
-    gtk_widget_hide(GTK_WIDGET(row->popover));
-    g_object_unref(row->backend);
-    g_object_unref(row->process);
-
-    /* Test case not really needed. */
+    gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
     if (row->aborted == FALSE)
-        raider_file_row_delete_on_finish(NULL, user_data);
+        raider_file_row_delete(NULL, row);
 }
 
-/* This is ALWAYS ALWAYS called when the shred executable exits. */
-static void finish_shredding(GObject *source_object, GAsyncResult *res, gpointer user_data)
+/* This is run asynchronously. */
+static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    /* BUT BUT it may return immediately if shredding has been aborted. */
-    if (g_cancellable_is_cancelled(wait_cancel))
-        return;
-
-    RaiderFileRow *row = RAIDER_FILE_ROW(user_data);
-
-    /* Remove the timeout. */
-    gboolean removed_timeout = g_source_remove(row->timeout_id);
-    if (removed_timeout == FALSE)
-        g_warning("Could not stop timeout.\n");
-
-    /* Test case not really needed. */
-    if (!row->aborted)
-        raider_shred_backend_get_return_result((gpointer)row, on_complete_finish, row->backend);
+    //RaiderWindow *window = RAIDER_WINDOW(source_object);
+    printf("Shredded file.\n");
+    sleep(2);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
 void raider_file_row_launch_shredding(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
-    GError *error = NULL;
 
-    /* One liner settings. */
-    gboolean remove_file = g_settings_get_boolean(row->settings, "remove-file");
-    gboolean hide_shredding = g_settings_get_boolean(row->settings, "hide-shredding");
-    gboolean override_permissions = g_settings_get_boolean(row->settings, "override-permissions");
-    gboolean do_not_round_to_next_block = g_settings_get_boolean(row->settings, "do-not-round-to-next-block");
-    gchar *shred_executable = g_settings_get_string(row->settings, "shred-executable");
-    gboolean do_nob_command = TRUE;
-
-    /* Get the number of passes. */
-    gchar *number_of_passes = g_strdup_printf("%d", g_settings_get_int(row->settings, "number-of-passes"));
-    gchar *number_of_passes_option = g_strconcat("--iterations=", number_of_passes, NULL);
-    g_free(number_of_passes);
-
-    /* Get the remove method. The correspondings for each number is defined here. */
-    gchar *remove_method;
-
-    switch (g_settings_get_int(row->settings, "remove-method"))
-    {
-    case 0:
-    {
-        remove_method = g_strdup("wipesync");
-        break;
-    }
-    case 1:
-    {
-        remove_method = g_strdup("wipe");
-        break;
-    }
-    case 2:
-    {
-        remove_method = g_strdup("unlink");
-        break;
-    }
-    }
-    gchar *remove_method_command = g_strconcat("--remove=", remove_method, NULL);
-    g_free(remove_method);
-
-    /* If that user requests, shred part of a file. */
-    int nob = g_settings_get_int(row->settings, "number-of-bytes-to-shred");
-
-    if (nob == 0)
-        do_nob_command = FALSE;
-    gchar *nob_tmp = g_strdup_printf("%d", nob);
-    gchar *nob_command = g_strconcat("--size=", nob_tmp, NULL);
-    g_free(nob_tmp);
-
-    /* Get whether to do data file. */
-    gboolean do_data_file = g_settings_get_boolean(row->settings, "do-data-file");
-    gchar *data_file = g_settings_get_string(row->settings, "data-file");
-    gchar *data_file_command = g_strconcat("--random-source=", data_file, NULL);
-    g_free(data_file);
-
-    /* Launch the shred executable on one file. There is a bit of a hack, as we substituted --verbose
-       for the commands that are absent in this launch. There is no error as shred does not complain
-       about too many --verbose'es */
-    row->process = g_subprocess_new(G_SUBPROCESS_FLAGS_STDERR_PIPE, &error,
-                                    shred_executable, "--verbose", g_file_get_path(row->file),
-                                    number_of_passes_option,
-                                    remove_file ? remove_method_command : "--verbose",
-                                    hide_shredding ? "--zero" : "--verbose",
-                                    override_permissions ? "--force" : "--verbose",
-                                    do_not_round_to_next_block ? "--exact" : "--verbose",
-                                    do_nob_command ? nob_command : "--verbose",
-                                    do_data_file ? data_file_command : "--verbose",
-                                    NULL);
-
-    /* Free allocated text. */
-    g_free(number_of_passes_option);
-    g_free(remove_method_command);
-    g_free(shred_executable);
-    g_free(nob_command);
-
-    if (error != NULL)
-    {
-        g_critical("Process launching failed: %s", error->message);
-        g_error_free(error);
-        g_object_unref(row->process);
-        adw_action_row_set_subtitle(ADW_ACTION_ROW(row), _("Failed to start shredding"));
-        return;
-    }
-
-    /* This parses the output. */
-    GInputStream *stream = g_subprocess_get_stderr_pipe(row->process);
-    row->backend = g_object_new(RAIDER_TYPE_SHRED_BACKEND,
-                                "data-stream", g_data_input_stream_new(stream),
-                                "settings", row->settings,
-                                "filename", g_file_get_path(row->file), NULL);
+    row->aborted = FALSE;
+    gpointer window = gtk_widget_get_root(GTK_WIDGET(row));
+    raider_window_set_show_notification(window, TRUE);
 
     /* Change the button. */
     gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
@@ -328,12 +204,10 @@ void raider_file_row_launch_shredding(gpointer data)
     /* Set the activatable widget. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));
 
-    row->timeout_id = g_timeout_add(50, (GSourceFunc)raider_file_row_update_progress, data);
 
-    /* Call the callback when the process is finished. If the user aborts the
-       the job, this will be called in any event.*/
-    wait_cancel = g_cancellable_new();
-    g_subprocess_wait_async(row->process, wait_cancel, (GAsyncReadyCallback)finish_shredding, row);
+    GTask *task = g_task_new(row, NULL, shredding_finished, NULL);
+    g_task_run_in_thread(task, shredding_thread);
+    g_object_unref(task);
 }
 
 /* This is called when the user clicks abort. */
@@ -341,21 +215,11 @@ void raider_file_row_shredding_abort(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
-    g_cancellable_cancel(wait_cancel);
-
-    /* Normally this is done in finish_shredding but it will not be called. */
-    gboolean removed_timeout = g_source_remove(row->timeout_id);
-    if (removed_timeout == FALSE)
-        g_warning("Could not stop timeout.\n");
-
-    row->aborted = TRUE;
-    g_subprocess_force_exit(row->process);
-    g_subprocess_wait(row->process, NULL, NULL);
-
     /* Change the row view. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
     gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
     gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);
     gtk_spinner_stop(GTK_SPINNER(row->spinner));
-    row->aborted = FALSE; // For next time.)
+    row->aborted = TRUE;
 }
+

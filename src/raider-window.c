@@ -50,6 +50,7 @@ struct _RaiderWindow
     GList *filenames; // A quick list of filenames loaded for this window. */
     int file_count;
     gboolean status; // Shredding or not.
+    gboolean show_notification;
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
     // GMenu* mount_main_menu;
@@ -84,6 +85,11 @@ static void raider_window_exit_response(GtkDialog *dialog, gchar *response, Raid
     {
         raider_window_abort_shredding(NULL, GTK_WIDGET(self));
     }
+}
+
+void raider_window_set_show_notification(RaiderWindow* window, gboolean show)
+{
+    window->show_notification = show;
 }
 
 gboolean raider_window_exit(RaiderWindow *win, gpointer data)
@@ -131,7 +137,7 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
 }
 
 /* This handles the application and window state. */
-void raider_window_close_file(gpointer data, gpointer user_data, gint result)
+void raider_window_close_file(gpointer data, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(user_data);
 
@@ -164,7 +170,7 @@ void raider_window_close_file(gpointer data, gpointer user_data, gint result)
         gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
         window->status = FALSE;
 
-        if (result == 1)
+        if (window->show_notification == TRUE)
         {
             gchar *message = g_strdup(_("Finished shredding files"));
 
@@ -183,6 +189,7 @@ void raider_window_close_file(gpointer data, gpointer user_data, gint result)
         gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
         gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
         gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+        window->show_notification = TRUE;
     }
 }
 
@@ -351,10 +358,9 @@ void raider_window_start_shredding(GtkWidget *widget, gpointer data)
     g_task_run_in_thread(task, raider_window_shred_files_thread);
     g_object_unref(task);
 }
-
 /******** End of asychronously launch shred on all files section. *********/
-/******** Asychronously abort shredding on all files.  *********/
 
+/******** Asychronously abort shredding on all files.  *********/
 void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
@@ -375,7 +381,6 @@ void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res,
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
     gtk_button_set_label(window->abort_button, _("Abort All"));
 }
-
 /* This is run asynchronously. */
 void raider_window_abort_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
@@ -390,13 +395,13 @@ void raider_window_abort_files_thread(GTask *task, gpointer source_object, gpoin
     }
     // raider_window_abort_file_finish() is called here.
 }
-
 void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
     gtk_button_set_label(window->abort_button, _("Aborting…"));
+    window->show_notification = FALSE;
 
     gchar *datai;
     if (widget == NULL)
@@ -410,7 +415,6 @@ void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     g_task_run_in_thread(task, raider_window_abort_files_thread);
     g_object_unref(task);
 }
-
 /******** End of asychronously abort shredding on all files section.  *********/
 
 /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
@@ -451,6 +455,7 @@ static void raider_window_init(RaiderWindow *self)
     self->file_count = 0;
     self->filenames = NULL;
     self->status = FALSE;
+    self->show_notification = TRUE;
 
     g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
     g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
