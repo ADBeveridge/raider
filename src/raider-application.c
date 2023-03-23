@@ -20,7 +20,6 @@
 #include <glib/gi18n.h>
 #include "raider-application.h"
 #include "raider-window.h"
-#include "raider-preferences.h"
 
 struct _RaiderApplication
 {
@@ -39,12 +38,6 @@ static void raider_new_window(GSimpleAction *action, GVariant *parameter, gpoint
 {
     RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", GTK_APPLICATION(user_data), NULL);
     gtk_window_present(GTK_WINDOW(window));
-}
-
-static void raider_application_preferences(GSimpleAction *action, GVariant *parameter, gpointer user_data)
-{
-    RaiderPreferences *preferences = g_object_new(RAIDER_TYPE_PREFERENCES, "transient-for", gtk_application_get_active_window(GTK_APPLICATION(user_data)), NULL);
-    gtk_window_present(GTK_WINDOW(preferences));
 }
 
 static void on_open_response(GtkDialog *dialog, int response)
@@ -243,11 +236,6 @@ static void raider_application_init(RaiderApplication *self)
     g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
-
-    g_autoptr(GSimpleAction) preferences_action = g_simple_action_new("preferences", NULL);
-    g_signal_connect(preferences_action, "activate", G_CALLBACK(raider_application_preferences), self);
-    g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(preferences_action));
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.preferences", (const char *[]){"<Ctrl>comma",NULL,});
 
     g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
     g_signal_connect (help_action, "activate", G_CALLBACK(raider_application_show_help), self);

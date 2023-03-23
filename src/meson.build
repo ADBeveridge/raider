@@ -4,7 +4,6 @@ raider_sources = [
   'raider-application.c',
   'raider-progress-icon.c',
   'raider-file-row.c',
-  'raider-preferences.c',
   'raider-progress-info-popover.c',
   'corrupt.c'
 ]
@@ -14,7 +13,6 @@ blueprints = custom_target('blueprints',
   input: files(
     'raider-window.blp',
     'raider-file-row.blp',
-    'raider-preferences.blp',
     'raider-progress-info-popover.blp',
     'raider-shortcuts.blp',
   ),

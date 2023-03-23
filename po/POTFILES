@@ -4,7 +4,6 @@ data/com.github.ADBeveridge.Raider.gschema.xml
 src/raider-application.c
 src/raider-file-row.blp
 src/raider-file-row.c
-src/raider-preferences.blp
 src/raider-progress-info-popover.c
 src/raider-shortcuts.blp
 src/raider-shred-backend.c
