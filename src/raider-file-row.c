@@ -53,10 +53,10 @@ struct _RaiderFileRow
     GSettings *settings;
     GFile *file;
     RaiderShredBackend *backend;
-    bool cont_parsing;
-    GSubprocess *process;
     guint timeout_id;
     guint signal_id;
+
+    GCancellable* cancel;
 
     gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
 };
@@ -131,6 +131,7 @@ static void raider_file_row_init(RaiderFileRow *row)
 
     row->settings = g_settings_new("com.github.ADBeveridge.Raider");
     row->aborted = FALSE; // We have not been aborted.
+    row->cancel = NULL;
 }
 
 static void raider_file_row_class_init(RaiderFileRowClass *klass)
@@ -173,16 +174,20 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 
     /* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
-    if (row->aborted == FALSE)
+
+    // If the shredding completed error free, then remove this file row.
+    if (g_task_had_error (G_TASK (res)) == FALSE)
         raider_file_row_delete(NULL, row);
 }
 
 /* This is run asynchronously. */
 static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    //RaiderWindow *window = RAIDER_WINDOW(source_object);
     printf("Shredded file.\n");
     sleep(2);
+    if (g_task_return_error_if_cancelled (task)) return;
+    sleep(2);
+    printf("Went to the end\n");
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
@@ -204,8 +209,13 @@ void raider_file_row_launch_shredding(gpointer data)
     /* Set the activatable widget. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));
 
+    if (row->cancel)
+    {
+        g_object_unref(row->cancel);
+    }
+    row->cancel = g_cancellable_new();
 
-    GTask *task = g_task_new(row, NULL, shredding_finished, NULL);
+    GTask *task = g_task_new(row, row->cancel, shredding_finished, NULL);
     g_task_run_in_thread(task, shredding_thread);
     g_object_unref(task);
 }
@@ -221,5 +231,7 @@ void raider_file_row_shredding_abort(gpointer data)
     gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);
     gtk_spinner_stop(GTK_SPINNER(row->spinner));
     row->aborted = TRUE;
+
+    g_cancellable_cancel(row->cancel);
 }
 
