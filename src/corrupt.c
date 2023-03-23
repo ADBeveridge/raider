@@ -81,3 +81,15 @@ uint8_t corrupt_file(const char *filename)
     return ret;
 }
 
+uint8_t corrupt_unlink_file(const char *filename)
+{
+    uint8_t ret = 0;
+
+    if (remove(filename) != 0)
+    {
+        ret = 1;
+    }
+
+    return ret;
+}
+

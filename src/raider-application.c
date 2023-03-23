@@ -257,10 +257,5 @@ static void raider_application_init(RaiderApplication *self)
     /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
     g_signal_connect(open_drive_action, "activate", G_CALLBACK(raider_application_open_drive), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_drive_action));*/
-
-    /* Always disable data-file, as user may forget that he loaded it. */
-    GSettings* settings = g_settings_new("com.github.ADBeveridge.Raider");
-    g_settings_set_boolean(settings, "do-data-file", FALSE);
-    g_object_unref(settings);
 }
 

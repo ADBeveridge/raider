@@ -25,6 +25,7 @@
 #include "raider-shred-backend.h"
 #include "raider-progress-info-popover.h"
 #include "raider-shred-backend.h"
+#include "corrupt.h"
 
 struct _RaiderFileRow
 {
@@ -97,7 +98,7 @@ void raider_popup_popover(GtkWidget *widget, gpointer data)
 static void raider_file_row_close (GtkWidget* window, gpointer data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    row->aborted = TRUE;
+    row->aborted = TRUE; // We are not shredding the file.
     raider_file_row_delete(NULL, data);
 }
 
@@ -183,10 +184,11 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 /* This is run asynchronously. */
 static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    printf("Shredded file.\n");
-    sleep(2);
-    if (g_task_return_error_if_cancelled (task)) return;
-    sleep(2);
+    RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
+    //if (g_task_return_error_if_cancelled (task)) return;
+
+    corrupt_file(g_file_get_path(row->file));
+
     printf("Went to the end\n");
 }
 
@@ -227,8 +229,8 @@ void raider_file_row_shredding_abort(gpointer data)
     gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
     gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);
     gtk_spinner_stop(GTK_SPINNER(row->spinner));
-    row->aborted = TRUE;
 
     g_cancellable_cancel(row->cancel);
+    row->aborted = TRUE;
 }
 

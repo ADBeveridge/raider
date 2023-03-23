@@ -20,90 +20,6 @@ template RaiderPreferences : Adw.PreferencesWindow {
                   valign: center;
                 }
             }
-            Adw.ActionRow hide_shredding_row {
-                title: _("Hide Shredding");
-                subtitle: _("Do a final overwrite with zeros instead of random data. Random data is a clue that the file has been shredded");
-                activatable-widget: hide_shredding_switch;
-
-                [suffix]
-                Gtk.Switch hide_shredding_switch {
-                  valign: center;
-                }
-            }
-            Adw.ActionRow nop_row {
-                title: _("Number of passes");
-                subtitle: _("How many times to shred file over. The more the better");
-
-    [suffix]
-    Gtk.Box {
-                  Gtk.SpinButton nop_spin_button {
-        adjustment: nop_adj;
-        valign: center;
-                  }
-                }
-            }
-        }
-        Adw.PreferencesGroup advanced_group {
-            title: _("Advanced");
-            Adw.ComboRow remove_method_combo_row {
-              title: _("Remove Method");
-              subtitle: _("How to remove the obfuscated files from the fileystem. See help for information");
-              model: Gtk.StringList {
-                strings [_("Wipesync"), _("Wipe"), _("Unlink")]
-              };
-            }
-            Adw.ExpanderRow {
-                title: _("Overwrite data source");
-                subtitle: _("Where to get the data to overwrite the files with. Disabled at every startup");
-                enable-expansion: bind enable_df_switch.active;
-
-          [action]
-          Gtk.Switch enable_df_switch {
-              active: false;
-              valign: center;
-          }
-          Adw.ActionRow df_row{
-              title: _("None Selected");
-
-        [suffix]
-        Gtk.Button df_button {
-            label: _("Select File");
-            valign: center;
-        }
-    }
-            }
-
-             Adw.ActionRow nob_row {
-                title: _("Number of bytes to shred");
-                subtitle: _("How much of the file to shred. 0 to shred the whole file");
-
-    [suffix]
-    Gtk.Box {
-                  Gtk.SpinButton nob_spin_button {
-        adjustment: nob_adj;
-        valign: center;
-                  }
-                }
-            }
-
-            Adw.ActionRow dnr_row {
-                title: _("Do not round file sizes");
-                subtitle: _("Do not round file sizes to the next block. Default for irregular files");
-
-                [suffix]
-                Gtk.Switch dnr_switch {
-                  valign: center;
-                }
-            }
-            Adw.ActionRow override_permissions_row {
-                title: _("Override file permissions");
-                subtitle: _("Whether to override the file permissions of read-only user files");
-
-                [suffix]
-                Gtk.Switch override_permissions_switch {
-                  valign: center;
-                }
-            }
         }
     }
 }
@@ -114,23 +30,4 @@ Gtk.Adjustment nop_adj {
   value: 3;
   step-increment: 1;
   page-increment: 3;
-}
-
-Gtk.Adjustment nob_adj {
-  lower: 0;
-  upper: 99999999999999999999999999999999999999999999;
-  value: 0;
-  step-increment: 1;
-  page-increment: 50;
-}
-
-Gtk.StringList remove_method_list{
-  strings [_("Wipesync"),
-        _("Wipe"),
-        _("Unlink")]
-
-}
-
-Gtk.ListItemFactory factory {
-
 }
