@@ -175,14 +175,15 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
-    printf("Called finished\n\n");
-
     /* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
 
     // If the shredding completed error free, then remove this file row.
     if (g_task_had_error (G_TASK (res)) == FALSE)
         raider_file_row_delete(NULL, row);
+
+    // All done!.
+    g_mutex_unlock (&row->mutex);
 }
 
 /* This is run asynchronously. */
@@ -192,9 +193,6 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
     //if (g_task_return_error_if_cancelled (task)) return;
 
     corrupt_file(g_file_get_path(row->file), task);
-
-    g_mutex_unlock (&row->mutex);
-    printf("Went to the end\n");
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */

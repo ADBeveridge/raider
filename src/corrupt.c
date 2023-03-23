@@ -15,7 +15,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             for (i = 0; i < times; i++)
             {
                 fwrite(pattern, sizeof(char), length, fp);
-                if (g_task_return_error_if_cancelled (task)) {printf("Aborting...\n");return 1;}
+                if (g_task_return_error_if_cancelled (task)) {return 1;}
             }
         }
         else
@@ -25,7 +25,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             {
                 int n = rand();
                 fwrite(&n, sizeof(char), 1, fp);
-                if (g_task_return_error_if_cancelled (task)) {printf("Aborting...\n");return 1;}
+                if (g_task_return_error_if_cancelled (task)) {return 1;}
             }
         }
         fclose(fp);
