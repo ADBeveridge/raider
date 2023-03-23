@@ -66,6 +66,14 @@ uint8_t corrupt_file(const char *filename, GTask* task)
                     break;
                 }
             }
+            for (i = 0; i < 35; i++)
+            {
+                if (corrupt_step(filename, filesize, steps[i], task) != 0)
+                {
+                    ret = 1;
+                    break;
+                }
+            }
         }
         else
         {
