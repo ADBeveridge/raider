@@ -1,6 +1,6 @@
 #include "corrupt.h"
 
-static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern)
+static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, GTask* task)
 {
     uint8_t ret = 0;
 
@@ -15,8 +15,9 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             for (i = 0; i < times; i++)
             {
                 fwrite(pattern, sizeof(char), length, fp);
+                if (g_task_return_error_if_cancelled (task)) {printf("Aborting...\n");return 1;}
             }
-        } 
+        }
         else
         {
             srand((unsigned int) time(NULL));
@@ -24,6 +25,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             {
                 int n = rand();
                 fwrite(&n, sizeof(char), 1, fp);
+                if (g_task_return_error_if_cancelled (task)) {printf("Aborting...\n");return 1;}
             }
         }
         fclose(fp);
@@ -35,7 +37,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
     return ret;
 }
 
-uint8_t corrupt_file(const char *filename)
+uint8_t corrupt_file(const char *filename, GTask* task)
 {
     uint8_t ret = 0;
     
@@ -58,10 +60,8 @@ uint8_t corrupt_file(const char *filename)
             uint8_t i;
             for (i = 0; i < 35; i++)
             {
-                if (corrupt_step(filename, filesize, steps[i]) != 0)
+                if (corrupt_step(filename, filesize, steps[i], task) != 0)
                 {
-                    fprintf(stderr, "corrupt: shredding of '%s' ", filename);
-                    fprintf(stderr, "failed on step %d\n", i);
                     ret = 1;
                     break;
                 }

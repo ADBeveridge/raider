@@ -58,6 +58,8 @@ struct _RaiderFileRow
     guint signal_id;
 
     GCancellable* cancel;
+    GMutex mutex;
+    GCond cond;
 
     gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
 };
@@ -173,6 +175,8 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
+    printf("Called finished\n\n");
+
     /* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
 
@@ -187,8 +191,9 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
     //if (g_task_return_error_if_cancelled (task)) return;
 
-    corrupt_file(g_file_get_path(row->file));
+    corrupt_file(g_file_get_path(row->file), task);
 
+    g_mutex_unlock (&row->mutex);
     printf("Went to the end\n");
 }
 
@@ -198,6 +203,8 @@ void raider_file_row_launch_shredding(gpointer data)
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
     row->aborted = FALSE;
+    g_mutex_lock (&row->mutex); // This is used by the abort function.
+
     gpointer window = gtk_widget_get_root(GTK_WIDGET(row));
     raider_window_set_show_notification(window, TRUE);
 
@@ -232,5 +239,9 @@ void raider_file_row_shredding_abort(gpointer data)
 
     g_cancellable_cancel(row->cancel);
     row->aborted = TRUE;
+
+    // This will block until the function has returned.
+    g_mutex_lock (&row->mutex);
+    g_mutex_unlock (&row->mutex);
 }
 
