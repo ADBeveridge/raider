@@ -187,9 +187,8 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
-    //if (g_task_return_error_if_cancelled (task)) return;
-
     corrupt_file(g_file_get_path(row->file), task);
+    corrupt_unlink_file(g_file_get_path(row->file));
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
