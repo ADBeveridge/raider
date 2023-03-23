@@ -139,6 +139,7 @@ static void raider_window_exit_response(GtkDialog *dialog, gchar *response, Raid
 {
     if (g_strcmp0(response, "exit") == 0)
     {
+        // Because the first argument is NULL, the function will construe that to exit. This is a hack around the GTask callback system.
         raider_window_abort_shredding(NULL, GTK_WIDGET(self));
     }
 }
