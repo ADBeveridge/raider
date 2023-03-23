@@ -209,10 +209,7 @@ void raider_file_row_launch_shredding(gpointer data)
     /* Set the activatable widget. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));
 
-    if (row->cancel)
-    {
-        g_object_unref(row->cancel);
-    }
+    if (row->cancel) g_object_unref(row->cancel);
     row->cancel = g_cancellable_new();
 
     GTask *task = g_task_new(row, row->cancel, shredding_finished, NULL);
