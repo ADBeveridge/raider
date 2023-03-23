@@ -22,9 +22,7 @@
 #include "raider-window.h"
 #include "raider-file-row.h"
 #include "raider-progress-icon.h"
-#include "raider-shred-backend.h"
 #include "raider-progress-info-popover.h"
-#include "raider-shred-backend.h"
 #include "corrupt.h"
 
 struct _RaiderFileRow
@@ -53,7 +51,6 @@ struct _RaiderFileRow
     /* Data items. */
     GSettings *settings;
     GFile *file;
-    RaiderShredBackend *backend;
     guint timeout_id;
     guint signal_id;
 

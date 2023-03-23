@@ -5,7 +5,6 @@ raider_sources = [
   'raider-progress-icon.c',
   'raider-file-row.c',
   'raider-preferences.c',
-  'raider-shred-backend.c',
   'raider-progress-info-popover.c',
   'corrupt.c'
 ]
