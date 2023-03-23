@@ -51,7 +51,7 @@ struct _RaiderWindow
 
     GtkDropTarget *target;
 
-    GList *filenames; // A quick list of filenames loaded for this window. */
+    GList *filenames; // A quick list of filenames loaded for this window.
     int file_count;
     gboolean status; // Shredding or not.
     gboolean show_notification;
@@ -116,14 +116,6 @@ static void raider_window_init(RaiderWindow *self)
     on_mount_changed(NULL, NULL, self);*/
 }
 
-static void raider_window_exit_response(GtkDialog *dialog, gchar *response, RaiderWindow *self)
-{
-    if (g_strcmp0(response, "exit") == 0)
-    {
-        raider_window_abort_shredding(NULL, GTK_WIDGET(self));
-    }
-}
-
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
 {
     /* GdkFileList is a boxed value so we use the boxed API. */
@@ -143,9 +135,12 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
     return TRUE;
 }
 
-void raider_window_set_show_notification(RaiderWindow* window, gboolean show)
+static void raider_window_exit_response(GtkDialog *dialog, gchar *response, RaiderWindow *self)
 {
-    window->show_notification = show;
+    if (g_strcmp0(response, "exit") == 0)
+    {
+        raider_window_abort_shredding(NULL, GTK_WIDGET(self));
+    }
 }
 
 gboolean raider_window_exit(RaiderWindow *win, gpointer data)
@@ -164,7 +159,13 @@ gboolean raider_window_exit(RaiderWindow *win, gpointer data)
         gtk_window_present(GTK_WINDOW(dialog));
     }
 
+    // Based on the value of this, the window will exit or will not.
     return win->status;
+}
+
+void raider_window_set_show_notification(RaiderWindow* window, gboolean show)
+{
+    window->show_notification = show;
 }
 
 void raider_window_show_toast(RaiderWindow *window, gchar *text)
@@ -404,6 +405,7 @@ static void raider_window_abort_files_finish(GObject *source_object, GAsyncResul
 
     /* Revert the text and view of the abort button. */
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
+    gtk_widget_set_sensitive(GTK_WIDGET(window->list_box), TRUE);
     gtk_button_set_label(window->abort_button, _("Abort All"));
 }
 /* This is run asynchronously. */
@@ -425,6 +427,7 @@ static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     RaiderWindow *window = RAIDER_WINDOW(data);
 
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(window->list_box), FALSE);
     gtk_button_set_label(window->abort_button, _("Aborting…"));
     window->show_notification = FALSE;
 
