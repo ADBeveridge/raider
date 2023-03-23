@@ -1,10 +1,11 @@
 #include "corrupt.h"
 
-static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, GTask* task)
+static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, GTask* task, int loop)
 {
     uint8_t ret = 0;
 
-    FILE* fp = fopen(filename,  "w");
+    FILE* fp = fopen(filename,  "r+");
+    if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
     if (fp != NULL)
     {
         off_t i;
@@ -15,7 +16,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             for (i = 0; i < times; i++)
             {
                 fwrite(pattern, sizeof(char), length, fp);
-                if (g_task_return_error_if_cancelled (task)) {return 1;}
+                if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
             }
         }
         else
@@ -25,7 +26,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             {
                 int n = rand();
                 fwrite(&n, sizeof(char), 1, fp);
-                if (g_task_return_error_if_cancelled (task)) {return 1;}
+                if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
             }
         }
         fclose(fp);
@@ -60,19 +61,12 @@ uint8_t corrupt_file(const char *filename, GTask* task)
             uint8_t i;
             for (i = 0; i < 35; i++)
             {
-                if (corrupt_step(filename, filesize, steps[i], task) != 0)
+                if (corrupt_step(filename, filesize, steps[i], task, i) != 0)
                 {
                     ret = 1;
                     break;
                 }
-            }
-            for (i = 0; i < 35; i++)
-            {
-                if (corrupt_step(filename, filesize, steps[i], task) != 0)
-                {
-                    ret = 1;
-                    break;
-                }
+                printf("%d\n", i);
             }
         }
         else
@@ -93,6 +87,7 @@ uint8_t corrupt_unlink_file(const char *filename)
 {
     uint8_t ret = 0;
 
+    printf("Removing...\n");
     if (remove(filename) != 0)
     {
         ret = 1;

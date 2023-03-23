@@ -49,10 +49,7 @@ struct _RaiderFileRow
     gchar *notification_subtitle;
 
     /* Data items. */
-    GSettings *settings;
     GFile *file;
-    guint timeout_id;
-    guint signal_id;
 
     GCancellable* cancel;
     GMutex mutex;
@@ -106,7 +103,6 @@ static void raider_file_row_dispose(GObject *obj)
     RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
     g_object_unref(row->file);
-    g_object_unref(row->settings);
 
     gtk_widget_unparent(GTK_WIDGET(row->popover));
 
@@ -129,7 +125,6 @@ static void raider_file_row_init(RaiderFileRow *row)
     /* Setup remove row. */
     g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
 
-    row->settings = g_settings_new("com.github.ADBeveridge.Raider");
     row->aborted = FALSE; // We have not been aborted.
     row->cancel = NULL;
 }
@@ -187,8 +182,9 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
 static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
-    corrupt_file(g_file_get_path(row->file), task);
-    corrupt_unlink_file(g_file_get_path(row->file));
+
+    if (corrupt_file(g_file_get_path(row->file), task) == 0)
+        corrupt_unlink_file(g_file_get_path(row->file));
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */
