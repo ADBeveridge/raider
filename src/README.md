@@ -17,5 +17,3 @@ Note: Some code is commented with the message `NOT USED BECAUSE FLATPAK REMOVES 
 ## File Row
  - When the `Shred` button is activated, `RaiderWindow` calls `raider_file_row_launch_shredding` on each item it has in its `GtkListBox`. This function creates a `GSubprocess` and an unique instance of `RaiderShredBackend`, which gives progress info, and also sets up a function that will be called when the process exits.
 
-## Shred Backend
- - 
