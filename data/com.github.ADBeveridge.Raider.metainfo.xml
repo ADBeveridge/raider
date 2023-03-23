@@ -7,8 +7,7 @@
   <summary>Securely delete your files</summary>
   <description>
     <p>File Shredder is a simple application used for securely deleting your files
-    that you do not want to be recovered. File Shredder has a comprehensive set
-    of preferences and progress tracking for each file.</p>
+    that you do not want to be recovered.</p>
   </description>
   <kudos>
     <kudo>ModernToolkit</kudo>
@@ -17,7 +16,7 @@
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
   <url type="homepage">https://github.com/ADBeveridge/raider</url>
   <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
-  <update_contact>neilb7439@gmail.com</update_contact>
+  <update_contact>adgbeveridge@proton.me</update_contact>
   <developer_name>Alan Beveridge</developer_name>
   <requires>
     <display_length compare="ge">small</display_length>
@@ -47,14 +46,14 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="2.0.0" date="2023-01-01">
+    <release version="2.0.0" date="2023-03-25">
       <description>
-        <p>Switch shredding program from shred to secure-delete</p>
+        <p>Use custom code for shredding files</p>
       </description>
     </release>
     <release version="1.3.1" date="2022-10-13">
       <description>
-        <p>Fix UI bug when shredding aborted</p>
+        <p>Fix UI bug when shredding is aborted</p>
       </description>
     </release>
     <release version="1.3.0" date="2022-9-20">

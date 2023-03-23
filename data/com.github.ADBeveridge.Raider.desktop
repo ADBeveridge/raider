@@ -1,8 +1,7 @@
+# Translators: Do NOT touch this file!
 [Desktop Entry]
 Name=File Shredder
-Name[hr]=Uništavač datoteka
 Comment=Securely delete your files
-Comment[hr]=Izbriši datoteke na siguran način
 Exec=raider
 Icon=com.github.ADBeveridge.Raider
 Terminal=false
@@ -10,5 +9,4 @@ Type=Application
 Categories=GTK;Utility;FileTools;Security;
 StartupNotify=true
 X-GNOME-UsesNotifications=true
-# Translators: Do NOT translate or transliterate this text (these are enum types)!
 X-Purism-FormFactor=Workstation;Mobile;
