@@ -6,7 +6,8 @@ raider_sources = [
   'raider-file-row.c',
   'raider-preferences.c',
   'raider-shred-backend.c',
-  'raider-progress-info-popover.c'
+  'raider-progress-info-popover.c',
+  'corrupt.c'
 ]
 
 # Generate UX files from blueprint files.

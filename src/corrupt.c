@@ -1,13 +1,6 @@
-#include <time.h> /* time */
-#include <stdio.h> /* FILE, fopen, fwrite, fclose, fprintf */
-#include <stdint.h> /* uint*_t int*_t */
-#include <string.h> /* strlen */
-#include <stdlib.h> /* srand, rand */
-#include <sys/stat.h> /* stat */
-#include <sys/types.h> /* off_t */
+#include "corrupt.h"
 
-static uint8_t
-CorruptStep(const char *filename, const off_t filesize, const char *pattern)
+static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern)
 {
     uint8_t ret = 0;
 
@@ -42,8 +35,7 @@ CorruptStep(const char *filename, const off_t filesize, const char *pattern)
     return ret;
 }
 
-static uint8_t
-CorruptFile(const char *filename)
+uint8_t corrupt_file(const char *filename)
 {
     uint8_t ret = 0;
     
@@ -66,7 +58,7 @@ CorruptFile(const char *filename)
             uint8_t i;
             for (i = 0; i < 35; i++)
             {
-                if (CorruptStep(filename, filesize, steps[i]) != 0)
+                if (corrupt_step(filename, filesize, steps[i]) != 0)
                 {
                     fprintf(stderr, "corrupt: shredding of '%s' ", filename);
                     fprintf(stderr, "failed on step %d\n", i);
@@ -89,21 +81,3 @@ CorruptFile(const char *filename)
     return ret;
 }
 
-int
-main(int argc, char* argv[])
-{
-    if (argc > 1)
-    {
-        int i;
-        for (i = 1; i < argc; i++)
-        {
-            CorruptFile(argv[i]);
-        }
-    }
-    else
-    {
-        fprintf(stderr, "Usage: corrupt FILES...\n");
-        fprintf(stderr, "Shreds files using the Gutmann method\n");
-    }
-    return 0; 
-}
