@@ -1,6 +1,6 @@
 data/com.github.ADBeveridge.Raider.desktop
 data/com.github.ADBeveridge.Raider.metainfo.xml
-data/com.github.ADBeveridge.Raider.gschema.xml
+
 src/raider-application.c
 src/raider-file-row.blp
 src/raider-file-row.c

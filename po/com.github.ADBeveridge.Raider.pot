@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 09:06-0700\n"
+"POT-Creation-Date: 2023-03-24 12:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,8 +38,12 @@ msgstr ""
 msgid "Alan Beveridge"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
 msgid "Use custom code for shredding files"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+msgid "Remove preferences"
 msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:56
@@ -178,14 +182,6 @@ msgid ""
 "has a GNOME compliant interface."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.gschema.xml:5
-msgid "Remove file"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:6
-msgid "Whether to remove the file after shredding it."
-msgstr ""
-
 #: src/raider-application.c:67 src/raider-shortcuts.blp:15
 #: src/raider-window.blp:33
 msgid "Add Files"
@@ -204,7 +200,7 @@ msgid "translator-credits"
 msgstr ""
 
 #. Notification stuff.
-#: src/raider-file-row.c:164
+#: src/raider-file-row.c:159
 msgid "Shredded "
 msgstr ""
 
