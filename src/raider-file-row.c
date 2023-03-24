@@ -80,6 +80,12 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
     gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
+void raider_file_row_set_progress(gpointer data, double progress)
+{
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    raider_progress_icon_set_progress(row->icon, progress);
+}
+
 gboolean raider_file_row_update_progress(gpointer data)
 {
     return TRUE;
@@ -183,8 +189,14 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
-    if (corrupt_file(g_file_get_path(row->file), task) == 0)
+    struct _corrupt_data *corrupt_data = malloc(sizeof *corrupt_data);
+    corrupt_data->task = task;
+    corrupt_data->row = row;
+
+    if (corrupt_file(g_file_get_path(row->file), corrupt_data) == 0)
         corrupt_unlink_file(g_file_get_path(row->file));
+
+    free(corrupt_data);
 }
 
 /* Invoked in raider-window.c. nob stands for number of bytes. */

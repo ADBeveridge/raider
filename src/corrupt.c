@@ -1,12 +1,11 @@
 #include "corrupt.h"
 
-static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, GTask* task, int loop)
+static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, struct _corrupt_data *corrupt_data, int loop)
 {
-    //static uint8_t last_pass_used = 0;
+    static uint8_t last_pass_used = 0;
     uint8_t ret = 0;
 
     FILE* fp = fopen(filename,  "r+");
-    if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
     if (fp != NULL)
     {
         off_t i;
@@ -14,13 +13,14 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
         if (length > 0)
         {
             off_t times = (filesize / length) + (filesize % length);
-            for (i = 0; i < times; i++)
+            for (i = 1; i <= times; i++)
             {
                 fwrite(pattern, sizeof(char), length, fp);
-                if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
+                if (g_task_return_error_if_cancelled (corrupt_data->task)) {fclose(fp);return 1;}
 
-                double ip = (double)i / (double)times / 35.0;
-                //printf("%f\n", ip);
+                corrupt_data->progress = ((double)loop/32 - .01) + (double)i/times*.01;
+                printf("%f\n", corrupt_data->progress);
+                //g_idle_add_once (GSourceOnceFunc function, gpointer data);
             }
         }
         fclose(fp);
@@ -32,7 +32,7 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
     return ret;
 }
 
-uint8_t corrupt_file(const char *filename, GTask* task)
+uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data)
 {
     uint8_t ret = 0;
     
@@ -58,10 +58,13 @@ uint8_t corrupt_file(const char *filename, GTask* task)
                                      "\x92\x49\x24", "\x49\x24\x92",
                                      "\x24\x92\x49", "\x6D\xB6\xDB",
                                      "\xB6\xDB\x6D", "\xDB\x6D\xB6"};
+
+            //corrupt_data->progress = ((double)1/32 - .01);
+
             uint8_t i;
-            for (i = 0; i < 1; i++)
+            for (i = 0; i < 32; i++)
             {
-                if (corrupt_step(filename, filesize, steps[i], task, i) != 0)
+                if (corrupt_step(filename, filesize, steps[i], corrupt_data, i+1) != 0)
                 {
                     ret = 1;
                     break;

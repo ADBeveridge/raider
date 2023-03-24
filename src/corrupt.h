@@ -7,8 +7,16 @@
 #include <stdlib.h> /* srand, rand */
 #include <sys/stat.h> /* stat */
 #include <sys/types.h> /* off_t */
-#include <gtk/gtk.h>
+#include <gtk/gtk.h> /* progress variables */
+#include "raider-file-row.h"
 
-uint8_t corrupt_file(const char *filename, GTask* task);
+struct _corrupt_data
+{
+    RaiderFileRow* row;
+    GTask* task;
+    double progress;
+};
+
+uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data);
 uint8_t corrupt_unlink_file(const char *filename);
 
