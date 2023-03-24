@@ -2,6 +2,7 @@
 
 static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, GTask* task, int loop)
 {
+    //static uint8_t last_pass_used = 0;
     uint8_t ret = 0;
 
     FILE* fp = fopen(filename,  "r+");
@@ -17,16 +18,9 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
             {
                 fwrite(pattern, sizeof(char), length, fp);
                 if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
-            }
-        }
-        else
-        {
-            srand((unsigned int) time(NULL));
-            for (i = 0; i < filesize; i++)
-            {
-                int n = rand();
-                fwrite(&n, sizeof(char), 1, fp);
-                if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
+
+                double ip = (double)i / (double)times / 35.0;
+                //printf("%f\n", ip);
             }
         }
         fclose(fp);
@@ -48,25 +42,30 @@ uint8_t corrupt_file(const char *filename, GTask* task)
         if (S_ISREG(st.st_mode) != 0)
         {
             off_t filesize = st.st_size;
-            const char* steps[35] = {"", "", "", "", "\x55", "\xAA",
+            const char* steps[] = {"\x77\x77\x77", "\x76\x76\x76",
+                                     "\x33\x33\x33", "\x35\x35\x35",
+                                     "\x55\x55\x55", "\xAA\xAA\xAA",
                                      "\x92\x49\x24", "\x49\x24\x92",
-                                     "\x24\x92\x49", "\x00", "\x11",
-                                     "\x22", "\x33", "\x44", "\x55",
-                                     "\x66", "\x77", "\x88", "\x99",
-                                     "\xAA", "\xBB", "\xCC", "\xDD",
-                                     "\xEE", "\xFF", "\x92\x49\x24",
-                                     "\x49\x24\x92", "\x24\x92\x49",
-                                     "\x6D\xB6\xDB", "\xB6\xDB\x6D",
-                                     "\xDB\x6D\xB6", "", "", "", ""};
+                                     "\x24\x92\x49", "\x00\x00\x00",
+                                     "\x11\x11\x11", "\x01\x01\x01",
+                                     "\x22\x22\x22", "\x33\x33\x33",
+                                     "\x44\x44\x44", "\x55\x55\x55",
+                                     "\x66\x66\x66", "\x77\x77\x77",
+                                     "\x88\x88\x88", "\x99\x99\x99",
+                                     "\xAA\xAA\xAA", "\xBB\xBB\xBB",
+                                     "\xCC\xCC\xCC", "\xDD\xDD\xDD",
+                                     "\xEE\xEE\xEE", "\xFF\xFF\xFF",
+                                     "\x92\x49\x24", "\x49\x24\x92",
+                                     "\x24\x92\x49", "\x6D\xB6\xDB",
+                                     "\xB6\xDB\x6D", "\xDB\x6D\xB6"};
             uint8_t i;
-            for (i = 0; i < 35; i++)
+            for (i = 0; i < 1; i++)
             {
                 if (corrupt_step(filename, filesize, steps[i], task, i) != 0)
                 {
                     ret = 1;
                     break;
                 }
-                printf("%d\n", i);
             }
         }
         else
@@ -87,7 +86,6 @@ uint8_t corrupt_unlink_file(const char *filename)
 {
     uint8_t ret = 0;
 
-    printf("Removing...\n");
     if (remove(filename) != 0)
     {
         ret = 1;
