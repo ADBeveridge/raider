@@ -28,4 +28,5 @@ RaiderFileRow *raider_file_row_new(GFile *file);
 gchar *raider_file_row_get_filename(RaiderFileRow *row);
 void raider_file_row_launch_shredding(gpointer data);
 void raider_file_row_shredding_abort(gpointer data);
+void raider_file_row_set_progress(gpointer data);
 

@@ -80,15 +80,10 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
     gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
-void raider_file_row_set_progress(gpointer data, double progress)
+void raider_file_row_set_progress(gpointer data)
 {
-    RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    raider_progress_icon_set_progress(row->icon, progress);
-}
-
-gboolean raider_file_row_update_progress(gpointer data)
-{
-    return TRUE;
+    struct _corrupt_data *corrupt_data = data;
+    raider_progress_icon_set_progress(corrupt_data->row->icon, corrupt_data->progress);
 }
 
 /* This is shown when the user clicks on the progress icon. The popover shows more information. */
@@ -214,8 +209,8 @@ void raider_file_row_launch_shredding(gpointer data)
     gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
     gtk_revealer_set_reveal_child(row->progress_revealer, TRUE);
 
-    /* Start the spinner. */
-    gtk_spinner_start(GTK_SPINNER(row->spinner));
+    gtk_widget_set_visible(row->spinner, FALSE);
+    gtk_widget_set_visible(GTK_WIDGET(row->icon), TRUE);
 
     /* Set the activatable widget. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), GTK_WIDGET(row->progress_button));

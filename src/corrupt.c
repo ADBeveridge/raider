@@ -18,9 +18,14 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
                 fwrite(pattern, sizeof(char), length, fp);
                 if (g_task_return_error_if_cancelled (corrupt_data->task)) {fclose(fp);return 1;}
 
-                corrupt_data->progress = ((double)loop/32 - .01) + (double)i/times*.01;
-                printf("%f\n", corrupt_data->progress);
-                //g_idle_add_once (GSourceOnceFunc function, gpointer data);
+                double prev = corrupt_data->progress;
+                double current = ((double)loop/32 - .01) + (double)i/times*.01;
+
+                if (current - prev >= .01)
+                {
+                    corrupt_data->progress = current;
+                    g_idle_add_once (raider_file_row_set_progress, corrupt_data);
+                }
             }
         }
         fclose(fp);
@@ -58,8 +63,6 @@ uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data)
                                      "\x92\x49\x24", "\x49\x24\x92",
                                      "\x24\x92\x49", "\x6D\xB6\xDB",
                                      "\xB6\xDB\x6D", "\xDB\x6D\xB6"};
-
-            //corrupt_data->progress = ((double)1/32 - .01);
 
             uint8_t i;
             for (i = 0; i < 32; i++)
