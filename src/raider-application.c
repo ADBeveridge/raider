@@ -40,39 +40,31 @@ static void raider_new_window(GSimpleAction *action, GVariant *parameter, gpoint
     gtk_window_present(GTK_WINDOW(window));
 }
 
-static void on_open_response(GtkDialog *dialog, int response)
+static void on_open_response(GObject* source_object, GAsyncResult* res, gpointer user_data)
 {
-    if (response == GTK_RESPONSE_ACCEPT) {
-        GListModel *list = gtk_file_chooser_get_files(GTK_FILE_CHOOSER(dialog));
+    GListModel* list = gtk_file_dialog_open_multiple_finish (GTK_FILE_DIALOG(source_object), res, NULL);
+    if (list == NULL) return;
 
-        /* Convert g_list_model to g_list. */
-        GList *file_list = NULL;
-        int num = g_list_model_get_n_items(list);
-        int i;
-        for (i = 0; i < num; i++) {
-            file_list = g_list_append(file_list, g_list_model_get_item(list, i));
-        }
-        g_object_unref(list);
-
-        raider_window_open_files(RAIDER_WINDOW(gtk_window_get_transient_for(GTK_WINDOW(dialog))), file_list);
+    /* Convert g_list_model to g_list. */
+    GList *file_list = NULL;
+    int num = g_list_model_get_n_items(list);
+    int i;
+    for (i = 0; i < num; i++) {
+        file_list = g_list_append(file_list, g_list_model_get_item(list, i));
     }
+    g_object_unref(list);
 
-    gtk_window_destroy(GTK_WINDOW(dialog));
+    raider_window_open_files(RAIDER_WINDOW(user_data), file_list);
 }
 
 static void raider_application_open_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
     GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
 
-    GtkDialog *dialog = GTK_DIALOG(gtk_file_chooser_dialog_new(_("Add Files"), GTK_WINDOW(window),
-                                   GTK_FILE_CHOOSER_ACTION_OPEN, _("Cancel"), GTK_RESPONSE_CANCEL, _("Add"),
-                                   GTK_RESPONSE_ACCEPT, NULL));
-
-    gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(dialog), TRUE);
-    gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
-
-    g_signal_connect_swapped(dialog, "response", G_CALLBACK(on_open_response), dialog);
-    gtk_widget_set_visible(GTK_WIDGET(dialog), TRUE);
+    GtkFileDialog* dialog = gtk_file_dialog_new();
+    gtk_file_dialog_set_modal(dialog, TRUE);
+    gtk_file_dialog_set_title(dialog, _("Add Files"));
+    gtk_file_dialog_open_multiple(dialog, GTK_WINDOW(window), NULL, on_open_response, window);
 }
 
 static void raider_application_try_exit (GSimpleAction *action, GVariant *parameter, gpointer user_data)

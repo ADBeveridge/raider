@@ -2,7 +2,6 @@
 
 static uint8_t corrupt_step(const char *filename, const off_t filesize, const char *pattern, struct _corrupt_data *corrupt_data, int loop)
 {
-    static uint8_t last_pass_used = 0;
     uint8_t ret = 0;
 
     FILE* fp = fopen(filename,  "r+");
