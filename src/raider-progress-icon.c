@@ -40,7 +40,6 @@ static GParamSpec *properties[N_PROPS];
 static gboolean raider_progress_icon_draw(GtkDrawingArea *area, cairo_t *cr, int width, int height, gpointer data)
 {
     RaiderProgressIcon *self = (RaiderProgressIcon *)area;
-    GtkStyleContext *style_context;
     GtkAllocation alloc;
     GdkRGBA rgba;
     gdouble alpha;
@@ -49,9 +48,7 @@ static gboolean raider_progress_icon_draw(GtkDrawingArea *area, cairo_t *cr, int
     g_assert(cr != NULL);
 
     gtk_widget_get_allocation(GTK_WIDGET(area), &alloc);
-
-    style_context = gtk_widget_get_style_context(GTK_WIDGET(area));
-    gtk_style_context_get_color(style_context, &rgba);
+    gtk_widget_get_color (GTK_WIDGET(area), &rgba);
 
     alpha = rgba.alpha;
     rgba.alpha = 0.15;
