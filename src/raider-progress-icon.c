@@ -167,5 +167,5 @@ static void raider_progress_icon_init(RaiderProgressIcon *icon)
 
     gtk_drawing_area_set_draw_func(GTK_DRAWING_AREA(icon), (GtkDrawingAreaDrawFunc)raider_progress_icon_draw, NULL, NULL);
 
-    gtk_widget_show(GTK_WIDGET(icon));
+    gtk_widget_set_visible(GTK_WIDGET(icon), TRUE);
 }
