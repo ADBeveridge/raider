@@ -60,45 +60,8 @@ struct _RaiderFileRow
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
-gchar *raider_file_row_get_filename(RaiderFileRow *row)
-{
-    return g_file_get_path(row->file);
-}
-/* This version of delete tells the raider_window_close_file function to show a toast that shredding is done. */
-void raider_file_row_delete(GtkWidget *widget, gpointer data)
-{
-    RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    if (row->aborted == TRUE)
-    {
-        // One file being aborted is enough not to show the notification.
-        gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
-        raider_window_set_show_notification(window, FALSE);
-    }
-
-    raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
-    GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
-    gtk_list_box_remove(list_box, GTK_WIDGET(data));
-}
-
-void raider_file_row_set_progress(gpointer data)
-{
-    struct _corrupt_data *corrupt_data = data;
-    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
-    raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
-}
-
-/* This is shown when the user clicks on the progress icon. The popover shows more information. */
-void raider_popup_popover(GtkWidget *widget, gpointer data)
-{
-    gtk_popover_popup(GTK_POPOVER(data));
-}
-
-static void raider_file_row_close (GtkWidget* window, gpointer data)
-{
-    RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    row->aborted = TRUE; // We are not shredding the file.
-    raider_file_row_delete(NULL, data);
-}
+static void raider_file_row_close (GtkWidget* window, gpointer data);
+static void raider_popup_popover(GtkWidget *widget, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
 {
@@ -148,28 +111,45 @@ static void raider_file_row_class_init(RaiderFileRowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon);
 }
 
-RaiderFileRow *raider_file_row_new(GFile *file)
+gchar *raider_file_row_get_filename(RaiderFileRow *row)
 {
-    RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
+    return g_file_get_path(row->file);
+}
+/* This version of delete tells the raider_window_close_file function to show a toast that shredding is done. */
+static void raider_file_row_delete(GtkWidget *widget, gpointer data)
+{
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    if (row->aborted == TRUE)
+    {
+        // One file being aborted is enough not to show the notification.
+        gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
+        raider_window_set_show_notification(window, FALSE);
+    }
 
-    row->file = file;
-
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
-
-    /* Notification stuff. */
-    row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
-    row->notification = g_notification_new(row->notification_title);
-    row->notification_subtitle = NULL;
-
-    return row;
+    raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
+    GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
+    gtk_list_box_remove(list_box, GTK_WIDGET(data));
 }
 
+/* This is shown when the user clicks on the progress icon. The popover shows more information. */
+static void raider_popup_popover(GtkWidget *widget, gpointer data)
+{
+    gtk_popover_popup(GTK_POPOVER(data));
+}
+
+static void raider_file_row_close (GtkWidget* window, gpointer data)
+{
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    row->aborted = TRUE; // We are not shredding the file.
+    raider_file_row_delete(NULL, data);
+}
+
+/** Shredding section */
 static void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
-    /* Make sure that the user can use the window after the row is destroyed, and delete the backend. */
+    /* Make sure that the user can use the window after the row is destroyed. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
 
     // If the shredding completed error free, then remove this file row.
@@ -179,8 +159,6 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
     // All done!.
     g_mutex_unlock (&row->mutex);
 }
-
-/* This is run asynchronously. */
 static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
@@ -195,8 +173,6 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
 
     free(corrupt_data);
 }
-
-/* Invoked in raider-window.c. nob stands for number of bytes. */
 void raider_file_row_launch_shredding(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
@@ -224,6 +200,7 @@ void raider_file_row_launch_shredding(gpointer data)
     g_task_run_in_thread(task, shredding_thread);
     g_object_unref(task);
 }
+/* End of shredding section. */
 
 /* This is called when the user clicks abort. */
 void raider_file_row_shredding_abort(gpointer data)
@@ -244,4 +221,26 @@ void raider_file_row_shredding_abort(gpointer data)
     g_mutex_unlock (&row->mutex);
 }
 
+void raider_file_row_set_progress(gpointer data)
+{
+    struct _corrupt_data *corrupt_data = data;
+    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
+    raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
+}
 
+RaiderFileRow *raider_file_row_new(GFile *file)
+{
+    RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
+
+    row->file = file;
+
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
+
+    /* Notification stuff. */
+    row->notification_title = g_strconcat(_("Shredded "), g_file_get_basename(row->file), NULL);
+    row->notification = g_notification_new(row->notification_title);
+    row->notification_subtitle = NULL;
+
+    return row;
+}
