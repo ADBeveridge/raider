@@ -83,7 +83,8 @@ void raider_file_row_delete(GtkWidget *widget, gpointer data)
 void raider_file_row_set_progress(gpointer data)
 {
     struct _corrupt_data *corrupt_data = data;
-    raider_progress_icon_set_progress(corrupt_data->row->icon, corrupt_data->progress);
+    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
+    raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
 }
 
 /* This is shown when the user clicks on the progress icon. The popover shows more information. */
@@ -186,7 +187,8 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
 
     struct _corrupt_data *corrupt_data = malloc(sizeof *corrupt_data);
     corrupt_data->task = task;
-    corrupt_data->row = row;
+    corrupt_data->popover = row->popover;
+    corrupt_data->icon = row->icon;
 
     if (corrupt_file(g_file_get_path(row->file), corrupt_data) == 0)
         corrupt_unlink_file(g_file_get_path(row->file));
@@ -241,4 +243,5 @@ void raider_file_row_shredding_abort(gpointer data)
     g_mutex_lock (&row->mutex);
     g_mutex_unlock (&row->mutex);
 }
+
 
