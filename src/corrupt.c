@@ -12,15 +12,13 @@ static uint8_t corrupt_step(const char *filename, const off_t filesize, const ch
         if (length > 0)
         {
             off_t times = (filesize / length) + (filesize % length);
-            for (i = 1; i <= times; i++)
+            for (i = 0; i < times; i++)
             {
                 fwrite(pattern, sizeof(char), length, fp);
                 if (g_task_return_error_if_cancelled (corrupt_data->task)) {fclose(fp);return 1;}
 
-                double prev = corrupt_data->progress;
-                double current = ((double)loop/32 - .01) + (double)i/times*.01;
-
-                if (current - prev >= .01)
+                double current = ((double)loop/32.0) + (double)i/times*1.0/32.0;
+                if (current - corrupt_data->progress >= .01)
                 {
                     corrupt_data->progress = current;
                     g_idle_add_once (raider_file_row_set_progress, corrupt_data);
@@ -66,7 +64,7 @@ uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data)
             uint8_t i;
             for (i = 0; i < 32; i++)
             {
-                if (corrupt_step(filename, filesize, steps[i], corrupt_data, i+1) != 0)
+                if (corrupt_step(filename, filesize, steps[i], corrupt_data, i) != 0)
                 {
                     ret = 1;
                     break;
