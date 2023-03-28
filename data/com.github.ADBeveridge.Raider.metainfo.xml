@@ -47,6 +47,7 @@
       <description>
         <p>Use custom code for shredding files</p>
         <ul>
+          <li>Directly import code into Raider for shredding a file</li>
           <li>Remove preferences</li>
         </ul>
       </description>
