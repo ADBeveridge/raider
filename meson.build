@@ -22,7 +22,6 @@ add_project_arguments(['-I' + meson.project_build_root(),], language: 'c')
 subdir('data')
 subdir('src')
 subdir('po')
-subdir('help')
 
 # GNOME specific actions to perform.
 gnome.post_install(

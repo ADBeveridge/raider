@@ -155,12 +155,6 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
                          NULL);
 }
 
-static void raider_application_show_help(GSimpleAction *action, GVariant *parameter, gpointer user_data)
-{
-    GtkUriLauncher* launcher = gtk_uri_launcher_new ("help:raider");
-    gtk_uri_launcher_launch(launcher, gtk_application_get_active_window(GTK_APPLICATION(user_data)), NULL, NULL, NULL);
-}
-
 static void raider_application_open(GApplication *application, GFile **files, gint n_files, const gchar *hint)
 {
     RaiderWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", application, NULL);
@@ -228,11 +222,6 @@ static void raider_application_init(RaiderApplication *self)
     g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
-
-    g_autoptr(GSimpleAction) help_action = g_simple_action_new("help", NULL);
-    g_signal_connect (help_action, "activate", G_CALLBACK(raider_application_show_help), self);
-    g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(help_action));
-    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.help", (const char *[]){"F1",NULL,});
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
     /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
