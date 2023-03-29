@@ -8,8 +8,8 @@
 >
   <name>File Shredder</name>
   <shortdesc>Securely delete your files</shortdesc>
-  <description>File Shredder, also known as Raider is a shredding program built
-    for the GNOME desktop. </description>
+  <description>File Shredder is a GNOME application used for securely deleting your files
+    that you do not want to be recovered.</description>
 
   <homepage rdf:resource="https://github.com/ADBeveridge/raider" />
   <bug-database rdf:resource="https://github.com/ADBeveridge/raider/issues"/>
