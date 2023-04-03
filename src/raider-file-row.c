@@ -192,7 +192,7 @@ void raider_file_row_shredding_abort(gpointer data)
 void raider_file_row_set_progress(gpointer data)
 {
     struct _corrupt_data *corrupt_data = data;
-    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
+    //raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
     raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
 }
 
