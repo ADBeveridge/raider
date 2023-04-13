@@ -7,408 +7,273 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 14:23-0700\n"
-"PO-Revision-Date: 2022-08-19 14:24-0700\n"
-"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
+"POT-Creation-Date: 2023-03-28 17:41-0700\n"
+"PO-Revision-Date: 2023-04-13 17:20+0200\n"
+"Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.desktop:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:35
+#: src/raider-application.c:140 src/raider-window.blp:40
 msgid "File Shredder"
 msgstr "Trissador de fichièrs"
 
+#: data/com.github.ADBeveridge.Raider.desktop:5
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-#: src/raider-application.c:110
 msgid "Securely delete your files"
 msgstr "Suprimissètz vòstres fichièr d’un biais segur"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#, fuzzy
+#| msgid ""
+#| "File Shredder is a simple application used for securely deleting your "
+#| "files that you do not want to be recovered. File Shredder has a "
+#| "comprehensive set of preferences and progress tracking for each file."
 msgid ""
 "File Shredder is a simple application used for securely deleting your files "
-"that you do not want to be recovered. File Shredder has a comprehensive set "
-"of preferences and progress tracking for each file."
+"that you do not want to be recovered."
 msgstr ""
 "Lo trissador de fichièrs es una aplicacion simpla utilizada per suprimir de "
 "manièra segura los fichièrs que volètz pas restaurar. Trissador de fichièrs "
 "a un jòc complèt de preferéncias e un seguiment de la progression per cada "
 "fichièr."
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:20
 msgid "Alan Beveridge"
 msgstr "Alan Beveridge"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:77
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
+#, fuzzy
+#| msgid "Hide shredding"
+msgid "Use custom code for shredding files"
+msgstr "Amagar lo trissatge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+msgid "Directly import code into Raider for shredding a file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+msgid "Remove preferences"
+msgstr "Supression de las preferéncias"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Fix UI bug when shredding is aborted"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
+msgid "Updates to help and application"
+msgstr "Actualizacion per ajudar e per l’aplicacion"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
+msgid "Add keyboard shortcuts to common actions"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
+msgid "Fix memory leaks"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "Fix crash when backend failed to start"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
+msgid "Fix application crash when closing window during shredding"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Remove typo in Shred All button"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+msgid "Update Turkish translation"
+msgstr "Actualizacion de la traduccion en turc"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+msgid "Add more categories to desktop file"
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
 msgid "Bug fixes and translation updates"
 msgstr "Correccions de bugs e actualizacions de las traduccions"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-#, fuzzy
-#| msgid "Added the Portuguese translation"
-msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
-msgstr "Traduccion en portugués aponduda"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr "Traduccions en chinés, turc, occitan e portugués del Brasil apondudas"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
-msgid "Fixed in-app notification crash"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "Fix in-app notification crash"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:58
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
 msgid "User interface fixes"
 msgstr "Correccions de l’interfàcia utilizaire"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
 #, fuzzy
 #| msgid "Added explantory message and changed initial view's icon"
-msgid "Added explanatory message and changed initial view's icon"
+msgid "Add explanatory message and changed initial view's icon"
 msgstr "Messatge d’explicacion apondut e icòna de vista iniciala cambiada"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Added icon to add button in headerbar"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+#, fuzzy
+#| msgid "Added icon to add button in headerbar"
+msgid "Add icon to add button in headerbar"
 msgstr "Icòna aponduda per n’apondre a la barra naut"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Fixed cropping of keyboard focus ring on shred button"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
+#, fuzzy
+#| msgid "Fixed cropping of keyboard focus ring on shred button"
+msgid "Fix cropping of keyboard focus ring on shred button"
 msgstr "Correccion de l'anèl de focus clavièr sul boton per trissar"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
-msgid "Updated preferences to be more concise and explanatory"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
+#, fuzzy
+#| msgid "Updated preferences to be more concise and explanatory"
+msgid "Update preferences to be more concise and explanatory"
 msgstr ""
 "Actualizacion de las preferéncias per mai èsser mai cortas e explicativas"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
 msgid "Add icon to open button in headerbar"
 msgstr "Icòna aponduda per dobrir boton de la barra naut"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
-msgid "Added the French translation"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
+msgid "Add the French translation"
 msgstr "Traduccion en francés aponduda"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
-msgid "Added the Portuguese translation"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
+msgid "Add the Portuguese translation"
 msgstr "Traduccion en portugués aponduda"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
-msgid "Updated the Russian translation"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
+msgid "Update the Russian translation"
 msgstr "Actualizacion de la traduccion en rus"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
-msgid "Fixed progress retrieval bug"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+#, fuzzy
+#| msgid "Fixed progress retrieval bug"
+msgid "Fix progress retrieval bug"
 msgstr "Correccion de l’avaria en recuperant la progression"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
-msgid "Fixed display problems"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
+msgid "Fix display problems"
 msgstr "Problèmas d'afichatge resolguts"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:116
 msgid "Minor fixes, including:"
 msgstr "Correccions minors, inclutz :"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
-msgid "Moved the Shred button to the bottom of the window"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:118
+#, fuzzy
+#| msgid "Moved the Shred button to the bottom of the window"
+msgid "Move the Shred button to the bottom of the window"
 msgstr "Boton Trissar desplaçat enbàs de la fenèstra"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:119
 msgid "Support for mobile devices added"
 msgstr "Presa en carga mobil aponduda"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:93
-msgid "Rethemed the file rows to standard look"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:120
+#, fuzzy
+#| msgid "Rethemed the file rows to standard look"
+msgid "Re-theme the file rows to standard look"
 msgstr ""
 "Cambiament de tèma de las colomnas de fichièrs per una aparéncia estandarda"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:99
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:126
 msgid "A significant rewite of File Shredder, with a few UI changes changes:"
 msgstr ""
 "Una reescritura importanta de Trissador de fichièrs, amb d’unes cambiaments "
 "d'UI :"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
-msgid "Added checking so a file cannot be loaded twice"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:128
+#, fuzzy
+#| msgid "Added checking so a file cannot be loaded twice"
+msgid "Add checking so a file cannot be loaded twice"
 msgstr "Apondon d’una verificacion per qu’un fichièr siá pas cargat dos còps"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:129
 msgid "Smooth progress tracking"
 msgstr "Seguiment de la progession fluid"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
-msgid "Written using GTK4 and Adwaita"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:130
+#, fuzzy
+#| msgid "Written using GTK4 and Adwaita"
+msgid "Write using GTK4 and Adwaita"
 msgstr "Escrich en utilizant GTK4 e Adwaita"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
-msgid "Desktop notifications are shown if the window is not focused"
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:131
+#, fuzzy
+#| msgid "Desktop notifications are shown if the window is not focused"
+msgid "Show desktop notifications if the window is not focused"
 msgstr "Se mòstran las notificacions sul burèu quand la fenèstra es pas activa"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:137
+#, fuzzy
+#| msgid ""
+#| "The very first release of File Shredder. It supports progress tracking, "
+#| "and boasts a GNOME compliant interface."
 msgid ""
 "The very first release of File Shredder. It supports progress tracking, and "
-"boasts a GNOME compliant interface."
+"has a GNOME compliant interface."
 msgstr ""
 "Tota primièra version del Trissador de fichièrs. Pren en carga lo seguiment "
 "de progession e prepausa una interfàcia en acòrd amb GNOME."
 
-#: data/com.github.ADBeveridge.Raider.gschema.xml:5
-msgid "Hide shredding"
-msgstr "Amagar lo trissatge"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:6
-msgid ""
-"Whether to hide shredding. This is done by overwriting the file(s) with "
-"zeros."
-msgstr "Se cal amagar lo "
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:10
-msgid "Remove file"
-msgstr "Suprimir lo fichièr"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:11
-msgid "Whether to remove the file after shredding it."
-msgstr "Se cal tirar lo fichièr un còp trissat."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:15
-#: src/raider-preferences.blp:34
-msgid "Number of passes"
-msgstr "Nombre de passas"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:16
-msgid "How many times the file will be overwritten with random data."
-msgstr "Quant de temps lo fichièr serà espotit amb de donadas aleatòrias."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:21
-msgid "Remove method"
-msgstr "Metòde de supression"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:22
-msgid "How the obfucticated file will be removed from the filesystem."
-msgstr "Cossí lo fichièr ocultat serà tirat del sistèma de fichièr."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:27
-msgid "Override Permisions"
-msgstr "Subrecargar las permissions"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:28
-msgid "If you do not have the neccessary permissions, override them."
-msgstr "S’avètz pas las permissions necessàrias, subrecargatz-las."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:32
-msgid "Do not round to next block"
-msgstr "Arredondir pas lo blòc seguent"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:33
-msgid ""
-"Do not round the file to the next block. This is the default for non-regular "
-"files."
-msgstr ""
-"Arredondir pas lo fichièr al blòc seguent. Aquò es per defaut pels fichièr "
-"pas regulars."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:37
-msgid "Number of bytes to shred entry"
-msgstr "Nombre d'octet de trissar a l’entrada"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:38
-msgid ""
-"Shred the number of bytes you want, and leave the rest of the file untouched."
-msgstr ""
-"Trissar lo nombre d'octet que volètz, e daissar la rèsta del fichièr pas "
-"tocat."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:43
-msgid "Shred executable"
-msgstr "Executable del trissador"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:44
-msgid "The path to the shred executable."
-msgstr "L’emplaçament de l’executable del trissador."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:48
-msgid "Whether to allow the source data file to be enabled"
-msgstr "Indica se cal permetre lo fichièr de donada font a èsser activat"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:49
-msgid "If unchecked, the source data file will not be loaded."
-msgstr "Se pas marcat, lo fichièr de donada font serà pas cargat."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:53
-msgid "Overwrite data file"
-msgstr "Espotir lo fichièr de donadas"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:54
-msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr "Ont trapar las donadas per subrecargar los fichièr de tractar."
-
-#: src/raider-application.c:73 src/raider-window.blp:28
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
 msgid "Add Files"
 msgstr "Apondre de fichièrs"
 
-#: src/raider-application.c:74
-msgid "Cancel"
-msgstr "Anullar"
-
-#: src/raider-application.c:74 src/raider-window.blp:26
-msgid "Add"
-msgstr "Apondre"
-
-#: src/raider-application.c:109
-#, fuzzy
-#| msgid "1.2.1"
-msgid "1.2.2"
-msgstr "1.2.1"
-
-#: src/raider-application.c:114
+#: src/raider-application.c:154
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#. Notification stuff.
-#: src/raider-file-row.c:169
-msgid "Shredded "
-msgstr "Trissat"
-
-#: src/raider-preferences.blp:8
-#, fuzzy
-#| msgid "Shredded "
-msgid "Shredder"
-msgstr "Trissat"
-
-#: src/raider-preferences.blp:10
-msgid "Basic"
-msgstr "Basic"
-
-#: src/raider-preferences.blp:13
-msgid "Remove File"
-msgstr "Suprimir lo fichièr"
-
-#: src/raider-preferences.blp:14
-msgid "Whether to remove the file after obfuscating its contents"
-msgstr "Indica se cal tirar lo fichièr aprèp aver ocultat son contengut"
-
-#: src/raider-preferences.blp:24
-msgid "Hide Shredding"
-msgstr "Amagar lo trissatge"
-
-#: src/raider-preferences.blp:25
-msgid ""
-"Do a final overwrite with zeros instead of random data. Random data is a "
-"clue that the file has been shredded"
-msgstr ""
-"Realizar un remplaçament amb de zèro a la plaça de donadas aleatòrias. Las "
-"donadas aleatòrias son un indici que trissatge"
-
-#: src/raider-preferences.blp:35
-msgid "How many times to shred file over"
-msgstr "Quant de còp se deu trissar lo fichièr"
-
-#: src/raider-preferences.blp:47
-msgid "Advanced"
-msgstr "Avançat"
-
-#: src/raider-preferences.blp:49
-msgid "Remove Method"
-msgstr "Metòde de supression"
-
-#: src/raider-preferences.blp:50
-#, fuzzy
-#| msgid "How to remove the files from the fileystem"
-msgid ""
-"How to remove the obfuscated files from the fileystem. See help for "
-"information"
-msgstr "Cossí tirar los fichièrs del sistèma de fichièrs"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
-msgid "Wipesync"
-msgstr "Wipesync"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
-msgid "Wipe"
-msgstr "Wipe"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
-msgid "Unlink"
-msgstr "Unlink"
-
-#: src/raider-preferences.blp:56
-msgid "Overwrite data source"
-msgstr "Espotir las donadas existentas"
-
-#: src/raider-preferences.blp:57
-msgid ""
-"Where to get the data to overwrite the files with. Disabled at every startup"
-msgstr ""
-"Ont trapar las donadas per subrecargar lo fichièr. Desactivat a cada aviada"
-
-#: src/raider-preferences.blp:66
-msgid "None Selected"
-msgstr "Cap pas seleccionat"
-
-#: src/raider-preferences.blp:70
-msgid "Select File"
-msgstr "Seleccionar un fichièr"
-
-#: src/raider-preferences.blp:77
-msgid "Number of bytes to shred"
-msgstr "Nombre d'octet de trissar"
-
-#: src/raider-preferences.blp:78
-msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr "Quina proporcion del fichièr trissar. 0 per trissar tot lo fichièr"
-
-#: src/raider-preferences.blp:90
-msgid "Do not round file sizes"
-msgstr "Arredondir pas la talha dels fichièrs"
-
-#: src/raider-preferences.blp:91
-msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr ""
-"Arredondir pas la talha del fichièr al blòc seguent. Aquò es per defaut pels "
-"fichièr pas regulars"
-
-#: src/raider-preferences.blp:99
-msgid "Override file permissions"
-msgstr "Espotir las permissions del fichièr"
-
-#: src/raider-preferences.blp:100
-msgid ""
-"Whether to override the file permissions in case of insufficient permissions"
-msgstr ""
-"Indica se cal subrecargar las permissions del fichièr en cas de permissions "
-"insufisentas"
-
 #: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Finalizacion..."
+
+#: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
 msgstr "Estimacion..."
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:387
-msgid "failed"
-msgstr "fracassat"
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "General"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:391
-msgid "removing"
-msgstr "supression"
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:133
+msgid "New Window"
+msgstr "Fenèstra novèla"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:396
-msgid "removed"
-msgstr "suprimit"
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:139
+msgid "Keyboard Shortcuts"
+msgstr "Acorchis de clavièr"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:402
-msgid "pass"
-msgstr "passa"
+#: src/raider-shortcuts.blp:23
+msgid "CLose Window"
+msgstr "Tampar la fenèstra"
 
-#: src/raider-window.blp:53
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Sortir"
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Apondre"
+
+#: src/raider-window.blp:59
 msgid "Add files or drop here"
 msgstr "Apondre de fichièr o los lisar depausar aquí"
 
-#: src/raider-window.blp:55
+#: src/raider-window.blp:61
 #, fuzzy
 #| msgid ""
 #| "Shredding is the obfuscation of a file with random data so the previous "
@@ -423,55 +288,254 @@ msgstr ""
 "href=\"https://en.wikipedia.org/wiki/Shred_(Unix)\">motor de trissatge del "
 "Trissador de fichièrs</a>."
 
-#: src/raider-window.blp:91
+#: src/raider-window.blp:97 src/raider-window.c:358
 msgid "Shred All"
 msgstr "Tot trissar"
 
-#: src/raider-window.blp:110
+#: src/raider-window.blp:116 src/raider-window.c:410
 msgid "Abort All"
 msgstr "Tot abandonar"
 
-#: src/raider-window.blp:127
-msgid "New Window"
-msgstr "Fenèstra novèla"
-
-#: src/raider-window.blp:133
-msgid "Preferences"
-msgstr "Preferéncias"
-
-#: src/raider-window.blp:137
-msgid "Help"
-msgstr "Ajuda"
-
-#: src/raider-window.blp:141
+#: src/raider-window.blp:143
 msgid "About File Shredder"
 msgstr "A prepaus del Trissador de fichièrs"
 
-#: src/raider-window.c:195
+#: src/raider-window.c:151
+msgid "Stop Shredding?"
+msgstr "Amagar lo trissatge ?"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr "Sètz segur que volètz sortir ?"
+
+#: src/raider-window.c:155
+msgid "_Cancel"
+msgstr "_Anullar"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr "Sortir"
+
+#: src/raider-window.c:203
 #, fuzzy
 #| msgid "Could not remove file from quick list."
 msgid "Could not remove filename from quick list. Please report this."
 msgstr "Supression impossibla del fichièr de la lista rapida."
 
-#: src/raider-window.c:203
+#: src/raider-window.c:213
 #, fuzzy
 #| msgid "Hide shredding"
 msgid "Finished shredding files"
 msgstr "Amagar lo trissatge"
 
-#: src/raider-window.c:240
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "D’unes fichièrs èran ja cargats"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "D’unes fichièrs existissián pas"
+
+#: src/raider-window.c:302
 msgid "Directories are not supported"
 msgstr "Los repertòris son pas preses en carga"
 
-#: src/raider-window.c:259
-#, c-format
-msgid "“%s” is already loaded"
-msgstr "« %s » es ja cargat"
-
-#: src/raider-window.c:272
+#: src/raider-window.c:312
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Impossible d'escriure dins « %s »"
+
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Cargament de mai de fichièrs impossible"
+
+#: src/raider-window.c:380
+msgid "Starting Shredding…"
+msgstr "Començament del trissatge…"
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr "Interrupcion…"
+
+#~ msgid "Hide shredding"
+#~ msgstr "Amagar lo trissatge"
+
+#~ msgid ""
+#~ "Whether to hide shredding. This is done by overwriting the file(s) with "
+#~ "zeros."
+#~ msgstr "Se cal amagar lo "
+
+#~ msgid "Remove file"
+#~ msgstr "Suprimir lo fichièr"
+
+#~ msgid "Whether to remove the file after shredding it."
+#~ msgstr "Se cal tirar lo fichièr un còp trissat."
+
+#~ msgid "Number of passes"
+#~ msgstr "Nombre de passas"
+
+#~ msgid "How many times the file will be overwritten with random data."
+#~ msgstr "Quant de temps lo fichièr serà espotit amb de donadas aleatòrias."
+
+#~ msgid "Remove method"
+#~ msgstr "Metòde de supression"
+
+#~ msgid "How the obfucticated file will be removed from the filesystem."
+#~ msgstr "Cossí lo fichièr ocultat serà tirat del sistèma de fichièr."
+
+#~ msgid "Override Permisions"
+#~ msgstr "Subrecargar las permissions"
+
+#~ msgid "If you do not have the neccessary permissions, override them."
+#~ msgstr "S’avètz pas las permissions necessàrias, subrecargatz-las."
+
+#~ msgid "Do not round to next block"
+#~ msgstr "Arredondir pas lo blòc seguent"
+
+#~ msgid ""
+#~ "Do not round the file to the next block. This is the default for non-"
+#~ "regular files."
+#~ msgstr ""
+#~ "Arredondir pas lo fichièr al blòc seguent. Aquò es per defaut pels "
+#~ "fichièr pas regulars."
+
+#~ msgid "Number of bytes to shred entry"
+#~ msgstr "Nombre d'octet de trissar a l’entrada"
+
+#~ msgid ""
+#~ "Shred the number of bytes you want, and leave the rest of the file "
+#~ "untouched."
+#~ msgstr ""
+#~ "Trissar lo nombre d'octet que volètz, e daissar la rèsta del fichièr pas "
+#~ "tocat."
+
+#~ msgid "Shred executable"
+#~ msgstr "Executable del trissador"
+
+#~ msgid "The path to the shred executable."
+#~ msgstr "L’emplaçament de l’executable del trissador."
+
+#~ msgid "Whether to allow the source data file to be enabled"
+#~ msgstr "Indica se cal permetre lo fichièr de donada font a èsser activat"
+
+#~ msgid "If unchecked, the source data file will not be loaded."
+#~ msgstr "Se pas marcat, lo fichièr de donada font serà pas cargat."
+
+#~ msgid "Overwrite data file"
+#~ msgstr "Espotir lo fichièr de donadas"
+
+#~ msgid "Where to get data to overwrite the to-be-shredded files."
+#~ msgstr "Ont trapar las donadas per subrecargar los fichièr de tractar."
+
+#, fuzzy
+#~| msgid "1.2.1"
+#~ msgid "1.2.2"
+#~ msgstr "1.2.1"
+
+#~ msgid "Shredded "
+#~ msgstr "Trissat"
+
+#, fuzzy
+#~| msgid "Shredded "
+#~ msgid "Shredder"
+#~ msgstr "Trissat"
+
+#~ msgid "Basic"
+#~ msgstr "Basic"
+
+#~ msgid "Remove File"
+#~ msgstr "Suprimir lo fichièr"
+
+#~ msgid "Whether to remove the file after obfuscating its contents"
+#~ msgstr "Indica se cal tirar lo fichièr aprèp aver ocultat son contengut"
+
+#~ msgid ""
+#~ "Do a final overwrite with zeros instead of random data. Random data is a "
+#~ "clue that the file has been shredded"
+#~ msgstr ""
+#~ "Realizar un remplaçament amb de zèro a la plaça de donadas aleatòrias. "
+#~ "Las donadas aleatòrias son un indici que trissatge"
+
+#~ msgid "How many times to shred file over"
+#~ msgstr "Quant de còp se deu trissar lo fichièr"
+
+#~ msgid "Advanced"
+#~ msgstr "Avançat"
+
+#~ msgid "Remove Method"
+#~ msgstr "Metòde de supression"
+
+#, fuzzy
+#~| msgid "How to remove the files from the fileystem"
+#~ msgid ""
+#~ "How to remove the obfuscated files from the fileystem. See help for "
+#~ "information"
+#~ msgstr "Cossí tirar los fichièrs del sistèma de fichièrs"
+
+#~ msgid "Wipesync"
+#~ msgstr "Wipesync"
+
+#~ msgid "Wipe"
+#~ msgstr "Wipe"
+
+#~ msgid "Unlink"
+#~ msgstr "Unlink"
+
+#~ msgid "Overwrite data source"
+#~ msgstr "Espotir las donadas existentas"
+
+#~ msgid ""
+#~ "Where to get the data to overwrite the files with. Disabled at every "
+#~ "startup"
+#~ msgstr ""
+#~ "Ont trapar las donadas per subrecargar lo fichièr. Desactivat a cada "
+#~ "aviada"
+
+#~ msgid "None Selected"
+#~ msgstr "Cap pas seleccionat"
+
+#~ msgid "Select File"
+#~ msgstr "Seleccionar un fichièr"
+
+#~ msgid "Number of bytes to shred"
+#~ msgstr "Nombre d'octet de trissar"
+
+#~ msgid "How much of the file to shred. 0 to shred the whole file"
+#~ msgstr "Quina proporcion del fichièr trissar. 0 per trissar tot lo fichièr"
+
+#~ msgid "Do not round file sizes"
+#~ msgstr "Arredondir pas la talha dels fichièrs"
+
+#~ msgid ""
+#~ "Do not round file sizes to the next block. Default for irregular files"
+#~ msgstr ""
+#~ "Arredondir pas la talha del fichièr al blòc seguent. Aquò es per defaut "
+#~ "pels fichièr pas regulars"
+
+#~ msgid "Override file permissions"
+#~ msgstr "Espotir las permissions del fichièr"
+
+#~ msgid ""
+#~ "Whether to override the file permissions in case of insufficient "
+#~ "permissions"
+#~ msgstr ""
+#~ "Indica se cal subrecargar las permissions del fichièr en cas de "
+#~ "permissions insufisentas"
+
+#~ msgid "failed"
+#~ msgstr "fracassat"
+
+#~ msgid "removing"
+#~ msgstr "supression"
+
+#~ msgid "removed"
+#~ msgstr "suprimit"
+
+#~ msgid "pass"
+#~ msgstr "passa"
+
+#~ msgid "Help"
+#~ msgstr "Ajuda"
 
 #~ msgid "_Basic"
 #~ msgstr "_Basic"
