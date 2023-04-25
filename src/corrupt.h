@@ -18,6 +18,7 @@ struct _corrupt_data
     RaiderProgressIcon* icon;
     GTask* task;
     double progress;
+    GMutex progress_mutex;
 };
 
 uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data);
