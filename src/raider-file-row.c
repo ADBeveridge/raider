@@ -51,7 +51,6 @@ struct _RaiderFileRow
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
 static void raider_file_row_close (GtkWidget* window, gpointer data);
-static void raider_popup_popover(GtkWidget *widget, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
 {
@@ -71,6 +70,7 @@ static void raider_file_row_init(RaiderFileRow *row)
     gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
     g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
+    g_mutex_init(&row->mutex);
 
     row->aborted = FALSE;
     row->cancel = NULL;
@@ -141,6 +141,7 @@ static void shredding_thread (GTask *task, gpointer source_object, gpointer task
     corrupt_data->task = task;
     corrupt_data->popover = row->popover;
     corrupt_data->icon = row->icon;
+    g_mutex_init(&corrupt_data->progress_mutex);
 
     if (corrupt_file(g_file_get_path(row->file), corrupt_data) == 0)
         corrupt_unlink_file(g_file_get_path(row->file));
@@ -192,8 +193,10 @@ void raider_file_row_shredding_abort(gpointer data)
 void raider_file_row_set_progress(gpointer data)
 {
     struct _corrupt_data *corrupt_data = data;
-    //raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
+    if (!g_mutex_trylock (&corrupt_data->progress_mutex)) { printf("Conficted\n");return; }
+    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
     raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
+    g_mutex_unlock (&corrupt_data->progress_mutex);
 }
 
 RaiderFileRow *raider_file_row_new(GFile *file)
