@@ -1,0 +1,313 @@
+# Czech translation for the raider's package
+# Copyright (C) YEAR THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Písek Pískovec <pisekpiskovec@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-28 17:41-0700\n"
+"PO-Revision-Date: 2023-05-19 17:00+0200\n"
+"Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:140 src/raider-window.blp:40
+msgid "File Shredder"
+msgstr "Skartovač"
+
+#: data/com.github.ADBeveridge.Raider.desktop:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+msgid "Securely delete your files"
+msgstr "Bezpečně vymažte své soubory"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered."
+msgstr ""
+"Skartovač je jednoduchá aplikace určená k bezpečnému vymazání svých "
+"souborů, které nechcete, aby byly obnovitelné."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:20
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
+msgid "Use custom code for shredding files"
+msgstr "Použít vlastní kód pro skartování souborů"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+msgid "Directly import code into Raider for shredding a file"
+msgstr "Importovat kód přímo do Raider pro skartování souboru"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+msgid "Remove preferences"
+msgstr "Odstranit předvolby"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Fix UI bug when shredding is aborted"
+msgstr "Opravena UI chyba po zrušení skartování"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
+#, fuzzy
+msgid "Updates to help and application"
+msgstr "Aktualizace pomoci a aplikace"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
+msgid "Add keyboard shortcuts to common actions"
+msgstr "Přidány klávesové zkratky pro často používané akce"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
+msgid "Fix memory leaks"
+msgstr "Opraveny úniky paměti"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "Fix crash when backend failed to start"
+msgstr "Opraveno padání při chybě načtení backendu"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
+msgid "Fix application crash when closing window during shredding"
+msgstr "Opraveno padání při uzavření okna během skartování"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Remove typo in Shred All button"
+msgstr "Odstraněna chybka v Skartovat Vše tlačítku"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+msgid "Update Turkish translation"
+msgstr "Aktualizovaný Turecký překlad"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+msgid "Add more categories to desktop file"
+msgstr "Přidáno více kategorií do souboru plochy"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
+msgid "Bug fixes and translation updates"
+msgstr "Opraveny chyby a překlady aktualizovány"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr "Přidán Čínský, Turecký, Okcitánský a Portugalský (Brazílie) překlad"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "Fix in-app notification crash"
+msgstr "Opraveno padání vnitřních notifikací"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
+msgid "User interface fixes"
+msgstr "Opraveny chyby uživatelského prostředí"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
+msgid "Add explanatory message and changed initial view's icon"
+msgstr "Přidána vysvětlovací zpráva a byla změněna ikona prvotního zobrazení"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Add icon to add button in headerbar"
+msgstr "Přidána ikona přidávacího tlačítka v záhlaví"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
+msgid "Fix cropping of keyboard focus ring on shred button"
+msgstr "Opraveno oříznutí kroužku zaostření klávesnice na tlačítku skartování"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
+msgid "Update preferences to be more concise and explanatory"
+msgstr "Předvolby aktualizovány pro větší stručnost a vysvětlení"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "Add icon to open button in headerbar"
+msgstr "Přidána ikona otevírajcího tlačítka v záhlaví"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
+msgid "Add the French translation"
+msgstr "Přidán Francouzský překlad"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
+msgid "Add the Portuguese translation"
+msgstr "Přidán Portugalský překlad"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
+msgid "Update the Russian translation"
+msgstr "Aktualizovaný Ruský překlad"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+msgid "Fix progress retrieval bug"
+msgstr "Opravena chyba načítání pokroku"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
+msgid "Fix display problems"
+msgstr "Opraveny problémy zobrazení"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:116
+msgid "Minor fixes, including:"
+msgstr "Menší opravy, zahrnující:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:118
+msgid "Move the Shred button to the bottom of the window"
+msgstr "Přesunuto Skartovací tlačítku do spodku okna"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:119
+msgid "Support for mobile devices added"
+msgstr "Přidána podpora mobilních zařízení"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:120
+msgid "Re-theme the file rows to standard look"
+msgstr "Pře-témované řádky souborů pro standardní vzhled"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:126
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr "Významný přepsání Skartovače, s pár UI změnami:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:128
+msgid "Add checking so a file cannot be loaded twice"
+msgstr "Přidán ověřovač aby soubor nemohl být načten dvakrát"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:129
+msgid "Smooth progress tracking"
+msgstr "Hladké načítání pokroku"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:130
+msgid "Write using GTK4 and Adwaita"
+msgstr "Napsáno pomocí GTK4 a Adwaita"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:131
+msgid "Show desktop notifications if the window is not focused"
+msgstr "Zobrazit notifikace plochy pokud okno není zaměřené"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:137
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"has a GNOME compliant interface."
+msgstr ""
+"Úplně první vydání Skartovače. Podporuje sledování pokroku a má vyhovující "
+"rozhraní GNOME."
+
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
+msgid "Add Files"
+msgstr "Přidat Soubory"
+
+#: src/raider-application.c:154
+msgid "translator-credits"
+msgstr "Písek Pískovec <pisekpiskovec@gmail.com>"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Dokončování..."
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Odhadování..."
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Obecné"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:133
+msgid "New Window"
+msgstr "Nové Okno"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:139
+msgid "Keyboard Shortcuts"
+msgstr "Klávesové Zkratky"
+
+#: src/raider-shortcuts.blp:23
+msgid "CLose Window"
+msgstr "Zavřít Okno"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Ukončit"
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Přidat"
+
+#: src/raider-window.blp:59
+msgid "Add files or drop here"
+msgstr "Přidat soubory nebo upustit zde"
+
+#: src/raider-window.blp:61
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Skartování je nahrazování souboru s náhodnými daty aby se předchozí obsah "
+"nemohl obnovit."
+
+#: src/raider-window.blp:97 src/raider-window.c:358
+msgid "Shred All"
+msgstr "Skartovat Vše"
+
+#: src/raider-window.blp:116 src/raider-window.c:410
+msgid "Abort All"
+msgstr "Zrušit Vše"
+
+#: src/raider-window.blp:143
+msgid "About File Shredder"
+msgstr "O aplikaci Skartovač"
+
+#: src/raider-window.c:151
+msgid "Stop Shredding?"
+msgstr "Zastavit Skartování?"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr "Jste jsi jisti, že chcete odejít?"
+
+#: src/raider-window.c:155
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr "_Odejít"
+
+#: src/raider-window.c:203
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"Nepodařilo se odstranit název souboru z rychlého listu. Prosím nahlašte to "
+"prosím."
+
+#: src/raider-window.c:213
+msgid "Finished shredding files"
+msgstr "Dokončeno skartování souborů"
+
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "Některé soubory již byly načteny"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "Některé soubory neexistují"
+
+#: src/raider-window.c:302
+msgid "Directories are not supported"
+msgstr "Adresáře nejsou podporovány"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Nelze psát do “%s”"
+
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Nelze načíst více souborů"
+
+#: src/raider-window.c:380
+msgid "Starting Shredding…"
+msgstr "Začínání Skartování…"
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr "Přerušování…"
