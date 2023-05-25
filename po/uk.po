@@ -1,0 +1,312 @@
+# Ukrainian translation for Raider.
+# Copyright (C) 2023 THE Raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# volkov <volkovissocool@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-28 17:41-0700\n"
+"PO-Revision-Date: 2023-05-26 01:14+0300\n"
+"Last-Translator: volkov <volkovissocool@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:140 src/raider-window.blp:40
+msgid "File Shredder"
+msgstr "Шредер файлів"
+
+#: data/com.github.ADBeveridge.Raider.desktop:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+msgid "Securely delete your files"
+msgstr "Безпечно видаляйте ваші файли"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a simple application used for securely deleting your files "
+"that you do not want to be recovered."
+msgstr ""
+"File Shredder (Шредер файлів) це простий додаток для безпечного видалення "
+"ваших файлів, які ви не бажаєте щоб можна було відновити."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:20
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:48
+msgid "Use custom code for shredding files"
+msgstr "Використовується власний код для шредерування файлів"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:50
+msgid "Directly import code into Raider for shredding a file"
+msgstr "Напряму імпортовано код у Файловий шредер для шредерування файлів"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
+msgid "Remove preferences"
+msgstr "Видалено налаштування"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
+msgid "Fix UI bug when shredding is aborted"
+msgstr "Виправлено інтерфейс коли шредерування було скасовано"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
+msgid "Updates to help and application"
+msgstr "Виправлення до \"Допомога\" та додатку"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
+msgid "Add keyboard shortcuts to common actions"
+msgstr "Додано клавіатурні скорочення до частих дій"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
+msgid "Fix memory leaks"
+msgstr "Виправлено витоки пам'яті"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
+msgid "Fix crash when backend failed to start"
+msgstr "Виправлено збій, коли бекенд не можна запуститися"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
+msgid "Fix application crash when closing window during shredding"
+msgstr "Виправлено збій додатку при закриті вікна під час шредерування"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
+msgid "Remove typo in Shred All button"
+msgstr "Виправлено опечатку у кнопці \"Шредерувати усі\""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
+msgid "Update Turkish translation"
+msgstr "Оновлено турецький переклад"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
+msgid "Add more categories to desktop file"
+msgstr "Додано більше категорій до файлу desktop"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:76
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
+msgid "Bug fixes and translation updates"
+msgstr "Виправлення вад та оновлено переклади"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:78
+msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr "Додано китайський, турецький та португальський (Бразилія) переклади"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
+msgid "Fix in-app notification crash"
+msgstr "Виправлено збій через повідомлення всередині додатку"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:85
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:94
+msgid "User interface fixes"
+msgstr "Виправлення інтерфейса"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:87
+msgid "Add explanatory message and changed initial view's icon"
+msgstr ""
+"Додано повідомлення з поясненням і змінено початковий вигляд піктограми"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
+msgid "Add icon to add button in headerbar"
+msgstr "Додано піктограму до кнопки додавання файлів у заголовку вікна"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:96
+msgid "Fix cropping of keyboard focus ring on shred button"
+msgstr "Виправлено обрізання обрамлення кнопки шредерування у фокусі"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
+msgid "Update preferences to be more concise and explanatory"
+msgstr "Оновлено налаштування, щоб вони були більш стислими та зрозумілими"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
+msgid "Add icon to open button in headerbar"
+msgstr "Додано піктограму до кнопки відкривання файлів у заголовку вікна"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:106
+msgid "Add the French translation"
+msgstr "Додано французький переклад"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
+msgid "Add the Portuguese translation"
+msgstr "Додано португальський переклад"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
+msgid "Update the Russian translation"
+msgstr "Оновлено російський переклад"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
+msgid "Fix progress retrieval bug"
+msgstr "Виправлено ваду пошуку"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
+msgid "Fix display problems"
+msgstr "Виправлено проблему відображення"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:116
+msgid "Minor fixes, including:"
+msgstr "Невеликі виправлення:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:118
+msgid "Move the Shred button to the bottom of the window"
+msgstr "Переміщено кнопку шредерування вниз вікна"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:119
+msgid "Support for mobile devices added"
+msgstr "Підтримка мобільних простроїв"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:120
+msgid "Re-theme the file rows to standard look"
+msgstr "Змінена тема рядків з файлами на стандартну"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:126
+msgid "A significant rewite of File Shredder, with a few UI changes changes:"
+msgstr "Переписування коду Файлового шредеру з покращеннями інтерфейсу:"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:128
+msgid "Add checking so a file cannot be loaded twice"
+msgstr "Додано перевірку, щоб один файл не був завантажено двічі"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:129
+msgid "Smooth progress tracking"
+msgstr "Плавне відображення прогресу"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:130
+msgid "Write using GTK4 and Adwaita"
+msgstr "Портовано на GTK4 і Adwaita"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:131
+msgid "Show desktop notifications if the window is not focused"
+msgstr "Показувати системне повідомлення якщо вікно не у фокусі"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:137
+msgid ""
+"The very first release of File Shredder. It supports progress tracking, and "
+"has a GNOME compliant interface."
+msgstr ""
+"Перший реліз Файлового шредера. Він підтримує відображення прогресу і "
+"сумісний з інтерфейсом GNOME."
+
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
+msgid "Add Files"
+msgstr "Додати файли"
+
+#: src/raider-application.c:154
+msgid "translator-credits"
+msgstr "volkov <volkovissocool@gmail.com>"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Завершуємо..."
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Розрахунок..."
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Загальні"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:133
+msgid "New Window"
+msgstr "Нове вікно"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:139
+msgid "Keyboard Shortcuts"
+msgstr "Клавіатурні скорочення"
+
+#: src/raider-shortcuts.blp:23
+msgid "CLose Window"
+msgstr "Закрити вікно"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Вийти"
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Додати"
+
+#: src/raider-window.blp:59
+msgid "Add files or drop here"
+msgstr "Додайте файли або перетягніть сюди"
+
+#: src/raider-window.blp:61
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Шредерування це обусфікація змісту файла випадковими даними, завдяки чому "
+"відновити зміст файлу буде неможливо."
+
+#: src/raider-window.blp:97 src/raider-window.c:358
+msgid "Shred All"
+msgstr "Шредерувати усі"
+
+#: src/raider-window.blp:116 src/raider-window.c:410
+msgid "Abort All"
+msgstr "Скасувати усі"
+
+#: src/raider-window.blp:143
+msgid "About File Shredder"
+msgstr "Про Шредер файлів"
+
+#: src/raider-window.c:151
+msgid "Stop Shredding?"
+msgstr "Зупинити шредер?"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr "Ви впевнені, що бажаєте вийти?"
+
+#: src/raider-window.c:155
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr "_Вийти"
+
+#: src/raider-window.c:203
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Не вдалося видалити файл із списку. Будь-ласка, відрапортуйте про це."
+
+#: src/raider-window.c:213
+msgid "Finished shredding files"
+msgstr "Завершено шредерування файлів"
+
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "Деякі файли вже були завантажені"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "Деякі файлі не існують"
+
+#: src/raider-window.c:302
+msgid "Directories are not supported"
+msgstr "Каталоги/теки не підтримуються"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Неможливо записати в “%s”"
+
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Не можливо завантажити більше файлів"
+
+#: src/raider-window.c:380
+msgid "Starting Shredding…"
+msgstr "Запускаємо шредер…"
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr "Скасування…"
