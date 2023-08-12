@@ -44,7 +44,7 @@ struct _RaiderFileRow
 
     /* Variables to keep tabs on shredding. */
     GCancellable* cancel;
-    GMutex mutex;
+    GMutex mutex; // This is locked upon shredding, and only unlocked when the shredding is done (cancelled or end of file)
     gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
 };
 
@@ -190,13 +190,15 @@ void raider_file_row_shredding_abort(gpointer data)
     g_mutex_unlock (&row->mutex);
 }
 
-void raider_file_row_set_progress(gpointer data)
+gboolean raider_file_row_set_progress(gpointer data)
 {
-    /*struct _corrupt_data *corrupt_data = data;
-    if (!g_mutex_trylock (&corrupt_data->progress_mutex)) { printf("Conficted\n");return; }
+    struct _corrupt_data *corrupt_data = data;
+    if (!g_mutex_trylock (&corrupt_data->progress_mutex)) { printf("Conficted\n");return FALSE; }
     raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
     raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
-    g_mutex_unlock (&corrupt_data->progress_mutex);*/
+    g_mutex_unlock (&corrupt_data->progress_mutex);
+
+    return FALSE;
 }
 
 RaiderFileRow *raider_file_row_new(GFile *file)

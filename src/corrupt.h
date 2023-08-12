@@ -18,7 +18,7 @@ struct _corrupt_data
     RaiderProgressIcon* icon;
     GTask* task;
     double progress;
-    GMutex progress_mutex;
+    GMutex progress_mutex; // Used with updating the progress number AND the widget.
 };
 
 uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data);
