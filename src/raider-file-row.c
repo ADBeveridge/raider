@@ -71,6 +71,7 @@ static void raider_file_row_init(RaiderFileRow *row)
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
     g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
     g_mutex_init(&row->mutex);
+    raider_progress_icon_set_progress(row->icon, 0);
 
     row->aborted = FALSE;
     row->cancel = NULL;
