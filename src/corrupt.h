@@ -12,15 +12,10 @@
 #include "raider-progress-info-popover.h"
 #include "raider-progress-icon.h"
 
-struct _corrupt_data
-{
-    RaiderProgressInfoPopover* popover;
-    RaiderProgressIcon* icon;
-    GTask* task;
-    double progress;
-    GMutex progress_mutex; // Used with updating the progress number AND the widget.
-};
+#define RAIDER_CORRUPT_TYPE (raider_corrupt_get_type())
 
-uint8_t corrupt_file(const char *filename, struct _corrupt_data *corrupt_data);
-uint8_t corrupt_unlink_file(const char *filename);
+G_DECLARE_FINAL_TYPE(RaiderCorrupt, raider_corrupt, RAIDER, CORRUPT, GObject)
+
+RaiderCorrupt *raider_corrupt_new(GFile* file, RaiderFileRow* row);
+GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCallback func);
 
