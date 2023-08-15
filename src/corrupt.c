@@ -102,13 +102,12 @@ static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const 
         fwrite(pattern, sizeof(char), length, fp);
         if (g_task_return_error_if_cancelled (corrupt->task)) {fclose(fp);return 1;}
 
-        double current = ((double)loop_num/32.0) + (double)i/times*1.0/32.0;
+        double current = ((double)loop_num/10.0) + (double)i/times*1.0/10.0;
 
         // Only update the progress when the jump is large enough.
         if (current - corrupt->progress >= .01)
         {
             corrupt->progress = current;
-            printf("%d, %f\n", loop_num, current);
             raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
             g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
 
@@ -124,19 +123,8 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     const char* steps[] = {"\x77\x77\x77", "\x76\x76\x76",
          "\x33\x33\x33", "\x35\x35\x35",
          "\x55\x55\x55", "\xAA\xAA\xAA",
-         "\x92\x49\x24", "\x49\x24\x92",
-         "\x55\x55\x55", "\x20\x02\x03",
-         "\x11\x11\x11", "\x01\x01\x01",
-         "\x22\x22\x22", "\x33\x33\x33",
          "\x44\x44\x44", "\x55\x55\x55",
-         "\x66\x66\x66", "\x77\x77\x77",
-         "\x88\x88\x88", "\x99\x99\x99",
-         "\xAA\xAA\xAA", "\xBB\xBB\xBB",
-         "\xCC\xCC\xCC", "\xDD\xDD\xDD",
-         "\xEE\xEE\xEE", "\xFF\xFF\xFF",
-         "\x92\x49\x24", "\x49\x24\x92",
-         "\x24\x92\x49", "\x6D\xB6\xDB",
-         "\xB6\xDB\x6D", "\xDB\x6D\xB6"};
+         "\x66\x66\x66", "\x77\x77\x77"};
 
     int steps_num = sizeof(steps) / sizeof(steps[0]);
     uint8_t ret = 0;

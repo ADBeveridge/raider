@@ -128,11 +128,10 @@ static void raider_file_row_close (GtkWidget* window, gpointer data)
 /** Shredding section */
 void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    printf("Done\n");
-
     RaiderFileRow* row = g_task_get_task_data(G_TASK(res));
 
     g_mutex_unlock (&row->mutex);
+    g_object_unref(row->cancel);
 
     /* Make sure that the user can use the window after the row is destroyed. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
