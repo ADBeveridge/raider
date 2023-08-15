@@ -46,6 +46,8 @@ struct _RaiderFileRow
     GCancellable* cancel;
     GMutex mutex; // This is locked upon shredding, and only unlocked when the shredding is done (cancelled or end of file)
     gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
+    double progress;
+    GMutex progress_mutex;
 };
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
@@ -75,6 +77,7 @@ static void raider_file_row_init(RaiderFileRow *row)
 
     row->aborted = FALSE;
     row->cancel = NULL;
+    row->progress = .5;
 }
 
 static void raider_file_row_class_init(RaiderFileRowClass *klass)
@@ -107,6 +110,8 @@ static void raider_file_row_delete(GtkWidget *widget, gpointer data)
         raider_window_set_show_notification(window, FALSE);
     }
 
+    g_object_unref(row->icon);
+
     raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
     GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
     gtk_list_box_remove(list_box, GTK_WIDGET(data));
@@ -120,9 +125,13 @@ static void raider_file_row_close (GtkWidget* window, gpointer data)
 }
 
 /** Shredding section */
-static void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
+void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
+    printf("Done\n");
+
+    RaiderFileRow* row = g_task_get_task_data(G_TASK(res));
+
+    g_mutex_unlock (&row->mutex);
 
     /* Make sure that the user can use the window after the row is destroyed. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
@@ -130,25 +139,8 @@ static void shredding_finished(GObject *source_object, GAsyncResult *res, gpoint
     // If the shredding completed error free, then remove this file row.
     if (g_task_had_error (G_TASK (res)) == FALSE)
         raider_file_row_delete(NULL, row);
-
-    // All done!.
-    g_mutex_unlock (&row->mutex);
 }
-static void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
-{
-    RaiderFileRow* row = RAIDER_FILE_ROW(source_object);
 
-    struct _corrupt_data *corrupt_data = malloc(sizeof *corrupt_data);
-    corrupt_data->task = task;
-    corrupt_data->popover = row->popover;
-    corrupt_data->icon = row->icon;
-    g_mutex_init(&corrupt_data->progress_mutex);
-
-    if (corrupt_file(g_file_get_path(row->file), corrupt_data) == 0)
-        corrupt_unlink_file(g_file_get_path(row->file));
-
-    free(corrupt_data);
-}
 void raider_file_row_launch_shredding(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
@@ -164,12 +156,8 @@ void raider_file_row_launch_shredding(gpointer data)
     gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
     gtk_revealer_set_reveal_child(row->progress_revealer, TRUE);
 
-    if (row->cancel) g_object_unref(row->cancel);
-    row->cancel = g_cancellable_new();
-
-    GTask *task = g_task_new(row, row->cancel, shredding_finished, NULL);
-    g_task_run_in_thread(task, shredding_thread);
-    g_object_unref(task);
+    RaiderCorrupt* corrupt = raider_corrupt_new(row->file, row);
+    row->cancel = raider_corrupt_start_shredding (corrupt, shredding_finished);
 }
 /* End of shredding section. */
 
@@ -191,14 +179,22 @@ void raider_file_row_shredding_abort(gpointer data)
     g_mutex_unlock (&row->mutex);
 }
 
+// This function does not operate the the main context, unlike the set_progress function
+void raider_file_row_set_progress_num(RaiderFileRow* row, double progress)
+{
+
+    if(g_mutex_trylock (&row->progress_mutex) == FALSE)
+        return;
+
+    row->progress = progress;
+    g_mutex_unlock(&row->progress_mutex);
+}
+
 gboolean raider_file_row_set_progress(gpointer data)
 {
-    struct _corrupt_data *corrupt_data = data;
-    if (!g_mutex_trylock (&corrupt_data->progress_mutex)) { printf("Conficted\n");return FALSE; }
-    raider_progress_icon_set_progress(corrupt_data->icon, corrupt_data->progress);
-    raider_progress_info_popover_set_progress (corrupt_data->popover, corrupt_data->progress);
-    g_mutex_unlock (&corrupt_data->progress_mutex);
-
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    raider_progress_icon_set_progress(row->icon, row->progress);
+    raider_progress_info_popover_set_progress (row->popover, row->progress);
     return FALSE;
 }
 
