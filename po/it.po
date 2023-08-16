@@ -1,14 +1,14 @@
 # ITALIAN TRANSLATION FOR RAIDER.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2022.
+# ALBANO BATTISTELLA <albano_battistella@hotmail.com>, 2022,2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 14:23-0700\n"
-"PO-Revision-Date: 2022-09-25 12:53+0100\n"
+"PO-Revision-Date: 2023-08-16 11:00+0100\n"
 "Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
@@ -314,15 +314,15 @@ msgstr ""
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:128
 msgid "Wipesync"
-msgstr ""
+msgstr "Cancella sincronizzazione"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:129
 msgid "Wipe"
-msgstr ""
+msgstr "Cancella"
 
 #: src/raider-preferences.blp:52 src/raider-preferences.blp:130
 msgid "Unlink"
-msgstr ""
+msgstr "Scollegare"
 
 #: src/raider-preferences.blp:56
 msgid "Overwrite data source"
