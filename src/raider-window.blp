@@ -9,10 +9,10 @@ template RaiderWindow : Adw.ApplicationWindow {
   icon-name: "com.github.ADBeveridge.Raider";
 
   [content]
-  Gtk.Box {
-    orientation: vertical;
+  Adw.ToolbarView {
     vexpand: true;
 
+    [top]
     Adw.HeaderBar header_bar {
       centering-policy: strict;
 
@@ -48,12 +48,13 @@ template RaiderWindow : Adw.ApplicationWindow {
         primary: true;
       }
     }
-    [content]
-    Adw.ToastOverlay toast_overlay {
+
+    content: Adw.ToastOverlay toast_overlay {
       Gtk.Box contents_box {
         vexpand: true;
+        margin-top: 24;
         Gtk.Stack window_stack {
-    transition-type: crossfade;
+          transition-type: crossfade;
           Gtk.StackPage empty_page {
           name: "empty_page";
             child: Adw.StatusPage empty_state {
@@ -83,47 +84,47 @@ template RaiderWindow : Adw.ApplicationWindow {
               };
               [overlay]
               Gtk.Revealer shred_revealer {
-      reveal-child: false;
-      transition-type: slide_up;
-      valign: end;
-      halign: center;
-      margin-bottom: 20;
+                reveal-child: false;
+                transition-type: slide_up;
+                valign: end;
+                halign: center;
+                margin-bottom: 20;
 
-      Gtk.Box {
-        margin-end: 5;
-        margin-top: 5;
-        margin-start: 5;
-        margin-bottom: 5;
-        Gtk.Button shred_button {
-            label: _("Shred All");
-            styles ["destructive-action", "pill"]
-        }
-      }
-        }
-        [overlay]
-        Gtk.Revealer abort_revealer {
-      reveal-child: false;
-      transition-type: slide_up;
-      valign: end;
-      halign: center;
-      margin-bottom: 20;
+                Gtk.Box {
+                  margin-end: 5;
+                  margin-top: 5;
+                  margin-start: 5;
+                  margin-bottom: 5;
+                  Gtk.Button shred_button {
+                    label: _("Shred All");
+                    styles ["destructive-action", "pill"]
+                  }
+                }
+              }
+              [overlay]
+              Gtk.Revealer abort_revealer {
+                reveal-child: false;
+                transition-type: slide_up;
+                valign: end;
+                halign: center;
+                margin-bottom: 20;
 
-      Gtk.Box {
-        margin-end: 5;
-        margin-top: 5;
-        margin-start: 5;
-        margin-bottom: 5;
-        Gtk.Button abort_button {
-            label: _("Abort All");
-            styles ["destructive-action", "pill"]
-        }
-      }
-        }
+                Gtk.Box {
+                  margin-end: 5;
+                  margin-top: 5;
+                  margin-start: 5;
+                  margin-bottom: 5;
+                  Gtk.Button abort_button {
+                    label: _("Abort All");
+                    styles ["destructive-action", "pill"]
+                  }
+                }
+              }
             };
           }
         }
       }
-    }
+    };
   }
 }
 
