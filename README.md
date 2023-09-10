@@ -5,6 +5,19 @@ Raider is a shredding program built for the GNOME desktop. It uses its own inter
 ## Download
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
+# Compiling
+## GNOME Builder
+* Install GNOME Builder. This should be in your distro's repositories. It is also available here: https://flathub.org/apps/org.gnome.Builder
+* Download the source of this project from GitHub.
+* Open the project in Builder, and after installing SDKs, click the Run command.
+## Commandline
+### Fedora
+* `sudo dnf install meson gcc gtk4-devel libadwaita-devel desktop-file-utils python3-gobject`
+* `meson setup builddir`
+* `cd builddir`
+* `ninja`
+* `sudo meson install`
+
 ## Useful Links
 *   GNOME Circle: <https://apps.gnome.org/app/com.github.ADBeveridge.Raider/>
 *   Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
