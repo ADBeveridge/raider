@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-28 17:41-0700\n"
-"PO-Revision-Date: 2023-05-26 01:14+0300\n"
+"PO-Revision-Date: 2023-09-11 00:00+0300\n"
 "Last-Translator: volkov <volkovissocool@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
@@ -236,19 +236,19 @@ msgstr "Додати"
 
 #: src/raider-window.blp:59
 msgid "Add files or drop here"
-msgstr "Додайте файли або перетягніть сюди"
+msgstr "Додайте файли або перетягніть їх сюди"
 
 #: src/raider-window.blp:61
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
-"Шредерування це обусфікація змісту файла випадковими даними, завдяки чому "
-"відновити зміст файлу буде неможливо."
+"Шредерування - це обфускація змісту файлу випадковими даними, завдяки чому "
+"відновити його зміст буде неможливо."
 
 #: src/raider-window.blp:97 src/raider-window.c:358
 msgid "Shred All"
-msgstr "Шредерувати усі"
+msgstr "Шредерувати усе"
 
 #: src/raider-window.blp:116 src/raider-window.c:410
 msgid "Abort All"
