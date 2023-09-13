@@ -134,12 +134,12 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     // Run some checks on the file.
     if(stat(filename, &st) != 0)
     {
-        fprintf(stderr, "corrupt: '%s' not found\n", filename);
+        fprintf(stderr, "corrupt: current file not found\n", filename);
         ret = 1;
     }
     if (S_ISREG(st.st_mode) == 0)
     {
-        fprintf(stderr, "corrupt: '%s' is not a regular file\n", filename);
+        fprintf(stderr, "corrupt: current file is not a regular file\n", filename);
         ret = 1;
     }
 
