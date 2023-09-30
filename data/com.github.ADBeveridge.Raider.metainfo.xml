@@ -45,7 +45,7 @@
   </screenshots>
   <releases>
     <release version="2.0.0" date="2023-03-25">
-      <description>
+      <description translatable="no">
         <p>Use custom code for shredding files</p>
         <ul>
           <li>Directly import code into Raider for shredding a file</li>
@@ -54,12 +54,12 @@
       </description>
     </release>
     <release version="1.3.1" date="2022-10-13">
-      <description>
+      <description translatable="no">
         <p>Fix UI bug when shredding is aborted</p>
       </description>
     </release>
     <release version="1.3.0" date="2022-9-20">
-      <description>
+      <description translatable="no">
         <p>Updates to help and application</p>
         <ul>
           <li>Add keyboard shortcuts to common actions</li>
@@ -73,7 +73,7 @@
       </description>
     </release>
     <release version="1.2.2" date="2022-8-19">
-      <description>
+      <description translatable="no">
         <p>Bug fixes and translation updates</p>
         <ul>
           <li>Add Chinese, Turkish, Occitan and Brazilian Portuguese translations</li>
@@ -82,7 +82,7 @@
       </description>
     </release>
     <release version="1.2.1" date="2022-8-10">
-      <description>
+      <description translatable="no">
         <p>User interface fixes</p>
         <ul>
           <li>Add explanatory message and changed initial view's icon</li>
@@ -91,7 +91,7 @@
       </description>
     </release>
     <release version="1.2.0" date="2022-8-06">
-      <description>
+      <description translatable="no">
         <p>User interface fixes</p>
         <ul>
           <li>Fix cropping of keyboard focus ring on shred button</li>
@@ -101,7 +101,7 @@
       </description>
     </release>
     <release version="1.1.1" date="2022-8-03">
-      <description>
+      <description translatable="no">
         <p>Bug fixes and translation updates</p>
         <ul>
           <li>Add the French translation</li>
@@ -113,7 +113,7 @@
       </description>
     </release>
     <release version="1.1.0" date="2022-7-28">
-      <description>
+      <description translatable="no">
         <p>Minor fixes, including:</p>
         <ul>
           <li>Move the Shred button to the bottom of the window</li>
@@ -123,7 +123,7 @@
       </description>
     </release>
     <release version="1.0.0.alpha1" date="2022-6-30">
-      <description>
+      <description translatable="no">
         <p>A significant rewite of File Shredder, with a few UI changes changes:</p>
         <ul>
           <li>Add checking so a file cannot be loaded twice</li>
@@ -134,7 +134,7 @@
       </description>
     </release>
     <release version="0.1.0" date="2021-12-30">
-      <description>
+      <description translatable="no">
         <p>The very first release of File Shredder. It supports progress tracking, and
 	      has a GNOME compliant interface.</p>
       </description>
