@@ -80,16 +80,11 @@ static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const 
 {
     char* filename = g_file_get_path(corrupt->file);
     int ret = 0;
+    int length = 3; // The length of each element in the steps array below.
 
     // Run some checks.
     FILE* fp = fopen(filename,  "r+");
     if (fp == NULL)
-    {
-        ret = 1;
-        return ret;
-    }
-    uint8_t length = (uint8_t) strlen(pattern);
-    if (length <= 0)
     {
         ret = 1;
         return ret;
@@ -120,6 +115,7 @@ static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const 
 
 uint8_t corrupt_file(RaiderCorrupt* corrupt)
 {
+    // The length of these strings MUST be 3 characters. Otherwise it will behave in a undefined manner.
     const char* steps[] = {"\x77\x77\x77", "\x76\x76\x76",
          "\x33\x33\x33", "\x35\x35\x35",
          "\x55\x55\x55", "\xAA\xAA\xAA",
@@ -134,12 +130,12 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     // Run some checks on the file.
     if(stat(filename, &st) != 0)
     {
-        fprintf(stderr, "corrupt: current file not found\n", filename);
+        fprintf(stderr, "corrupt: current file not found\n");
         ret = 1;
     }
     if (S_ISREG(st.st_mode) == 0)
     {
-        fprintf(stderr, "corrupt: current file is not a regular file\n", filename);
+        fprintf(stderr, "corrupt: current file is not a regular file\n");
         ret = 1;
     }
 
