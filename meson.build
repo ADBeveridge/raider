@@ -5,8 +5,8 @@ gnome = import('gnome')
 
 # Get all dependencies for Raider. Secure Delete should fallback, unless this is being packaged.
 raider_deps = [
-  dependency('gtk4'),
-  dependency('libadwaita-1', version: '>= 1.0'),
+  dependency('gtk4', version: '>=4.12', required : false, fallback : ['gtk4', 'gtk4_lib_dep']),
+  dependency('libadwaita-1', version: '>= 1.4', required : false, fallback : ['adwaita', 'adwaita_lib_dep']),
   dependency('gio-unix-2.0')
 ]
 
