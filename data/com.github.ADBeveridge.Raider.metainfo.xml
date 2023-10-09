@@ -15,6 +15,8 @@
   </kudos>
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
   <url type="homepage">https://github.com/ADBeveridge/raider</url>
+  <url type="bugtracker">https://github.com/ADBeveridge/raider/issues</url>
+  <url type="vcs-browser">https://github.com/ADBeveridge/raider/tree/develop</url>
   <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
   <update_contact>adgbeveridge@proton.me</update_contact>
   <developer_name>Alan Beveridge</developer_name>
