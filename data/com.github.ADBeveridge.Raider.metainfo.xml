@@ -46,11 +46,11 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="2.0.0" date="2023-03-25">
+    <release version="2.0.0" date="2023-08-15">
       <description translatable="no">
         <p>Use custom code for shredding files</p>
         <ul>
-          <li>Directly import code into Raider for shredding a file</li>
+          <li>Use custom code in Raider for shredding a file</li>
           <li>Remove preferences</li>
         </ul>
       </description>
