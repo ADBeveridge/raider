@@ -8,7 +8,7 @@ add_global_arguments('-Ddocs=false',language: 'c')
 # Get all dependencies for Raider. Secure Delete should fallback, unless this is being packaged.
 raider_deps = [
   #dependency('gio-unix-2.0', version: '>=2.76.0', required: false, fallback : ['glib', 'gio-unix_dep']),
-  dependency('gtk4', version: '>=4.12', required : false, fallback : ['gtk4-build', 'gtk4_lib_dep']),
+  dependency('gtk4', version: '>=4.12', required : false, default_options: ['media-gstreamer=disabled','build-tests=false','build-testsuite=false'], fallback : ['gtk4', 'gtk4']),
   dependency('libadwaita-1', version: '>= 1.4', required : false, fallback : ['adwaita-build', 'adwaita_lib_dep']),
 ]
 
