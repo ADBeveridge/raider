@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 14:23-0700\n"
+"POT-Creation-Date: 2023-10-15 00:10+0300\n"
 "PO-Revision-Date: 2022-08-19 14:24-0700\n"
 "Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
 "Language-Team: \n"
@@ -18,387 +18,78 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.desktop:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:103 src/raider-window.blp:35
+#: src/raider-application.c:140 src/raider-window.blp:40
 msgid "File Shredder"
 msgstr "文件粉碎机"
 
+#: data/com.github.ADBeveridge.Raider.desktop:5
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-#: src/raider-application.c:110
 msgid "Securely delete your files"
 msgstr "安全地删除您的文件"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#, fuzzy
 msgid ""
-"File Shredder is a simple application used for securely deleting your files "
-"that you do not want to be recovered. File Shredder has a comprehensive set "
-"of preferences and progress tracking for each file."
+"File Shredder is a GNOME application used for securely deleting your files "
+"that you do not want to be recovered."
 msgstr ""
 "File Shredder 是一个简单的应用程序，用于安全地删除您不想恢复的文件。 File "
 "Shredder 对每个文件都有一套全面的首选项和进度跟踪。"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:22
-msgid "Alan Beveridge"
-msgstr "Alan Beveridge"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:77
-msgid "Bug fixes and translation updates"
-msgstr "错误修复和翻译更新"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-#, fuzzy
-#| msgid "Added the Portuguese translation"
-msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
-msgstr "添加了葡萄牙语翻译"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
-msgid "Fixed in-app notification crash"
-msgstr ""
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:58
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
-msgid "User interface fixes"
-msgstr "用户界面修复"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
-msgid "Added explanatory message and changed initial view's icon"
-msgstr "添加了解释性消息并更改了初始视图图标"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Added icon to add button in headerbar"
-msgstr "添加图标以在标题栏中添加按钮"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Fixed cropping of keyboard focus ring on shred button"
-msgstr "修复了粉碎按钮上键盘对焦环的裁剪"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
-msgid "Updated preferences to be more concise and explanatory"
-msgstr "更新首选项以变得更简洁和更易理解"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-msgid "Add icon to open button in headerbar"
-msgstr "在标题栏中添加打开按钮图标"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
-msgid "Added the French translation"
-msgstr "添加了法语翻译"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
-msgid "Added the Portuguese translation"
-msgstr "添加了葡萄牙语翻译"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:81
-msgid "Updated the Russian translation"
-msgstr "更新了俄语翻译"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
-msgid "Fixed progress retrieval bug"
-msgstr "修复进度检索错误"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
-msgid "Fixed display problems"
-msgstr "修复了显示问题"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
-msgid "Minor fixes, including:"
-msgstr "其他修复，包括："
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
-msgid "Moved the Shred button to the bottom of the window"
-msgstr "将粉碎按钮移至窗口底部"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
-msgid "Support for mobile devices added"
-msgstr "添加了对移动设备的支持"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:93
-msgid "Rethemed the file rows to standard look"
-msgstr "将文件行重新命名为标准外观"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:99
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr "对文件粉碎机进行了重要的重写，并进行了一些 UI 更改："
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
-msgid "Added checking so a file cannot be loaded twice"
-msgstr "添加了检查，因此文件不能被加载两次"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
-msgid "Smooth progress tracking"
-msgstr "流畅的进度跟踪"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
-msgid "Written using GTK4 and Adwaita"
-msgstr "使用 GTK4 和 Adwaita 编写"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
-msgid "Desktop notifications are shown if the window is not focused"
-msgstr "如果窗口未选中，则会显示桌面通知"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
-msgid ""
-"The very first release of File Shredder. It supports progress tracking, and "
-"boasts a GNOME compliant interface."
-msgstr "文件粉碎机的第一个版本。 它支持进度跟踪，并拥有符合 GNOME 的界面。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:5
-msgid "Hide shredding"
-msgstr "隐藏粉碎"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:6
-msgid ""
-"Whether to hide shredding. This is done by overwriting the file(s) with "
-"zeros."
-msgstr "是否隐藏粉碎。 这是通过用零覆盖文件来完成的。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:10
-msgid "Remove file"
-msgstr "删除文件"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:11
-msgid "Whether to remove the file after shredding it."
-msgstr "粉碎后是否删除文件。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:15
-#: src/raider-preferences.blp:34
-msgid "Number of passes"
-msgstr "完成个数"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:16
-msgid "How many times the file will be overwritten with random data."
-msgstr "文件将被随机数据覆盖多少次。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:21
-msgid "Remove method"
-msgstr "删除方法"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:22
-msgid "How the obfucticated file will be removed from the filesystem."
-msgstr "如何从文件系统中删除混淆文件。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:27
-msgid "Override Permisions"
-msgstr "覆盖权限"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:28
-msgid "If you do not have the neccessary permissions, override them."
-msgstr "如果您没有必要的权限，请将其覆盖。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:32
-#, fuzzy
-msgid "Do not round to next block"
-msgstr "不要舍入到下一个块"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:33
-#, fuzzy
-msgid ""
-"Do not round the file to the next block. This is the default for non-regular "
-"files."
-msgstr "不要将文件四舍五入到下一个块。 这是非常规文件的默认设置。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:37
-msgid "Number of bytes to shred entry"
-msgstr "要粉碎条目的字节数"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:38
-msgid ""
-"Shred the number of bytes you want, and leave the rest of the file untouched."
-msgstr "粉碎您想要的字节数，并保持文件的其余部分不变。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:43
-msgid "Shred executable"
-msgstr "粉碎可执行文件"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:44
-msgid "The path to the shred executable."
-msgstr "粉碎可执行文件的路径。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:48
-msgid "Whether to allow the source data file to be enabled"
-msgstr "是否允许启用源数据文件"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:49
-msgid "If unchecked, the source data file will not be loaded."
-msgstr "如果未选中，则不会加载源数据文件。"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:53
-msgid "Overwrite data file"
-msgstr "覆盖数据文件"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:54
-msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr "从哪里获取数据以覆盖要粉碎的文件。"
-
-#: src/raider-application.c:73 src/raider-window.blp:28
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
 msgid "Add Files"
 msgstr "添加文件"
 
-#: src/raider-application.c:74
-msgid "Cancel"
-msgstr "取消"
-
-#: src/raider-application.c:74 src/raider-window.blp:26
-msgid "Add"
-msgstr "添加"
-
-#: src/raider-application.c:109
-#, fuzzy
-#| msgid "1.2.1"
-msgid "1.2.2"
-msgstr "1.2.1"
-
-#: src/raider-application.c:114
+#: src/raider-application.c:154
 msgid "translator-credits"
 msgstr "翻译者贡献"
 
-#. Notification stuff.
-#: src/raider-file-row.c:169
-msgid "Shredded "
-msgstr "粉碎 "
-
-#: src/raider-preferences.blp:8
-#, fuzzy
-#| msgid "Shredded "
-msgid "Shredder"
-msgstr "粉碎 "
-
-#: src/raider-preferences.blp:10
-msgid "Basic"
-msgstr "基本"
-
-#: src/raider-preferences.blp:13
-msgid "Remove File"
-msgstr "删除文件"
-
-#: src/raider-preferences.blp:14
-msgid "Whether to remove the file after obfuscating its contents"
-msgstr "混淆文件内容后是否删除文件"
-
-#: src/raider-preferences.blp:24
-#, fuzzy
-msgid "Hide Shredding"
-msgstr "隐藏粉碎"
-
-#: src/raider-preferences.blp:25
-#, fuzzy
-msgid ""
-"Do a final overwrite with zeros instead of random data. Random data is a "
-"clue that the file has been shredded"
-msgstr "用零而不是随机数据进行最终覆盖。 随机数据是文件已被粉碎的线索"
-
-#: src/raider-preferences.blp:35
-msgid "How many times to shred file over"
-msgstr "粉碎文件多少次"
-
-#: src/raider-preferences.blp:47
-msgid "Advanced"
-msgstr "高级"
-
-#: src/raider-preferences.blp:49
-msgid "Remove Method"
-msgstr "删除方法"
-
-#: src/raider-preferences.blp:50
-#, fuzzy
-#| msgid "How to remove the files from the fileystem"
-msgid ""
-"How to remove the obfuscated files from the fileystem. See help for "
-"information"
-msgstr "如何从文件系统中删除文件"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
-msgid "Wipesync"
-msgstr "擦除同步"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
-msgid "Wipe"
-msgstr "擦除"
-
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
-msgid "Unlink"
-msgstr "取消链接"
-
-#: src/raider-preferences.blp:56
-msgid "Overwrite data source"
-msgstr "覆盖数据源"
-
-#: src/raider-preferences.blp:57
-msgid ""
-"Where to get the data to overwrite the files with. Disabled at every startup"
-msgstr "从哪里获取数据以覆盖文件。 每次启动时禁用"
-
-#: src/raider-preferences.blp:66
-msgid "None Selected"
-msgstr "未选择"
-
-#: src/raider-preferences.blp:70
-msgid "Select File"
-msgstr "选择文件"
-
-#: src/raider-preferences.blp:77
-msgid "Number of bytes to shred"
-msgstr "要粉碎的字节数"
-
-#: src/raider-preferences.blp:78
-#, fuzzy
-msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr "要粉碎多少文件。 0 粉碎碎整个文件"
-
-#: src/raider-preferences.blp:90
-msgid "Do not round file sizes"
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
 msgstr ""
 
-#: src/raider-preferences.blp:91
-#, fuzzy
-msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr "不要将文件大小四舍五入到下一个块。 不规则文件的默认值"
-
-#: src/raider-preferences.blp:99
-msgid "Override file permissions"
-msgstr "覆盖文件权限"
-
-#: src/raider-preferences.blp:100
-msgid ""
-"Whether to override the file permissions in case of insufficient permissions"
-msgstr "权限不足时是否覆盖文件权限"
-
-#: src/raider-progress-info-popover.c:62
+#: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
 msgstr "估计..."
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:387
-msgid "failed"
-msgstr "失败"
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr ""
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:391
-msgid "removing"
-msgstr "删除中"
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+msgid "New Window"
+msgstr "新窗口"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:396
-msgid "removed"
-msgstr "已删除"
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+msgid "Keyboard Shortcuts"
+msgstr ""
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:402
-msgid "pass"
-msgstr "通过"
+#: src/raider-shortcuts.blp:23
+#, fuzzy
+msgid "Close Window"
+msgstr "新窗口"
 
-#: src/raider-window.blp:53
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr ""
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "添加"
+
+#: src/raider-window.blp:46
+msgid "Main Menu"
+msgstr ""
+
+#: src/raider-window.blp:61
 msgid "Add files or drop here"
 msgstr "添加文件或拖到这里"
 
-#: src/raider-window.blp:55
+#: src/raider-window.blp:63
 #, fuzzy
-#| msgid ""
-#| "Shredding is the obfuscation of a file with random data so the previous "
-#| "contents cannot be recovered. Learn more about <a href=\"https://en."
-#| "wikipedia.org/wiki/Shred_(Unix)\">File Shredder's backend</a>."
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -406,55 +97,73 @@ msgstr ""
 "粉碎是使用随机数据对文件进行混淆处理，因此无法恢复以前的内容。 详细了解<a "
 "href=\"https://en.wikipedia.org/wiki/Shred_(Unix)\">文件粉碎机的后端</a>。"
 
-#: src/raider-window.blp:91
+#: src/raider-window.blp:99 src/raider-window.c:358
 msgid "Shred All"
 msgstr "粉碎所有"
 
-#: src/raider-window.blp:110
+#: src/raider-window.blp:118 src/raider-window.c:410
 msgid "Abort All"
 msgstr "终止所有"
 
-#: src/raider-window.blp:127
-msgid "New Window"
-msgstr "新窗口"
-
-#: src/raider-window.blp:133
-msgid "Preferences"
-msgstr "设置"
-
-#: src/raider-window.blp:137
-msgid "Help"
-msgstr "帮助"
-
-#: src/raider-window.blp:141
+#: src/raider-window.blp:145
 msgid "About File Shredder"
 msgstr "关于文件粉碎机"
 
-#: src/raider-window.c:195
+#: src/raider-window.c:151
 #, fuzzy
-#| msgid "Could not remove file from quick list."
-msgid "Could not remove filename from quick list. Please report this."
-msgstr "无法从快速列表中删除文件。"
+msgid "Stop Shredding?"
+msgstr "隐藏粉碎"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr ""
+
+#: src/raider-window.c:155
+#, fuzzy
+msgid "_Cancel"
+msgstr "取消"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr ""
 
 #: src/raider-window.c:203
 #, fuzzy
-#| msgid "Hide shredding"
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "无法从快速列表中删除文件。"
+
+#: src/raider-window.c:213
+#, fuzzy
 msgid "Finished shredding files"
 msgstr "隐藏粉碎"
 
-#: src/raider-window.c:240
+#: src/raider-window.c:281
+#, fuzzy
+msgid "Some files were already loaded"
+msgstr "“%s”已加载"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr ""
+
+#: src/raider-window.c:302
 msgid "Directories are not supported"
 msgstr "不支持目录"
 
-#: src/raider-window.c:259
-#, c-format
-msgid "“%s” is already loaded"
-msgstr "“%s”已加载"
-
-#: src/raider-window.c:272
+#: src/raider-window.c:312
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "无法写入“%s”"
 
-#~ msgid "_Basic"
-#~ msgstr "基本"
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr ""
+
+#: src/raider-window.c:380
+#, fuzzy
+msgid "Starting Shredding…"
+msgstr "隐藏粉碎"
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr ""

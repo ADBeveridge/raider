@@ -1,422 +1,51 @@
 # Turkish translation for com.github.ADBeveridge.Raider.
-# Copyright (C) 2022 com.github.ADBeveridge.Raider's COPYRIGHT HOLDER
+# Copyright (C) 2022-2023 com.github.ADBeveridge.Raider's COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.ADBeveridge.Raider package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-06 12:21+0300\n"
-"PO-Revision-Date: 2023-01-27 15:01+0300\n"
+"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+"PO-Revision-Date: 2023-10-15 00:16+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:3
+#: data/com.github.ADBeveridge.Raider.desktop:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:149 src/raider-window.blp:40
+#: src/raider-application.c:140 src/raider-window.blp:40
 msgid "File Shredder"
 msgstr "Dosya Parçalayıcı"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.desktop:5
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:7
 msgid "Securely delete your files"
 msgstr "Dosyalarınızı güvenli silin"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
 msgid ""
-"File Shredder is a simple application used for securely deleting your files "
-"that you do not want to be recovered. File Shredder has a comprehensive set "
-"of preferences and progress tracking for each file."
+"File Shredder is a GNOME application used for securely deleting your files "
+"that you do not want to be recovered."
 msgstr ""
 "Dosya Parçalayıcı, kurtarılmasını istemediğiniz dosyalarınızı güvenli "
-"şekilde silmek için kullanılan basit bir uygulamadır. Dosya Parçalayıcı, "
-"kapsamlı bir tercihler grubuna ve her dosya için ilerleme takibine sahiptir."
+"şekilde silmek için kullanılan basit bir uygulamadır."
 
-# Geliştiricinin adı.
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:21
-msgid "Alan Beveridge"
-msgstr "Alan Beveridge"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
-msgid "Fix UI bug when shredding aborted"
-msgstr "Parçalama iptal edildiğinde arayüz hatası düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:57
-msgid "Updates to help and application"
-msgstr "Yardım ve uygulama güncellemeleri"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:59
-msgid "Added keyboard shortcuts to common actions"
-msgstr "Yaygın eylemlere kısayollar eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:60
-msgid "Fixed memory leaks"
-msgstr "Bellek sızıntıları düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:61
-msgid "Fixed crash when backend failed to start"
-msgstr "Arka uç başlatılamadığı zaman kilitlenme düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:62
-msgid "Fixed application crash when closing window during shredding"
-msgstr "Parçalama sırasında pencereyi kapatırken uygulama çökmesi düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
-msgid "Removed typo in Shred All button"
-msgstr "Shred All düğmesindeki yazım hatası düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:64
-msgid "Updated Turkish translation"
-msgstr "Türkçe çeviri güncellendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
-msgid "Add more categories to desktop file"
-msgstr "Masaüstü dosyasına daha fazla kategori eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:99
-msgid "Bug fixes and translation updates"
-msgstr "Hata düzeltmeler ve çeviri güncellemeleri"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:73
-msgid "Added Chinese, Turkish, Occitan and Brazilian Portuguese translations"
-msgstr "Çince, Türkçe, Oksitanca ve Brezilya Portekizcesi çevirileri eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:74
-msgid "Fixed in-app notification crash"
-msgstr "Uygulama içi bildirim çökmesi düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
-msgid "User interface fixes"
-msgstr "Kullanıcı arayüzü düzeltmeleri"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:82
-msgid "Added explanatory message and changed initial view's icon"
-msgstr "Açıklayıcı mesaj eklendi ve ilk görünümün simgesi değiştirildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:83
-msgid "Added icon to add button in headerbar"
-msgstr "Başlık çubuğuna düğme eklemek için simge eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:91
-msgid "Fixed cropping of keyboard focus ring on shred button"
-msgstr "Parçalama düğmesindeki klavye odak halkasının kırpılması düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:92
-msgid "Updated preferences to be more concise and explanatory"
-msgstr "Terihler, daha özlü ve açıklayıcı olacak şekilde güncellendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:93
-msgid "Add icon to open button in headerbar"
-msgstr "Başlık çubuğunda aç düğmesi için simge eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:101
-msgid "Added the French translation"
-msgstr "Fransızca çeviri eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:102
-msgid "Added the Portuguese translation"
-msgstr "Portekizcesi çevirisi eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:103
-msgid "Updated the Russian translation"
-msgstr "Rusça çeviri güncellendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:104
-msgid "Fixed progress retrieval bug"
-msgstr "İlerleme geri alma hatası düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:105
-msgid "Fixed display problems"
-msgstr "Görünüm sorunları düzeltildi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:111
-msgid "Minor fixes, including:"
-msgstr "Aşağıdakiler dahil küçük düzeltmeler:"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:113
-msgid "Moved the Shred button to the bottom of the window"
-msgstr "Parçala düğmesi pencerenin altına taşındı"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:114
-msgid "Support for mobile devices added"
-msgstr "Mobil aygıt desteği eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:115
-msgid "Rethemed the file rows to standard look"
-msgstr "Dosya satırlarını standart görünüme kavuşturuldu"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:121
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
-"Birkaç kullanıcı arayüzü değişikliğiyle birlikte Dosya Parçalayıcı yeniden "
-"yazıldı:"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:123
-msgid "Added checking so a file cannot be loaded twice"
-msgstr "Bir dosyanın iki defa yüklenememesi için denetim eklendi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:124
-msgid "Smooth progress tracking"
-msgstr "Sorunsuz ilerleme takibi"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:125
-msgid "Written using GTK4 and Adwaita"
-msgstr "GTK4 ve Adwaita kullanılarak yazıldı"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:126
-msgid "Desktop notifications are shown if the window is not focused"
-msgstr "Pencere odaklanmamışsa masaüstü bildirimleri gösterilir"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:132
-msgid ""
-"The very first release of File Shredder. It supports progress tracking, and "
-"boasts a GNOME compliant interface."
-msgstr ""
-"Dosya Parçalayıcı'nın ilk sürümü. İlerleme takibini destekler ve GNOME "
-"uyumlu arayüze sahiptir."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:5
-msgid "Hide shredding"
-msgstr "Parçalamayı gizle"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:6
-msgid ""
-"Whether to hide shredding. This is done by overwriting the file(s) with "
-"zeros."
-msgstr ""
-"Parçalamanın gizlenme durumu. Bu, dosyaların üzerine sıfırlar yazılarak "
-"yapılır."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:10
-msgid "Remove file"
-msgstr "Dosya sil"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:11
-msgid "Whether to remove the file after shredding it."
-msgstr "Dosyanın parçalandıktan sonra kaldırılma durumu."
-
-# Menü ile uyumlu olsun
-#: data/com.github.ADBeveridge.Raider.gschema.xml:15
-#: src/raider-preferences.blp:34
-msgid "Number of passes"
-msgstr "Geçiş Sayısı"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:16
-msgid "How many times the file will be overwritten with random data."
-msgstr "Dosyanın üzerine rastgele verilerle kaç defa yazılacağı."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:21
-msgid "Remove method"
-msgstr "Kaldırma yöntemi"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:22
-msgid "How the obfucticated file will be removed from the filesystem."
-msgstr "Gizlenmiş dosyanın dosya sisteminden nasıl kaldırılacağı."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:27
-msgid "Override Permisions"
-msgstr "İzinleri Çiğne"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:28
-msgid "If you do not have the neccessary permissions, override them."
-msgstr "Gerekli izinlere sahip değilseniz, bunları çiğner."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:32
-msgid "Do not round to next block"
-msgstr "Sonraki bloğa yuvarlama"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:33
-msgid ""
-"Do not round the file to the next block. This is the default for non-regular "
-"files."
-msgstr ""
-"Dosyayı bir sonraki bloğa yuvarlama. Düzensiz dosyalar için öntanımlıdır."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:37
-msgid "Number of bytes to shred entry"
-msgstr "Girişin parçalanacak bayt sayısı"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:38
-msgid ""
-"Shred the number of bytes you want, and leave the rest of the file untouched."
-msgstr ""
-"İstediğiniz bayt sayısı kadar parçalayın ve dosyanın geri kalanını "
-"dokunmadan bırakın."
-
-# Shred burada komutun adı, çevirmeyin!
-#: data/com.github.ADBeveridge.Raider.gschema.xml:43
-msgid "Shred executable"
-msgstr "Shred yürütülebiliri"
-
-# Shred burada komutun adı, çevirmeyin!
-#: data/com.github.ADBeveridge.Raider.gschema.xml:44
-msgid "The path to the shred executable."
-msgstr "Shred yürütülebilir dosyasının yolu."
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:48
-msgid "Whether to allow the source data file to be enabled"
-msgstr "Kaynak veri dosyasının etkinleştirilmesine izin verilme durumu"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:49
-msgid "If unchecked, the source data file will not be loaded."
-msgstr "İşaretli değilse, kaynak veri dosyası yüklenmez."
-
-# Menüyle uyumlu olsun.
-#: data/com.github.ADBeveridge.Raider.gschema.xml:53
-msgid "Overwrite data file"
-msgstr "Üzerine yazma veri dosyası"
-
-#: data/com.github.ADBeveridge.Raider.gschema.xml:54
-msgid "Where to get data to overwrite the to-be-shredded files."
-msgstr "Parçalanacak dosyaların üzerine yazılacak verilerin nereden alınacağı."
-
-#: src/raider-application.c:74 src/raider-window.blp:33
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
 msgid "Add Files"
 msgstr "Dosya Ekle"
 
-#: src/raider-application.c:75
-msgid "Cancel"
-msgstr "İptal Et"
-
-#: src/raider-application.c:75 src/raider-window.blp:31
-msgid "Add"
-msgstr "Ekle"
-
-#: src/raider-application.c:163
+#: src/raider-application.c:154
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
-
-#. Notification stuff.
-#: src/raider-file-row.c:174
-msgid "Shredded "
-msgstr "Parçalandı "
-
-#: src/raider-file-row.c:302
-msgid "Failed to start shredding"
-msgstr "Parçalama başlatılamadı"
-
-#: src/raider-preferences.blp:8
-msgid "Shredder"
-msgstr "Parçalayıcı"
-
-#: src/raider-preferences.blp:10
-msgid "Basic"
-msgstr "Temel"
-
-#: src/raider-preferences.blp:13
-msgid "Remove File"
-msgstr "Dosya Kaldır"
-
-#: src/raider-preferences.blp:14
-msgid "Whether to remove the file after obfuscating its contents"
-msgstr "İçeriği gizledikten sonra dosyanın kaldırılma durumu"
-
-#: src/raider-preferences.blp:24
-msgid "Hide Shredding"
-msgstr "Parçalamayı Gizle"
-
-#: src/raider-preferences.blp:25
-msgid ""
-"Do a final overwrite with zeros instead of random data. Random data is a "
-"clue that the file has been shredded"
-msgstr ""
-"Rastgele veriler yerine sıfırlarla son kez üzerine yaz. Rastgele veriler, "
-"dosyanın parçalandığına dair bir ipucudur"
-
-#: src/raider-preferences.blp:35
-msgid "How many times to shred file over. The more the better"
-msgstr "Dosyanın kaç defa parçalamanacağı. Ne kadar çok o kadar iyi"
-
-#: src/raider-preferences.blp:47
-msgid "Advanced"
-msgstr "Gelişmiş"
-
-#: src/raider-preferences.blp:49
-msgid "Remove Method"
-msgstr "Kaldırma Yöntemi"
-
-#: src/raider-preferences.blp:50
-msgid ""
-"How to remove the obfuscated files from the fileystem. See help for "
-"information"
-msgstr ""
-"Gizlenmiş dosyalar dosya sisteminden nasıl kaldırılır. Bilgi için yardıma "
-"bakın"
-
-# Silme metodunun adı:
-# https://man7.org/linux/man-pages/man1/shred.1.html
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:128
-msgid "Wipesync"
-msgstr "Wipesync"
-
-# Silme metodunun adı:
-# https://man7.org/linux/man-pages/man1/shred.1.html
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:129
-msgid "Wipe"
-msgstr "Wipe"
-
-# Silme metodunun adı:
-# https://man7.org/linux/man-pages/man1/shred.1.html
-#: src/raider-preferences.blp:52 src/raider-preferences.blp:130
-msgid "Unlink"
-msgstr "Unlink"
-
-# Üzerine yazma işleminde kullanılacak verilerin kaynağı. Konumu gereği başlık düzeni tercih edildi.
-#: src/raider-preferences.blp:56
-msgid "Overwrite data source"
-msgstr "Üzerine Yazma Veri Kaynağı"
-
-#: src/raider-preferences.blp:57
-msgid ""
-"Where to get the data to overwrite the files with. Disabled at every startup"
-msgstr ""
-"Dosyaların üzerine yazılacak verilerin nereden alınacağı. Her başlangıçta "
-"devre dışı bırakılır"
-
-#: src/raider-preferences.blp:66
-msgid "None Selected"
-msgstr "Hiçbir Şey Seçilmedi"
-
-#: src/raider-preferences.blp:70
-msgid "Select File"
-msgstr "Dosya Seç"
-
-# Menüyle uyumlu olsun.
-#: src/raider-preferences.blp:77
-msgid "Number of bytes to shred"
-msgstr "Parçalanacak Bayt Sayısı"
-
-#: src/raider-preferences.blp:78
-msgid "How much of the file to shred. 0 to shred the whole file"
-msgstr "Dosyanın ne kadarının parçalanacağı. 0 tüm dosyayı parçala demektir"
-
-#: src/raider-preferences.blp:90
-msgid "Do not round file sizes"
-msgstr "Dosya Boyutlarını Yuvarlama"
-
-#: src/raider-preferences.blp:91
-msgid "Do not round file sizes to the next block. Default for irregular files"
-msgstr ""
-"Dosya boyutlarını bir sonraki bloğa yuvarlama. Düzensiz dosyalar için "
-"öntanımlı"
-
-#: src/raider-preferences.blp:99
-msgid "Override file permissions"
-msgstr "Dosya İzinlerini Çiğne"
-
-#: src/raider-preferences.blp:100
-msgid "Whether to override the file permissions of read-only user files"
-msgstr "Salt okunur kullanıcı dosyalarının dosya izinlerinin çiğnenme durumu"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Finishing up..."
@@ -426,66 +55,39 @@ msgstr "Bitiriliyor…"
 msgid "Estimating..."
 msgstr "Tahmin ediliyor..."
 
-#: src/raider-shortcuts.ui:12
-msgctxt "shortcut window"
+#: src/raider-shortcuts.blp:8
 msgid "General"
 msgstr "Genel"
 
-#: src/raider-shortcuts.ui:16
-msgctxt "shortcut window"
-msgid "Help"
-msgstr "Yardım"
-
-#: src/raider-shortcuts.ui:22
-msgctxt "shortcut window"
-msgid "Add Files"
-msgstr "Dosya Ekle"
-
-#: src/raider-shortcuts.ui:28
-msgctxt "shortcut window"
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: src/raider-shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Preferences"
-msgstr "Tercihler"
-
-#: src/raider-shortcuts.ui:40
-msgctxt "shortcut window"
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: src/raider-shortcuts.ui:46
-msgctxt "shortcut window"
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Pencereyi Kapat"
+
+#: src/raider-shortcuts.blp:27
 msgid "Quit"
 msgstr "Çık"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:387
-msgid "failed"
-msgstr "başarısız"
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Ekle"
 
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:391
-msgid "removing"
-msgstr "kaldırılıyor"
-
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:396
-msgid "removed"
-msgstr "kaldırıldı"
-
-#. Translators: make sure this correspond with the output of shred on your system.
-#: src/raider-shred-backend.c:402
-msgid "pass"
-msgstr "geçti"
-
-#: src/raider-window.blp:59
-msgid "Add files or drop here"
-msgstr "Dosyaları ekleyin veya sürükleyip buraya bırakın"
+#: src/raider-window.blp:46
+msgid "Main Menu"
+msgstr "Ana Menü"
 
 #: src/raider-window.blp:61
+msgid "Add files or drop here"
+msgstr "Dosyaları ekleyin ya da buraya bırakın"
+
+#: src/raider-window.blp:63
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -493,83 +95,67 @@ msgstr ""
 "Parçalama, bir dosyanın rastgele verilerle karıştırılmasıdır, böylece önceki "
 "içerikler kurtarılamaz."
 
-#: src/raider-window.blp:97 src/raider-window.c:316
+#: src/raider-window.blp:99 src/raider-window.c:358
 msgid "Shred All"
 msgstr "Tümünü Parçala"
 
-#: src/raider-window.blp:116 src/raider-window.c:372
+#: src/raider-window.blp:118 src/raider-window.c:410
 msgid "Abort All"
 msgstr "Tümünden Vazgeç"
 
-#: src/raider-window.blp:133
-msgid "New Window"
-msgstr "Yeni Pencere"
-
-#: src/raider-window.blp:139
-msgid "Preferences"
-msgstr "Tercihler"
-
-#: src/raider-window.blp:143
-msgid "Keyboard Shortcuts"
-msgstr "Klavye Kısayolları"
-
-#: src/raider-window.blp:147
-msgid "Help"
-msgstr "Yardım"
-
-#: src/raider-window.blp:151
+#: src/raider-window.blp:145
 msgid "About File Shredder"
 msgstr "Dosya Parçalayıcı Hakkında"
 
-#: src/raider-window.c:93
+#: src/raider-window.c:151
 msgid "Stop Shredding?"
-msgstr "Parçalama Durdurulsun mu?"
+msgstr "Parçalama Durdurulsun Mu?"
 
-#: src/raider-window.c:94
+#: src/raider-window.c:152
 msgid "Are you sure that you want to exit?"
 msgstr "Çıkmak istediğinize emin misiniz?"
 
-#: src/raider-window.c:97
+#: src/raider-window.c:155
 msgid "_Cancel"
-msgstr "_İptal Et"
+msgstr "İ_ptal"
 
-#: src/raider-window.c:97
+#: src/raider-window.c:155
 msgid "_Exit"
 msgstr "_Çık"
 
-#: src/raider-window.c:159
+#: src/raider-window.c:203
 msgid "Could not remove filename from quick list. Please report this."
 msgstr "Dosya adı hızlı listeden kaldırılamadı. Lütfen bunu raporlayın."
 
-#: src/raider-window.c:168
+#: src/raider-window.c:213
 msgid "Finished shredding files"
 msgstr "Dosya parçalama tamamlandı"
 
-#: src/raider-window.c:238
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "Bazı dosyalar zaten yüklü"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "Bazı dosyalar yok"
+
+#: src/raider-window.c:302
 msgid "Directories are not supported"
 msgstr "Dizinler desteklenmiyor"
 
-#: src/raider-window.c:257
-#, c-format
-msgid "“%s” is already loaded"
-msgstr "“%s” zaten yüklü"
-
-#: src/raider-window.c:270
+#: src/raider-window.c:312
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "“%s” dosyasına yazılamıyor"
 
-#: src/raider-window.c:280
-msgid "System cannot load more files"
-msgstr "Sistem daha fazla dosya yükleyemez"
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Daha fazla dosya yükleyemez"
 
-#: src/raider-window.c:342
+#: src/raider-window.c:380
 msgid "Starting Shredding…"
 msgstr "Parçalama Başlatılıyor…"
 
-#: src/raider-window.c:395
+#: src/raider-window.c:432
 msgid "Aborting…"
 msgstr "Vazgeçiliyor…"
-
-#~ msgid "1.2.2"
-#~ msgstr "1.2.2"
