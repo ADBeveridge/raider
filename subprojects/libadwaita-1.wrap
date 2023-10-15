@@ -3,5 +3,5 @@ url=https://gitlab.gnome.org/GNOME/libadwaita
 depth=1
 revision=libadwaita-1-4
 
-[provide]
-dependency_names=adwaita_lib_dep
+#[provide]
+#dependency_names=libadwaita_dep
