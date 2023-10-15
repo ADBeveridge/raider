@@ -9,11 +9,11 @@ raider_deps = [
                 dependency('gtk4', 
                           version: '>=4.12.0', 
                           default_options: ['media-gstreamer=disabled','build-tests=false','build-testsuite=false'], 
-                          fallback : ['gtk4','gtk_dep']),  
+                          fallback : 'gtk4'),  
                 dependency('libadwaita-1', 
                           version: '>=1.4.0', 
                           default_options:['examples=false','tests=false','introspection=disabled','vapi=false'], 
-                          fallback : ['libadwaita-1','adwaita_dep']),  
+                          fallback : 'libadwaita-1'),  
               ]
 
 config_h = configuration_data()
