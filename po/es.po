@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-07 15:36+0200\n"
+"POT-Creation-Date: 2023-10-15 00:10+0300\n"
 "PO-Revision-Date: 2023-09-07 15:46+0200\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian <>\n"
@@ -36,169 +36,6 @@ msgid ""
 msgstr ""
 "Trituradora de archivos es una aplicación de GNOME que sirve para eliminar "
 "de forma segura los archivos que no quiera recuperar."
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:20
-msgid "Alan Beveridge"
-msgstr "Alan Beveridge"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:49
-msgid "Use custom code for shredding files"
-msgstr "Usar código personalizado para destruir archivos"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:51
-msgid "Directly import code into Raider for shredding a file"
-msgstr "Importación directa de código a Raider para destruir un archivo"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:52
-msgid "Remove preferences"
-msgstr "Eliminar preferencias"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:58
-msgid "Fix UI bug when shredding is aborted"
-msgstr ""
-"Corrección de un error en la interfaz de usuario cuando se interrumpe la "
-"trituración."
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:63
-msgid "Updates to help and application"
-msgstr "Actualizaciones de la ayuda y la aplicación"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:65
-msgid "Add keyboard shortcuts to common actions"
-msgstr "Añade atajos de teclado a acciones comunes"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:66
-msgid "Fix memory leaks"
-msgstr "Corrección de fugas de memoria"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:67
-msgid "Fix crash when backend failed to start"
-msgstr "Corrección del fallo de inicio del servidor"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:68
-msgid "Fix application crash when closing window during shredding"
-msgstr ""
-"Corrección del fallo de la aplicación al cerrar la ventana durante la "
-"trituración"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:69
-msgid "Remove typo in Shred All button"
-msgstr "Eliminar error tipográfico en el botón Triturar todo"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:70
-msgid "Update Turkish translation"
-msgstr "Actualización de la traducción al turco"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:71
-msgid "Add more categories to desktop file"
-msgstr "Añade más categorías al archivo de escritorio"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:77
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:105
-msgid "Bug fixes and translation updates"
-msgstr "Corrección de errores y actualización de las traducciones"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:79
-msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
-msgstr "Añade traducciones al chino, turco, occitano y portugués de Brasil"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:80
-msgid "Fix in-app notification crash"
-msgstr "Corrección del fallo de las notificaciones de la aplicación"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:86
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:95
-msgid "User interface fixes"
-msgstr "Correcciones en la interfaz de usuario"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:88
-msgid "Add explanatory message and changed initial view's icon"
-msgstr "Añade un mensaje explicativo y cambia el icono de la vista inicial"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:89
-msgid "Add icon to add button in headerbar"
-msgstr "Añade un icono para añadir un botón en la barra de cabecera"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:97
-msgid "Fix cropping of keyboard focus ring on shred button"
-msgstr ""
-"Corrección del recorte del anillo de enfoque del teclado en el botón de "
-"trituración"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:98
-msgid "Update preferences to be more concise and explanatory"
-msgstr ""
-"Actualización de las preferencias para que sean más concisas y explicativas"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:99
-msgid "Add icon to open button in headerbar"
-msgstr "Añadir un icono para abrir el botón en la barra de cabecera"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:107
-msgid "Add the French translation"
-msgstr "Añade la traducción al francés"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:108
-msgid "Add the Portuguese translation"
-msgstr "Añade la traducción al portugués"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:109
-msgid "Update the Russian translation"
-msgstr "Actualización de la traducción al ruso"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:110
-msgid "Fix progress retrieval bug"
-msgstr "Corrección de un error en la recuperación del progreso"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:111
-msgid "Fix display problems"
-msgstr "Corrección de problemas de visualización"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:117
-msgid "Minor fixes, including:"
-msgstr "Correcciones menores, incluyendo:"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:119
-msgid "Move the Shred button to the bottom of the window"
-msgstr "Mueve el botón Triturar a la parte inferior de la ventana"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:120
-msgid "Support for mobile devices added"
-msgstr "Se ha añadido soporte para dispositivos móviles"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:121
-msgid "Re-theme the file rows to standard look"
-msgstr "Cambiar el tema de las filas de archivos al aspecto estándar"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:127
-msgid "A significant rewite of File Shredder, with a few UI changes changes:"
-msgstr ""
-"Una reescritura significativa de Trituradora de archivos, con algunos "
-"cambios en la interfaz de usuario:"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:129
-msgid "Add checking so a file cannot be loaded twice"
-msgstr "Añade una comprobación para que un archivo no pueda cargarse dos veces"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:130
-msgid "Smooth progress tracking"
-msgstr "Seguimiento fluido del progreso"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:131
-msgid "Write using GTK4 and Adwaita"
-msgstr "Escrito con GTK4 y Adwaita"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:132
-msgid "Show desktop notifications if the window is not focused"
-msgstr "Mostrar notificaciones de escritorio si la ventana no está enfocada"
-
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:138
-msgid ""
-"The very first release of File Shredder. It supports progress tracking, and "
-"has a GNOME compliant interface."
-msgstr ""
-"La primera versión de Trituradora de archivos. Soporta seguimiento del "
-"progreso, y tiene una interfaz compatible con GNOME."
 
 #: src/raider-application.c:66 src/raider-shortcuts.blp:11
 #: src/raider-window.blp:33
@@ -296,7 +133,6 @@ msgid "Finished shredding files"
 msgstr "Finalizada la trituración de archivos"
 
 #: src/raider-window.c:281
-#, c-format
 msgid "Some files were already loaded"
 msgstr "Algunos archivos ya estaban cargados"
 
