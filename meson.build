@@ -13,7 +13,8 @@ raider_deps = [
                 dependency('libadwaita-1', 
                           version: '>=1.4.0', 
                           default_options:['examples=false','tests=false','introspection=disabled','vapi=false'], 
-                          fallback : 'libadwaita-1'),  
+                          fallback : 'libadwaita-1'),
+                dependency('gio-unix-2.0'),
               ]
 
 # Create config.h file entirely in Meson.
