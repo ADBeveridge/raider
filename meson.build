@@ -16,6 +16,7 @@ raider_deps = [
                           fallback : 'libadwaita-1'),  
               ]
 
+# Create config.h file entirely in Meson.
 config_h = configuration_data()
 config_h.set_quoted('PACKAGE_VERSION', meson.project_version())
 config_h.set_quoted('GETTEXT_PACKAGE', 'raider')
