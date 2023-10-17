@@ -19,7 +19,7 @@ Raider is a shredding program built for the GNOME desktop. It uses its own inter
 * `sudo meson install`
 
 ## Useful Links
-*   GNOME Circle: <https://apps.gnome.org/app/com.github.ADBeveridge.Raider/>
+*   GNOME Circle: <https://apps.gnome.org/Raider>
 *   Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
 *   Fedora COPR: <https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/>
 *   Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
