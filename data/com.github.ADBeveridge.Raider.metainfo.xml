@@ -34,10 +34,6 @@
   </supports>
   <content_rating type="oars-1.1"/>
   <translation type="gettext">raider</translation>
-  <custom>
-    <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
-  </custom>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
