@@ -28,7 +28,7 @@ This project requires meson version >=0.63 to build, which is unavailable in the
 
 In addition to this, in order to build the project on Ubuntu 22.04 LTS requires building Gtk4 - so there are many dependencies to install.
 
-* `sudo apt install python3-distutils libxml2-dev libgtk-4-dev libcurl4-openssl-dev libyaml-dev libzstd-dev gettext itstool xsltproc libappstream-dev appstream-util ninja-build`
+* `sudo apt install python3-distutils libxml2-dev libgtk-4-dev libcurl4-openssl-dev libyaml-dev libzstd-dev gettext itstool xsltproc libappstream-dev appstream ninja-build`
 
 Configure the project.
 
