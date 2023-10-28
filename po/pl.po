@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Mira Luna <mlu98@proton.me>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: src/raider-application.c:140 src/raider-window.blp:40
+msgid "File Shredder"
+msgstr "Niszczarka plików"
+
+#: data/com.github.ADBeveridge.Raider.desktop:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
+msgid "Securely delete your files"
+msgstr "Bezpiecznie usuń swoje pliki"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+msgid ""
+"File Shredder is a GNOME application used for securely deleting your files "
+"that you do not want to be recovered."
+msgstr ""
+"Niszczarka plików to aplikacja GNOME używana do bezpiecznego usuwania Twoich plików, "
+"których nie chcesz być w stanie odzyskać."
+
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
+msgid "Add Files"
+msgstr "Dodaj pliki"
+
+#: src/raider-application.c:154
+msgid "translator-credits"
+msgstr "Informacje o tłumaczach"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Kończenie..."
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Ustalanie..."
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Ogólne"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+msgid "New Window"
+msgstr "Nowe okno"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+msgid "Keyboard Shortcuts"
+msgstr "Skróty klawiszowe"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Zamknij okno"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Wyjdź"
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Dodaj"
+
+#: src/raider-window.blp:46
+msgid "Main Menu"
+msgstr "Menu główne"
+
+#: src/raider-window.blp:61
+msgid "Add files or drop here"
+msgstr "Dodaj pliki albo przeciągnij tutaj"
+
+#: src/raider-window.blp:63
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Niszczenie pliku polega na nadpisaniu go losowymi danymi tak,"
+"aby jego zawartość nie mogła zostać odzyskana."
+
+#: src/raider-window.blp:99 src/raider-window.c:358
+msgid "Shred All"
+msgstr "Zniszcz wszystkie"
+
+#: src/raider-window.blp:118 src/raider-window.c:410
+msgid "Abort All"
+msgstr "Anuluj wszystkie"
+
+#: src/raider-window.blp:145
+msgid "About File Shredder"
+msgstr "O Niszczarce plików"
+
+#: src/raider-window.c:151
+msgid "Stop Shredding?"
+msgstr "Zatrzymać niszczenie?"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr "Czy jesteś pewny że chcesz wyjść?"
+
+#: src/raider-window.c:155
+msgid "_Cancel"
+msgstr "_Anuluj"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr "_Wyjdź"
+
+#: src/raider-window.c:203
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Nie można usunąć nazwy pliku z listy szybkiego dostępu. Proszę to zgłosić."
+
+#: src/raider-window.c:213
+msgid "Finished shredding files"
+msgstr "Finalizowania niszczenia plików"
+
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "Niektóre pliki były już załadowane"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "Niektóre pliki nie istnieją"
+
+#: src/raider-window.c:302
+msgid "Directories are not supported"
+msgstr "Foldery nie są wspierane"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Nie można zapisać do “%s”"
+
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Nie można wczytać więcej plików"
+
+#: src/raider-window.c:380
+msgid "Starting Shredding…"
+msgstr "Rozpoczynanie niszczenia..."
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr "Anulowanie..."
