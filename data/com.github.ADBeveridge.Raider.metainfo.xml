@@ -9,6 +9,11 @@
     <p>File Shredder is a GNOME application used for securely deleting your files
     that you do not want to be recovered.</p>
   </description>
+  <categories>
+      <category>Utility</category>
+      <category>FileTools</category>
+      <category>Security</category>
+  </categories>
   <kudos>
     <kudo>ModernToolkit</kudo>
     <kudo>HiDpiIcon</kudo>
