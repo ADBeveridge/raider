@@ -8,6 +8,7 @@ Within a certain limit, it is effective. However, the way data is written physic
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ## Useful Links
+*   Compiling: <https://github.com/ADBeveridge/raider/blob/develop/BUILD.md>
 *   GNOME Circle: <https://apps.gnome.org/Raider>
 *   Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
 *   Fedora COPR: <https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/>
