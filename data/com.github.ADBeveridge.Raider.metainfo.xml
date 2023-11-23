@@ -4,10 +4,16 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>File Shredder</name>
-  <summary>Securely delete your files</summary>
+  <summary>Permanently delete your files</summary>
   <description>
-    <p>File Shredder is a GNOME application used for securely deleting your files
-    that you do not want to be recovered.</p>
+    <p>Raider is a shredding program built for the GNOME desktop. It is meant to remove files 
+			from your computer permanently.
+		</p>
+		<p>Within a certain limit, it is effective. However, the way data is written physically 
+			to SSDs at the hardware level ensures that shredding is never perfect, and no software 
+			can fix that. However, top-level agencies are usually the only ones who can recover 
+			such data, due to the time, effort, money, and patience required to extract it effectively.
+		</p>
   </description>
   <categories>
       <category>Utility</category>
@@ -46,6 +52,15 @@
     </screenshot>
   </screenshots>
   <releases>
+		<release version="2.1.0" date="2023-12-1">
+      <description translatable="no">
+        <p>Update visuals for GNOME 45</p>
+        <ul>
+          <li>Use a flat headerbar</li>
+          <li>Fix security vulernability CWE-134</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.0" date="2023-08-15">
       <description translatable="no">
         <p>Use custom code for shredding files</p>
