@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+"POT-Creation-Date: 2023-12-29 16:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
 #: src/raider-application.c:140 src/raider-window.blp:40
 msgid "File Shredder"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"Raider is a shredding program built for the GNOME desktop. It is meant to "
+"remove files from your computer permanently."
+msgstr ""
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, the way data is written "
+"physically to SSDs at the hardware level ensures that shredding is never "
+"perfect, and no software can fix that. However, top-level agencies are "
+"usually the only ones who can recover such data, due to the time, effort, "
+"money, and patience required to extract it effectively."
 msgstr ""
 
 #: src/raider-application.c:66 src/raider-shortcuts.blp:11
