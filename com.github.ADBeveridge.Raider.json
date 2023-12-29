@@ -33,12 +33,11 @@
             "name" : "raider",
             "builddir" : true,
             "buildsystem" : "meson",
+            "run-tests": true,
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/ADBeveridge/raider",
-                    "tag" : "v1.2.2",
-                    "commit" : "c15ad21d04a4871b422aa36d791b3f32e6cc0e68"
+                    "type" : "dir",
+                    "path" : "./"
                 }
             ]
         }
