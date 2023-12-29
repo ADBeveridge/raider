@@ -2,8 +2,6 @@ data/com.github.ADBeveridge.Raider.desktop.in.in
 data/com.github.ADBeveridge.Raider.metainfo.xml.in.in
 
 src/raider-application.c
-src/raider-file-row.blp
-src/raider-file-row.c
 src/raider-progress-info-popover.c
 src/raider-shortcuts.blp
 src/raider-window.blp
