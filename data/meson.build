@@ -1,5 +1,5 @@
 desktop_file = i18n.merge_file(
-  input: 'com.github.ADBeveridge.Raider.desktop',
+  input: 'com.github.ADBeveridge.Raider.desktop.in.in',
   output: 'com.github.ADBeveridge.Raider.desktop',
   type: 'desktop',
   po_dir: '../po',
@@ -15,7 +15,7 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'com.github.ADBeveridge.Raider.metainfo.xml',
+  input: 'com.github.ADBeveridge.Raider.metainfo.xml.in.in',
   output: 'com.github.ADBeveridge.Raider.metainfo.xml',
   po_dir: '../po',
   install: true,
