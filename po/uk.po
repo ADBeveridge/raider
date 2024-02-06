@@ -1,43 +1,55 @@
 # Ukrainian translation for Raider.
-# Copyright (C) 2023 THE Raider's COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# volkov <volkovissocool@gmail.com>, 2023.
+# Copyright (C) 2023-2024 THE Raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Raider's package.
+# volkov <volkovissocool@gmail.com>, 2023-2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2023-09-13 19:44+0300\n"
+"Project-Id-Version: Raider\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2023-12-29 16:28+0300\n"
+"PO-Revision-Date: 2024-02-06 18:21+0200\n"
 "Last-Translator: volkov <volkovissocool@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: volkov <volkovissocool@gmail.com\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
 #: src/raider-application.c:140 src/raider-window.blp:40
 msgid "File Shredder"
 msgstr "Шредер файлів"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Безпечно видаляйте ваші файли"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Назавжди видаляйте ваші файли"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"Raider is a shredding program built for the GNOME desktop. It is meant to "
+"remove files from your computer permanently."
 msgstr ""
-"File Shredder (Шредер файлів) це додаток для GNOME, який використовується "
-"для безпечного видалення ваших файлів таким чином, щоб їх не можна було "
-"відновити."
+"Шредер файлів - це програма створена для стільниці GNOME. Вона створена для "
+"того, щоб назавжди видаляти файли з вашого пристрою."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, the way data is written "
+"physically to SSDs at the hardware level ensures that shredding is never "
+"perfect, and no software can fix that. However, top-level agencies are "
+"usually the only ones who can recover such data, due to the time, effort, "
+"money, and patience required to extract it effectively."
+msgstr ""
+"З певними обмеженнями, вона ефективна. Але, те як дані фізично записуються "
+"на ССД диски - шредерування ніколи не є ідеальним, і жодна програма не може "
+"це виправити. Але, тільки високорівневі компанії можуть відновити такі дані, "
+"оскільки це дуже дорогий, тривалий і складний процес."
 
 #: src/raider-application.c:66 src/raider-shortcuts.blp:11
 #: src/raider-window.blp:33
@@ -50,11 +62,11 @@ msgstr "volkov <volkovissocool@gmail.com>"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Finishing up..."
-msgstr "Завершуємо..."
+msgstr "Завершуємо…"
 
 #: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
-msgstr "Розрахунок..."
+msgstr "Розрахунок…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
@@ -93,7 +105,7 @@ msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
-"Шредерування це обусфікація змісту файла випадковими даними, завдяки чому "
+"Шредерування це обусфікація змісту файлу випадковими даними, завдяки чому "
 "відновити зміст файлу буде неможливо."
 
 #: src/raider-window.blp:99 src/raider-window.c:358
@@ -142,7 +154,7 @@ msgstr "Деякі файлі не існують"
 
 #: src/raider-window.c:302
 msgid "Directories are not supported"
-msgstr "Каталоги/теки не підтримуються"
+msgstr "Теки не підтримуються"
 
 #: src/raider-window.c:312
 #, c-format
@@ -160,3 +172,11 @@ msgstr "Запускаємо шредер…"
 #: src/raider-window.c:432
 msgid "Aborting…"
 msgstr "Скасування…"
+
+#~ msgid ""
+#~ "File Shredder is a GNOME application used for securely deleting your "
+#~ "files that you do not want to be recovered."
+#~ msgstr ""
+#~ "File Shredder (Шредер файлів) це додаток для GNOME, який використовується "
+#~ "для безпечного видалення ваших файлів таким чином, щоб їх не можна було "
+#~ "відновити."
