@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-29 16:28+0300\n"
+"PO-Revision-Date: 2024-03-15 08:00+0100\n"
+"Last-Translator: Brage <bragefuglseth@gnome.org>\n"
+"Language-Team: \n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:140 src/raider-window.blp:40
+msgid "File Shredder"
+msgstr "File Shredder"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Slett sensitive filer fullstendig"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"Raider is a shredding program built for the GNOME desktop. It is meant to "
+"remove files from your computer permanently."
+msgstr ""
+"Når du sletter en fil på vanlig vis, vil det fortsatt ligge igjen nok "
+"spor av den til at den kan rekonstrueres. File Shredder lar deg beskytte "
+"personvernet ditt ved å fjerne spor etter sensitive filer."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, the way data is written "
+"physically to SSDs at the hardware level ensures that shredding is never "
+"perfect, and no software can fix that. However, top-level agencies are "
+"usually the only ones who can recover such data, due to the time, effort, "
+"money, and patience required to extract it effectively."
+msgstr ""
+"På grunn av måten data lagres på, er det fysisk umulig å fjerne absolutt "
+"alle rester, men File Shredder kan gjøre det til et punkt hvor å "
+"gjenopprette filene vil være en lang og svært kostbar prosess."
+
+#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:33
+msgid "Add Files"
+msgstr "Legg til filer"
+
+#: src/raider-application.c:154
+msgid "translator-credits"
+msgstr "Brage Fuglseth https://bragefuglseth.dev"
+
+#: src/raider-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr "Fullfører"
+
+#: src/raider-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr "Beregner"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Generelt"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+msgid "New Window"
+msgstr "Nytt vindu"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+msgid "Keyboard Shortcuts"
+msgstr "Tastatursnarveier"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Lukk vindu"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Avslutt"
+
+#: src/raider-window.blp:31
+msgid "Add"
+msgstr "Legg til"
+
+#: src/raider-window.blp:46
+msgid "Main Menu"
+msgstr "Hovedmeny"
+
+#: src/raider-window.blp:61
+msgid "Add files or drop here"
+msgstr "Legg til filer"
+
+#: src/raider-window.blp:63
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Filer som legges til her, vil slettes og byttes ut med tilfeldig data "
+"slik at de ikke kan gjenopprettes"
+
+#: src/raider-window.blp:99 src/raider-window.c:358
+msgid "Shred All"
+msgstr "Slett alt"
+
+#: src/raider-window.blp:118 src/raider-window.c:410
+msgid "Abort All"
+msgstr "Avbryt alt"
+
+#: src/raider-window.blp:145
+msgid "About File Shredder"
+msgstr "Om File Shredder"
+
+#: src/raider-window.c:151
+msgid "Stop Shredding?"
+msgstr "Stoppe sletting?"
+
+#: src/raider-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr "Er du sikker på at du ønsker å avslutte?"
+
+#: src/raider-window.c:155
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: src/raider-window.c:155
+msgid "_Exit"
+msgstr "_Avslutt"
+
+#: src/raider-window.c:203
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Fjerning av filnavn mislyktes. Meld inn denne feilen."
+
+#: src/raider-window.c:213
+msgid "Finished shredding files"
+msgstr "Sletting fullført"
+
+#: src/raider-window.c:281
+msgid "Some files were already loaded"
+msgstr "Enkelte filer var allerede innlastet"
+
+#: src/raider-window.c:294
+msgid "Some files did not exist"
+msgstr "Enkelte filer eksisterte ikke"
+
+#: src/raider-window.c:302
+msgid "Directories are not supported"
+msgstr "Mapper kan ikke slettes"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "«%s» er skrivebeskyttet"
+
+#: src/raider-window.c:323
+msgid "Cannot load more files"
+msgstr "Maksimalt antall filer nådd"
+
+#: src/raider-window.c:380
+msgid "Starting Shredding…"
+msgstr "Starter sletting"
+
+#: src/raider-window.c:432
+msgid "Aborting…"
+msgstr "Avbryter"
