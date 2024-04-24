@@ -2,7 +2,7 @@
 
 Raider is a shredding program built for the GNOME desktop. It is meant to remove files from your computer permanently. 
 
-Within a certain limit, it is effective. However, the way data is written physically to SSDs at the hardware level ensures that shredding is never perfect, and no software can fix that. However, top-level agencies are usually the only ones who can recover such data, and due to the time, effort, money and patience required to extract it effectively, only do so on high-profile targets.
+Within a certain limit, it is effective. However, modern SSDs use wear leveling, which has the side effect of ensuring that shredding is never perfect, and no software can fix that. But it is much much harder to recover than a simple unlink operation, since it requires specialized software and hardware. 
 
 ## Download
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
