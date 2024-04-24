@@ -36,7 +36,10 @@ G_DEFINE_TYPE(RaiderCorrupt, raider_corrupt, G_TYPE_OBJECT)
 
 static GList* list_files(const char *directory, GList* list);
 uint8_t corrupt_file(RaiderCorrupt* corrupt);
+uint8_t corrupt_folder(RaiderCorrupt* corrupt);
 uint8_t corrupt_unlink_file(const char *filename);
+uint8_t corrupt_unlink_folder(const char *filename);
+static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const char *pattern, int loop_num);
 
 
 static void raider_corrupt_init(RaiderCorrupt *self)
@@ -60,6 +63,14 @@ RaiderCorrupt *raider_corrupt_new(GFile* file, RaiderFileRow* row)
 void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderCorrupt* corrupt = RAIDER_CORRUPT(source_object);
+
+    GFileInfo *file_info = g_file_query_info(corrupt->file, G_FILE_ATTRIBUTE_STANDARD_TYPE, G_FILE_QUERY_INFO_NONE, NULL, NULL);
+    if (g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
+        if (corrupt_folder(corrupt) == 0) {
+            corrupt_unlink_folder(g_file_get_path(corrupt->file));
+        }
+        return;
+    }
 
     if (corrupt_file(corrupt) == 0) {
         corrupt_unlink_file(g_file_get_path(corrupt->file));
@@ -99,35 +110,16 @@ static GList* list_files(const char *directory, GList* list) {
     return list;
 }
 
-static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const char *pattern, int loop_num)
+uint8_t corrupt_folder(RaiderCorrupt* corrupt)
 {
-    char* filename = g_file_get_path(corrupt->file);
-    int ret = 0;
-    int length = 3; // The length of each element in the steps array below.
+    fprintf(stderr, "corrupt: folder shredding unimplemented\n");
 
-    // Run some checks.
-    FILE* fp = fopen(filename,  "r+");
-    if (fp == NULL)
-    {
-        ret = 1;
-        return ret;
-    }
-
-    off_t i;
-    off_t times = (filesize / length) + (filesize % length);
-    for (i = 0; i < times; i++)
-    {
-        fwrite(pattern, sizeof(char), length, fp);
-        if (g_task_return_error_if_cancelled (corrupt->task)) {fclose(fp);return 1;}
-    }
-
-    fclose(fp);
-    return ret;
+    return 0;
 }
 
 uint8_t corrupt_file(RaiderCorrupt* corrupt)
 {
-    // The length of these strings MUST be 3 characters. Otherwise it will behave in a undefined manner.
+    // The length of these strings MUST be 3 characters each. Otherwise it will behave in a undefined manner.
     const char* steps[] = {"\x77\x77\x77", "\x76\x76\x76",
          "\x33\x33\x33", "\x35\x35\x35",
          "\x55\x55\x55", "\xAA\xAA\xAA",
@@ -168,7 +160,6 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
         }
 
         double current = ((double)(i+1)/(double)steps_num);
-        printf ("CURRENT: %f\n", current);
         corrupt->progress = current;
         raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
         g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
@@ -178,6 +169,33 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     return ret;
 }
 
+static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const char *pattern, int loop_num)
+{
+    char* filename = g_file_get_path(corrupt->file);
+    int ret = 0;
+    int length = 3; // The length of each element in the steps array below.
+
+    // Run some checks.
+    FILE* fp = fopen(filename,  "r+");
+    if (fp == NULL)
+    {
+        ret = 1;
+        return ret;
+    }
+
+    off_t i;
+    off_t times = (filesize / length) + (filesize % length);
+    for (i = 0; i < times; i++)
+    {
+        fwrite(pattern, sizeof(char), length, fp);
+        if (g_task_return_error_if_cancelled (corrupt->task)) {fclose(fp);return 1;}
+    }
+
+    fclose(fp);
+    return ret;
+}
+
+/* Removes folders also */
 uint8_t corrupt_unlink_file(const char *filename)
 {
     uint8_t ret = 0;
@@ -190,3 +208,8 @@ uint8_t corrupt_unlink_file(const char *filename)
     return ret;
 }
 
+uint8_t corrupt_unlink_folder(const char *filename)
+{
+    fprintf(stderr, "corrupt: folder unlink unimplemented\n");
+    return 0;
+}
