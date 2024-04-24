@@ -50,7 +50,12 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
 {
     double percentage = fraction * 100; // Move the decimal.
 
-    if (percentage < 100)
+    if (percentage == 0)
+    {
+        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Starting…"));
+        gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
+    }
+    else if (percentage < 100)
     {
         gchar *display = g_strdup_printf("%d%%", (int)percentage);
         gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), display);
@@ -59,7 +64,7 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
     }
     else
     {
-        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up..."));
+        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up…"));
         gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
     }
 }

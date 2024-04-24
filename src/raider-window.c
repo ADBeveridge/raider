@@ -267,6 +267,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
+    /* Search the current list of filenames to make sure the current file has not been added yet */
     GList *item = window->filenames;
     gchar *filename = g_file_get_path(file);
     while (item != NULL)
@@ -278,11 +279,11 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 
         if (g_strcmp0(text, filename) == 0)
         {
-            gchar *message = g_strdup_printf(_("Some files were already loaded"));
+            gchar *message = g_strdup_printf(_("This file was already added"));
             raider_window_show_toast(window, message);
             g_free(message);
             g_object_unref(file);
-            return TRUE; // We can return because the file has been fully checked already.
+            return TRUE; // We can return because the file has been rejected already.
         }
         item = next;
     }
@@ -296,15 +297,6 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
         g_free(message);
 
         return TRUE; // Continue loading files, the rest may be real.
-    }
-    if (g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL) == G_FILE_TYPE_DIRECTORY)
-    {
-        gchar *message = g_strdup(_("Directories are not supported"));
-        raider_window_show_toast(window, message);
-        g_free(message);
-
-        g_object_unref(file);
-        return TRUE; // We can still load more files.
     }
     /* Test if we can write. */
     if (g_access(g_file_get_path(file), W_OK) != 0)

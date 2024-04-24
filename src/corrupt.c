@@ -34,6 +34,7 @@ struct _RaiderCorrupt
 
 G_DEFINE_TYPE(RaiderCorrupt, raider_corrupt, G_TYPE_OBJECT)
 
+static GList* list_files(const char *directory, GList* list);
 uint8_t corrupt_file(RaiderCorrupt* corrupt);
 uint8_t corrupt_unlink_file(const char *filename);
 
@@ -60,8 +61,9 @@ void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, 
 {
     RaiderCorrupt* corrupt = RAIDER_CORRUPT(source_object);
 
-    if (corrupt_file(corrupt) == 0)
+    if (corrupt_file(corrupt) == 0) {
         corrupt_unlink_file(g_file_get_path(corrupt->file));
+    }
 }
 
 GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCallback func)
@@ -75,6 +77,27 @@ GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCal
     return self->cancel;
 }
 
+static GList* list_files(const char *directory, GList* list) {
+    const gchar *file_name;
+
+    GDir *dir = g_dir_open(directory, 0, NULL);
+    if (dir != NULL) {
+        while ((file_name = g_dir_read_name(dir)) != NULL) {
+            gchar *file_path = g_build_filename(directory, file_name, NULL);
+            // If it is another directory, recurse.
+            if (g_file_test(file_path, G_FILE_TEST_IS_DIR)) {
+                // Make sure it is not the current or parent directories.
+                if (strcmp(file_name, ".") != 0 && strcmp(file_name, "..") != 0) {
+                    list_files(file_path, list);
+                }
+            } else {
+                list = g_list_prepend(list, file_path);
+            }
+        }
+        g_dir_close(dir);
+    }
+    return list;
+}
 
 static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const char *pattern, int loop_num)
 {
@@ -96,17 +119,6 @@ static uint8_t corrupt_step(RaiderCorrupt* corrupt, const off_t filesize, const 
     {
         fwrite(pattern, sizeof(char), length, fp);
         if (g_task_return_error_if_cancelled (corrupt->task)) {fclose(fp);return 1;}
-
-        double current = ((double)loop_num/10.0) + (double)i/times*1.0/10.0;
-
-        // Only update the progress when the jump is large enough.
-        if (current - corrupt->progress >= .01)
-        {
-            corrupt->progress = current;
-            raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
-            g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
-
-        }
     }
 
     fclose(fp);
@@ -139,6 +151,11 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
         ret = 1;
     }
 
+    // Set progress at zero.
+    corrupt->progress = 0.0;
+    raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
+    g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
+
     // Shred the file.
     off_t filesize = st.st_size;
     uint8_t i;
@@ -149,6 +166,13 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
             ret = 1;
             break;
         }
+
+        double current = ((double)(i+1)/(double)steps_num);
+        printf ("CURRENT: %f\n", current);
+        corrupt->progress = current;
+        raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
+        g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
+
     }
 
     return ret;

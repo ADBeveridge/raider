@@ -57,6 +57,23 @@ static void on_open_response(GObject* source_object, GAsyncResult* res, gpointer
     raider_window_open_files(RAIDER_WINDOW(user_data), file_list);
 }
 
+static void on_open_folder_response(GObject* source_object, GAsyncResult* res, gpointer user_data)
+{
+    GListModel* list = gtk_file_dialog_select_multiple_folders_finish (GTK_FILE_DIALOG(source_object), res, NULL);
+    if (list == NULL) return;
+
+    /* Convert g_list_model to g_list. */
+    GList *file_list = NULL;
+    int num = g_list_model_get_n_items(list);
+    int i;
+    for (i = 0; i < num; i++) {
+        file_list = g_list_append(file_list, g_list_model_get_item(list, i));
+    }
+    g_object_unref(list);
+
+    raider_window_open_files(RAIDER_WINDOW(user_data), file_list);
+}
+
 static void raider_application_open_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
     GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
@@ -65,6 +82,16 @@ static void raider_application_open_to_window(GSimpleAction *action, GVariant *p
     gtk_file_dialog_set_modal(dialog, TRUE);
     gtk_file_dialog_set_title(dialog, _("Add Files"));
     gtk_file_dialog_open_multiple(dialog, GTK_WINDOW(window), NULL, on_open_response, window);
+}
+
+static void raider_application_open_folder_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(user_data));
+
+    GtkFileDialog* dialog = gtk_file_dialog_new();
+    gtk_file_dialog_set_modal(dialog, TRUE);
+    gtk_file_dialog_set_title(dialog, _("Add Folders"));
+    gtk_file_dialog_select_multiple_folders(dialog, GTK_WINDOW(window), NULL, on_open_folder_response, window);
 }
 
 static void raider_application_try_exit (GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -222,6 +249,10 @@ static void raider_application_init(RaiderApplication *self)
     g_signal_connect(open_action, "activate", G_CALLBACK(raider_application_open_to_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
+
+    g_autoptr(GSimpleAction) open_folder_action = g_simple_action_new("open-folder", NULL);
+    g_signal_connect(open_folder_action, "activate", G_CALLBACK(raider_application_open_folder_to_window), self);
+    g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_folder_action));
 
     /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
     /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
