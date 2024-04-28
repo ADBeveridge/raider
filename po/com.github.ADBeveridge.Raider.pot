@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-29 16:28+0300\n"
+"POT-Creation-Date: 2024-04-28 14:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.desktop.in.in:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: src/raider-application.c:167 src/raider-window.blp:36
 msgid "File Shredder"
 msgstr ""
 
@@ -43,20 +43,28 @@ msgid ""
 "money, and patience required to extract it effectively."
 msgstr ""
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:27
 msgid "Add Files"
 msgstr ""
 
-#: src/raider-application.c:154
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr ""
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr ""
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
 msgstr ""
 
-#: src/raider-progress-info-popover.c:70
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr ""
+
+#: src/raider-progress-info-popover.c:75
 msgid "Estimating..."
 msgstr ""
 
@@ -64,11 +72,11 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
 msgid "New Window"
 msgstr ""
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
 msgid "Keyboard Shortcuts"
 msgstr ""
 
@@ -80,34 +88,38 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:25
 msgid "Add"
 msgstr ""
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:42
 msgid "Main Menu"
 msgstr ""
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:57
 msgid "Add files or drop here"
 msgstr ""
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:59
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:95 src/raider-window.c:350
 msgid "Shred All"
 msgstr ""
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:114 src/raider-window.c:402
 msgid "Abort All"
 msgstr ""
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:141
 msgid "About File Shredder"
+msgstr ""
+
+#: src/raider-window.blp:150
+msgid "Open Folders"
 msgstr ""
 
 #: src/raider-window.c:151
@@ -134,31 +146,27 @@ msgstr ""
 msgid "Finished shredding files"
 msgstr ""
 
-#: src/raider-window.c:281
-msgid "Some files were already loaded"
+#: src/raider-window.c:282
+msgid "This file was already added"
 msgstr ""
 
-#: src/raider-window.c:294
+#: src/raider-window.c:295
 msgid "Some files did not exist"
 msgstr ""
 
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr ""
-
-#: src/raider-window.c:312
+#: src/raider-window.c:304
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr ""
 
-#: src/raider-window.c:323
+#: src/raider-window.c:315
 msgid "Cannot load more files"
 msgstr ""
 
-#: src/raider-window.c:380
+#: src/raider-window.c:372
 msgid "Starting Shredding…"
 msgstr ""
 
-#: src/raider-window.c:432
+#: src/raider-window.c:424
 msgid "Aborting…"
 msgstr ""
