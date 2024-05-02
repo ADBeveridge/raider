@@ -19,3 +19,5 @@ G_DECLARE_FINAL_TYPE(RaiderCorrupt, raider_corrupt, RAIDER, CORRUPT, GObject)
 RaiderCorrupt *raider_corrupt_new(GFile* file, RaiderFileRow* row);
 GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCallback func);
 
+
+
