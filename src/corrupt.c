@@ -137,6 +137,12 @@ uint8_t corrupt_folder(RaiderCorrupt* corrupt)
 
         // Shred the file by overwriting it many times.
         off_t filesize = corrupt_check_file(filename);
+        if (filesize == -1)
+        {
+            ret = -1;
+            continue;
+        }
+
         uint8_t i;
         for (i = 0; i < steps_num; i++)
         {
@@ -159,13 +165,18 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     uint8_t ret = 0;
     char* filename = g_file_get_path(corrupt->file);
 
-    // Set progress at zero.
+    // Set progress at zero.it config pull.rebase true
     corrupt->progress = 0.0;
     raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
     g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
 
     // Shred the file by overwriting it many times.
     off_t filesize = corrupt_check_file(filename);
+    if (filesize == -1)
+    {
+        return -1;
+    }
+
     uint8_t i;
     for (i = 0; i < steps_num; i++)
     {
@@ -216,9 +227,15 @@ off_t corrupt_check_file(const char *filename)
     struct stat st;
 
     // Run some checks on the file.
-    if(stat(filename, &st) != 0)
+    if(lstat(filename, &st) != 0)
     {
-        fprintf(stderr, "corrupt: current file not found\n");
+        fprintf(stderr, "corrupt: current file not found (%s)\n", filename);
+        return -1;
+    }
+    if (S_ISLNK(st.st_mode) == 1)
+    {
+        /* Quietly deal with symbolic links. */
+        corrupt_unlink_file(filename);
         return -1;
     }
     if (S_ISREG(st.st_mode) == 0)
