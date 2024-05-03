@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Irénée THIRION <irenee.thirion@e.email>, 2022.
+# Wedone <wedoneofficiel@outlook.fr>, 2024.
 #
 msgid ""
 msgstr ""
@@ -60,7 +61,7 @@ msgstr "Estimation…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
-msgstr ""
+msgstr "Géneral"
 
 #: src/raider-shortcuts.blp:15 src/raider-window.blp:135
 msgid "New Window"
@@ -68,7 +69,7 @@ msgstr "Nouvelle fenêtre"
 
 #: src/raider-shortcuts.blp:19 src/raider-window.blp:141
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Raccourcis clavier"
 
 #: src/raider-shortcuts.blp:23
 #, fuzzy
@@ -77,7 +78,7 @@ msgstr "Nouvelle fenêtre"
 
 #: src/raider-shortcuts.blp:27
 msgid "Quit"
-msgstr ""
+msgstr "Quitter"
 
 #: src/raider-window.blp:31
 msgid "Add"
@@ -85,7 +86,7 @@ msgstr "Ajouter"
 
 #: src/raider-window.blp:46
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu principal"
 
 #: src/raider-window.blp:61
 msgid "Add files or drop here"
@@ -118,7 +119,7 @@ msgstr "Masquer le broyage"
 
 #: src/raider-window.c:152
 msgid "Are you sure that you want to exit?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir quitter ?"
 
 #: src/raider-window.c:155
 #, fuzzy
@@ -127,7 +128,7 @@ msgstr "Annuler"
 
 #: src/raider-window.c:155
 msgid "_Exit"
-msgstr ""
+msgstr "_Quitter"
 
 #: src/raider-window.c:203
 msgid "Could not remove filename from quick list. Please report this."
