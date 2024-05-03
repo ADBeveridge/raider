@@ -1,6 +1,6 @@
 # Raider <img align="right" alt="Number of downloads" src="https://img.shields.io/flathub/downloads/com.github.ADBeveridge.Raider?style=flat-square"> <img  align="right" alt="AUR" src="https://img.shields.io/aur/version/raider-file-shredder?style=flat-square"></a> <img align="right" alt="Fedora COPR build status" src="https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/status_image/last_build.png"/>
 
-Raider is a shredding program built for the GNOME desktop. It is meant to remove files from your computer permanently. 
+Raider is a secure file deletion program for the GNOME desktop environment. It is designed to permanently remove sensitive files from your computer, enhancing data privacy.
 
 Within a certain limit, it is effective. However, modern SSDs use wear leveling, which has the side effect of ensuring that shredding is never perfect, and no software can fix that. But shredding significantly increases the difficulty of data recovery since it requires specialized software and hardware. 
 
