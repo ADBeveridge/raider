@@ -10,10 +10,10 @@
       is designed to permanently remove sensitive files from your computer, enhancing
       data privacy.
 		</p>
-		<p>Within a certain limit, it is effective. However, modern SSDs use wear leveling,
-		  which has the side effect of ensuring that shredding is never perfect, and no
-		  software can fix that. But shredding significantly increases the difficulty of
-		  data recovery since it requires specialized software and hardware.
+		<p>Within a certain limit, it is effective. However, modern SSDs use certain technologies
+		  to extend its lifetime, which has the side effect of ensuring that shredding is never
+		  perfect, and no software can fix that. But shredding significantly increases the
+		  difficulty of data recovery since it requires specialized software and hardware.
 		</p>
   </description>
   <kudos>

@@ -2,7 +2,7 @@
 
 Raider is a secure file deletion program for the GNOME desktop environment. It is designed to permanently remove sensitive files from your computer, enhancing data privacy.
 
-Within a certain limit, it is effective. However, modern SSDs use wear leveling, which has the side effect of ensuring that shredding is never perfect, and no software can fix that. But shredding significantly increases the difficulty of data recovery since it requires specialized software and hardware. 
+Within a certain limit, it is effective. However, modern SSDs use certain technologies to extend its lifetime, which has the side effect of ensuring that shredding is never perfect, and no software can fix that. But shredding significantly increases the difficulty of data recovery since it requires specialized software and hardware.
 
 ## Download
 <a href='https://beta.flathub.org/apps/details/com.github.ADBeveridge.Raider'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
