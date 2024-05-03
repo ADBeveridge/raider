@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 14:16+0200\n"
+"POT-Creation-Date: 2024-05-03 13:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,17 +30,18 @@ msgstr ""
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"Raider is a shredding program built for the GNOME desktop. It is meant to "
-"remove files from your computer permanently."
+"File Shredder is a file deletion program for the GNOME desktop environment. "
+"It is designed to permanently remove sensitive files from your computer, "
+"enhancing data privacy."
 msgstr ""
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:13
 msgid ""
-"Within a certain limit, it is effective. However, the way data is written "
-"physically to SSDs at the hardware level ensures that shredding is never "
-"perfect, and no software can fix that. However, top-level agencies are "
-"usually the only ones who can recover such data, due to the time, effort, "
-"money, and patience required to extract it effectively."
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
 msgstr ""
 
 #: src/raider-application.c:83 src/raider-shortcuts.blp:11
@@ -119,7 +120,7 @@ msgid "About File Shredder"
 msgstr ""
 
 #: src/raider-window.blp:150
-msgid "Open Folders"
+msgid "Open Folder"
 msgstr ""
 
 #: src/raider-window.c:151
