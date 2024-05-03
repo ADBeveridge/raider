@@ -42,7 +42,7 @@ G_DEFINE_TYPE(RaiderCorrupt, raider_corrupt, G_TYPE_OBJECT)
 
 static void list_files(const char *directory, GPtrArray* files);
 uint8_t corrupt_file(RaiderCorrupt* corrupt);
-uint8_t corrupt_folder(RaiderCorrupt* corrupt);
+int corrupt_folder(RaiderCorrupt* corrupt);
 uint8_t corrupt_unlink_file(const char *filename);
 uint8_t corrupt_unlink_folder(const char *filename);
 off_t corrupt_check_file(const char *filename);
@@ -117,18 +117,17 @@ static void list_files(const char *directory, GPtrArray* files) {
     }
 }
 
-uint8_t corrupt_folder(RaiderCorrupt* corrupt)
+int corrupt_folder(RaiderCorrupt* corrupt)
 {
     char* folder = g_file_get_path(corrupt->file);
     GPtrArray* files = g_ptr_array_new();
-    uint8_t ret = 0;
+    int ret = 0;
 
     list_files(folder, files);
 
-    for (guint i = 0; i < files->len; i++)
+    for (int i = 0; i < files->len; i++)
     {
         char* filename = g_ptr_array_index (files, i);
-
         int steps_num = sizeof(steps) / sizeof(steps[0]);
 
         corrupt->progress = (double)i/(double)files->len;
@@ -138,20 +137,20 @@ uint8_t corrupt_folder(RaiderCorrupt* corrupt)
         // Shred the file by overwriting it many times.
         off_t filesize = corrupt_check_file(filename);
         if (filesize == -1)
-        {
-            ret = -1;
             continue;
-        }
 
-        uint8_t i;
-        for (i = 0; i < steps_num; i++)
+        for (int i = 0; i < steps_num; i++)
         {
             if (corrupt_step(corrupt->task, filename, filesize, steps[i], i) != 0)
             {
-                ret = 1;
+                ret = -1;
+                fprintf(stderr, "corrupt: failed to perform shredding step\n");
                 break;
             }
         }
+
+        if (ret == -1)
+            break;
 
         corrupt_unlink_file(filename);
     }
@@ -182,7 +181,8 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     {
         if (corrupt_step(corrupt->task, filename, filesize, steps[i], i) != 0)
         {
-            ret = 1;
+            ret = -1;
+            fprintf(stderr, "corrupt: failed to perform shredding step\n");
             break;
         }
 
@@ -229,7 +229,7 @@ off_t corrupt_check_file(const char *filename)
     // Run some checks on the file.
     if(lstat(filename, &st) != 0)
     {
-        fprintf(stderr, "corrupt: current file not found (%s)\n", filename);
+        fprintf(stderr, "corrupt: current file not found\n");
         return -1;
     }
     if (S_ISLNK(st.st_mode) == 1)
