@@ -48,9 +48,6 @@
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
     </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot2.png</image>
-    </screenshot>
   </screenshots>
   <releases>
     <release version="3.0.0" date="2024-5-2">
