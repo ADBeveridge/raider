@@ -49,6 +49,10 @@
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
     </screenshot>
   </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#ad002b</color>
+    <color type="primary" scheme_preference="dark">#5c0012</color>
+  </branding>
   <releases>
     <release version="3.0.0" date="2024-5-2">
       <description translate="no">
