@@ -12,9 +12,4 @@ install_data(
   install_dir: join_paths(get_option('datadir'), 'icons', symbolic_dir)
 )
 
-png_dir = join_paths('hicolor', '256x256', 'apps')
-install_data(
-  join_paths(png_dir, ('@0@.png').format(application_id)),
-  install_dir: join_paths(get_option('datadir'), 'icons', png_dir)
-)
 

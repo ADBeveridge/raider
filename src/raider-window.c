@@ -308,11 +308,11 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
         g_object_unref(file);
         return TRUE;
     }
-    /* Files limit is divided by two because the file count will be double when the processes are launched. */
-    // TODO: May be inaccurate.
+    // TODO: The file limit divided by two may no longer be needed since the redo of the shredding backend.
     if (window->file_count >= (get_open_files_limit() / 2))
     {
         gchar *message = g_strdup(_("Cannot load more files"));
+        printf("%s\n", message);
         raider_window_show_toast(window, message);
         g_free(message);
 
@@ -337,7 +337,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 }
 /********** End of file opening section. **********/
 
-/******** Asychronously launch shred on all files. *********/
+/******** Asynchronously launch shred on all files. *********/
 static void raider_window_shred_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
@@ -377,9 +377,9 @@ static void raider_window_start_shredding(GtkWidget *widget, gpointer data)
     g_task_run_in_thread(task, raider_window_shred_files_thread);
     g_object_unref(task);
 }
-/******** End of asychronously launch shred on all files section. *********/
+/******** End of asynchronously launch shred on all files section. *********/
 
-/******** Asychronously abort shredding on all files.  *********/
+/******** Asynchronously abort shredding on all files.  *********/
 static void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
@@ -389,7 +389,7 @@ static void raider_window_abort_files_finish(GObject *source_object, GAsyncResul
         gtk_window_destroy(GTK_WINDOW(window));
     }
 
-    /* Update the headerbar view. */
+    /* Update the header bar view. */
     gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
     gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
     gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
@@ -436,7 +436,7 @@ static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     g_task_run_in_thread(task, raider_window_abort_files_thread);
     g_object_unref(task);
 }
-/******** End of asychronously abort shredding on all files section.  *********/
+/******** End of asynchronously abort shredding on all files section.  *********/
 
 /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
 /* Updates the list of removable media in the popover in the AdwSplitButton. */
