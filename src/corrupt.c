@@ -221,7 +221,6 @@ static uint8_t corrupt_step(GTask* task, const char* filename, const off_t files
     return ret;
 }
 
-// TODO: Better function name.
 off_t corrupt_check_file(const char *filename)
 {
     struct stat st;
