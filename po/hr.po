@@ -1,98 +1,117 @@
-# German translation for the raider's package
+# Croatian translation for the raider's package
 # Copyright (C) YEAR THE raider'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# gregorni <mail.gregorni@proton.me>, 2022.
+# Milo Ivir <mail@mivirtype.de>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2022-12-14 16:04+0100\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+"PO-Revision-Date: 2024-07-10 23:51+0200\n"
+"Last-Translator: Milo Ivir <mail@mivirtype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-window.blp:36
 msgid "File Shredder"
 msgstr "Uništavač datoteka"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Izbriši datoteke sigurno"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Trajno izbriši datoteka"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
-#, fuzzy
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"File Shredder is a file deletion program for the GNOME desktop environment. "
+"It is designed to permanently remove sensitive files from your computer, "
+"enhancing data privacy."
 msgstr ""
-"„Uništavač datoteka” je jednostavna aplikacija koja se koristi za sigurno "
-"trajno brisanje datoteka. „Uništavač datoteka” ima opsežan skup postavki i "
-"praćenje napretka za svaku datoteku."
+"„Uništavač datoteka” je aplikacija za brisanje datoteka za GNOME desktop "
+"okruženje. Dizajniran je za trajno uklanjanje osjetljivih datoteka s "
+"računala, poboljšavajući privatnost podataka."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:13
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Unutar određene granice je učinkovit. Međutim, moderni SSD-ovi koriste "
+"određene tehnologije kako bi produžili njegov vijek trajanja, što ima "
+"nuspojavu osiguravanja da uništavanje nikada nije savršeno, a nijedan "
+"softver to ne može popraviti. Međutim uništavanje značajno otežava oporavak "
+"podataka jer zahtijeva specijalizirani softver i hardver."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:27
 msgid "Add Files"
 msgstr "Dodaj datoteke"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Dodaj mape"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Pokretanje …"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
 msgstr "Završavanje …"
 
-#: src/raider-progress-info-popover.c:70
+#: src/raider-progress-info-popover.c:75
 msgid "Estimating..."
 msgstr "Procjenjivanje …"
 
 #: src/raider-shortcuts.blp:8
-#, fuzzy
 msgid "General"
-msgstr "Opće"
+msgstr "Općenito"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
 msgid "New Window"
 msgstr "Novi prozor"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
 msgid "Keyboard Shortcuts"
-msgstr "Tipkovni prečaci"
+msgstr "Tipkovnički prečaci"
 
 #: src/raider-shortcuts.blp:23
-#, fuzzy
 msgid "Close Window"
-msgstr "Novi prozor"
+msgstr "Zatvori prozor"
 
 #: src/raider-shortcuts.blp:27
-#, fuzzy
 msgid "Quit"
-msgstr "Zatvori"
+msgstr "Zatvori aplikaciju"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:25
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:42
 msgid "Main Menu"
-msgstr ""
+msgstr "Glavni izbornik"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:57
 msgid "Add files or drop here"
 msgstr "Dodaj datoteke ili ih ispusti ovdje"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:59
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -100,17 +119,21 @@ msgstr ""
 "Uništavanje je prepisivanje datoteke nasumičnim podacima tako da se "
 "prethodni sadržaj ne može obnoviti."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:95 src/raider-window.c:350
 msgid "Shred All"
 msgstr "Uništi sve"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:114 src/raider-window.c:402
 msgid "Abort All"
 msgstr "Prekini sve"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:141
 msgid "About File Shredder"
 msgstr "O aplikaciji „Uništavač datoteka”"
+
+#: src/raider-window.blp:150
+msgid "Open Folder"
+msgstr "Otvori mapu"
 
 #: src/raider-window.c:151
 msgid "Stop Shredding?"
@@ -136,33 +159,27 @@ msgstr "Nije moguće ukloniti ime datoteke s brzog popisa. Prijavi ovo."
 msgid "Finished shredding files"
 msgstr "Uništavanje datoteka je gotovo"
 
-#: src/raider-window.c:281
-#, fuzzy
-msgid "Some files were already loaded"
-msgstr "„%s” ja već učitana"
+#: src/raider-window.c:282
+msgid "This file was already added"
+msgstr "Ova je datoteka već dodana"
 
-#: src/raider-window.c:294
+#: src/raider-window.c:295
 msgid "Some files did not exist"
-msgstr ""
+msgstr "Neke datoteke nisu postojale"
 
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "Mape se ne podržavaju"
-
-#: src/raider-window.c:312
+#: src/raider-window.c:304
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Nije moguće pisati u „%s”"
 
-#: src/raider-window.c:323
-#, fuzzy
+#: src/raider-window.c:315
 msgid "Cannot load more files"
-msgstr "Sustav ne može učitati daljne datoteke"
+msgstr "Nije moguće učitati više datoteka"
 
-#: src/raider-window.c:380
+#: src/raider-window.c:372
 msgid "Starting Shredding…"
 msgstr "Pokretanje uništavanja …"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:424
 msgid "Aborting…"
 msgstr "Prekidanje …"
