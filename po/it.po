@@ -47,7 +47,7 @@ msgstr "Albano Battistella"
 
 #: src/raider-progress-info-popover.c:62
 msgid "Finishing up..."
-msgstr "Sto terninando..."
+msgstr "Sto terminando..."
 
 #: src/raider-progress-info-popover.c:70
 msgid "Estimating..."
@@ -90,8 +90,8 @@ msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
-"La distruzione è l'offuscamento di un file con dati casuali quindi i "
-"precedenti contenuti non possono essere recuperati."
+"La distruzione è l'offuscamento di un file con dati casuali, di conseguenza i "
+"contenuti precedenti non possono essere recuperati."
 
 #: src/raider-window.blp:99 src/raider-window.c:358
 msgid "Shred All"
@@ -107,7 +107,7 @@ msgstr "Informazioni su File Shredder"
 
 #: src/raider-window.c:151
 msgid "Stop Shredding?"
-msgstr "Smettere di distruggere?"
+msgstr "Vuoi fermare la distruzione?"
 
 #: src/raider-window.c:152
 msgid "Are you sure that you want to exit?"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: src/raider-window.c:213
 msgid "Finished shredding files"
-msgstr "Terminata distruzione dei file"
+msgstr "Distruzione dei file terminata"
 
 #: src/raider-window.c:281
 msgid "Some files were already loaded"
