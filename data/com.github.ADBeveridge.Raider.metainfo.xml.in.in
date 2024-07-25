@@ -53,13 +53,13 @@
     <color type="primary" scheme_preference="dark">#5c0012</color>
   </branding>
   <releases>
-    <release version="3.0.1" date="2024-06-29">
+    <release version="3.0.1" date="2024-07-24">
       <description translate="no">
         <p>Improve icons and branding</p>
         <ul>
           <li>Include branding colors</li>
           <li>Update icon for more legibility</li>
-          <li>Update Hindi and Slovenian translations</li>
+          <li>Update Hindi, Slovenian and Italian translations</li>
         </ul>
       </description>
     </release>
