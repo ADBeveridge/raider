@@ -7,50 +7,75 @@ msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2023-09-07 15:46+0200\n"
+"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+"PO-Revision-Date: 2024-07-25 11:42-0400\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish; Castilian <>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 45.alpha0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-window.blp:36
 msgid "File Shredder"
 msgstr "Trituradora de archivos"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Eliminar sus archivos de forma segura"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Elimine permanentemente sus archivos"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"File Shredder is a file deletion program for the GNOME desktop environment. "
+"It is designed to permanently remove sensitive files from your computer, "
+"enhancing data privacy."
 msgstr ""
-"Trituradora de archivos es una aplicación de GNOME que sirve para eliminar "
-"de forma segura los archivos que no quiera recuperar."
+"File Shredder es un programa de eliminación de archivos para el entorno de "
+"escritorio GNOME. Está diseñado para eliminar permanentemente archivos "
+"sensibles de su ordenador, mejorando la privacidad de los datos."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:13
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Dentro de cierto límite, es eficaz. Sin embargo, las unidades SSD modernas "
+"utilizan ciertas tecnologías para prolongar su vida útil, lo que tiene el "
+"efecto secundario de que la trituración nunca es perfecta, y ningún software "
+"puede arreglarlo. Pero la trituración aumenta considerablemente la "
+"dificultad de la recuperación de datos, ya que requiere software y hardware "
+"especializados."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:27
 msgid "Add Files"
 msgstr "Añadir archivos"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Añadir carpetas"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
-msgstr "Finalizando..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Empezando…"
 
-#: src/raider-progress-info-popover.c:70
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Terminando…"
+
+#: src/raider-progress-info-popover.c:75
 msgid "Estimating..."
 msgstr "Estimando..."
 
@@ -58,11 +83,11 @@ msgstr "Estimando..."
 msgid "General"
 msgstr "General"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
 msgid "New Window"
 msgstr "Ventana nueva"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
 msgid "Keyboard Shortcuts"
 msgstr "Atajos del teclado"
 
@@ -74,19 +99,19 @@ msgstr "Cerrar ventana"
 msgid "Quit"
 msgstr "Salir"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:25
 msgid "Add"
 msgstr "Añadir"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:42
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:57
 msgid "Add files or drop here"
 msgstr "Añadir archivos o soltar aquí"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:59
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -94,17 +119,21 @@ msgstr ""
 "La trituración es la ofuscación de un archivo con datos aleatorios para que "
 "no se pueda recuperar el contenido anterior."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:95 src/raider-window.c:350
 msgid "Shred All"
 msgstr "Triturar todo"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:114 src/raider-window.c:402
 msgid "Abort All"
 msgstr "Abortar todo"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:141
 msgid "About File Shredder"
 msgstr "Acerca de Trituradora de archivos"
+
+#: src/raider-window.blp:150
+msgid "Open Folder"
+msgstr "Abrir carpeta"
 
 #: src/raider-window.c:151
 msgid "Stop Shredding?"
@@ -132,31 +161,37 @@ msgstr ""
 msgid "Finished shredding files"
 msgstr "Finalizada la trituración de archivos"
 
-#: src/raider-window.c:281
-msgid "Some files were already loaded"
-msgstr "Algunos archivos ya estaban cargados"
+#: src/raider-window.c:282
+msgid "This file was already added"
+msgstr "Este archivo ya ha sido añadido"
 
-#: src/raider-window.c:294
+#: src/raider-window.c:295
 msgid "Some files did not exist"
 msgstr "Algunos archivos no existían"
 
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "No se admiten directorios"
-
-#: src/raider-window.c:312
+#: src/raider-window.c:304
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "No se puede escribir en “%s”"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:315
 msgid "Cannot load more files"
 msgstr "No se pueden cargar más archivos"
 
-#: src/raider-window.c:380
+#: src/raider-window.c:372
 msgid "Starting Shredding…"
 msgstr "Comenzando trituración…"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:424
 msgid "Aborting…"
 msgstr "Abortando…"
+
+#~ msgid ""
+#~ "File Shredder is a GNOME application used for securely deleting your "
+#~ "files that you do not want to be recovered."
+#~ msgstr ""
+#~ "Trituradora de archivos es una aplicación de GNOME que sirve para "
+#~ "eliminar de forma segura los archivos que no quiera recuperar."
+
+#~ msgid "Directories are not supported"
+#~ msgstr "No se admiten directorios"
