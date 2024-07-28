@@ -1,4 +1,4 @@
-# Raider <img align="right" alt="Number of downloads" src="https://img.shields.io/flathub/downloads/com.github.ADBeveridge.Raider?style=flat-square">  <img align="right" alt="Fedora COPR build status" src="https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/status_image/last_build.png"/>
+# Raider <img align="right" alt="Number of downloads" src="https://img.shields.io/flathub/downloads/com.github.ADBeveridge.Raider?style=flat-square">  <img align="right" alt="Flathub version" src="https://img.shields.io/flathub/v/com.github.ADBeveridge.Raider"/>
 
 <img align="right" alt="Raider Logo" src="./data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg" />
 
@@ -8,15 +8,16 @@ Within a certain limit, it is effective. However, modern SSDs use certain techno
 
 ## Download
 
-<a href="https://aur.archlinux.org/packages/raider-file-shredder"><img alt="AUR" src="https://img.shields.io/aur/version/raider-file-shredder?style=for-the-badge&logo=archlinux"></a>
 
 <a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
+
+<a href="https://aur.archlinux.org/packages/raider-file-shredder"><img alt="AUR" src="https://img.shields.io/aur/version/raider-file-shredder?style=for-the-badge&logo=archlinux"></a>
+
+<a href='https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/'><img alt="COPR" src='https://img.shields.io/badge/COPR-1.2.2-blue?style=for-the-badge&logo=fedora'></a>
 
 ## Useful Links
 
 *   Compiling: <https://github.com/ADBeveridge/raider/blob/develop/BUILD.md>
 *   GNOME Circle: <https://apps.gnome.org/Raider>
-*   Arch Linux AUR: <https://aur.archlinux.org/packages/raider-file-shredder>
-*   Fedora COPR: <https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/>
 *   Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
 *   Report issues: <https://github.com/ADBeveridge/raider/issues/>
