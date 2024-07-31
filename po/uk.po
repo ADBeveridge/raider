@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Raider\n"
 "Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
-"POT-Creation-Date: 2023-12-29 16:28+0300\n"
-"PO-Revision-Date: 2024-02-06 18:21+0200\n"
+"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+"PO-Revision-Date: 2024-07-31 16:46+0300\n"
 "Last-Translator: volkov <volkovissocool@gmail.com>\n"
 "Language-Team: volkov <volkovissocool@gmail.com\n"
 "Language: uk\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop.in.in:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: src/raider-application.c:167 src/raider-window.blp:36
 msgid "File Shredder"
 msgstr "Шредер файлів"
 
@@ -32,39 +32,50 @@ msgstr "Назавжди видаляйте ваші файли"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"Raider is a shredding program built for the GNOME desktop. It is meant to "
-"remove files from your computer permanently."
+"File Shredder is a file deletion program for the GNOME desktop environment. "
+"It is designed to permanently remove sensitive files from your computer, "
+"enhancing data privacy."
 msgstr ""
-"Шредер файлів - це програма створена для стільниці GNOME. Вона створена для "
-"того, щоб назавжди видаляти файли з вашого пристрою."
+"Шредер файлів - це програма для видалення файлів для стільниці GNOME. Вона "
+"створена для того, щоб назавжди видаляти чутливі файли з вашого пристрою, "
+"покращуючи приватність даних."
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:13
 msgid ""
-"Within a certain limit, it is effective. However, the way data is written "
-"physically to SSDs at the hardware level ensures that shredding is never "
-"perfect, and no software can fix that. However, top-level agencies are "
-"usually the only ones who can recover such data, due to the time, effort, "
-"money, and patience required to extract it effectively."
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
 msgstr ""
-"З певними обмеженнями, вона ефективна. Але, те як дані фізично записуються "
-"на ССД диски - шредерування ніколи не є ідеальним, і жодна програма не може "
-"це виправити. Але, тільки високорівневі компанії можуть відновити такі дані, "
-"оскільки це дуже дорогий, тривалий і складний процес."
+"З певними обмеженнями, вона ефективна. Але, сучасні SSD диски використовують "
+"певні технології для подовження їхньої витривалості, через що шредерування "
+"файлів не є ідеальним і це не виправити програмно. Але шредерування робить "
+"відновлення даних дуже складними оскільки для цього потрібно спеціальне "
+"програмне і апаратне забезпечення."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:27
 msgid "Add Files"
 msgstr "Додати файли"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Додати теки"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr "volkov <volkovissocool@gmail.com>"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Починаємо…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
 msgstr "Завершуємо…"
 
-#: src/raider-progress-info-popover.c:70
+#: src/raider-progress-info-popover.c:75
 msgid "Estimating..."
 msgstr "Розрахунок…"
 
@@ -72,11 +83,11 @@ msgstr "Розрахунок…"
 msgid "General"
 msgstr "Загальні"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
 msgid "New Window"
 msgstr "Нове вікно"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
@@ -88,19 +99,19 @@ msgstr "Закрити вікно"
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:25
 msgid "Add"
 msgstr "Додати"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:42
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:57
 msgid "Add files or drop here"
 msgstr "Додайте файли або перетягніть сюди"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:59
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -108,17 +119,21 @@ msgstr ""
 "Шредерування це обусфікація змісту файлу випадковими даними, завдяки чому "
 "відновити зміст файлу буде неможливо."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:95 src/raider-window.c:350
 msgid "Shred All"
 msgstr "Шредерувати усі"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:114 src/raider-window.c:402
 msgid "Abort All"
 msgstr "Скасувати усі"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:141
 msgid "About File Shredder"
 msgstr "Про Шредер файлів"
+
+#: src/raider-window.blp:150
+msgid "Open Folder"
+msgstr "Відкрити теку"
 
 #: src/raider-window.c:151
 msgid "Stop Shredding?"
@@ -144,34 +159,33 @@ msgstr "Не вдалося видалити файл із списку. Буд�
 msgid "Finished shredding files"
 msgstr "Завершено шредерування файлів"
 
-#: src/raider-window.c:281
-msgid "Some files were already loaded"
-msgstr "Деякі файли вже були завантажені"
+#: src/raider-window.c:282
+msgid "This file was already added"
+msgstr "Цей файл вже було додано"
 
-#: src/raider-window.c:294
+#: src/raider-window.c:295
 msgid "Some files did not exist"
 msgstr "Деякі файлі не існують"
 
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "Теки не підтримуються"
-
-#: src/raider-window.c:312
+#: src/raider-window.c:304
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Неможливо записати в “%s”"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:315
 msgid "Cannot load more files"
 msgstr "Не можливо завантажити більше файлів"
 
-#: src/raider-window.c:380
+#: src/raider-window.c:372
 msgid "Starting Shredding…"
 msgstr "Запускаємо шредер…"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:424
 msgid "Aborting…"
 msgstr "Скасування…"
+
+#~ msgid "Directories are not supported"
+#~ msgstr "Теки не підтримуються"
 
 #~ msgid ""
 #~ "File Shredder is a GNOME application used for securely deleting your "
