@@ -22,7 +22,7 @@
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
   <url type="homepage">https://apps.gnome.org/Raider</url>
   <url type="bugtracker">https://github.com/ADBeveridge/raider/issues</url>
-  <url type="vcs-browser">https://github.com/ADBeveridge/raider/tree/develop</url>
+  <url type="vcs-browser">https://github.com/ADBeveridge/raider</url>
   <url type="translate">https://github.com/ADBeveridge/raider/tree/develop/po</url>
   <update_contact>adgbeveridge@proton.me</update_contact>
   <!-- developer_name tag deprecated with Appstream 1.0 -->
