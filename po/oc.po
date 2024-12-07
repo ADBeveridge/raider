@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2023-10-09 20:13+0200\n"
+"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+"PO-Revision-Date: 2024-12-07 10:07+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
@@ -16,41 +16,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.5\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-window.blp:36
 msgid "File Shredder"
 msgstr "Trissador de fichièrs"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Suprimissètz vòstres fichièr d’un biais segur"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Suprimissètz per totjorn vòstres fichièrs"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"File Shredder is a file deletion program for the GNOME desktop environment. "
+"It is designed to permanently remove sensitive files from your computer, "
+"enhancing data privacy."
 msgstr ""
-"Lo trissador de fichièrs es una aplicacion simpla utilizada per suprimir de "
-"manièra segura los fichièrs que volètz pas restaurar."
+"Trissador de fichièrs es un programa de supression de fichièrs per "
+"l’environament de burèu GNOME. Es concebut per tirar per totjorn de fichièrs "
+"sensibles de l’ordenador, çò que melhora la confidencialitat de las donadas."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:13
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Dins un cert limit, es eficaç. Pasmens, los SSDs modèrns utilizan cèrtas "
+"tecnologias per alongar lor durada de vida, çò que ten l'efièch segondari "
+"d'assegurar que la destruccion es jamai perfiècha, e cap de programa pòt pas "
+"corregir aquò. Mas la destruccion aumenta significativament la dificultat de "
+"la recuperacion de donadas, estant que requerís un programa e un material "
+"especializats."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:27
 msgid "Add Files"
 msgstr "Apondre de fichièrs"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Apondre de dossièrs"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
-msgstr "Finalizacion..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Lançament…"
 
-#: src/raider-progress-info-popover.c:70
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Finalizacion…"
+
+#: src/raider-progress-info-popover.c:75
 msgid "Estimating..."
 msgstr "Estimacion..."
 
@@ -58,11 +83,11 @@ msgstr "Estimacion..."
 msgid "General"
 msgstr "General"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
 msgid "New Window"
 msgstr "Fenèstra novèla"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
 msgid "Keyboard Shortcuts"
 msgstr "Acorchis de clavièr"
 
@@ -74,19 +99,19 @@ msgstr "Tampar la fenèstra"
 msgid "Quit"
 msgstr "Sortir"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:25
 msgid "Add"
 msgstr "Apondre"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:42
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:57
 msgid "Add files or drop here"
 msgstr "Apondre de fichièr o los lisar depausar aquí"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:59
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -94,25 +119,29 @@ msgstr ""
 "Lo trissatge es rescondre lo contengut d’un fichièr amb de donadas "
 "aleatòrias per que lo contengut siá pas restaurable."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:95 src/raider-window.c:350
 msgid "Shred All"
 msgstr "Tot trissar"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:114 src/raider-window.c:402
 msgid "Abort All"
 msgstr "Tot abandonar"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:141
 msgid "About File Shredder"
 msgstr "A prepaus del Trissador de fichièrs"
 
+#: src/raider-window.blp:150
+msgid "Open Folder"
+msgstr "Dobrir lo dossièr"
+
 #: src/raider-window.c:151
 msgid "Stop Shredding?"
-msgstr "Amagar lo trissatge ?"
+msgstr "Amagar lo trissatge ?"
 
 #: src/raider-window.c:152
 msgid "Are you sure that you want to exit?"
-msgstr "Sètz segur que volètz sortir ?"
+msgstr "Sètz segur que volètz sortir ?"
 
 #: src/raider-window.c:155
 msgid "_Cancel"
@@ -131,31 +160,37 @@ msgstr ""
 msgid "Finished shredding files"
 msgstr "Trissatge de fichièrs acabat"
 
-#: src/raider-window.c:281
-msgid "Some files were already loaded"
-msgstr "D’unes fichièrs èran ja cargats"
+#: src/raider-window.c:282
+msgid "This file was already added"
+msgstr "Aqueste fichièr èra ja apondut"
 
-#: src/raider-window.c:294
+#: src/raider-window.c:295
 msgid "Some files did not exist"
 msgstr "D’unes fichièrs existissián pas"
 
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "Los repertòris son pas preses en carga"
-
-#: src/raider-window.c:312
+#: src/raider-window.c:304
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Impossible d'escriure dins « %s »"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:315
 msgid "Cannot load more files"
 msgstr "Cargament de mai de fichièrs impossible"
 
-#: src/raider-window.c:380
+#: src/raider-window.c:372
 msgid "Starting Shredding…"
 msgstr "Començament del trissatge…"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:424
 msgid "Aborting…"
 msgstr "Interrupcion…"
+
+#~ msgid ""
+#~ "File Shredder is a GNOME application used for securely deleting your "
+#~ "files that you do not want to be recovered."
+#~ msgstr ""
+#~ "Lo trissador de fichièrs es una aplicacion simpla utilizada per suprimir "
+#~ "de manièra segura los fichièrs que volètz pas restaurar."
+
+#~ msgid "Directories are not supported"
+#~ msgstr "Los repertòris son pas preses en carga"
