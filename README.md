@@ -11,8 +11,6 @@ Within a certain limit, it is effective. However, modern SSDs use certain techno
 
 <a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
 
-<a href="https://aur.archlinux.org/packages/raider-file-shredder"><img alt="AUR" src="https://img.shields.io/aur/version/raider-file-shredder?style=for-the-badge&logo=archlinux"></a>
-
 <a href='https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/'><img alt="COPR" src='https://img.shields.io/badge/COPR-1.2.2-blue?style=for-the-badge&logo=fedora'></a>
 
 ## Useful Links
