@@ -148,16 +148,15 @@ gboolean raider_window_exit(RaiderWindow *win, gpointer data)
 {
     if (win->status)
     {
-        GtkWidget *dialog = adw_message_dialog_new(GTK_WINDOW(win), _("Stop Shredding?"), NULL);
-        adw_message_dialog_set_body(ADW_MESSAGE_DIALOG(dialog), _("Are you sure that you want to exit?"));
+        AdwDialog *dialog = adw_alert_dialog_new(_("Stop Shredding?"), _("Are you sure that you want to exit?"));
         g_signal_connect(dialog, "response", G_CALLBACK(raider_window_exit_response), win);
 
-        adw_message_dialog_add_responses(ADW_MESSAGE_DIALOG(dialog), "cancel", _("_Cancel"), "exit", _("_Exit"), NULL);
-        adw_message_dialog_set_response_appearance(ADW_MESSAGE_DIALOG(dialog), "exit", ADW_RESPONSE_DESTRUCTIVE);
-        adw_message_dialog_set_default_response(ADW_MESSAGE_DIALOG(dialog), "cancel");
-        adw_message_dialog_set_close_response(ADW_MESSAGE_DIALOG(dialog), "cancel");
+        adw_alert_dialog_add_responses(ADW_ALERT_DIALOG(dialog), "cancel", _("_Cancel"), "exit", _("_Exit"), NULL);
+        adw_alert_dialog_set_response_appearance(ADW_ALERT_DIALOG(dialog), "exit", ADW_RESPONSE_DESTRUCTIVE);
+        adw_alert_dialog_set_default_response(ADW_ALERT_DIALOG(dialog), "cancel");
+        adw_alert_dialog_set_close_response(ADW_ALERT_DIALOG(dialog), "cancel");
 
-        gtk_window_present(GTK_WINDOW(dialog));
+        adw_dialog_present (dialog, GTK_WIDGET(win));
     }
 
     // Based on the value of this, the window will exit or will not.

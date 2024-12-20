@@ -53,6 +53,16 @@
     <color type="primary" scheme_preference="dark">#5c0012</color>
   </branding>
   <releases>
+    <release version="3.0.2" date="2024-07-24">
+      <description translate="no">
+        <p>Update for GNOME 47</p>
+        <ul>
+          <li>Includes new file picker</li>
+          <li>Halve shredding time by using more sensible iteration count</li>
+          <li>Update Occitan, Slovenian and Italian translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.1" date="2024-07-24">
       <description translate="no">
         <p>Improve icons and branding</p>

@@ -21,11 +21,9 @@
 #include <glib/gi18n.h>
 #include "corrupt.h"
 
+// The size of this array is how many times the file will be overwritten.
 const char* steps[] = {"\x77\x77\x77", "\x76\x76\x76",
-    "\x33\x33\x33", "\x35\x35\x35",
-    "\x55\x55\x55", "\xAA\xAA\xAA",
-    "\x44\x44\x44", "\x55\x55\x55",
-    "\x66\x66\x66", "\x77\x77\x77"};
+    "\x33\x33\x33", "\x35\x35\x35", "\x55\x55\x55"};
 
 struct _RaiderCorrupt
 {
@@ -47,6 +45,7 @@ uint8_t corrupt_unlink_file(const char *filename);
 uint8_t corrupt_unlink_folder(const char *filename);
 off_t corrupt_check_file(const char *filename);
 static uint8_t corrupt_step(GTask* task, const char* filename, const off_t filesize, const char *pattern, int loop_num);
+void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable);
 
 
 static void raider_corrupt_init(RaiderCorrupt *self)
@@ -67,6 +66,17 @@ RaiderCorrupt *raider_corrupt_new(GFile* file, RaiderFileRow* row)
     return corrupt;
 }
 
+GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCallback func)
+{
+    self->cancel = g_cancellable_new();
+    self->task = g_task_new(self, self->cancel, func, NULL);
+    g_task_set_task_data (self->task, self->row, NULL);
+    g_task_run_in_thread(self->task, shredding_thread);
+    g_object_unref(self->task);
+
+    return self->cancel;
+}
+
 void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderCorrupt* corrupt = RAIDER_CORRUPT(source_object);
@@ -81,39 +91,6 @@ void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, 
 
     if (corrupt_file(corrupt) == 0) {
         corrupt_unlink_file(g_file_get_path(corrupt->file));
-    }
-}
-
-GCancellable* raider_corrupt_start_shredding(RaiderCorrupt* self, GAsyncReadyCallback func)
-{
-    self->cancel = g_cancellable_new();
-    self->task = g_task_new(self, self->cancel, func, NULL);
-    g_task_set_task_data (self->task, self->row, NULL);
-    g_task_run_in_thread(self->task, shredding_thread);
-    g_object_unref(self->task);
-
-    return self->cancel;
-}
-
-/* Your standard recursive file listing algorithm. */
-static void list_files(const char *directory, GPtrArray* files) {
-    const gchar *file_name;
-
-    GDir *dir = g_dir_open(directory, 0, NULL);
-    if (dir != NULL) {
-        while ((file_name = g_dir_read_name(dir)) != NULL) {
-            gchar *file_path = g_build_filename(directory, file_name, NULL);
-            // If it is another directory, recurse.
-            if (g_file_test(file_path, G_FILE_TEST_IS_DIR)) {
-                // Make sure it is not the current or parent directories.
-                if (strcmp(file_name, ".") != 0 && strcmp(file_name, "..") != 0) {
-                    list_files(file_path, files);
-                }
-            } else {
-                g_ptr_array_add(files, file_path);
-            }
-        }
-        g_dir_close(dir);
     }
 }
 
@@ -169,13 +146,13 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
     g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
 
-    // Shred the file by overwriting it many times.
     off_t filesize = corrupt_check_file(filename);
     if (filesize == -1)
     {
         return -1;
     }
 
+    // Shred the file by overwriting it many times.
     uint8_t i;
     for (i = 0; i < steps_num; i++)
     {
@@ -221,30 +198,6 @@ static uint8_t corrupt_step(GTask* task, const char* filename, const off_t files
     return ret;
 }
 
-off_t corrupt_check_file(const char *filename)
-{
-    struct stat st;
-
-    // Run some checks on the file.
-    if(lstat(filename, &st) != 0)
-    {
-        fprintf(stderr, "corrupt: current file not found\n");
-        return -1;
-    }
-    if (S_ISLNK(st.st_mode) == 1)
-    {
-        /* Quietly deal with symbolic links. */
-        corrupt_unlink_file(filename);
-        return -1;
-    }
-    if (S_ISREG(st.st_mode) == 0)
-    {
-        fprintf(stderr, "corrupt: current file is not a regular file\n");
-        return -1;
-    }
-    return st.st_size;
-}
-
 uint8_t corrupt_unlink_file(const char *filename)
 {
     uint8_t ret = 0;
@@ -288,4 +241,50 @@ uint8_t corrupt_unlink_folder(const char *directory)
     }
 
     return 0;
+}
+
+off_t corrupt_check_file(const char *filename)
+{
+    struct stat st;
+
+    // Run some checks on the file.
+    if(lstat(filename, &st) != 0)
+    {
+        fprintf(stderr, "corrupt: current file not found\n");
+        return -1;
+    }
+    if (S_ISLNK(st.st_mode) == 1)
+    {
+        /* Quietly deal with symbolic links. */
+        corrupt_unlink_file(filename);
+        return -1;
+    }
+    if (S_ISREG(st.st_mode) == 0)
+    {
+        fprintf(stderr, "corrupt: current file is not a regular file\n");
+        return -1;
+    }
+    return st.st_size;
+}
+
+// Standard directory scanner.
+static void list_files(const char *directory, GPtrArray* files) {
+    const gchar *file_name;
+
+    GDir *dir = g_dir_open(directory, 0, NULL);
+    if (dir != NULL) {
+        while ((file_name = g_dir_read_name(dir)) != NULL) {
+            gchar *file_path = g_build_filename(directory, file_name, NULL);
+            // If it is another directory, recurse.
+            if (g_file_test(file_path, G_FILE_TEST_IS_DIR)) {
+                // Make sure it is not the current or parent directories.
+                if (strcmp(file_name, ".") != 0 && strcmp(file_name, "..") != 0) {
+                    list_files(file_path, files);
+                }
+            } else {
+                g_ptr_array_add(files, file_path);
+            }
+        }
+        g_dir_close(dir);
+    }
 }

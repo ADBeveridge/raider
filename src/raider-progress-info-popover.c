@@ -53,7 +53,7 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
     if (percentage == 0)
     {
         gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Starting…"));
-        gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
+        gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), 1);
     }
     else if (percentage < 100)
     {
@@ -72,6 +72,6 @@ void raider_progress_info_popover_set_progress(RaiderProgressInfoPopover *popove
 /* This is used when the spinner is shown instead of the progress icon. */
 void raider_progress_info_popover_pulse(RaiderProgressInfoPopover *popover)
 {
-    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating..."));
+    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating…"));
     gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
 }
