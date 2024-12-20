@@ -1,4 +1,4 @@
-project('raider', 'c', version: '3.0.1')
+project('raider', 'c', version: '3.0.2')
 
 i18n = import('i18n')
 gnome = import('gnome')
