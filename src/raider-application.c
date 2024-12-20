@@ -166,11 +166,10 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
 
     g_autofree gchar *program_name = g_strdup(_("File Shredder"));
 
-    adw_show_about_window (window,
-                         "transient-for", window,
+    adw_show_about_dialog (GTK_WIDGET(window),
                          "application-name", program_name,
                          "application-icon", "com.github.ADBeveridge.Raider",
-                         "version", "3.0.1",
+                         "version", "3.0.2",
                          "copyright", "© 2024 Alan Beveridge",
                          "issue-url", "https://github.com/ADBeveridge/raider/issues/new",
                          "license-type", GTK_LICENSE_GPL_3_0,
