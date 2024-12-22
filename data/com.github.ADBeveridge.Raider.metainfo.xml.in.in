@@ -53,7 +53,7 @@
     <color type="primary" scheme_preference="dark">#5c0012</color>
   </branding>
   <releases>
-    <release version="3.0.2" date="2024-07-24">
+    <release version="3.0.2" date="2024-12-20">
       <description translate="no">
         <p>Update for GNOME 47</p>
         <ul>
