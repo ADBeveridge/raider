@@ -92,7 +92,12 @@ template $RaiderWindow : Adw.ApplicationWindow {
                   margin-top: 5;
                   margin-start: 5;
                   margin-bottom: 5;
+                  Gtk.Button clear_button {
+                    label: _("Clear");
+                    styles ["pill"]
+                  }
                   Gtk.Button shred_button {
+                    margin-start: 10;
                     label: _("Shred All");
                     styles ["destructive-action", "pill"]
                   }

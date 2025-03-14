@@ -51,8 +51,7 @@ struct _RaiderFileRow
 };
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
-
-static void raider_file_row_close (GtkWidget* window, gpointer data);
+static void raider_file_row_abort(GtkWidget *widget, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
 {
@@ -71,7 +70,7 @@ static void raider_file_row_init(RaiderFileRow *row)
     row->popover = raider_progress_info_popover_new();
     gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
-    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
+    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_abort), row);
     g_mutex_init(&row->mutex);
     raider_progress_icon_set_progress(row->icon, 0);
     g_object_ref(row->icon);
@@ -100,11 +99,16 @@ gchar *raider_file_row_get_filename(RaiderFileRow *row)
 {
     return g_file_get_path(row->file);
 }
-/* This version of delete tells the raider_window_close_file function to show a toast that shredding is done. */
-static void raider_file_row_delete(GtkWidget *widget, gpointer data)
+
+static void raider_file_row_abort(GtkWidget *widget, gpointer data)
+{
+    raider_file_row_close(widget, data, FALSE);
+}
+
+void raider_file_row_close (GtkWidget* window, gpointer data, gboolean success)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    if (row->aborted == TRUE)
+    if (row->aborted == TRUE || success == FALSE)
     {
         // One file being aborted is enough not to show the notification.
         gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
@@ -116,13 +120,6 @@ static void raider_file_row_delete(GtkWidget *widget, gpointer data)
     raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
     GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
     gtk_list_box_remove(list_box, GTK_WIDGET(data));
-}
-
-static void raider_file_row_close (GtkWidget* window, gpointer data)
-{
-    RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    row->aborted = TRUE; // We are not shredding the file.
-    raider_file_row_delete(NULL, data);
 }
 
 /** Shredding section */
@@ -138,7 +135,7 @@ void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user
 
     // If the shredding completed error free, then remove this file row.
     if (g_task_had_error (G_TASK (res)) == FALSE)
-        raider_file_row_delete(NULL, row);
+        raider_file_row_close(NULL, row, TRUE);
 }
 
 void raider_file_row_launch_shredding(gpointer data)

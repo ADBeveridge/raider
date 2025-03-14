@@ -24,6 +24,7 @@
 G_DECLARE_FINAL_TYPE(RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
 RaiderFileRow *raider_file_row_new(GFile *file);
+void raider_file_row_close(GtkWidget *window, gpointer data, gboolean success);
 
 gchar *raider_file_row_get_filename(RaiderFileRow *row);
 void raider_file_row_launch_shredding(gpointer data);
