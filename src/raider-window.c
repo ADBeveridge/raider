@@ -42,6 +42,7 @@ struct _RaiderWindow
     /*AdwSplitButton *open_button;*/
     GtkButton *open_button;
     GtkRevealer *open_revealer;
+    GtkButton *clear_button;
     GtkButton *shred_button;
     GtkRevealer *shred_revealer;
     GtkButton *abort_button;
@@ -71,6 +72,7 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, open_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, open_revealer);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, clear_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, list_box);
@@ -79,6 +81,18 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, toast_overlay);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
+}
+
+static void raider_window_clear_files(GtkWidget *data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(gtk_widget_get_root(GTK_WIDGET(data)));
+
+    int row;
+    for (row = window->file_count - 1; row >= 0; row--)
+    {
+        RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+        raider_file_row_close(NULL, file_row, FALSE);
+    }
 }
 
 static void raider_window_init(RaiderWindow *self)
@@ -90,6 +104,7 @@ static void raider_window_init(RaiderWindow *self)
     self->status = FALSE;
     self->show_notification = TRUE;
 
+    g_signal_connect(self->clear_button, "clicked", G_CALLBACK(raider_window_clear_files), self);
     g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
     g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
     g_signal_connect(self, "close-request", G_CALLBACK(raider_window_exit), NULL);
@@ -345,7 +360,9 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
     gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
 
+    gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), TRUE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), TRUE);
+    gtk_button_set_label(window->clear_button, _("Clear All"));
     gtk_button_set_label(window->shred_button, _("Shred All"));
 }
 static void raider_window_shred_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
@@ -367,6 +384,7 @@ static void raider_window_start_shredding(GtkWidget *widget, gpointer data)
     RaiderWindow *window = RAIDER_WINDOW(data);
 
     gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), FALSE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), FALSE);
     gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
 
