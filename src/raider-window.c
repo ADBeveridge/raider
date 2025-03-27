@@ -91,7 +91,7 @@ static void raider_window_clear_files(GtkWidget *data)
     for (row = window->file_count - 1; row >= 0; row--)
     {
         RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-        raider_file_row_close(NULL, file_row, FALSE);
+        raider_file_row_abort(NULL, file_row);
     }
 }
 

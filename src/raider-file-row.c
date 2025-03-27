@@ -45,13 +45,14 @@ struct _RaiderFileRow
     /* Variables to keep tabs on shredding. */
     GCancellable* cancel;
     GMutex mutex; // This is locked upon shredding, and only unlocked when the shredding is done (cancelled or end of file)
-    gboolean aborted; // Aborted can mean anything to prevent the file from shredding.
+    gboolean aborted; // Aborted can mean anything to prevent the file from shredding. Used to track whether to show notifications or not.
     double progress;
     GMutex progress_mutex;
 };
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
-static void raider_file_row_abort(GtkWidget *widget, gpointer data);
+
+void raider_file_row_close (GtkWidget* window, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
 {
@@ -100,15 +101,20 @@ gchar *raider_file_row_get_filename(RaiderFileRow *row)
     return g_file_get_path(row->file);
 }
 
-static void raider_file_row_abort(GtkWidget *widget, gpointer data)
-{
-    raider_file_row_close(widget, data, FALSE);
-}
-
-void raider_file_row_close (GtkWidget* window, gpointer data, gboolean success)
+// Remove file row and prevent shredding completion notification from being sent.
+void raider_file_row_abort(GtkWidget *widget, gpointer data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    if (row->aborted == TRUE || success == FALSE)
+    row->aborted = TRUE;
+
+    raider_file_row_close(widget, data);
+}
+
+// Remove file row.
+void raider_file_row_close (GtkWidget* window, gpointer data)
+{
+    RaiderFileRow* row = RAIDER_FILE_ROW(data);
+    if (row->aborted == TRUE)
     {
         // One file being aborted is enough not to show the notification.
         gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
@@ -135,7 +141,7 @@ void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user
 
     // If the shredding completed error free, then remove this file row.
     if (g_task_had_error (G_TASK (res)) == FALSE)
-        raider_file_row_close(NULL, row, TRUE);
+        raider_file_row_close(NULL, row);
 }
 
 void raider_file_row_launch_shredding(gpointer data)
@@ -158,7 +164,7 @@ void raider_file_row_launch_shredding(gpointer data)
 }
 /* End of shredding section. */
 
-/* This is called when the user clicks abort. */
+/* This is called when the user clicks abort while shredding. */
 void raider_file_row_shredding_abort(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
