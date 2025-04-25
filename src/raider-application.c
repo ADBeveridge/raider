@@ -19,6 +19,7 @@
 #include <gio/gunixmounts.h>
 #include <glib/gi18n.h>
 #include "raider-application.h"
+#include "raider-config.h"
 #include "raider-window.h"
 
 struct _RaiderApplication
@@ -169,7 +170,7 @@ static void raider_application_show_about(GSimpleAction *action, GVariant *param
     adw_show_about_dialog (GTK_WIDGET(window),
                          "application-name", program_name,
                          "application-icon", "com.github.ADBeveridge.Raider",
-                         "version", "3.0.2",
+                         "version", PACKAGE_VERSION,
                          "copyright", "© 2024 Alan Beveridge",
                          "issue-url", "https://github.com/ADBeveridge/raider/issues/new",
                          "license-type", GTK_LICENSE_GPL_3_0,
@@ -213,18 +214,52 @@ static void raider_application_activate(GApplication *app)
     gtk_window_present(window);
 }
 
+static int raider_application_handle_local_options (GApplication *app, GVariantDict *options)
+{
+  gboolean new_window = FALSE;
+  gboolean version = FALSE;
+
+  if (g_variant_dict_lookup (options, "version", "b", &version) && version)
+  {
+    g_print ("%s - %s\n", _("File Shredder"), PACKAGE_VERSION);
+    return 0;
+  }
+
+  if (g_variant_dict_lookup (options, "new-window", "b", &new_window) && new_window)
+  {
+    g_application_register (app, NULL, NULL);
+
+    if (g_application_get_is_remote (app))
+    {
+      g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
+      return 0;
+    }
+  }
+
+  return -1;
+}
+
 static void raider_application_class_init(RaiderApplicationClass *klass)
 {
     GObjectClass *object_class = G_OBJECT_CLASS(klass);
     GApplicationClass *app_class = G_APPLICATION_CLASS(klass);
 
     object_class->finalize = raider_application_finalize;
+    app_class->handle_local_options = raider_application_handle_local_options;
     app_class->activate = raider_application_activate;
     app_class->open = raider_application_open;
 }
 
+static const GOptionEntry options[] = {
+    {"new-window", 'w', 0, G_OPTION_ARG_NONE, NULL, "Open a new window", NULL},
+    {"version", 'v', 0, G_OPTION_ARG_NONE, NULL, "Print version information and exit", NULL},
+    {NULL}
+};
+
 static void raider_application_init(RaiderApplication *self)
 {
+    g_application_add_main_option_entries (G_APPLICATION (self), options);
+
     g_autoptr(GSimpleAction) quit_action = g_simple_action_new("quit", NULL);
     g_signal_connect(quit_action, "activate", G_CALLBACK(raider_application_try_exit), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(quit_action));
