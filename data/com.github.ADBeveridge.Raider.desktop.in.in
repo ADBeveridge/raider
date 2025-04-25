@@ -9,5 +9,6 @@ Type=Application
 Keywords=delete;remove;permanently;files;shred;data;
 Categories=GTK;Utility;FileTools;Security;
 StartupNotify=true
+DBusActivatable=true
 X-GNOME-UsesNotifications=true
 X-Purism-FormFactor=Workstation;Mobile;

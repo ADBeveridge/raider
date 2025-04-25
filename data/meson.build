@@ -29,4 +29,14 @@ if appstreamcli.found()
   )
 endif
 
+service_conf = configuration_data()
+service_conf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
+configure_file(
+  input: 'com.github.ADBeveridge.Raider.service.in',
+  output: 'com.github.ADBeveridge.Raider.service',
+  configuration: service_conf,
+  install: true,
+  install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
+)
+
 subdir('icons')
