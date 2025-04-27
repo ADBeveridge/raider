@@ -1,22 +1,23 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portuguese translation for raider.
+# Copyright (C) 2025 THE raider'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Alan Beveridge <adbeveridge@protonmail.com>, 2022.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: raider\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2022-08-19 14:24-0700\n"
-"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-04-26 23:11-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: data/com.github.ADBeveridge.Raider.desktop:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:6
@@ -30,15 +31,12 @@ msgid "Securely delete your files"
 msgstr "Delete seus arquivos com segurança"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml:9
-#, fuzzy
 msgid ""
 "File Shredder is a GNOME application used for securely deleting your files "
 "that you do not want to be recovered."
 msgstr ""
-"A Fragmentadora de Arquivos é uma aplicação simples usada para deletar com "
-"segurança os arquivos que você não deseja que sejam recuperados. A "
-"Fragmentadora de Arquivos possui um conjunto claro de preferências e "
-"acompanhamento de progresso para cada arquivo."
+"A Fragmentadora de Arquivos é uma aplicação do GNOME usada para deletar com "
+"segurança os arquivos que você não deseja que sejam recuperados."
 
 #: src/raider-application.c:66 src/raider-shortcuts.blp:11
 #: src/raider-window.blp:33
@@ -70,9 +68,8 @@ msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
 #: src/raider-shortcuts.blp:23
-#, fuzzy
 msgid "Close Window"
-msgstr "Nova Janela"
+msgstr "Fechar Janela"
 
 #: src/raider-shortcuts.blp:27
 msgid "Quit"
@@ -91,15 +88,12 @@ msgid "Add files or drop here"
 msgstr "Adicione arquivos ou solte-os aqui"
 
 #: src/raider-window.blp:63
-#, fuzzy
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
-"A fragmentação é o obfuscamento de um arquivo com dados aleatórios para que "
-"os conteúdos anteriores não possam ser recuperados. Saiba mais sobre o <a "
-"href=\"https://en.wikipedia.org/wiki/Shred_(Unix)\">backend da Fragmentadora "
-"de Arquivos</a>."
+"A fragmentação é o ofuscamento de um arquivo com dados aleatórios para que "
+"os conteúdos anteriores não possam ser recuperados."
 
 #: src/raider-window.blp:99 src/raider-window.c:358
 msgid "Shred All"
@@ -114,37 +108,33 @@ msgid "About File Shredder"
 msgstr "Sobre a Fragmentadora de Arquivos"
 
 #: src/raider-window.c:151
-#, fuzzy
 msgid "Stop Shredding?"
-msgstr "Esconder Fragmentação"
+msgstr "Parar a Fragmentação?"
 
 #: src/raider-window.c:152
 msgid "Are you sure that you want to exit?"
 msgstr "Tem certeza de que deseja sair?"
 
 #: src/raider-window.c:155
-#, fuzzy
 msgid "_Cancel"
-msgstr "Cancelar"
+msgstr "_Cancelar"
 
 #: src/raider-window.c:155
 msgid "_Exit"
 msgstr "_Sair"
 
 #: src/raider-window.c:203
-#, fuzzy
 msgid "Could not remove filename from quick list. Please report this."
-msgstr "O arquivo não pôde ser removido da lista rápida."
+msgstr ""
+"Não foi possível remover o arquivo da lista rápida. Por favor, relate isso."
 
 #: src/raider-window.c:213
-#, fuzzy
 msgid "Finished shredding files"
-msgstr "Ocultar fragmentação"
+msgstr "Concluída a fragmentação de arquivos"
 
 #: src/raider-window.c:281
-#, fuzzy
 msgid "Some files were already loaded"
-msgstr "\"%s\" já está carregado"
+msgstr "Alguns arquivos já estavam carregados"
 
 #: src/raider-window.c:294
 msgid "Some files did not exist"
@@ -164,9 +154,8 @@ msgid "Cannot load more files"
 msgstr "Não é possível carregar mais arquivos"
 
 #: src/raider-window.c:380
-#, fuzzy
 msgid "Starting Shredding…"
-msgstr "Esconder Fragmentação"
+msgstr "Iniciando Fragmentação…"
 
 #: src/raider-window.c:432
 msgid "Aborting…"
