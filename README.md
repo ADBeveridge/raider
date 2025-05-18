@@ -1,6 +1,4 @@
-# Raider <img align="right" alt="Number of downloads" src="https://img.shields.io/flathub/downloads/com.github.ADBeveridge.Raider?style=flat-square">  <img align="right" alt="Flathub version" src="https://img.shields.io/flathub/v/com.github.ADBeveridge.Raider"/>
-
-<img align="right" alt="Raider Logo" src="./data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg" />
+# Raider
 
 File Shredder is a file deletion program designed to permanently remove sensitive files from your computer, enhancing data privacy
 
@@ -9,7 +7,7 @@ Within a certain limit, it is effective. However, modern SSDs use certain techno
 ## Download
 
 
-<a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
+<a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img alt="Flathub version" src="https://img.shields.io/flathub/v/com.github.ADBeveridge.Raider?style=for-the-badge&logo=flathub"/></a>
 
 <a href="https://archlinux.org/packages/extra/x86_64/raider/"><img alt="AUR" src="https://img.shields.io/archlinux/v/extra/x86_64/raider?style=for-the-badge&logo=archlinux"></a> 
 
