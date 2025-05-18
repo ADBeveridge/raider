@@ -165,8 +165,6 @@ raider_progress_paintable_dispose (GObject *object)
 {
     RaiderProgressPaintable *self = RAIDER_PROGRESS_PAINTABLE (object);
 
-    printf("DESTROYED\n");
-
     g_clear_pointer (&self->icon_name, g_free);
     g_clear_object (&self->widget);
     g_clear_object (&self->check_paintable);

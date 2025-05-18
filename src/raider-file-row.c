@@ -29,25 +29,20 @@ struct _RaiderFileRow
 {
     AdwActionRow parent;
 
-    /* Graphical controls. */
     GtkButton *progress_button;
     GtkButton *remove_button;
-
-    /* Progress widgets. */
-    RaiderProgressInfoPopover *popover;
-    GdkPaintable *progress_paintable;
-    GtkWidget *progress_paintable_image;
     GtkRevealer *progress_revealer;
     GtkRevealer *remove_revealer;
 
-    /* Data items. */
-    GFile *file;
+    RaiderProgressInfoPopover *popover;
+    GdkPaintable *progress_paintable;
+    GtkWidget *progress_paintable_image;
 
-    /* Variables to keep tabs on shredding. */
+    GFile *file;
     GCancellable* cancel;
-    GMutex mutex; // This is locked upon shredding, and only unlocked when the shredding is done (cancelled or end of file)
-    GValue progress_gvalue;
+    GMutex mutex;
     GMutex progress_mutex;
+    GValue progress_gvalue;
 };
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
@@ -59,6 +54,16 @@ static void raider_file_row_dispose(GObject *obj)
     RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
     g_object_unref(row->file);
+    gtk_widget_unparent(GTK_WIDGET(row->popover));
+
+    // Clear image reference to paintable, and destroy our reference.
+    gtk_image_set_from_paintable(GTK_IMAGE(row->progress_paintable_image), NULL);
+    g_object_unref(row->progress_paintable);
+
+    g_mutex_clear(&row->mutex);
+    g_mutex_clear(&row->progress_mutex);
+
+    g_value_unset(&row->progress_gvalue);
 
 
     G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
@@ -180,7 +185,6 @@ void raider_file_row_shredding_abort(gpointer data)
 // This function does not operate in the the main context, unlike the set_progress function.
 void raider_file_row_set_progress_value(RaiderFileRow* row, double progress)
 {
-
     if(g_mutex_trylock (&row->progress_mutex) == FALSE)
         return;
 
@@ -206,11 +210,16 @@ gboolean raider_file_row_update_progress_ui(gpointer data)
 RaiderFileRow *raider_file_row_new(GFile *file)
 {
     RaiderFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
-
     row->file = file;
 
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), g_file_get_basename(row->file));
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(row), g_file_get_path(row->file));
+    char* basename = g_file_get_basename(row->file);
+    char* pathname = g_file_get_path(row->file);
+
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), basename);
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(row), pathname);
+
+    g_free(basename);
+    g_free(pathname);
 
     return row;
 }

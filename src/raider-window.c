@@ -65,8 +65,20 @@ struct _RaiderWindow
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
+static void
+raider_window_dispose (GObject *object)
+{
+    RaiderWindow *self = RAIDER_WINDOW (object);
+
+    g_list_free(self->filenames);
+
+    G_OBJECT_CLASS (raider_window_parent_class)->dispose (object);
+}
+
 static void raider_window_class_init(RaiderWindowClass *klass)
 {
+    G_OBJECT_CLASS(klass)->dispose = raider_window_dispose;
+
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
     gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
@@ -136,13 +148,14 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
     GdkFileList *flist = g_value_get_boxed(value);
 
     /* Convert GSList to GList. */
-    GSList *list = gdk_file_list_get_files(flist);
+    GSList *slist = gdk_file_list_get_files(flist);
     GSList *l;
     GList *file_list = NULL;
-    for (l = list; l != NULL; l = l->next)
+    for (l = slist; l != NULL; l = l->next)
     {
         file_list = g_list_append(file_list, g_file_dup(l->data));
     }
+    g_slist_free(slist);
 
     raider_window_open_files(data, file_list);
 
@@ -208,6 +221,7 @@ void raider_window_close_file(gpointer data, gpointer user_data)
         if (g_strcmp0(text, filename) == 0)
         {
             window->filenames = g_list_remove(window->filenames, text);
+            g_free(text);
             removed = TRUE;
         }
         item = next;
@@ -253,6 +267,8 @@ static rlim_t get_open_files_limit()
 }
 static void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
+    GList *file_list = user_data;
+    g_list_free(file_list);
 }
 static void raider_window_open_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
@@ -270,7 +286,7 @@ static void raider_window_open_files_thread(GTask *task, gpointer source_object,
 }
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
-    GTask *task = g_task_new(window, NULL, raider_window_open_files_finish, window);
+    GTask *task = g_task_new(window, NULL, raider_window_open_files_finish, file_list);
     g_task_set_task_data(task, file_list, NULL);
     g_task_run_in_thread(task, raider_window_open_files_thread);
     g_object_unref(task);
@@ -280,9 +296,10 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
+    gchar *filename = g_file_get_path(file);
+
     /* Search the current list of filenames to make sure the current file has not been added yet */
     GList *item = window->filenames;
-    gchar *filename = g_file_get_path(file);
     while (item != NULL)
     {
         GList *next = item->next;
@@ -294,8 +311,11 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
         {
             gchar *message = g_strdup_printf(_("This file was already added"));
             raider_window_show_toast(window, message);
+
+            g_free(filename);
             g_free(message);
             g_object_unref(file);
+
             return TRUE; // We can return because the file has been rejected already.
         }
         item = next;
@@ -303,33 +323,37 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
     g_list_free(item);
     if (g_file_query_exists(file, NULL) == FALSE)
     {
-        g_object_unref(file);
-
         gchar *message = g_strdup(_("Some files did not exist"));
         raider_window_show_toast(window, message);
+
+        g_free(filename);
         g_free(message);
+        g_object_unref(file);
 
         return TRUE; // Continue loading files, the rest may be real.
     }
     /* Test if we can write. */
-    if (g_access(g_file_get_path(file), W_OK) != 0)
+    if (g_access(filename, W_OK) != 0)
     {
-        gchar *message = g_strdup_printf(_("Cannot write to “%s”"), g_file_get_basename(file));
+        gchar *message = g_strdup_printf(_("Cannot write to “%s”"), filename);
         raider_window_show_toast(window, message);
-        g_free(message);
 
+        g_free(filename);
+        g_free(message);
         g_object_unref(file);
+
         return TRUE;
     }
-    // TODO: The file limit divided by two may no longer be needed since the redo of the shredding backend.
+    // TODO: The file limit divided by two may no longer be needed since the rework of the shredding backend.
     if (window->file_count >= (get_open_files_limit() / 2))
     {
         gchar *message = g_strdup(_("Cannot load more files"));
-        printf("%s\n", message);
         raider_window_show_toast(window, message);
-        g_free(message);
 
+        g_free(filename);
+        g_free(message);
         g_object_unref(file);
+
         return FALSE; // No more files can be loaded.
     }
 
@@ -344,7 +368,7 @@ gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
     gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
 
     window->file_count++;
-    window->filenames = g_list_append(window->filenames, g_file_get_path(file));
+    window->filenames = g_list_append(window->filenames, filename);
 
     return TRUE;
 }
