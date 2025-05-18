@@ -1,7 +1,7 @@
 {
     "app-id" : "com.github.ADBeveridge.Raider",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "47",
+    "runtime-version" : "48",
     "sdk" : "org.gnome.Sdk",
     "command" : "raider",
     "finish-args" : [
@@ -25,7 +25,8 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "commit" : "66b43c36cf1017c878762007373964a096b3d2a5"
+                    "tag" : "v0.16.0",
+                    "commit" : "04ef0944db56ab01307a29aaa7303df6067cb3c0"
                 }
             ]
         },
@@ -33,11 +34,10 @@
             "name" : "raider",
             "builddir" : true,
             "buildsystem" : "meson",
-            "run-tests": true,
             "sources" : [
                 {
                     "type" : "dir",
-                    "path" : "./"
+                    "path" : "."
                 }
             ]
         }

@@ -21,7 +21,7 @@
 #include <glib/gi18n.h>
 #include "raider-window.h"
 #include "raider-file-row.h"
-#include "raider-progress-icon.h"
+#include "raider-progress-paintable.h"
 #include "raider-progress-info-popover.h"
 #include "corrupt.h"
 
@@ -35,7 +35,8 @@ struct _RaiderFileRow
 
     /* Progress widgets. */
     RaiderProgressInfoPopover *popover;
-    RaiderProgressIcon *icon;
+    GdkPaintable *progress_paintable;
+    GtkWidget *progress_paintable_image;
     GtkRevealer *progress_revealer;
     GtkRevealer *remove_revealer;
 
@@ -59,7 +60,7 @@ static void raider_file_row_dispose(GObject *obj)
     RaiderFileRow *row = RAIDER_FILE_ROW(obj);
 
     g_object_unref(row->file);
-    gtk_widget_unparent(GTK_WIDGET(row->popover));
+
 
     G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
 }
@@ -73,8 +74,15 @@ static void raider_file_row_init(RaiderFileRow *row)
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
     g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_abort), row);
     g_mutex_init(&row->mutex);
-    raider_progress_icon_set_progress(row->icon, 0);
-    g_object_ref(row->icon);
+
+    row->progress_paintable = raider_progress_paintable_new (GTK_WIDGET(row->progress_button));
+    row->progress_paintable_image = gtk_image_new_from_paintable(row->progress_paintable);
+    gtk_button_set_child(row->progress_button, row->progress_paintable_image);
+
+    GValue progress = G_VALUE_INIT;
+    g_value_init(&progress, G_TYPE_DOUBLE);
+    g_value_set_double(&progress, 0.0);
+    g_object_set_property(G_OBJECT(row->progress_paintable), "progress", &progress);
 
     row->aborted = FALSE;
     row->cancel = NULL;
@@ -85,15 +93,11 @@ static void raider_file_row_class_init(RaiderFileRowClass *klass)
 {
     G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
 
-    /* Load the progress icon into the type system. */
-    g_type_ensure(RAIDER_TYPE_PROGRESS_ICON);
-
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-file-row.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, remove_revealer);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, progress_revealer);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), RaiderFileRow, icon);
 }
 
 gchar *raider_file_row_get_filename(RaiderFileRow *row)
@@ -116,12 +120,9 @@ void raider_file_row_close (GtkWidget* window, gpointer data)
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
     if (row->aborted == TRUE)
     {
-        // One file being aborted is enough not to show the notification.
         gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
         raider_window_set_show_notification(window, FALSE);
     }
-
-    g_object_unref(row->icon);
 
     raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
     GtkListBox *list_box = GTK_LIST_BOX(gtk_widget_get_parent(GTK_WIDGET(data)));
@@ -196,7 +197,12 @@ void raider_file_row_set_progress_num(RaiderFileRow* row, double progress)
 gboolean raider_file_row_set_progress(gpointer data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    raider_progress_icon_set_progress(row->icon, row->progress);
+
+    GValue progress = G_VALUE_INIT;
+    g_value_init(&progress, G_TYPE_DOUBLE);
+    g_value_set_double(&progress, row->progress);
+    g_object_set_property(G_OBJECT(row->progress_paintable), "progress", &progress);
+
     raider_progress_info_popover_set_progress (row->popover, row->progress);
     return FALSE;
 }

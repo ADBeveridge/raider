@@ -2,7 +2,7 @@ raider_sources = [
   'main.c',
   'raider-window.c',
   'raider-application.c',
-  'raider-progress-icon.c',
+  'raider-progress-paintable.c',
   'raider-file-row.c',
   'raider-progress-info-popover.c',
   'corrupt.c'

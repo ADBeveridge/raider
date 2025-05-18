@@ -10,7 +10,7 @@
 #include <gtk/gtk.h> /* progress variables */
 #include "raider-file-row.h"
 #include "raider-progress-info-popover.h"
-#include "raider-progress-icon.h"
+#include "raider-progress-paintable.h"
 
 #define RAIDER_CORRUPT_TYPE (raider_corrupt_get_type())
 
