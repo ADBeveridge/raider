@@ -46,8 +46,7 @@ struct _RaiderFileRow
     /* Variables to keep tabs on shredding. */
     GCancellable* cancel;
     GMutex mutex; // This is locked upon shredding, and only unlocked when the shredding is done (cancelled or end of file)
-    gboolean aborted; // Aborted can mean anything to prevent the file from shredding. Used to track whether to show notifications or not.
-    double progress;
+    GValue progress_gvalue;
     GMutex progress_mutex;
 };
 
@@ -72,7 +71,7 @@ static void raider_file_row_init(RaiderFileRow *row)
     row->popover = raider_progress_info_popover_new();
     gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
-    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_abort), row);
+    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
     g_mutex_init(&row->mutex);
 
     row->progress_paintable = raider_progress_paintable_new (GTK_WIDGET(row->progress_button));
@@ -80,13 +79,11 @@ static void raider_file_row_init(RaiderFileRow *row)
     gtk_button_set_child(row->progress_button, row->progress_paintable_image);
 
     GValue progress = G_VALUE_INIT;
-    g_value_init(&progress, G_TYPE_DOUBLE);
-    g_value_set_double(&progress, 0.0);
-    g_object_set_property(G_OBJECT(row->progress_paintable), "progress", &progress);
+    row->progress_gvalue = progress;
+    g_value_init(&row->progress_gvalue, G_TYPE_DOUBLE);
+    g_value_set_double(&row->progress_gvalue, 0.0);
 
-    row->aborted = FALSE;
     row->cancel = NULL;
-    row->progress = .5;
 }
 
 static void raider_file_row_class_init(RaiderFileRowClass *klass)
@@ -105,23 +102,16 @@ gchar *raider_file_row_get_filename(RaiderFileRow *row)
     return g_file_get_path(row->file);
 }
 
-// Remove file row and prevent shredding completion notification from being sent.
-void raider_file_row_abort(GtkWidget *widget, gpointer data)
-{
-    RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    row->aborted = TRUE;
-
-    raider_file_row_close(widget, data);
-}
-
 // Remove file row.
-void raider_file_row_close (GtkWidget* window, gpointer data)
+void raider_file_row_close (GtkWidget* widget, gpointer data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
-    if (row->aborted == TRUE)
+
+    // If any one file was completed, show the finish notification.
+    if (row->cancel != NULL && !g_cancellable_is_cancelled(row->cancel))
     {
         gpointer window = gtk_widget_get_root(GTK_WIDGET(data));
-        raider_window_set_show_notification(window, FALSE);
+        raider_window_set_show_notification(window, TRUE);
     }
 
     raider_window_close_file(data, GTK_WIDGET(gtk_widget_get_root(GTK_WIDGET(data))));
@@ -135,7 +125,10 @@ void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user
     RaiderFileRow* row = g_task_get_task_data(G_TASK(res));
 
     g_mutex_unlock (&row->mutex);
+
+    // Reset cancellable object.
     g_object_unref(row->cancel);
+    row->cancel = NULL;
 
     /* Make sure that the user can use the window after the row is destroyed. */
     gtk_widget_set_visible(GTK_WIDGET(row->popover), FALSE);
@@ -149,8 +142,9 @@ void raider_file_row_launch_shredding(gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
-    row->aborted = FALSE;
-    g_mutex_lock (&row->mutex); // This is used by the abort function.
+    // Only unlocked when corrupt code is no longer running.  Used to make
+    // sure that the UX is only updated when no file operations are running.
+    g_mutex_lock (&row->mutex);
 
     gpointer window = gtk_widget_get_root(GTK_WIDGET(row));
     raider_window_set_show_notification(window, TRUE);
@@ -175,35 +169,37 @@ void raider_file_row_shredding_abort(gpointer data)
     gtk_revealer_set_reveal_child(row->remove_revealer, TRUE);
     gtk_revealer_set_reveal_child(row->progress_revealer, FALSE);
 
+    // Mark file row as aborted, and corrupt code will stop running when it polls the cancellable.
     g_cancellable_cancel(row->cancel);
-    row->aborted = TRUE;
 
     // This will block until the function has returned.
     g_mutex_lock (&row->mutex);
     g_mutex_unlock (&row->mutex);
 }
 
-// This function does not operate the the main context, unlike the set_progress function
-void raider_file_row_set_progress_num(RaiderFileRow* row, double progress)
+// This function does not operate in the the main context, unlike the set_progress function.
+void raider_file_row_set_progress_value(RaiderFileRow* row, double progress)
 {
 
     if(g_mutex_trylock (&row->progress_mutex) == FALSE)
         return;
 
-    row->progress = progress;
+    g_value_set_double(&row->progress_gvalue, progress);
+
     g_mutex_unlock(&row->progress_mutex);
 }
 
-gboolean raider_file_row_set_progress(gpointer data)
+// Called from corrupt thread using g_main_context_invoke().
+gboolean raider_file_row_update_progress_ui(gpointer data)
 {
     RaiderFileRow* row = RAIDER_FILE_ROW(data);
 
-    GValue progress = G_VALUE_INIT;
-    g_value_init(&progress, G_TYPE_DOUBLE);
-    g_value_set_double(&progress, row->progress);
-    g_object_set_property(G_OBJECT(row->progress_paintable), "progress", &progress);
+    // Set paintable progress.
+    g_object_set_property(G_OBJECT(row->progress_paintable), "progress", &row->progress_gvalue);
 
-    raider_progress_info_popover_set_progress (row->popover, row->progress);
+    // Set popover progress.
+    raider_progress_info_popover_set_progress (row->popover, g_value_get_double(&row->progress_gvalue));
+
     return FALSE;
 }
 

@@ -24,11 +24,10 @@
 G_DECLARE_FINAL_TYPE(RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
 RaiderFileRow *raider_file_row_new(GFile *file);
-void raider_file_row_abort(GtkWidget *window, gpointer data);
-
+void raider_file_row_close(GtkWidget* widget, gpointer data);
 gchar *raider_file_row_get_filename(RaiderFileRow *row);
 void raider_file_row_launch_shredding(gpointer data);
 void raider_file_row_shredding_abort(gpointer data);
-gboolean raider_file_row_set_progress(gpointer data);
-void raider_file_row_set_progress_num(RaiderFileRow* row, double progress);
+gboolean raider_file_row_update_progress_ui(gpointer data);
+void raider_file_row_set_progress_value(RaiderFileRow* row, double progress);
 

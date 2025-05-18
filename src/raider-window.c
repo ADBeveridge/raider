@@ -83,15 +83,14 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
 }
 
-static void raider_window_clear_files(GtkWidget *data)
+static void raider_window_clear_files(GtkWidget *widget, gpointer data)
 {
-    RaiderWindow *window = RAIDER_WINDOW(gtk_widget_get_root(GTK_WIDGET(data)));
+    RaiderWindow *window = RAIDER_WINDOW(data);
 
-    int row;
-    for (row = window->file_count - 1; row >= 0; row--)
+    for (int row = 0; row < window->file_count; row++)
     {
         RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-        raider_file_row_abort(NULL, file_row);
+        raider_file_row_close(NULL, file_row);
     }
 }
 
@@ -102,7 +101,7 @@ static void raider_window_init(RaiderWindow *self)
     self->file_count = 0;
     self->filenames = NULL;
     self->status = FALSE;
-    self->show_notification = TRUE;
+    self->show_notification = FALSE;
 
     g_signal_connect(self->clear_button, "clicked", G_CALLBACK(raider_window_clear_files), self);
     g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);

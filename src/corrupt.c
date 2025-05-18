@@ -108,8 +108,8 @@ int corrupt_folder(RaiderCorrupt* corrupt)
         int steps_num = sizeof(steps) / sizeof(steps[0]);
 
         corrupt->progress = (double)i/(double)files->len;
-        raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
-        g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
+        raider_file_row_set_progress_value(corrupt->row, corrupt->progress);
+        g_main_context_invoke (NULL, raider_file_row_update_progress_ui, corrupt->row);
 
         // Shred the file by overwriting it many times.
         off_t filesize = corrupt_check_file(filename);
@@ -141,10 +141,10 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
     uint8_t ret = 0;
     char* filename = g_file_get_path(corrupt->file);
 
-    // Set progress at zero.it config pull.rebase true
+    // Set progress at zero.
     corrupt->progress = 0.0;
-    raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
-    g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
+    raider_file_row_set_progress_value(corrupt->row, corrupt->progress);
+    g_main_context_invoke (NULL, raider_file_row_update_progress_ui, corrupt->row);
 
     off_t filesize = corrupt_check_file(filename);
     if (filesize == -1)
@@ -165,8 +165,8 @@ uint8_t corrupt_file(RaiderCorrupt* corrupt)
 
         double current = ((double)(i+1)/(double)steps_num);
         corrupt->progress = current;
-        raider_file_row_set_progress_num(corrupt->row, corrupt->progress);
-        g_main_context_invoke (NULL, raider_file_row_set_progress, corrupt->row);
+        raider_file_row_set_progress_value(corrupt->row, corrupt->progress);
+        g_main_context_invoke (NULL, raider_file_row_update_progress_ui, corrupt->row);
 
     }
 
@@ -191,6 +191,8 @@ static uint8_t corrupt_step(GTask* task, const char* filename, const off_t files
     for (i = 0; i < times; i++)
     {
         fwrite(pattern, sizeof(char), length, fp);
+
+        // Poll cancellable.
         if (g_task_return_error_if_cancelled (task)) {fclose(fp);return 1;}
     }
 
