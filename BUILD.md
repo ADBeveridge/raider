@@ -6,7 +6,18 @@
 
 
 ## Commandline
-### Ubuntu 22.04 LTS
+### Fedora 42
+Fedora's default DNF repositories already provide the latest versions of libraries used by Raider, so no fallbacks from meson will be used.
+```
+sudo dnf install libcurl-devel sassc libadwaita-devel blueprint-compiler
+```
+After that, you can run the standard set of meson commands to build a program.
+```
+meson builddir
+cd builddir
+ninja
+```
+### Ubuntu 22.04
 
 To build natively requires additional work due to Ubuntu 22.04 LTS not currently distributing libadwaita-1-4 and therefore certain UI elements are not available. There is a workaround for this, but it's not that appealing. This was tested in a GNOME box.
 
@@ -16,7 +27,7 @@ Install git.
 
 Clone this repository to the desired location.
 
-* `git clone https://github.com/Spice-Weasel/raider`
+* `git clone https://github.com/adbeveridge/raider`
 
 This project requires meson version >=0.63 to build, which is unavailable in the package repositories for Ubuntu currently, so you will need to either install using pip or downloading the release. Information on how to install this can be found here <https://mesonbuild.com/Getting-meson.html>
 
