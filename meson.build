@@ -1,4 +1,4 @@
-project('raider', 'c', version: '3.0.2')
+project('raider', 'c', version: '3.1.0')
 
 i18n = import('i18n')
 gnome = import('gnome')
@@ -7,11 +7,11 @@ gnome = import('gnome')
 
 raider_deps = [
                 dependency('gtk4', 
-                          version: '>=4.12.0', 
+                          version: '>=4.18.0',
                           default_options: ['media-gstreamer=disabled','build-tests=false','build-testsuite=false'], 
                           fallback : 'gtk4'),  
                 dependency('libadwaita-1', 
-                          version: '>=1.4.0', 
+                          version: '>=1.7.0',
                           default_options:['examples=false','tests=false','introspection=disabled','vapi=false'], 
                           fallback : 'libadwaita-1'),
                 dependency('gio-unix-2.0'),

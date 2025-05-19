@@ -53,6 +53,16 @@
     <color type="primary" scheme_preference="dark">#5c0012</color>
   </branding>
   <releases>
+    <release version="3.1.0" date="2025-05-18">
+      <description translate="no">
+        <p>GNOME 48 Update</p>
+        <ul>
+          <li>Modernize circular progress indicator</li>
+          <li>Fix various small memory leaks</li>
+          <li>Support launching from DBus</li>
+        </ul>
+      </description>
+    </release>
     <release version="3.0.2" date="2024-12-20">
       <description translate="no">
         <p>Update for GNOME 47</p>
