@@ -15,10 +15,6 @@
 		  difficulty of data recovery since it requires specialized software and hardware.
 		</p>
   </description>
-  <kudos>
-    <kudo>ModernToolkit</kudo>
-    <kudo>HiDpiIcon</kudo>
-  </kudos>
   <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
   <url type="homepage">https://apps.gnome.org/Raider</url>
   <url type="bugtracker">https://github.com/ADBeveridge/raider/issues</url>
@@ -30,28 +26,33 @@
   <developer id="io.github.adgbeveridge">
     <name translate="no">Alan Beveridge</name>
   </developer>
+    <kudos>
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
   <requires>
-    <display_length compare="ge">360</display_length>
+    <display_length compare="ge">270</display_length>
   </requires>
   <recommends>
+    <display_length compare="ge">360</display_length>
     <control>pointing</control>
     <control>keyboard</control>
-  </recommends>
-  <supports>
-    <control>tablet</control>
     <control>touch</control>
-  </supports>
+  </recommends>
   <content_rating type="oars-1.1"/>
+  <categories>
+    <category>Utility</category>
+  </categories>
   <translation type="gettext">raider</translation>
+  <branding>
+    <color type="primary" scheme_preference="light">#ad002b</color>
+    <color type="primary" scheme_preference="dark">#5c0012</color>
+  </branding>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
     </screenshot>
   </screenshots>
-  <branding>
-    <color type="primary" scheme_preference="light">#ad002b</color>
-    <color type="primary" scheme_preference="dark">#5c0012</color>
-  </branding>
   <releases>
     <release version="3.1.0" date="2025-05-18">
       <description translate="no">
