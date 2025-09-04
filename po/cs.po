@@ -2,163 +2,215 @@
 # Copyright (C) YEAR THE raider'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the raider package.
 # Písek Pískovec <pisekpiskovec@gmail.com>, 2023.
+# Daniel Rusek <mail@asciiwolf.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2023-05-19 17:00+0200\n"
-"Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-04 14:11+0000\n"
+"PO-Revision-Date: 2025-09-04 16:52+0200\n"
+"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
 msgid "File Shredder"
 msgstr "Skartovač"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Bezpečně vymažte své soubory"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Trvale odstraňte své soubory"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
-#, fuzzy
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "smazat;odstranit;trvale;soubory;skartovat;data;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
 msgstr ""
-"Skartovač je jednoduchá aplikace určená k bezpečnému vymazání svých souborů, "
-"které nechcete, aby byly obnovitelné."
+"Skartovač je program pro mazání souborů, který je určen k trvalému "
+"odstranění citlivých souborů z počítače a posílení ochrany soukromí dat."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Do určitého limitu je efektivní. Moderní disky SSD však používají určité "
+"technologie k prodloužení své životnosti, což má vedlejší účinek, že "
+"skartace nikdy není dokonalá a žádný software to nedokáže opravit. Skartace "
+"však výrazně zvyšuje obtížnost obnovy dat, protože vyžaduje specializovaný "
+"software a hardware."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
 msgid "Add Files"
-msgstr "Přidat Soubory"
+msgstr "Přidat soubory"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Přidat složky"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
-msgstr "Písek Pískovec <pisekpiskovec@gmail.com>"
+msgstr ""
+"Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"Daniel Rusek <mail@asciiwolf.com>"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
-msgstr "Dokončování..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Spouštění…"
 
-#: src/raider-progress-info-popover.c:70
-msgid "Estimating..."
-msgstr "Odhadování..."
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Dokončování…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Odhadování…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
 msgstr "Obecné"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
 msgid "New Window"
-msgstr "Nové Okno"
+msgstr "Nové okno"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
 msgid "Keyboard Shortcuts"
-msgstr "Klávesové Zkratky"
+msgstr "Klávesové zkratky"
 
 #: src/raider-shortcuts.blp:23
-#, fuzzy
 msgid "Close Window"
-msgstr "Zavřít Okno"
+msgstr "Zavřít okno"
 
 #: src/raider-shortcuts.blp:27
 msgid "Quit"
 msgstr "Ukončit"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:26
 msgid "Add"
 msgstr "Přidat"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:43
 msgid "Main Menu"
-msgstr ""
+msgstr "Hlavní nabídka"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:58
 msgid "Add files or drop here"
-msgstr "Přidat soubory nebo upustit zde"
+msgstr "Přidejte soubory nebo je sem přetáhněte"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:60
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
-"Skartování je nahrazování souboru s náhodnými daty aby se předchozí obsah "
-"nemohl obnovit."
+"Skartování je nahrazování souboru náhodnými daty tak, aby předchozí obsah "
+"nebylo možné obnovit."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Vymazat"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
 msgid "Shred All"
-msgstr "Skartovat Vše"
+msgstr "Skartovat vše"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:120 src/raider-window.c:442
 msgid "Abort All"
-msgstr "Zrušit Vše"
+msgstr "Přerušit vše"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:147
 msgid "About File Shredder"
 msgstr "O aplikaci Skartovač"
 
-#: src/raider-window.c:151
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Otevřít složku"
+
+#: src/raider-window.c:178
 msgid "Stop Shredding?"
-msgstr "Zastavit Skartování?"
+msgstr "Zastavit skartování?"
 
-#: src/raider-window.c:152
+#: src/raider-window.c:178
 msgid "Are you sure that you want to exit?"
-msgstr "Jste jsi jisti, že chcete odejít?"
+msgstr "Jste si jisti, že chcete ukončit?"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Exit"
-msgstr "_Odejít"
+msgstr "_Ukončit"
 
-#: src/raider-window.c:203
+#: src/raider-window.c:230
 msgid "Could not remove filename from quick list. Please report this."
 msgstr ""
-"Nepodařilo se odstranit název souboru z rychlého listu. Prosím nahlašte to "
-"prosím."
+"Nepodařilo se odstranit název souboru z rychlého seznamu. Nahlaste to prosím."
 
-#: src/raider-window.c:213
+#: src/raider-window.c:240
 msgid "Finished shredding files"
-msgstr "Dokončeno skartování souborů"
-
-#: src/raider-window.c:281
-msgid "Some files were already loaded"
-msgstr "Některé soubory již byly načteny"
-
-#: src/raider-window.c:294
-msgid "Some files did not exist"
-msgstr "Některé soubory neexistují"
-
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "Adresáře nejsou podporovány"
+msgstr "Skartování souborů dokončeno"
 
 #: src/raider-window.c:312
 #, c-format
-msgid "Cannot write to “%s”"
-msgstr "Nelze psát do “%s”"
+msgid "This file was already added"
+msgstr "Tento soubor již byl přidán"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Některé soubory neexistují"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Nelze zapisovat do „%s“"
+
+#: src/raider-window.c:350
 msgid "Cannot load more files"
 msgstr "Nelze načíst více souborů"
 
-#: src/raider-window.c:380
-msgid "Starting Shredding…"
-msgstr "Začínání Skartování…"
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Vymazat vše"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Spouštění skartování…"
+
+#: src/raider-window.c:464
 msgid "Aborting…"
 msgstr "Přerušování…"
+
+#, fuzzy
+#~ msgid ""
+#~ "File Shredder is a GNOME application used for securely deleting your "
+#~ "files that you do not want to be recovered."
+#~ msgstr ""
+#~ "Skartovač je jednoduchá aplikace určená k bezpečnému vymazání svých "
+#~ "souborů, které nechcete, aby byly obnovitelné."
+
+#~ msgid "Directories are not supported"
+#~ msgstr "Adresáře nejsou podporovány"
