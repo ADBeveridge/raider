@@ -1,169 +1,211 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Chinese translation for raider package.
+# Copyright (C) YEAR RAIDER'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# yxteee <yxteee@126.com>, 2022.
+# lumingzh <lumingzh@qq.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2022-08-19 14:24-0700\n"
-"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
-"Language-Team: \n"
+"Project-Id-Version: raider-main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-04 15:35+0000\n"
+"PO-Revision-Date: 2025-09-05 17:54+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
 msgid "File Shredder"
 msgstr "文件粉碎机"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "安全地删除您的文件"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "永久删除您的文件"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
-#, fuzzy
-msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
 msgstr ""
-"File Shredder 是一个简单的应用程序，用于安全地删除您不想恢复的文件。 File "
-"Shredder 对每个文件都有一套全面的首选项和进度跟踪。"
+"delete;remove;permanently;files;shred;data;删除;移除;永久;文件;粉碎;数据;"
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"文件粉碎机是设计为从您的计算机永久移除敏感文件保护数据隐私的文件删除程序。"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"在一定的限制范围内，它是有效的。然而，现代固态硬盘使用了一定技术来扩展其寿"
+"命，产生了无法完美粉碎文件的副作用，且无任何软件可修复该问题。但由于需要特定"
+"软件和硬件，文件粉碎仍可显著增加数据恢复的难度。"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
 msgid "Add Files"
 msgstr "添加文件"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "添加文件夹"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
-msgstr "翻译者贡献"
-
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
 msgstr ""
+"yxteee <yxteee@126.com>, 2022.\n"
+"lumingzh <lumingzh@qq.com>, 2025."
 
-#: src/raider-progress-info-popover.c:70
-msgid "Estimating..."
-msgstr "估计..."
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "正在启动…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "正在完成…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "正在估计…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
-msgstr ""
+msgstr "常规"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
 msgid "New Window"
-msgstr "新窗口"
+msgstr "新建窗口"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "键盘快捷键"
 
 #: src/raider-shortcuts.blp:23
-#, fuzzy
 msgid "Close Window"
-msgstr "新窗口"
+msgstr "关闭窗口"
 
 #: src/raider-shortcuts.blp:27
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:26
 msgid "Add"
 msgstr "添加"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:43
 msgid "Main Menu"
-msgstr ""
+msgstr "主菜单"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:58
 msgid "Add files or drop here"
-msgstr "添加文件或拖到这里"
+msgstr "添加文件或拖放到这里"
 
-#: src/raider-window.blp:63
-#, fuzzy
+#: src/raider-window.blp:60
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
-msgstr ""
-"粉碎是使用随机数据对文件进行混淆处理，因此无法恢复以前的内容。 详细了解<a "
-"href=\"https://en.wikipedia.org/wiki/Shred_(Unix)\">文件粉碎机的后端</a>。"
+msgstr "粉碎是使用随机数据对文件进行混淆处理，因此无法恢复之前的内容。"
 
-#: src/raider-window.blp:99 src/raider-window.c:358
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "清除"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
 msgid "Shred All"
-msgstr "粉碎所有"
+msgstr "全部粉碎"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
+#: src/raider-window.blp:120 src/raider-window.c:442
 msgid "Abort All"
-msgstr "终止所有"
+msgstr "全部中止"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:147
 msgid "About File Shredder"
 msgstr "关于文件粉碎机"
 
-#: src/raider-window.c:151
-#, fuzzy
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "打开文件夹"
+
+#: src/raider-window.c:178
 msgid "Stop Shredding?"
-msgstr "隐藏粉碎"
+msgstr "停止粉碎吗？"
 
-#: src/raider-window.c:152
+#: src/raider-window.c:178
 msgid "Are you sure that you want to exit?"
-msgstr ""
+msgstr "您确定要退出吗？"
 
-#: src/raider-window.c:155
-#, fuzzy
+#: src/raider-window.c:181
 msgid "_Cancel"
-msgstr "取消"
+msgstr "取消(_C)"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Exit"
-msgstr ""
+msgstr "退出(_E)"
 
-#: src/raider-window.c:203
-#, fuzzy
+#: src/raider-window.c:230
 msgid "Could not remove filename from quick list. Please report this."
-msgstr "无法从快速列表中删除文件。"
+msgstr "无法从快速列表中移除文件名。请报告此问题。"
 
-#: src/raider-window.c:213
-#, fuzzy
+#: src/raider-window.c:240
 msgid "Finished shredding files"
-msgstr "隐藏粉碎"
-
-#: src/raider-window.c:281
-#, fuzzy
-msgid "Some files were already loaded"
-msgstr "“%s”已加载"
-
-#: src/raider-window.c:294
-msgid "Some files did not exist"
-msgstr ""
-
-#: src/raider-window.c:302
-msgid "Directories are not supported"
-msgstr "不支持目录"
+msgstr "粉碎文件已完成"
 
 #: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "此文件已经添加"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "有些文件不存在"
+
+#: src/raider-window.c:338
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "无法写入“%s”"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:350
 msgid "Cannot load more files"
-msgstr ""
+msgstr "无法加载更多文件"
 
-#: src/raider-window.c:380
-#, fuzzy
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "全部清除"
+
+#: src/raider-window.c:412
 msgid "Starting Shredding…"
-msgstr "隐藏粉碎"
+msgstr "正在开始粉碎…"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:464
 msgid "Aborting…"
-msgstr ""
+msgstr "正在中止…"
+
+#, fuzzy
+#~ msgid ""
+#~ "File Shredder is a GNOME application used for securely deleting your "
+#~ "files that you do not want to be recovered."
+#~ msgstr ""
+#~ "File Shredder 是一个简单的应用程序，用于安全地删除您不想恢复的文件。 File "
+#~ "Shredder 对每个文件都有一套全面的首选项和进度跟踪。"
+
+#~ msgid "Directories are not supported"
+#~ msgstr "不支持目录"
