@@ -1,0 +1,202 @@
+# Hungarian translation for raider.
+# Copyright (C) 2025 Free Software Foundation, Inc.
+# This file is distributed under the same license as the raider package.
+#
+# Balázs Úr <ur.balazs at fsf dot hu>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-08 15:38+0000\n"
+"PO-Revision-Date: 2025-09-09 22:50+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 24.12.3\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Fájlmegsemmisítő"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Fájlok végleges törlése"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "törlés;eltávolítás;végleges;fájlok;megsemmisítés;adat;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"A Fájlmegsemmisítő egy fájltörlő program, amelyet arra terveztek, hogy véglege"
+"sen eltávolítsa az érzékeny fájlokat a számítógépéről, növelve ezzel az adatok"
+" védelmét."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Bizonyos keretek között hatékony. Azonban a modern SSD-k használnak bizonyos t"
+"echnológiákat az élettartamuk meghosszabbítására, ami azzal a mellékhatással j"
+"ár, hogy a fájlok megsemmisítése soha sem lesz tökéletes, és ezt egyetlen szof"
+"tver sem tudja orvosolni. Azonban a fájlok megsemmisítése jelentősen megnehezí"
+"ti az adatok helyreállítását, mivel speciális szoftvert és hardvert igényel."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Fájlok hozzáadása"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Mappák hozzáadása"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "Úr Balázs <ur dot balazs at fsf dot hu>, 2025."
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Indítás…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Befejezés…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Becslés…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Általános"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Új ablak"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Gyorsbillentyűk"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Ablak bezárása"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Kilépés"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Fájlok hozzáadása vagy ide dobása"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"A megsemmisítés egy fájl véletlenszerű adatokkal való összekeverése, hogy a ko"
+"rábbi tartalom ne legyen helyreállítható."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Törlés"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Összes megsemmisítése"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Összes megszakítása"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "A Fájlmegsemmisítő névjegye"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Mappa megnyitása"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Leállítja a megsemmisítést?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Biztosan ki szeretne lépni?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_Mégse"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "_Kilépés"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Nem sikerült eltávolítani a fájlnevet a gyorslistából. Jelentse ezt."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "Fájlok megsemmisítése befejezve"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Ez a fájl már hozzá lett adva"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Néhány fájl nem létezik"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Nem lehet írni ebbe: „%s”"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "Nem lehet betölteni több fájlt"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Összes törlése"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Megsemmisítés indítása…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "Megszakítás…"
