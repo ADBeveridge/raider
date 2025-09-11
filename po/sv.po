@@ -1,167 +1,203 @@
 # Swedish translations for raider package.
-# Copyright (C) 2022 THE raider'S COPYRIGHT HOLDER
+# Copyright © 2022, 2025 THE raider'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the raider package.
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2022.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-15 00:10+0300\n"
-"PO-Revision-Date: 2022-08-19 14:24-0700\n"
-"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
-"Language-Team: none\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-04 14:11+0000\n"
+"PO-Revision-Date: 2025-09-07 01:19+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop:4
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:6
-#: src/raider-application.c:140 src/raider-window.blp:40
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
 msgid "File Shredder"
 msgstr "Filförstörare"
 
-#: data/com.github.ADBeveridge.Raider.desktop:5
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:7
-msgid "Securely delete your files"
-msgstr "Ta bort dina filer säkert"
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Ta bort dina filer permanent"
 
-#: data/com.github.ADBeveridge.Raider.metainfo.xml:9
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "ta;bort;radera;permanent;filer;makulera;förstör;data;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"File Shredder is a GNOME application used for securely deleting your files "
-"that you do not want to be recovered."
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
 msgstr ""
+"File Shredder är ett filborttagningsprogram som är designat för att "
+"permanent ta bort känsliga filer från din dator, vilket förbättrar "
+"datasekretessen."
 
-#: src/raider-application.c:66 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:33
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Inom en viss gräns är det effektivt. Moderna SSD-diskar använder dock vissa "
+"teknologier för att förlänga sin livslängd, vilket har sidoeffekten att se "
+"till att makulering aldrig är perfekt, och ingen programvara kan fixa detta. "
+"Men makulering ökar signifikant svårigheten att återställa data då det "
+"kräver hårdvara och program för specialister."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
 msgid "Add Files"
-msgstr ""
+msgstr "Lägg till filer"
 
-#: src/raider-application.c:154
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Lägg till mappar"
+
+#: src/raider-application.c:181
 msgid "translator-credits"
 msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
-#: src/raider-progress-info-popover.c:62
-msgid "Finishing up..."
-msgstr ""
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Startar…"
 
-#: src/raider-progress-info-popover.c:70
-msgid "Estimating..."
-msgstr "Beräknar..."
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Slutför…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Beräknar…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tangentbordsgenvägar"
 
 #: src/raider-shortcuts.blp:23
-#, fuzzy
 msgid "Close Window"
-msgstr "Nytt fönster"
+msgstr "Stäng fönster"
 
 #: src/raider-shortcuts.blp:27
 msgid "Quit"
-msgstr ""
+msgstr "Avsluta"
 
-#: src/raider-window.blp:31
+#: src/raider-window.blp:26
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
-#: src/raider-window.blp:46
+#: src/raider-window.blp:43
 msgid "Main Menu"
-msgstr ""
+msgstr "Huvudmeny"
 
-#: src/raider-window.blp:61
+#: src/raider-window.blp:58
 msgid "Add files or drop here"
 msgstr "Lägg till filer eller släpp här"
 
-#: src/raider-window.blp:63
+#: src/raider-window.blp:60
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
 msgstr ""
+"Makulering är döljandet av en fil med slumpmässiga data så att tidigare "
+"innehåll inte kan återställas."
 
-#: src/raider-window.blp:99 src/raider-window.c:358
-#, fuzzy
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Töm"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
 msgid "Shred All"
-msgstr "Förstör"
+msgstr "Förstör alla"
 
-#: src/raider-window.blp:118 src/raider-window.c:410
-#, fuzzy
+#: src/raider-window.blp:120 src/raider-window.c:442
 msgid "Abort All"
-msgstr "Avbryt"
+msgstr "Avbryt alla"
 
-#: src/raider-window.blp:145
+#: src/raider-window.blp:147
 msgid "About File Shredder"
 msgstr "Om File Shredder"
 
-#: src/raider-window.c:151
-#, fuzzy
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Öppna mapp"
+
+#: src/raider-window.c:178
 msgid "Stop Shredding?"
-msgstr "Dölj makulering"
+msgstr "Stoppa makulering?"
 
-#: src/raider-window.c:152
+#: src/raider-window.c:178
 msgid "Are you sure that you want to exit?"
-msgstr ""
+msgstr "Är du säker på att du vill avsluta?"
 
-#: src/raider-window.c:155
-#, fuzzy
+#: src/raider-window.c:181
 msgid "_Cancel"
-msgstr "Avbryt"
+msgstr "A_vbryt"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Exit"
-msgstr ""
+msgstr "_Avsluta"
 
-#: src/raider-window.c:203
-#, fuzzy
+#: src/raider-window.c:230
 msgid "Could not remove filename from quick list. Please report this."
-msgstr "Kunde inte ta bort fil från snabblistan."
+msgstr "Kunde inte ta bort filnamn från snabblistan. Rapportera gärna detta."
 
-#: src/raider-window.c:213
-#, fuzzy
+#: src/raider-window.c:240
 msgid "Finished shredding files"
-msgstr "Dölj makulering"
-
-#: src/raider-window.c:281
-#, fuzzy
-msgid "Some files were already loaded"
-msgstr "“%s” är redan inläst!"
-
-#: src/raider-window.c:294
-#, fuzzy
-msgid "Some files did not exist"
-msgstr "Filen finns inte!"
-
-#: src/raider-window.c:302
-#, fuzzy
-msgid "Directories are not supported"
-msgstr "Mappar stöds inte!"
+msgstr "Slutförde makulering av filer"
 
 #: src/raider-window.c:312
 #, c-format
+msgid "This file was already added"
+msgstr "Denna fil hade redan lagts till"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Några filer fanns inte"
+
+#: src/raider-window.c:338
+#, c-format
 msgid "Cannot write to “%s”"
-msgstr ""
+msgstr "Kan inte skriva till ”%s”"
 
-#: src/raider-window.c:323
+#: src/raider-window.c:350
 msgid "Cannot load more files"
-msgstr ""
+msgstr "Kan inte läsa in fler filer"
 
-#: src/raider-window.c:380
-#, fuzzy
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Töm alla"
+
+#: src/raider-window.c:412
 msgid "Starting Shredding…"
-msgstr "Dölj makulering"
+msgstr "Startar makulering…"
 
-#: src/raider-window.c:432
+#: src/raider-window.c:464
 msgid "Aborting…"
-msgstr ""
+msgstr "Avbryter…"
