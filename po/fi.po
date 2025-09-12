@@ -1,0 +1,203 @@
+# Finnish translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Jiri Grönroos <jiri.gronroos@iki.fi>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-12 15:36+0000\n"
+"PO-Revision-Date: 2025-09-12 18:56+0300\n"
+"Last-Translator: \n"
+"Language-Team: Finnish <Finnish>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Tiedostosilppuri"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Poista tiedostoja pysyvästi"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "delete;remove;permanently;files;shred;data;poista;hävitä;silppua;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"Tiedostosilppuri on ohjelma tiedostojen pysyvään poistamiseen. Se on "
+"suunniteltu arkaluonteisen tiedon poistamiseen tietokoneeltasi, ja siten sen "
+"yksityisyyden suojaukseen."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Se on tehoksa tietyin rajauksin. Nykyiset SSD-levyt käyttävät tiettyjä "
+"teknologioita pidentääkseen niiden elinkaarta, minkä sivuvaikutuksena "
+"tiedostojen silppuaminen ei ole koskaan täydellistä, eikä mikään ohjelmisto "
+"muuta asiaa. Siitä huolimatta silppuaminen vaikeuttaa datan palauttamista, "
+"koska siihen vaaditaan erikoistunutta ohjelmistoa ja laitteistoa."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Lisää tiedostoja"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Lisää kansioita"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "Jiri Grönroos"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Käynnistetään…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Viimeistellään…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Arvioidaan…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Yleiset"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Uusi ikkuna"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Pikanäppäimet"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Sulje ikkuna"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Lopeta"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Lisää"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Lisää tiedostoja tai pudota ne tähän"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Silppuaminen on tiedoston hämärryttämistä satunnaisella datalla, jotta "
+"aiempaa sisältöä ei voi palauttaa."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Tyhjennä"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Silppua kaikki"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Keskeytä kaikki"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Tietoja - Tiedostosilppuri"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Avaa kansio"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Lopetetaanko silppuaminen?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Haluatko varmasti lopettaa?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "_Lopeta"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"Tiedostonimeä ei voitu poistaa pikaluetelosta. Ilmoita tästä ongelmasta."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "Tiedostojen silppuaminen valmistui"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Tämä tiedosto on jo lisätty"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Joitain tiedostoja ei ollut olemassa"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Kohteeseen “%s” ei voi kirjoittaa"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "Tiedostoja ei voi ladata enempää"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Tyhjennä kaikki"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Käynnistetään silppuamista…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "Keskeytetään…"
