@@ -1,0 +1,189 @@
+# Basque translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2025.
+#
+msgid ""
+msgstr "Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-09-14 03:36+0000\n"
+"PO-Revision-Date: 2025-09-14 03:36+0000\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
+"Language-Team: Basque <eu@li.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "File Shredder"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Ezabatu fitxategiak betiko"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "ezabatu;kendu;betiko;fitxategiak;birrindu;datuak;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr "File Shredder fitxategiak ordenagailutik betiko ezabatzeko eta horrela pribatutasuna hobetzeko aplikazio bat da.."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr "Eraginkorra da bere lanean, neurri bateraino. Hala ere, SSD modernoek beren bizitza luzatzeko teknologiak darabiltzate, eta teknologia horien erruz fitxategien birrintzea ez da beti perfektua, eta ez dago hori konpondu dezakeen softwarerik. Hala ere, birrintzeak datuak berreskuratzeko zailtasuna handitzen du, software eta hardware espezializatua behar baita horrela birrindutako fitxategiak berreskuratzeko."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Gehitu fitxategiak"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Gehitu karpetak"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Hasten…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Amaitzen…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Kalkulatzen…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Orokorra"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Leiho berria"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Laster-teklak"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Itxi leihoa"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Irten"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Gehitu"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Gehitu fitxategiak edo jaregin hemen"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr "Birrintzea zera da, fitxategi bat ausazko datuekin nahastea, edukiak berreskuragarriak izan ez daitezen."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Garbitu"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Birrindu dena"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Abortatu dena"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "File Shredder aplikazioari buruz"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Ireki karpeta"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Gelditu birrintzea?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Ziur zaude irten nahi duzula?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_Utzi"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "_Irten"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Ezin da fitxategi-izena kendu zerrenda azkarretik. Eman honen berri."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "Amaitu da fitxategien birrintzea"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Fitxategia gehitu da lehenago"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Fitxategi batzuk ez dira existitzen"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Ezin da hemen idatzi: “%s”"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "Ezin dira fitxategi gehiago kargatu"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Garbitu denak"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Birrintzea abiarazten…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "Abortatzen…"
