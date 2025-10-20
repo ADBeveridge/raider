@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
-"POT-Creation-Date: 2025-09-04 15:35+0000\n"
+"POT-Creation-Date: 2025-10-20 03:36+0000\n"
 "PO-Revision-Date: 2025-09-04 19:49+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
@@ -33,8 +33,7 @@ msgstr "Dosyalarınızı kalıcı olarak silin"
 
 #: data/com.github.ADBeveridge.Raider.desktop.in.in:9
 msgid "delete;remove;permanently;files;shred;data;"
-msgstr "delete;remove;permanently;files;shred;data;sil;kaldır;kalıcı;"
-"dosya;dosyalar;parçala;kıy;buda;dilimle;lime;"
+msgstr "delete;remove;permanently;files;shred;data;sil;kaldır;kalıcı;dosya;dosyalar;parçala;kıy;buda;dilimle;lime;"
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
@@ -53,11 +52,11 @@ msgid ""
 "significantly increases the difficulty of data recovery since it requires "
 "specialized software and hardware."
 msgstr ""
-"Belirli sınırda etkilidir. Çağdaş SSDʼler kullanım ömrünü uzatmak için belirli "
-"teknolojiler kullanmaktadır ve bu da parçalamanın asla mükemmel olmamasına "
-"neden olan yan etkiyi barındırır ve hiçbir yazılım bunu düzeltemez. "
-"Ancak parçalama, özel yazılım ve donanım gerektiren veri kurtarmanın "
-"zorluğunu önemli ölçüde artırır."
+"Belirli sınırda etkilidir. Çağdaş SSDʼler kullanım ömrünü uzatmak için "
+"belirli teknolojiler kullanmaktadır ve bu da parçalamanın asla mükemmel "
+"olmamasına neden olan yan etkiyi barındırır ve hiçbir yazılım bunu "
+"düzeltemez. Ancak parçalama, özel yazılım ve donanım gerektiren veri "
+"kurtarmanın zorluğunu önemli ölçüde artırır."
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
@@ -75,7 +74,7 @@ msgstr "Klasör Ekle"
 
 #: src/raider-application.c:181
 msgid "translator-credits"
-msgstr "Sabri Ünal <libreajans@gmail.com>"
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
 #: src/raider-progress-info-popover.c:55
 msgid "Starting…"
