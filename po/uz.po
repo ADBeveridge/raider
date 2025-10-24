@@ -1,0 +1,204 @@
+# Uzbek (Latin) translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Maftuna Vohidjonovna <vohidjonovnamaftuna@gmail.com>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-10-22 03:37+0000\n"
+"PO-Revision-Date: 2025-10-24 17:42+0500\n"
+"Last-Translator: Baxrom Raxmatov <https://t.me/bahrom04>\n"
+"Language-Team: Uzbek (Latin) <Uzbek>\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Fayl parchalagich"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Fayllaringizni butunlay oʻchirib tashlash"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "oʻchirish;olib tashlash;butunlay;fayllar;parcha;maʻlumot;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"Fayl parchalagich - kompyuteringizdagi maxfiy fayllarni butunlay yo‘q qilish "
+"uchun maʻljallangan dastur bo‘lib, u maʻlumotlar xavfsizligini oshiradi."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Maʻlum bir chegara doirasida u samarali bo‘ladi. Biroq, zamonaviy SSDʼlar "
+"oʻzini ishlash muddatini uzaytirish uchun ma’lum texnologiyalardan "
+"foydalanadi, bu esa maydalash hech qachon mukammal bo‘lmasligini "
+"taʻminlaydigan yon ta’sirga ega va hech qanday dasturiy taʻminot buni "
+"tuzatolmaydi. Ammo parchalash maʻlumotlarni tiklash qiyinligini sezilarli "
+"darajada oshiradi, chunki buning uchun maxsus dasturiy ta’minot va apparat "
+"vositalari talab etiladi."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Fayllar qoʻshish"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Jildlarni qoʻshish"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "Maftuna Vahidjanova"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Boshlamoqda…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Tugatilmoqda…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Taxmin qilinmoqda…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Umumiy"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Yangi oyna"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Klaviatura yorliqlari"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Oynani yopish"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Chiqish"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Qoʻshish"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Asosiy menyu"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Fayllarni qoʻshing yoki bu yerda qoldiring"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Parchalash - bu tasodifiy maʻlumotlar bilan faylni xiralashtirish, shuning "
+"uchun oldingi tarkibni tiklab bo'lmaydi."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Tozalash"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Hammasini maydalash"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Hammasini bekor qilish"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Fayl maydalagich haqida"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Jildni ochish"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Maydalashni toʻxtatish?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Chiqishni xohlayotganingizga ishonchingiz komilmi?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "Bekor qilish"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "Chiqish"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"Fayl nomini tezkor roʻyxatdan olib tashlab boʻlmadi. Iltimos, bu haqda xabar "
+"bering."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "Fayllarni parchalash tugatildi"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Bu fayl allaqachon qoʻshilgan"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Baʻzi fayllar mavjud emas edi"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "“%s” yozib boʻlmadi"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "Boshqa fayllarni yuklab boʻlmadi"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Barchasini oʻchirish"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Parchalash boshlanmoqda…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "Bekor qilinmoqda…"
