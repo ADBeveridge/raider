@@ -7,59 +7,69 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: raider\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-28 14:16+0200\n"
-"PO-Revision-Date: 2024-04-28 14:21+0200\n"
-"Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-10-25 03:38+0000\n"
+"PO-Revision-Date: 2025-10-25 15:32+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 46.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
-#: src/raider-application.c:167 src/raider-window.blp:36
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
 msgid "File Shredder"
 msgstr "Файлов Шредер"
 
-#: data/com.github.ADBeveridge.Raider.desktop.in.in:5
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
 msgid "Permanently delete your files"
 msgstr "Окончателно изтрийте вашите файловете"
 
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "изтриване;премахване;трайно;файлове;раздробяване;данни;"
+
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
 msgid ""
-"Raider is a shredding program built for the GNOME desktop. It is meant to "
-"remove files from your computer permanently."
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
 msgstr ""
-"„Raider“ е програма за раздробяване, създадена за работната среда „GNOME“. "
-"Предназначена е за окончателно премахване на файлове от вашия компютър."
+"„Файлов Шредер“ е програма за изтриване на файлове, предназначена за трайно "
+"премахване на чувствителни файлове от вашия компютър, за по-добра "
+"поверителност."
 
 #: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
 msgid ""
-"Within a certain limit, it is effective. However, the way data is written "
-"physically to SSDs at the hardware level ensures that shredding is never "
-"perfect, and no software can fix that. However, top-level agencies are "
-"usually the only ones who can recover such data, due to the time, effort, "
-"money, and patience required to extract it effectively."
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
 msgstr ""
-"В рамките на определена граница програмата е ефективна. Въпреки това "
-"начинът, по който данните се записват физически на статичното дисково "
-"устройство на хардуерно ниво, гарантира, че раздробяването никога не е "
-"перфектно, и никакъв софтуер не може да поправи това. Въпреки това агенциите "
-"от най-високо ниво обикновено са единствените, които могат да възстановят "
-"такива данни, поради времето, усилията, парите и търпението, необходими за "
-"ефективното им извличане."
+"В рамките на определена граница програмата е ефективна. В определени граници "
+"това е ефективно. Съвременните SSD дискове обаче използват определени "
+"технологии за удължаване на живота си, което има страничен ефект, а именно, "
+"че раздробяването никога не е напълно и никой софтуер не може да поправи "
+"това. Раздробяването обаче значително увеличава трудността на "
+"възстановяването на данни, тъй като изисква специализиран софтуер и хардуер."
 
-#: src/raider-application.c:83 src/raider-shortcuts.blp:11
-#: src/raider-window.blp:27
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:29
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
 msgid "Add Files"
 msgstr "Добавяне на файлове"
 
-#: src/raider-application.c:93
+#: src/raider-application.c:94
 msgid "Add Folders"
 msgstr "Добавяне на папки"
 
@@ -76,18 +86,18 @@ msgid "Finishing up…"
 msgstr "Приключване…"
 
 #: src/raider-progress-info-popover.c:75
-msgid "Estimating..."
+msgid "Estimating…"
 msgstr "Изчисляване…"
 
 #: src/raider-shortcuts.blp:8
 msgid "General"
 msgstr "Общи"
 
-#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
 msgid "New Window"
 msgstr "Нов прозорец"
 
-#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
 msgid "Keyboard Shortcuts"
 msgstr "Клавишни комбинации"
 
@@ -99,19 +109,19 @@ msgstr "Затваряне на прозорецa"
 msgid "Quit"
 msgstr "Спиране на програмата"
 
-#: src/raider-window.blp:25
+#: src/raider-window.blp:26
 msgid "Add"
 msgstr "Добавяне"
 
-#: src/raider-window.blp:42
+#: src/raider-window.blp:43
 msgid "Main Menu"
 msgstr "Основно меню"
 
-#: src/raider-window.blp:57
+#: src/raider-window.blp:58
 msgid "Add files or drop here"
 msgstr "Добавете или пуснете файлове тук"
 
-#: src/raider-window.blp:59
+#: src/raider-window.blp:60
 msgid ""
 "Shredding is the obfuscation of a file with random data so the previous "
 "contents cannot be recovered."
@@ -119,69 +129,86 @@ msgstr ""
 "Раздробяването е замаскиране на файл с произволни данни, така че предишното "
 "съдържание да не може да бъде възстановено."
 
-#: src/raider-window.blp:95 src/raider-window.c:350
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Изчистване"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
 msgid "Shred All"
 msgstr "Раздробяване на всички"
 
-#: src/raider-window.blp:114 src/raider-window.c:402
+#: src/raider-window.blp:120 src/raider-window.c:442
 msgid "Abort All"
 msgstr "Прекратяване на всички"
 
-#: src/raider-window.blp:141
+#: src/raider-window.blp:147
 msgid "About File Shredder"
-msgstr "Относно “Файлов Шредер“"
+msgstr "Относно „Файлов Шредер“"
 
-#: src/raider-window.blp:150
-msgid "Open Folders"
-msgstr "Отваряне на папки"
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Отваряне на папка"
 
-#: src/raider-window.c:151
+#: src/raider-window.c:178
 msgid "Stop Shredding?"
 msgstr "Искате ли да спрете раздробяването?"
 
-#: src/raider-window.c:152
+#: src/raider-window.c:178
 msgid "Are you sure that you want to exit?"
 msgstr "Сигурни ли сте, че искате да спрете програмата?"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Cancel"
 msgstr "_Отказване"
 
-#: src/raider-window.c:155
+#: src/raider-window.c:181
 msgid "_Exit"
 msgstr "_Спиране на програмата"
 
-#: src/raider-window.c:203
+#: src/raider-window.c:230
 msgid "Could not remove filename from quick list. Please report this."
 msgstr ""
 "Не можа да се премахне името на файла от бързия списък. Моля, докладвайте "
 "това."
 
-#: src/raider-window.c:213
+#: src/raider-window.c:240
 msgid "Finished shredding files"
 msgstr "Раздробяването на файловете приключи"
 
-#: src/raider-window.c:282
+#: src/raider-window.c:312
+#, c-format
 msgid "This file was already added"
 msgstr "Този файл е вече добавен"
 
-#: src/raider-window.c:295
+#: src/raider-window.c:326
 msgid "Some files did not exist"
 msgstr "Някои файлове не съществуват"
 
-#: src/raider-window.c:304
+#: src/raider-window.c:338
 #, c-format
 msgid "Cannot write to “%s”"
 msgstr "Не може да се запише в „%s“"
 
-#: src/raider-window.c:315
+#: src/raider-window.c:350
 msgid "Cannot load more files"
 msgstr "Не може да се заредят повече файлове"
 
-#: src/raider-window.c:372
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Изчистване на всички"
+
+#: src/raider-window.c:412
 msgid "Starting Shredding…"
 msgstr "Стартиране на раздробяване…"
 
-#: src/raider-window.c:424
+#: src/raider-window.c:464
 msgid "Aborting…"
 msgstr "Прекратяване…"
+
+#~ msgid ""
+#~ "Raider is a shredding program built for the GNOME desktop. It is meant to "
+#~ "remove files from your computer permanently."
+#~ msgstr ""
+#~ "„Raider“ е програма за раздробяване, създадена за работната среда "
+#~ "„GNOME“. Предназначена е за окончателно премахване на файлове от вашия "
+#~ "компютър."
