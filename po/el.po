@@ -1,0 +1,209 @@
+# Greek translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-10-29 15:35+0000\n"
+"PO-Revision-Date: 2025-10-29 15:35+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <Greek>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Καταστροφέας Αρχείων"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Μόνιμη διαγραφή των αρχείων σας"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "διαγραφή;αφαίρεση;μόνιμα;αρχεία;καταστροφή;δεδομένα;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"Ο Καταστροφέας Αρχείων είναι ένα πρόγραμμα διαγραφής αρχείων σχεδιασμένο "
+"για τη μόνιμη αφαίρεση ευαίσθητων αρχείων από τον υπολογιστή σας, "
+"ενισχύοντας την ιδιωτικότητα των δεδομένων."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Μέσα σε ένα συγκεκριμένο όριο, είναι αποτελεσματικό. Ωστόσο, τα μοντέρνα "
+"SSD χρησιμοποιούν ορισμένες τεχνολογίες για να επεκτείνουν τη διάρκεια "
+"ζωής τους, που έχει ως παρενέργεια να διασφαλίζει ότι η καταστροφή δεν "
+"είναι ποτέ τέλεια, και κανένα λογισμικό δεν μπορεί να το διορθώσει. Αλλά η "
+"καταστροφή αυξάνει σημαντικά τη δυσκολία ανάκτησης δεδομένων αφού απαιτεί "
+"εξειδικευμένο λογισμικό και υλικό."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:25
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Προσθήκη Αρχείων"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Προσθήκη Φακέλων"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"https://gr.gnome.org/"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Γίνεται έναρξη…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Ολοκλήρωση…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Υπολογισμός…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Γενικά"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Νέο Παράθυρο"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Συντομεύσεις Πληκτρολογίου"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Κλείσιμο Παραθύρου"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Κύριο Μενού"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Προσθέστε αρχεία ή αποθέστε εδώ"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Η καταστροφή είναι η συγχώνευση ενός αρχείου με τυχαία δεδομένα ώστε τα "
+"προηγούμενα περιεχόμενα να μην μπορούν να ανακτηθούν."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Καταστροφή Όλων"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Ακύρωση Όλων"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Σχετικά με τον Καταστροφέα Αρχείων"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Άνοιγμα Φακέλου"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Διακοπή Καταστροφής;"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Είστε σίγουρος ότι θέλετε να εξέλθετε;"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_Ακύρωση"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "_Έξοδος"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"Δεν ήταν δυνατή η αφαίρεση του ονόματος αρχείου από τη γρήγορη λίστα. "
+"Παρακαλώ αναφέρετε αυτό."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "Ολοκληρώθηκε η καταστροφή αρχείων"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Αυτό το αρχείο είχε ήδη προστεθεί"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Κάποια αρχεία δεν υπήρχαν"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Δεν είναι δυνατή η εγγραφή στο «%s»"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "Δεν είναι δυνατή η φόρτωση περισσότερων αρχείων"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Καθαρισμός Όλων"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "Γίνεται έναρξη καταστροφής…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "Γίνεται ακύρωση…"
