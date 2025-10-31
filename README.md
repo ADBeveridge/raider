@@ -15,7 +15,8 @@ Within a certain limit, it is effective. However, modern SSDs use certain techno
 
 ## Useful Links
 
-*   Compiling: <https://github.com/ADBeveridge/raider/blob/develop/BUILD.md>
+*   Compiling: <https://github.com/ADBeveridge/raider/blob/main/BUILD.md>
 *   GNOME Circle: <https://apps.gnome.org/Raider>
 *   Build manifest: <https://github.com/flathub/com.github.ADBeveridge.Raider>
 *   Report issues: <https://github.com/ADBeveridge/raider/issues/>
+
