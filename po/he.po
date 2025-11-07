@@ -1,0 +1,201 @@
+# Hebrew translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Yaron Shahrabani <sh.yaron@gmail.com>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-11-05 03:35+0000\n"
+"PO-Revision-Date: 2025-11-05 10:07+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "גורס קבצים"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "מחיקת הקבצים שלך לצמיתות"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "מחיקה;הסרה;גריסה;גריטה;צמיתות;לצמיתות;חיסול;השמדה;קבצים;נתונים;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"גורס הקבצים היא תוכנית מחיקת קבצים שתוכננה להסיר קבצים רגישים מהמחשב שלך "
+"לצמיתות במטרה לשפר את הפרטיות שלך."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"בתוך גבולות מסוימים, הכלי הזה יעיל. עם זאת, כונני שבבים (SSD) עדכניים "
+"משתמשים בטכנולוגיות מסוימות שמאריכות את חיי המוצר, תופעת הלוואי של זה היא "
+"שווידוא הגריסה אף פעם לא מושלם ואין שום תוכנה שתוכל לתקן את זה. ובכל זאת, "
+"גריסה מקשה משמעותית על שחזור הנתונים כיוון שהיא דורשת תוכנה וחומרה ייעודיים "
+"למשימה."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:25
+msgid "Alan Beveridge"
+msgstr "אלן בוורידג׳"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "הוספת קבצים"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "הוספת תיקיות"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "ירון שהרבני <sh.yaron@gmail.com>"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "מופעל…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "מסתיים…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "משוערך…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "כללי"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "חלון חדש"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "צירופי מקשים"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "סגירת חלון"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "יציאה"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "הוספה"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "יש להוסיף תמונות או לגרור לכאן"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"גריסה היא הלעטה של נתונים אקראיים במקום קובץ כדי שלא ניתן יהיה לשחזר את "
+"התוכן הקודם."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "פינוי"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "לגרוס הכול"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "לבטל הכול"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "על גורס הקבצים"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "פתיחת תיקייה"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "להפסיק לגרוס?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "לצאת?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "י_ציאה"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "לא ניתן להסיר את שם הקובץ מהרשימה המהירה. נא לדווח על זה."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "גריסת הקבצים הסתיימה"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "הקובץ כבר נוסף"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "חלק מהקבצים לא היו קיימים"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "לא ניתן לכתוב אל „%s”"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "לא ניתן לטעון קבצים נוספים"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "לפנות הכול"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "הגריסה מתחילה…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "מבוטל…"
