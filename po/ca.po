@@ -1,0 +1,204 @@
+# Catalan translation for raider.
+# Copyright (C) 2025 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Victor Dargallo <victordargallo@disroot.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2025-12-12 03:34+0000\n"
+"PO-Revision-Date: 2025-12-12 14:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: Catalan <Catalan>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:168 src/raider-application.c:224
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Trituradora de fitxers"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Suprimiu permanentment els vostres fitxers"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "elimina;suprimeix;permanentment;fitxers;tritura;dades;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"La Trituradora de fitxers és un programa d'eliminació de fitxers dissenyat "
+"per eliminar permanentment els fitxers sensibles del vostre ordinador, "
+"millorant la privadesa de les dades."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Dins d'un cert límit, és eficaç. No obstant això, els SSD moderns utilitzen "
+"certes tecnologies per estendre la seva vida útil, la qual cosa té l'efecte "
+"secundari d'assegurar que el triturat mai és perfecte, i cap programari pot "
+"arreglar això. Però el triturat augmenta significativament la dificultat de "
+"recuperació de dades, ja que requereix programari i maquinari especialitzats."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:25
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Afegeix fitxers"
+
+#: src/raider-application.c:94
+msgid "Add Folders"
+msgstr "Afegeix carpetes"
+
+#: src/raider-application.c:181
+msgid "translator-credits"
+msgstr "Victor Dargallo <victordargallo@disroot.org>"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "S'està iniciant…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "S'està acabant…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "S'està estimant…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "General"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Finestra nova"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Dreceres de teclat"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Tanca la finestra"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Surt"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Afegeix"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Afegiu fitxers o deixeu-ho anar aquí"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"La trituració és l'ofuscació d'un fitxer amb dades aleatòries de manera que "
+"el contingut anterior no es pot recuperar."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Neteja"
+
+#: src/raider-window.blp:101 src/raider-window.c:389
+msgid "Shred All"
+msgstr "Tritura-ho tot"
+
+#: src/raider-window.blp:120 src/raider-window.c:442
+msgid "Abort All"
+msgstr "Interromp-ho tot"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Quant a la Trituradora de fitxers"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Obre una carpeta"
+
+#: src/raider-window.c:178
+msgid "Stop Shredding?"
+msgstr "Voleu aturar el triturat?"
+
+#: src/raider-window.c:178
+msgid "Are you sure that you want to exit?"
+msgstr "Esteu segur que voleu sortir?"
+
+#: src/raider-window.c:181
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: src/raider-window.c:181
+msgid "_Exit"
+msgstr "_Surt"
+
+#: src/raider-window.c:230
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"No s'ha pogut eliminar el nom de fitxer de la llista ràpida. Informeu "
+"d'aquest error."
+
+#: src/raider-window.c:240
+msgid "Finished shredding files"
+msgstr "S'ha acabat el triturat de fitxers"
+
+#: src/raider-window.c:312
+#, c-format
+msgid "This file was already added"
+msgstr "Aquest fitxer ja s'ha afegit"
+
+#: src/raider-window.c:326
+msgid "Some files did not exist"
+msgstr "Alguns fitxers no existeixen"
+
+#: src/raider-window.c:338
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "No es pot escriure a «%s»"
+
+#: src/raider-window.c:350
+msgid "Cannot load more files"
+msgstr "No es poden carregar més fitxers"
+
+#: src/raider-window.c:388
+msgid "Clear All"
+msgstr "Neteja"
+
+#: src/raider-window.c:412
+msgid "Starting Shredding…"
+msgstr "S'està iniciant el triturat…"
+
+#: src/raider-window.c:464
+msgid "Aborting…"
+msgstr "S'està interrompent…"
