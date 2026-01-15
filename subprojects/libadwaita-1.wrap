@@ -1,4 +1,4 @@
 [wrap-git]
-url=https://gitlab.gnome.org/GNOME/libadwaita
+url=https://gitlab.gnome.org/GNOME/libadwaita.git
+revision=1.8.3
 depth=1
-revision=libadwaita-1-7
