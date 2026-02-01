@@ -1,31 +1,28 @@
 using Gtk 4.0;
+using Adw 1;
 
-ShortcutsWindow help_overlay {
-  modal: true;
-
-  ShortcutsSection {
-    ShortcutsGroup {
-      title: _("General");
-      ShortcutsShortcut {
-        action-name: "app.open";
-        title: _("Add Files");
-      }
-      ShortcutsShortcut {
-        action-name: "app.new-window";
-        title: _("New Window");
-      }
-      ShortcutsShortcut {
-        action-name: "win.show-help-overlay";
-        title: _("Keyboard Shortcuts");
-      }
-      ShortcutsShortcut {
-        action-name: "app.close";
-        title: _("Close Window");
-      }
-      ShortcutsShortcut {
-        action-name: "app.quit";
-        title: _("Quit");
-      }
+Adw.ShortcutsDialog shortcuts_dialog {
+  Adw.ShortcutsSection {
+    title: _("General");
+    Adw.ShortcutsItem {
+      action-name: "app.open";
+      title: _("Add Files");
+    }
+    Adw.ShortcutsItem {
+      action-name: "app.new-window";
+      title: _("New Window");
+    }
+    Adw.ShortcutsItem {
+      action-name: "app.shortcuts";
+      title: _("Keyboard Shortcuts");
+    }
+    Adw.ShortcutsItem {
+      action-name: "app.close";
+      title: _("Close Window");
+    }
+    Adw.ShortcutsItem {
+      action-name: "app.quit";
+      title: _("Quit");
     }
   }
 }

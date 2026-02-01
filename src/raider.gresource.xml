@@ -4,6 +4,6 @@
     <file>raider-window.ui</file>
     <file>raider-file-row.ui</file>
     <file>raider-progress-info-popover.ui</file>
-    <file alias="gtk/help-overlay.ui">raider-shortcuts.ui</file>
+    <file alias="shortcuts-dialog.ui">raider-shortcuts.ui</file>
   </gresource>
 </gresources>
