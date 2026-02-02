@@ -1,0 +1,209 @@
+# Cornish translation for raider.
+# Copyright (C) 2026 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2026-01-15 01:17+0000\n"
+"PO-Revision-Date: 2026-02-02 18:06+0000\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-DL-VCS-Web: https://github.com/ADBeveridge/raider.git\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: raider\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-application.c:223
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Skethennell Restren"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Dilea yn andileadow dha restrennow"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "dilea;remova;yn andileadow;restrennow;shethenna;data;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"Skethennell Restren yw app dileans restren desinys rag remova yn andileadow "
+"restrennow privedh dhyworth dha amontyell, owth ynkressya privetter data."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Kyns penn unn finweth, yth yw effeythus. Byttegyns, SSDs arnowydh devnydhya "
+"teknologieth rag ystyn an termyn bewnans, gans an effeyth a ow surhe ow "
+"skethenna yw perfydh bynner, ha medhelweyth vyth a yll ewnhe hemma. Mes ow "
+"skethenna kressya yn arwedhek an kaletter a sawyans data dre reson yth "
+"rekwirya medhelweyth ha kalesweyth arbenigel."
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:25
+msgid "Alan Beveridge"
+msgstr "Alan Beveridge"
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Addya Restrennow"
+
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Addya Restrenvaow"
+
+#: src/raider-application.c:180
+msgid "translator-credits"
+msgstr "Flynn"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Ow Dalleth…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Ow Finsya…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Ow Dysmygriva…"
+
+#: src/raider-shortcuts.blp:8
+msgid "General"
+msgstr "Ollgemmyn"
+
+#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Fenester Nowydh"
+
+#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Kesunyansow Bysowek"
+
+#: src/raider-shortcuts.blp:23
+msgid "Close Window"
+msgstr "Degea Fenester"
+
+#: src/raider-shortcuts.blp:27
+msgid "Quit"
+msgstr "Kwytya"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Addya"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Rol Chif"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Addya restrennow po droppya omma"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Ow skethenna yw ow tervyska an restren gans data chonsus ytho an dalgh kyns "
+"ny yllir bos sawys."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Hedhi"
+
+#: src/raider-window.blp:101 src/raider-window.c:388
+msgid "Shred All"
+msgstr "Skethenna Oll"
+
+#: src/raider-window.blp:120 src/raider-window.c:441
+msgid "Abort All"
+msgstr "Astel Oll"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "A-Dro Skethennell Restren"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Ygeri Restrenva"
+
+#: src/raider-window.c:177
+msgid "Stop Shredding?"
+msgstr "Hedhi Ow Skethenna?"
+
+#: src/raider-window.c:177
+msgid "Are you sure that you want to exit?"
+msgstr "Os ta sur ty mynnes kwytya?"
+
+#: src/raider-window.c:180
+msgid "_Cancel"
+msgstr "_Hedhi"
+
+#: src/raider-window.c:180
+msgid "_Exit"
+msgstr "_Kwytya"
+
+#: src/raider-window.c:229
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+"Ny yllir remova hanow restren dhyworth rol uskis. Mar pleg danvon hemma."
+
+#: src/raider-window.c:239
+msgid "Finished shredding files"
+msgstr "Ow skethenna restrennow deu"
+
+#: src/raider-window.c:311
+#, c-format
+msgid "This file was already added"
+msgstr "An restren ma yw addys seulabrys"
+
+#: src/raider-window.c:325
+msgid "Some files did not exist"
+msgstr "Nebes restrennow na eksistya"
+
+#: src/raider-window.c:337
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Ny yllir skrifa dhe “%s”"
+
+#: src/raider-window.c:349
+msgid "Cannot load more files"
+msgstr "Ny yllir karga restrennow moy"
+
+#: src/raider-window.c:387
+msgid "Clear All"
+msgstr "Hedhi Oll"
+
+#: src/raider-window.c:411
+msgid "Starting Shredding…"
+msgstr "Ow Dalleth Ow Skethenna…"
+
+#: src/raider-window.c:463
+msgid "Aborting…"
+msgstr "Owth Astel…"
