@@ -1,0 +1,197 @@
+# Esperanto translation for raider.
+# Copyright (C) 2026 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Kristjan ESPERANTO <kristjan.schmidt@googlemail.com>,  2026.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+"PO-Revision-Date: 2026-02-27 13:21+0100\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
+"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 49.0\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-application.c:223
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "File Shredder"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Permanente forigi viajn dosierojn"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "delete;remove;permanently;files;shred;data;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"File Shredder estas dosierforigo-programo dezajnita por permanente forigi "
+"sentemajn dosierojn de via komputilo, plibonigante datuman privatecon."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Ene de certa limo, ĝi estas efika. Tamen, modernaj SSD-oj uzas certajn "
+"teknologiojn por etendi ilian vivdaŭron, kio havas la flankefekon certigi, "
+"ke razado neniam estas perfekta, kaj neniu programaro povas ripari tion. Sed "
+"razado signife pliigas la malfacilecon de datuma reakiro, ĉar ĝi postulas "
+"specialiĝintan programaron kaj aparataron."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Aldoni dosierojn"
+
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Aldoni dosierujojn"
+
+#: src/raider-application.c:180
+msgid "translator-credits"
+msgstr "Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Komencante…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Finante…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Taksante…"
+
+#: src/raider-shortcuts.blp:6
+msgid "General"
+msgstr "Ĝenerala"
+
+#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Nova fenestro"
+
+#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Klav-mallongigoj"
+
+#: src/raider-shortcuts.blp:21
+msgid "Close Window"
+msgstr "Fermi fenestron"
+
+#: src/raider-shortcuts.blp:25
+msgid "Quit"
+msgstr "Forlasi"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Aldoni"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Ĉefa menuo"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Aldonu dosierojn aŭ falgu ĉi tie"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Razado estas la obfuskado de dosiero per hazardaj datumoj, tiel ke la antaŭa "
+"enhavo ne povas esti reakirita."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Viŝi"
+
+#: src/raider-window.blp:101 src/raider-window.c:388
+msgid "Shred All"
+msgstr "Razi ĉion"
+
+#: src/raider-window.blp:120 src/raider-window.c:441
+msgid "Abort All"
+msgstr "Ĉesigi ĉion"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Pri File Shredder"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Malfermi dosierujon"
+
+#: src/raider-window.c:177
+msgid "Stop Shredding?"
+msgstr "Ĉesigi razadon?"
+
+#: src/raider-window.c:177
+msgid "Are you sure that you want to exit?"
+msgstr "Ĉu vi certas, ke vi volas eliri?"
+
+#: src/raider-window.c:180
+msgid "_Cancel"
+msgstr "_Nuligi"
+
+#: src/raider-window.c:180
+msgid "_Exit"
+msgstr "_Eliri"
+
+#: src/raider-window.c:229
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Ne povis forigi dosiernomon el la rapida listo. Bonvolu raporti tion."
+
+#: src/raider-window.c:239
+msgid "Finished shredding files"
+msgstr "Finita razado de dosieroj"
+
+#: src/raider-window.c:311
+#, c-format
+msgid "This file was already added"
+msgstr "Ĉi tiu dosiero jam estis aldonita"
+
+#: src/raider-window.c:325
+msgid "Some files did not exist"
+msgstr "Kelkaj dosieroj ne ekzistis"
+
+#: src/raider-window.c:337
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Ne povas skribi al „%s“"
+
+#: src/raider-window.c:349
+msgid "Cannot load more files"
+msgstr "Ne povas ŝarĝi pliajn dosierojn"
+
+#: src/raider-window.c:387
+msgid "Clear All"
+msgstr "Viŝi ĉion"
+
+#: src/raider-window.c:411
+msgid "Starting Shredding…"
+msgstr "Komencante razadon…"
+
+#: src/raider-window.c:463
+msgid "Aborting…"
+msgstr "Ĉesigante…"
