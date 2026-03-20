@@ -1,0 +1,190 @@
+# Serbian translation for raider.
+# Copyright (C) 2026 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Марко Костић <marko.m.kostic@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+"PO-Revision-Date: 2026-03-20 12:12+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"Language-Team: Serbian <Serbian>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-application.c:223
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Дробилица датотека"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Трајно обришите ваше датотеке"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "delete;remove;permanently;files;shred;data;брисање;обриши;уклони;трајно;датотеке;фајлови;шред;подаци;дата;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr "Дробилица датотека је програм за брисање датотека осмишљен да трајно уклони осетљиве датотеке са вашег рачунара, побољшавајући приватност података."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr "Унутар одређених граница, она је делотворна. Међутим, савремени ССД уређаји користе одређене технологије како би продужили свој радни век, што има нуспојаву да дробљење никада није савршено, и ниједан програм то не може да поправи. Али дробљење значајно повећава тежину опоравка података јер захтева специјализован софтвер и хардвер."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Додај датотеке"
+
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Додај фасцикле"
+
+#: src/raider-application.c:180
+msgid "translator-credits"
+msgstr ""
+"Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"Превод Гнома на српски језик https://гном.срб"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Покрећем…"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Завршавам…"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Процењујем…"
+
+#: src/raider-shortcuts.blp:6
+msgid "General"
+msgstr "Опште"
+
+#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Нови прозор"
+
+#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Пречице на тастатури"
+
+#: src/raider-shortcuts.blp:21
+msgid "Close Window"
+msgstr "Затвори прозор"
+
+#: src/raider-shortcuts.blp:25
+msgid "Quit"
+msgstr "Изађи"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Додај"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Главни мени"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Додајте датотеке или их превуците овде"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr "Дробљење је маскирање датотеке насумичним подацима тако да се претходни садржај не може повратити."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Очисти"
+
+#: src/raider-window.blp:101 src/raider-window.c:388
+msgid "Shred All"
+msgstr "Све здроби"
+
+#: src/raider-window.blp:120 src/raider-window.c:441
+msgid "Abort All"
+msgstr "Прекини све"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "О Дробилици датотека"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Отвори фасциклу"
+
+#: src/raider-window.c:177
+msgid "Stop Shredding?"
+msgstr "Зауставити дробљење?"
+
+#: src/raider-window.c:177
+msgid "Are you sure that you want to exit?"
+msgstr "Да ли сте сигурни да желите да изађете?"
+
+#: src/raider-window.c:180
+msgid "_Cancel"
+msgstr "_Откажи"
+
+#: src/raider-window.c:180
+msgid "_Exit"
+msgstr "_Изађи"
+
+#: src/raider-window.c:229
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Не могу да уклоним назив датотеке са брзог списка. Пријавите ово."
+
+#: src/raider-window.c:239
+msgid "Finished shredding files"
+msgstr "Завршено дробљење датотека"
+
+#: src/raider-window.c:311
+#, c-format
+msgid "This file was already added"
+msgstr "Ова датотека је већ додата"
+
+#: src/raider-window.c:325
+msgid "Some files did not exist"
+msgstr "Неке датотеке не постоје"
+
+#: src/raider-window.c:337
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Не могу да пишем у „%s“"
+
+#: src/raider-window.c:349
+msgid "Cannot load more files"
+msgstr "Не могу да учитам више датотека"
+
+#: src/raider-window.c:387
+msgid "Clear All"
+msgstr "Очисти све"
+
+#: src/raider-window.c:411
+msgid "Starting Shredding…"
+msgstr "Покрећем дробљење…"
+
+#: src/raider-window.c:463
+msgid "Aborting…"
+msgstr "Прекидам…"
