@@ -3,6 +3,9 @@ project('raider', 'c', version: '3.1.0')
 i18n = import('i18n')
 gnome = import('gnome')
 
+# Corrupt library
+subdir('corrupt')
+
 raider_deps = [
                 dependency('gtk4', 
                           version: '>=4.20.3',
@@ -12,6 +15,7 @@ raider_deps = [
                           version: '>=1.8.2',
                           default_options:['examples=false','tests=false','introspection=disabled','vapi=false'], 
                           fallback : 'libadwaita-1'),
+                corrupt_dep
               ]
 
 # Create config.h file entirely in Meson.
