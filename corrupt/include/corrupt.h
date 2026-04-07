@@ -1,25 +1,16 @@
-#ifndef CORRUPT_LIBRARY_H
-#define CORRUPT_LIBRARY_H
+#pragma once
 
-#include <gtk/gtk.h>
-#include <glib.h>
+#include <time.h> /* time */
+#include <stdio.h> /* FILE, fopen, fwrite, fclose, fprintf */
+#include <stdint.h> /* uint*_t int*_t */
+#include <string.h> /* strlen */
+#include <stdlib.h> /* srand, rand */
+#include <sys/stat.h> /* stat */
+#include <sys/types.h> /* off_t */
+#include <gtk/gtk.h> /* progress variables */
 
-class bucket;
+#define CORRUPT_TYPE (corrupt_get_type())
 
-class corrupt
-{
-private:
-    std::vector<std::unique_ptr<bucket>> buckets;
-    std::stop_source master_stop_source;
+G_DECLARE_FINAL_TYPE(Corrupt, corrupt, CORRUPT, GObject)
 
-    void addToBucket(const std::string &name);
-
-public:
-    corrupt();
-    ~corrupt();
-
-    bool addFile(const std::string &name);
-    void shred();
-};
-
-#endif // CORRUPT_LIBRARY_H
+bool corrupt_add_file(Corrupt *corrupt, const char *filename);

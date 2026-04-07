@@ -1,49 +1,57 @@
 #include "bucket.h"
-#include <iostream>
-#include <thread>
+#include "utility.h"
 
-bucket::bucket(dev_t id, struct strategy strategy) : deviceID(id), strategy(strategy)
+bool add_file(Bucket *self, const char *filename)
 {
-}
-
-bucket::~bucket()
-{
-}
-
-dev_t bucket::getDeviceID()
-{
-    return deviceID;
-}
-
-bool bucket::addFile(const std::string &name)
-{
-    // Add check to make sure the file matches the rules of the strategy.
-    files.push_back(name);
+    g_list_append(self->files, filename); // TODO: Make sure that we don't need to duplicate our string.
     return true;
 }
 
-void bucket::shred(std::stop_token stoken)
+// A custom context to pass shared data to our worker threads
+typedef struct
 {
-    for (int i = 0; i < strategy.thread_count; i++)
+    Bucket *bucket;
+    GCancellable *cancel;
+} WorkerContext;
+
+// The function executed by the threads for each pushed file
+static void worker_thread(gpointer data, gpointer user_data)
+{
+    const char *filename = (const char *)data;
+    WorkerContext *context = (WorkerContext *)user_data;
+
+    corrupt_file(filename, context->bucket->strategy);
+}
+
+void shred(Bucket *self, GCancellable *cancel)
+{
+    GError *error = NULL;
+
+    WorkerContext *context = g_new(WorkerContext, 1);
+    context->bucket = self;
+    context->cancel = cancel;
+
+    GThreadPool *pool = g_thread_pool_new(worker_thread, context, self->strategy.thread_count, TRUE, &error);
+    if (error != NULL)
     {
-        worker_threads.emplace_back([this, stoken]()
-        {
-            while (!stoken.stop_requested())
-            {
-                std::string file_to_shred;
-                {
-                    std::lock_guard<std::mutex> lock(this->queue_mutex);
-
-                    if (this->files.empty())
-                    {
-                        break;
-                    }
-
-                    file_to_shred = this->files.back();
-                    this->files.pop_back();
-                }
-                corrupt_file(file_to_shred.c_str(), this->strategy);
-            }
-        });
+        g_printerr("Failed to create thread pool: %s\n", error->message);
+        g_error_free(error);
+        g_free(context);
+        return;
     }
+
+    for (GList *l = self->files; l != NULL; l = l->next)
+    {
+        g_thread_pool_push(pool, l->data, &error);
+        if (error != NULL)
+        {
+            g_printerr("Failed to push to pool: %s\n", error->message);
+            g_error_clear(&error);
+        }
+    }
+
+    // 3. Cleanup and wait for completion
+    g_thread_pool_free(pool, FALSE, TRUE);
+
+    g_free(context);
 }

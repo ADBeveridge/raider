@@ -1,6 +1,7 @@
 corrupt_sources = [
   'src/corrupt.c',
-  'src/bucket.c'
+  'src/bucket.c',
+  'src/utility.c'
 ]
 
 corrupt_public_inc = include_directories('include')

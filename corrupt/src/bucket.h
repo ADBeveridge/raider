@@ -2,31 +2,18 @@
 #define CORRUPT_BUCKET_H
 
 #include "utility.h"
-#include <mutex>
-#include <string>
-#include <thread>
-#include <vector>
-#include <stop_token>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
-class bucket
+typedef struct Bucket
 {
-private:
+    GList *files;
     dev_t deviceID;
-
-    std::vector<std::string> files;
-    std::vector<std::jthread> worker_threads;
-
     struct strategy strategy;
-    std::mutex queue_mutex;
+} Bucket;
 
-public:
-    bucket(dev_t id, struct strategy strategy);
-    ~bucket();
-
-    dev_t getDeviceID();
-
-    bool addFile(const std::string &name);
-    void shred(std::stop_token stoken);
-};
+bool add_file(Bucket *self, const char *filename);
+void shred(Bucket *self, GCancellable *cancel);
 
 #endif // CORRUPT_BUCKET_H
