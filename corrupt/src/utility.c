@@ -1,9 +1,8 @@
+#define _DEFAULT_SOURCE
+
 #include "utility.h"
 #include <linux/magic.h>
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/vfs.h>
 #include <unistd.h>
 
 // Smart defaults for common filesystems, if you can think of any changes that would help, please open an issue, I will be in touch.
@@ -53,9 +52,9 @@ bool check_file(const char *filename)
     return true;
 }
 
-bool corrupt_pass(const char *filename, struct strategy &strat)
+bool corrupt_pass(const char *filename, struct strategy *strat)
 {
-    if (strat.pattern_len == 0)
+    if (strat->pattern_len == 0)
     {
         return true;
     }
@@ -81,13 +80,13 @@ bool corrupt_pass(const char *filename, struct strategy &strat)
 
     for (size_t i = 0; i < buf_size; i++)
     {
-        buffer[i] = strat.pattern[i % strat.pattern_len];
+        buffer[i] = strat->pattern[i % strat->pattern_len];
     }
 
     off_t bytes_written = 0;
     while (bytes_written < size)
     {
-        size_t remaining = static_cast<size_t>(size - bytes_written);
+        size_t remaining = (size_t)(size - bytes_written);
         size_t chunk = remaining < buf_size ? remaining : buf_size;
 
         fwrite(buffer, sizeof(char), chunk, fp);
@@ -100,7 +99,7 @@ bool corrupt_pass(const char *filename, struct strategy &strat)
     return true;
 }
 
-bool corrupt_file(const char *filename, struct strategy &strat)
+bool corrupt_file(const char *filename, strategy *strat)
 {
     bool res = check_file(filename);
     if (!res)
@@ -109,7 +108,7 @@ bool corrupt_file(const char *filename, struct strategy &strat)
     }
 
     // Shred the file by overwriting it many times.
-    for (int i = 0; i < strat.passes; i++)
+    for (int i = 0; i < strat->passes; i++)
     {
         if (corrupt_pass(filename, strat) == false)
         {

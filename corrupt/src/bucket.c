@@ -1,9 +1,9 @@
 #include "bucket.h"
 #include "utility.h"
 
-bool add_file(Bucket *self, const char *filename)
+bool bucket_add_file(Bucket *self, const char *filename)
 {
-    g_list_append(self->files, filename); // TODO: Make sure that we don't need to duplicate our string.
+    self->files = g_list_append(self->files, (gpointer)filename); // TODO: Make sure that we don't need to duplicate our string.
     return true;
 }
 
@@ -20,10 +20,10 @@ static void worker_thread(gpointer data, gpointer user_data)
     const char *filename = (const char *)data;
     WorkerContext *context = (WorkerContext *)user_data;
 
-    corrupt_file(filename, context->bucket->strategy);
+    corrupt_file(filename, &context->bucket->strategy);
 }
 
-void shred(Bucket *self, GCancellable *cancel)
+void bucket_shred(Bucket *self, GCancellable *cancel)
 {
     GError *error = NULL;
 
@@ -46,7 +46,7 @@ void shred(Bucket *self, GCancellable *cancel)
         if (error != NULL)
         {
             g_printerr("Failed to push to pool: %s\n", error->message);
-            g_error_clear(&error);
+            g_clear_error(&error);
         }
     }
 

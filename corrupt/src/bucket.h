@@ -3,8 +3,8 @@
 
 #include "utility.h"
 #include <glib.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <stdbool.h>
 
 typedef struct Bucket
 {
@@ -13,7 +13,7 @@ typedef struct Bucket
     struct strategy strategy;
 } Bucket;
 
-bool add_file(Bucket *self, const char *filename);
-void shred(Bucket *self, GCancellable *cancel);
+bool bucket_add_file(Bucket *self, const char *filename);
+void bucket_shred(Bucket *self, GCancellable *cancel);
 
 #endif // CORRUPT_BUCKET_H

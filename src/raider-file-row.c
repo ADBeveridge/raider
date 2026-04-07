@@ -23,7 +23,6 @@
 #include "raider-file-row.h"
 #include "raider-progress-paintable.h"
 #include "raider-progress-info-popover.h"
-#include "corrupt.h"
 
 struct _RaiderFileRow
 {
@@ -159,8 +158,7 @@ void raider_file_row_launch_shredding(gpointer data)
     gtk_revealer_set_reveal_child(row->remove_revealer, FALSE);
     gtk_revealer_set_reveal_child(row->progress_revealer, TRUE);
 
-    RaiderCorrupt* corrupt = raider_corrupt_new(row->file, row);
-    row->cancel = raider_corrupt_start_shredding (corrupt, shredding_finished);
+    // TODO: Add corrupt library.
 }
 /* End of shredding section. */
 

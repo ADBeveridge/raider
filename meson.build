@@ -3,9 +3,6 @@ project('raider', 'c', version: '3.1.0', default_options : ['c_std=c23'])
 i18n = import('i18n')
 gnome = import('gnome')
 
-# Corrupt library
-subdir('corrupt')
-
 glib_dep = dependency('glib-2.0', version: '>= 2.80.0')
 gtk_dep = dependency('gtk4', version: '>= 4.20.0')
 libadwaita_dep = dependency('libadwaita-1', version: '>= 1.8.0')
@@ -22,6 +19,7 @@ configure_file(output: 'raider-config.h', configuration: config_h)
 add_project_arguments(['-I' + meson.project_build_root(),], language: 'c')
 
 # Folders with individual meson.build files.
+subdir('corrupt')
 subdir('data')
 subdir('src')
 subdir('po')

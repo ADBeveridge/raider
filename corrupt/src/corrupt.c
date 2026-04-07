@@ -1,26 +1,10 @@
-/* raider-progress-info-popover.c
- *
- * Copyright 2022 Alan Beveridge
- *
- * raider is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * raider is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+#define _DEFAULT_SOURCE
 
 #include "corrupt.h"
 #include "utility.h"
+#include "bucket.h"
 #include <glib.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <stdio.h>
 
 struct _Corrupt
 {
@@ -46,27 +30,14 @@ Corrupt *corrupt_new()
     return corrupt;
 }
 
-bool corrupt_add_file(Corrupt *self, const char *filename)
-{
-    bool result = check_file(name.c_str());
-    if (result == false)
-    {
-        return false;
-    }
-
-    addToBucket(name);
-
-    return true;
-}
-
 static void corrupt_add_to_bucket(Corrupt *self, const char *filename)
 {
     struct stat st;
 
     // Get the id of the device the file resides on.
-    if (lstat(name.c_str(), &st) != 0)
+    if (lstat(filename, &st) != 0)
     {
-        fprintf("Error getting device id of file.\n");
+        fprintf(stderr, "Error getting device id of file.\n");
         return;
     }
     dev_t id = st.st_dev;
@@ -75,8 +46,8 @@ static void corrupt_add_to_bucket(Corrupt *self, const char *filename)
     int length = g_list_length(self->buckets);
     for (int i = 0; i < length; i++)
     {
-        bucket *bucket = g_list_nth_data(self->buckets, i);
-        if (bucket_get_device_id(bucket) == id)
+        Bucket *bucket = g_list_nth_data(self->buckets, i);
+        if (bucket->deviceID == id)
         {
             bucket_add_file(bucket, filename);
             return;
@@ -86,11 +57,24 @@ static void corrupt_add_to_bucket(Corrupt *self, const char *filename)
     // If not, create a new bucket.
     strategy strat = getStrategy(filename);
 
-    bucket *bucket = malloc(sizeof(bucket));
-    bucket->deviceID = id;
-    bucket->strategy = strat;
+    Bucket *new_bucket = g_new0(Bucket, 1);
+    new_bucket->deviceID = id;
+    new_bucket->strategy = strat;
 
-    g_list_append(self->buckets, bucket);
+    self->buckets = g_list_append(self->buckets, new_bucket);
+}
+
+bool corrupt_add_file(Corrupt *self, const char *filename)
+{
+    bool result = check_file(filename);
+    if (result == false)
+    {
+        return false;
+    }
+
+    corrupt_add_to_bucket(self, filename);
+
+    return true;
 }
 
 static void master_bucket_worker(gpointer data, gpointer user_data)
@@ -104,7 +88,7 @@ static void master_bucket_worker(gpointer data, gpointer user_data)
     }
 
     // This blocks this thread.
-    shred(bucket, cancel);
+    bucket_shred(bucket, cancel);
 }
 
 static void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
@@ -132,7 +116,7 @@ static void shred_all_task_thread(GTask *task, gpointer source_object, gpointer 
         if (error != NULL)
         {
             g_printerr("Failed to push bucket to master pool: %s\n", error->message);
-            g_error_clear(&error);
+            g_clear_error(&error);
         }
     }
 
