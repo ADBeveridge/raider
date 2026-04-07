@@ -6,17 +6,12 @@ gnome = import('gnome')
 # Corrupt library
 subdir('corrupt')
 
-raider_deps = [
-                dependency('gtk4', 
-                          version: '>=4.20.3',
-                          default_options: ['media-gstreamer=disabled','build-tests=false','build-testsuite=false','build-testsuite=false','build-demos=false'],
-                          fallback : 'gtk4'),
-                dependency('libadwaita-1', 
-                          version: '>=1.8.2',
-                          default_options:['examples=false','tests=false','introspection=disabled','vapi=false'], 
-                          fallback : 'libadwaita-1'),
-                corrupt_dep
-              ]
+glib_dep = dependency('glib-2.0', version: '>= 2.80.0')
+gtk_dep = dependency('gtk4', version: '>= 4.20.0')
+libadwaita_dep = dependency('libadwaita-1', version: '>= 1.8.0')
+blueprint_dep = dependency('blueprint-compiler', native: true, version: '>= 0.10.0')
+
+raider_deps = [gtk_dep, glib_dep, libadwaita_dep, blueprint_dep]
 
 # Create config.h file entirely in Meson.
 config_h = configuration_data()
