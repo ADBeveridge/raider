@@ -4,6 +4,7 @@ raider_sources = [
   'raider-application.c',
   'raider-progress-paintable.c',
   'raider-file-row.c',
+  'raider-file-item.c',
   'raider-progress-info-popover.c',
 ]
 
@@ -26,6 +27,6 @@ raider_sources += gnome.compile_resources('raider-resources',
 )
 
 executable('raider', raider_sources,
-  dependencies: raider_deps,
+  dependencies: [raider_deps, corrupt_dep],
   install: true,
 )

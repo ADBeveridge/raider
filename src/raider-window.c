@@ -26,10 +26,16 @@
 #include "raider-config.h"
 #include "raider-window.h"
 #include "raider-file-row.h"
+#include "raider-file-item.h"
+#include "corrupt.h"
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data);
+static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *title);
 static void raider_window_start_shredding(GtkWidget *widget, gpointer data);
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data);
+static void raider_window_clear_files(GtkWidget *widget, gpointer data);
+static void bind_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data);
+static void setup_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data);
 
 struct _RaiderWindow
 {
@@ -37,8 +43,6 @@ struct _RaiderWindow
 
     GtkBox *contents_box;
     GtkStack *window_stack;
-    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    /*AdwSplitButton *open_button;*/
     GtkButton *open_button;
     GtkRevealer *open_revealer;
     GtkButton *clear_button;
@@ -47,30 +51,20 @@ struct _RaiderWindow
     GtkButton *abort_button;
     GtkRevealer *abort_revealer;
     AdwToastOverlay *toast_overlay;
-    GtkListBox *list_box;
-
+    GtkListView *list_view;
+    GListStore *store;
     GtkDropTarget *target;
 
-    GList *filenames; // A quick list of filenames loaded for this window.
-    int file_count;
+    Corrupt *corrupt;
     gboolean status; // Shredding or not.
     gboolean show_notification;
-
-    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    // GMenu* mount_main_menu;
-    // GMenu* mount_menu;
-    // GVolumeMonitor* monitor;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
-static void
-raider_window_dispose (GObject *object)
+static void raider_window_dispose (GObject *object)
 {
-    RaiderWindow *self = RAIDER_WINDOW (object);
-
-    g_list_free(self->filenames);
-
+    //RaiderWindow *self = RAIDER_WINDOW (object);
     G_OBJECT_CLASS (raider_window_parent_class)->dispose (object);
 }
 
@@ -86,7 +80,7 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, clear_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_button);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, list_box);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, list_view);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, window_stack);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_revealer);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
@@ -94,23 +88,10 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, contents_box);
 }
 
-static void raider_window_clear_files(GtkWidget *widget, gpointer data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
-    for (int row = 0; row < window->file_count; row++)
-    {
-        RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-        raider_file_row_close(NULL, file_row);
-    }
-}
-
 static void raider_window_init(RaiderWindow *self)
 {
     gtk_widget_init_template(GTK_WIDGET(self));
 
-    self->file_count = 0;
-    self->filenames = NULL;
     self->status = FALSE;
     self->show_notification = FALSE;
 
@@ -126,19 +107,50 @@ static void raider_window_init(RaiderWindow *self)
     g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
     gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
-    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    /* Create monitor of mounted drives. */
-    /*self->mount_main_menu = g_menu_new();
-    self->mount_menu = g_menu_new();
-    g_menu_prepend_section(self->mount_main_menu, _("Devices"), G_MENU_MODEL(self->mount_menu));
-    adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
+    self->store = g_list_store_new(RAIDER_TYPE_FILE_ITEM);
 
-    self->monitor = g_volume_monitor_get();
-    g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect(self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect(self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
+    GtkNoSelection *selection = gtk_no_selection_new(G_LIST_MODEL(self->store));
+    gtk_list_view_set_model(self->list_view, GTK_SELECTION_MODEL(selection));
+    g_object_unref(selection);
 
-    on_mount_changed(NULL, NULL, self);*/
+    GtkListItemFactory *factory = gtk_signal_list_item_factory_new();
+    g_signal_connect(factory, "setup", G_CALLBACK(setup_list_item), self);
+    g_signal_connect(factory, "bind", G_CALLBACK(bind_list_item), self);
+    gtk_list_view_set_factory(self->list_view, factory);
+    g_object_unref(factory);
+
+    self->corrupt = corrupt_new();
+}
+
+static void setup_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data)
+{
+    GtkWidget *row = GTK_WIDGET(raider_file_row_new());
+    gtk_list_item_set_child(list_item, row);
+}
+
+static void bind_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data)
+{
+    GtkWidget *row_widget = gtk_list_item_get_child(list_item);
+    RaiderFileRow *row = RAIDER_FILE_ROW(row_widget);
+
+    RaiderFileItem *item = RAIDER_FILE_ITEM(gtk_list_item_get_item(list_item));
+
+    // Push the fresh data into the widget
+    raider_file_row_bind_item(row, item);
+}
+
+static void raider_window_clear_files(GtkWidget *widget, gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    // Instantly deletes all data and updates the UI
+    g_list_store_remove_all(window->store);
+
+    // Reset the UI state
+    gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
 }
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
@@ -200,36 +212,37 @@ void raider_window_show_toast(RaiderWindow *window, gchar *text)
 }
 
 /* This handles the application and window state. */
-void raider_window_close_file(gpointer data, gpointer user_data)
+void raider_window_close_file(RaiderFileItem *target_item, RaiderWindow *window)
 {
-    RaiderWindow *window = RAIDER_WINDOW(user_data);
-
-    RaiderFileRow *row = RAIDER_FILE_ROW(data);
-    gchar *filename = raider_file_row_get_filename(row);
-
     gboolean removed = FALSE;
+    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(window->store));
 
-    /* Search to delete the entry. */
-    GList *item = window->filenames;
-    while (item != NULL)
+    // Extract the raw GFile from the incoming item
+    GFile *target_file = raider_file_item_get_file(target_item);
+
+    for (guint i = 0; i < n_items; i++)
     {
-        GList *next = item->next;
+        RaiderFileItem *item = g_list_model_get_item(G_LIST_MODEL(window->store), i);
+        GFile *existing_file = raider_file_item_get_file(item);
 
-        /* Get the filename for this round. */
-        gchar *text = (gchar *)item->data;
-        if (g_strcmp0(text, filename) == 0)
+        // Compare the files to find the exact match in the store
+        if (g_file_equal(existing_file, target_file))
         {
-            window->filenames = g_list_remove(window->filenames, text);
-            g_free(text);
+            // We found the exact item. Remove it by index.
+            g_list_store_remove(window->store, i);
             removed = TRUE;
+
+            g_object_unref(item); // Cleanup the local reference from get_item
+            break;
         }
-        item = next;
+        g_object_unref(item); // Cleanup if not matched
     }
+
     if (removed == FALSE)
         g_error(_("Could not remove filename from quick list. Please report this."));
-    window->file_count--;
 
-    if (window->file_count == 0)
+    // Check the live count AFTER the removal
+    if (g_list_model_get_n_items(G_LIST_MODEL(window->store)) == 0)
     {
         gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
         window->status = FALSE;
@@ -257,166 +270,158 @@ void raider_window_close_file(gpointer data, gpointer user_data)
     }
 }
 
-/********** File opening functions. **********/
-static rlim_t get_open_files_limit()
-{
-    struct rlimit limit;
-    getrlimit(RLIMIT_NOFILE, &limit);
-    return limit.rlim_cur;
-}
 static void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
-    GList *file_list = user_data;
-    g_list_free(file_list);
-}
-static void raider_window_open_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
 
-    GList *file_list = task_data;
-    GList *l;
-    for (l = file_list; l != NULL; l = l->next)
+    GError *error = NULL;
+    GList *valid_files = g_task_propagate_pointer(G_TASK(res), &error);
+    if (error != NULL)
     {
-        gboolean cont = raider_window_open_file(l->data, window, NULL); // This adds an entry to the current window.
-        if (cont == FALSE)
-            break;
+        g_printerr("Failed to process files in background: %s\n", error->message);
+        g_error_free(error);
+        return;
     }
+
+    for (GList *l = valid_files; l != NULL; l = l->next)
+    {
+        RaiderFileItem *new_item = raider_file_item_new(G_FILE(l->data));
+        g_list_store_append(window->store, new_item);
+        g_object_unref(new_item);
+    }
+
+    if (g_list_model_get_n_items(G_LIST_MODEL(window->store)) > 0) {
+        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
+        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
+    }
+
+    g_list_free(valid_files);
+}
+
+static void raider_window_open_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+{
+    GList *file_list = task_data;
+    GList *valid_files = NULL;
+
+    for (GList *l = file_list; l != NULL; l = l->next)
+    {
+        gboolean status = raider_window_check_file(l->data, NULL, NULL);
+        if (status)
+        {
+            valid_files = g_list_append(valid_files, g_object_ref(l->data));
+        }
+    }
+    g_list_free_full(file_list, g_object_unref);
+
+    g_task_return_pointer(task, valid_files, (GDestroyNotify)g_list_free);
     // raider_window_open_file_finish() is called here.
 }
+
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
-    GTask *task = g_task_new(window, NULL, raider_window_open_files_finish, file_list);
-    g_task_set_task_data(task, file_list, NULL);
+    GList* cleaned_file_list = NULL;
+    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(window->store));
+
+    for (GList *l = file_list; l != NULL; l = l->next)
+    {
+        GFile *incoming_file = G_FILE(l->data);
+        gboolean is_duplicate = FALSE;
+
+        for (guint i = 0; i < n_items; i++) {
+            RaiderFileItem *existing_item = g_list_model_get_item(G_LIST_MODEL(window->store), i);
+            GFile *existing_file = raider_file_item_get_file(existing_item);
+
+            if (g_file_equal(incoming_file, existing_file)) {
+                is_duplicate = TRUE;
+            }
+
+            g_object_unref(existing_item);
+            if (is_duplicate) break;
+        }
+
+        if (is_duplicate) {
+            raider_window_show_toast(window, "File already loaded!");
+            g_object_unref(incoming_file);
+        } else {
+            cleaned_file_list = g_list_append(cleaned_file_list, incoming_file);
+        }
+    }
+
+    g_list_free(file_list);
+    if (cleaned_file_list == NULL) return;
+
+    GTask *task = g_task_new(window, NULL, raider_window_open_files_finish, NULL);
+    g_task_set_task_data(task, cleaned_file_list, NULL);
     g_task_run_in_thread(task, raider_window_open_files_thread);
     g_object_unref(task);
 }
-/* This is used to open a single file at a time. Returns false if no more files can be loaded, true otherwise. */
-gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
 
+/* Check the file to make sure we can corrupt it. */
+static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *title)
+{
     gchar *filename = g_file_get_path(file);
 
-    /* Search the current list of filenames to make sure the current file has not been added yet */
-    GList *item = window->filenames;
-    while (item != NULL)
-    {
-        GList *next = item->next;
-
-        /* Get the filename for this round. */
-        gchar *text = (gchar *)item->data;
-
-        if (g_strcmp0(text, filename) == 0)
-        {
-            gchar *message = g_strdup_printf(_("This file was already added"));
-            raider_window_show_toast(window, message);
-
-            g_free(filename);
-            g_free(message);
-            g_object_unref(file);
-
-            return TRUE; // We can return because the file has been rejected already.
-        }
-        item = next;
-    }
-    g_list_free(item);
     if (g_file_query_exists(file, NULL) == FALSE)
     {
-        gchar *message = g_strdup(_("Some files did not exist"));
-        raider_window_show_toast(window, message);
-
         g_free(filename);
-        g_free(message);
-        g_object_unref(file);
-
-        return TRUE; // Continue loading files, the rest may be real.
+        return FALSE; // No unref here!
     }
+
     /* Test if we can write. */
     if (g_access(filename, W_OK) != 0)
     {
-        gchar *message = g_strdup_printf(_("Cannot write to “%s”"), filename);
-        raider_window_show_toast(window, message);
-
         g_free(filename);
-        g_free(message);
-        g_object_unref(file);
-
-        return TRUE;
-    }
-    // TODO: The file limit divided by two may no longer be needed since the rework of the shredding backend.
-    if (window->file_count >= (get_open_files_limit() / 2))
-    {
-        gchar *message = g_strdup(_("Cannot load more files"));
-        raider_window_show_toast(window, message);
-
-        g_free(filename);
-        g_free(message);
-        g_object_unref(file);
-
-        return FALSE; // No more files can be loaded.
+        return FALSE; // No unref here!
     }
 
-    /* We are OK then. */
-
-    GtkWidget *file_row = GTK_WIDGET(raider_file_row_new(file));
-    if (title) // This is used when the device shredding is enabled.
-        adw_preferences_row_set_title(ADW_PREFERENCES_ROW(file_row), title);
-    gtk_list_box_append(window->list_box, file_row);
-
-    gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
-    gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
-
-    window->file_count++;
-    window->filenames = g_list_append(window->filenames, filename);
-
+    g_free(filename);
     return TRUE;
 }
-/********** End of file opening section. **********/
 
-/******** Asynchronously launch shred on all files. *********/
 static void raider_window_shred_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    RaiderWindow *window = RAIDER_WINDOW(source_object);
+    RaiderWindow *window = RAIDER_WINDOW(user_data);
+    Corrupt *corrupt = (Corrupt *)source_object;
+    GError *error = NULL;
 
     /* Update the view. */
-    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
+    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+    gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
+    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
 
     gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), TRUE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), TRUE);
     gtk_button_set_label(window->clear_button, _("Clear All"));
     gtk_button_set_label(window->shred_button, _("Shred All"));
-}
-static void raider_window_shred_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
-{
-    RaiderWindow *window = RAIDER_WINDOW(source_object);
 
-    /* Launch the shredding. */
-    int row;
-    for (row = 0; row < window->file_count; row++)
-    {
-        RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-        raider_file_row_launch_shredding((gpointer)file_row);
+    // Get the result
+    gboolean success = corrupt_start_shredding_finish (corrupt, res, &error);
+
+    if (!success) {
+        g_printerr("Failed to corrupt: %s\n", error->message);
+        g_error_free(error);
+
+        // TODO: Add toast notification.
+    } else {
+        // TODO: Add toast notification.
     }
-
-    // raider_window_shred_file_finish() is called here.
 }
+
 static void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
 
     gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
-    gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), FALSE);
-    gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), FALSE);
+    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+    gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
+
     gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
 
     window->status = TRUE;
 
-    GTask *task = g_task_new(window, NULL, raider_window_shred_files_finish, window);
-    g_task_run_in_thread(task, raider_window_shred_files_thread);
-    g_object_unref(task);
+    corrupt_start_shredding_async(window->corrupt, NULL, raider_window_shred_files_finish, window);
 }
-/******** End of asynchronously launch shred on all files section. *********/
+
 
 /******** Asynchronously abort shredding on all files.  *********/
 static void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
@@ -437,21 +442,11 @@ static void raider_window_abort_files_finish(GObject *source_object, GAsyncResul
 
     /* Revert the text and view of the abort button. */
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
-    gtk_widget_set_sensitive(GTK_WIDGET(window->list_box), TRUE);
     gtk_button_set_label(window->abort_button, _("Abort All"));
 }
 /* This is run asynchronously. */
 static void raider_window_abort_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    RaiderWindow *window = RAIDER_WINDOW(source_object);
-
-    /* Abort the shredding. */
-    int row;
-    for (row = 0; row < window->file_count; row++)
-    {
-        RaiderFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
-        raider_file_row_shredding_abort((gpointer)file_row);
-    }
     // raider_window_abort_file_finish() is called here.
 }
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
@@ -459,52 +454,12 @@ static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     RaiderWindow *window = RAIDER_WINDOW(data);
 
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
-    gtk_widget_set_sensitive(GTK_WIDGET(window->list_box), FALSE);
     gtk_button_set_label(window->abort_button, _("Aborting…"));
     window->show_notification = FALSE;
 
-    gchar *datai;
-    if (widget == NULL)
-        datai = g_strdup("exit");
-    else
-    {
-        datai = g_strdup("cont");
-    }
-
-    GTask *task = g_task_new(window, NULL, raider_window_abort_files_finish, datai);
+    GTask *task = g_task_new(window, NULL, raider_window_abort_files_finish, data);
     g_task_run_in_thread(task, raider_window_abort_files_thread);
     g_object_unref(task);
 }
 /******** End of asynchronously abort shredding on all files section.  *********/
-
-/* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-/* Updates the list of removable media in the popover in the AdwSplitButton. */
-/*void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
-{
-    RaiderWindow *self = RAIDER_WINDOW(data);
-
-    g_menu_remove_all(self->mount_menu);
-
-    GList *mount_list = g_volume_monitor_get_mounts(self->monitor);
-    GList *l;
-    for (l = mount_list; l != NULL; l = l->next)
-    {
-        // Retrieve device path, and put in variant.
-        GFile *file = g_mount_get_root(l->data); // Gets something like /home/ad/AD_BACKUPS.
-
-        gchar *name = g_file_get_basename(file); // Get the "title" of the disk, something like AD_BACKUPS.
-        GVariant *var = g_variant_new_string(g_file_get_path(file)); // Store in a variant so the "action" in raider-application can know which drive we are working on.
-
-        GMenuItem *item = g_menu_item_new(name, "app.open-drive");
-        g_menu_item_set_action_and_target_value(item, "app.open-drive", var);
-        g_menu_append_item(self->mount_menu, item);
-
-        g_object_unref(file);
-        g_free(name);
-    }
-    if (g_list_length(mount_list) < 1)
-        adw_split_button_set_menu_model(self->open_button, NULL);
-    else
-        adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
-}*/
 

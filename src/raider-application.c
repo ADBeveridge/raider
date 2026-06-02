@@ -283,7 +283,7 @@ static void raider_application_init(RaiderApplication *self)
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_action));
     gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.open", (const char *[]){"<Ctrl>o",NULL,});
 
-    g_autoptr(GSimpleAction) open_folder_action = g_simple_action_new("open-folder", NULL);
+    g_autoptr(GSimpleAction) open_folder_action = g_simple_action_new("add-folder", NULL);
     g_signal_connect(open_folder_action, "activate", G_CALLBACK(raider_application_open_folder_to_window), self);
     g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(open_folder_action));
 

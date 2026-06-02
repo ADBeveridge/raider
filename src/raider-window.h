@@ -20,13 +20,14 @@
 
 #include <gtk/gtk.h>
 #include <adwaita.h>
+#include "raider-file-item.h"
 
 #define RAIDER_TYPE_WINDOW (raider_window_get_type())
 
 G_DECLARE_FINAL_TYPE(RaiderWindow, raider_window, RAIDER, WINDOW, AdwApplicationWindow)
 
 gboolean raider_window_open_file(GFile *file, gpointer data, gchar *title);
-void raider_window_close_file(gpointer data, gpointer user_data);
+void raider_window_close_file(RaiderFileItem *target_item, RaiderWindow *window);
 void raider_window_show_toast(RaiderWindow *window, gchar *text);
 void raider_window_open_files(RaiderWindow *window, GList *file_list);
 gboolean raider_window_exit(RaiderWindow *window, gpointer data);

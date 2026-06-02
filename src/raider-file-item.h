@@ -1,6 +1,6 @@
-/* raider-file-row.h
+/* raider-file-item.h
  *
- * Copyright 2022 Alan Beveridge
+ * Copyright 2026 Alan Beveridge
  *
  * raider is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -19,14 +19,14 @@
 #pragma once
 #include <gtk/gtk.h>
 #include <adwaita.h>
-#include "raider-file-item.h"
-#define RAIDER_TYPE_FILE_ROW (raider_file_row_get_type())
+#define RAIDER_TYPE_FILE_ITEM (raider_file_item_get_type())
 
-G_DECLARE_FINAL_TYPE(RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
+G_DECLARE_FINAL_TYPE(RaiderFileItem, raider_file_item, RAIDER, FILE_ITEM, GObject)
 
-RaiderFileRow *raider_file_row_new();
-void raider_file_row_close(GtkWidget* widget, gpointer data);
-gboolean raider_file_row_update_progress_ui(gpointer data);
-void raider_file_row_set_progress_value(RaiderFileRow* row, double progress);
-void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item);
+double raider_file_item_get_progress(RaiderFileItem *item);
+GFile *raider_file_item_get_file(RaiderFileItem *item);
+gchar *raider_file_item_get_name(RaiderFileItem *item);
+gchar *raider_file_item_get_path(RaiderFileItem *item);
+gboolean raider_file_item_is_folder(RaiderFileItem *item);
+RaiderFileItem *raider_file_item_new(GFile *file);
 
