@@ -10,8 +10,7 @@
 G_DECLARE_FINAL_TYPE(Corrupt, corrupt, CORRUPT, CORRUPT, GObject)
 
 Corrupt *corrupt_new(void);
-bool corrupt_add_file(Corrupt *corrupt, const char *filename);
-void corrupt_start_shredding_async(Corrupt *self, GCancellable *cancel, GAsyncReadyCallback callback, gpointer user_data);
+void corrupt_start_shredding_async(Corrupt *self, GList *files_to_shred, GCancellable *cancel, GAsyncReadyCallback callback, gpointer user_data);
 gboolean corrupt_start_shredding_finish(Corrupt *self, GAsyncResult *res, GError **error);
 
 #endif // CORRUPT_H

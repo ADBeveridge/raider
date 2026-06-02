@@ -3,23 +3,29 @@ using Adw 1;
 
 template $RaiderFileRow : Adw.ActionRow {
   selectable: false;
-  activatable: false;
+  activatable: true;
   use-markup: false;
 
   [suffix]
   Gtk.Box controls {
     valign: center;
+
     Gtk.Revealer remove_revealer {
       reveal-child: true;
       transition-type: slide_left;
+
       Gtk.Button remove_button {
         icon-name: "edit-delete-symbolic";
+        tooltip-text: _("Remove file from list");
       }
     }
+
     Gtk.Revealer progress_revealer {
       reveal-child: false;
       transition-type: slide_left;
+
       Gtk.Button progress_button {
+        tooltip-text: _("View shredding progress");
       }
     }
   }

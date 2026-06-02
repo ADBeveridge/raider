@@ -34,8 +34,7 @@ static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *titl
 static void raider_window_start_shredding(GtkWidget *widget, gpointer data);
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data);
 static void raider_window_clear_files(GtkWidget *widget, gpointer data);
-static void bind_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data);
-static void setup_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data);
+static GtkWidget* create_listbox_row(gpointer item, gpointer user_data);
 
 struct _RaiderWindow
 {
@@ -51,11 +50,12 @@ struct _RaiderWindow
     GtkButton *abort_button;
     GtkRevealer *abort_revealer;
     AdwToastOverlay *toast_overlay;
-    GtkListView *list_view;
+    GtkListBox *list_box;
     GListStore *store;
     GtkDropTarget *target;
 
     Corrupt *corrupt;
+    GCancellable *cancel_shredding;
     gboolean status; // Shredding or not.
     gboolean show_notification;
 };
@@ -80,7 +80,7 @@ static void raider_window_class_init(RaiderWindowClass *klass)
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, clear_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_button);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_button);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, list_view);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, list_box);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, window_stack);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, shred_revealer);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), RaiderWindow, abort_revealer);
@@ -108,35 +108,20 @@ static void raider_window_init(RaiderWindow *self)
     gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
     self->store = g_list_store_new(RAIDER_TYPE_FILE_ITEM);
-
-    GtkNoSelection *selection = gtk_no_selection_new(G_LIST_MODEL(self->store));
-    gtk_list_view_set_model(self->list_view, GTK_SELECTION_MODEL(selection));
-    g_object_unref(selection);
-
-    GtkListItemFactory *factory = gtk_signal_list_item_factory_new();
-    g_signal_connect(factory, "setup", G_CALLBACK(setup_list_item), self);
-    g_signal_connect(factory, "bind", G_CALLBACK(bind_list_item), self);
-    gtk_list_view_set_factory(self->list_view, factory);
-    g_object_unref(factory);
+    gtk_list_box_bind_model(self->list_box, G_LIST_MODEL(self->store), create_listbox_row, self, NULL);
 
     self->corrupt = corrupt_new();
+    self->cancel_shredding = g_cancellable_new();
 }
 
-static void setup_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data)
+static GtkWidget* create_listbox_row(gpointer item, gpointer user_data)
 {
-    GtkWidget *row = GTK_WIDGET(raider_file_row_new());
-    gtk_list_item_set_child(list_item, row);
-}
+    RaiderFileRow *row = raider_file_row_new();
 
-static void bind_list_item(GtkSignalListItemFactory *factory, GtkListItem *list_item, gpointer data)
-{
-    GtkWidget *row_widget = gtk_list_item_get_child(list_item);
-    RaiderFileRow *row = RAIDER_FILE_ROW(row_widget);
+    // You just push the data in immediately
+    raider_file_row_bind_item(row, RAIDER_FILE_ITEM(item));
 
-    RaiderFileItem *item = RAIDER_FILE_ITEM(gtk_list_item_get_item(list_item));
-
-    // Push the fresh data into the widget
-    raider_file_row_bind_item(row, item);
+    return GTK_WIDGET(row);
 }
 
 static void raider_window_clear_files(GtkWidget *widget, gpointer data)
@@ -270,6 +255,7 @@ void raider_window_close_file(RaiderFileItem *target_item, RaiderWindow *window)
     }
 }
 
+
 static void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(source_object);
@@ -285,7 +271,9 @@ static void raider_window_open_files_finish(GObject *source_object, GAsyncResult
 
     for (GList *l = valid_files; l != NULL; l = l->next)
     {
-        RaiderFileItem *new_item = raider_file_item_new(G_FILE(l->data));
+        GFile *file = l->data;
+
+        RaiderFileItem *new_item = raider_file_item_new(file);
         g_list_store_append(window->store, new_item);
         g_object_unref(new_item);
     }
@@ -419,7 +407,16 @@ static void raider_window_start_shredding(GtkWidget *widget, gpointer data)
 
     window->status = TRUE;
 
-    corrupt_start_shredding_async(window->corrupt, NULL, raider_window_shred_files_finish, window);
+    GList *files_to_shred = NULL;
+    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(window->store));
+
+    for (guint i = 0; i < n_items; i++) {
+        RaiderFileItem *item = g_list_model_get_item(G_LIST_MODEL(window->store), i);
+        files_to_shred = g_list_append(files_to_shred, g_object_ref(raider_file_item_get_file(item)));
+        g_object_unref(item);
+    }
+
+    corrupt_start_shredding_async(window->corrupt, files_to_shred, window->cancel_shredding, raider_window_shred_files_finish, window);
 }
 
 

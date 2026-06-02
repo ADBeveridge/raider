@@ -47,7 +47,7 @@ template $RaiderWindow : Adw.ApplicationWindow {
     }
 
     content: Adw.ToastOverlay toast_overlay {
-      Gtk.Box contents_box {
+      Adw.Bin contents_box {
         vexpand: true;
         margin-top: 24;
         Gtk.Stack window_stack {
@@ -67,15 +67,13 @@ template $RaiderWindow : Adw.ApplicationWindow {
             child: Gtk.Overlay overlay{
 
               child: Gtk.ScrolledWindow scrolled_window {
-                Adw.ClampScrollable {
+                Adw.Clamp {
                 maximum-size: 700;
-                  Gtk.ListView list_view {
+                  Gtk.ListBox list_box {
+                    margin-bottom: 16;
+                    margin-top: 16;
                     valign: start;
-                    margin-end: 12;
-                    margin-start: 12;
-                    margin-top: 12;
-                    margin-bottom: 12;
-                    styles ["rich-list"]
+                    styles ["boxed-list"]
                   }
                 }
               };

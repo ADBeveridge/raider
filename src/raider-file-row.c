@@ -91,6 +91,11 @@ RaiderFileRow *raider_file_row_new()
 
 void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item)
 {
+    if (self->bound_item) {
+        g_object_unref(self->bound_item);
+    }
+    self->bound_item = g_object_ref(item);
+
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(self), raider_file_item_get_name(item));
     adw_action_row_set_subtitle(ADW_ACTION_ROW(self), raider_file_item_get_path(item));
 

@@ -64,17 +64,53 @@ static void corrupt_add_to_bucket(Corrupt *self, const char *filename)
     self->buckets = g_list_append(self->buckets, new_bucket);
 }
 
-bool corrupt_add_file(Corrupt *self, const char *filename)
+// Recursively extracts regular files from directories.
+static void corrupt_scan_folder_recursive(GFile *target, GList **file_list)
 {
-    bool result = check_file(filename);
-    if (result == false)
-    {
-        return false;
+    GError *error = NULL;
+    GFileInfo *info = g_file_query_info(target,
+                                        G_FILE_ATTRIBUTE_STANDARD_TYPE,
+                                        G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                        NULL,
+                                        &error);
+
+    if (error != NULL) {
+        g_printerr("Skipping unreadable path: %s\n", error->message);
+        g_error_free(error);
+        return;
     }
 
-    corrupt_add_to_bucket(self, filename);
+    GFileType file_type = g_file_info_get_file_type(info);
 
-    return true;
+    // If it is a standard file, add it to our master list
+    if (file_type == G_FILE_TYPE_REGULAR)
+    {
+        *file_list = g_list_prepend(*file_list, g_object_ref(target));
+    }
+    // If it is a directory recurse
+    else if (file_type == G_FILE_TYPE_DIRECTORY)
+    {
+        GFileEnumerator *enumerator = g_file_enumerate_children(target, G_FILE_ATTRIBUTE_STANDARD_NAME "," G_FILE_ATTRIBUTE_STANDARD_TYPE, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &error);
+        if (enumerator != NULL)
+        {
+            GFileInfo *child_info;
+            while ((child_info = g_file_enumerator_next_file(enumerator, NULL, &error)) != NULL)
+            {
+                GFile *child = g_file_enumerator_get_child(enumerator, child_info);
+                corrupt_scan_folder_recursive(child, file_list);
+
+                g_object_unref(child);
+                g_object_unref(child_info);
+            }
+            g_object_unref(enumerator);
+        }
+
+        if (error != NULL) {
+            g_error_free(error); // Clear enumerator errors (e.g. permission denied on a subfolder)
+        }
+    }
+
+    g_object_unref(info);
 }
 
 static void master_bucket_worker(gpointer data, gpointer user_data)
@@ -96,11 +132,26 @@ static void shred_all_task_thread(GTask *task, gpointer source_object, gpointer 
     Corrupt *self = (Corrupt *)source_object;
     GError *error = NULL;
 
-    // Determine a dynamic limit for concurrent device I/O.
-    // Tying this to the processor count is a solid heuristic to avoid OS thrashing.
-    gint max_concurrent_drives = g_get_num_processors();
+    GList *input_files = (GList *)task_data;
+    GList *master_file_list = NULL;
 
-    // 1. Initialize the master pool
+    // If any file is a folder, scan the files.
+    for (GList *l = input_files; l != NULL; l = l->next) {
+        corrupt_scan_folder_recursive(G_FILE(l->data), &master_file_list);
+    }
+
+    // Add all the files into the buckets.
+    for (GList *l = master_file_list; l != NULL; l = l->next) {
+        if (g_cancellable_is_cancelled(cancellable)) break;
+
+        char *path = g_file_get_path(G_FILE(l->data));
+        if (path != NULL) {
+            corrupt_add_to_bucket(self, path);
+            g_free(path);
+        }
+    }
+
+    gint max_concurrent_drives = g_get_num_processors();
     GThreadPool *master_pool = g_thread_pool_new(master_bucket_worker, cancellable, max_concurrent_drives, FALSE, &error);
 
     if (error != NULL)
@@ -109,7 +160,6 @@ static void shred_all_task_thread(GTask *task, gpointer source_object, gpointer 
         return;
     }
 
-    // Wait for all buckets.
     for (GList *l = self->buckets; l != NULL; l = l->next)
     {
         g_thread_pool_push(master_pool, l->data, &error);
@@ -120,15 +170,15 @@ static void shred_all_task_thread(GTask *task, gpointer source_object, gpointer 
         }
     }
 
-    // Wait for all the buckets to finish.
-    g_thread_pool_free(master_pool, FALSE, TRUE);
+    g_thread_pool_free(master_pool, FALSE, TRUE); // Block till all the buckets finish.
     g_task_return_boolean(task, TRUE);
 }
 
 // The asynchronous entry point called from your main UI
-void corrupt_start_shredding_async(Corrupt *self, GCancellable *cancel, GAsyncReadyCallback callback, gpointer user_data)
+void corrupt_start_shredding_async(Corrupt *self, GList *files_to_shred, GCancellable *cancel, GAsyncReadyCallback callback, gpointer user_data)
 {
     GTask *task = g_task_new(self, cancel, callback, user_data);
+    g_task_set_task_data(task, files_to_shred, (GDestroyNotify)g_list_free_full);
     g_task_run_in_thread(task, shred_all_task_thread);
     g_object_unref(task);
 }
