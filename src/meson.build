@@ -4,8 +4,11 @@ raider_sources = [
   'raider-application.c',
   'raider-progress-paintable.c',
   'raider-file-row.c',
-  'raider-file-item.c',
   'raider-progress-info-popover.c',
+  'backend/raider-file-item.c',
+  'backend/bucket.c',
+  'backend/corrupt.c',
+  'backend/utility.c',
 ]
 
 # Generate UX files from blueprint files.
@@ -27,6 +30,6 @@ raider_sources += gnome.compile_resources('raider-resources',
 )
 
 executable('raider', raider_sources,
-  dependencies: [raider_deps, corrupt_dep],
+  dependencies: [raider_deps],
   install: true,
 )

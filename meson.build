@@ -19,7 +19,6 @@ configure_file(output: 'raider-config.h', configuration: config_h)
 add_project_arguments(['-I' + meson.project_build_root(),], language: 'c')
 
 # Folders with individual meson.build files.
-subdir('corrupt')
 subdir('data')
 subdir('src')
 subdir('po')

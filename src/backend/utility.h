@@ -6,6 +6,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+typedef struct _FilePayload FilePayload;
+
 typedef struct strategy
 {
     int passes;
@@ -18,9 +20,9 @@ typedef struct strategy
     const char *warning;
 } strategy;
 
-strategy getStrategy(const char *filename);
-bool check_file(const char *filename);
-bool corrupt_file(const char *filename, strategy *strat);
+bool corrupt_file(FilePayload *payload, strategy *strat);
 
+bool check_file(const char *filename);
+strategy getStrategy(const char *filename);
 
 #endif // CORRUPT_UTILITY_H

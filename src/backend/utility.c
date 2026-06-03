@@ -1,6 +1,8 @@
 #define _DEFAULT_SOURCE
 
 #include "utility.h"
+#include "raider-file-item.h"
+#include "corrupt.h"
 #include <linux/magic.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -16,7 +18,7 @@ strategy getStrategy(const char *filename)
     }
 
     __fsword_t filesystem = fs_info.f_type;
-    
+
     switch (filesystem)
     {
     case EXT4_SUPER_MAGIC:
@@ -52,7 +54,7 @@ bool check_file(const char *filename)
     return true;
 }
 
-bool corrupt_pass(const char *filename, struct strategy *strat)
+static bool corrupt_pass(const char *filename, struct strategy *strat, FilePayload *payload, off_t size, int current_pass)
 {
     if (strat->pattern_len == 0)
     {
@@ -66,24 +68,18 @@ bool corrupt_pass(const char *filename, struct strategy *strat)
         return false;
     }
 
-    // Get filesize.
-    off_t size = 0;
-    struct stat st;
-    if (fstat(fileno(fp), &st) != 0)
-    {
-        return false;
-    }
-    size = st.st_size;
-
     const size_t buf_size = 65536; // 64 KB buffer
     char buffer[buf_size];
 
+    // Fill the buffer with the pattern.
     for (size_t i = 0; i < buf_size; i++)
     {
         buffer[i] = strat->pattern[i % strat->pattern_len];
     }
 
     off_t bytes_written = 0;
+    int last_reported_percent = -1;
+
     while (bytes_written < size)
     {
         size_t remaining = (size_t)(size - bytes_written);
@@ -91,6 +87,20 @@ bool corrupt_pass(const char *filename, struct strategy *strat)
 
         fwrite(buffer, sizeof(char), chunk, fp);
         bytes_written += chunk;
+
+        // Calculate progress.
+        double total_target_bytes = (double)size * strat->passes;
+        double overall_bytes_written = ((double)size * current_pass) + bytes_written;
+
+        int current_percent = (int)((overall_bytes_written / total_target_bytes) * 100.0);
+
+        // Ping UI if progress updated by 1%.
+        if (current_percent >= last_reported_percent + 1)
+        {
+            raider_file_item_set_progress_safe(payload->item, overall_bytes_written / total_target_bytes);
+
+            last_reported_percent = current_percent;
+        }
     }
 
     fflush(fp);
@@ -99,20 +109,35 @@ bool corrupt_pass(const char *filename, struct strategy *strat)
     return true;
 }
 
-bool corrupt_file(const char *filename, strategy *strat)
+bool corrupt_file(FilePayload *payload, strategy *strat)
 {
-    bool res = check_file(filename);
-    if (!res)
+    char *filename = g_file_get_path(payload->file);
+    if (filename == NULL)
+    {
+        return false;
+    };
+
+    if (!check_file(filename))
     {
         return false;
     }
 
+    // Get filesize.
+    struct stat st;
+    if (lstat(filename, &st) != 0)
+    {
+        g_free(filename);
+        return false;
+    }
+    off_t size = st.st_size;
+
     // Shred the file by overwriting it many times.
     for (int i = 0; i < strat->passes; i++)
     {
-        if (corrupt_pass(filename, strat) == false)
+        if (corrupt_pass(filename, strat, payload, size, i) == false)
         {
             fprintf(stderr, "corrupt: failed to perform shredding step\n");
+            g_free(filename);
             return false;
         }
     }
@@ -120,8 +145,10 @@ bool corrupt_file(const char *filename, strategy *strat)
     if (remove(filename) != 0)
     {
         fprintf(stderr, "corrupt: failed to unlink file\n");
+        g_free(filename);
         return false;
     }
 
+    g_free(filename);
     return true;
 }

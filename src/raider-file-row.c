@@ -16,14 +16,14 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include "raider-file-row.h"
+#include "backend/raider-file-item.h"
+#include "raider-progress-info-popover.h"
+#include "raider-progress-paintable.h"
+#include "raider-window.h"
 #include <adwaita.h>
 #include <glib/gi18n.h>
-#include "raider-window.h"
-#include "raider-file-row.h"
-#include "raider-file-item.h"
-#include "raider-progress-paintable.h"
-#include "raider-progress-info-popover.h"
+#include <gtk/gtk.h>
 
 struct _RaiderFileRow
 {
@@ -43,7 +43,7 @@ struct _RaiderFileRow
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
-void raider_file_row_close (GtkWidget* window, gpointer data);
+void raider_file_row_close(GtkWidget *window, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
 {
@@ -67,7 +67,7 @@ static void raider_file_row_init(RaiderFileRow *row)
     g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
     g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
 
-    row->progress_paintable = raider_progress_paintable_new (GTK_WIDGET(row->progress_button));
+    row->progress_paintable = raider_progress_paintable_new(GTK_WIDGET(row->progress_button));
     row->progress_paintable_image = gtk_image_new_from_paintable(row->progress_paintable);
     gtk_button_set_child(row->progress_button, row->progress_paintable_image);
 }
@@ -91,7 +91,8 @@ RaiderFileRow *raider_file_row_new()
 
 void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item)
 {
-    if (self->bound_item) {
+    if (self->bound_item)
+    {
         g_object_unref(self->bound_item);
     }
     self->bound_item = g_object_ref(item);
@@ -99,27 +100,20 @@ void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item)
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(self), raider_file_item_get_name(item));
     adw_action_row_set_subtitle(ADW_ACTION_ROW(self), raider_file_item_get_path(item));
 
-    double progress = raider_file_item_get_progress(item);
-    g_object_set(G_OBJECT(self->progress_paintable), "progress", progress, NULL);
-    raider_progress_info_popover_set_progress(self->popover, progress);
+    g_object_bind_property(item, "progress", self->progress_paintable, "progress", G_BINDING_SYNC_CREATE);
+    g_object_bind_property(item, "progress", self->popover, "progress", G_BINDING_SYNC_CREATE);
 }
 
 // Remove file row.
-void raider_file_row_close(GtkWidget* widget, gpointer data)
+void raider_file_row_close(GtkWidget *widget, gpointer data)
 {
     RaiderFileRow *row = RAIDER_FILE_ROW(data);
 
     // Find the main window
     RaiderWindow *window = RAIDER_WINDOW(gtk_widget_get_root(GTK_WIDGET(row)));
 
-    if (row->bound_item != NULL) {
+    if (row->bound_item != NULL)
+    {
         raider_window_close_file(row->bound_item, window);
     }
 }
-
-gboolean raider_file_row_update_progress_ui(gpointer data)
-{
-    // TODO: Update progress.
-    return G_SOURCE_REMOVE;
-}
-

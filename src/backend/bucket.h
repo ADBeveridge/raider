@@ -2,9 +2,12 @@
 #define CORRUPT_BUCKET_H
 
 #include "utility.h"
+#include "raider-file-item.h"
 #include <glib.h>
 #include <gio/gio.h>
 #include <stdbool.h>
+
+typedef struct _FilePayload FilePayload;
 
 typedef struct Bucket
 {
@@ -13,7 +16,7 @@ typedef struct Bucket
     struct strategy strategy;
 } Bucket;
 
-bool bucket_add_file(Bucket *self, const char *filename);
+void bucket_add_file(Bucket *self, FilePayload *fp);
 void bucket_shred(Bucket *self, GCancellable *cancel);
 
 #endif // CORRUPT_BUCKET_H

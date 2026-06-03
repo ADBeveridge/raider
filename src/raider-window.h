@@ -20,7 +20,7 @@
 
 #include <gtk/gtk.h>
 #include <adwaita.h>
-#include "raider-file-item.h"
+#include "backend/raider-file-item.h"
 
 #define RAIDER_TYPE_WINDOW (raider_window_get_type())
 
