@@ -1,0 +1,2329 @@
+BUILD.md:12:sudo dnf install gtk4-devel libadwaita-devel blueprint-compiler libcurl-devel sassc 
+data/com.github.ADBeveridge.Raider.desktop.in.in:13:X-GNOME-UsesNotifications=true
+data/com.github.ADBeveridge.Raider.desktop.in.in:14:X-Purism-FormFactor=Workstation;Mobile;
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:1:<?xml version="1.0" encoding="UTF-8"?>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:2:<component type="desktop-application">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:4:  <metadata_license>CC0-1.0</metadata_license>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:5:  <project_license>GPL-3.0-or-later</project_license>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:18:  <launchable type="desktop-id">com.github.ADBeveridge.Raider.desktop</launchable>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:21:  <url type="vcs-browser">https://github.com/ADBeveridge/raider</url>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:40:  <content_rating type="oars-1.1"/>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:51:      <image>https://raw.githubusercontent.com/ADBeveridge/raider/main/data/raider-screenshot1.png</image>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:55:    <release version="3.1.0" date="2025-05-18">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:65:    <release version="3.0.2" date="2024-12-20">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:75:    <release version="3.0.1" date="2024-07-24">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:85:    <release version="3.0.0" date="2024-05-02">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:93:		<release version="2.1.0" date="2023-12-01">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:98:          <li>Fix security vulernability CWE-134</li>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:102:    <release version="2.0.0" date="2023-08-15">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:111:    <release version="1.3.1" date="2022-10-13">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:116:    <release version="1.3.0" date="2022-09-20">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:130:    <release version="1.2.2" date="2022-08-19">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:135:          <li>Fix in-app notification crash</li>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:139:    <release version="1.2.1" date="2022-08-10">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:148:    <release version="1.2.0" date="2022-08-06">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:158:    <release version="1.1.1" date="2022-08-03">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:170:    <release version="1.1.0" date="2022-07-28">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:176:          <li>Re-theme the file rows to standard look</li>
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:180:    <release version="1.0.0.alpha1" date="2022-06-30">
+data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:191:    <release version="0.1.0" date="2021-12-30">
+data/com.github.ADBeveridge.Raider.service.in:1:[D-BUS Service]
+data/com.github.ADBeveridge.Raider.service.in:3:Exec=@bindir@/raider --gapplication-service
+README.md:10:<a href='https://flathub.org/apps/details/com.github.ADBeveridge.Raider'><img alt="Flathub version" src="https://img.shields.io/flathub/v/com.github.ADBeveridge.Raider?style=for-the-badge&logo=flathub"/></a>
+README.md:12:<a href="https://archlinux.org/packages/extra/x86_64/raider/"><img alt="AUR" src="https://img.shields.io/archlinux/v/extra/x86_64/raider?style=for-the-badge&logo=archlinux"></a> 
+README.md:14:<a href='https://copr.fedorainfracloud.org/coprs/0xmrtt/raider/package/raider/'><img alt="COPR" src='https://img.shields.io/badge/COPR-1.2.2-blue?style=for-the-badge&logo=fedora'></a>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:1:<?xml version="1.0" encoding="UTF-8"?>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:4:        <feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:18:        <stop offset="0" stop-color="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:19:        <stop offset="0.3" stop-color="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:20:        <stop offset="0.7" stop-color="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:21:        <stop offset="1" stop-color="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:35:        <path d="m 20 88 h 88 v 32 h -88 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:38:        <path d="m 15 83 h 98 v 42 h -98 z m 13 1 c -4.433594 0 -8 3.566406 -8 8 v 16 c 0 4.433594 3.566406 8 8 8 h 72 c 4.433594 0 8 -3.566406 8 -8 v -16 c 0 -4.433594 -3.566406 -8 -8 -8 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:40:    <linearGradient id="k" gradientTransform="matrix(0.196428 0 0 0.342105 2.59729 273.740051)" gradientUnits="userSpaceOnUse" x1="88.595741" x2="536.596375" y1="-449.393982" y2="-449.393982">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:41:        <stop offset="0" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:42:        <stop offset="0.0454546" stop-color="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:43:        <stop offset="0.0908181" stop-color="#9a9996"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:44:        <stop offset="0.909091" stop-color="#9a9996"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:45:        <stop offset="0.954545" stop-color="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:46:        <stop offset="1" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:49:        <stop offset="0" stop-color="#3d3846" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:50:        <stop offset="0.0454545" stop-color="#5e5c64"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:51:        <stop offset="0.0909091" stop-color="#241f31" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:52:        <stop offset="0.909091" stop-color="#241f31" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:53:        <stop offset="0.954545" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:54:        <stop offset="1" stop-color="#3d3846" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:56:    <path d="m 26.972656 42.058594 h 74.011719 c 3.851563 0 6.972656 3.121094 6.972656 6.972656 v 61.316406 c 0 3.851563 -3.121093 6.972656 -6.972656 6.972656 h -74.011719 c -3.851562 0 -6.972656 -3.121093 -6.972656 -6.972656 v -61.316406 c 0 -3.851562 3.121094 -6.972656 6.972656 -6.972656 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:57:    <g clip-path="url(#d)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:59:            <g clip-path="url(#c)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:60:                <path d="m 32 58 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:61:                <path d="m 46 58 h 7 v 38 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:62:                <path d="m 60 58 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:63:                <path d="m 74 58 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:64:                <path d="m 88 58 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:69:        <path d="m 32 56 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:70:        <path d="m 46 56 h 7 v 38 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:71:        <path d="m 60 56 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:72:        <path d="m 74 56 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:73:        <path d="m 88 56 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:75:    <g clip-path="url(#h)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:77:            <g clip-path="url(#g)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:78:                <path d="m 32 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:79:                <path d="m 46 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:80:                <path d="m 60 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:81:                <path d="m 74 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:82:                <path d="m 88 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:86:    <g clip-path="url(#i)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:87:        <g clip-path="url(#j)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:88:            <path d="m 28 88 h 72 c 4.433594 0 8 3.566406 8 8 v 16 c 0 4.433594 -3.566406 8 -8 8 h -72 c -4.433594 0 -8 -3.566406 -8 -8 v -16 c 0 -4.433594 3.566406 -8 8 -8 z m 0 0" fill="url(#k)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:91:    <path d="m 28 48 h 72 c 4.417969 0 8 3.582031 8 8 v 52 c 0 4.417969 -3.582031 8 -8 8 h -72 c -4.417969 0 -8 -3.582031 -8 -8 v -52 c 0 -4.417969 3.582031 -8 8 -8 z m 0 0" fill="url(#l)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:92:    <path d="m 27 42 h 74 c 3.867188 0 7 3.132812 7 7 s -3.132812 7 -7 7 h -74 c -3.867188 0 -7 -3.132812 -7 -7 s 3.132812 -7 7 -7 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:93:    <path d="m 27 46 h 74 c 1.65625 0 3 1.34375 3 3 s -1.34375 3 -3 3 h -74 c -1.65625 0 -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 z m 0 0" fill="#241f31"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:94:    <path d="m 35 8 h 39 c 6 16 6 16 22 22 v 23 c 0 1.660156 -1.339844 3 -3 3 h -58 c -1.660156 0 -3 -1.339844 -3 -3 v -42 c 0 -1.660156 1.339844 -3 3 -3 z m 0 0" fill="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:95:    <path d="m 40 20 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:96:    <path d="m 40 28 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:97:    <path d="m 40 36 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:98:    <path d="m 40 44 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:99:    <path d="m 96 30 h -19 c -1.660156 0 -3 -1.339844 -3 -3 v -19 z m 0 0" fill="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:100:    <path d="m 20 52 h 88 v 4 h -88 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:101:    <path d="m 104 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.svg:102:    <path d="m 20 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/meson.build:10:desktop_utils = find_program('desktop-file-validate', required: false)
+data/meson.build:28:    args: ['validate', '--no-net', appstream_file]
+data/meson.build:39:  install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:1:<?xml version="1.0" encoding="UTF-8"?>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:5:            <feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:8:            <stop offset="0" stop-color="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:9:            <stop offset="0.3" stop-color="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:10:            <stop offset="0.7" stop-color="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:11:            <stop offset="1" stop-color="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:14:            <path d="m 20 88 h 88 v 32 h -88 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:17:            <path d="m 15 83 h 98 v 42 h -98 z m 13 1 c -4.433594 0 -8 3.566406 -8 8 v 16 c 0 4.433594 3.566406 8 8 8 h 72 c 4.433594 0 8 -3.566406 8 -8 v -16 c 0 -4.433594 -3.566406 -8 -8 -8 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:19:        <linearGradient id="e" gradientTransform="matrix(0.196428 0 0 0.342105 2.59729 273.740051)" gradientUnits="userSpaceOnUse" x1="88.595741" x2="536.596375" y1="-449.393982" y2="-449.393982">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:20:            <stop offset="0" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:21:            <stop offset="0.0454546" stop-color="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:22:            <stop offset="0.0908181" stop-color="#9a9996"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:23:            <stop offset="0.909091" stop-color="#9a9996"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:24:            <stop offset="0.954545" stop-color="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:25:            <stop offset="1" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:28:            <stop offset="0" stop-color="#3d3846" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:29:            <stop offset="0.0454545" stop-color="#5e5c64"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:30:            <stop offset="0.0909091" stop-color="#241f31" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:31:            <stop offset="0.909091" stop-color="#241f31" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:32:            <stop offset="0.954545" stop-color="#77767b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:33:            <stop offset="1" stop-color="#3d3846" stop-opacity="0.6"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:46:        <g id="j" clip-path="url(#i)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:48:                <g clip-path="url(#h)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:49:                    <path d="m 32 58 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:50:                    <path d="m 46 58 h 7 v 38 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:51:                    <path d="m 60 58 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:52:                    <path d="m 74 58 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:53:                    <path d="m 88 58 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:68:        <g id="n" clip-path="url(#m)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:70:                <g clip-path="url(#l)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:71:                    <path d="m 32 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:72:                    <path d="m 46 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:73:                    <path d="m 60 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:74:                    <path d="m 74 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:75:                    <path d="m 88 56 h 7 v 2 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:80:            <path d="m 20 88 h 88 v 32 h -88 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:83:            <path d="m 15 83 h 98 v 42 h -98 z m 13 1 c -4.433594 0 -8 3.566406 -8 8 v 16 c 0 4.433594 3.566406 8 8 8 h 72 c 4.433594 0 8 -3.566406 8 -8 v -16 c 0 -4.433594 -3.566406 -8 -8 -8 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:93:                <g clip-path="url(#r)" filter="url(#a)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:94:                    <g clip-path="url(#q)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:95:                        <path d="m 26.972656 42.058594 h 74.011719 c 3.851563 0 6.972656 3.121094 6.972656 6.972656 v 61.316406 c 0 3.851563 -3.121093 6.972656 -6.972656 6.972656 h -74.011719 c -3.851562 0 -6.972656 -3.121093 -6.972656 -6.972656 v -61.316406 c 0 -3.851562 3.121094 -6.972656 6.972656 -6.972656 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:97:                        <path d="m 32 56 h 7 v 36 h -7 z m 0 0" fill="url(#b)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:98:                        <path d="m 46 56 h 7 v 38 h -7 z m 0 0" fill="url(#b)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:99:                        <path d="m 60 56 h 7 v 46 h -7 z m 0 0" fill="url(#b)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:100:                        <path d="m 74 56 h 7 v 36 h -7 z m 0 0" fill="url(#b)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:101:                        <path d="m 88 56 h 7 v 46 h -7 z m 0 0" fill="url(#b)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:103:                        <g clip-path="url(#o)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:104:                            <g clip-path="url(#p)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:105:                                <path d="m 28 88 h 72 c 4.433594 0 8 3.566406 8 8 v 16 c 0 4.433594 -3.566406 8 -8 8 h -72 c -4.433594 0 -8 -3.566406 -8 -8 v -16 c 0 -4.433594 3.566406 -8 8 -8 z m 0 0" fill="url(#e)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:108:                        <path d="m 28 48 h 72 c 4.417969 0 8 3.582031 8 8 v 52 c 0 4.417969 -3.582031 8 -8 8 h -72 c -4.417969 0 -8 -3.582031 -8 -8 v -52 c 0 -4.417969 3.582031 -8 8 -8 z m 0 0" fill="url(#f)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:109:                        <path d="m 27 42 h 74 c 3.867188 0 7 3.132812 7 7 s -3.132812 7 -7 7 h -74 c -3.867188 0 -7 -3.132812 -7 -7 s 3.132812 -7 7 -7 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:110:                        <path d="m 27 46 h 74 c 1.65625 0 3 1.34375 3 3 s -1.34375 3 -3 3 h -74 c -1.65625 0 -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 z m 0 0" fill="#241f31"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:111:                        <path d="m 35 8 h 39 c 6 16 6 16 22 22 v 23 c 0 1.660156 -1.339844 3 -3 3 h -58 c -1.660156 0 -3 -1.339844 -3 -3 v -42 c 0 -1.660156 1.339844 -3 3 -3 z m 0 0" fill="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:112:                        <path d="m 40 20 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:113:                        <path d="m 40 28 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:114:                        <path d="m 40 36 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:115:                        <path d="m 40 44 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:116:                        <path d="m 96 30 h -19 c -1.660156 0 -3 -1.339844 -3 -3 v -19 z m 0 0" fill="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:117:                        <path d="m 20 52 h 88 v 4 h -88 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:118:                        <path d="m 104 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:119:                        <path d="m 20 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:126:                <rect fill-opacity="0.8" height="184.32" width="184.32" x="-28.16" y="-28.16"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:129:        <linearGradient id="u" gradientTransform="matrix(0 0.37 -0.98462 0 295.38501 -30.360001)" gradientUnits="userSpaceOnUse" x1="300" x2="428" y1="235" y2="235">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:130:            <stop offset="0" stop-color="#f9f06b"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:131:            <stop offset="1" stop-color="#f5c211"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:140:    <path d="m 26.972656 42.058594 h 74.011719 c 3.851563 0 6.972656 3.121094 6.972656 6.972656 v 61.316406 c 0 3.851563 -3.121093 6.972656 -6.972656 6.972656 h -74.011719 c -3.851562 0 -6.972656 -3.121093 -6.972656 -6.972656 v -61.316406 c 0 -3.851562 3.121094 -6.972656 6.972656 -6.972656 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:143:        <path d="m 32 56 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:144:        <path d="m 46 56 h 7 v 38 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:145:        <path d="m 60 56 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:146:        <path d="m 74 56 h 7 v 36 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:147:        <path d="m 88 56 h 7 v 46 h -7 z m 0 0"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:150:    <g clip-path="url(#c)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:151:        <g clip-path="url(#d)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:152:            <path d="m 28 88 h 72 c 4.433594 0 8 3.566406 8 8 v 16 c 0 4.433594 -3.566406 8 -8 8 h -72 c -4.433594 0 -8 -3.566406 -8 -8 v -16 c 0 -4.433594 3.566406 -8 8 -8 z m 0 0" fill="url(#e)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:155:    <path d="m 28 48 h 72 c 4.417969 0 8 3.582031 8 8 v 52 c 0 4.417969 -3.582031 8 -8 8 h -72 c -4.417969 0 -8 -3.582031 -8 -8 v -52 c 0 -4.417969 3.582031 -8 8 -8 z m 0 0" fill="url(#f)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:156:    <path d="m 27 42 h 74 c 3.867188 0 7 3.132812 7 7 s -3.132812 7 -7 7 h -74 c -3.867188 0 -7 -3.132812 -7 -7 s 3.132812 -7 7 -7 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:157:    <path d="m 27 46 h 74 c 1.65625 0 3 1.34375 3 3 s -1.34375 3 -3 3 h -74 c -1.65625 0 -3 -1.34375 -3 -3 s 1.34375 -3 3 -3 z m 0 0" fill="#241f31"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:158:    <path d="m 35 8 h 39 c 6 16 6 16 22 22 v 23 c 0 1.660156 -1.339844 3 -3 3 h -58 c -1.660156 0 -3 -1.339844 -3 -3 v -42 c 0 -1.660156 1.339844 -3 3 -3 z m 0 0" fill="#f6f5f4"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:159:    <path d="m 40 20 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:160:    <path d="m 40 28 h 30 v 4 h -30 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:161:    <path d="m 40 36 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:162:    <path d="m 40 44 h 48 v 4 h -48 z m 0 0" fill="#aaaaaa"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:163:    <path d="m 96 30 h -19 c -1.660156 0 -3 -1.339844 -3 -3 v -19 z m 0 0" fill="#deddda"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:164:    <path d="m 20 52 h 88 v 4 h -88 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:165:    <path d="m 104 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:166:    <path d="m 20 49 h 4 v 6 h -4 z m 0 0" fill="#c0bfbc"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:168:        <g clip-path="url(#w)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:170:                <g clip-path="url(#v)">
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:171:                    <path d="m 128 80.640625 v 47.359375 h -128 v -47.359375 z m 0 0" fill="url(#u)"/>
+data/icons/hicolor/scalable/apps/com.github.ADBeveridge.Raider.Devel.svg:172:                    <path d="m 13.308594 80.640625 l 47.355468 47.359375 h 21.214844 l -47.359375 -47.359375 z m 42.421875 0 l 47.363281 47.359375 h 21.214844 l -47.363282 -47.359375 z m 42.429687 0 l 29.839844 29.839844 v -21.210938 l -8.628906 -8.628906 z m -98.160156 7.90625 v 21.214844 l 18.238281 18.238281 h 21.214844 z m 0 0"/>
+data/icons/hicolor/symbolic/apps/com.github.ADBeveridge.Raider-symbolic.svg:1:<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><g fill="#241f31"><g fill-opacity=".349"><path d="M2 14h1v1H2zM3 15h1v1H3zM4 14h1v1H4zM5 15h1v1H5zM6 14h1v1H6zM7 15h1v1H7zM8 14h1v1H8zM9 15h1v1H9zM10 14h1v1h-1zM11 15h1v1h-1zM12 14h1v1h-1zM13 15h1v1h-1zm0 0"/></g><path d="M5 1C3.355 1 2 2.355 2 4v8h12V5.5a1 1 0 0 0-.293-.707l-3.5-3.5A1 1 0 0 0 9.5 1zm0 2h4v1.5c0 1 .5 1.5 1.5 1.5H12v6H4V4c0-.57.43-1 1-1zm0 2v1h3V5zm0 2v1h6V7zm0 2v1h6V9zM2 12h1v1H2zM3 13h1v1H3zM4 12h1v1H4zM5 13h1v1H5zM6 12h1v1H6zM7 13h1v1H7zM8 12h1v1H8zM9 13h1v1H9zM10 12h1v1h-1zM11 13h1v1h-1zM12 12h1v1h-1zM13 13h1v1h-1zm0 0"/></g></svg>
+data/icons/meson.build:11:  join_paths(symbolic_dir, ('@0@-symbolic.svg').format(application_id)),
+LICENSE.md:19:to share and change all versions of a program--to make sure it remains
+LICENSE.md:68:software on general-purpose computers, but in those that do, we wish
+LICENSE.md:71:assures that patents cannot be used to render the program non-free.
+LICENSE.md:82:"Copyright" also means copyright-like laws that apply to other kinds
+LICENSE.md:121:making modifications to it. "Object code" means any non-source form of
+LICENSE.md:144:System Libraries, or general-purpose tools or generally available free
+LICENSE.md:184:#### 3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+LICENSE.md:206:non-permissive terms added in accord with section 7 apply to the code;
+LICENSE.md:220:-   a) The work must carry prominent notices stating that you modified
+LICENSE.md:222:-   b) The work must carry prominent notices stating that it is
+LICENSE.md:226:-   c) You must license the entire work, as a whole, under this
+LICENSE.md:233:-   d) If the work has interactive user interfaces, each must display
+LICENSE.md:248:#### 6. Conveying Non-Source Forms.
+LICENSE.md:251:sections 4 and 5, provided that you also convey the machine-readable
+LICENSE.md:255:-   a) Convey the object code in, or embodied in, a physical product
+LICENSE.md:259:-   b) Convey the object code in, or embodied in, a physical product
+LICENSE.md:270:-   c) Convey individual copies of the object code with a copy of the
+LICENSE.md:275:-   d) Convey the object code by offering access from a designated
+LICENSE.md:287:-   e) Convey the object code using peer-to-peer transmission,
+LICENSE.md:307:non-consumer uses, unless such uses represent the only significant
+LICENSE.md:366:-   a) Disclaiming warranty or limiting liability differently from the
+LICENSE.md:368:-   b) Requiring preservation of specified reasonable legal notices or
+LICENSE.md:371:-   c) Prohibiting misrepresentation of the origin of that material,
+LICENSE.md:374:-   d) Limiting the use for publicity purposes of names of licensors
+LICENSE.md:376:-   e) Declining to grant rights under trademark law for use of some
+LICENSE.md:378:-   f) Requiring indemnification of licensors and authors of that
+LICENSE.md:384:All other non-permissive additional terms are considered "further
+LICENSE.md:399:Additional terms, permissive or non-permissive, may be stated in the
+LICENSE.md:435:occurring solely as a consequence of using peer-to-peer transmission
+LICENSE.md:463:(including a cross-claim or counterclaim in a lawsuit) alleging that
+LICENSE.md:483:Each contributor grants you a non-exclusive, worldwide, royalty-free
+LICENSE.md:519:the non-exercise of one or more of the rights that are specifically
+LICENSE.md:675:please read <https://www.gnu.org/licenses/why-not-lgpl.html>.
+po/POTFILES:4:src/raider-application.c
+po/POTFILES:5:src/raider-progress-info-popover.c
+po/POTFILES:6:src/raider-shortcuts.blp
+po/POTFILES:7:src/raider-window.blp
+po/POTFILES:8:src/raider-window.c
+po/ar.po:10:"Project-Id-Version: PACKAGE VERSION\n"
+po/ar.po:11:"Report-Msgid-Bugs-To: \n"
+po/ar.po:12:"POT-Creation-Date: 2024-04-28 14:16+0200\n"
+po/ar.po:13:"PO-Revision-Date: 2024-05-03 11:65+0200\n"
+po/ar.po:14:"Last-Translator: Younes Oukessou <oukessouyounes@proton.me>\n"
+po/ar.po:15:"Language-Team: ARABIC <oukessouyounes@proton.me>\n"
+po/ar.po:17:"MIME-Version: 1.0\n"
+po/ar.po:18:"Content-Type: text/plain; charset=UTF-8\n"
+po/ar.po:19:"Content-Transfer-Encoding: 8bit\n"
+po/ar.po:23:#: src/raider-application.c:167 src/raider-window.blp:36
+po/ar.po:44:"perfect, and no software can fix that. However, top-level agencies are "
+po/ar.po:54:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/ar.po:55:#: src/raider-window.blp:27
+po/ar.po:59:#: src/raider-application.c:93
+po/ar.po:63:#: src/raider-application.c:181
+po/ar.po:64:msgid "translator-credits"
+po/ar.po:67:#: src/raider-progress-info-popover.c:55
+po/ar.po:71:#: src/raider-progress-info-popover.c:67
+po/ar.po:75:#: src/raider-progress-info-popover.c:75
+po/ar.po:79:#: src/raider-shortcuts.blp:8
+po/ar.po:83:#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
+po/ar.po:87:#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
+po/ar.po:91:#: src/raider-shortcuts.blp:23
+po/ar.po:95:#: src/raider-shortcuts.blp:27
+po/ar.po:99:#: src/raider-window.blp:25
+po/ar.po:103:#: src/raider-window.blp:42
+po/ar.po:107:#: src/raider-window.blp:57
+po/ar.po:111:#: src/raider-window.blp:59
+po/ar.po:118:#: src/raider-window.blp:95 src/raider-window.c:350
+po/ar.po:122:#: src/raider-window.blp:114 src/raider-window.c:402
+po/ar.po:126:#: src/raider-window.blp:141
+po/ar.po:130:#: src/raider-window.blp:150
+po/ar.po:134:#: src/raider-window.c:151
+po/ar.po:137:#: src/raider-window.c:152
+po/ar.po:141:#: src/raider-window.c:155
+po/ar.po:145:#: src/raider-window.c:155
+po/ar.po:149:#: src/raider-window.c:203
+po/ar.po:153:#: src/raider-window.c:213
+po/ar.po:157:#: src/raider-window.c:282
+po/ar.po:161:#: src/raider-window.c:295
+po/ar.po:165:#: src/raider-window.c:304
+po/ar.po:166:#, c-format
+po/ar.po:170:#: src/raider-window.c:315
+po/ar.po:174:#: src/raider-window.c:372
+po/ar.po:178:#: src/raider-window.c:424
+po/bg.po:9:"Project-Id-Version: raider\n"
+po/bg.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/bg.po:11:"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+po/bg.po:12:"PO-Revision-Date: 2025-10-25 15:32+0200\n"
+po/bg.po:13:"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+po/bg.po:14:"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+po/bg.po:16:"MIME-Version: 1.0\n"
+po/bg.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/bg.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/bg.po:19:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/bg.po:20:"X-Generator: Poedit 3.8\n"
+po/bg.po:24:#: src/raider-application.c:167 src/raider-application.c:223
+po/bg.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/bg.po:44:"премахване на чувствителни файлове от вашия компютър, за по-добра "
+po/bg.po:62:#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+po/bg.po:63:#: src/raider-window.blp:28
+po/bg.po:67:#: src/raider-application.c:93
+po/bg.po:71:#: src/raider-application.c:180
+po/bg.po:72:msgid "translator-credits"
+po/bg.po:75:#: src/raider-progress-info-popover.c:55
+po/bg.po:79:#: src/raider-progress-info-popover.c:67
+po/bg.po:83:#: src/raider-progress-info-popover.c:75
+po/bg.po:87:#: src/raider-shortcuts.blp:6
+po/bg.po:91:#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+po/bg.po:95:#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+po/bg.po:99:#: src/raider-shortcuts.blp:21
+po/bg.po:103:#: src/raider-shortcuts.blp:25
+po/bg.po:107:#: src/raider-window.blp:26
+po/bg.po:111:#: src/raider-window.blp:43
+po/bg.po:115:#: src/raider-window.blp:58
+po/bg.po:119:#: src/raider-window.blp:60
+po/bg.po:127:#: src/raider-window.blp:96
+po/bg.po:131:#: src/raider-window.blp:101 src/raider-window.c:388
+po/bg.po:135:#: src/raider-window.blp:120 src/raider-window.c:441
+po/bg.po:139:#: src/raider-window.blp:147
+po/bg.po:143:#: src/raider-window.blp:156
+po/bg.po:147:#: src/raider-window.c:177
+po/bg.po:151:#: src/raider-window.c:177
+po/bg.po:155:#: src/raider-window.c:180
+po/bg.po:159:#: src/raider-window.c:180
+po/bg.po:163:#: src/raider-window.c:229
+po/bg.po:169:#: src/raider-window.c:239
+po/bg.po:173:#: src/raider-window.c:311
+po/bg.po:174:#, c-format
+po/bg.po:178:#: src/raider-window.c:325
+po/bg.po:182:#: src/raider-window.c:337
+po/bg.po:183:#, c-format
+po/bg.po:187:#: src/raider-window.c:349
+po/bg.po:191:#: src/raider-window.c:387
+po/bg.po:195:#: src/raider-window.c:411
+po/bg.po:199:#: src/raider-window.c:463
+po/ca.po:8:"Project-Id-Version: raider main\n"
+po/ca.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/ca.po:10:"POT-Creation-Date: 2025-12-12 03:34+0000\n"
+po/ca.po:11:"PO-Revision-Date: 2025-12-12 14:18+0100\n"
+po/ca.po:12:"Last-Translator: \n"
+po/ca.po:13:"Language-Team: Catalan <Catalan>\n"
+po/ca.po:15:"MIME-Version: 1.0\n"
+po/ca.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/ca.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/ca.po:18:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/ca.po:19:"X-Generator: Poedit 3.6\n"
+po/ca.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/ca.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/ca.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/ca.po:66:#: src/raider-window.blp:28
+po/ca.po:70:#: src/raider-application.c:94
+po/ca.po:74:#: src/raider-application.c:181
+po/ca.po:75:msgid "translator-credits"
+po/ca.po:78:#: src/raider-progress-info-popover.c:55
+po/ca.po:82:#: src/raider-progress-info-popover.c:67
+po/ca.po:86:#: src/raider-progress-info-popover.c:75
+po/ca.po:90:#: src/raider-shortcuts.blp:8
+po/ca.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/ca.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/ca.po:102:#: src/raider-shortcuts.blp:23
+po/ca.po:106:#: src/raider-shortcuts.blp:27
+po/ca.po:110:#: src/raider-window.blp:26
+po/ca.po:114:#: src/raider-window.blp:43
+po/ca.po:118:#: src/raider-window.blp:58
+po/ca.po:120:msgstr "Afegiu fitxers o deixeu-ho anar aquí"
+po/ca.po:122:#: src/raider-window.blp:60
+po/ca.po:130:#: src/raider-window.blp:96
+po/ca.po:134:#: src/raider-window.blp:101 src/raider-window.c:389
+po/ca.po:136:msgstr "Tritura-ho tot"
+po/ca.po:138:#: src/raider-window.blp:120 src/raider-window.c:442
+po/ca.po:140:msgstr "Interromp-ho tot"
+po/ca.po:142:#: src/raider-window.blp:147
+po/ca.po:146:#: src/raider-window.blp:156
+po/ca.po:150:#: src/raider-window.c:178
+po/ca.po:154:#: src/raider-window.c:178
+po/ca.po:158:#: src/raider-window.c:181
+po/ca.po:162:#: src/raider-window.c:181
+po/ca.po:166:#: src/raider-window.c:230
+po/ca.po:172:#: src/raider-window.c:240
+po/ca.po:176:#: src/raider-window.c:312
+po/ca.po:177:#, c-format
+po/ca.po:181:#: src/raider-window.c:326
+po/ca.po:185:#: src/raider-window.c:338
+po/ca.po:186:#, c-format
+po/ca.po:190:#: src/raider-window.c:350
+po/ca.po:194:#: src/raider-window.c:388
+po/ca.po:198:#: src/raider-window.c:412
+po/ca.po:202:#: src/raider-window.c:464
+po/com.github.ADBeveridge.Raider.pot:9:"Project-Id-Version: PACKAGE VERSION\n"
+po/com.github.ADBeveridge.Raider.pot:10:"Report-Msgid-Bugs-To: \n"
+po/com.github.ADBeveridge.Raider.pot:11:"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+po/com.github.ADBeveridge.Raider.pot:12:"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+po/com.github.ADBeveridge.Raider.pot:13:"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+po/com.github.ADBeveridge.Raider.pot:14:"Language-Team: LANGUAGE <LL@li.org>\n"
+po/com.github.ADBeveridge.Raider.pot:16:"MIME-Version: 1.0\n"
+po/com.github.ADBeveridge.Raider.pot:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/com.github.ADBeveridge.Raider.pot:18:"Content-Transfer-Encoding: 8bit\n"
+po/com.github.ADBeveridge.Raider.pot:22:#: src/raider-application.c:167 src/raider-window.blp:36
+po/com.github.ADBeveridge.Raider.pot:47:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/com.github.ADBeveridge.Raider.pot:48:#: src/raider-window.blp:27
+po/com.github.ADBeveridge.Raider.pot:52:#: src/raider-application.c:93
+po/com.github.ADBeveridge.Raider.pot:56:#: src/raider-application.c:181
+po/com.github.ADBeveridge.Raider.pot:57:msgid "translator-credits"
+po/com.github.ADBeveridge.Raider.pot:60:#: src/raider-progress-info-popover.c:55
+po/com.github.ADBeveridge.Raider.pot:64:#: src/raider-progress-info-popover.c:67
+po/com.github.ADBeveridge.Raider.pot:68:#: src/raider-progress-info-popover.c:75
+po/com.github.ADBeveridge.Raider.pot:72:#: src/raider-shortcuts.blp:8
+po/com.github.ADBeveridge.Raider.pot:76:#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
+po/com.github.ADBeveridge.Raider.pot:80:#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
+po/com.github.ADBeveridge.Raider.pot:84:#: src/raider-shortcuts.blp:23
+po/com.github.ADBeveridge.Raider.pot:88:#: src/raider-shortcuts.blp:27
+po/com.github.ADBeveridge.Raider.pot:92:#: src/raider-window.blp:25
+po/com.github.ADBeveridge.Raider.pot:96:#: src/raider-window.blp:42
+po/com.github.ADBeveridge.Raider.pot:100:#: src/raider-window.blp:57
+po/com.github.ADBeveridge.Raider.pot:104:#: src/raider-window.blp:59
+po/com.github.ADBeveridge.Raider.pot:110:#: src/raider-window.blp:95 src/raider-window.c:350
+po/com.github.ADBeveridge.Raider.pot:114:#: src/raider-window.blp:114 src/raider-window.c:402
+po/com.github.ADBeveridge.Raider.pot:118:#: src/raider-window.blp:141
+po/com.github.ADBeveridge.Raider.pot:122:#: src/raider-window.blp:150
+po/com.github.ADBeveridge.Raider.pot:126:#: src/raider-window.c:151
+po/com.github.ADBeveridge.Raider.pot:130:#: src/raider-window.c:152
+po/com.github.ADBeveridge.Raider.pot:134:#: src/raider-window.c:155
+po/com.github.ADBeveridge.Raider.pot:138:#: src/raider-window.c:155
+po/com.github.ADBeveridge.Raider.pot:142:#: src/raider-window.c:203
+po/com.github.ADBeveridge.Raider.pot:146:#: src/raider-window.c:213
+po/com.github.ADBeveridge.Raider.pot:150:#: src/raider-window.c:282
+po/com.github.ADBeveridge.Raider.pot:154:#: src/raider-window.c:295
+po/com.github.ADBeveridge.Raider.pot:158:#: src/raider-window.c:304
+po/com.github.ADBeveridge.Raider.pot:159:#, c-format
+po/com.github.ADBeveridge.Raider.pot:163:#: src/raider-window.c:315
+po/com.github.ADBeveridge.Raider.pot:167:#: src/raider-window.c:372
+po/com.github.ADBeveridge.Raider.pot:171:#: src/raider-window.c:424
+po/fi.po:8:"Project-Id-Version: raider main\n"
+po/fi.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/fi.po:10:"POT-Creation-Date: 2025-09-12 15:36+0000\n"
+po/fi.po:11:"PO-Revision-Date: 2025-09-12 18:56+0300\n"
+po/fi.po:12:"Last-Translator: \n"
+po/fi.po:13:"Language-Team: Finnish <Finnish>\n"
+po/fi.po:15:"MIME-Version: 1.0\n"
+po/fi.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/fi.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/fi.po:18:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/fi.po:19:"X-Generator: Poedit 3.7\n"
+po/fi.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/fi.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/fi.po:54:"Se on tehoksa tietyin rajauksin. Nykyiset SSD-levyt käyttävät tiettyjä "
+po/fi.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/fi.po:66:#: src/raider-window.blp:28
+po/fi.po:70:#: src/raider-application.c:94
+po/fi.po:74:#: src/raider-application.c:181
+po/fi.po:75:msgid "translator-credits"
+po/fi.po:78:#: src/raider-progress-info-popover.c:55
+po/fi.po:82:#: src/raider-progress-info-popover.c:67
+po/fi.po:86:#: src/raider-progress-info-popover.c:75
+po/fi.po:90:#: src/raider-shortcuts.blp:8
+po/fi.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/fi.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/fi.po:102:#: src/raider-shortcuts.blp:23
+po/fi.po:106:#: src/raider-shortcuts.blp:27
+po/fi.po:110:#: src/raider-window.blp:26
+po/fi.po:114:#: src/raider-window.blp:43
+po/fi.po:118:#: src/raider-window.blp:58
+po/fi.po:122:#: src/raider-window.blp:60
+po/fi.po:130:#: src/raider-window.blp:96
+po/fi.po:134:#: src/raider-window.blp:101 src/raider-window.c:389
+po/fi.po:138:#: src/raider-window.blp:120 src/raider-window.c:442
+po/fi.po:142:#: src/raider-window.blp:147
+po/fi.po:144:msgstr "Tietoja - Tiedostosilppuri"
+po/fi.po:146:#: src/raider-window.blp:156
+po/fi.po:150:#: src/raider-window.c:178
+po/fi.po:154:#: src/raider-window.c:178
+po/fi.po:158:#: src/raider-window.c:181
+po/fi.po:162:#: src/raider-window.c:181
+po/fi.po:166:#: src/raider-window.c:230
+po/fi.po:171:#: src/raider-window.c:240
+po/fi.po:175:#: src/raider-window.c:312
+po/fi.po:176:#, c-format
+po/fi.po:180:#: src/raider-window.c:326
+po/fi.po:184:#: src/raider-window.c:338
+po/fi.po:185:#, c-format
+po/fi.po:189:#: src/raider-window.c:350
+po/fi.po:193:#: src/raider-window.c:388
+po/fi.po:197:#: src/raider-window.c:412
+po/fi.po:201:#: src/raider-window.c:464
+po/cs.po:9:"Project-Id-Version: \n"
+po/cs.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/cs.po:11:"POT-Creation-Date: 2025-09-04 14:11+0000\n"
+po/cs.po:12:"PO-Revision-Date: 2025-09-04 16:52+0200\n"
+po/cs.po:13:"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
+po/cs.po:14:"Language-Team: \n"
+po/cs.po:16:"MIME-Version: 1.0\n"
+po/cs.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/cs.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/cs.po:19:"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+po/cs.po:20:"X-Generator: Poedit 3.7\n"
+po/cs.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/cs.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/cs.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/cs.po:66:#: src/raider-window.blp:28
+po/cs.po:70:#: src/raider-application.c:94
+po/cs.po:74:#: src/raider-application.c:181
+po/cs.po:75:msgid "translator-credits"
+po/cs.po:80:#: src/raider-progress-info-popover.c:55
+po/cs.po:84:#: src/raider-progress-info-popover.c:67
+po/cs.po:88:#: src/raider-progress-info-popover.c:75
+po/cs.po:92:#: src/raider-shortcuts.blp:8
+po/cs.po:96:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/cs.po:100:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/cs.po:104:#: src/raider-shortcuts.blp:23
+po/cs.po:108:#: src/raider-shortcuts.blp:27
+po/cs.po:112:#: src/raider-window.blp:26
+po/cs.po:116:#: src/raider-window.blp:43
+po/cs.po:120:#: src/raider-window.blp:58
+po/cs.po:124:#: src/raider-window.blp:60
+po/cs.po:132:#: src/raider-window.blp:96
+po/cs.po:136:#: src/raider-window.blp:101 src/raider-window.c:389
+po/cs.po:140:#: src/raider-window.blp:120 src/raider-window.c:442
+po/cs.po:144:#: src/raider-window.blp:147
+po/cs.po:148:#: src/raider-window.blp:156
+po/cs.po:152:#: src/raider-window.c:178
+po/cs.po:156:#: src/raider-window.c:178
+po/cs.po:160:#: src/raider-window.c:181
+po/cs.po:164:#: src/raider-window.c:181
+po/cs.po:168:#: src/raider-window.c:230
+po/cs.po:173:#: src/raider-window.c:240
+po/cs.po:177:#: src/raider-window.c:312
+po/cs.po:178:#, c-format
+po/cs.po:182:#: src/raider-window.c:326
+po/cs.po:186:#: src/raider-window.c:338
+po/cs.po:187:#, c-format
+po/cs.po:191:#: src/raider-window.c:350
+po/cs.po:195:#: src/raider-window.c:388
+po/cs.po:199:#: src/raider-window.c:412
+po/cs.po:203:#: src/raider-window.c:464
+po/el.po:8:"Project-Id-Version: raider main\n"
+po/el.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/el.po:10:"POT-Creation-Date: 2025-10-29 15:35+0000\n"
+po/el.po:11:"PO-Revision-Date: 2025-10-29 15:35+0000\n"
+po/el.po:12:"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+po/el.po:13:"Language-Team: Greek <Greek>\n"
+po/el.po:15:"MIME-Version: 1.0\n"
+po/el.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/el.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/el.po:18:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/el.po:22:#: src/raider-application.c:168 src/raider-application.c:224
+po/el.po:23:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/el.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/el.po:66:#: src/raider-window.blp:28
+po/el.po:70:#: src/raider-application.c:94
+po/el.po:74:#: src/raider-application.c:181
+po/el.po:75:msgid "translator-credits"
+po/el.po:83:#: src/raider-progress-info-popover.c:55
+po/el.po:87:#: src/raider-progress-info-popover.c:67
+po/el.po:91:#: src/raider-progress-info-popover.c:75
+po/el.po:95:#: src/raider-shortcuts.blp:8
+po/el.po:99:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/el.po:103:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/el.po:107:#: src/raider-shortcuts.blp:23
+po/el.po:111:#: src/raider-shortcuts.blp:27
+po/el.po:115:#: src/raider-window.blp:26
+po/el.po:119:#: src/raider-window.blp:43
+po/el.po:123:#: src/raider-window.blp:58
+po/el.po:127:#: src/raider-window.blp:60
+po/el.po:135:#: src/raider-window.blp:96
+po/el.po:139:#: src/raider-window.blp:101 src/raider-window.c:389
+po/el.po:143:#: src/raider-window.blp:120 src/raider-window.c:442
+po/el.po:147:#: src/raider-window.blp:147
+po/el.po:151:#: src/raider-window.blp:156
+po/el.po:155:#: src/raider-window.c:178
+po/el.po:159:#: src/raider-window.c:178
+po/el.po:163:#: src/raider-window.c:181
+po/el.po:167:#: src/raider-window.c:181
+po/el.po:171:#: src/raider-window.c:230
+po/el.po:177:#: src/raider-window.c:240
+po/el.po:181:#: src/raider-window.c:312
+po/el.po:182:#, c-format
+po/el.po:186:#: src/raider-window.c:326
+po/el.po:190:#: src/raider-window.c:338
+po/el.po:191:#, c-format
+po/el.po:195:#: src/raider-window.c:350
+po/el.po:199:#: src/raider-window.c:388
+po/el.po:203:#: src/raider-window.c:412
+po/el.po:207:#: src/raider-window.c:464
+po/hr.po:8:"Project-Id-Version: raider\n"
+po/hr.po:9:"Report-Msgid-Bugs-To: \n"
+po/hr.po:10:"POT-Creation-Date: 2024-05-09 19:04+0200\n"
+po/hr.po:11:"PO-Revision-Date: 2024-07-10 23:51+0200\n"
+po/hr.po:12:"Last-Translator: Milo Ivir <mail@mivirtype.de>\n"
+po/hr.po:13:"Language-Team: \n"
+po/hr.po:15:"MIME-Version: 1.0\n"
+po/hr.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/hr.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/hr.po:18:"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+po/hr.po:20:"X-Generator: Poedit 3.4.4\n"
+po/hr.po:24:#: src/raider-application.c:167 src/raider-window.blp:36
+po/hr.po:51:"Unutar određene granice je učinkovit. Međutim, moderni SSD-ovi koriste "
+po/hr.po:57:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/hr.po:58:#: src/raider-window.blp:27
+po/hr.po:62:#: src/raider-application.c:93
+po/hr.po:66:#: src/raider-application.c:181
+po/hr.po:67:msgid "translator-credits"
+po/hr.po:70:#: src/raider-progress-info-popover.c:55
+po/hr.po:74:#: src/raider-progress-info-popover.c:67
+po/hr.po:78:#: src/raider-progress-info-popover.c:75
+po/hr.po:82:#: src/raider-shortcuts.blp:8
+po/hr.po:86:#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
+po/hr.po:90:#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
+po/hr.po:94:#: src/raider-shortcuts.blp:23
+po/hr.po:98:#: src/raider-shortcuts.blp:27
+po/hr.po:102:#: src/raider-window.blp:25
+po/hr.po:106:#: src/raider-window.blp:42
+po/hr.po:110:#: src/raider-window.blp:57
+po/hr.po:114:#: src/raider-window.blp:59
+po/hr.po:122:#: src/raider-window.blp:95 src/raider-window.c:350
+po/hr.po:126:#: src/raider-window.blp:114 src/raider-window.c:402
+po/hr.po:130:#: src/raider-window.blp:141
+po/hr.po:134:#: src/raider-window.blp:150
+po/hr.po:138:#: src/raider-window.c:151
+po/hr.po:142:#: src/raider-window.c:152
+po/hr.po:146:#: src/raider-window.c:155
+po/hr.po:150:#: src/raider-window.c:155
+po/hr.po:154:#: src/raider-window.c:203
+po/hr.po:158:#: src/raider-window.c:213
+po/hr.po:162:#: src/raider-window.c:282
+po/hr.po:166:#: src/raider-window.c:295
+po/hr.po:170:#: src/raider-window.c:304
+po/hr.po:171:#, c-format
+po/hr.po:175:#: src/raider-window.c:315
+po/hr.po:179:#: src/raider-window.c:372
+po/hr.po:183:#: src/raider-window.c:424
+po/eu.po:7:msgstr "Project-Id-Version: raider main\n"
+po/eu.po:8:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/eu.po:9:"POT-Creation-Date: 2025-09-14 03:36+0000\n"
+po/eu.po:10:"PO-Revision-Date: 2025-09-14 03:36+0000\n"
+po/eu.po:11:"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
+po/eu.po:12:"Language-Team: Basque <eu@li.org>\n"
+po/eu.po:14:"MIME-Version: 1.0\n"
+po/eu.po:15:"Content-Type: text/plain; charset=UTF-8\n"
+po/eu.po:16:"Content-Transfer-Encoding: 8bit\n"
+po/eu.po:20:#: src/raider-application.c:168 src/raider-application.c:224
+po/eu.po:21:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/eu.po:54:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/eu.po:55:#: src/raider-window.blp:28
+po/eu.po:59:#: src/raider-application.c:94
+po/eu.po:63:#: src/raider-application.c:181
+po/eu.po:64:msgid "translator-credits"
+po/eu.po:67:#: src/raider-progress-info-popover.c:55
+po/eu.po:71:#: src/raider-progress-info-popover.c:67
+po/eu.po:75:#: src/raider-progress-info-popover.c:75
+po/eu.po:79:#: src/raider-shortcuts.blp:8
+po/eu.po:83:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/eu.po:87:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/eu.po:89:msgstr "Laster-teklak"
+po/eu.po:91:#: src/raider-shortcuts.blp:23
+po/eu.po:95:#: src/raider-shortcuts.blp:27
+po/eu.po:99:#: src/raider-window.blp:26
+po/eu.po:103:#: src/raider-window.blp:43
+po/eu.po:107:#: src/raider-window.blp:58
+po/eu.po:111:#: src/raider-window.blp:60
+po/eu.po:117:#: src/raider-window.blp:96
+po/eu.po:121:#: src/raider-window.blp:101 src/raider-window.c:389
+po/eu.po:125:#: src/raider-window.blp:120 src/raider-window.c:442
+po/eu.po:129:#: src/raider-window.blp:147
+po/eu.po:133:#: src/raider-window.blp:156
+po/eu.po:137:#: src/raider-window.c:178
+po/eu.po:141:#: src/raider-window.c:178
+po/eu.po:145:#: src/raider-window.c:181
+po/eu.po:149:#: src/raider-window.c:181
+po/eu.po:153:#: src/raider-window.c:230
+po/eu.po:155:msgstr "Ezin da fitxategi-izena kendu zerrenda azkarretik. Eman honen berri."
+po/eu.po:157:#: src/raider-window.c:240
+po/eu.po:161:#: src/raider-window.c:312
+po/eu.po:162:#, c-format
+po/eu.po:166:#: src/raider-window.c:326
+po/eu.po:170:#: src/raider-window.c:338
+po/eu.po:171:#, c-format
+po/eu.po:175:#: src/raider-window.c:350
+po/eu.po:179:#: src/raider-window.c:388
+po/eu.po:183:#: src/raider-window.c:412
+po/eu.po:187:#: src/raider-window.c:464
+po/eo.po:9:"Project-Id-Version: raider main\n"
+po/eo.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/eo.po:11:"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+po/eo.po:12:"PO-Revision-Date: 2026-02-27 13:21+0100\n"
+po/eo.po:13:"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
+po/eo.po:14:"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
+po/eo.po:16:"MIME-Version: 1.0\n"
+po/eo.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/eo.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/eo.po:19:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/eo.po:20:"X-Generator: Gtranslator 49.0\n"
+po/eo.po:24:#: src/raider-application.c:167 src/raider-application.c:223
+po/eo.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/eo.po:43:"File Shredder estas dosierforigo-programo dezajnita por permanente forigi "
+po/eo.po:54:"Ene de certa limo, ĝi estas efika. Tamen, modernaj SSD-oj uzas certajn "
+po/eo.po:60:#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+po/eo.po:61:#: src/raider-window.blp:28
+po/eo.po:65:#: src/raider-application.c:93
+po/eo.po:69:#: src/raider-application.c:180
+po/eo.po:70:msgid "translator-credits"
+po/eo.po:73:#: src/raider-progress-info-popover.c:55
+po/eo.po:77:#: src/raider-progress-info-popover.c:67
+po/eo.po:81:#: src/raider-progress-info-popover.c:75
+po/eo.po:85:#: src/raider-shortcuts.blp:6
+po/eo.po:89:#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+po/eo.po:93:#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+po/eo.po:95:msgstr "Klav-mallongigoj"
+po/eo.po:97:#: src/raider-shortcuts.blp:21
+po/eo.po:101:#: src/raider-shortcuts.blp:25
+po/eo.po:105:#: src/raider-window.blp:26
+po/eo.po:109:#: src/raider-window.blp:43
+po/eo.po:113:#: src/raider-window.blp:58
+po/eo.po:117:#: src/raider-window.blp:60
+po/eo.po:125:#: src/raider-window.blp:96
+po/eo.po:129:#: src/raider-window.blp:101 src/raider-window.c:388
+po/eo.po:133:#: src/raider-window.blp:120 src/raider-window.c:441
+po/eo.po:137:#: src/raider-window.blp:147
+po/eo.po:141:#: src/raider-window.blp:156
+po/eo.po:145:#: src/raider-window.c:177
+po/eo.po:149:#: src/raider-window.c:177
+po/eo.po:153:#: src/raider-window.c:180
+po/eo.po:157:#: src/raider-window.c:180
+po/eo.po:161:#: src/raider-window.c:229
+po/eo.po:165:#: src/raider-window.c:239
+po/eo.po:169:#: src/raider-window.c:311
+po/eo.po:170:#, c-format
+po/eo.po:174:#: src/raider-window.c:325
+po/eo.po:178:#: src/raider-window.c:337
+po/eo.po:179:#, c-format
+po/eo.po:183:#: src/raider-window.c:349
+po/eo.po:187:#: src/raider-window.c:387
+po/eo.po:191:#: src/raider-window.c:411
+po/eo.po:195:#: src/raider-window.c:463
+po/ka.po:8:"Project-Id-Version: raider main\n"
+po/ka.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/ka.po:10:"POT-Creation-Date: 2025-09-05 03:37+0000\n"
+po/ka.po:11:"PO-Revision-Date: 2025-09-05 08:34+0200\n"
+po/ka.po:12:"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
+po/ka.po:13:"Language-Team: Georgian <ka@li.org>\n"
+po/ka.po:15:"MIME-Version: 1.0\n"
+po/ka.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/ka.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/ka.po:18:"X-Generator: Poedit 3.7\n"
+po/ka.po:22:#: src/raider-application.c:168 src/raider-application.c:224
+po/ka.po:23:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/ka.po:52:"რაღაც დონემდე ის ეფექტურია. მაგრამ თანამედროვე SSD-ები იყენებენ გარკვეულ "
+po/ka.po:63:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/ka.po:64:#: src/raider-window.blp:28
+po/ka.po:68:#: src/raider-application.c:94
+po/ka.po:72:#: src/raider-application.c:181
+po/ka.po:73:msgid "translator-credits"
+po/ka.po:76:#: src/raider-progress-info-popover.c:55
+po/ka.po:80:#: src/raider-progress-info-popover.c:67
+po/ka.po:84:#: src/raider-progress-info-popover.c:75
+po/ka.po:88:#: src/raider-shortcuts.blp:8
+po/ka.po:92:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/ka.po:96:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/ka.po:100:#: src/raider-shortcuts.blp:23
+po/ka.po:104:#: src/raider-shortcuts.blp:27
+po/ka.po:108:#: src/raider-window.blp:26
+po/ka.po:112:#: src/raider-window.blp:43
+po/ka.po:116:#: src/raider-window.blp:58
+po/ka.po:120:#: src/raider-window.blp:60
+po/ka.po:128:#: src/raider-window.blp:96
+po/ka.po:132:#: src/raider-window.blp:101 src/raider-window.c:389
+po/ka.po:136:#: src/raider-window.blp:120 src/raider-window.c:442
+po/ka.po:140:#: src/raider-window.blp:147
+po/ka.po:144:#: src/raider-window.blp:156
+po/ka.po:148:#: src/raider-window.c:178
+po/ka.po:152:#: src/raider-window.c:178
+po/ka.po:156:#: src/raider-window.c:181
+po/ka.po:160:#: src/raider-window.c:181
+po/ka.po:164:#: src/raider-window.c:230
+po/ka.po:169:#: src/raider-window.c:240
+po/ka.po:173:#: src/raider-window.c:312
+po/ka.po:174:#, c-format
+po/ka.po:178:#: src/raider-window.c:326
+po/ka.po:182:#: src/raider-window.c:338
+po/ka.po:183:#, c-format
+po/ka.po:185:msgstr "\"%s\"-ში ჩაწერა შეუძლებელია"
+po/ka.po:187:#: src/raider-window.c:350
+po/ka.po:191:#: src/raider-window.c:388
+po/ka.po:195:#: src/raider-window.c:412
+po/ka.po:199:#: src/raider-window.c:464
+po/he.po:8:"Project-Id-Version: raider main\n"
+po/he.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/he.po:10:"POT-Creation-Date: 2025-11-05 03:35+0000\n"
+po/he.po:11:"PO-Revision-Date: 2025-11-05 10:07+0200\n"
+po/he.po:12:"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+po/he.po:13:"Language-Team: Hebrew <he@li.org>\n"
+po/he.po:15:"MIME-Version: 1.0\n"
+po/he.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/he.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/he.po:18:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/he.po:19:"X-Generator: Poedit 3.7\n"
+po/he.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/he.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/he.po:64:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/he.po:65:#: src/raider-window.blp:28
+po/he.po:69:#: src/raider-application.c:94
+po/he.po:73:#: src/raider-application.c:181
+po/he.po:74:msgid "translator-credits"
+po/he.po:77:#: src/raider-progress-info-popover.c:55
+po/he.po:81:#: src/raider-progress-info-popover.c:67
+po/he.po:85:#: src/raider-progress-info-popover.c:75
+po/he.po:89:#: src/raider-shortcuts.blp:8
+po/he.po:93:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/he.po:97:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/he.po:101:#: src/raider-shortcuts.blp:23
+po/he.po:105:#: src/raider-shortcuts.blp:27
+po/he.po:109:#: src/raider-window.blp:26
+po/he.po:113:#: src/raider-window.blp:43
+po/he.po:117:#: src/raider-window.blp:58
+po/he.po:121:#: src/raider-window.blp:60
+po/he.po:129:#: src/raider-window.blp:96
+po/he.po:133:#: src/raider-window.blp:101 src/raider-window.c:389
+po/he.po:137:#: src/raider-window.blp:120 src/raider-window.c:442
+po/he.po:141:#: src/raider-window.blp:147
+po/he.po:145:#: src/raider-window.blp:156
+po/he.po:149:#: src/raider-window.c:178
+po/he.po:153:#: src/raider-window.c:178
+po/he.po:157:#: src/raider-window.c:181
+po/he.po:161:#: src/raider-window.c:181
+po/he.po:165:#: src/raider-window.c:230
+po/he.po:169:#: src/raider-window.c:240
+po/he.po:173:#: src/raider-window.c:312
+po/he.po:174:#, c-format
+po/he.po:178:#: src/raider-window.c:326
+po/he.po:182:#: src/raider-window.c:338
+po/he.po:183:#, c-format
+po/he.po:187:#: src/raider-window.c:350
+po/he.po:191:#: src/raider-window.c:388
+po/he.po:195:#: src/raider-window.c:412
+po/he.po:199:#: src/raider-window.c:464
+po/hi.po:9:"Project-Id-Version: raider\n"
+po/hi.po:10:"Report-Msgid-Bugs-To: \n"
+po/hi.po:11:"POT-Creation-Date: 2024-05-03 13:21+0100\n"
+po/hi.po:12:"PO-Revision-Date: 2024-05-06 16:45+0530\n"
+po/hi.po:13:"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+po/hi.po:14:"Language-Team: Hindi\n"
+po/hi.po:16:"MIME-Version: 1.0\n"
+po/hi.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/hi.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/hi.po:19:"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+po/hi.po:20:"X-Generator: Gtranslator 46.1\n"
+po/hi.po:24:#: src/raider-application.c:167 src/raider-window.blp:36
+po/hi.po:57:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/hi.po:58:#: src/raider-window.blp:27
+po/hi.po:62:#: src/raider-application.c:93
+po/hi.po:66:#: src/raider-application.c:181
+po/hi.po:67:msgid "translator-credits"
+po/hi.po:70:#: src/raider-progress-info-popover.c:55
+po/hi.po:74:#: src/raider-progress-info-popover.c:67
+po/hi.po:78:#: src/raider-progress-info-popover.c:75
+po/hi.po:82:#: src/raider-shortcuts.blp:8
+po/hi.po:86:#: src/raider-shortcuts.blp:15 src/raider-window.blp:131
+po/hi.po:90:#: src/raider-shortcuts.blp:19 src/raider-window.blp:137
+po/hi.po:94:#: src/raider-shortcuts.blp:23
+po/hi.po:98:#: src/raider-shortcuts.blp:27
+po/hi.po:102:#: src/raider-window.blp:25
+po/hi.po:106:#: src/raider-window.blp:42
+po/hi.po:110:#: src/raider-window.blp:57
+po/hi.po:114:#: src/raider-window.blp:59
+po/hi.po:122:#: src/raider-window.blp:95 src/raider-window.c:350
+po/hi.po:126:#: src/raider-window.blp:114 src/raider-window.c:402
+po/hi.po:130:#: src/raider-window.blp:141
+po/hi.po:134:#: src/raider-window.blp:150
+po/hi.po:138:#: src/raider-window.c:151
+po/hi.po:142:#: src/raider-window.c:152
+po/hi.po:146:#: src/raider-window.c:155
+po/hi.po:150:#: src/raider-window.c:155
+po/hi.po:154:#: src/raider-window.c:203
+po/hi.po:158:#: src/raider-window.c:213
+po/hi.po:162:#: src/raider-window.c:282
+po/hi.po:166:#: src/raider-window.c:295
+po/hi.po:170:#: src/raider-window.c:304
+po/hi.po:171:#, c-format
+po/hi.po:175:#: src/raider-window.c:315
+po/hi.po:179:#: src/raider-window.c:372
+po/hi.po:183:#: src/raider-window.c:424
+po/es.po:4:# Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022-2023.
+po/es.po:9:"Project-Id-Version: raider\n"
+po/es.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/es.po:11:"POT-Creation-Date: 2025-09-18 03:34+0000\n"
+po/es.po:12:"PO-Revision-Date: 2025-09-18 14:32+0200\n"
+po/es.po:13:"Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
+po/es.po:14:"Language-Team: es_ES\n"
+po/es.po:16:"MIME-Version: 1.0\n"
+po/es.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/es.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/es.po:19:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/es.po:20:"X-Generator: Gtranslator 49.0\n"
+po/es.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/es.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/es.po:67:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/es.po:68:#: src/raider-window.blp:28
+po/es.po:72:#: src/raider-application.c:94
+po/es.po:76:#: src/raider-application.c:181
+po/es.po:77:msgid "translator-credits"
+po/es.po:82:#: src/raider-progress-info-popover.c:55
+po/es.po:86:#: src/raider-progress-info-popover.c:67
+po/es.po:90:#: src/raider-progress-info-popover.c:75
+po/es.po:94:#: src/raider-shortcuts.blp:8
+po/es.po:98:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/es.po:102:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/es.po:106:#: src/raider-shortcuts.blp:23
+po/es.po:110:#: src/raider-shortcuts.blp:27
+po/es.po:114:#: src/raider-window.blp:26
+po/es.po:118:#: src/raider-window.blp:43
+po/es.po:122:#: src/raider-window.blp:58
+po/es.po:126:#: src/raider-window.blp:60
+po/es.po:134:#: src/raider-window.blp:96
+po/es.po:138:#: src/raider-window.blp:101 src/raider-window.c:389
+po/es.po:142:#: src/raider-window.blp:120 src/raider-window.c:442
+po/es.po:146:#: src/raider-window.blp:147
+po/es.po:150:#: src/raider-window.blp:156
+po/es.po:154:#: src/raider-window.c:178
+po/es.po:158:#: src/raider-window.c:178
+po/es.po:162:#: src/raider-window.c:181
+po/es.po:166:#: src/raider-window.c:181
+po/es.po:170:#: src/raider-window.c:230
+po/es.po:176:#: src/raider-window.c:240
+po/es.po:180:#: src/raider-window.c:312
+po/es.po:181:#, c-format
+po/es.po:185:#: src/raider-window.c:326
+po/es.po:189:#: src/raider-window.c:338
+po/es.po:190:#, c-format
+po/es.po:194:#: src/raider-window.c:350
+po/es.po:198:#: src/raider-window.c:388
+po/es.po:202:#: src/raider-window.c:412
+po/es.po:206:#: src/raider-window.c:464
+po/hu.po:8:"Project-Id-Version: raider main\n"
+po/hu.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/hu.po:10:"POT-Creation-Date: 2025-09-08 15:38+0000\n"
+po/hu.po:11:"PO-Revision-Date: 2025-09-09 22:50+0200\n"
+po/hu.po:12:"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+po/hu.po:13:"Language-Team: Hungarian <openscope at fsf dot hu>\n"
+po/hu.po:15:"MIME-Version: 1.0\n"
+po/hu.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/hu.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/hu.po:18:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/hu.po:19:"X-Generator: Lokalize 24.12.3\n"
+po/hu.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/hu.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/hu.po:54:"Bizonyos keretek között hatékony. Azonban a modern SSD-k használnak bizonyos t"
+po/hu.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/hu.po:66:#: src/raider-window.blp:28
+po/hu.po:70:#: src/raider-application.c:94
+po/hu.po:74:#: src/raider-application.c:181
+po/hu.po:75:msgid "translator-credits"
+po/hu.po:78:#: src/raider-progress-info-popover.c:55
+po/hu.po:82:#: src/raider-progress-info-popover.c:67
+po/hu.po:86:#: src/raider-progress-info-popover.c:75
+po/hu.po:90:#: src/raider-shortcuts.blp:8
+po/hu.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/hu.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/hu.po:102:#: src/raider-shortcuts.blp:23
+po/hu.po:106:#: src/raider-shortcuts.blp:27
+po/hu.po:110:#: src/raider-window.blp:26
+po/hu.po:114:#: src/raider-window.blp:43
+po/hu.po:118:#: src/raider-window.blp:58
+po/hu.po:122:#: src/raider-window.blp:60
+po/hu.po:130:#: src/raider-window.blp:96
+po/hu.po:134:#: src/raider-window.blp:101 src/raider-window.c:389
+po/hu.po:138:#: src/raider-window.blp:120 src/raider-window.c:442
+po/hu.po:142:#: src/raider-window.blp:147
+po/hu.po:146:#: src/raider-window.blp:156
+po/hu.po:150:#: src/raider-window.c:178
+po/hu.po:154:#: src/raider-window.c:178
+po/hu.po:158:#: src/raider-window.c:181
+po/hu.po:162:#: src/raider-window.c:181
+po/hu.po:166:#: src/raider-window.c:230
+po/hu.po:170:#: src/raider-window.c:240
+po/hu.po:174:#: src/raider-window.c:312
+po/hu.po:175:#, c-format
+po/hu.po:179:#: src/raider-window.c:326
+po/hu.po:183:#: src/raider-window.c:338
+po/hu.po:184:#, c-format
+po/hu.po:188:#: src/raider-window.c:350
+po/hu.po:192:#: src/raider-window.c:388
+po/hu.po:196:#: src/raider-window.c:412
+po/hu.po:200:#: src/raider-window.c:464
+po/it.po:9:"Project-Id-Version: \n"
+po/it.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/it.po:11:"POT-Creation-Date: 2025-10-18 03:34+0000\n"
+po/it.po:12:"PO-Revision-Date: 2025-10-18 10:32+0200\n"
+po/it.po:13:"Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
+po/it.po:14:"Language-Team: Italian <tp@lists.linux.it>\n"
+po/it.po:16:"MIME-Version: 1.0\n"
+po/it.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/it.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/it.po:19:"X-Generator: Poedit 3.1.1\n"
+po/it.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/it.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/it.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/it.po:66:#: src/raider-window.blp:28
+po/it.po:70:#: src/raider-application.c:94
+po/it.po:74:#: src/raider-application.c:181
+po/it.po:75:msgid "translator-credits"
+po/it.po:80:#: src/raider-progress-info-popover.c:55
+po/it.po:84:#: src/raider-progress-info-popover.c:67
+po/it.po:88:#: src/raider-progress-info-popover.c:75
+po/it.po:92:#: src/raider-shortcuts.blp:8
+po/it.po:96:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/it.po:100:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/it.po:104:#: src/raider-shortcuts.blp:23
+po/it.po:108:#: src/raider-shortcuts.blp:27
+po/it.po:112:#: src/raider-window.blp:26
+po/it.po:116:#: src/raider-window.blp:43
+po/it.po:120:#: src/raider-window.blp:58
+po/it.po:124:#: src/raider-window.blp:60
+po/it.po:132:#: src/raider-window.blp:96
+po/it.po:136:#: src/raider-window.blp:101 src/raider-window.c:389
+po/it.po:140:#: src/raider-window.blp:120 src/raider-window.c:442
+po/it.po:144:#: src/raider-window.blp:147
+po/it.po:148:#: src/raider-window.blp:156
+po/it.po:152:#: src/raider-window.c:178
+po/it.po:156:#: src/raider-window.c:178
+po/it.po:160:#: src/raider-window.c:181
+po/it.po:164:#: src/raider-window.c:181
+po/it.po:168:#: src/raider-window.c:230
+po/it.po:174:#: src/raider-window.c:240
+po/it.po:178:#: src/raider-window.c:312
+po/it.po:182:#: src/raider-window.c:326
+po/it.po:186:#: src/raider-window.c:338
+po/it.po:187:#, c-format
+po/it.po:191:#: src/raider-window.c:350
+po/it.po:195:#: src/raider-window.c:388
+po/it.po:199:#: src/raider-window.c:412
+po/it.po:203:#: src/raider-window.c:464
+po/pl.po:9:"Project-Id-Version: PACKAGE VERSION\n"
+po/pl.po:10:"Report-Msgid-Bugs-To: \n"
+po/pl.po:11:"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+po/pl.po:12:"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+po/pl.po:13:"Last-Translator: Mira Luna <mlu98@proton.me>\n"
+po/pl.po:14:"Language-Team: LANGUAGE <LL@li.org>\n"
+po/pl.po:16:"MIME-Version: 1.0\n"
+po/pl.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/pl.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/pl.po:22:#: src/raider-application.c:140 src/raider-window.blp:40
+po/pl.po:39:#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+po/pl.po:40:#: src/raider-window.blp:33
+po/pl.po:44:#: src/raider-application.c:154
+po/pl.po:45:msgid "translator-credits"
+po/pl.po:48:#: src/raider-progress-info-popover.c:62
+po/pl.po:52:#: src/raider-progress-info-popover.c:70
+po/pl.po:56:#: src/raider-shortcuts.blp:8
+po/pl.po:60:#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+po/pl.po:64:#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+po/pl.po:68:#: src/raider-shortcuts.blp:23
+po/pl.po:72:#: src/raider-shortcuts.blp:27
+po/pl.po:76:#: src/raider-window.blp:31
+po/pl.po:80:#: src/raider-window.blp:46
+po/pl.po:84:#: src/raider-window.blp:61
+po/pl.po:88:#: src/raider-window.blp:63
+po/pl.po:96:#: src/raider-window.blp:99 src/raider-window.c:358
+po/pl.po:100:#: src/raider-window.blp:118 src/raider-window.c:410
+po/pl.po:104:#: src/raider-window.blp:145
+po/pl.po:108:#: src/raider-window.c:151
+po/pl.po:112:#: src/raider-window.c:152
+po/pl.po:116:#: src/raider-window.c:155
+po/pl.po:120:#: src/raider-window.c:155
+po/pl.po:124:#: src/raider-window.c:203
+po/pl.po:128:#: src/raider-window.c:213
+po/pl.po:132:#: src/raider-window.c:281
+po/pl.po:136:#: src/raider-window.c:294
+po/pl.po:140:#: src/raider-window.c:302
+po/pl.po:144:#: src/raider-window.c:312
+po/pl.po:145:#, c-format
+po/pl.po:149:#: src/raider-window.c:323
+po/pl.po:153:#: src/raider-window.c:380
+po/pl.po:157:#: src/raider-window.c:432
+po/kk.po:8:"Project-Id-Version: raider main\n"
+po/kk.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/kk.po:10:"POT-Creation-Date: 2026-01-15 01:17+0000\n"
+po/kk.po:11:"PO-Revision-Date: 2026-01-25 22:34+0500\n"
+po/kk.po:12:"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+po/kk.po:13:"Language-Team: Kazakh <Kazakh>\n"
+po/kk.po:15:"MIME-Version: 1.0\n"
+po/kk.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/kk.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/kk.po:18:"X-Generator: Poedit 3.8\n"
+po/kk.po:22:#: src/raider-application.c:167 src/raider-application.c:223
+po/kk.po:23:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/kk.po:64:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/kk.po:65:#: src/raider-window.blp:28
+po/kk.po:69:#: src/raider-application.c:93
+po/kk.po:73:#: src/raider-application.c:180
+po/kk.po:74:msgid "translator-credits"
+po/kk.po:77:#: src/raider-progress-info-popover.c:55
+po/kk.po:81:#: src/raider-progress-info-popover.c:67
+po/kk.po:85:#: src/raider-progress-info-popover.c:75
+po/kk.po:89:#: src/raider-shortcuts.blp:8
+po/kk.po:93:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/kk.po:97:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/kk.po:101:#: src/raider-shortcuts.blp:23
+po/kk.po:105:#: src/raider-shortcuts.blp:27
+po/kk.po:109:#: src/raider-window.blp:26
+po/kk.po:113:#: src/raider-window.blp:43
+po/kk.po:117:#: src/raider-window.blp:58
+po/kk.po:121:#: src/raider-window.blp:60
+po/kk.po:129:#: src/raider-window.blp:96
+po/kk.po:133:#: src/raider-window.blp:101 src/raider-window.c:388
+po/kk.po:137:#: src/raider-window.blp:120 src/raider-window.c:441
+po/kk.po:141:#: src/raider-window.blp:147
+po/kk.po:145:#: src/raider-window.blp:156
+po/kk.po:149:#: src/raider-window.c:177
+po/kk.po:153:#: src/raider-window.c:177
+po/kk.po:157:#: src/raider-window.c:180
+po/kk.po:161:#: src/raider-window.c:180
+po/kk.po:165:#: src/raider-window.c:229
+po/kk.po:171:#: src/raider-window.c:239
+po/kk.po:175:#: src/raider-window.c:311
+po/kk.po:176:#, c-format
+po/kk.po:180:#: src/raider-window.c:325
+po/kk.po:184:#: src/raider-window.c:337
+po/kk.po:185:#, c-format
+po/kk.po:189:#: src/raider-window.c:349
+po/kk.po:193:#: src/raider-window.c:387
+po/kk.po:197:#: src/raider-window.c:411
+po/kk.po:201:#: src/raider-window.c:463
+po/kw.po:9:"Project-Id-Version: raider main\n"
+po/kw.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/kw.po:11:"POT-Creation-Date: 2026-01-15 01:17+0000\n"
+po/kw.po:12:"PO-Revision-Date: 2026-02-02 18:06+0000\n"
+po/kw.po:13:"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+po/kw.po:14:"Language-Team: kw\n"
+po/kw.po:16:"MIME-Version: 1.0\n"
+po/kw.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/kw.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/kw.po:19:"X-DL-VCS-Web: https://github.com/ADBeveridge/raider.git\n"
+po/kw.po:20:"X-DL-Lang: kw\n"
+po/kw.po:21:"X-DL-Module: raider\n"
+po/kw.po:22:"X-DL-Branch: main\n"
+po/kw.po:23:"X-DL-Domain: po\n"
+po/kw.po:24:"X-DL-State: Translating\n"
+po/kw.po:25:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/kw.po:26:"X-Generator: Gtranslator 49.0\n"
+po/kw.po:30:#: src/raider-application.c:167 src/raider-application.c:223
+po/kw.po:31:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/kw.po:71:#: src/raider-application.c:83 src/raider-shortcuts.blp:11
+po/kw.po:72:#: src/raider-window.blp:28
+po/kw.po:76:#: src/raider-application.c:93
+po/kw.po:80:#: src/raider-application.c:180
+po/kw.po:81:msgid "translator-credits"
+po/kw.po:84:#: src/raider-progress-info-popover.c:55
+po/kw.po:88:#: src/raider-progress-info-popover.c:67
+po/kw.po:92:#: src/raider-progress-info-popover.c:75
+po/kw.po:96:#: src/raider-shortcuts.blp:8
+po/kw.po:100:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/kw.po:104:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/kw.po:108:#: src/raider-shortcuts.blp:23
+po/kw.po:112:#: src/raider-shortcuts.blp:27
+po/kw.po:116:#: src/raider-window.blp:26
+po/kw.po:120:#: src/raider-window.blp:43
+po/kw.po:124:#: src/raider-window.blp:58
+po/kw.po:128:#: src/raider-window.blp:60
+po/kw.po:136:#: src/raider-window.blp:96
+po/kw.po:140:#: src/raider-window.blp:101 src/raider-window.c:388
+po/kw.po:144:#: src/raider-window.blp:120 src/raider-window.c:441
+po/kw.po:148:#: src/raider-window.blp:147
+po/kw.po:150:msgstr "A-Dro Skethennell Restren"
+po/kw.po:152:#: src/raider-window.blp:156
+po/kw.po:156:#: src/raider-window.c:177
+po/kw.po:160:#: src/raider-window.c:177
+po/kw.po:164:#: src/raider-window.c:180
+po/kw.po:168:#: src/raider-window.c:180
+po/kw.po:172:#: src/raider-window.c:229
+po/kw.po:177:#: src/raider-window.c:239
+po/kw.po:181:#: src/raider-window.c:311
+po/kw.po:182:#, c-format
+po/kw.po:186:#: src/raider-window.c:325
+po/kw.po:190:#: src/raider-window.c:337
+po/kw.po:191:#, c-format
+po/kw.po:195:#: src/raider-window.c:349
+po/kw.po:199:#: src/raider-window.c:387
+po/kw.po:203:#: src/raider-window.c:411
+po/kw.po:207:#: src/raider-window.c:463
+po/nb.po:9:"Project-Id-Version: \n"
+po/nb.po:10:"Report-Msgid-Bugs-To: \n"
+po/nb.po:11:"POT-Creation-Date: 2023-12-29 16:28+0300\n"
+po/nb.po:12:"PO-Revision-Date: 2024-03-15 08:00+0100\n"
+po/nb.po:13:"Last-Translator: Brage <bragefuglseth@gnome.org>\n"
+po/nb.po:14:"Language-Team: \n"
+po/nb.po:16:"MIME-Version: 1.0\n"
+po/nb.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/nb.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/nb.po:19:"X-Generator: Poedit 3.4.2\n"
+po/nb.po:23:#: src/raider-application.c:140 src/raider-window.blp:40
+po/nb.po:45:"perfect, and no software can fix that. However, top-level agencies are "
+po/nb.po:53:#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+po/nb.po:54:#: src/raider-window.blp:33
+po/nb.po:58:#: src/raider-application.c:154
+po/nb.po:59:msgid "translator-credits"
+po/nb.po:62:#: src/raider-progress-info-popover.c:62
+po/nb.po:66:#: src/raider-progress-info-popover.c:70
+po/nb.po:70:#: src/raider-shortcuts.blp:8
+po/nb.po:74:#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+po/nb.po:78:#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+po/nb.po:82:#: src/raider-shortcuts.blp:23
+po/nb.po:86:#: src/raider-shortcuts.blp:27
+po/nb.po:90:#: src/raider-window.blp:31
+po/nb.po:94:#: src/raider-window.blp:46
+po/nb.po:98:#: src/raider-window.blp:61
+po/nb.po:102:#: src/raider-window.blp:63
+po/nb.po:110:#: src/raider-window.blp:99 src/raider-window.c:358
+po/nb.po:114:#: src/raider-window.blp:118 src/raider-window.c:410
+po/nb.po:118:#: src/raider-window.blp:145
+po/nb.po:122:#: src/raider-window.c:151
+po/nb.po:126:#: src/raider-window.c:152
+po/nb.po:130:#: src/raider-window.c:155
+po/nb.po:134:#: src/raider-window.c:155
+po/nb.po:138:#: src/raider-window.c:203
+po/nb.po:142:#: src/raider-window.c:213
+po/nb.po:146:#: src/raider-window.c:281
+po/nb.po:150:#: src/raider-window.c:294
+po/nb.po:154:#: src/raider-window.c:302
+po/nb.po:158:#: src/raider-window.c:312
+po/nb.po:159:#, c-format
+po/nb.po:163:#: src/raider-window.c:323
+po/nb.po:167:#: src/raider-window.c:380
+po/nb.po:171:#: src/raider-window.c:432
+po/nl.po:10:"Project-Id-Version: \n"
+po/nl.po:11:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/nl.po:12:"POT-Creation-Date: 2025-09-05 03:37+0000\n"
+po/nl.po:13:"PO-Revision-Date: 2025-09-14 15:08+0200\n"
+po/nl.po:14:"Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
+po/nl.po:15:"Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
+po/nl.po:17:"MIME-Version: 1.0\n"
+po/nl.po:18:"Content-Type: text/plain; charset=UTF-8\n"
+po/nl.po:19:"Content-Transfer-Encoding: 8bit\n"
+po/nl.po:20:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/nl.po:21:"X-Generator: Poedit 3.6\n"
+po/nl.po:24:#: src/raider-application.c:168 src/raider-application.c:224 src/raider-window.blp:9 src/raider-window.blp:37
+po/nl.po:62:#: src/raider-application.c:84 src/raider-shortcuts.blp:11 src/raider-window.blp:28
+po/nl.po:66:#: src/raider-application.c:94
+po/nl.po:70:#: src/raider-application.c:181
+po/nl.po:71:msgid "translator-credits"
+po/nl.po:76:"Meer info over GNOME-NL https://nl.gnome.org"
+po/nl.po:78:#: src/raider-progress-info-popover.c:55
+po/nl.po:82:#: src/raider-progress-info-popover.c:67
+po/nl.po:86:#: src/raider-progress-info-popover.c:75
+po/nl.po:90:#: src/raider-shortcuts.blp:8
+po/nl.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/nl.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/nl.po:102:#: src/raider-shortcuts.blp:23
+po/nl.po:106:#: src/raider-shortcuts.blp:27
+po/nl.po:110:#: src/raider-window.blp:26
+po/nl.po:114:#: src/raider-window.blp:43
+po/nl.po:118:#: src/raider-window.blp:58
+po/nl.po:122:#: src/raider-window.blp:60
+po/nl.po:128:#: src/raider-window.blp:96
+po/nl.po:132:#: src/raider-window.blp:101 src/raider-window.c:389
+po/nl.po:136:#: src/raider-window.blp:120 src/raider-window.c:442
+po/nl.po:140:#: src/raider-window.blp:147
+po/nl.po:144:#: src/raider-window.blp:156
+po/nl.po:148:#: src/raider-window.c:178
+po/nl.po:152:#: src/raider-window.c:178
+po/nl.po:156:#: src/raider-window.c:181
+po/nl.po:160:#: src/raider-window.c:181
+po/nl.po:164:#: src/raider-window.c:230
+po/nl.po:168:#: src/raider-window.c:240
+po/nl.po:172:#: src/raider-window.c:312
+po/nl.po:173:#, c-format
+po/nl.po:177:#: src/raider-window.c:326
+po/nl.po:181:#: src/raider-window.c:338
+po/nl.po:182:#, c-format
+po/nl.po:186:#: src/raider-window.c:350
+po/nl.po:190:#: src/raider-window.c:388
+po/nl.po:194:#: src/raider-window.c:412
+po/nl.po:198:#: src/raider-window.c:464
+po/oc.po:8:"Project-Id-Version: \n"
+po/oc.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/oc.po:10:"POT-Creation-Date: 2025-09-07 15:34+0000\n"
+po/oc.po:11:"PO-Revision-Date: 2025-09-07 21:18+0200\n"
+po/oc.po:12:"Last-Translator: Quentin PAGÈS\n"
+po/oc.po:13:"Language-Team: \n"
+po/oc.po:15:"MIME-Version: 1.0\n"
+po/oc.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/oc.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/oc.po:18:"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+po/oc.po:19:"X-Generator: Poedit 3.7\n"
+po/oc.po:23:#: src/raider-application.c:168 src/raider-application.c:224
+po/oc.po:24:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/oc.po:66:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/oc.po:67:#: src/raider-window.blp:28
+po/oc.po:71:#: src/raider-application.c:94
+po/oc.po:75:#: src/raider-application.c:181
+po/oc.po:76:msgid "translator-credits"
+po/oc.po:79:#: src/raider-progress-info-popover.c:55
+po/oc.po:83:#: src/raider-progress-info-popover.c:67
+po/oc.po:87:#: src/raider-progress-info-popover.c:75
+po/oc.po:91:#: src/raider-shortcuts.blp:8
+po/oc.po:95:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/oc.po:99:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/oc.po:103:#: src/raider-shortcuts.blp:23
+po/oc.po:107:#: src/raider-shortcuts.blp:27
+po/oc.po:111:#: src/raider-window.blp:26
+po/oc.po:115:#: src/raider-window.blp:43
+po/oc.po:119:#: src/raider-window.blp:58
+po/oc.po:123:#: src/raider-window.blp:60
+po/oc.po:131:#: src/raider-window.blp:96
+po/oc.po:135:#: src/raider-window.blp:101 src/raider-window.c:389
+po/oc.po:139:#: src/raider-window.blp:120 src/raider-window.c:442
+po/oc.po:143:#: src/raider-window.blp:147
+po/oc.po:147:#: src/raider-window.blp:156
+po/oc.po:151:#: src/raider-window.c:178
+po/oc.po:155:#: src/raider-window.c:178
+po/oc.po:159:#: src/raider-window.c:181
+po/oc.po:163:#: src/raider-window.c:181
+po/oc.po:167:#: src/raider-window.c:230
+po/oc.po:172:#: src/raider-window.c:240
+po/oc.po:176:#: src/raider-window.c:312
+po/oc.po:177:#, c-format
+po/oc.po:181:#: src/raider-window.c:326
+po/oc.po:185:#: src/raider-window.c:338
+po/oc.po:186:#, c-format
+po/oc.po:190:#: src/raider-window.c:350
+po/oc.po:194:#: src/raider-window.c:388
+po/oc.po:198:#: src/raider-window.c:412
+po/oc.po:202:#: src/raider-window.c:464
+po/fr.po:10:"Project-Id-Version: unnamed project\n"
+po/fr.po:11:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/fr.po:12:"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+po/fr.po:13:"PO-Revision-Date: 2026-03-22 12:27+0100\n"
+po/fr.po:14:"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
+po/fr.po:15:"Language-Team: French <gnomefr@traduc.org>\n"
+po/fr.po:17:"MIME-Version: 1.0\n"
+po/fr.po:18:"Content-Type: text/plain; charset=UTF-8\n"
+po/fr.po:19:"Content-Transfer-Encoding: 8bit\n"
+po/fr.po:20:"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+po/fr.po:21:"X-Generator: Poedit 3.9\n"
+po/fr.po:25:#: src/raider-application.c:167 src/raider-application.c:223
+po/fr.po:26:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/fr.po:63:#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+po/fr.po:64:#: src/raider-window.blp:28
+po/fr.po:68:#: src/raider-application.c:93
+po/fr.po:72:#: src/raider-application.c:180
+po/fr.po:73:msgid "translator-credits"
+po/fr.po:76:#: src/raider-progress-info-popover.c:55
+po/fr.po:80:#: src/raider-progress-info-popover.c:67
+po/fr.po:84:#: src/raider-progress-info-popover.c:75
+po/fr.po:88:#: src/raider-shortcuts.blp:6
+po/fr.po:92:#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+po/fr.po:96:#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+po/fr.po:100:#: src/raider-shortcuts.blp:21
+po/fr.po:104:#: src/raider-shortcuts.blp:25
+po/fr.po:108:#: src/raider-window.blp:26
+po/fr.po:112:#: src/raider-window.blp:43
+po/fr.po:116:#: src/raider-window.blp:58
+po/fr.po:120:#: src/raider-window.blp:60
+po/fr.po:128:#: src/raider-window.blp:96
+po/fr.po:132:#: src/raider-window.blp:101 src/raider-window.c:388
+po/fr.po:136:#: src/raider-window.blp:120 src/raider-window.c:441
+po/fr.po:140:#: src/raider-window.blp:147
+po/fr.po:144:#: src/raider-window.blp:156
+po/fr.po:148:#: src/raider-window.c:177
+po/fr.po:152:#: src/raider-window.c:177
+po/fr.po:154:msgstr "Êtes-vous sûr de vouloir quitter ?"
+po/fr.po:156:#: src/raider-window.c:180
+po/fr.po:160:#: src/raider-window.c:180
+po/fr.po:164:#: src/raider-window.c:229
+po/fr.po:170:#: src/raider-window.c:239
+po/fr.po:174:#: src/raider-window.c:311
+po/fr.po:175:#, c-format
+po/fr.po:179:#: src/raider-window.c:325
+po/fr.po:183:#: src/raider-window.c:337
+po/fr.po:184:#, c-format
+po/fr.po:188:#: src/raider-window.c:349
+po/fr.po:192:#: src/raider-window.c:387
+po/fr.po:196:#: src/raider-window.c:411
+po/fr.po:200:#: src/raider-window.c:463
+po/pt.po:8:"Project-Id-Version: \n"
+po/pt.po:9:"Report-Msgid-Bugs-To: \n"
+po/pt.po:10:"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+po/pt.po:11:"PO-Revision-Date: 2022-08-19 14:24-0700\n"
+po/pt.po:12:"Last-Translator: Alan Beveridge <adbeveridge@protonmail.com>\n"
+po/pt.po:13:"Language-Team: \n"
+po/pt.po:15:"MIME-Version: 1.0\n"
+po/pt.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/pt.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/pt.po:18:"X-Generator: Poedit 3.1.1\n"
+po/pt.po:22:#: src/raider-application.c:140 src/raider-window.blp:40
+po/pt.po:41:#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+po/pt.po:42:#: src/raider-window.blp:33
+po/pt.po:46:#: src/raider-application.c:154
+po/pt.po:47:msgid "translator-credits"
+po/pt.po:50:#: src/raider-progress-info-popover.c:62
+po/pt.po:54:#: src/raider-progress-info-popover.c:70
+po/pt.po:58:#: src/raider-shortcuts.blp:8
+po/pt.po:62:#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+po/pt.po:66:#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+po/pt.po:70:#: src/raider-shortcuts.blp:23
+po/pt.po:75:#: src/raider-shortcuts.blp:27
+po/pt.po:79:#: src/raider-window.blp:31
+po/pt.po:83:#: src/raider-window.blp:46
+po/pt.po:87:#: src/raider-window.blp:61
+po/pt.po:91:#: src/raider-window.blp:63
+po/pt.po:102:#: src/raider-window.blp:99 src/raider-window.c:358
+po/pt.po:106:#: src/raider-window.blp:118 src/raider-window.c:410
+po/pt.po:110:#: src/raider-window.blp:145
+po/pt.po:114:#: src/raider-window.c:151
+po/pt.po:119:#: src/raider-window.c:152
+po/pt.po:123:#: src/raider-window.c:155
+po/pt.po:128:#: src/raider-window.c:155
+po/pt.po:132:#: src/raider-window.c:203
+po/pt.po:137:#: src/raider-window.c:213
+po/pt.po:142:#: src/raider-window.c:281
+po/pt.po:147:#: src/raider-window.c:294
+po/pt.po:151:#: src/raider-window.c:302
+po/pt.po:155:#: src/raider-window.c:312
+po/pt.po:156:#, c-format
+po/pt.po:160:#: src/raider-window.c:323
+po/pt.po:164:#: src/raider-window.c:380
+po/pt.po:169:#: src/raider-window.c:432
+po/pt_BR.po:10:"Project-Id-Version: raider\n"
+po/pt_BR.po:11:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/pt_BR.po:12:"POT-Creation-Date: 2025-09-08 15:38+0000\n"
+po/pt_BR.po:13:"PO-Revision-Date: 2025-09-09 13:57-0300\n"
+po/pt_BR.po:14:"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+po/pt_BR.po:15:"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
+po/pt_BR.po:17:"MIME-Version: 1.0\n"
+po/pt_BR.po:18:"Content-Type: text/plain; charset=UTF-8\n"
+po/pt_BR.po:19:"Content-Transfer-Encoding: 8bit\n"
+po/pt_BR.po:20:"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+po/pt_BR.po:21:"X-Generator: Gtranslator 48.0\n"
+po/pt_BR.po:25:#: src/raider-application.c:168 src/raider-application.c:224
+po/pt_BR.po:26:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/pt_BR.po:68:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/pt_BR.po:69:#: src/raider-window.blp:28
+po/pt_BR.po:73:#: src/raider-application.c:94
+po/pt_BR.po:77:#: src/raider-application.c:181
+po/pt_BR.po:78:msgid "translator-credits"
+po/pt_BR.po:79:msgstr "translator-credits"
+po/pt_BR.po:81:#: src/raider-progress-info-popover.c:55
+po/pt_BR.po:85:#: src/raider-progress-info-popover.c:67
+po/pt_BR.po:89:#: src/raider-progress-info-popover.c:75
+po/pt_BR.po:93:#: src/raider-shortcuts.blp:8
+po/pt_BR.po:97:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/pt_BR.po:101:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/pt_BR.po:105:#: src/raider-shortcuts.blp:23
+po/pt_BR.po:109:#: src/raider-shortcuts.blp:27
+po/pt_BR.po:113:#: src/raider-window.blp:26
+po/pt_BR.po:117:#: src/raider-window.blp:43
+po/pt_BR.po:121:#: src/raider-window.blp:58
+po/pt_BR.po:123:msgstr "Adicione arquivos ou solte-os aqui"
+po/pt_BR.po:125:#: src/raider-window.blp:60
+po/pt_BR.po:133:#: src/raider-window.blp:96
+po/pt_BR.po:137:#: src/raider-window.blp:101 src/raider-window.c:389
+po/pt_BR.po:141:#: src/raider-window.blp:120 src/raider-window.c:442
+po/pt_BR.po:145:#: src/raider-window.blp:147
+po/pt_BR.po:149:#: src/raider-window.blp:156
+po/pt_BR.po:153:#: src/raider-window.c:178
+po/pt_BR.po:157:#: src/raider-window.c:178
+po/pt_BR.po:161:#: src/raider-window.c:181
+po/pt_BR.po:165:#: src/raider-window.c:181
+po/pt_BR.po:169:#: src/raider-window.c:230
+po/pt_BR.po:174:#: src/raider-window.c:240
+po/pt_BR.po:178:#: src/raider-window.c:312
+po/pt_BR.po:179:#, c-format
+po/pt_BR.po:183:#: src/raider-window.c:326
+po/pt_BR.po:187:#: src/raider-window.c:338
+po/pt_BR.po:188:#, c-format
+po/pt_BR.po:192:#: src/raider-window.c:350
+po/pt_BR.po:196:#: src/raider-window.c:388
+po/pt_BR.po:200:#: src/raider-window.c:412
+po/pt_BR.po:204:#: src/raider-window.c:464
+po/ro.po:8:"Project-Id-Version: raider main\n"
+po/ro.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/ro.po:10:"POT-Creation-Date: 2025-12-08 03:36+0000\n"
+po/ro.po:11:"PO-Revision-Date: 2025-12-08 16:08+0100\n"
+po/ro.po:12:"Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
+po/ro.po:13:"Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
+po/ro.po:15:"MIME-Version: 1.0\n"
+po/ro.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/ro.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/ro.po:18:"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+po/ro.po:20:"X-Generator: Gtranslator 48.0\n"
+po/ro.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/ro.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/ro.po:54:"Până la o anumită limită, este eficient. Cu toate acestea, SSD-urile moderne "
+po/ro.po:55:"folosesc anumite tehnologii pentru a-și prelungi durata de viață, ceea ce "
+po/ro.po:66:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/ro.po:67:#: src/raider-window.blp:28
+po/ro.po:71:#: src/raider-application.c:94
+po/ro.po:75:#: src/raider-application.c:181
+po/ro.po:76:msgid "translator-credits"
+po/ro.po:79:#: src/raider-progress-info-popover.c:55
+po/ro.po:83:#: src/raider-progress-info-popover.c:67
+po/ro.po:87:#: src/raider-progress-info-popover.c:75
+po/ro.po:91:#: src/raider-shortcuts.blp:8
+po/ro.po:95:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/ro.po:99:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/ro.po:103:#: src/raider-shortcuts.blp:23
+po/ro.po:107:#: src/raider-shortcuts.blp:27
+po/ro.po:111:#: src/raider-window.blp:26
+po/ro.po:115:#: src/raider-window.blp:43
+po/ro.po:119:#: src/raider-window.blp:58
+po/ro.po:121:msgstr "Adaugă fișiere trăgându-le aici"
+po/ro.po:123:#: src/raider-window.blp:60
+po/ro.po:131:#: src/raider-window.blp:96
+po/ro.po:135:#: src/raider-window.blp:101 src/raider-window.c:389
+po/ro.po:139:#: src/raider-window.blp:120 src/raider-window.c:442
+po/ro.po:143:#: src/raider-window.blp:147
+po/ro.po:147:#: src/raider-window.blp:156
+po/ro.po:151:#: src/raider-window.c:178
+po/ro.po:155:#: src/raider-window.c:178
+po/ro.po:159:#: src/raider-window.c:181
+po/ro.po:163:#: src/raider-window.c:181
+po/ro.po:167:#: src/raider-window.c:230
+po/ro.po:170:"Nu s-a putut elimina numele fișierului din lista rapidă. Se poate raporta "
+po/ro.po:173:#: src/raider-window.c:240
+po/ro.po:175:msgstr "Distrugerea s-a terminat"
+po/ro.po:177:#: src/raider-window.c:312
+po/ro.po:178:#, c-format
+po/ro.po:182:#: src/raider-window.c:326
+po/ro.po:186:#: src/raider-window.c:338
+po/ro.po:187:#, c-format
+po/ro.po:191:#: src/raider-window.c:350
+po/ro.po:195:#: src/raider-window.c:388
+po/ro.po:199:#: src/raider-window.c:412
+po/ro.po:203:#: src/raider-window.c:464
+po/ru.po:8:"Project-Id-Version: \n"
+po/ru.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/ru.po:10:"POT-Creation-Date: 2025-09-07 03:34+0000\n"
+po/ru.po:11:"PO-Revision-Date: 2025-09-07 14:30+0300\n"
+po/ru.po:12:"Last-Translator: Artur So <arturios2005@mail.ru>\n"
+po/ru.po:13:"Language-Team: \n"
+po/ru.po:15:"MIME-Version: 1.0\n"
+po/ru.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/ru.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/ru.po:18:"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+po/ru.po:20:"X-Generator: Poedit 3.7\n"
+po/ru.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/ru.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/ru.po:67:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/ru.po:68:#: src/raider-window.blp:28
+po/ru.po:72:#: src/raider-application.c:94
+po/ru.po:76:#: src/raider-application.c:181
+po/ru.po:77:msgid "translator-credits"
+po/ru.po:80:#: src/raider-progress-info-popover.c:55
+po/ru.po:84:#: src/raider-progress-info-popover.c:67
+po/ru.po:88:#: src/raider-progress-info-popover.c:75
+po/ru.po:92:#: src/raider-shortcuts.blp:8
+po/ru.po:96:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/ru.po:100:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/ru.po:104:#: src/raider-shortcuts.blp:23
+po/ru.po:108:#: src/raider-shortcuts.blp:27
+po/ru.po:112:#: src/raider-window.blp:26
+po/ru.po:116:#: src/raider-window.blp:43
+po/ru.po:120:#: src/raider-window.blp:58
+po/ru.po:124:#: src/raider-window.blp:60
+po/ru.po:132:#: src/raider-window.blp:96
+po/ru.po:136:#: src/raider-window.blp:101 src/raider-window.c:389
+po/ru.po:140:#: src/raider-window.blp:120 src/raider-window.c:442
+po/ru.po:144:#: src/raider-window.blp:147
+po/ru.po:148:#: src/raider-window.blp:156
+po/ru.po:152:#: src/raider-window.c:178
+po/ru.po:156:#: src/raider-window.c:178
+po/ru.po:160:#: src/raider-window.c:181
+po/ru.po:164:#: src/raider-window.c:181
+po/ru.po:168:#: src/raider-window.c:230
+po/ru.po:173:#: src/raider-window.c:240
+po/ru.po:177:#: src/raider-window.c:312
+po/ru.po:178:#, c-format
+po/ru.po:182:#: src/raider-window.c:326
+po/ru.po:186:#: src/raider-window.c:338
+po/ru.po:187:#, c-format
+po/ru.po:191:#: src/raider-window.c:350
+po/ru.po:195:#: src/raider-window.c:388
+po/ru.po:199:#: src/raider-window.c:412
+po/ru.po:203:#: src/raider-window.c:464
+po/sl.po:8:"Project-Id-Version: \n"
+po/sl.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/sl.po:10:"POT-Creation-Date: 2025-09-04 15:35+0000\n"
+po/sl.po:11:"PO-Revision-Date: 2025-09-04 21:35+0200\n"
+po/sl.po:12:"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+po/sl.po:13:"Language-Team: \n"
+po/sl.po:15:"MIME-Version: 1.0\n"
+po/sl.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/sl.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/sl.po:18:"X-Generator: Poedit 2.2.1\n"
+po/sl.po:22:#: src/raider-application.c:168 src/raider-application.c:224
+po/sl.po:23:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/sl.po:64:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/sl.po:65:#: src/raider-window.blp:28
+po/sl.po:69:#: src/raider-application.c:94
+po/sl.po:73:#: src/raider-application.c:181
+po/sl.po:74:msgid "translator-credits"
+po/sl.po:79:#: src/raider-progress-info-popover.c:55
+po/sl.po:83:#: src/raider-progress-info-popover.c:67
+po/sl.po:87:#: src/raider-progress-info-popover.c:75
+po/sl.po:91:#: src/raider-shortcuts.blp:8
+po/sl.po:95:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/sl.po:99:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/sl.po:103:#: src/raider-shortcuts.blp:23
+po/sl.po:107:#: src/raider-shortcuts.blp:27
+po/sl.po:111:#: src/raider-window.blp:26
+po/sl.po:115:#: src/raider-window.blp:43
+po/sl.po:119:#: src/raider-window.blp:58
+po/sl.po:123:#: src/raider-window.blp:60
+po/sl.po:131:#: src/raider-window.blp:96
+po/sl.po:135:#: src/raider-window.blp:101 src/raider-window.c:389
+po/sl.po:139:#: src/raider-window.blp:120 src/raider-window.c:442
+po/sl.po:143:#: src/raider-window.blp:147
+po/sl.po:147:#: src/raider-window.blp:156
+po/sl.po:151:#: src/raider-window.c:178
+po/sl.po:155:#: src/raider-window.c:178
+po/sl.po:159:#: src/raider-window.c:181
+po/sl.po:163:#: src/raider-window.c:181
+po/sl.po:167:#: src/raider-window.c:230
+po/sl.po:173:#: src/raider-window.c:240
+po/sl.po:177:#: src/raider-window.c:312
+po/sl.po:178:#, c-format
+po/sl.po:182:#: src/raider-window.c:326
+po/sl.po:186:#: src/raider-window.c:338
+po/sl.po:187:#, c-format
+po/sl.po:191:#: src/raider-window.c:350
+po/sl.po:195:#: src/raider-window.c:388
+po/sl.po:199:#: src/raider-window.c:412
+po/sl.po:203:#: src/raider-window.c:464
+po/sr.po:8:"Project-Id-Version: raider main\n"
+po/sr.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/sr.po:10:"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+po/sr.po:11:"PO-Revision-Date: 2026-03-20 12:12+0100\n"
+po/sr.po:12:"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+po/sr.po:13:"Language-Team: Serbian <Serbian>\n"
+po/sr.po:15:"MIME-Version: 1.0\n"
+po/sr.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/sr.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/sr.po:18:"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+po/sr.po:20:"X-Generator: Poedit 3.9\n"
+po/sr.po:24:#: src/raider-application.c:167 src/raider-application.c:223
+po/sr.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/sr.po:53:#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+po/sr.po:54:#: src/raider-window.blp:28
+po/sr.po:58:#: src/raider-application.c:93
+po/sr.po:62:#: src/raider-application.c:180
+po/sr.po:63:msgid "translator-credits"
+po/sr.po:68:#: src/raider-progress-info-popover.c:55
+po/sr.po:72:#: src/raider-progress-info-popover.c:67
+po/sr.po:76:#: src/raider-progress-info-popover.c:75
+po/sr.po:80:#: src/raider-shortcuts.blp:6
+po/sr.po:84:#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+po/sr.po:88:#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+po/sr.po:92:#: src/raider-shortcuts.blp:21
+po/sr.po:96:#: src/raider-shortcuts.blp:25
+po/sr.po:100:#: src/raider-window.blp:26
+po/sr.po:104:#: src/raider-window.blp:43
+po/sr.po:108:#: src/raider-window.blp:58
+po/sr.po:112:#: src/raider-window.blp:60
+po/sr.po:118:#: src/raider-window.blp:96
+po/sr.po:122:#: src/raider-window.blp:101 src/raider-window.c:388
+po/sr.po:126:#: src/raider-window.blp:120 src/raider-window.c:441
+po/sr.po:130:#: src/raider-window.blp:147
+po/sr.po:134:#: src/raider-window.blp:156
+po/sr.po:138:#: src/raider-window.c:177
+po/sr.po:142:#: src/raider-window.c:177
+po/sr.po:146:#: src/raider-window.c:180
+po/sr.po:150:#: src/raider-window.c:180
+po/sr.po:154:#: src/raider-window.c:229
+po/sr.po:158:#: src/raider-window.c:239
+po/sr.po:162:#: src/raider-window.c:311
+po/sr.po:163:#, c-format
+po/sr.po:167:#: src/raider-window.c:325
+po/sr.po:171:#: src/raider-window.c:337
+po/sr.po:172:#, c-format
+po/sr.po:176:#: src/raider-window.c:349
+po/sr.po:180:#: src/raider-window.c:387
+po/sr.po:184:#: src/raider-window.c:411
+po/sr.po:188:#: src/raider-window.c:463
+raider.doap:1:<!-- -*- mode: xml -*- -->
+raider.doap:3:  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+raider.doap:4:  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+raider.doap:6:  xmlns:gnome="http://api.gnome.org/doap-extensions#"
+raider.doap:15:  <bug-database rdf:resource="https://github.com/ADBeveridge/raider/issues"/>
+raider.doap:16:  <developer-forum rdf:resource="https://github.com/ADBeveridge/raider/issues" />
+raider.doap:17:  <support-forum rdf:resource="https://github.com/ADBeveridge/raider/issues" />
+raider.doap:18:  <download-page rdf:resource="https://flathub.org/apps/com.github.ADBeveridge.Raider" />
+raider.doap:19:  <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+raider.doap:20:  <programming-language>C</programming-language>
+src/README.md:6: - Files supplied on the commandline are opened in `raider_application_open`. It converts the double array of files into a `GList` and sends that `GList` to a newly created window.
+src/README.md:7: - When the `GAction` to exit is activated, it calls `raider_application_try_exit` which queries each open window to exit. If any window returns `TRUE` then shredding is ongoing, and cannot exit.
+src/README.md:8: - Files opened in the file chooser are converted into a `GList` and are sent to the active window.
+src/README.md:11: - `RaiderWindow` handles drag-and-drop. It converts the list of files dragged in and converts it to `GList` and sends it to its file loader.
+src/README.md:12: - `raider_window_open_files` is the file loader. It takes a `GList` of `GFile`s from the callee. It runs its internal worker function `raider_window_open_files_thread` asynchronously, which in turn calls a function that opens a single `GFile`. That function runs tests on that file, and if it passes, a `RaiderFileRow` is created and added to the window.
+src/README.md:13: - Whenever a `RaiderFileRow` destroys itself, it calls `raider_window_close_file`, which updates the user interface if necessary.
+src/README.md:14: - Launching shredding and aborting shredding and adding files are done asynchronously with `GTask` because it can take a while. See `raider_window_start_shredding` and `raider_window_abort_shredding` for more details.
+src/README.md:15: - When `RaiderWindow` is queried to exit, it returns `TRUE` if shredding. `TRUE` tells GTK+ internally to not call the default `close-request` signal handler. Otherwise, `FALSE` is returned, and `RaiderWindow` is closed by internal system of GTK+. Before `TRUE` is returned, and if `TRUE` will be returned, a dialog will be shown to the user if he wants to exit. If so, the shredding is aborted, to clean up running processes, and in the `raider_window_abort_files_finish` function, the return result from the message dialog that has been passed along is tested, and if it equals `exit`, the window is destroyed.
+src/README.md:18: - When the `Shred` button is activated, `RaiderWindow` calls `raider_file_row_launch_shredding` on each item it has in its `GtkListBox`. The launch shredding code creates a Corrupt variable, which shreds the code. Progress updates are done when the amount of progress done since that last GUI update is 1%. If it is larger than that, then a function is invoked from the shredding thread to the main context thread to update the gui. 
+po/uk.po:2:# Copyright (C) 2023-2024 THE Raider's COPYRIGHT HOLDER
+po/uk.po:5:# volkov <volkovissocool@gmail.com>, 2023-2024.
+po/uk.po:9:"Project-Id-Version: Raider\n"
+po/uk.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/uk.po:11:"POT-Creation-Date: 2025-09-04 14:11+0000\n"
+po/uk.po:12:"PO-Revision-Date: 2025-09-04 18:36+0300\n"
+po/uk.po:13:"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+po/uk.po:14:"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+po/uk.po:16:"MIME-Version: 1.0\n"
+po/uk.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/uk.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/uk.po:19:"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+po/uk.po:21:"X-Generator: Lokalize 23.04.3\n"
+po/uk.po:25:#: src/raider-application.c:168 src/raider-application.c:224
+po/uk.po:26:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/uk.po:73:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/uk.po:74:#: src/raider-window.blp:28
+po/uk.po:78:#: src/raider-application.c:94
+po/uk.po:82:#: src/raider-application.c:181
+po/uk.po:83:msgid "translator-credits"
+po/uk.po:86:#: src/raider-progress-info-popover.c:55
+po/uk.po:90:#: src/raider-progress-info-popover.c:67
+po/uk.po:94:#: src/raider-progress-info-popover.c:75
+po/uk.po:99:#: src/raider-shortcuts.blp:8
+po/uk.po:103:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/uk.po:107:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/uk.po:111:#: src/raider-shortcuts.blp:23
+po/uk.po:115:#: src/raider-shortcuts.blp:27
+po/uk.po:119:#: src/raider-window.blp:26
+po/uk.po:123:#: src/raider-window.blp:43
+po/uk.po:127:#: src/raider-window.blp:58
+po/uk.po:131:#: src/raider-window.blp:60
+po/uk.po:139:#: src/raider-window.blp:96
+po/uk.po:143:#: src/raider-window.blp:101 src/raider-window.c:389
+po/uk.po:147:#: src/raider-window.blp:120 src/raider-window.c:442
+po/uk.po:151:#: src/raider-window.blp:147
+po/uk.po:155:#: src/raider-window.blp:156
+po/uk.po:159:#: src/raider-window.c:178
+po/uk.po:163:#: src/raider-window.c:178
+po/uk.po:167:#: src/raider-window.c:181
+po/uk.po:171:#: src/raider-window.c:181
+po/uk.po:175:#: src/raider-window.c:230
+po/uk.po:177:msgstr "Не вдалося видалити файл із списку. Будь-ласка, відрапортуйте про це."
+po/uk.po:179:#: src/raider-window.c:240
+po/uk.po:183:#: src/raider-window.c:312
+po/uk.po:184:#, c-format
+po/uk.po:188:#: src/raider-window.c:326
+po/uk.po:192:#: src/raider-window.c:338
+po/uk.po:193:#, c-format
+po/uk.po:197:#: src/raider-window.c:350
+po/uk.po:201:#: src/raider-window.c:388
+po/uk.po:205:#: src/raider-window.c:412
+po/uk.po:209:#: src/raider-window.c:464
+po/uz.po:8:"Project-Id-Version: raider main\n"
+po/uz.po:9:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/uz.po:10:"POT-Creation-Date: 2025-10-22 03:37+0000\n"
+po/uz.po:11:"PO-Revision-Date: 2025-10-24 17:42+0500\n"
+po/uz.po:12:"Last-Translator: Baxrom Raxmatov <https://t.me/bahrom04>\n"
+po/uz.po:13:"Language-Team: Uzbek (Latin) <Uzbek>\n"
+po/uz.po:15:"MIME-Version: 1.0\n"
+po/uz.po:16:"Content-Type: text/plain; charset=UTF-8\n"
+po/uz.po:17:"Content-Transfer-Encoding: 8bit\n"
+po/uz.po:18:"X-Generator: Poedit 3.5\n"
+po/uz.po:22:#: src/raider-application.c:168 src/raider-application.c:224
+po/uz.po:23:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/uz.po:41:"Fayl parchalagich - kompyuteringizdagi maxfiy fayllarni butunlay yo‘q qilish "
+po/uz.po:65:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/uz.po:66:#: src/raider-window.blp:28
+po/uz.po:70:#: src/raider-application.c:94
+po/uz.po:74:#: src/raider-application.c:181
+po/uz.po:75:msgid "translator-credits"
+po/uz.po:78:#: src/raider-progress-info-popover.c:55
+po/uz.po:82:#: src/raider-progress-info-popover.c:67
+po/uz.po:86:#: src/raider-progress-info-popover.c:75
+po/uz.po:90:#: src/raider-shortcuts.blp:8
+po/uz.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/uz.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/uz.po:102:#: src/raider-shortcuts.blp:23
+po/uz.po:106:#: src/raider-shortcuts.blp:27
+po/uz.po:110:#: src/raider-window.blp:26
+po/uz.po:114:#: src/raider-window.blp:43
+po/uz.po:118:#: src/raider-window.blp:58
+po/uz.po:122:#: src/raider-window.blp:60
+po/uz.po:127:"Parchalash - bu tasodifiy maʻlumotlar bilan faylni xiralashtirish, shuning "
+po/uz.po:130:#: src/raider-window.blp:96
+po/uz.po:134:#: src/raider-window.blp:101 src/raider-window.c:389
+po/uz.po:138:#: src/raider-window.blp:120 src/raider-window.c:442
+po/uz.po:142:#: src/raider-window.blp:147
+po/uz.po:146:#: src/raider-window.blp:156
+po/uz.po:150:#: src/raider-window.c:178
+po/uz.po:154:#: src/raider-window.c:178
+po/uz.po:158:#: src/raider-window.c:181
+po/uz.po:162:#: src/raider-window.c:181
+po/uz.po:166:#: src/raider-window.c:230
+po/uz.po:172:#: src/raider-window.c:240
+po/uz.po:176:#: src/raider-window.c:312
+po/uz.po:177:#, c-format
+po/uz.po:181:#: src/raider-window.c:326
+po/uz.po:185:#: src/raider-window.c:338
+po/uz.po:186:#, c-format
+po/uz.po:190:#: src/raider-window.c:350
+po/uz.po:194:#: src/raider-window.c:388
+po/uz.po:198:#: src/raider-window.c:412
+po/uz.po:202:#: src/raider-window.c:464
+src/raider-progress-info-popover.blp:7:      show-text: true;
+po/zh_CN.po:9:"Project-Id-Version: raider-main\n"
+po/zh_CN.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/zh_CN.po:11:"POT-Creation-Date: 2025-09-04 15:35+0000\n"
+po/zh_CN.po:12:"PO-Revision-Date: 2025-09-05 17:54+0800\n"
+po/zh_CN.po:13:"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+po/zh_CN.po:14:"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+po/zh_CN.po:16:"MIME-Version: 1.0\n"
+po/zh_CN.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/zh_CN.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/zh_CN.po:19:"Plural-Forms: nplurals=1; plural=0;\n"
+po/zh_CN.po:20:"X-Generator: Gtranslator 48.0\n"
+po/zh_CN.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/zh_CN.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/zh_CN.po:63:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/zh_CN.po:64:#: src/raider-window.blp:28
+po/zh_CN.po:68:#: src/raider-application.c:94
+po/zh_CN.po:72:#: src/raider-application.c:181
+po/zh_CN.po:73:msgid "translator-credits"
+po/zh_CN.po:78:#: src/raider-progress-info-popover.c:55
+po/zh_CN.po:82:#: src/raider-progress-info-popover.c:67
+po/zh_CN.po:86:#: src/raider-progress-info-popover.c:75
+po/zh_CN.po:90:#: src/raider-shortcuts.blp:8
+po/zh_CN.po:94:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/zh_CN.po:98:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/zh_CN.po:102:#: src/raider-shortcuts.blp:23
+po/zh_CN.po:106:#: src/raider-shortcuts.blp:27
+po/zh_CN.po:110:#: src/raider-window.blp:26
+po/zh_CN.po:114:#: src/raider-window.blp:43
+po/zh_CN.po:118:#: src/raider-window.blp:58
+po/zh_CN.po:122:#: src/raider-window.blp:60
+po/zh_CN.po:128:#: src/raider-window.blp:96
+po/zh_CN.po:132:#: src/raider-window.blp:101 src/raider-window.c:389
+po/zh_CN.po:136:#: src/raider-window.blp:120 src/raider-window.c:442
+po/zh_CN.po:140:#: src/raider-window.blp:147
+po/zh_CN.po:144:#: src/raider-window.blp:156
+po/zh_CN.po:148:#: src/raider-window.c:178
+po/zh_CN.po:152:#: src/raider-window.c:178
+po/zh_CN.po:156:#: src/raider-window.c:181
+po/zh_CN.po:160:#: src/raider-window.c:181
+po/zh_CN.po:164:#: src/raider-window.c:230
+po/zh_CN.po:168:#: src/raider-window.c:240
+po/zh_CN.po:172:#: src/raider-window.c:312
+po/zh_CN.po:173:#, c-format
+po/zh_CN.po:177:#: src/raider-window.c:326
+po/zh_CN.po:181:#: src/raider-window.c:338
+po/zh_CN.po:182:#, c-format
+po/zh_CN.po:186:#: src/raider-window.c:350
+po/zh_CN.po:190:#: src/raider-window.c:388
+po/zh_CN.po:194:#: src/raider-window.c:412
+po/zh_CN.po:198:#: src/raider-window.c:464
+po/de.po:9:"Project-Id-Version: raider\n"
+po/de.po:10:"Report-Msgid-Bugs-To: \n"
+po/de.po:11:"POT-Creation-Date: 2023-10-15 00:10+0300\n"
+po/de.po:12:"PO-Revision-Date: 2022-12-07 15:43+0200\n"
+po/de.po:13:"Last-Translator: gregorni <mail.gregorni@proton.me>\n"
+po/de.po:14:"Language-Team: German <gnome-de@gnome.org>\n"
+po/de.po:16:"MIME-Version: 1.0\n"
+po/de.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/de.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/de.po:22:#: src/raider-application.c:140 src/raider-window.blp:40
+po/de.po:41:#: src/raider-application.c:66 src/raider-shortcuts.blp:11
+po/de.po:42:#: src/raider-window.blp:33
+po/de.po:46:#: src/raider-application.c:154
+po/de.po:47:msgid "translator-credits"
+po/de.po:50:#: src/raider-progress-info-popover.c:62
+po/de.po:54:#: src/raider-progress-info-popover.c:70
+po/de.po:58:#: src/raider-shortcuts.blp:8
+po/de.po:62:#: src/raider-shortcuts.blp:15 src/raider-window.blp:135
+po/de.po:66:#: src/raider-shortcuts.blp:19 src/raider-window.blp:141
+po/de.po:70:#: src/raider-shortcuts.blp:23
+po/de.po:75:#: src/raider-shortcuts.blp:27
+po/de.po:79:#: src/raider-window.blp:31
+po/de.po:83:#: src/raider-window.blp:46
+po/de.po:87:#: src/raider-window.blp:61
+po/de.po:91:#: src/raider-window.blp:63
+po/de.po:99:#: src/raider-window.blp:99 src/raider-window.c:358
+po/de.po:103:#: src/raider-window.blp:118 src/raider-window.c:410
+po/de.po:107:#: src/raider-window.blp:145
+po/de.po:111:#: src/raider-window.c:151
+po/de.po:116:#: src/raider-window.c:152
+po/de.po:120:#: src/raider-window.c:155
+po/de.po:125:#: src/raider-window.c:155
+po/de.po:129:#: src/raider-window.c:203
+po/de.po:135:#: src/raider-window.c:213
+po/de.po:139:#: src/raider-window.c:281
+po/de.po:144:#: src/raider-window.c:294
+po/de.po:148:#: src/raider-window.c:302
+po/de.po:152:#: src/raider-window.c:312
+po/de.po:153:#, c-format
+po/de.po:157:#: src/raider-window.c:323
+po/de.po:162:#: src/raider-window.c:380
+po/de.po:166:#: src/raider-window.c:432
+po/sv.po:9:"Project-Id-Version: raider\n"
+po/sv.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/sv.po:11:"POT-Creation-Date: 2025-09-04 14:11+0000\n"
+po/sv.po:12:"PO-Revision-Date: 2025-09-07 01:19+0200\n"
+po/sv.po:13:"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+po/sv.po:14:"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+po/sv.po:16:"MIME-Version: 1.0\n"
+po/sv.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/sv.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/sv.po:19:"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+po/sv.po:20:"X-Generator: Poedit 3.7\n"
+po/sv.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/sv.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/sv.po:55:"Inom en viss gräns är det effektivt. Moderna SSD-diskar använder dock vissa "
+po/sv.po:66:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/sv.po:67:#: src/raider-window.blp:28
+po/sv.po:71:#: src/raider-application.c:94
+po/sv.po:75:#: src/raider-application.c:181
+po/sv.po:76:msgid "translator-credits"
+po/sv.po:79:#: src/raider-progress-info-popover.c:55
+po/sv.po:83:#: src/raider-progress-info-popover.c:67
+po/sv.po:87:#: src/raider-progress-info-popover.c:75
+po/sv.po:91:#: src/raider-shortcuts.blp:8
+po/sv.po:95:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/sv.po:99:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/sv.po:103:#: src/raider-shortcuts.blp:23
+po/sv.po:107:#: src/raider-shortcuts.blp:27
+po/sv.po:111:#: src/raider-window.blp:26
+po/sv.po:115:#: src/raider-window.blp:43
+po/sv.po:119:#: src/raider-window.blp:58
+po/sv.po:123:#: src/raider-window.blp:60
+po/sv.po:131:#: src/raider-window.blp:96
+po/sv.po:135:#: src/raider-window.blp:101 src/raider-window.c:389
+po/sv.po:139:#: src/raider-window.blp:120 src/raider-window.c:442
+po/sv.po:143:#: src/raider-window.blp:147
+po/sv.po:147:#: src/raider-window.blp:156
+po/sv.po:151:#: src/raider-window.c:178
+po/sv.po:155:#: src/raider-window.c:178
+po/sv.po:159:#: src/raider-window.c:181
+po/sv.po:163:#: src/raider-window.c:181
+po/sv.po:167:#: src/raider-window.c:230
+po/sv.po:171:#: src/raider-window.c:240
+po/sv.po:175:#: src/raider-window.c:312
+po/sv.po:176:#, c-format
+po/sv.po:180:#: src/raider-window.c:326
+po/sv.po:184:#: src/raider-window.c:338
+po/sv.po:185:#, c-format
+po/sv.po:189:#: src/raider-window.c:350
+po/sv.po:193:#: src/raider-window.c:388
+po/sv.po:197:#: src/raider-window.c:412
+po/sv.po:201:#: src/raider-window.c:464
+src/raider-progress-paintable.h:4: * SPDX-License-Identifier: GPL-3.0-or-later
+src/main.c:21:#include "raider-config.h"
+src/main.c:22:#include "raider-application.h"
+src/main.c:32:	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+src/raider-shortcuts.blp:8:      action-name: "app.open";
+src/raider-shortcuts.blp:12:      action-name: "app.new-window";
+src/raider-shortcuts.blp:16:      action-name: "app.shortcuts";
+src/raider-shortcuts.blp:20:      action-name: "app.close";
+src/raider-shortcuts.blp:24:      action-name: "app.quit";
+src/raider.gresource.xml:1:<?xml version="1.0" encoding="UTF-8"?>
+src/raider.gresource.xml:4:    <file>raider-window.ui</file>
+src/raider.gresource.xml:5:    <file>raider-file-row.ui</file>
+src/raider.gresource.xml:6:    <file>raider-progress-info-popover.ui</file>
+src/raider.gresource.xml:7:    <file alias="shortcuts-dialog.ui">raider-shortcuts.ui</file>
+src/raider-window.blp:5:  default-width: 800;
+src/raider-window.blp:6:  default-height: 600;
+src/raider-window.blp:7:  width-request: 270;
+src/raider-window.blp:8:  height-request: 300;
+src/raider-window.blp:10:  icon-name: "com.github.ADBeveridge.Raider";
+src/raider-window.blp:18:      centering-policy: strict;
+src/raider-window.blp:22:        reveal-child: true;
+src/raider-window.blp:23:        transition-type: slide_right;
+src/raider-window.blp:27:            icon-name: "document-open-symbolic";
+src/raider-window.blp:28:            tooltip-text: _("Add Files");
+src/raider-window.blp:30:          action-name: "app.open";
+src/raider-window.blp:31:          menu-model: open_menu;
+src/raider-window.blp:42:        icon-name: "open-menu-symbolic";
+src/raider-window.blp:43:        tooltip-text: _("Main Menu");
+src/raider-window.blp:44:        menu-model: primary_menu;
+src/raider-window.blp:52:        margin-top: 24;
+src/raider-window.blp:54:          transition-type: crossfade;
+src/raider-window.blp:59:              icon-name: "com.github.ADBeveridge.Raider";
+src/raider-window.blp:71:                maximum-size: 700;
+src/raider-window.blp:73:                    margin-bottom: 16;
+src/raider-window.blp:74:                    margin-top: 16;
+src/raider-window.blp:76:                    styles ["boxed-list"]
+src/raider-window.blp:82:                reveal-child: false;
+src/raider-window.blp:83:                transition-type: slide_up;
+src/raider-window.blp:86:                margin-bottom: 20;
+src/raider-window.blp:89:                  margin-end: 5;
+src/raider-window.blp:90:                  margin-top: 5;
+src/raider-window.blp:91:                  margin-start: 5;
+src/raider-window.blp:92:                  margin-bottom: 5;
+src/raider-window.blp:98:                    margin-start: 10;
+src/raider-window.blp:100:                    styles ["destructive-action", "pill"]
+src/raider-window.blp:106:                reveal-child: false;
+src/raider-window.blp:107:                transition-type: slide_up;
+src/raider-window.blp:110:                margin-bottom: 20;
+src/raider-window.blp:113:                  margin-end: 5;
+src/raider-window.blp:114:                  margin-top: 5;
+src/raider-window.blp:115:                  margin-start: 5;
+src/raider-window.blp:116:                  margin-bottom: 5;
+src/raider-window.blp:119:                    styles ["destructive-action", "pill"]
+src/raider-window.blp:136:      action: "app.new-window";
+src/raider-window.blp:155:      action: "app.add-folder";
+src/raider-file-row.blp:7:  use-markup: false;
+src/raider-file-row.blp:14:      reveal-child: true;
+src/raider-file-row.blp:15:      transition-type: slide_left;
+src/raider-file-row.blp:18:        icon-name: "edit-delete-symbolic";
+src/raider-file-row.blp:19:        tooltip-text: _("Remove file from list");
+src/raider-file-row.blp:24:      reveal-child: false;
+src/raider-file-row.blp:25:      transition-type: slide_left;
+src/raider-file-row.blp:28:        tooltip-text: _("View shredding progress");
+src/backend/bucket.c:12:    self->files = g_list_append(self->files, payload);
+src/backend/bucket.c:22:    corrupt_file(payload, &context->bucket->strategy);
+src/backend/bucket.c:31:    context->bucket = self;
+src/backend/bucket.c:32:    context->cancel = cancel;
+src/backend/bucket.c:34:    GThreadPool *pool = g_thread_pool_new(file_shred, context, self->strategy.thread_count, TRUE, &error);
+src/backend/bucket.c:37:        g_printerr("Failed to create thread pool: %s\n", error->message);
+src/backend/bucket.c:43:    for (GList *l = self->files; l != NULL; l = l->next)
+src/backend/bucket.c:45:        g_thread_pool_push(pool, l->data, &error);
+src/backend/bucket.c:48:            g_printerr("Failed to push to pool: %s\n", error->message);
+po/tr.po:2:# Copyright (C) 2022-2025 com.github.ADBeveridge.Raider's COPYRIGHT HOLDER
+po/tr.po:9:"Project-Id-Version: \n"
+po/tr.po:10:"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+po/tr.po:11:"POT-Creation-Date: 2025-10-20 03:36+0000\n"
+po/tr.po:12:"PO-Revision-Date: 2025-09-04 19:49+0300\n"
+po/tr.po:13:"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+po/tr.po:14:"Language-Team: Türkçe <takim@gnome.org.tr>\n"
+po/tr.po:16:"MIME-Version: 1.0\n"
+po/tr.po:17:"Content-Type: text/plain; charset=UTF-8\n"
+po/tr.po:18:"Content-Transfer-Encoding: 8bit\n"
+po/tr.po:19:"Plural-Forms: nplurals=1; plural=0;\n"
+po/tr.po:20:"X-Generator: Poedit 3.7\n"
+po/tr.po:24:#: src/raider-application.c:168 src/raider-application.c:224
+po/tr.po:25:#: src/raider-window.blp:9 src/raider-window.blp:37
+po/tr.po:66:#: src/raider-application.c:84 src/raider-shortcuts.blp:11
+po/tr.po:67:#: src/raider-window.blp:28
+po/tr.po:71:#: src/raider-application.c:94
+po/tr.po:75:#: src/raider-application.c:181
+po/tr.po:76:msgid "translator-credits"
+po/tr.po:79:#: src/raider-progress-info-popover.c:55
+po/tr.po:83:#: src/raider-progress-info-popover.c:67
+po/tr.po:87:#: src/raider-progress-info-popover.c:75
+po/tr.po:91:#: src/raider-shortcuts.blp:8
+po/tr.po:95:#: src/raider-shortcuts.blp:15 src/raider-window.blp:137
+po/tr.po:99:#: src/raider-shortcuts.blp:19 src/raider-window.blp:143
+po/tr.po:103:#: src/raider-shortcuts.blp:23
+po/tr.po:107:#: src/raider-shortcuts.blp:27
+po/tr.po:111:#: src/raider-window.blp:26
+po/tr.po:115:#: src/raider-window.blp:43
+po/tr.po:119:#: src/raider-window.blp:58
+po/tr.po:123:#: src/raider-window.blp:60
+po/tr.po:131:#: src/raider-window.blp:96
+po/tr.po:135:#: src/raider-window.blp:101 src/raider-window.c:389
+po/tr.po:139:#: src/raider-window.blp:120 src/raider-window.c:442
+po/tr.po:143:#: src/raider-window.blp:147
+po/tr.po:147:#: src/raider-window.blp:156
+po/tr.po:151:#: src/raider-window.c:178
+po/tr.po:155:#: src/raider-window.c:178
+po/tr.po:159:#: src/raider-window.c:181
+po/tr.po:163:#: src/raider-window.c:181
+po/tr.po:167:#: src/raider-window.c:230
+po/tr.po:171:#: src/raider-window.c:240
+po/tr.po:175:#: src/raider-window.c:312
+po/tr.po:176:#, c-format
+po/tr.po:180:#: src/raider-window.c:326
+po/tr.po:184:#: src/raider-window.c:338
+po/tr.po:185:#, c-format
+po/tr.po:189:#: src/raider-window.c:350
+po/tr.po:193:#: src/raider-window.c:388
+po/tr.po:197:#: src/raider-window.c:412
+po/tr.po:201:#: src/raider-window.c:464
+src/raider-application.h:1:/* raider-application.h
+src/raider-progress-info-popover.c:1:/* raider-progress-info-popover.c
+src/raider-progress-info-popover.c:19:#include "raider-progress-info-popover.h"
+src/raider-progress-info-popover.c:50:        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Starting…"));
+src/raider-progress-info-popover.c:51:        gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), 1);
+src/raider-progress-info-popover.c:56:        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), display);
+src/raider-progress-info-popover.c:57:        gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(popover->progress_bar), fraction);
+src/raider-progress-info-popover.c:62:        gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Finishing up…"));
+src/raider-progress-info-popover.c:63:        gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
+src/raider-progress-info-popover.c:71:        g_value_set_double(value, self->progress);
+src/raider-progress-info-popover.c:81:        self->progress = g_value_get_double(value);
+src/raider-progress-info-popover.c:82:        raider_progress_info_popover_set_progress(self, self->progress);
+src/raider-progress-info-popover.c:93:    gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(popover->progress_bar), .02);
+src/raider-progress-info-popover.c:94:    popover->progress = 0.0;
+src/raider-progress-info-popover.c:100:    object_class->get_property = raider_progress_info_popover_get_property;
+src/raider-progress-info-popover.c:101:    object_class->set_property = raider_progress_info_popover_set_property;
+src/raider-progress-info-popover.c:103:    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-progress-info-popover.ui");
+src/raider-progress-info-popover.c:122:    gtk_progress_bar_set_text(GTK_PROGRESS_BAR(popover->progress_bar), _("Estimating…"));
+src/raider-progress-info-popover.c:123:    gtk_progress_bar_pulse(GTK_PROGRESS_BAR(popover->progress_bar));
+src/backend/raider-file-item.c:1:#include "raider-file-item.h"
+src/backend/raider-file-item.c:38:        g_value_set_double(value, self->progress);
+src/backend/raider-file-item.c:47:        self->progress = g_value_get_double(value);
+src/backend/raider-file-item.c:55:    g_clear_object(&self->file);
+src/backend/raider-file-item.c:56:    g_clear_pointer(&self->name, g_free);
+src/backend/raider-file-item.c:57:    g_clear_pointer(&self->path, g_free);
+src/backend/raider-file-item.c:59:    G_OBJECT_CLASS(raider_file_item_parent_class)->dispose(object);
+src/backend/raider-file-item.c:65:    object_class->dispose = raider_file_item_dispose;
+src/backend/raider-file-item.c:66:    object_class->get_property = raider_file_item_get_property;
+src/backend/raider-file-item.c:67:    object_class->set_property = raider_file_item_set_property;
+src/backend/raider-file-item.c:71:    obj_signals[SIGNAL_SHRED_FINISHED] = g_signal_new("shred-finished", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
+src/backend/raider-file-item.c:78:    self->progress = 0.0;
+src/backend/raider-file-item.c:85:    self->file = g_object_ref(file);
+src/backend/raider-file-item.c:86:    self->name = g_file_get_basename(file);
+src/backend/raider-file-item.c:87:    self->path = g_file_get_path(file);
+src/backend/raider-file-item.c:94:    return item->file;
+src/backend/raider-file-item.c:99:    return item->name;
+src/backend/raider-file-item.c:104:    return item->path;
+src/backend/raider-file-item.c:109:    return item->is_folder;
+src/backend/raider-file-item.c:123:    payload->item->progress = payload->progress;
+src/backend/raider-file-item.c:124:    g_object_notify_by_pspec(G_OBJECT(payload->item), obj_properties[PROP_PROGRESS]);
+src/backend/raider-file-item.c:126:    g_object_unref(payload->item);
+src/backend/raider-file-item.c:136:    payload->item = g_object_ref(self);
+src/backend/raider-file-item.c:137:    payload->progress = progress;
+src/raider-application.c:1:/* raider-application.c
+src/raider-application.c:20:#include "raider-application.h"
+src/raider-application.c:21:#include "raider-config.h"
+src/raider-application.c:22:#include "raider-window.h"
+src/raider-application.c:33:    return g_object_new(RAIDER_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
+src/raider-application.c:102:    for (l = list; l != NULL; l = l->next)
+src/raider-application.c:104:        if (raider_window_exit(RAIDER_WINDOW(l->data), NULL) == TRUE)
+src/raider-application.c:153:        "David Lapshin https://github.com/daudix-UFO",
+src/raider-application.c:170:                         "application-name", program_name,
+src/raider-application.c:171:                         "application-icon", "com.github.ADBeveridge.Raider",
+src/raider-application.c:174:                         "issue-url", "https://github.com/ADBeveridge/raider/issues/new",
+src/raider-application.c:175:                         "license-type", GTK_LICENSE_GPL_3_0,
+src/raider-application.c:176:                         "developer-name", "Alan Beveridge",
+src/raider-application.c:180:                         "translator-credits", _("translator-credits"),
+src/raider-application.c:201:    G_OBJECT_CLASS(raider_application_parent_class)->finalize(object);
+src/raider-application.c:223:    g_print ("%s - %s\n", _("File Shredder"), PACKAGE_VERSION);
+src/raider-application.c:227:  if (g_variant_dict_lookup (options, "new-window", "b", &new_window) && new_window)
+src/raider-application.c:233:      g_action_group_activate_action (G_ACTION_GROUP (app), "new-window", NULL);
+src/raider-application.c:238:  return -1;
+src/raider-application.c:246:    object_class->finalize = raider_application_finalize;
+src/raider-application.c:247:    app_class->handle_local_options = raider_application_handle_local_options;
+src/raider-application.c:248:    app_class->activate = raider_application_activate;
+src/raider-application.c:249:    app_class->open = raider_application_open;
+src/raider-application.c:253:    {"new-window", 'w', 0, G_OPTION_ARG_NONE, NULL, "Open a new window", NULL},
+src/raider-application.c:276:    g_autoptr(GSimpleAction) new_window_action = g_simple_action_new("new-window", NULL);
+src/raider-application.c:279:    gtk_application_set_accels_for_action(GTK_APPLICATION(self), "app.new-window", (const char *[]){"<Ctrl>n",NULL,});
+src/raider-application.c:286:    g_autoptr(GSimpleAction) open_folder_action = g_simple_action_new("add-folder", NULL);
+src/raider-application.c:291:    /*g_autoptr(GSimpleAction) open_drive_action = g_simple_action_new("open-drive", G_VARIANT_TYPE_STRING);
+src/backend/corrupt.h:7:#include "raider-file-item.h"
+src/raider-progress-paintable.c:4: * SPDX-License-Identifier: GPL-3.0-or-later
+src/raider-progress-paintable.c:10:#include "raider-progress-paintable.h"
+src/raider-progress-paintable.c:53:    if (self->icon_name == NULL)
+src/raider-progress-paintable.c:58:    GdkDisplay *display = gtk_widget_get_display (self->widget);
+src/raider-progress-paintable.c:60:    int scale = gtk_widget_get_scale_factor (self->widget);
+src/raider-progress-paintable.c:61:    GtkTextDirection direction = gtk_widget_get_direction (self->widget);
+src/raider-progress-paintable.c:63:    g_set_object (&self->check_paintable,
+src/raider-progress-paintable.c:64:                  gtk_icon_theme_lookup_icon (theme, self->icon_name,
+src/raider-progress-paintable.c:81:    g_signal_connect_swapped (self->widget, "notify::scale-factor",
+src/raider-progress-paintable.c:86:    G_OBJECT_CLASS (raider_progress_paintable_parent_class)->constructed (object);
+src/raider-progress-paintable.c:101:            g_value_set_string (value, self->icon_name);
+src/raider-progress-paintable.c:107:            g_value_set_object (value, self->widget);
+src/raider-progress-paintable.c:113:            g_value_set_double (value, self->progress);
+src/raider-progress-paintable.c:136:            if (g_set_str (&self->icon_name, g_value_get_string (value)))
+src/raider-progress-paintable.c:145:            g_set_object (&self->widget, g_value_get_object (value));
+src/raider-progress-paintable.c:151:            self->progress = g_value_get_double (value);
+src/raider-progress-paintable.c:168:    g_clear_pointer (&self->icon_name, g_free);
+src/raider-progress-paintable.c:169:    g_clear_object (&self->widget);
+src/raider-progress-paintable.c:170:    g_clear_object (&self->check_paintable);
+src/raider-progress-paintable.c:172:    G_OBJECT_CLASS (raider_progress_paintable_parent_class)->dispose (object);
+src/raider-progress-paintable.c:180:    object_class->constructed = raider_progress_paintable_constructed;
+src/raider-progress-paintable.c:181:    object_class->get_property = raider_progress_paintable_get_property;
+src/raider-progress-paintable.c:182:    object_class->set_property = raider_progress_paintable_set_property;
+src/raider-progress-paintable.c:183:    object_class->dispose = raider_progress_paintable_dispose;
+src/raider-progress-paintable.c:186:        g_param_spec_string ("icon-name",
+src/raider-progress-paintable.c:216:    return SIZE * gtk_widget_get_scale_factor (self->widget);
+src/raider-progress-paintable.c:224:    return SIZE * gtk_widget_get_scale_factor (self->widget);
+src/raider-progress-paintable.c:230:    iface->get_intrinsic_width = raider_progress_paintable_get_intrinsic_width;
+src/raider-progress-paintable.c:231:    iface->get_intrinsic_height = raider_progress_paintable_get_intrinsic_height;
+src/raider-progress-paintable.c:248:    if (self->check_progress < 1)
+src/raider-progress-paintable.c:252:        gtk_snapshot_scale (snapshot, 1.0f - self->check_progress, 1.0f - self->check_progress);
+src/raider-progress-paintable.c:253:        gtk_snapshot_translate (snapshot, &GRAPHENE_POINT_INIT (-width / 2.0f, -height / 2.0f));
+src/raider-progress-paintable.c:257:    if (self->check_progress > 0)
+src/raider-progress-paintable.c:261:        gtk_snapshot_scale (snapshot, self->check_progress, self->check_progress);
+src/raider-progress-paintable.c:262:        gtk_snapshot_translate (snapshot, &GRAPHENE_POINT_INIT (-width / 2.0f, -height / 2.0f));
+src/raider-progress-paintable.c:263:        gtk_symbolic_paintable_snapshot_symbolic (GTK_SYMBOLIC_PAINTABLE (self->check_paintable),
+src/raider-progress-paintable.c:268:    cr = gtk_snapshot_append_cairo (snapshot, &GRAPHENE_RECT_INIT (-2, -2, width + 4, width + 4));
+src/raider-progress-paintable.c:269:    arc_end = self->progress * G_PI * 2 - G_PI / 2;
+src/raider-progress-paintable.c:274:    cairo_arc (cr, 0, 0, width / 2.0 + 1, -G_PI / 2, arc_end);
+src/raider-progress-paintable.c:287:    iface->snapshot_symbolic = raider_progress_paintable_snapshot_symbolic;
+src/backend/bucket.h:5:#include "raider-file-item.h"
+src/backend/utility.c:4:#include "raider-file-item.h"
+src/backend/utility.c:28:        return (strategy){1, "0", 1, false, false, 1, "Shredding not guaranteed on a copy-on-write filesystem"};
+src/backend/utility.c:59:    if (strat->pattern_len == 0)
+src/backend/utility.c:77:        buffer[i] = strat->pattern[i % strat->pattern_len];
+src/backend/utility.c:81:    int last_reported_percent = -1;
+src/backend/utility.c:85:        size_t remaining = (size_t)(size - bytes_written);
+src/backend/utility.c:92:        double total_target_bytes = (double)size * strat->passes;
+src/backend/utility.c:100:            raider_file_item_set_progress_safe(payload->item, overall_bytes_written / total_target_bytes);
+src/backend/utility.c:114:    char *filename = g_file_get_path(payload->file);
+src/backend/utility.c:135:    for (int i = 0; i < strat->passes; i++)
+src/raider-file-row.c:1:/* raider-file-row.c
+src/raider-file-row.c:19:#include "raider-file-row.h"
+src/raider-file-row.c:20:#include "backend/raider-file-item.h"
+src/raider-file-row.c:21:#include "raider-progress-info-popover.h"
+src/raider-file-row.c:22:#include "raider-progress-paintable.h"
+src/raider-file-row.c:23:#include "raider-window.h"
+src/raider-file-row.c:52:    gtk_widget_unparent(GTK_WIDGET(row->popover));
+src/raider-file-row.c:55:    gtk_image_set_from_paintable(GTK_IMAGE(row->progress_paintable_image), NULL);
+src/raider-file-row.c:56:    g_object_unref(row->progress_paintable);
+src/raider-file-row.c:58:    G_OBJECT_CLASS(raider_file_row_parent_class)->dispose(obj);
+src/raider-file-row.c:65:    row->popover = raider_progress_info_popover_new();
+src/raider-file-row.c:66:    gtk_widget_set_parent(GTK_WIDGET(row->popover), GTK_WIDGET(row->progress_button));
+src/raider-file-row.c:67:    g_signal_connect_swapped(row->progress_button, "clicked", G_CALLBACK(gtk_popover_popup), row->popover);
+src/raider-file-row.c:68:    g_signal_connect(row->remove_button, "clicked", G_CALLBACK(raider_file_row_close), row);
+src/raider-file-row.c:70:    row->progress_paintable = raider_progress_paintable_new(GTK_WIDGET(row->progress_button));
+src/raider-file-row.c:71:    row->progress_paintable_image = gtk_image_new_from_paintable(row->progress_paintable);
+src/raider-file-row.c:72:    gtk_button_set_child(row->progress_button, row->progress_paintable_image);
+src/raider-file-row.c:77:    G_OBJECT_CLASS(klass)->dispose = raider_file_row_dispose; /* Override. */
+src/raider-file-row.c:79:    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ADBeveridge/Raider/raider-file-row.ui");
+src/raider-file-row.c:94:    if (self->bound_item)
+src/raider-file-row.c:96:        g_object_unref(self->bound_item);
+src/raider-file-row.c:98:    self->bound_item = g_object_ref(item);
+src/raider-file-row.c:103:    g_object_bind_property(item, "progress", self->progress_paintable, "progress", G_BINDING_SYNC_CREATE);
+src/raider-file-row.c:104:    g_object_bind_property(item, "progress", self->popover, "progress", G_BINDING_SYNC_CREATE);
+src/raider-file-row.c:115:    if (row->bound_item != NULL)
+src/raider-file-row.c:117:        raider_window_close_file(row->bound_item, window);
+src/raider-progress-info-popover.h:1:/* raider-progress-info-popover.h
+src/backend/corrupt.c:12:    g_object_unref(fp->file);
+src/backend/corrupt.c:38:    self->store = g_list_store_new(RAIDER_TYPE_FILE_ITEM); // Initialize it
+src/backend/corrupt.c:44:    return G_LIST_MODEL(self->store);
+src/backend/corrupt.c:54:    g_list_store_remove_all(self->store);
+src/backend/corrupt.c:59:    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(self->store));
+src/backend/corrupt.c:61:        RaiderFileItem *existing = g_list_model_get_item(G_LIST_MODEL(self->store), i);
+src/backend/corrupt.c:63:            g_list_store_remove(self->store, i);
+src/backend/corrupt.c:74:    g_signal_connect(item, "shred-finished", G_CALLBACK(on_item_shred_finished), self);
+src/backend/corrupt.c:75:    g_list_store_append(self->store, item);
+src/backend/corrupt.c:81:    char *filename = g_file_get_path(fp->file);
+src/backend/corrupt.c:97:    int length = g_list_length(self->buckets);
+src/backend/corrupt.c:100:        Bucket *bucket = g_list_nth_data(self->buckets, i);
+src/backend/corrupt.c:101:        if (bucket->deviceID == id)
+src/backend/corrupt.c:115:    new_bucket->deviceID = id;
+src/backend/corrupt.c:116:    new_bucket->strategy = strat;
+src/backend/corrupt.c:119:    self->buckets = g_list_append(self->buckets, new_bucket);
+src/backend/corrupt.c:132:        g_printerr("Skipping unreadable path: %s\n", error->message);
+src/backend/corrupt.c:143:        extracted_target->file = g_object_ref(target);
+src/backend/corrupt.c:144:        extracted_target->item = item;
+src/backend/corrupt.c:187:    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(self->store));
+src/backend/corrupt.c:192:        RaiderFileItem *item = g_list_model_get_item(G_LIST_MODEL(self->store), i);
+src/backend/corrupt.c:201:    for (GList *l = master_file_list; l != NULL; l = l->next)
+src/backend/corrupt.c:203:        FilePayload *fp = (FilePayload *)l->data;
+src/backend/corrupt.c:220:    for (GList *l = self->buckets; l != NULL; l = l->next)
+src/backend/corrupt.c:222:        g_thread_pool_push(master_pool, l->data, &error);
+src/backend/corrupt.c:226:            g_printerr("Failed to push bucket to thread pool: %s\n", error->message);
+src/backend/corrupt.c:235:    for (GList *l = self->buckets; l != NULL; l = l->next)
+src/backend/corrupt.c:237:        Bucket *bucket = (Bucket *)l->data;
+src/backend/corrupt.c:238:        g_list_free_full(bucket->files, file_progress_free);
+src/backend/corrupt.c:241:    g_list_free(self->buckets);
+src/backend/corrupt.c:242:    self->buckets = NULL;
+src/meson.build:3:  'raider-window.c',
+src/meson.build:4:  'raider-application.c',
+src/meson.build:5:  'raider-progress-paintable.c',
+src/meson.build:6:  'raider-file-row.c',
+src/meson.build:7:  'raider-progress-info-popover.c',
+src/meson.build:8:  'backend/raider-file-item.c',
+src/meson.build:17:    'raider-window.blp',
+src/meson.build:18:    'raider-file-row.blp',
+src/meson.build:19:    'raider-progress-info-popover.blp',
+src/meson.build:20:    'raider-shortcuts.blp',
+src/meson.build:23:  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+src/meson.build:26:raider_sources += gnome.compile_resources('raider-resources',
+src/raider-file-row.h:1:/* raider-file-row.h
+src/raider-file-row.h:22:#include "backend/raider-file-item.h"
+src/raider-window.h:1:/* raider-window.h
+src/raider-window.h:23:#include "backend/raider-file-item.h"
+src/backend/raider-file-item.h:1:/* raider-file-item.h
+com.github.ADBeveridge.Raider.json:2:    "app-id" : "com.github.ADBeveridge.Raider",
+com.github.ADBeveridge.Raider.json:4:    "runtime-version" : "50",
+com.github.ADBeveridge.Raider.json:7:    "finish-args" : [
+com.github.ADBeveridge.Raider.json:8:        "--share=ipc",
+com.github.ADBeveridge.Raider.json:9:        "--socket=fallback-x11",
+com.github.ADBeveridge.Raider.json:10:        "--socket=wayland",
+com.github.ADBeveridge.Raider.json:11:        "--device=dri"
+src/raider-window.c:1:/* raider-window.c
+src/raider-window.c:19:#include "raider-window.h"
+src/raider-window.c:21:#include "raider-config.h"
+src/raider-window.c:22:#include "backend/raider-file-item.h"
+src/raider-window.c:23:#include "raider-file-row.h"
+src/raider-window.c:65:    G_OBJECT_CLASS(raider_window_parent_class)->dispose(object);
+src/raider-window.c:70:    G_OBJECT_CLASS(klass)->dispose = raider_window_dispose;
+src/raider-window.c:74:    gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ADBeveridge/Raider/raider-window.ui");
+src/raider-window.c:92:    g_signal_connect(self->clear_button, "clicked", G_CALLBACK(raider_window_clear_files), self);
+src/raider-window.c:93:    g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
+src/raider-window.c:94:    g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
+src/raider-window.c:95:    g_signal_connect(self, "close-request", G_CALLBACK(raider_window_exit), NULL);
+src/raider-window.c:98:    self->target = gtk_drop_target_new(G_TYPE_INVALID, GDK_ACTION_COPY);
+src/raider-window.c:100:    gtk_drop_target_set_gtypes(self->target, drop_types, 1);
+src/raider-window.c:101:    g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
+src/raider-window.c:102:    gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
+src/raider-window.c:105:    self->corrupt = corrupt_new();
+src/raider-window.c:106:    gtk_list_box_bind_model(self->list_box, corrupt_get_model(self->corrupt), create_listbox_row, self, NULL);
+src/raider-window.c:108:    self->cancel_shredding = g_cancellable_new();
+src/raider-window.c:109:    self->show_notification = FALSE;
+src/raider-window.c:126:    corrupt_clear_files(window->corrupt);
+src/raider-window.c:129:    gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+src/raider-window.c:130:    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+src/raider-window.c:131:    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+src/raider-window.c:132:    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+src/raider-window.c:144:    for (l = slist; l != NULL; l = l->next)
+src/raider-window.c:146:        file_list = g_list_append(file_list, g_file_dup(l->data));
+src/raider-window.c:166:    if (win->status)
+src/raider-window.c:180:    return win->status;
+src/raider-window.c:185:    window->show_notification = show;
+src/raider-window.c:190:    adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
+src/raider-window.c:196:    corrupt_remove_file(target_item, window->corrupt);
+src/raider-window.c:199:    if (g_list_model_get_n_items(corrupt_get_model(window->corrupt)) == 0)
+src/raider-window.c:201:        gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+src/raider-window.c:203:        if (window->show_notification == TRUE)
+src/raider-window.c:219:        gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+src/raider-window.c:220:        gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+src/raider-window.c:221:        gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+src/raider-window.c:222:        window->show_notification = TRUE;
+src/raider-window.c:234:        g_printerr("Failed to process files in background: %s\n", error->message);
+src/raider-window.c:239:    for (GList *l = valid_files; l != NULL; l = l->next)
+src/raider-window.c:241:        GFile *file = l->data;
+src/raider-window.c:242:        corrupt_add_file(window->corrupt, file);
+src/raider-window.c:245:    if (g_list_model_get_n_items(corrupt_get_model(window->corrupt)) > 0)
+src/raider-window.c:247:        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
+src/raider-window.c:248:        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
+src/raider-window.c:259:    for (GList *l = file_list; l != NULL; l = l->next)
+src/raider-window.c:261:        gboolean status = raider_window_check_file(l->data, NULL, NULL);
+src/raider-window.c:264:            valid_files = g_list_append(valid_files, g_object_ref(l->data));
+src/raider-window.c:276:    GListModel *model = corrupt_get_model(window->corrupt);
+src/raider-window.c:280:    for (GList *l = file_list; l != NULL; l = l->next)
+src/raider-window.c:282:        GFile *incoming_file = G_FILE(l->data);
+src/raider-window.c:350:    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+src/raider-window.c:351:    gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
+src/raider-window.c:352:    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+src/raider-window.c:354:    gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), TRUE);
+src/raider-window.c:355:    gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), TRUE);
+src/raider-window.c:356:    gtk_button_set_label(window->clear_button, _("Clear All"));
+src/raider-window.c:357:    gtk_button_set_label(window->shred_button, _("Shred All"));
+src/raider-window.c:364:        g_printerr("Failed to corrupt: %s\n", error->message);
+src/raider-window.c:379:    gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
+src/raider-window.c:380:    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
+src/raider-window.c:381:    gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
+src/raider-window.c:383:    gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
+src/raider-window.c:385:    window->status = TRUE;
+src/raider-window.c:387:    corrupt_start_shredding_async(window->corrupt, window->cancel_shredding, raider_window_shred_files_finish, window);
+src/raider-window.c:401:    gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
+src/raider-window.c:402:    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+src/raider-window.c:403:    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
+src/raider-window.c:405:    window->status = FALSE;
+src/raider-window.c:408:    gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
+src/raider-window.c:409:    gtk_button_set_label(window->abort_button, _("Abort All"));
+src/raider-window.c:420:    gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
+src/raider-window.c:421:    gtk_button_set_label(window->abort_button, _("Aborting…"));
+src/raider-window.c:422:    window->show_notification = FALSE;
+meson.build:6:glib_dep = dependency('glib-2.0', version: '>= 2.80.0')
+meson.build:8:libadwaita_dep = dependency('libadwaita-1', version: '>= 1.8.0')
+meson.build:9:blueprint_dep = dependency('blueprint-compiler', native: true, version: '>= 0.10.0')
+meson.build:18:configure_file(output: 'raider-config.h', configuration: config_h)
+meson.build:19:add_project_arguments(['-I' + meson.project_build_root(),], language: 'c')

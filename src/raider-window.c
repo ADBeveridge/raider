@@ -27,11 +27,12 @@
 #include <glib/gstdio.h>
 #include <sys/resource.h>
 #include <sys/stat.h>
-#include <sys/types.h>
+#include <sys/xattr.h>
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data);
+static void on_list_items_changed(GListModel *model, guint position, guint removed, guint added, gpointer user_data);
 static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *title);
-static void raider_window_start_shredding(GtkWidget *widget, gpointer data);
+static void raider_window_shred_files(GtkWidget *widget, gpointer data);
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data);
 static void raider_window_clear_files(GtkWidget *widget, gpointer data);
 static GtkWidget *create_listbox_row(gpointer item, gpointer user_data);
@@ -55,15 +56,15 @@ struct _RaiderWindow
 
     Corrupt *corrupt;
     GCancellable *cancel_shredding;
-    gboolean status; // Shredding or not.
     gboolean show_notification;
+    gboolean status;
+    gboolean close_after_abort;
 };
 
 G_DEFINE_TYPE(RaiderWindow, raider_window, ADW_TYPE_APPLICATION_WINDOW)
 
 static void raider_window_dispose(GObject *object)
 {
-    // RaiderWindow *self = RAIDER_WINDOW (object);
     G_OBJECT_CLASS(raider_window_parent_class)->dispose(object);
 }
 
@@ -92,7 +93,7 @@ static void raider_window_init(RaiderWindow *self)
     gtk_widget_init_template(GTK_WIDGET(self));
 
     g_signal_connect(self->clear_button, "clicked", G_CALLBACK(raider_window_clear_files), self);
-    g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_start_shredding), self);
+    g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_shred_files), self);
     g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
     g_signal_connect(self, "close-request", G_CALLBACK(raider_window_exit), NULL);
 
@@ -105,11 +106,31 @@ static void raider_window_init(RaiderWindow *self)
 
     // Setup backend.
     self->corrupt = corrupt_new();
-    gtk_list_box_bind_model(self->list_box, corrupt_get_model(self->corrupt), create_listbox_row, self, NULL);
+    GListModel *model = corrupt_get_model(self->corrupt);
+    gtk_list_box_bind_model(self->list_box, model, create_listbox_row, self, NULL);
+    g_signal_connect(model, "items-changed", G_CALLBACK(on_list_items_changed), self);
 
-    self->cancel_shredding = g_cancellable_new();
+    self->cancel_shredding = NULL;
     self->status = FALSE;
+    self->close_after_abort = FALSE;
     self->show_notification = FALSE;
+}
+
+static void on_list_items_changed(GListModel *model, guint position, guint removed, guint added, gpointer user_data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(user_data);
+    guint count = g_list_model_get_n_items(model);
+
+    if (count == 0)
+    {
+        gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
+    }
+    else
+    {
+        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
+        gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
+        gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
+    }
 }
 
 static GtkWidget *create_listbox_row(gpointer item, gpointer user_data)
@@ -125,14 +146,7 @@ static GtkWidget *create_listbox_row(gpointer item, gpointer user_data)
 static void raider_window_clear_files(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
-
     corrupt_clear_files(window->corrupt);
-
-    // Reset the UI state
-    gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
-    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
 }
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
@@ -159,7 +173,7 @@ static void raider_window_exit_response(GtkDialog *dialog, gchar *response, Raid
 {
     if (g_strcmp0(response, "exit") == 0)
     {
-        // Because the first argument is NULL, the function will construe that to exit. This is a hack around the GTask callback system.
+        self->close_after_abort = TRUE;
         raider_window_abort_shredding(NULL, GTK_WIDGET(self));
     }
 }
@@ -197,34 +211,6 @@ void raider_window_show_toast(RaiderWindow *window, gchar *text)
 void raider_window_close_file(RaiderFileItem *target_item, RaiderWindow *window)
 {
     corrupt_remove_file(window->corrupt, target_item);
-
-    // Check the live count AFTER the removal
-    if (g_list_model_get_n_items(corrupt_get_model(window->corrupt)) == 0)
-    {
-        gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
-        window->status = FALSE;
-
-        if (window->show_notification == TRUE)
-        {
-            gchar *message = g_strdup(_("Finished shredding files"));
-
-            gboolean active = gtk_window_is_active(GTK_WINDOW(window));
-            if (!active)
-            {
-                GNotification *notification = g_notification_new(message);
-                g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
-            }
-            else
-                raider_window_show_toast(window, message);
-            g_free(message);
-        }
-
-        /* Update the view. */
-        gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
-        gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
-        gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
-        window->show_notification = TRUE;
-    }
 }
 
 static void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
@@ -244,12 +230,6 @@ static void raider_window_open_files_finish(GObject *source_object, GAsyncResult
     {
         GFile *file = l->data;
         corrupt_add_file(window->corrupt, file);
-    }
-
-    if (g_list_model_get_n_items(corrupt_get_model(window->corrupt)) > 0)
-    {
-        gtk_stack_set_visible_child_name(GTK_STACK(window->window_stack), "list_page");
-        gtk_revealer_set_reveal_child(GTK_REVEALER(window->shred_revealer), TRUE);
     }
 
     g_list_free(valid_files);
@@ -284,6 +264,26 @@ void raider_window_open_files(RaiderWindow *window, GList *file_list)
     for (GList *l = file_list; l != NULL; l = l->next)
     {
         GFile *incoming_file = G_FILE(l->data);
+
+        // FLATPAK PORTAL BYPASS START
+        char *fuse_path = g_file_get_path(incoming_file);
+        if (fuse_path != NULL)
+        {
+            char real_path_buf[4096];
+            ssize_t len = getxattr(fuse_path, "user.document-portal.host-path", real_path_buf, sizeof(real_path_buf) - 1);
+
+            if (len > 0)
+            {
+                real_path_buf[len] = '\0';
+
+                // Throw away the FUSE GFile and swap it for the physical one
+                g_object_unref(incoming_file);
+                incoming_file = g_file_new_for_path(real_path_buf);
+            }
+            g_free(fuse_path);
+        }
+        // FLATPAK PORTAL BYPASS END
+
         gboolean is_duplicate = FALSE;
 
         for (guint i = 0; i < n_items; i++)
@@ -350,18 +350,15 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     Corrupt *corrupt = (Corrupt *)source_object;
     GError *error = NULL;
 
-    /* Update the view. */
-    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
-    gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
-    gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
-
-    gtk_widget_set_sensitive(GTK_WIDGET(window->clear_button), TRUE);
-    gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), TRUE);
-    gtk_button_set_label(window->clear_button, _("Clear All"));
-    gtk_button_set_label(window->shred_button, _("Shred All"));
-
     // Get the result
     gboolean success = corrupt_start_shredding_finish(corrupt, res, &error);
+
+    if (window->close_after_abort)
+    {
+        if (error != NULL) g_error_free(error);
+        gtk_window_destroy(GTK_WINDOW(window));
+        return;
+    }
 
     if (!success)
     {
@@ -374,49 +371,41 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     {
         // TODO: Add toast notification.
     }
-}
 
-static void raider_window_start_shredding(GtkWidget *widget, gpointer data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(data);
-
-    gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->abort_revealer, TRUE);
-
-    gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
-
-    window->status = TRUE;
-
-    corrupt_start_shredding_async(window->corrupt, window->cancel_shredding, raider_window_shred_files_finish, window);
-}
-
-/******** Asynchronously abort shredding on all files.  *********/
-static void raider_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
-    RaiderWindow *window = RAIDER_WINDOW(source_object);
-
-    if (g_strcmp0((gchar *)user_data, "exit") == 0)
-    {
-        gtk_window_destroy(GTK_WINDOW(window));
-    }
-
-    /* Update the header bar view. */
+    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
     gtk_revealer_set_reveal_child(window->shred_revealer, TRUE);
     gtk_revealer_set_reveal_child(window->abort_revealer, FALSE);
-    gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
 
+    g_clear_object(&window->cancel_shredding);
     window->status = FALSE;
+}
 
-    /* Revert the text and view of the abort button. */
-    gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), TRUE);
-    gtk_button_set_label(window->abort_button, _("Abort All"));
-}
-/* This is run asynchronously. */
-static void raider_window_abort_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+static void raider_window_shred_files(GtkWidget *widget, gpointer data)
 {
-    // raider_window_abort_file_finish() is called here.
+    RaiderWindow *self = RAIDER_WINDOW(data);
+
+    self->status = TRUE;
+    self->cancel_shredding = g_cancellable_new();
+
+    gtk_revealer_set_reveal_child(self->open_revealer, FALSE);
+    gtk_revealer_set_reveal_child(self->shred_revealer, FALSE);
+    gtk_revealer_set_reveal_child(self->abort_revealer, TRUE);
+
+    // Notify file items that shredding has started.
+    GListModel *model = corrupt_get_model(self->corrupt);
+    guint n_items = g_list_model_get_n_items(model);
+    for (guint i = 0; i < n_items; i++)
+    {
+        RaiderFileItem *item = g_list_model_get_item(model, i);
+        g_signal_emit_by_name(item, "shred-started");
+        g_object_unref(item);
+    }
+
+    GTask *task = g_task_new(self->corrupt, self->cancel_shredding, raider_window_shred_files_finish, self);
+    g_task_run_in_thread(task, shred_all_task_thread);
+    g_object_unref(task);
 }
+
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
@@ -425,8 +414,19 @@ static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     gtk_button_set_label(window->abort_button, _("Aborting…"));
     window->show_notification = FALSE;
 
-    GTask *task = g_task_new(window, NULL, raider_window_abort_files_finish, data);
-    g_task_run_in_thread(task, raider_window_abort_files_thread);
-    g_object_unref(task);
+    // Notify file items that shredding has aborted.
+    GListModel *model = corrupt_get_model(window->corrupt);
+    guint n_items = g_list_model_get_n_items(model);
+    for (guint i = 0; i < n_items; i++)
+    {
+        RaiderFileItem *item = g_list_model_get_item(model, i);
+        g_signal_emit_by_name(item, "shred-aborted");
+        g_object_unref(item);
+    }
+
+    // Execution resumes in shred_files_finish
+    if (window->cancel_shredding != NULL) {
+        g_cancellable_cancel(window->cancel_shredding);
+    }
 }
-/******** End of asynchronously abort shredding on all files section.  *********/
+

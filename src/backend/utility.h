@@ -5,8 +5,7 @@
 #include <sys/vfs.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
-typedef struct _FilePayload FilePayload;
+#include <gio/gio.h>
 
 typedef struct strategy
 {
@@ -20,9 +19,8 @@ typedef struct strategy
     const char *warning;
 } strategy;
 
-bool corrupt_file(FilePayload *payload, strategy *strat);
-
-bool check_file(const char *filename);
 strategy getStrategy(const char *filename);
+bool check_file(const char *filename);
+off_t get_folder_size_recursive(GFile *folder);
 
 #endif // CORRUPT_UTILITY_H

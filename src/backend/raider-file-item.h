@@ -24,7 +24,8 @@
 G_DECLARE_FINAL_TYPE(RaiderFileItem, raider_file_item, RAIDER, FILE_ITEM, GObject)
 
 double raider_file_item_get_progress(RaiderFileItem *item);
-void raider_file_item_set_progress_safe(RaiderFileItem *self, double progress);
+void raider_file_item_set_progress_async(RaiderFileItem *self, double progress);
+void raider_file_item_emit_finished_safe(RaiderFileItem *self);
 GFile *raider_file_item_get_file(RaiderFileItem *item);
 gchar *raider_file_item_get_name(RaiderFileItem *item);
 gchar *raider_file_item_get_path(RaiderFileItem *item);

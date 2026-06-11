@@ -7,16 +7,16 @@
 #include <gio/gio.h>
 #include <stdbool.h>
 
-typedef struct _FilePayload FilePayload;
-
 typedef struct Bucket
 {
     GList *files;
+    GCancellable *cancel;
+
     dev_t deviceID;
     struct strategy strategy;
 } Bucket;
 
-void bucket_add_file(Bucket *self, FilePayload *fp);
+void bucket_add_file(Bucket *self, RaiderFileItem *fi);
 void bucket_shred(Bucket *self, GCancellable *cancel);
 
 #endif // CORRUPT_BUCKET_H

@@ -43,6 +43,9 @@ struct _RaiderFileRow
 
 G_DEFINE_TYPE(RaiderFileRow, raider_file_row, ADW_TYPE_ACTION_ROW)
 
+static void on_shred_started(RaiderFileItem *item, gpointer user_data);
+static void on_shred_finished(RaiderFileItem *item, gpointer user_data);
+static void on_shred_canceled(RaiderFileItem *item, gpointer user_data);
 void raider_file_row_close(GtkWidget *window, gpointer data);
 
 static void raider_file_row_dispose(GObject *obj)
@@ -102,6 +105,10 @@ void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item)
 
     g_object_bind_property(item, "progress", self->progress_paintable, "progress", G_BINDING_SYNC_CREATE);
     g_object_bind_property(item, "progress", self->popover, "progress", G_BINDING_SYNC_CREATE);
+
+    g_signal_connect_object(item, "shred-started", G_CALLBACK(on_shred_started), self, 0);
+    g_signal_connect_object(item, "shred-finished", G_CALLBACK(on_shred_finished), self, 0);
+    g_signal_connect_object(item, "shred-aborted", G_CALLBACK(on_shred_canceled), self, 0);
 }
 
 // Remove file row.
@@ -117,3 +124,26 @@ void raider_file_row_close(GtkWidget *widget, gpointer data)
         raider_window_close_file(row->bound_item, window);
     }
 }
+
+static void on_shred_started(RaiderFileItem *item, gpointer user_data)
+{
+    RaiderFileRow *self = RAIDER_FILE_ROW(user_data);
+
+    // Hide the 'X' button, show the progress circle!
+    gtk_revealer_set_reveal_child(self->remove_revealer, FALSE);
+    gtk_revealer_set_reveal_child(self->progress_revealer, TRUE);
+}
+
+static void on_shred_finished(RaiderFileItem *item, gpointer user_data)
+{
+    raider_file_row_close(NULL, GTK_WIDGET(user_data));
+}
+
+static void on_shred_canceled(RaiderFileItem *item, gpointer user_data)
+{
+    RaiderFileRow *self = RAIDER_FILE_ROW(user_data);
+
+    gtk_revealer_set_reveal_child(self->progress_revealer, FALSE);
+    gtk_revealer_set_reveal_child(self->remove_revealer, TRUE);
+}
+

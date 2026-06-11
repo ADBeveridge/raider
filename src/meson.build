@@ -9,6 +9,7 @@ raider_sources = [
   'backend/bucket.c',
   'backend/corrupt.c',
   'backend/utility.c',
+  'backend/job.c'
 ]
 
 # Generate UX files from blueprint files.
