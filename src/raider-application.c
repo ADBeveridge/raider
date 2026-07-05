@@ -187,8 +187,7 @@ static void raider_application_open(GApplication *application, GFile **files, gi
 
     /* Convert array of files into a GList. */
     GList *file_list = NULL;
-    int i;
-    for (i = 0; i < n_files; i++) {
+    for (int i = 0; i < n_files; i++) {
         file_list = g_list_append(file_list, g_file_dup(files[i]));
     }
 

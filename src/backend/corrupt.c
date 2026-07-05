@@ -107,7 +107,7 @@ static void corrupt_add_to_bucket(Corrupt *self, RaiderFileItem *item)
 
 void master_bucket_worker (gpointer data, gpointer user_data)
 {
-    bucket_shred(data, user_data);
+    bucket_shred(data);
 }
 
 // Runs in its own thread.
@@ -117,9 +117,17 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
     self->cancel = cancellable;
     GError *error = NULL;
 
-    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(self->store));
+    // Create the thread pool.
+    gint max_concurrent_drives = g_get_num_processors();
+    GThreadPool *master_pool = g_thread_pool_new(master_bucket_worker, NULL, max_concurrent_drives, FALSE, &error);
+    if (error != NULL)
+    {
+        g_task_return_error(task, error);
+        return;
+    }
 
-    // Sort into buckets.
+    // Sort files and folders into buckets.
+    guint n_items = g_list_model_get_n_items(G_LIST_MODEL(self->store));
     for (guint i = 0; i < n_items; i++)
     {
         RaiderFileItem *item = g_list_model_get_item(G_LIST_MODEL(self->store), i);
@@ -129,17 +137,7 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
         g_object_unref(item);
     }
 
-    // Create the thread pool.
-    gint max_concurrent_drives = g_get_num_processors();
-    GThreadPool *master_pool = g_thread_pool_new(master_bucket_worker, NULL, max_concurrent_drives, FALSE, &error);
-
-    if (error != NULL)
-    {
-        g_task_return_error(task, error);
-        return;
-    }
-
-    // Push the buckets into the pool
+    // Call master_bucket_worker with all the buckets in different threads.
     for (GList *l = self->buckets; l != NULL; l = l->next)
     {
         g_thread_pool_push(master_pool, l->data, &error);
@@ -151,7 +149,7 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
         }
     }
 
-    // Block till all threads finish.
+    // Block till all threads finish and free memory.
     g_thread_pool_free(master_pool, FALSE, TRUE);
 
     // Delete all buckets to reset backend.
@@ -165,12 +163,6 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
     self->buckets = NULL;
 
     g_task_return_boolean(task, TRUE);
-}
-
-// Runs in the UI thread.
-void corrupt_start_shredding_async(Corrupt *self, GCancellable *cancel, GAsyncReadyCallback callback, gpointer user_data)
-{
-
 }
 
 // The paired finish function to retrieve the result in your callback

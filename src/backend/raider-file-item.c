@@ -102,6 +102,16 @@ RaiderFileItem *raider_file_item_new(GFile *file)
     self->name = g_file_get_basename(file);
     self->path = g_file_get_path(file);
 
+    GFileType file_type = g_file_query_file_type(file, G_FILE_QUERY_INFO_NONE, NULL);
+    if (file_type == G_FILE_TYPE_DIRECTORY)
+    {
+        self->is_folder = TRUE;
+    }
+    else
+    {
+        self->is_folder = FALSE;
+    }
+
     return self;
 }
 
@@ -145,6 +155,8 @@ static gboolean dispatch_progress_to_main_thread(gpointer data)
     return G_SOURCE_REMOVE;
 }
 
+
+// Called by shredding code in job.c
 void raider_file_item_set_progress_async(RaiderFileItem *self, double progress)
 {
     ProgressPayload *payload = g_new(ProgressPayload, 1);
@@ -155,18 +167,20 @@ void raider_file_item_set_progress_async(RaiderFileItem *self, double progress)
     g_main_context_invoke(NULL, dispatch_progress_to_main_thread, payload);
 }
 
+
 static gboolean dispatch_finish_to_main_thread(gpointer data)
 {
     RaiderFileItem *self = RAIDER_FILE_ITEM(data);
 
-    // Broadcast the event to anyone listening
+    // RaiderFileRow::on_shred_finished is called here.
     g_signal_emit(self, obj_signals[SIGNAL_SHRED_FINISHED], 0);
 
     g_object_unref(self);
     return G_SOURCE_REMOVE;
 }
 
-void raider_file_item_emit_finished_safe(RaiderFileItem *self)
+// Switch over to tht main thread.
+void raider_file_item_emit_finished_async(RaiderFileItem *self)
 {
     g_main_context_invoke(NULL, dispatch_finish_to_main_thread, g_object_ref(self));
 }

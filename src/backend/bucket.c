@@ -31,11 +31,11 @@ static void file_shred(gpointer data, gpointer user_data)
         return;
     }
 
-    raider_file_item_emit_finished_safe(item);
+    raider_file_item_emit_finished_async(item);
 }
 
 // Uses a GThreadPool within GThreadPool.
-void bucket_shred(Bucket *self, GCancellable *cancel)
+void bucket_shred(Bucket *self)
 {
     GError *error = NULL;
 

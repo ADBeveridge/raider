@@ -12,11 +12,12 @@ typedef struct Bucket
     GList *files;
     GCancellable *cancel;
 
+    char *name;
     dev_t deviceID;
     struct strategy strategy;
 } Bucket;
 
 void bucket_add_file(Bucket *self, RaiderFileItem *fi);
-void bucket_shred(Bucket *self, GCancellable *cancel);
+void bucket_shred(Bucket *self);
 
 #endif // CORRUPT_BUCKET_H

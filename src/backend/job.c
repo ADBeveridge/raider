@@ -47,13 +47,18 @@ static bool corrupt_pass(Job *job, const char *filename, off_t file_size)
         size_t chunk = remaining < buf_size ? remaining : buf_size;
 
         // Obfuscates the file.
-        fwrite(buffer, sizeof(char), chunk, fp);
+        size_t res = fwrite(buffer, sizeof(char), chunk, fp);
+        if (res != chunk)
+        {
+            fclose(fp);
+            g_printerr("Failed to write data to file.\n");
+            return false;
+        }
 
         bytes_written += chunk;
         job->bytes_written += chunk;
 
         int current_percent = (int)((job->bytes_written / job->total_bytes) * 100.0);
-
         if (current_percent >= job->last_percent + 1)
         {
             raider_file_item_set_progress_async(job->item, job->bytes_written / job->total_bytes);
@@ -61,9 +66,32 @@ static bool corrupt_pass(Job *job, const char *filename, off_t file_size)
         }
     }
 
-    fflush(fp);
-    fsync(fileno(fp));
+    // Sync our file changes, and close the file.
+    if (fflush(fp) != 0)
+    {
+        g_printerr("Failed to flush C buffer to kernel.\n");
+        fclose(fp);
+        return false;
+    }
+    if (fsync(fileno(fp)) != 0)
+    {
+        g_printerr("Failed to sync data to physical disk.\n");
+        fclose(fp);
+        return false;
+    }
     fclose(fp);
+    return true;
+}
+
+static bool corrupt_verify(Job *job, const char *filename, off_t file_size)
+{
+    // TODO: Make sure the file contains the last written data.
+    return true;
+}
+
+static bool corrupt_unlink(Job *job, const char *filename)
+{
+    // TODO: Remove the file here.
     return true;
 }
 
@@ -143,7 +171,6 @@ static bool shred_folder_recursive(Job *job, GFile *folder)
     GFileInfo *info;
     while ((info = g_file_enumerator_next_file(enumerator, job->cancel, &error)) != NULL)
     {
-
         if (g_cancellable_is_cancelled(job->cancel))
         {
             g_object_unref(info);

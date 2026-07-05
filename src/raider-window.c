@@ -30,9 +30,10 @@
 #include <sys/xattr.h>
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data);
+static gboolean on_drop_accept(GtkDropTarget *target, GdkDrop *drop, gpointer data);
 static void on_list_items_changed(GListModel *model, guint position, guint removed, guint added, gpointer user_data);
 static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *title);
-static void raider_window_shred_files(GtkWidget *widget, gpointer data);
+static void raider_window_shred_files(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 static void raider_window_abort_shredding(GtkWidget *widget, gpointer data);
 static void raider_window_clear_files(GtkWidget *widget, gpointer data);
 static GtkWidget *create_listbox_row(gpointer item, gpointer user_data);
@@ -92,8 +93,11 @@ static void raider_window_init(RaiderWindow *self)
 {
     gtk_widget_init_template(GTK_WIDGET(self));
 
+    g_autoptr(GSimpleAction) shred_action = g_simple_action_new_stateful("shred", NULL, g_variant_new_string ("idle"));
+    g_signal_connect(shred_action, "activate", G_CALLBACK(raider_window_shred_files), self);
+    g_action_map_add_action(G_ACTION_MAP(self), G_ACTION(shred_action));
+
     g_signal_connect(self->clear_button, "clicked", G_CALLBACK(raider_window_clear_files), self);
-    g_signal_connect(self->shred_button, "clicked", G_CALLBACK(raider_window_shred_files), self);
     g_signal_connect(self->abort_button, "clicked", G_CALLBACK(raider_window_abort_shredding), self);
     g_signal_connect(self, "close-request", G_CALLBACK(raider_window_exit), NULL);
 
@@ -102,6 +106,7 @@ static void raider_window_init(RaiderWindow *self)
     GType drop_types[] = {GDK_TYPE_FILE_LIST};
     gtk_drop_target_set_gtypes(self->target, drop_types, 1);
     g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
+    g_signal_connect(self->target, "accept", G_CALLBACK(on_drop_accept), self);
     gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
     // Setup backend.
@@ -151,7 +156,6 @@ static void raider_window_clear_files(GtkWidget *widget, gpointer data)
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
 {
-    /* GdkFileList is a boxed value so we use the boxed API. */
     GdkFileList *flist = g_value_get_boxed(value);
 
     /* Convert GSList to GList. */
@@ -166,6 +170,18 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
 
     raider_window_open_files(data, file_list);
 
+    return TRUE;
+}
+
+static gboolean on_drop_accept(GtkDropTarget *target, GdkDrop *drop, gpointer data)
+{
+    RaiderWindow *window = RAIDER_WINDOW(data);
+
+    // If shredding is currently active, reject the drag.
+    if (window->status == TRUE)
+    {
+        return FALSE;
+    }
     return TRUE;
 }
 
@@ -229,7 +245,7 @@ static void raider_window_open_files_finish(GObject *source_object, GAsyncResult
     for (GList *l = valid_files; l != NULL; l = l->next)
     {
         GFile *file = l->data;
-        corrupt_add_file(window->corrupt, file);
+        corrupt_add_file(window->corrupt, file); // The backend owns the list model the UI is built on.
     }
 
     g_list_free(valid_files);
@@ -285,7 +301,6 @@ void raider_window_open_files(RaiderWindow *window, GList *file_list)
         // FLATPAK PORTAL BYPASS END
 
         gboolean is_duplicate = FALSE;
-
         for (guint i = 0; i < n_items; i++)
         {
             RaiderFileItem *existing_item = g_list_model_get_item(model, i);
@@ -353,6 +368,7 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     // Get the result
     gboolean success = corrupt_start_shredding_finish(corrupt, res, &error);
 
+    // 1. Aborted because user wanted to close the window.
     if (window->close_after_abort)
     {
         if (error != NULL) g_error_free(error);
@@ -360,16 +376,25 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
         return;
     }
 
-    if (!success)
+    // 2. User manually aborted
+    if (window->cancel_shredding != NULL && g_cancellable_is_cancelled(window->cancel_shredding))
+    {
+        raider_window_show_toast(window, _("Shredding aborted. Some files may be corrupted."));
+
+        // The GTask generates a cancellation error behind the scenes, so we safely free it here.
+        if (error != NULL) g_error_free(error);
+    }
+    // 3. Write error occurred on a file.
+    else if (!success)
     {
         g_printerr("Failed to corrupt: %s\n", error->message);
+        raider_window_show_toast(window, _("Shredding complete, however some files failed to shred. Check console for more information."));
         g_error_free(error);
-
-        // TODO: Add toast notification.
     }
+    // 4. Success.
     else
     {
-        // TODO: Add toast notification.
+        raider_window_show_toast(window, _("Shredding complete, however some files failed to shred. Check console for more information."));
     }
 
     gtk_revealer_set_reveal_child(window->open_revealer, TRUE);
@@ -380,9 +405,9 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     window->status = FALSE;
 }
 
-static void raider_window_shred_files(GtkWidget *widget, gpointer data)
+static void raider_window_shred_files(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-    RaiderWindow *self = RAIDER_WINDOW(data);
+    RaiderWindow *self = RAIDER_WINDOW(user_data);
 
     self->status = TRUE;
     self->cancel_shredding = g_cancellable_new();
