@@ -25,9 +25,12 @@ static GParamSpec *obj_properties[N_PROPS] = {NULL,};
 
 enum
 {
+    SIGNAL_SHRED_QUEUED,
     SIGNAL_SHRED_STARTED,
     SIGNAL_SHRED_FINISHED,
+
     SIGNAL_SHRED_ABORTED,
+    SIGNAL_SHRED_FAILED,
     N_SIGNALS
 };
 
@@ -84,9 +87,12 @@ static void raider_file_item_class_init(RaiderFileItemClass *klass)
     obj_properties[PROP_PROGRESS] = g_param_spec_double("progress", "Progress", "Shredding progress", 0.0, 1.0, 0.0, G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
     g_object_class_install_properties(object_class, N_PROPS, obj_properties);
 
+    obj_signals[SIGNAL_SHRED_ABORTED] = g_signal_new("shred-queued", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
     obj_signals[SIGNAL_SHRED_STARTED] = g_signal_new("shred-started", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
     obj_signals[SIGNAL_SHRED_FINISHED] = g_signal_new("shred-finished", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
     obj_signals[SIGNAL_SHRED_ABORTED] = g_signal_new("shred-aborted", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
+    obj_signals[SIGNAL_SHRED_ABORTED] = g_signal_new("shred-failed", G_TYPE_FROM_CLASS(klass), G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
+    
 }
 
 static void raider_file_item_init(RaiderFileItem *self)
@@ -142,7 +148,16 @@ typedef struct
     double progress;
 } ProgressPayload;
 
-static gboolean dispatch_progress_to_main_thread(gpointer data)
+
+static gboolean notify_raider_file_row_of_start(gpointer data)
+{
+    RaiderFileItem *self = RAIDER_FILE_ITEM(data);
+    g_signal_emit(self, obj_signals[SIGNAL_SHRED_STARTED], 0);
+    g_object_unref(self);
+    return G_SOURCE_REMOVE;
+}
+
+static gboolean notify_raider_file_row_of_progress(gpointer data)
 {
     ProgressPayload *payload = data;
 
@@ -155,20 +170,7 @@ static gboolean dispatch_progress_to_main_thread(gpointer data)
     return G_SOURCE_REMOVE;
 }
 
-
-// Called by shredding code in job.c
-void raider_file_item_set_progress_async(RaiderFileItem *self, double progress)
-{
-    ProgressPayload *payload = g_new(ProgressPayload, 1);
-
-    payload->item = g_object_ref(self);
-    payload->progress = progress;
-
-    g_main_context_invoke(NULL, dispatch_progress_to_main_thread, payload);
-}
-
-
-static gboolean dispatch_finish_to_main_thread(gpointer data)
+static gboolean notify_raider_file_row_of_finish(gpointer data)
 {
     RaiderFileItem *self = RAIDER_FILE_ITEM(data);
 
@@ -179,10 +181,23 @@ static gboolean dispatch_finish_to_main_thread(gpointer data)
     return G_SOURCE_REMOVE;
 }
 
-// Switch over to tht main thread.
-void raider_file_item_emit_finished_async(RaiderFileItem *self)
+void raider_file_item_set_started_async(RaiderFileItem *self)
 {
-    g_main_context_invoke(NULL, dispatch_finish_to_main_thread, g_object_ref(self));
+    g_main_context_invoke(NULL, notify_raider_file_row_of_start, g_object_ref(self));
 }
 
+void raider_file_item_set_progress_async(RaiderFileItem *self, double progress)
+{
+    ProgressPayload *payload = g_new(ProgressPayload, 1);
+
+    payload->item = g_object_ref(self);
+    payload->progress = progress;
+
+    g_main_context_invoke(NULL, notify_raider_file_row_of_progress, payload);
+}
+
+void raider_file_item_set_finished_async(RaiderFileItem *self)
+{
+    g_main_context_invoke(NULL, notify_raider_file_row_of_finish, g_object_ref(self));
+}
 

@@ -13,7 +13,6 @@ typedef struct strategy
     const char *pattern;
     int pattern_len;
     bool verifyWrite;
-    bool obfuscateFilename;
     int thread_count;
 
     const char *warning;

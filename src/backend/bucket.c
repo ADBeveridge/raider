@@ -2,10 +2,11 @@
 #include "utility.h"
 #include "job.h"
 #include "raider-file-item.h"
-#include "corrupt.h"
+#include "shred-manager.h"
 
 void bucket_add_file(Bucket *self, RaiderFileItem *item)
 {
+    // TODO: Ref item for our own use.
     self->files = g_list_append(self->files, item);
 }
 
@@ -14,6 +15,8 @@ static void file_shred(gpointer data, gpointer user_data)
 {
     RaiderFileItem *item = (RaiderFileItem *)data;
     Bucket *bucket = (Bucket *)user_data;
+
+    raider_file_item_set_started_async(item);
 
     bool res;
     if (raider_file_item_is_folder(item))
@@ -31,7 +34,7 @@ static void file_shred(gpointer data, gpointer user_data)
         return;
     }
 
-    raider_file_item_emit_finished_async(item);
+    raider_file_item_set_finished_async(item);
 }
 
 // Uses a GThreadPool within GThreadPool.

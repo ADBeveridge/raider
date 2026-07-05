@@ -1,12 +1,12 @@
 #define _DEFAULT_SOURCE
 
-#include "corrupt.h"
+#include "shred-manager.h"
 #include "bucket.h"
 #include "utility.h"
 #include <glib.h>
 #include <stdio.h>
 
-struct _Corrupt
+struct _ShredManager
 {
     GObject parent;
 
@@ -15,34 +15,34 @@ struct _Corrupt
     GListStore *store;
 };
 
-G_DEFINE_TYPE(Corrupt, corrupt, G_TYPE_OBJECT)
+G_DEFINE_TYPE(ShredManager, shred_manager, G_TYPE_OBJECT)
 
-static void corrupt_init(Corrupt *self)
+static void shred_manager_init(ShredManager *self)
 {
 }
 
-static void corrupt_class_init(CorruptClass *klass)
+static void shred_manager_class_init(ShredManagerClass *klass)
 {
 }
 
-Corrupt *corrupt_new()
+ShredManager *shred_manager_new()
 {
-    Corrupt *self = g_object_new(corrupt_get_type(), NULL);
+    ShredManager *self = g_object_new(shred_manager_get_type(), NULL);
     self->store = g_list_store_new(RAIDER_TYPE_FILE_ITEM); // Initialize it
     return self;
 }
 
-GListModel *corrupt_get_model(Corrupt *self)
+GListModel *shred_manager_get_model(ShredManager *self)
 {
     return G_LIST_MODEL(self->store);
 }
 
-void corrupt_clear_files(Corrupt *self)
+void shred_manager_clear_files(ShredManager *self)
 {
     g_list_store_remove_all(self->store);
 }
 
-void corrupt_remove_file(Corrupt *self, RaiderFileItem *item)
+void shred_manager_remove_file(ShredManager *self, RaiderFileItem *item)
 {
     guint n_items = g_list_model_get_n_items(G_LIST_MODEL(self->store));
     for (guint i = 0; i < n_items; i++) {
@@ -56,15 +56,15 @@ void corrupt_remove_file(Corrupt *self, RaiderFileItem *item)
     }
 }
 
-void corrupt_add_file(Corrupt *self, GFile *file)
+void shred_manager_add_file(ShredManager *self, GFile *file)
 {
     RaiderFileItem *item = raider_file_item_new(file);
-    g_signal_connect_swapped(item, "shred-finished", G_CALLBACK(corrupt_remove_file), self);
+    g_signal_connect_swapped(item, "shred-finished", G_CALLBACK(shred_manager_remove_file), self);
     g_list_store_append(self->store, item);
     g_object_unref(item);
 }
 
-static void corrupt_add_to_bucket(Corrupt *self, RaiderFileItem *item)
+static void shred_manager_add_to_bucket(ShredManager *self, RaiderFileItem *item)
 {
     char *filename = raider_file_item_get_path(item);
     if (filename == NULL)
@@ -110,15 +110,15 @@ void master_bucket_worker (gpointer data, gpointer user_data)
     bucket_shred(data);
 }
 
-// Runs in its own thread.
-void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
+// Runs in its own thread, and just sleeps waiting for the buckets to finish.
+void shred_manager_task_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    Corrupt *self = (Corrupt *)source_object;
+    ShredManager *self = (ShredManager *)source_object;
     self->cancel = cancellable;
     GError *error = NULL;
 
     // Create the thread pool.
-    gint max_concurrent_drives = g_get_num_processors();
+    gint max_concurrent_drives = 3; // Arbitrary limit, change if you want.
     GThreadPool *master_pool = g_thread_pool_new(master_bucket_worker, NULL, max_concurrent_drives, FALSE, &error);
     if (error != NULL)
     {
@@ -132,7 +132,7 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
     {
         RaiderFileItem *item = g_list_model_get_item(G_LIST_MODEL(self->store), i);
 
-        corrupt_add_to_bucket(self, item);
+        shred_manager_add_to_bucket(self, item);
 
         g_object_unref(item);
     }
@@ -165,8 +165,7 @@ void shred_all_task_thread(GTask *task, gpointer source_object, gpointer task_da
     g_task_return_boolean(task, TRUE);
 }
 
-// The paired finish function to retrieve the result in your callback
-gboolean corrupt_start_shredding_finish(Corrupt *self, GAsyncResult *res, GError **error)
+gboolean shred_manager_start_shredding_finish(ShredManager *self, GAsyncResult *res, GError **error)
 {
     g_return_val_if_fail(g_task_is_valid(res, self), FALSE);
     return g_task_propagate_boolean(G_TASK(res), error);

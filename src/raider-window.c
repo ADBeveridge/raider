@@ -17,7 +17,7 @@
  */
 
 #include "raider-window.h"
-#include "backend/corrupt.h"
+#include "backend/shred-manager.h"
 #include "raider-config.h"
 #include "backend/raider-file-item.h"
 #include "raider-file-row.h"
@@ -55,7 +55,7 @@ struct _RaiderWindow
     GtkListBox *list_box;
     GtkDropTarget *target;
 
-    Corrupt *corrupt;
+    ShredManager *shred_manager;
     GCancellable *cancel_shredding;
     gboolean show_notification;
     gboolean status;
@@ -110,8 +110,8 @@ static void raider_window_init(RaiderWindow *self)
     gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
     // Setup backend.
-    self->corrupt = corrupt_new();
-    GListModel *model = corrupt_get_model(self->corrupt);
+    self->shred_manager = shred_manager_new();
+    GListModel *model = shred_manager_get_model(self->shred_manager);
     gtk_list_box_bind_model(self->list_box, model, create_listbox_row, self, NULL);
     g_signal_connect(model, "items-changed", G_CALLBACK(on_list_items_changed), self);
 
@@ -151,7 +151,7 @@ static GtkWidget *create_listbox_row(gpointer item, gpointer user_data)
 static void raider_window_clear_files(GtkWidget *widget, gpointer data)
 {
     RaiderWindow *window = RAIDER_WINDOW(data);
-    corrupt_clear_files(window->corrupt);
+    shred_manager_clear_files(window->shred_manager);
 }
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
@@ -226,7 +226,7 @@ void raider_window_show_toast(RaiderWindow *window, gchar *text)
 /* This handles the application and window state. */
 void raider_window_close_file(RaiderFileItem *target_item, RaiderWindow *window)
 {
-    corrupt_remove_file(window->corrupt, target_item);
+    shred_manager_remove_file(window->shred_manager, target_item);
 }
 
 static void raider_window_open_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
@@ -245,7 +245,7 @@ static void raider_window_open_files_finish(GObject *source_object, GAsyncResult
     for (GList *l = valid_files; l != NULL; l = l->next)
     {
         GFile *file = l->data;
-        corrupt_add_file(window->corrupt, file); // The backend owns the list model the UI is built on.
+        shred_manager_add_file(window->shred_manager, file); // The backend owns the list model the UI is built on.
     }
 
     g_list_free(valid_files);
@@ -273,7 +273,7 @@ static void raider_window_open_files_thread(GTask *task, gpointer source_object,
 void raider_window_open_files(RaiderWindow *window, GList *file_list)
 {
     GList *cleaned_file_list = NULL;
-    GListModel *model = corrupt_get_model(window->corrupt);
+    GListModel *model = shred_manager_get_model(window->shred_manager);
     guint n_items = g_list_model_get_n_items(model);
 
     // Check to make sure we haven't loaded the file yet.
@@ -337,7 +337,7 @@ void raider_window_open_files(RaiderWindow *window, GList *file_list)
     g_object_unref(task);
 }
 
-/* Check the file to make sure we can corrupt it. */
+/* Check the file to make sure we can shred_manager it. */
 static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *title)
 {
     gchar *filename = g_file_get_path(file);
@@ -362,11 +362,11 @@ static gboolean raider_window_check_file(GFile *file, gpointer data, gchar *titl
 static void raider_window_shred_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     RaiderWindow *window = RAIDER_WINDOW(user_data);
-    Corrupt *corrupt = (Corrupt *)source_object;
+    ShredManager *shred_manager = (ShredManager *)source_object;
     GError *error = NULL;
 
     // Get the result
-    gboolean success = corrupt_start_shredding_finish(corrupt, res, &error);
+    gboolean success = shred_manager_start_shredding_finish(shred_manager, res, &error);
 
     // 1. Aborted because user wanted to close the window.
     if (window->close_after_abort)
@@ -379,7 +379,7 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     // 2. User manually aborted
     if (window->cancel_shredding != NULL && g_cancellable_is_cancelled(window->cancel_shredding))
     {
-        raider_window_show_toast(window, _("Shredding aborted. Some files may be corrupted."));
+        raider_window_show_toast(window, _("Shredding aborted. Some files may be shred_managered."));
 
         // The GTask generates a cancellation error behind the scenes, so we safely free it here.
         if (error != NULL) g_error_free(error);
@@ -387,7 +387,7 @@ static void raider_window_shred_files_finish(GObject *source_object, GAsyncResul
     // 3. Write error occurred on a file.
     else if (!success)
     {
-        g_printerr("Failed to corrupt: %s\n", error->message);
+        g_printerr("Failed to shred_manager: %s\n", error->message);
         raider_window_show_toast(window, _("Shredding complete, however some files failed to shred. Check console for more information."));
         g_error_free(error);
     }
@@ -416,18 +416,18 @@ static void raider_window_shred_files(GSimpleAction *action, GVariant *parameter
     gtk_revealer_set_reveal_child(self->shred_revealer, FALSE);
     gtk_revealer_set_reveal_child(self->abort_revealer, TRUE);
 
-    // Notify file items that shredding has started.
-    GListModel *model = corrupt_get_model(self->corrupt);
+    // Notify file items that shredding has been queued.
+    GListModel *model = shred_manager_get_model(self->shred_manager);
     guint n_items = g_list_model_get_n_items(model);
     for (guint i = 0; i < n_items; i++)
     {
         RaiderFileItem *item = g_list_model_get_item(model, i);
-        g_signal_emit_by_name(item, "shred-started");
+        g_signal_emit_by_name(item, "shred-queued");
         g_object_unref(item);
     }
 
-    GTask *task = g_task_new(self->corrupt, self->cancel_shredding, raider_window_shred_files_finish, self);
-    g_task_run_in_thread(task, shred_all_task_thread);
+    GTask *task = g_task_new(self->shred_manager, self->cancel_shredding, raider_window_shred_files_finish, self);
+    g_task_run_in_thread(task, shred_manager_task_thread);
     g_object_unref(task);
 }
 
@@ -440,12 +440,12 @@ static void raider_window_abort_shredding(GtkWidget *widget, gpointer data)
     window->show_notification = FALSE;
 
     // Notify file items that shredding has aborted.
-    GListModel *model = corrupt_get_model(window->corrupt);
+    GListModel *model = shred_manager_get_model(window->shred_manager);
     guint n_items = g_list_model_get_n_items(model);
     for (guint i = 0; i < n_items; i++)
     {
         RaiderFileItem *item = g_list_model_get_item(model, i);
-        g_signal_emit_by_name(item, "shred-aborted");
+        g_signal_emit_by_name(item, "shred-aborted"); // TODO: Rename signal to shred-cancelled.
         g_object_unref(item);
     }
 

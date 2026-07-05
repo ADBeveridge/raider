@@ -11,7 +11,7 @@ strategy getStrategy(const char *filename)
     if (statfs(filename, &fs_info) != 0)
     {
         fprintf(stderr, "Error getting filesystem info.\n");
-        return (strategy){1, "abc", 3, false, false, 1, "Error getting filesystem info"};
+        return (strategy){1, "abc", 3, false, 1, "Error getting filesystem info"};
     }
 
     __fsword_t filesystem = fs_info.f_type;
@@ -19,14 +19,14 @@ strategy getStrategy(const char *filename)
     switch (filesystem)
     {
     case EXT4_SUPER_MAGIC:
-        return (strategy){3, "\x00\xFF\x55", 3, false, false, 1, NULL};
+        return (strategy){3, "\x00\xFF\x55", 3, false, 1, NULL};
 
     case BTRFS_SUPER_MAGIC:
-        return (strategy){1, "0", 1, false, false, 1, "Shredding not guaranteed on a copy-on-write filesystem"};
+        return (strategy){1, "0", 1, false, 1, "Shredding not guaranteed on a copy-on-write filesystem"};
 
     default:
         g_print("Detected Filesystem Magic: 0x%lX\n", (unsigned long)filesystem);
-        return (strategy){1, "abc", 3, false, false, 1, "File is on an unknown filesystem"};
+        return (strategy){1, "abc", 3, false, 1, "File is on an unknown filesystem"};
     }
 }
 

@@ -6,8 +6,8 @@ raider_sources = [
   'raider-file-row.c',
   'raider-progress-info-popover.c',
   'backend/raider-file-item.c',
+  'backend/shred-manager.c',
   'backend/bucket.c',
-  'backend/corrupt.c',
   'backend/utility.c',
   'backend/job.c'
 ]

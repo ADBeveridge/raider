@@ -28,6 +28,17 @@ template $RaiderFileRow : Adw.ActionRow {
         tooltip-text: _("View shredding progress");
       }
     }
+
+    Gtk.Revealer spinner_revealer {
+      reveal-child: false;
+      transition-type: slide_left;
+
+      Adw.Spinner {
+        margin-start: 12;
+        margin-end: 12;
+        tooltip-text: _("Waiting for drive availability…");
+      }
+    }
   }
 }
 

@@ -26,7 +26,7 @@ static bool corrupt_pass(Job *job, const char *filename, off_t file_size)
         return false;
     }
 
-    // Fill our writing buffer with the pattern.
+    // Fill writing buffer with strategy pattern.
     const size_t buf_size = 65536; // 64 KB buffer
     char buffer[buf_size];
     for (size_t i = 0; i < buf_size; i++)
@@ -66,7 +66,6 @@ static bool corrupt_pass(Job *job, const char *filename, off_t file_size)
         }
     }
 
-    // Sync our file changes, and close the file.
     if (fflush(fp) != 0)
     {
         g_printerr("Failed to flush C buffer to kernel.\n");
