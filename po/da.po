@@ -1,0 +1,202 @@
+# Danish translation for raider.
+# Copyright (C) 2026 raider's COPYRIGHT HOLDER
+# This file is distributed under the same license as the raider package.
+# Alan Mortensen <over.tackiness223@passinbox.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: raider main\n"
+"Report-Msgid-Bugs-To: https://github.com/ADBeveridge/raider/issues\n"
+"POT-Creation-Date: 2026-02-06 18:27+0000\n"
+"PO-Revision-Date: 2026-09-09 17:14+0200\n"
+"Last-Translator: Alan Mortensen <over.tackiness223@passinbox.com>\n"
+"Language-Team: Danish <danskgruppen@groups.io>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:3
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:6
+#: src/raider-application.c:167 src/raider-application.c:223
+#: src/raider-window.blp:9 src/raider-window.blp:37
+msgid "File Shredder"
+msgstr "Filmakulator"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:4
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:7
+msgid "Permanently delete your files"
+msgstr "Slet dine filer for evigt"
+
+#: data/com.github.ADBeveridge.Raider.desktop.in.in:9
+msgid "delete;remove;permanently;files;shred;data;"
+msgstr "slet;fjern;permanent;filer;makuler;data;"
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:9
+msgid ""
+"File Shredder is a file deletion program designed to permanently remove "
+"sensitive files from your computer, enhancing data privacy."
+msgstr ""
+"Filmakulator er et program til sletning af filer, der er udviklet til "
+"permanent at fjerne følsomme filer fra din computer og dermed forbedre "
+"databeskyttelsen."
+
+#: data/com.github.ADBeveridge.Raider.metainfo.xml.in.in:12
+msgid ""
+"Within a certain limit, it is effective. However, modern SSDs use certain "
+"technologies to extend its lifetime, which has the side effect of ensuring "
+"that shredding is never perfect, and no software can fix that. But shredding "
+"significantly increases the difficulty of data recovery since it requires "
+"specialized software and hardware."
+msgstr ""
+"Det virker til en vis grad. Moderne SSD’er anvender imidlertid visse "
+"teknologier til at forlænge deres levetid, hvilket har den bivirkning, at "
+"sletningen aldrig bliver fuldstændig, og det kan ingen software afhjælpe. "
+"Makulering gør det dog betydeligt sværere at gendanne data, da det kræver "
+"specialiseret software og hardware."
+
+#: src/raider-application.c:83 src/raider-shortcuts.blp:9
+#: src/raider-window.blp:28
+msgid "Add Files"
+msgstr "Tilføj filer"
+
+#: src/raider-application.c:93
+msgid "Add Folders"
+msgstr "Tilføj mapper"
+
+#: src/raider-application.c:180
+msgid "translator-credits"
+msgstr ""
+"Alan Mortensen\n"
+"\n"
+"Dansk-gruppen\n"
+"Websted https://l10n.gnome.org/teams/da/\n"
+"E-mail <danskgruppen@groups.io>"
+
+#: src/raider-progress-info-popover.c:55
+msgid "Starting…"
+msgstr "Starter …"
+
+#: src/raider-progress-info-popover.c:67
+msgid "Finishing up…"
+msgstr "Afslutter …"
+
+#: src/raider-progress-info-popover.c:75
+msgid "Estimating…"
+msgstr "Udregner …"
+
+#: src/raider-shortcuts.blp:6
+msgid "General"
+msgstr "Generelt"
+
+#: src/raider-shortcuts.blp:13 src/raider-window.blp:137
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: src/raider-shortcuts.blp:17 src/raider-window.blp:143
+msgid "Keyboard Shortcuts"
+msgstr "Tastaturgenveje"
+
+#: src/raider-shortcuts.blp:21
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: src/raider-shortcuts.blp:25
+msgid "Quit"
+msgstr "Afslut"
+
+#: src/raider-window.blp:26
+msgid "Add"
+msgstr "Tilføj"
+
+#: src/raider-window.blp:43
+msgid "Main Menu"
+msgstr "Hovedmenu"
+
+#: src/raider-window.blp:58
+msgid "Add files or drop here"
+msgstr "Tilføj filer eller slip dem her"
+
+#: src/raider-window.blp:60
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+"Makulering er en proces, hvor en fil tilsløres med tilfældige data, så det "
+"oprindelige indhold ikke kan gendannes."
+
+#: src/raider-window.blp:96
+msgid "Clear"
+msgstr "Ryd"
+
+#: src/raider-window.blp:101 src/raider-window.c:388
+msgid "Shred All"
+msgstr "Makulér alle"
+
+#: src/raider-window.blp:120 src/raider-window.c:441
+msgid "Abort All"
+msgstr "Afbryd alle"
+
+#: src/raider-window.blp:147
+msgid "About File Shredder"
+msgstr "Om Filmakulator"
+
+#: src/raider-window.blp:156
+msgid "Open Folder"
+msgstr "Åbn mappe"
+
+#: src/raider-window.c:177
+msgid "Stop Shredding?"
+msgstr "Stop makulering?"
+
+#: src/raider-window.c:177
+msgid "Are you sure that you want to exit?"
+msgstr "Er du sikker på, du vil afslutte?"
+
+#: src/raider-window.c:180
+msgid "_Cancel"
+msgstr "_Annullér"
+
+#: src/raider-window.c:180
+msgid "_Exit"
+msgstr "A_fslut"
+
+#: src/raider-window.c:229
+msgid "Could not remove filename from quick list. Please report this."
+msgstr "Kunne ikke fjerne filnavn fra hurtiglisten. Rapportér det venligst."
+
+#: src/raider-window.c:239
+msgid "Finished shredding files"
+msgstr "Færdig med at makulere filer"
+
+#: src/raider-window.c:311
+#, c-format
+msgid "This file was already added"
+msgstr "Filen er allerede tilføjet"
+
+#: src/raider-window.c:325
+msgid "Some files did not exist"
+msgstr "Nogle filer findes ikke"
+
+#: src/raider-window.c:337
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr "Kan ikke skrive til “%s”"
+
+#: src/raider-window.c:349
+msgid "Cannot load more files"
+msgstr "Kan ikke indlæse flere filer"
+
+#: src/raider-window.c:387
+msgid "Clear All"
+msgstr "Ryd alle"
+
+#: src/raider-window.c:411
+msgid "Starting Shredding…"
+msgstr "Starter makuleringen …"
+
+#: src/raider-window.c:463
+msgid "Aborting…"
+msgstr "Afbryder …"
