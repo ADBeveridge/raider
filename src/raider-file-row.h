@@ -19,15 +19,15 @@
 #pragma once
 #include <gtk/gtk.h>
 #include <adwaita.h>
+#include "backend/raider-file-item.h"
+
 #define RAIDER_TYPE_FILE_ROW (raider_file_row_get_type())
 
 G_DECLARE_FINAL_TYPE(RaiderFileRow, raider_file_row, RAIDER, FILE_ROW, AdwActionRow)
 
-RaiderFileRow *raider_file_row_new(GFile *file);
+RaiderFileRow *raider_file_row_new();
 void raider_file_row_close(GtkWidget* widget, gpointer data);
-gchar *raider_file_row_get_filename(RaiderFileRow *row);
-void raider_file_row_launch_shredding(gpointer data);
-void raider_file_row_shredding_abort(gpointer data);
 gboolean raider_file_row_update_progress_ui(gpointer data);
 void raider_file_row_set_progress_value(RaiderFileRow* row, double progress);
+void raider_file_row_bind_item(RaiderFileRow *self, RaiderFileItem *item);
 

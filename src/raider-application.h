@@ -18,6 +18,7 @@
 
 #pragma once
 #include <adwaita.h>
+
 #define RAIDER_TYPE_APPLICATION (raider_application_get_type())
 
 G_DECLARE_FINAL_TYPE(RaiderApplication, raider_application, RAIDER, APPLICATION, AdwApplication)

@@ -9,17 +9,35 @@ template $RaiderFileRow : Adw.ActionRow {
   [suffix]
   Gtk.Box controls {
     valign: center;
+    Gtk.Button warning_button {
+      icon-name: "dialog-warning-symbolic";
+      tooltip-text: _("Warning");
+      margin-start: 12;
+      margin-end: 12;
+      visible: false;
+    }
     Gtk.Revealer remove_revealer {
       reveal-child: true;
       transition-type: slide_left;
       Gtk.Button remove_button {
         icon-name: "edit-delete-symbolic";
+        tooltip-text: _("Remove file from list");
       }
     }
     Gtk.Revealer progress_revealer {
       reveal-child: false;
       transition-type: slide_left;
       Gtk.Button progress_button {
+        tooltip-text: _("View shredding progress");
+      }
+    }
+    Gtk.Revealer spinner_revealer {
+      reveal-child: false;
+      transition-type: slide_left;
+      Adw.Spinner {
+        margin-start: 12;
+        margin-end: 12;
+        tooltip-text: _("Waiting for drive availability…");
       }
     }
   }
